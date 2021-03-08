@@ -31,11 +31,12 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => '',
+    'DSN'      => '',
+		// 'DSN'      => 'mysql:host=localhost;port=3306;dbname=uphigh_set',
 		'hostname' => 'localhost',
-		'username' => '',
+		'username' => 'root',
 		'password' => '',
-		'database' => '',
+		'database' => 'uphigh_set',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,

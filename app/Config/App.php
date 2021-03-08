@@ -23,7 +23,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = 'http://localhost:8080/UP-HIGH-SET';
+	public $baseURL = 'http://localhost/UP-HIGH-SET';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -55,7 +55,8 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $uriProtocol = 'REQUEST_URI';
+   // public $uriProtocol = 'REQUEST_URI'; //changed so that public and index.php will not appear in the URL
+	public $uriProtocol = 'PATH_INFO';
 
 	/**
 	 * --------------------------------------------------------------------------

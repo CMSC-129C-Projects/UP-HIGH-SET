@@ -55,7 +55,8 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $uriProtocol = 'REQUEST_URI';
+   // public $uriProtocol = 'REQUEST_URI'; //changed so that public and index.php will not appear in the URL
+	public $uriProtocol = 'PATH_INFO';
 
 	/**
 	 * --------------------------------------------------------------------------

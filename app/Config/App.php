@@ -23,7 +23,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = 'http://localhost:8080/UP-HIGH-SET';
+	public $baseURL = 'http://localhost/UP-HIGH-SET';
 
 	/**
 	 * --------------------------------------------------------------------------

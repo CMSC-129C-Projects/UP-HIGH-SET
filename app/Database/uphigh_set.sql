@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2021 at 03:12 AM
+-- Generation Time: Mar 15, 2021 at 05:53 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -33,8 +33,8 @@ CREATE TABLE `choice` (
   `c_order` int(11) NOT NULL,
   `weight` decimal(10,0) NOT NULL,
   `text` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -48,8 +48,8 @@ CREATE TABLE `clicklogs` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -64,8 +64,8 @@ CREATE TABLE `eval_answers` (
   `question_id` int(10) UNSIGNED NOT NULL,
   `qChoice_id` int(10) UNSIGNED NOT NULL,
   `eval_id` int(10) UNSIGNED NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -86,8 +86,8 @@ CREATE TABLE `eval_sheet` (
   `verified` varchar(15) NOT NULL DEFAULT 'false',
   `rating` decimal(10,0) NOT NULL,
   `status` enum('Open','Inprogress','Completed') NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,8 +102,8 @@ CREATE TABLE `faculty` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `details` text DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_ON` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -117,8 +117,8 @@ CREATE TABLE `page` (
   `id` int(10) UNSIGNED NOT NULL,
   `controller` varchar(50) NOT NULL,
   `method` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -131,7 +131,7 @@ CREATE TABLE `page` (
 CREATE TABLE `permission` (
   `id` int(10) UNSIGNED NOT NULL,
   `page_id` int(10) UNSIGNED NOT NULL,
-  `user_type` enum('student','clerk','admin','') NOT NULL,
+  `role_id` int(11) UNSIGNED NOT NULL,
   `is_allowed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -147,10 +147,32 @@ CREATE TABLE `question` (
   `q_order` int(11) NOT NULL,
   `text` text NOT NULL,
   `type` enum('singleChoice','openEnded','','') NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`, `is_deleted`, `updated_on`, `created_on`) VALUES
+(1, 'admin', 0, NULL, NULL),
+(2, 'student', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -162,8 +184,8 @@ CREATE TABLE `section` (
   `id` int(11) UNSIGNED NOT NULL,
   `s_order` int(11) NOT NULL,
   `name` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -190,9 +212,9 @@ CREATE TABLE `subjects` (
   `id` int(10) UNSIGNED NOT NULL,
   `faculty_id` int(11) NOT NULL,
   `grade_level` int(11) NOT NULL,
-  `Name` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `name` text NOT NULL,
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -212,8 +234,8 @@ CREATE TABLE `userlog` (
   `user_token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `platform` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_agent` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -226,7 +248,6 @@ CREATE TABLE `userlog` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `student_num` int(11) NOT NULL,
-  `user_type` enum('student','clerk','admin') NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `grade_level` int(11) DEFAULT NULL,
@@ -234,10 +255,10 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime DEFAULT NULL,
   `is_active` tinyint(4) DEFAULT 0,
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -278,6 +299,12 @@ ALTER TABLE `page`
 -- Indexes for table `permission`
 --
 ALTER TABLE `permission`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -344,6 +371,12 @@ ALTER TABLE `page`
 --
 ALTER TABLE `permission`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `section`

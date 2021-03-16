@@ -31,3 +31,20 @@ function addJs($jsFiles = null) {
     }
     return $script;
 }
+
+
+function echoCss($cssFiles = null) {
+    if(isset($cssFiles)) {
+        foreach($cssFiles as $css) {
+            echo $css;
+        }
+    }
+}
+
+function echoJs($jsFiles = null) {
+    if(isset($jsFiles)) {
+        foreach($jsFiles as $js) {
+            echo $js;
+        }
+    }
+}

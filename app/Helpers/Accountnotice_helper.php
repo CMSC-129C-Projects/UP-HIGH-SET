@@ -1,18 +1,21 @@
 <?php
 
-// function send_acc_notice($to_email = null, $subject = null, $message = null, $bcc = null, $cc = null)
-function send_acc_notice()
+function send_acc_notice($to_email = null, $subject = null, $message = null, $bcc = null, $cc = null)
 {
   $email = \Config\Services::email();
 
-  $to_email = 'rsrazonable1@up.edu.ph'; //email that can receive
-  $subject = 'Account Activation';
+  if(!isset($to_email) || !isset($subject) || isset($message))
+  {
+    return false;
+  }
 
-  $message = 'Sample Message';
+  $email->setTo($to_email); //set email recipient
 
-  $email->setTo($to_email);
-  $email->setFrom('rsrazonable1218@gmail.com', 'UP High SET'); //email_from and name //you can change email here ra sad
+  //first argument is for the email for which the email notif came from
+  //second argument is the name that will appear for the said Email
+  $email->setFrom('', 'UP High SET'); //setup sender
 
+//setup subject and message
   $email->setSubject($subject);
   $email->setMessage($message);
 
@@ -25,7 +28,10 @@ function send_acc_notice()
   }
 
   if($email->send()) {
-    echo "Sent Successfully!";
+    // echo "Sent Successfully!";
+    <script>
+      alert('Email Notification was successfully sent.');
+    </script>
   } else {
 
     $data = $email->printDebugger(['headers']);

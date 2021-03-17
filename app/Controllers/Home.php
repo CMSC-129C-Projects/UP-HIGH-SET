@@ -6,7 +6,6 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		helper('accountnotice');
-    echo send_acc_notice();
+    	echo send_acc_notice();
 	}
 }

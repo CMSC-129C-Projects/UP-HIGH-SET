@@ -9,8 +9,7 @@ class UserModel extends Model {
 
     protected $useAutoIncrement = true;
 
-    protected $returnType     = 'App\Entities\Student';
-    protected $useSoftDeletes = true;
+    protected $returnType = 'App\Entities\Student';
 
     protected $allowedFields = [
         'student_num',
@@ -22,13 +21,13 @@ class UserModel extends Model {
         'username',
         'email',
         'password',
-        'is_active'
+        'is_active',
+        'is_deleted'
     ];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_on';
     protected $updatedField  = 'updated_on';
-    protected $deletedField  = 'is_deleted';
 
     protected $skipValidation = true;
 }

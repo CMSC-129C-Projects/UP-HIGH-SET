@@ -20,10 +20,13 @@ class Admin extends Account {
         // insert password here
         $this->newStudent->email = $request->getPost();
 
+        $subject = 'Account Verification';
+        $message = 'Congratulations';
+        send_acc_notice($this->newStudent->email, $subject, $message);
         $this->userModel->insert($this->newStudent);
     }
 
-    public function editStudent($request) {
+    public function editStudent($request, $id) {
         $this->newStudent->student_num = $request->getPost();
         $this->newStudent->first_name = $request->getPost();
         $this->newStudent->last_name = $request->getPost();
@@ -32,10 +35,11 @@ class Admin extends Account {
         $this->newStudent->contact_num = $request->getPost();
         $this->newStudent->email = $request->getPost();
 
-        $this->userModel->insert($this->newStudent);
+        $this->userModel->update($id, $this->newStudent);
     }
 
     public function deleteStudent($id) {
-        $this->userModel->where('id', $id)->delete();
+        $this->newStudent->is_deleted = 1;
+        $this->userModel->update($id, $this->newStudent);
     }
 }

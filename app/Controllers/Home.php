@@ -6,6 +6,6 @@ class Home extends BaseController
 {
 	public function index()
 	{
-    	echo send_acc_notice();
+    	return view('welcome_message');
 	}
 }

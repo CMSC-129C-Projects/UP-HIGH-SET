@@ -5,9 +5,9 @@ function randomize_password($studentnum = null)
 
   if(isset($studentnum)!= null)
   {
-    $studnum = strval($studentnum); //get last 5 digits of the student number (unique portion)
+    $studnum = strval($studentnum); //get last 7 digits of the student number (unique portion)
   } else {
-    return false;
+    return false; //no studentnumber provided
   }
 
   try {

@@ -1,9 +1,17 @@
 <?php
 
-function randomize_password()
+function randomize_password($studentnum = null)
 {
-    try {
-      $password = random_bytes(8);
+
+  if(isset($studentnum)!= null)
+  {
+    $studnum = strval($studentnum); //get last 5 digits of the student number (unique portion)
+  } else {
+    return false;
+  }
+
+  try {
+      $password = random_bytes(4);
   } catch (TypeError $e) {
       // Well, it's an integer, so this IS unexpected.
       die("An unexpected error has occurred");
@@ -15,5 +23,5 @@ function randomize_password()
       die("Could not generate a random string. Is our OS secure?");
   }
 
-  return bin2hex($password);
+   return substr($studentnum, 2, 8) . bin2hex($password) ;
 }

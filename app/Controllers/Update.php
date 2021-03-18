@@ -13,9 +13,21 @@ class Update extends BaseController
         $this->admin = new Admin($this->userModel);
     }
 
-	public function index() {
+	public function index($action) {
+        // review action
         $data = $this->setDefaultData();
         
+        if($this->request->getMethod() == 'post') {
+            if($this->validate(setRule())) {
+                if($action == 'add') {
+
+                } elseif ($action == 'edit') {
+
+                }
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
         // Place view file here
 		// return view('sample', $data);
 	}
@@ -46,11 +58,15 @@ class Update extends BaseController
      * FUNCTIONS BELOW ARE FOR EXTRA TASKS ONLY
      */
 
-    protected function setDefaultData() {
+    protected function setDefaultData($id = null) {
         $student = new \App\Entities\Student();
-        $student = $this->userModel->find(2);
+        $hasDefaultValues = false;
+        if(!isset($id)) {
+            $hasDefaultValues = true;
+            $student = $this->userModel->find($id);
+        }
 
-        if ($student) {
+        if ($hasDefaultValues) {
             $data['sNo'] = $student->student_num;
             $data['fName'] = $student->first_name;
             $data['lName'] = $student->last_name;
@@ -68,5 +84,26 @@ class Update extends BaseController
             $data['emall'] = '';
         }
         return $data;
+    }
+
+    protected function setRules() {
+        $rules = [
+            'sampleName1' => [
+                'rules' => 'sampleRule1|sampleRule2',
+                'errors' => [
+                    'sampleRule1' => 'rule1-message',
+                    'sampleRule2' => 'rule2-message'
+                ]
+            ],
+            'sampleName2' => [
+                'rules' => 'sampleRule1|sampleRule2',
+                'errors' => [
+                    'sampleRule1' => 'rule1-message',
+                    'sampleRule2' => 'rule2-message'
+                ]
+            ]
+        ];
+
+        return $rules;
     }
 }

@@ -28,9 +28,6 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
 
   if($email->send()) {
     echo "Sent Successfully!";
-    // <script>
-    //   alert('Email Notification was successfully sent.');
-    // </script>
   } else {
 
     $data = $email->printDebugger(['headers']);

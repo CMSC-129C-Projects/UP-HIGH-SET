@@ -18,9 +18,10 @@ class Admin extends Account {
         $this->newStudent->grade_level = $request->getPost('gLevel');
         $this->newStudent->contact_num = $request->getPost('cNo');
         $this->newStudent->username = $request->getPost('uName');
-        // insert password here
-        $this->newStudent->password = password_hash($request->getPost('pw'), PASSWORD_BCRYPT);
         $this->newStudent->email = $request->getPost('email');
+
+        $password = randomize_password($this->newStudent->student_num);
+        $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
 
         $this->newStudent->is_active = 1;
         $this->newStudent->is_deleted = 0;

@@ -1,29 +1,25 @@
-<?= $this->extend('pageTemplate.php');?>
+<?= $this->extend('pageTemplate');?>
 
 <?= $this->section('content');?>
-
-<section id="register" class="container-fluid">
-  
-
+  <section id="register" class="container-fluid">
     <div class="heading text-center">
-    <h1>Registration Form</h1>
-<div>
+      <h1>Registration Form</h1>
+    <div>
 
-<div class="row justify-content-center">
-<ul class="nav nav-tabs">
-    
-    <li class="nav-item">
-        <a href="#Admin" class="nav-link" data-toggle="tab"><input type="button" value="Admin" name="Admin"></a>
-    </li>
-    <li class="nav-item">
-        <a href="#Student" class="nav-link" data-toggle="tab"><input type="button" value="Student" name="Student"></a>
-    </li>
-</ul>
-</div>
-<div class="tab-content">
-<div class="tab-pane fade show active" id="Admin">
-      <div class="row justify-content-center">
-        <form action="">
+    <div class="row justify-content-center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="#Admin" class="nav-link" data-toggle="tab"><input type="button" value="Admin" name="Admin"></a>
+        </li>
+        <li class="nav-item">
+          <a href="#Student" class="nav-link" data-toggle="tab"><input type="button" value="Student" name="Student"></a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="Admin">
+        <div class="row justify-content-center">
+          <form action="">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -41,7 +37,6 @@
                   </div>
                 </div>
               </div>
-              
             </div>
             <div class="row">
               <div class="col-md-6">
@@ -70,13 +65,12 @@
               </div>  
             </div>
             <input type="submit" value="send">
-  
           </form>
-      </div> 
-    </div>
-    <div class="tab-pane fade" id="Student">
-      <div class="row justify-content-center">
-        <form action="">
+        </div> 
+      </div>
+      <div class="tab-pane fade" id="Student">
+        <div class="row justify-content-center">
+          <form action="">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -94,7 +88,6 @@
                   </div>
                 </div>
               </div>
-              
             </div>
             <div class="row">
               <div class="col-md-6">
@@ -113,28 +106,25 @@
                   </div>
                 </div>
               </div>
-              
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="gradeLevel" required>
-                      <h3>Grade Level</h3>
+                    <input type="text" name="gradeLevel" required>
+                    <h3>Grade Level</h3>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studContactNum" required>
-                      <h3>Contact Number</h3>
+                    <input type="text" name="studContactNum" required>
+                    <h3>Contact Number</h3>
                   </div>
                 </div>
               </div>
-              
             </div>
-            
             <div class="row-md-4">
               <div class="mailBox">
                 <div class="inputBox">
@@ -143,15 +133,10 @@
                 </div>
               </div>  
             </div>
-
-    
-  
-              <input type="submit" value="send">
-  
+            <input type="submit" value="send">
           </form>
-      </div> 
+        </div> 
+      </div>      
     </div>
-    
-</div>
-</section>
+  </section>
 <?= $this->endSection();?>

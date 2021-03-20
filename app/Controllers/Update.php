@@ -32,6 +32,10 @@ class Update extends BaseController
 		// return view('sample', $data);
 	}
 
+    public function test() {
+        return view('accountRegistration');
+    }
+
     public function removal() {
         $data['studentList'] = $this->userModel->findAll();
 

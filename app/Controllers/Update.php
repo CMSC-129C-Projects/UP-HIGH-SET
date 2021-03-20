@@ -13,28 +13,10 @@ class Update extends BaseController
         $this->admin = new Admin($this->userModel);
     }
 
-	public function index($action) {
-        // review action
-        $data = $this->setDefaultData();
-        
-        if($this->request->getMethod() == 'post') {
-            if($this->validate(setRule())) {
-                if($action == 'add') {
-
-                } elseif ($action == 'edit') {
-
-                }
-            } else {
-                $data['validation'] = $this->validator;
-            }
-        }
+	public function index() {
         // Place view file here
 		// return view('sample', $data);
 	}
-
-    public function test() {
-        return view('accountRegistration');
-    }
 
     public function removal() {
         $data['studentList'] = $this->userModel->findAll();
@@ -44,13 +26,29 @@ class Update extends BaseController
     }
 
     public function add() {
-        if($this->request->getMethod() == 'post')
-            $this->admin->addStudent($this->request);
+        $data['validation'] = null;
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($this->setRules())) {
+                $this->admin->addStudent($this->request);
+                return redirect()->to(base_url('home'));
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+        return view('accountRegistration', $data);
     }
 
-    public function edit() {
-        if($this->request->getMethod() == 'post')
-            $this->admin->editStudent($this->request, $id);
+    public function edit($id = null) {
+        $data = $this->setDefaultData($id);
+        $data['validation'] = null;
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($this->setRules())) {
+                $this->admin->editStudent($this->request, $id);
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+        return view('accountRegistration', $data);
     }
 
     public function delete() {
@@ -65,7 +63,7 @@ class Update extends BaseController
     protected function setDefaultData($id = null) {
         $student = new \App\Entities\Student();
         $hasDefaultValues = false;
-        if(!isset($id)) {
+        if(isset($id)) {
             $hasDefaultValues = true;
             $student = $this->userModel->find($id);
         }
@@ -77,7 +75,7 @@ class Update extends BaseController
             $data['uName'] = $student->username;
             $data['cn'] = $student->contact_num;
             $data['glevel'] = $student->grade_level;
-            $data['emall'] = $student->email;
+            $data['email'] = $student->email;
         } else {
             $data['sNo'] = '';
             $data['fName'] = '';
@@ -85,27 +83,36 @@ class Update extends BaseController
             $data['uName'] = '';
             $data['cn'] = '';
             $data['glevel'] = '';
-            $data['emall'] = '';
+            $data['email'] = '';
         }
         return $data;
     }
 
     protected function setRules() {
+        // $rules = [
+        //     'sampleName1' => [
+        //         'rules' => 'sampleRule1|sampleRule2',
+        //         'errors' => [
+        //             'sampleRule1' => 'rule1-message',
+        //             'sampleRule2' => 'rule2-message'
+        //         ]
+        //     ],
+        //     'sampleName2' => [
+        //         'rules' => 'sampleRule1|sampleRule2',
+        //         'errors' => [
+        //             'sampleRule1' => 'rule1-message',
+        //             'sampleRule2' => 'rule2-message'
+        //         ]
+        //     ]
+        // ];
         $rules = [
-            'sampleName1' => [
-                'rules' => 'sampleRule1|sampleRule2',
-                'errors' => [
-                    'sampleRule1' => 'rule1-message',
-                    'sampleRule2' => 'rule2-message'
-                ]
-            ],
-            'sampleName2' => [
-                'rules' => 'sampleRule1|sampleRule2',
-                'errors' => [
-                    'sampleRule1' => 'rule1-message',
-                    'sampleRule2' => 'rule2-message'
-                ]
-            ]
+            'studNum' => 'required',
+            'studFirstName' => 'required',
+            'studLastName' => 'required',
+            'gradeLevel' => 'required',
+            'studContactNum' => 'required',
+            'studUserName' => 'required',
+            'studEmail' => 'required'
         ];
 
         return $rules;

@@ -11,14 +11,14 @@ class Admin extends Account {
     }
 
     public function addStudent($request) {
-        $this->newStudent->student_num = $request->getPost('student_no');
-        $this->newStudent->first_name = $request->getPost('fName');
-        $this->newStudent->last_name = $request->getPost('lName');
-        $this->newStudent->role = $request->getPost('role');
-        $this->newStudent->grade_level = $request->getPost('gLevel');
-        $this->newStudent->contact_num = $request->getPost('cNo');
-        $this->newStudent->username = $request->getPost('uName');
-        $this->newStudent->email = $request->getPost('email');
+        $this->newStudent->student_num = $request->getPost('studNum');
+        $this->newStudent->first_name = $request->getPost('studFirstName');
+        $this->newStudent->last_name = $request->getPost('studLastName');
+        $this->newStudent->role = $request->getPost('btn-student');
+        $this->newStudent->grade_level = $request->getPost('gradeLevel');
+        $this->newStudent->contact_num = $request->getPost('studContactNum');
+        $this->newStudent->username = $request->getPost('studUserName');
+        $this->newStudent->email = $request->getPost('studEmail');
 
         $password = randomize_password($this->newStudent->student_num);
         $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
@@ -27,21 +27,21 @@ class Admin extends Account {
         $this->newStudent->is_deleted = 0;
 
         
-        $subject = 'Account Verification';
-        $message = 'Congratulations';
-        send_acc_notice($this->newStudent->email, $subject, $message);
+        // $subject = 'Account Verification';
+        // $message = 'Congratulations';
+        // send_acc_notice($this->newStudent->email, $subject, $message);
         $this->userModel->insert($this->newStudent);
     }
 
     public function editStudent($request, $id) {
-        $this->newStudent->student_num = $request->getPost('student_no');
-        $this->newStudent->first_name = $request->getPost('fName');
-        $this->newStudent->last_name = $request->getPost('lName');
-        $this->newStudent->role = $request->getPost('role');
-        $this->newStudent->grade_level = $request->getPost('gLevel');
-        $this->newStudent->contact_num = $request->getPost('cNo');
-        $this->newStudent->username = $request->getPost('uName');
-        $this->newStudent->email = $request->getPost('email');
+        $this->newStudent->student_num = $request->getPost('studNum');
+        $this->newStudent->first_name = $request->getPost('studFirstName');
+        $this->newStudent->last_name = $request->getPost('studLastName');
+        $this->newStudent->role = $request->getPost('btn-student');
+        $this->newStudent->grade_level = $request->getPost('gradeLevel');
+        $this->newStudent->contact_num = $request->getPost('studContactNum');
+        $this->newStudent->username = $request->getPost('studUserName');
+        $this->newStudent->email = $request->getPost('studEmail');
 
         $this->userModel->update($id, $this->newStudent);
     }

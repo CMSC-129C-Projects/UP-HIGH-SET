@@ -15,7 +15,7 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
   //second argument is the name that will appear for the said Email
   $email->setFrom('', 'UP High SET'); //setup sender
 
-//setup subject and message
+  //setup subject and message
   $email->setSubject($subject);
   $email->setMessage($message);
 
@@ -28,8 +28,7 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
   }
 
   if($email->send()) {
-     echo "Sent Successfully!";
-   
+    echo "Sent Successfully!";
   } else {
 
     $data = $email->printDebugger(['headers']);

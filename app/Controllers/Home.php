@@ -6,7 +6,6 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return 
-			view('accountRegistration.php');
+    	echo 'Homepage soon here!';
 	}
 }

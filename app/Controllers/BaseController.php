@@ -27,8 +27,8 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['file'];
-	
+	protected $helpers = ['file','accountnotice', 'autopass'];
+
 	/**
 	 * Constructor.
 	 *

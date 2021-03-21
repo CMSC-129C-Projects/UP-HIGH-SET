@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?=$this->extend('pageTemplate');?>
 
 <?=$this->section('content');?>
@@ -16,4 +17,21 @@
             <tbody></tbody>
         </table>
     </div>
+=======
+<?=$this->extend('tables');?>
+
+<?=$this->section('content');?>
+    <h1>DataTables</h1>
+    <table class="display" id='student'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade Level</th>
+                <th>Semester</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+>>>>>>> Stashed changes
 <?=$this->endSection();?>

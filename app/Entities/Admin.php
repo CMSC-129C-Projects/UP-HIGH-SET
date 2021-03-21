@@ -2,19 +2,22 @@
 namespace App\Entities;
 
 class Admin extends Account {
+
+    public $action;
     protected $newStudent;
     protected $userModel;
 
     function __construct($userModel) {
+        $this->action = "";
         $this->newStudent = new \App\Entities\Student();
         $this->userModel = $userModel;
     }
 
-    public function addStudent($request) {
+    public function addStudent($request, $role) {
         $this->newStudent->student_num = $request->getPost('studNum');
         $this->newStudent->first_name = $request->getPost('studFirstName');
         $this->newStudent->last_name = $request->getPost('studLastName');
-        $this->newStudent->role = $request->getPost('btn-student');
+        $this->newStudent->role = (int)$role;
         $this->newStudent->grade_level = $request->getPost('gradeLevel');
         $this->newStudent->contact_num = $request->getPost('studContactNum');
         $this->newStudent->username = $request->getPost('studUserName');

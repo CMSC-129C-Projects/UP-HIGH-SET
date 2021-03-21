@@ -14,23 +14,38 @@ class Update extends BaseController
     }
 
 	public function index() {
+        $css = ['custom/table.css'];
+        $js = ['custom/showList.js'];
+        $data = [
+            'js'    => addExternal($js, 'javascript'),
+            'css'   => addExternal($css, 'css')
+        ];
+
         // Place view file here
-		// return view('sample', $data);
+		return view('showTables', $data);
 	}
 
-    public function removal() {
+    public function studentList() {
         $data['studentList'] = $this->userModel->findAll();
 
         // Place view file here
         // return view('deletion', $data);
+        echo json_encode($data['studentList']);
     }
 
-    public function add() {
+    public function add($role = null) {
+        $data = $this->setDefaultData();
+
+        $js = ['custom/add.js'];
+        $data['js'] = addExternal($js, 'javascript');
+
         $data['validation'] = null;
+        $data['type'] = 'add';
+
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                $this->admin->addStudent($this->request);
-                return redirect()->to(base_url('home'));
+                $this->admin->addStudent($this->request, $role);
+                return 'success';
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -38,9 +53,11 @@ class Update extends BaseController
         return view('accountRegistration', $data);
     }
 
-    public function edit($id = null) {
+    public function edit($role = null, $id = null) {
         $data = $this->setDefaultData($id);
         $data['validation'] = null;
+        $data['type'] = 'edit';
+
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
                 $this->admin->editStudent($this->request, $id);

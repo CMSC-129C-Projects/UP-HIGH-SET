@@ -9,17 +9,17 @@
     <div class="row justify-content-center">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#Admin" class="nav-link active" data-toggle="tab"><input type="button" value="Admin" name="btn-admin"></a>
+          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
         </li>
         <li class="nav-item">
-          <a href="#Student" class="nav-link" data-toggle="tab"><input type="button" value="Student" name="btn-student"></a>
+          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
         </li>
       </ul>
     </div>
     <div class="tab-content">
       <div class="tab-pane fade show active" id="Admin">
         <div class="row justify-content-center">
-          <form action="add" method="post">
+          <form id="admin-form" data-type='<?=$type;?>'>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -75,7 +75,7 @@
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
-          <form action="add" method="post">
+          <form id="student-form" data-type='<?=$type;?>'>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">

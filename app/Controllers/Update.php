@@ -22,30 +22,19 @@ class Update extends BaseController
         ];
 
         // Place view file here
-		return view('showTables', $data);
+		return view('studentList', $data);
 	}
-
-    public function studentList() {
-        $data['studentList'] = $this->userModel->findAll();
-
-        // Place view file here
-        // return view('deletion', $data);
-        echo json_encode($data['studentList']);
-    }
 
     public function add($role = null) {
         $data = $this->setDefaultData();
 
-        $js = ['custom/add.js'];
-        $data['js'] = addExternal($js, 'javascript');
-
         $data['validation'] = null;
-        $data['type'] = 'add';
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                $this->admin->addStudent($this->request, $role);
-                return 'success';
+                if($this->admin->addStudent($this->request, $role)) {
+                    return redirect()->to(base_url('update'));
+                }
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -55,26 +44,35 @@ class Update extends BaseController
 
     public function edit($role = null, $id = null) {
         $data = $this->setDefaultData($id);
+
         $data['validation'] = null;
-        $data['type'] = 'edit';
+        $data['role'] = $role;
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                $this->admin->editStudent($this->request, $id);
+                $this->admin->editStudent($this->request, $role, $id);
+                return redirect()->to(base_url('update'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
-        return view('accountRegistration', $data);
+        return view('editAccount', $data);
     }
 
-    public function delete() {
+    public function delete($id) {
         $this->admin->deleteStudent($id);
+        return redirect()->to(base_url('update'));
     }
 
     /**
      * FUNCTIONS BELOW ARE FOR EXTRA TASKS ONLY
      */
+
+    public function studentList() {
+        $data['studentList'] = $this->userModel->where('is_deleted', 0)->findAll();
+
+        echo json_encode($data['studentList']);
+    }
 
     protected function setDefaultData($id = null) {
         $student = new \App\Entities\Student();
@@ -122,7 +120,7 @@ class Update extends BaseController
         //     ]
         // ];
         $rules = [
-            'studNum' => 'required',
+            'studNum' => 'required|min_length[4]',
             'studFirstName' => 'required',
             'studLastName' => 'required',
             'gradeLevel' => 'required',

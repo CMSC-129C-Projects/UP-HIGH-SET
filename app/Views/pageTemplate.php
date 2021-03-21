@@ -46,7 +46,8 @@
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
 
     <script>
-        var BASE_URI = "<?=base_url();?>/";
+        var BASE_URI = "<?=base_url();?>";
+        var CURRENT_URI = "<?=uri_string();?>";
     </script>
 
     <?php if(isset($js)):?>

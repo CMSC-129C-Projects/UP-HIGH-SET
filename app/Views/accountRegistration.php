@@ -19,7 +19,7 @@
     <div class="tab-content">
       <div class="tab-pane fade show active" id="Admin">
         <div class="row justify-content-center">
-          <form id="admin-form" data-type='<?=$type;?>'>
+          <form action="add/0" method="post">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -75,7 +75,7 @@
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
-          <form id="student-form" data-type='<?=$type;?>'>
+          <form action="add/1" method="post">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">

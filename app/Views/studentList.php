@@ -11,6 +11,7 @@
                     <th>Last Name</th>
                     <th>Grade Level</th>
                     <th>Semester</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody></tbody>

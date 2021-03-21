@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <?=$this->extend('pageTemplate');?>
 
 <?=$this->section('content');?>
@@ -18,6 +19,8 @@
         </table>
     </div>
 =======
+=======
+>>>>>>> Stashed changes
 <?=$this->extend('tables');?>
 
 <?=$this->section('content');?>
@@ -33,5 +36,8 @@
         </thead>
         <tbody></tbody>
     </table>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <?=$this->endSection();?>

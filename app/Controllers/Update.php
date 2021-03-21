@@ -72,7 +72,6 @@ class Update extends BaseController
         $this->admin->deleteStudent($id);
     }
 
-
     /**
      * FUNCTIONS BELOW ARE FOR EXTRA TASKS ONLY
      */

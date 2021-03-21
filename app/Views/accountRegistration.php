@@ -19,12 +19,13 @@
     <div class="tab-content">
       <div class="tab-pane fade show active" id="Admin">
         <div class="row justify-content-center">
-          <form action="add/0" method="post">
+          <form action="add/admin" method="post">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="adminFirstName" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
                     <h3>First Name</h3>
                   </div>
@@ -34,6 +35,7 @@
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="adminLastName" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
                     <h3>Last Name</h3>
                   </div>
@@ -45,6 +47,7 @@
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="adminUserName" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                     <h3>User Name</h3>
                   </div>
@@ -54,6 +57,7 @@
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="adminContactNum" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
                     <h3>Contact Number</h3>
                   </div>
@@ -64,6 +68,7 @@
               <div class="mailBox">
                 <div class="inputBox">
                   <input type="email" name="adminEmail" required>
+                  <br>
                   <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                   <h3>Email</h3>
                 </div>
@@ -75,12 +80,13 @@
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
-          <form action="add/1" method="post">
+          <form action="add/student" method="post">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studFirstName" value="<?=set_value('studFirstName', $fName);?>" required>
+                      <input type="text" name="studFirstName" value="<?=set_value('studFirstName');?>" required>
+                      <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studFirstName');?></span>
                       <h3>First Name</h3>
                   </div>
@@ -89,7 +95,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name= "studLastName" value="<?=set_value('studLastName', $lName);?>" required>
+                      <input type="text" name= "studLastName" value="<?=set_value('studLastName');?>" required>
+                      <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studLastName');?></span>
                       <h3>Last Name</h3>
                   </div>
@@ -100,7 +107,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studNum" value="<?=set_value('studNum', $sNo);?>" required>
+                      <input type="text" name="studNum" value="<?=set_value('studNum');?>" required>
+                      <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studNum');?></span>
                       <h3>Student Number</h3>
                   </div>
@@ -109,7 +117,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studUserName" value="<?=set_value('studUserName', $uName);?>" required>
+                      <input type="text" name="studUserName" value="<?=set_value('studUserName');?>" required>
+                      <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studUserName');?></span>
                       <h3>User Name</h3>
                   </div>
@@ -120,7 +129,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                    <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel', $glevel);?>" required>
+                    <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                     <h3>Grade Level</h3>
                   </div>
@@ -129,7 +139,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="inputBox">
-                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum', $cn);?>" required>
+                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'studContactNum');?></span>
                     <h3>Contact Number</h3>
                   </div>
@@ -139,7 +150,8 @@
             <div class="row-md-4">
               <div class="mailBox">
                 <div class="inputBox">
-                    <input type="email" name="studEmail" value="<?=set_value('studEmail',$email);?>" required>
+                    <input type="email" name="studEmail" value="<?=set_value('studEmail');?>" required>
+                    <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                     <h3>Email</h3>
                 </div>

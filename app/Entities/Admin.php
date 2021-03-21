@@ -16,37 +16,32 @@ class Admin extends Account {
     public function addStudent($request, $role) {
         $this->newStudent->student_num = $request->getPost('studNum');
 
-        if($this->userModel->where('student_num', $this->newStudent->student_num)->first()) {
-            return false;
-        } else {
-            $this->newStudent->first_name = $request->getPost('studFirstName');
-            $this->newStudent->last_name = $request->getPost('studLastName');
-            $this->newStudent->role = (int)$role;
-            $this->newStudent->grade_level = $request->getPost('gradeLevel');
-            $this->newStudent->contact_num = $request->getPost('studContactNum');
-            $this->newStudent->username = $request->getPost('studUserName');
-            $this->newStudent->email = $request->getPost('studEmail');
-    
-            $password = randomize_password($this->newStudent->student_num);
-            $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
-    
-            $this->newStudent->is_active = 1;
-            $this->newStudent->is_deleted = 0;
-    
-            // $subject = 'Account Verification';
-            // $message = 'Congratulations';
-            // send_acc_notice($this->newStudent->email, $subject, $message);
-            $this->userModel->insert($this->newStudent);
+        $this->newStudent->first_name = $request->getPost('studFirstName');
+        $this->newStudent->last_name = $request->getPost('studLastName');
+        $this->newStudent->role = ($role == 'student')? 1: 0;
+        $this->newStudent->grade_level = $request->getPost('gradeLevel');
+        $this->newStudent->contact_num = $request->getPost('studContactNum');
+        $this->newStudent->username = $request->getPost('studUserName');
+        $this->newStudent->email = $request->getPost('studEmail');
 
-            return true;
-        }
+        $password = randomize_password($this->newStudent->student_num);
+        $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
+
+        $this->newStudent->is_active = 1;
+        $this->newStudent->is_deleted = 0;
+
+        // $subject = 'Account Verification';
+        // $message = 'Congratulations';
+        // send_acc_notice($this->newStudent->email, $subject, $message);
+        $this->userModel->insert($this->newStudent);
     }
 
     public function editStudent($request, $role, $id) {
+        $this->newStudent = $this->userModel->find($id);
+
         $this->newStudent->student_num = $request->getPost('studNum');
         $this->newStudent->first_name = $request->getPost('studFirstName');
         $this->newStudent->last_name = $request->getPost('studLastName');
-        $this->newStudent->role = (int)$role;
         $this->newStudent->grade_level = $request->getPost('gradeLevel');
         $this->newStudent->contact_num = $request->getPost('studContactNum');
         $this->newStudent->username = $request->getPost('studUserName');

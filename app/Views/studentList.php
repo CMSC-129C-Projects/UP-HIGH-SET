@@ -10,7 +10,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Grade Level</th>
-                    <th>Semester</th>
+                    <th>Student Number</th>
                     <th></th>
                 </tr>
             </thead>

@@ -32,9 +32,8 @@ class Update extends BaseController
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                if($this->admin->addStudent($this->request, $role)) {
-                    return redirect()->to(base_url('update'));
-                }
+                $this->admin->addStudent($this->request, $role);
+                return redirect()->to(base_url('update'));
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -47,9 +46,10 @@ class Update extends BaseController
 
         $data['validation'] = null;
         $data['role'] = $role;
+        $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
-            if($this->validate($this->setRules())) {
+            if($this->validate($this->setRules($id))) {
                 $this->admin->editStudent($this->request, $role, $id);
                 return redirect()->to(base_url('update'));
             } else {
@@ -79,6 +79,7 @@ class Update extends BaseController
         $hasDefaultValues = false;
         if(isset($id)) {
             $hasDefaultValues = true;
+            $id = (int)$id;
             $student = $this->userModel->find($id);
         }
 
@@ -102,7 +103,7 @@ class Update extends BaseController
         return $data;
     }
 
-    protected function setRules() {
+    protected function setRules($id = null) {
         // $rules = [
         //     'sampleName1' => [
         //         'rules' => 'sampleRule1|sampleRule2',
@@ -120,14 +121,34 @@ class Update extends BaseController
         //     ]
         // ];
         $rules = [
-            'studNum' => 'required|min_length[4]',
             'studFirstName' => 'required',
             'studLastName' => 'required',
             'gradeLevel' => 'required',
-            'studContactNum' => 'required',
-            'studUserName' => 'required',
-            'studEmail' => 'required'
+            'studContactNum' => [
+                'rules'     => 'required|min_length[11]|is_natural|valid_number',
+                'errors'    => [
+                    'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                    'valid_number' => 'This is not a valid number'
+                ]
+            ],
+            'studUserName' => 'required|min_length[6]',
+            'studEmail' => 'required|valid_email'
         ];
+        if(isset($id)) {
+            $rules['studNum'] = [
+                'rules'     => 'required|min_length[9]|owned_student_number['. $id .']',
+                'errors'    => [
+                    'is_existing_data'  => 'Student number already exist'
+                ]
+            ];
+        } else {
+            $rules['studNum'] = [
+                'rules'     => 'required|min_length[9]|is_existing_data',
+                'errors'    => [
+                    'is_existing_data'  => 'Student number already exist'
+                ]
+            ];
+        }
 
         return $rules;
     }

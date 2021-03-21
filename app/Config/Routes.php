@@ -34,12 +34,6 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$customRoutes = [];
-$customRoutes['update/student/(:num)'] = 'Update::edit/1/$1';
-$customRoutes['update/admin/(:num)'] = 'Update::edit/0/$1';
-
-$routes->map($customRoutes);
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

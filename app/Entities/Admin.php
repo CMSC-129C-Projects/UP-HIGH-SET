@@ -30,9 +30,18 @@ class Admin extends Account {
         $this->newStudent->is_active = 1;
         $this->newStudent->is_deleted = 0;
 
-        // $subject = 'Account Verification';
-        // $message = 'Congratulations';
+        // Send account notice to student
+        $search = ['-student-','-username-','-password-'];
+        $replace = [$this->newStudent->first_name, $this->newStudent->username, $password];
+
+        $subject = 'Account Verification';
+        $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
+
+        $message = str_replace($search, $replace, $message);
+        // Send account notice to student
+
         // send_acc_notice($this->newStudent->email, $subject, $message);
+
         $this->userModel->insert($this->newStudent);
     }
 

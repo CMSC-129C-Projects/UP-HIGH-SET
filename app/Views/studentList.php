@@ -2,7 +2,7 @@
 
 <?=$this->section('content');?>
     <div class="main">
-        <h1>STUDENTS</h1>
+        <h1 style="padding-top: 35px;">STUDENT LIST</h1>
         <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add"><button class="btn btn-primary">Add Student</button></a>
         <table class="display myDesign" id='student'>
             <thead>

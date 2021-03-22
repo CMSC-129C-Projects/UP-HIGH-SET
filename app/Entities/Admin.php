@@ -32,8 +32,8 @@ class Admin extends Account {
 
         // Send account notice to student
 
-        $search = ['-student-','-username-','-password-'];
-        $replace = [$this->newStudent->first_name, $this->newStudent->username, $password];
+        $search = ['-student-','-username-','-password-', '-website_link-'];
+        $replace = [$this->newStudent->first_name, $this->newStudent->username, $password, base_url()];
 
         $subject = 'Account Notification';
         $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');

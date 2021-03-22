@@ -23,7 +23,7 @@
             <?php if($role == 'admin'):?>
                 <div class="tab-pane fade show active" id="Admin">
                     <div class="row justify-content-center">
-                        <form action="edit/admin/<?=$id;?>" method="post">
+                        <form action="<?=base_url()?>/update/edit/admin/<?=$id;?>" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -85,7 +85,7 @@
             <?php elseif($role == 'student'):?>
                 <div class="tab-pane fade show active" id="Student">
                     <div class="row justify-content-center">
-                        <form action="" method="post">
+                        <form action="<?=base_url()?>/update/edit/student/<?=$id;?>" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

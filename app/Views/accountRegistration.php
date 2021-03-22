@@ -19,7 +19,7 @@
     <div class="tab-content">
       <div class="tab-pane fade show active" id="Admin">
         <div class="row justify-content-center ">
-          <form action="add/admin" method="post" class="add">
+          <form action="<?=base_url()?>/update/add/admin" method="post" class="add">
             <div class="row">
               <div class="col-md-6 half">
                 <div class="form-group">
@@ -80,7 +80,7 @@
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
-          <form action="add/student" method="post" class="add">
+          <form action="<?=base_url()?>/update/add/student" method="post" class="add">
             <div class="row">
               <div class="col-md-6 half">
                 <div class="form-group">

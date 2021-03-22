@@ -76,11 +76,11 @@
                                         <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                                         <h3>Email</h3>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
-                            <input type="submit" value="send">
+                            <input type="submit" value="update">
                         </form>
-                    </div> 
+                    </div>
                 </div>
             <?php elseif($role == 'student'):?>
                 <div class="tab-pane fade show active" id="Student">
@@ -160,11 +160,11 @@
                                         <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                                         <h3>Email</h3>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
-                            <input type="submit" value="send">
+                            <input type="submit" value="update">
                         </form>
-                    </div> 
+                    </div>
                 </div>
             <?php endif;?>
         </div>

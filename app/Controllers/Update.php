@@ -132,7 +132,12 @@ class Update extends BaseController
                 ]
             ],
             'studUserName' => 'required|min_length[6]',
-            'studEmail' => 'required|valid_email'
+            'studEmail' => [
+                'rules'     => 'required|valid_email|is_UP_mail',
+                'errors'    => [
+                    'is_UP_mail'    => 'The email you entered is not a valid UP mail'
+                ]
+            ]
         ];
         if(isset($id)) {
             $rules['studNum'] = [

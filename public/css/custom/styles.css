@@ -221,3 +221,9 @@ body {
   font-size: 14px;
 
 }
+
+/* Additional css for layout */
+.nav-tabs .nav-link.active#admin, .nav-tabs .nav-link.active#student {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}

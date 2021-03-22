@@ -9,10 +9,10 @@
     <div class="row justify-content-center">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
+          <a href="#Admin" class="nav-link active"  id="admin" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
         </li>
         <li class="nav-item">
-          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
+          <a href="#Student" class="nav-link" id="student" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
         </li>
       </ul>
     </div>
@@ -72,11 +72,11 @@
                   <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                   <h3>Email</h3>
                 </div>
-              </div>  
+              </div>
             </div>
             <input type="submit" value="send">
           </form>
-        </div> 
+        </div>
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
@@ -155,12 +155,12 @@
                     <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                     <h3>Email</h3>
                 </div>
-              </div>  
+              </div>
             </div>
             <input type="submit" value="send">
           </form>
-        </div> 
-      </div>      
+        </div>
+      </div>
     </div>
   </section>
 <?= $this->endSection();?>

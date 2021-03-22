@@ -178,9 +178,9 @@ border-color: #7b1113;
   height: 4rem;
   width: 12rem;
   margin-bottom: 2rem;
-  margin-left: 1rem;
   background:#7b1113;
   color: #fff;
+  margin-left: rem;
 }
 
 
@@ -194,10 +194,7 @@ border-color: #7b1113;
   background: #014421;
 }
 
-#register form .mailBox{
-  width: 50%;
-   margin: auto;
-}
+
   
   #footer {
     background: linear-gradient(to top right, #800000 0%,#228B22 100%);
@@ -233,5 +230,239 @@ border-color: #7b1113;
     font-size: 14px;
 
   }
+
+  /* STYLE SA DASHBOARD */
+  /*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: stretch;
+    perspective: 1500px;
+    background-color: #e9dbc1;
+}
+
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #7b1113;
+    opacity: 80%;
+    color: #fff;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom left;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #7b1113;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #7b1113;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#navIcon {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+
+#dashboardWelcomeMessage{
   
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+}
+
+#Contents .welcomeMsg img{
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#Contents .adminDashboardButtons .nav{
+left: 24.5%;
+margin-top: -16vh;
+position: relative;
+}
+#Contents .nav input[type="button"] {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: .2rem;
+  cursor: pointer;
+  
+  z-index: 1;
+  overflow: hidden;
+  height: 3.5rem;
+  width: 15rem;
+  background:#7b1113;
+  color: #fff;
+}
+#Contents .nav input[type="button"]:hover::before {
+  width: 100%;
+}
+#Contents .nav input[type="button"]:hover {
+  color:#ffff;
+  background: #014421;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(90deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+   
+    
+
   

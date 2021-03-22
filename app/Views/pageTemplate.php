@@ -45,16 +45,29 @@
 
 <section id="footer" class="container-fluid">
 
-  <div class="row align-items-center">
+  <div class="row-md-4">
 
-    <div class="contactLinks">
-
+      <div class="contactLinks">
         <h3><i class="bi bi-person-circle"></i> Contact Us:</h3>
-        <a href="https://upcebu.edu.ph" target="_blank"> <i class="bi bi-globe"></i> UP Cebu</a>
-        <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope-fill"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
-        <a href="tel:Phone: (032) 232 2642 / (032) 232 8185" target="_blank" id="yui_3_17_2_1_1616045956450_20"><i class="bi bi-telephone-fill"></i> (032) 232 2642 / (032) 232 8185</a>
-    </div>         
-  </div>     
+        <div class="row">
+          <div class="col-md-4 ">
+            <div class="form-group footerContact ">
+              <a href="https://upcebu.edu.ph" target="_blank" class="footerContact"> <i class="bi bi-globe"></i> UP Cebu</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope-fill"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="form-group">
+              <a href="tel:Phone: (032) 232 2642 / (032) 232 8185" target="_blank" id="yui_3_17_2_1_1616045956450_20"><i class="bi bi-telephone-fill"></i> (032) 232 2642 / (032) 232 8185</a>
+            </div>
+          </div>
+        </div>
+      </div>         
+  </div>    
 
 
 </section>

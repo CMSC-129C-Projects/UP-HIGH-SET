@@ -1,4 +1,4 @@
-<?= $this->extend('pageTemplate.php');?>
+<?= $this->extend('Dashboard.php');?>
 
 <?= $this->section('content');?>
 
@@ -9,7 +9,7 @@
     <h1>Registration Form</h1>
 <div>
 
-<div class="row justify-content-center">
+<div class="row-md-6">
 <ul class="nav nav-tabs">
     
     <li class="nav-item">

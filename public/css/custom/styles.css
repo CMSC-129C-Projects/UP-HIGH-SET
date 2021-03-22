@@ -263,3 +263,11 @@ form.add {
 .row-md-4.email {
     margin-top: -5px;
 }
+
+.contactLinks {
+  padding: 2rem 0;
+}
+
+.schoolWebsiteName {
+    padding: .75rem 0;
+}

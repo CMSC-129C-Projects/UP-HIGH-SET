@@ -1,3 +1,82 @@
 .email-content {
-  padding: 50px;  
+  padding: 10% 5%;
+  width: 34rem;
+  height:auto;
+  background-color:#e9dbc1;
+}
+
+.email-container {
+  width:34rem;
+  height:700px;
+}
+
+.email-content p {
+  color: #000000;
+  font-family: roboto;
+  font-size: 12pt;
+  text-align: justify;
+  margin: 15px;
+  line-height: 1.32;
+  letter-spacing: 1.02px;
+}
+
+#greeting {
+  font-size: 13pt;
+}
+
+#cred {
+  font-weight: bold;
+}
+
+#closing {
+  font-style: italic;
+}
+
+.footer {
+  width:600px;
+  height:50px;
+  background-color:#014421;
+  position: relative;
+}
+
+.footer #message {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 11pt;
+  text-align: left;
+  margin: 0px;
+  padding: 10px 20px;
+  vertical-align: middle !important;
+}
+
+.footer #contactno {
+  position: relative;
+  top: -90%;
+  left: 65%;
+  font-weight: bolder;
+  color: antiquewhite;
+}
+
+.header {
+  width:600px;
+  height:120px;
+  background-color:#7b1113;"
+
+}
+
+#up {
+  color: #fff;
+  font-family:Roboto;
+  font-size:15pt;
+  text-align: center;
+  margin:0px;
+  font-weight:bold;
+}
+
+#sub-header {
+  color: #fff;
+  font-family:Roboto;
+  font-size:11pt;
+  text-align: center;
+  margin:0px;"
 }

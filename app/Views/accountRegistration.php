@@ -1,12 +1,12 @@
-<?= $this->extend('pageTemplate');?>
+<?= $this->extend('Dashboard');?>
 
-<?= $this->section('content');?>
+<?= $this->section('accRegContent');?>
   <section id="register" class="container-fluid">
     <div class="heading text-center">
       <h1>Registration Form</h1>
     <div>
 
-    <div class="row justify-content-center">
+    <div class="row-md-6">
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="#Admin" class="nav-link" data-toggle="tab"><input type="button" value="Admin" name="Admin"></a>

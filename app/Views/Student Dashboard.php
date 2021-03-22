@@ -39,8 +39,7 @@
                     </ul>
 
                     <ul class="list-unstyled CTAs">
-                    <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
-                    <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+                    
                         <div class="logout">
                             <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
                         </div>
@@ -53,7 +52,7 @@
                     <div class="navIcon">
                 
                         <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="navbar-btn"89>
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
                             <i class="bi bi-list fa-2x"></i>
                                 
                             </button>
@@ -65,16 +64,16 @@
                             <div class="row-md-6 align-text-center">
                                 <div class="welcomeMsg">
                                    
-                                    <img src="public/Welcome Message.png" class="img-fluid" alt="Responsive image">
+                                <img src="public/Welcome Message.png" class="img-fluid" alt="Responsive image">
                                 </div>
                             </div>
 
-                            <div class="adminDashboardButtons">
+                            <div class="studentDashboardButtons">
                                 
                                 <nav class="nav">
-                                <a class="nav-link active" href="#"><input type="button" value="Add User" name="addUser"></a>
-                                <a class="nav-link" href="#"><input type="button" value="Evaluation Status" name="setEvalPeriod"></a>
-                                <a class="nav-link" href="#"><input type="button" value="Remove User" name="removeUser  "></a>
+                               
+                                <a class="nav-link" href="#"><input type="button" value="Evaluate" name="evaluate"></a>
+                              
                                 
                                 </nav>
                                 

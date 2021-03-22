@@ -24,8 +24,9 @@
 <div class="schoolWebsiteName">
 
         <img src="<?=base_url()?>/public/Logo.png">
-    <h1> University of the Philippines Highschool Cebu</h1>
+    <h1> University of the Philippines High School Cebu</h1>
     <h2> Student Evaluation for Teachers</h2>
+    
 </div>
 
 </section>

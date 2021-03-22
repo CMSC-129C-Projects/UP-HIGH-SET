@@ -1,50 +1,32 @@
 <?php
 
-function addCss($cssFiles = null) {
+function addExternal($files = null, $type = null) {
 
     // Make sure there is a parameter
-    if(!isset($cssFiles)) {
+    if(!isset($files) || !isset($type)) {
         return null;
     }
-    
-    $linkHref = array();
 
-    foreach($cssFiles as $css) {
-        $completeLink = '<link href="'. base_url() . '/public/css/'. $css .'" rel="stylesheet" type="text/css">';
-        array_push($linkHref, $completeLink);
-    }
-    return $linkHref;
-}
+    $htmlContent = array();
 
-function addJs($jsFiles = null) {
-
-    // Make sure there is a parameter
-    if(!isset($jsFiles)) {
-        return null;
-    }
-    
-    $script = array();
-
-    foreach($jsFiles as $js) {
-        $completeScript = '<script src="'. base_url() . '/public/js/'. $js .'"></script>';
-        array_push($script, $completeScript);
-    }
-    return $script;
-}
-
-
-function echoCss($cssFiles = null) {
-    if(isset($cssFiles)) {
-        foreach($cssFiles as $css) {
-            echo $css;
+    if($type === 'css') {
+        foreach($files as $file) {
+            $content = '<link href="'. base_url() . '/public/css/'. $file .'" rel="stylesheet" type="text/css">';
+            array_push($htmlContent, $content);
+        }
+    } else {
+        foreach($files as $file) {
+            $content = '<script src="'. base_url() . '/public/js/'. $file .'"></script>';
+            array_push($htmlContent, $content);
         }
     }
+    return $htmlContent;
 }
 
-function echoJs($jsFiles = null) {
-    if(isset($jsFiles)) {
-        foreach($jsFiles as $js) {
-            echo $js;
+function echoFiles($files = null) {
+    if(isset($files)) {
+        foreach($files as $file) {
+            echo $file;
         }
     }
 }

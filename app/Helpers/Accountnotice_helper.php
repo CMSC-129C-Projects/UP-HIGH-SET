@@ -2,12 +2,11 @@
 
 function send_acc_notice($to_email = null, $subject = null, $message = null, $bcc = null, $cc = null)
 {
-  $email = \Config\Services::email();
-
-  if(!isset($to_email) || !isset($subject) || isset($message))
+  if(!isset($to_email) || !isset($subject) || !isset($message))
   {
     return false;
   }
+  $email = \Config\Services::email();
 
   $email->setTo($to_email); //set email recipient
 
@@ -28,7 +27,7 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
   }
 
   if($email->send()) {
-    echo "Sent Successfully!";
+    return "Sent Successfully!";
   } else {
 
     $data = $email->printDebugger(['headers']);

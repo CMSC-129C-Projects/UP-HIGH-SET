@@ -12,7 +12,7 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
 
   //first argument is for the email for which the email notif came from
   //second argument is the name that will appear for the said Email
-  $email->setFrom('crispauljohn.rubi@gmail.com', 'UP High SET'); //setup sender
+  $email->setFrom('', 'UP High SET'); //setup sender
 
   //setup subject and message
   $email->setSubject($subject);

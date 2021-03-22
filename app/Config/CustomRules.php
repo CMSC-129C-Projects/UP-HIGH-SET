@@ -16,7 +16,7 @@ class CustomRules {
         }
     }
 
-    public function owned_student_number($str, string $fields, array $data): bool {
+    public function owned_student_number(string $str, string $fields, array $data): bool {
         $userModel = new \App\Models\UserModel();
 
         $student = new \App\Entities\Student();
@@ -31,5 +31,9 @@ class CustomRules {
         } else {
             return true;
         }
+    }
+
+    public function is_UP_mail(string $str): bool {
+        return strpos($str, '@up.edu.ph') !== false;
     }
 }

@@ -32,16 +32,16 @@ class Admin extends Account {
 
         // Send account notice to student
 
-        $search = ['-student-','-username-','-password-', 'img_location1', 'img_location2'];
-        $replace = [$this->newStudent->first_name, $this->newStudent->username, $password, base_url('public/images/emailTemplate/upceb_logo.png'), base_url('public/images/emailTemplate/gmail_logo.png')];
+        $search = ['-student-','-username-','-password-'];
+        $replace = [$this->newStudent->first_name, $this->newStudent->username, $password];
 
         $subject = 'Account Notification';
         $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
 
         $message = str_replace($search, $replace, $message);
-        // Send account notice to student
-
+        
         // send_acc_notice($this->newStudent->email, $subject, $message);
+        // Send account notice to student
 
         $this->userModel->insert($this->newStudent);
     }

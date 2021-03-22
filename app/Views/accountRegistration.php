@@ -9,21 +9,21 @@
     <div class="row justify-content-center">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#Admin" class="nav-link active"  id="admin" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
+          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
         </li>
         <li class="nav-item">
-          <a href="#Student" class="nav-link" id="student" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
+          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
         </li>
       </ul>
     </div>
     <div class="tab-content">
       <div class="tab-pane fade show active" id="Admin">
-        <div class="row justify-content-center">
-          <form action="add/admin" method="post">
+        <div class="row justify-content-center ">
+          <form action="add/admin" method="post" class="add">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
-                  <div class="inputBox">
+                  <div class="inputBox fname">
                     <input type="text" name="adminFirstName" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
@@ -31,9 +31,9 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
-                  <div class="inputBox">
+                  <div class="inputBox lname">
                     <input type="text" name="adminLastName" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
@@ -43,9 +43,9 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
-                  <div class="inputBox">
+                  <div class="inputBox uname">
                     <input type="text" name="adminUserName" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
@@ -53,9 +53,9 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
-                  <div class="inputBox">
+                  <div class="inputBox contactnum">
                     <input type="text" name="adminContactNum" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
@@ -64,7 +64,7 @@
                 </div>
               </div>
             </div>
-            <div class="row-md-4">
+            <div class="row-md-4 email">
               <div class="mailBox">
                 <div class="inputBox">
                   <input type="email" name="adminEmail" required>
@@ -74,15 +74,15 @@
                 </div>
               </div>
             </div>
-            <input type="submit" value="send">
+            <input type="submit" value="submit">
           </form>
         </div>
       </div>
       <div class="tab-pane fade" id="Student">
         <div class="row justify-content-center">
-          <form action="add/student" method="post">
+          <form action="add/student" method="post" class="add">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                       <input type="text" name="studFirstName" value="<?=set_value('studFirstName');?>" required>
@@ -92,7 +92,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                       <input type="text" name= "studLastName" value="<?=set_value('studLastName');?>" required>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                       <input type="text" name="studNum" value="<?=set_value('studNum');?>" required>
@@ -114,7 +114,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                       <input type="text" name="studUserName" value="<?=set_value('studUserName');?>" required>
@@ -126,7 +126,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
@@ -136,7 +136,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
                     <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>" required>
@@ -157,7 +157,7 @@
                 </div>
               </div>
             </div>
-            <input type="submit" value="send">
+            <input type="submit" value="submit">
           </form>
         </div>
       </div>

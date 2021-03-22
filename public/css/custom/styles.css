@@ -126,9 +126,9 @@ body {
   text-align: center;
 }
 
-#register form .inputBox input, #register form .inputBox textarea {
+/* #register form .inputBox input, #register form .inputBox textarea {
   outline: none;
-  border: .2rem solid #333;
+  border: .15rem solid #333;
   border-radius: 1.5rem;
   margin: 2rem 0;
   padding: 0 1rem;
@@ -136,6 +136,19 @@ body {
   height: 4rem;
   width: 90%;
   font-size: 2rem;
+} */
+
+/* adjust layout and spacing */
+#register form .inputBox input, #register form .inputBox textarea {
+    outline: none;
+    border: .15rem solid #333;
+    border-radius: 1.3rem;
+    margin: 1.65rem 0;
+    padding: 0 1rem;
+    background: none;
+    height: 3.80rem;
+    width: 85%;
+    font-size: 2rem;
 }
 
 #register form .inputBox input:focus ~ h3,
@@ -148,9 +161,10 @@ body {
 }
 
 #register form .inputBox h3 {
+  font-size: 1.4rem;
   position: absolute;
   top: 3rem;
-  left: 7%;
+  left: 10%;
 }
 
 #register form input[type="submit"] {
@@ -223,7 +237,29 @@ body {
 }
 
 /* Additional css for layout */
-.nav-tabs .nav-link.active#admin, .nav-tabs .nav-link.active#student {
+.nav-tabs .nav-link.active#btn-admin, .nav-tabs .nav-link.active#btn-student {
     background-color: transparent !important;
     border-color: transparent !important;
+}
+
+.nav-tabs .nav-link#btn-admin,
+.nav-tabs .nav-link#btn-student {
+    margin-right: -10px;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link#btn-admin:hover,
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link#btn-student:hover {
+    border-color: transparent;
+}
+
+.col-md-6.half {
+    margin-right: -25px;
+}
+
+form.add {
+  padding: 70px 20px 30px;
+}
+
+.row-md-4.email {
+    margin-top: -5px;
 }

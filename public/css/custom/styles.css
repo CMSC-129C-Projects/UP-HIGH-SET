@@ -4,7 +4,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
  font-family: 'Roboto';
-  
+
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
 }
@@ -30,20 +30,18 @@ body {
   position: relative;
 }
 
-
 #header .schoolWebsiteName img{
   float: left;
   width: 60px;
   margin-top: -5px;
 }
+
 #header .schoolWebsiteName h1{
   margin-left:70px;
   margin-top: 0px;
   color:#e9dbc1;
   font-size: 18px;
 }
-
-
 
 #header .schoolWebsiteName h2{
   margin-left:70px;
@@ -53,9 +51,6 @@ body {
   font-size: 15px;
 }
 
-
-  
-  
 #register {
   min-height: 100vh;
   width: 100vw;
@@ -64,16 +59,17 @@ body {
 }
 
 #register .nav{
-  
+
  margin: auto;
   width: 700px;
 }
+
 #register .nav h2{
   font-size: 20px;
-color: #7b1113;
-border-radius: 1rem;
-border-style:outset;
-border-color: #7b1113;
+  color: #7b1113;
+  border-radius: 1rem;
+  border-style:outset;
+  border-color: #7b1113;
 }
 
 #register .nav input[type="button"] {
@@ -96,20 +92,22 @@ border-color: #7b1113;
   background:#7b1113;
   color: #fff;
 }
+
 #register .nav input[type="button"]:hover::before {
   width: 100%;
 }
+
 #register .nav input[type="button"]:hover {
   color:#ffff;
   background: #014421;
 }
+
 #register .heading h1 {
   font-size: 4rem;
   color: #7b1113;
   padding-top: 5rem;
   margin-bottom: 2rem;
 }
-
 
 #register form {
   background: #fff;
@@ -120,15 +118,12 @@ border-color: #7b1113;
   margin-bottom: 5rem;
   border-radius: 1.5rem;
   -webkit-box-shadow: 0 0 2rem #333;
-          box-shadow: 0 0 2rem #333;
+  box-shadow: 0 0 2rem #333;
 }
-
-
 
 #register form .inputBox{
   position: relative;
   text-align: center;
-
 }
 
 #register form .inputBox input, #register form .inputBox textarea {
@@ -152,15 +147,11 @@ border-color: #7b1113;
   color: #ff3300;
 }
 
-
-
 #register form .inputBox h3 {
   position: absolute;
   top: 3rem;
   left: 7%;
 }
-
-
 
 #register form input[type="submit"] {
   outline: none;
@@ -183,8 +174,6 @@ border-color: #7b1113;
   color: #fff;
 }
 
-
-
 #register form input[type="submit"]:hover::before {
   width: 100%;
 }
@@ -198,40 +187,37 @@ border-color: #7b1113;
   width: 50%;
    margin: auto;
 }
-  
-  #footer {
-    background: linear-gradient(to top right, #800000 0%,#228B22 100%);
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-  }
-  
-  #footer .contactLinks {
-    text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-            flex-flow: column;
-    margin: 1rem 0;
-    margin: auto;
-  }
-  
-  #footer .contactLinks h3 {
-    font-size: 18px;
-    color:#e9dbc1;
-    margin-top: 1rem;
 
-  }
-  
-  #footer .contactLinks a {
-    color: #e9dbc1;
-    font-size: 14px;
+#footer {
+  background: linear-gradient(to top right, #800000 0%,#228B22 100%);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-  }
-  
-  
+#footer .contactLinks {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin: 1rem 0;
+  margin: auto;
+}
+
+#footer .contactLinks h3 {
+  font-size: 18px;
+  color:#e9dbc1;
+  margin-top: 1rem;
+
+}
+
+#footer .contactLinks a {
+  color: #e9dbc1;
+  font-size: 14px;
+
+}

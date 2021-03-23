@@ -3,3 +3,7 @@
     height: 100vh;
     padding: 0px 10%;
 }
+
+.tbl {
+    width: 100%!important;
+}

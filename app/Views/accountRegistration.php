@@ -6,7 +6,7 @@
       <h1>Registration Form</h1>
     <div>
 
-    <div class="row justify-content-center">
+    <div class="row-md-6">
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>

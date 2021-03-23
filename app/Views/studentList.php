@@ -4,7 +4,7 @@
     <div class="main">
         <h1 style="padding-top: 35px;">STUDENT LIST</h1>
         <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add"><button class="btn btn-primary">Add Student</button></a>
-        <table class="display myDesign" id='student'>
+        <table class="display" id='student'>
             <thead>
                 <tr>
                     <th>First Name</th>

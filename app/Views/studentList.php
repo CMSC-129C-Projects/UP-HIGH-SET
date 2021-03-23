@@ -12,7 +12,7 @@
             <option value="12">Grade 12</option>
         </select>
         <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add"><button class="btn btn-primary">Add Student</button></a>
-        <table class="display" id='student'>
+        <table class="display tbl" id='student'>
             <thead>
                 <tr>
                     <th>First Name</th>

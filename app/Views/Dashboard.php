@@ -51,9 +51,9 @@
 
                 <div class="adminDashboardButtons">
                     <nav class="nav">
-                        <a class="nav-link active" href="#"><input type="button" value="Add User" name="addUser"></a>
+                        <a class="nav-link active" href="<?=base_url();?>/update/add"><input type="button" value="Add User" name="addUser"></a>
                         <a class="nav-link" href="#"><input type="button" value="Evaluation Status" name="setEvalPeriod"></a>
-                        <a class="nav-link" href="#"><input type="button" value="Remove User" name="removeUser  "></a>
+                        <a class="nav-link" href="<?=base_url();?>/update"><input type="button" value="View Users" name="removeUser  "></a>
                     </nav>
                 </div>
             </section>

@@ -1,6 +1,6 @@
-<?= $this->extend('Dashboard');?>
+<?= $this->extend('pageTemplate');?>
 
-<?= $this->section('accRegContent');?>
+<?= $this->section('content');?>
   <section id="register" class="container-fluid">
     <div class="heading text-center">
       <h1>Registration Form</h1>

@@ -4,12 +4,12 @@
     <title>UP High SET</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
-    <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
+    <link href="<?=base_url();?>/public/css/custom/styles.css" rel="stylesheet">
   </head>
   <body>
     <!-- header section starts -->
@@ -53,10 +53,16 @@
 
 
     </section>
-    <script src="<?=base_url()?>/public/js/jquery/jquery-3.6.0.min.js"></script>
+    <script src="<?=base_url();?>/public/js/jquery/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
-    <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
-
+    <script src="<?=base_url();?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url();?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
   </body> 
 </html>

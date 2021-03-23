@@ -41,7 +41,7 @@
               <li>
                   <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
                   <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                  <a href="#pageSubmenu"><i class="bi bi-house-fill"></i> Dashboard</a>
+                  <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
                   <a href="#"><i class="bi bi-zoom-in"></i> About</a>
                   <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
               </li>

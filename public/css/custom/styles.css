@@ -504,7 +504,7 @@ a.article, a.article:hover {
 }
 
 #sidebar .logout .nav-link input[type="button"] {
-  margin-top: 30px;
+  margin-top: 20px;
   outline: none;
   border-color: #ffed8a;
   border-style:none;

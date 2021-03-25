@@ -8,16 +8,15 @@
 
     <div class="row-md-6">
       <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
-        </li>
-        <li class="nav-item">
-          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
-        </li>
+        <?=setFormBasedOnRole($role);?>
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="Admin">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade" id="Admin">
+      <?php else:?>
+        <div class="tab-pane fade active show" id="Admin">
+      <?php endif;?>
         <div class="row justify-content-center ">
           <form action="<?=base_url()?>/update/add/admin" method="post" class="add">
             <div class="row">
@@ -78,7 +77,11 @@
           </form>
         </div>
       </div>
-      <div class="tab-pane fade" id="Student">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade active show" id="Student">
+      <?php else:?>
+        <div class="tab-pane fade" id="Student">
+      <?php endif;?>
         <div class="row justify-content-center">
           <form action="<?=base_url()?>/update/add/student" method="post" class="add">
             <div class="row">

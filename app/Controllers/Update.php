@@ -27,7 +27,7 @@ class Update extends BaseController
 
     public function add($role = null) {
         $data = $this->setDefaultData();
-
+        $data['role'] = $role;
         $data['validation'] = null;
 
         if($this->request->getMethod() == 'post') {

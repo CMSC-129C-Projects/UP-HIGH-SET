@@ -14,8 +14,8 @@ class Update extends BaseController
     }
 
 	public function index() {
-        $css = ['custom/table.css'];
-        $js = ['custom/showList.js'];
+        $css = ['custom/table.css', 'custom/alert.css'];
+        $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
             'js'    => addExternal($js, 'javascript'),
             'css'   => addExternal($css, 'css')

@@ -1,6 +1,17 @@
 <?=$this->extend('pageTemplate');?>
 
 <?=$this->section('content');?>
+    <div id="bg-modal" class="black-modal">
+        <div id="content-modal" class="customModal horizontalCenter verticalCenter">
+            <div class="mdl-content">
+                <p>Are you sure you want to delete this user?</p>
+                <div class="btn-delete">
+                    <button id="yesDelete">Yes</button>
+                    <button id="dontDelete">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="main">
         <h1 style="padding-top: 35px;">STUDENT LIST</h1>
         <select name="glevel" id="gl" class="form-select">

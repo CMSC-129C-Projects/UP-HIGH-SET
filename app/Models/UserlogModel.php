@@ -9,7 +9,7 @@ class UserlogModel extends Model {
 
     protected $useAutoIncrement = true;
 
-    protected $returnType = 'array';
+    protected $returnType = 'App\Entities\Userlog';
 
     protected $allowedFields = [
         'user_id',

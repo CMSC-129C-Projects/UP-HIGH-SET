@@ -171,12 +171,12 @@ body {
   left: 10%;
 }
 
-#register form input[type="submit"], button#cancel {
+#register form input[type="submit"], button#cancel, button#update {
   outline: none;
   border: none;
   border-radius: 5rem;
   color: #7b1113;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
   letter-spacing: .2rem;
@@ -189,7 +189,6 @@ body {
   margin: 2rem 1.5rem;
   background:#7b1113;
   color: #fff;
-  margin-left: rem;
 }
 
 #register form input[type="submit"]:hover::before {

@@ -25,7 +25,7 @@
       </div>
     </section>
     <!-- header section ends -->
-    <div class="wrapper d-flex align-items-stretch">    
+    <div class="wrapper d-flex align-items-stretch">
     <!-- Sidebar Holder -->
       <nav id="sidebar">
           <div class="sidebar-header">
@@ -47,8 +47,10 @@
               </li>
           </ul>
           <ul class="list-unstyled CTAs">
-              <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
+              <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
               <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+              <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+
               <div class="logout">
                   <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
               </div>
@@ -58,7 +60,7 @@
       <div class="navIcon">
           <div class="navbar-header">
               <button type="button" id="sidebarCollapse" class="navbar-btn"89>
-                <i class="bi bi-list fa-2x"></i>                  
+                <i class="bi bi-list fa-2x"></i>
               </button>
           </div>
       </div>
@@ -87,8 +89,8 @@
               </div>
             </div>
           </div>
-        </div>         
-      </div>    
+        </div>
+      </div>
 
 
     </section>
@@ -110,5 +112,5 @@
         });
       });
     </script>
-  </body> 
+  </body>
 </html>

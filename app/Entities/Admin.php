@@ -99,7 +99,7 @@ class Admin extends Account {
             $newAdmin->last_name = $request->getPost('adminLastName');
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             $newAdmin->username = $request->getPost('adminUserName');
-            $newAdmin->email = $request->getPost('studEmail');
+            $newAdmin->email = $request->getPost('adminEmail');
 
             $this->userModel->update($id, $newAdmin);
         }

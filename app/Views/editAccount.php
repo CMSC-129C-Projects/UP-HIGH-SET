@@ -28,7 +28,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminFirstName" required>
+                                            <input type="text" name="adminFirstName" value="<?=set_value('adminFirstName', $fN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
                                             <h3>First Name</h3>
@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminLastName" required>
+                                            <input type="text" name="adminLastName" value="<?=set_value('adminLastName', $lN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
                                             <h3>Last Name</h3>
@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminUserName" required>
+                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                                             <h3>User Name</h3>
@@ -60,7 +60,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminContactNum" required>
+                                            <input type="text" name="adminContactNum" value="<?=set_value('adminContactNum', $cN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
                                             <h3>Contact Number</h3>
@@ -71,7 +71,7 @@
                             <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
-                                        <input type="email" name="adminEmail" required>
+                                        <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
                                         <br>
                                         <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                                         <h3>Email</h3>

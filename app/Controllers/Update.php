@@ -29,7 +29,6 @@ class Update extends BaseController
 	}
 
     public function add($role = null) {
-        $data = $this->setDefaultData();
         $data['role'] = $role;
         $data['validation'] = null;
         $emailStatus = null;
@@ -57,18 +56,21 @@ class Update extends BaseController
     }
 
     public function edit($role = null, $id = null) {
-        $data = $this->setDefaultData($id);
+        $data = $this->setDefaultData($role, $id);
 
         $data['validation'] = null;
         $data['role'] = $role;
         $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
-            if($this->validate($this->setRules($id))) {
-                $this->admin->editUser($this->request, $role, $id);
-                return redirect()->to(base_url('update/' . $role));
+            if($role === 'student') {
+                if($this->validate($this->setRules($id))) {
+                    $this->admin->editUser($this->request, $role, $id);
+                } else {
+                    $data['validation'] = $this->validator;
+                }
             } else {
-                $data['validation'] = $this->validator;
+                $this->admin->editUser($this->request, $role, $id);
             }
         }
         return view('editAccount', $data);
@@ -94,16 +96,13 @@ class Update extends BaseController
         echo json_encode($data['adminList']);
     }
 
-    protected function setDefaultData($id = null) {
-        $student = new \App\Entities\Student();
-        $hasDefaultValues = false;
-        if(isset($id)) {
-            $hasDefaultValues = true;
-            $id = (int)$id;
-            $student = $this->userModel->find($id);
-        }
-
-        if ($hasDefaultValues) {
+    protected function setDefaultData($role = null, $id = null) {
+        if($role === 'student') {
+            $student = new \App\Entities\Student();
+            if(isset($id)) {
+                $id = (int)$id;
+                $student = $this->userModel->find($id);
+            }
             $data['sNo'] = $student->student_num;
             $data['fName'] = $student->first_name;
             $data['lName'] = $student->last_name;
@@ -112,14 +111,18 @@ class Update extends BaseController
             $data['glevel'] = $student->grade_level;
             $data['email'] = $student->email;
         } else {
-            $data['sNo'] = '';
-            $data['fName'] = '';
-            $data['lName'] = '';
-            $data['uName'] = '';
-            $data['cn'] = '';
-            $data['glevel'] = '';
-            $data['email'] = '';
+            $adminUpdate = new \App\Entities\Admin();
+            if(isset($id)) {
+                $id = (int)$id;
+                $adminUpdate = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            }
+            $data['fN'] = $adminUpdate->first_name;
+            $data['lN'] = $adminUpdate->last_name;
+            $data['uN'] = $adminUpdate->username;
+            $data['cN'] = $adminUpdate->contact_num;
+            $data['eml'] = $adminUpdate->email;
         }
+        
         return $data;
     }
 

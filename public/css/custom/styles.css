@@ -106,7 +106,7 @@ body {
   background: #014421;
 }
 
-#register .heading h1 {
+#register .heading h1, .heading h1 {
   font-size: 4rem;
   color: #7b1113;
   padding-top: 5rem;

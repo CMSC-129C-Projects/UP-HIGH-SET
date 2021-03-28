@@ -29,6 +29,9 @@ class BaseController extends Controller
 	 */
 	protected $helpers = ['form', 'file', 'accountnotice', 'autopass'];
 
+  protected $email_subject;
+  protected $email_content;
+
 	/**
 	 * Constructor.
 	 *

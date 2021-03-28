@@ -10,7 +10,7 @@ class Update extends BaseController
 
     function __construct() {
         $this->userModel = new \App\Models\UserModel();
-        $this->admin = new Admin($this->userModel);
+        $this->admin = new Admin();
     }
 
 	public function index($role) {
@@ -66,7 +66,7 @@ class Update extends BaseController
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules($id))) {
                 $this->admin->editUser($this->request, $role, $id);
-                return redirect()->to(base_url('update'));
+                return redirect()->to(base_url('update/' . $role));
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -76,13 +76,12 @@ class Update extends BaseController
 
     public function delete($id, $role = null) {
         $this->admin->deleteUser($id, $role);
-        return redirect()->to(base_url('update'));
+        return redirect()->to(base_url('update/' . $role));
     }
 
     /**
      * AUXILIARY FUNCTIONS BELOW
      */
-    
     public function studentList($gradeLevel = null) {
         $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 

@@ -7,10 +7,9 @@ class Admin extends Account {
     protected $newStudent;
     protected $userModel;
 
-    function __construct($userModel) {
-        $this->action = "";
+    function __construct() {
         $this->newStudent = new \App\Entities\Student();
-        $this->userModel = $userModel;
+        $this->userModel = new \App\Models\UserModel();
     }
 
     public function addUser($request, $role) {
@@ -52,7 +51,7 @@ class Admin extends Account {
             }
 
         } else {
-            $newAdmin = new self($this->userModel);
+            $newAdmin = new self();
 
             $newAdmin->first_name = $request->getPost('adminFirstName');
             $newAdmin->last_name = $request->getPost('adminLastName');
@@ -93,8 +92,8 @@ class Admin extends Account {
 
             $this->userModel->update($id, $this->newStudent);
         } else {
-            $newAdmin = new self($this->userModel);
-            $newAdmin = $this->userModel->asObject('Admin')->find($id);
+            $newAdmin = new self();
+            $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
 
             $newAdmin->first_name = $request->getPost('adminFirstName');
             $newAdmin->last_name = $request->getPost('adminLastName');
@@ -112,9 +111,9 @@ class Admin extends Account {
             $this->newStudent->is_deleted = 1;
             $this->userModel->update($id, $this->newStudent);
         } else {
-            $newAdmin = new self($this->userModel);
+            $newAdmin = new self();
 
-            $newAdmin = $this->userModel->asObject('Admin')->find($id);
+            $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
             $newAdmin->is_deleted = 1;
             $this->userModel->update($id, $newAdmin);
         }

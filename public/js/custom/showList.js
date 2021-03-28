@@ -70,7 +70,7 @@ $(function() {
             response.forEach(element => {
                 element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="btn btn-primary">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="btn btn-primary" style="margin-left: 2%;" id="deleteStudent">Delete</button></div>';
             });
-
+            
             $('#admin').DataTable({
                 data: response,
                 autoWidth: false,

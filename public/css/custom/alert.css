@@ -1,5 +1,5 @@
 .black-modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -8,7 +8,7 @@
 }
 
 .customModal {
-    display: none;
+    /* display: none; */
     background-color:#8f3a36;
     width: 30%;
     height: 20vh;
@@ -34,7 +34,7 @@
 }
 
 .btn-delete button {
-    width: 18%;
+    width: 22%;
     margin-left: 10%;
     margin-right: 10%;
     border-color: #ffed8a;

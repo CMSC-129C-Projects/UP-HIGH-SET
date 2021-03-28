@@ -29,15 +29,24 @@ class Update extends BaseController
         $data = $this->setDefaultData();
         $data['role'] = $role;
         $data['validation'] = null;
+        $emailStatus = null;
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                $this->admin->addStudent($this->request, $role);
-                return redirect()->to(base_url('update'));
+                if($emailStatus = $this->admin->addStudent($this->request, $role))
+                    return redirect()->to(base_url('update'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+
+        $data['emailStatus'] = $emailStatus;
+
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
+
         return view('accountRegistration', $data);
     }
 

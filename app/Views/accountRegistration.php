@@ -18,6 +18,9 @@
     </div>
   <?php endif;?>
   <section id="register" class="container-fluid">
+    <div class="nav" style="position: fixed; top: 4vh;">
+      <a class="nav-link" href="<?=base_url();?>/update/student"><input type="button" value="Return"></a>
+    </div>
     <div class="heading text-center">
       <h1>Registration Form</h1>
     <div>

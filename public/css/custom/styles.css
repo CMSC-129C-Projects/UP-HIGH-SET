@@ -171,7 +171,7 @@ body {
   left: 10%;
 }
 
-#register form input[type="submit"], button#cancel, button#update {
+#register form input[type="submit"], button#cancel, input[type="submit"]{
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -191,11 +191,15 @@ body {
   color: #fff;
 }
 
-#register form input[type="submit"]:hover::before {
+#register form input[type="submit"]:hover::before,
+button#cancel:hover::before,
+input[type="submit"]:hover::before{
   width: 100%;
 }
 
-#register form input[type="submit"]:hover {
+#register form input[type="submit"]:hover,
+button#cancel:hover,
+input[type="submit"]:hover {
   color:#ffff;
   background: #014421;
 }

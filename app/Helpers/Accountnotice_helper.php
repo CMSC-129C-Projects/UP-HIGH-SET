@@ -28,7 +28,7 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $at
   }
 
   if(isset($attachment) != null) {
-    $filename = $attachment; 
+    $filename = $attachment;
     $email->attach($filename);
   }
 

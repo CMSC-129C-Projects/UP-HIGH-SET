@@ -1,6 +1,18 @@
 <?= $this->extend('pageTemplate');?>
 
 <?= $this->section('content');?>
+    <?php if(isset($status) && $status):?>
+        <div id="bg-modal" class="black-modal-email">
+            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+                <div class="mdl-content">
+                    <p>User updated successfully!</p>
+                    <div class="btn-delete">
+                        <button id="dontDelete">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
     <section id="register" class="container-fluid">
         <div class="heading text-center">
             <h1>Registration Form</h1>

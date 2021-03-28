@@ -59,20 +59,27 @@ class Update extends BaseController
         $data = $this->setDefaultData($role, $id);
 
         $data['validation'] = null;
+        $data['status'] = null;
         $data['role'] = $role;
         $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
             if($role === 'student') {
                 if($this->validate($this->setRules($id))) {
-                    $this->admin->editUser($this->request, $role, $id);
+                    $data['status'] = $this->admin->editUser($this->request, $role, $id);
                 } else {
                     $data['validation'] = $this->validator;
                 }
             } else {
-                $this->admin->editUser($this->request, $role, $id);
+                $data['status'] = $this->admin->editUser($this->request, $role, $id);
             }
         }
+
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
+
         return view('editAccount', $data);
     }
 

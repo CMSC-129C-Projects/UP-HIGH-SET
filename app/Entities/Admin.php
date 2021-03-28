@@ -79,6 +79,7 @@ class Admin extends Account {
     }
 
     public function editUser($request, $role, $id) {
+        $status = true;
         if($role === 'student') {
             $this->newStudent = $this->userModel->find($id);
 
@@ -90,7 +91,11 @@ class Admin extends Account {
             $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
 
-            $this->userModel->update($id, $this->newStudent);
+            try {
+                $this->userModel->update($id, $this->newStudent);
+            } catch (\Exception $e) {
+                $status = false;
+            }
         } else {
             $newAdmin = new self();
             $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
@@ -101,8 +106,14 @@ class Admin extends Account {
             $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
 
-            $this->userModel->update($id, $newAdmin);
+            try{
+                $this->userModel->update($id, $newAdmin);
+            } catch (\Exception $e) {
+                $status = false;
+            }
         }
+
+        return $status;
     }
 
     public function deleteUser($id, $role) {

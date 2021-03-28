@@ -73,9 +73,9 @@ class Update extends BaseController
     }
 
     /**
-     * FUNCTIONS BELOW ARE FOR EXTRA TASKS ONLY
+     * AUXILIARY FUNCTIONS BELOW
      */
-
+    
     public function studentList($gradeLevel = null) {
         $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 

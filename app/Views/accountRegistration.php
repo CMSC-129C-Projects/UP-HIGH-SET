@@ -75,6 +75,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
+            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>
@@ -158,6 +159,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
+            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>

@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
   <section id="register" class="container-fluid">
     <div class="heading text-center">
-      <h1>Registration Form</h1>
+      <h1>User Registration</h1>
     <div>
 
     <div class="row-md-6">

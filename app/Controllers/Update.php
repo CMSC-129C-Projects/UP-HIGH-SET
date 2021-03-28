@@ -14,8 +14,8 @@ class Update extends BaseController
     }
 
 	public function index() {
-        $css = ['custom/table.css'];
-        $js = ['custom/showList.js'];
+        $css = ['custom/table.css', 'custom/alert.css'];
+        $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
             'js'    => addExternal($js, 'javascript'),
             'css'   => addExternal($css, 'css')
@@ -27,17 +27,25 @@ class Update extends BaseController
 
     public function add($role = null) {
         $data = $this->setDefaultData();
-
+        $data['role'] = $role;
         $data['validation'] = null;
+        $emailStatus = null;
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                $this->admin->addStudent($this->request, $role);
-                return redirect()->to(base_url('update'));
+                $emailStatus = $this->admin->addStudent($this->request, $role);
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+
+        $data['emailStatus'] = $emailStatus;
+
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
+
         return view('accountRegistration', $data);
     }
 

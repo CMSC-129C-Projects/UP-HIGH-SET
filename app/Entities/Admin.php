@@ -40,10 +40,16 @@ class Admin extends Account {
 
         $message = str_replace($search, $replace, $message);
         
-        // send_acc_notice($this->newStudent->email, $subject, $message);
+        $emailStatus = send_acc_notice($this->newStudent->email, $subject, $message);
         // Send account notice to student
 
-        $this->userModel->insert($this->newStudent);
+        try {
+            $this->userModel->insert($this->newStudent);
+        } catch (\Exception $e) {
+            $emailStatus = false;
+        }
+
+        return $emailStatus;
     }
 
     public function editStudent($request, $role, $id) {

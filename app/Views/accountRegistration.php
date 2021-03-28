@@ -1,6 +1,22 @@
 <?= $this->extend('pageTemplate');?>
 
 <?= $this->section('content');?>
+  <?php if(isset($emailStatus)):?>
+    <div id="bg-modal" class="black-modal-email">
+      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+        <div class="mdl-content">
+          <?php if($emailStatus):?>
+            <p>User has been added. Email sent successfully</p>
+          <?php else:?>
+            <p>An error has occurred</p>
+          <?php endif;?>
+          <div class="btn-delete">
+            <button id="dontDelete">Dismiss</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif;?>
   <section id="register" class="container-fluid">
     <div class="heading text-center">
       <h1>Registration Form</h1>
@@ -8,16 +24,15 @@
 
     <div class="row-md-6">
       <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
-        </li>
-        <li class="nav-item">
-          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
-        </li>
+        <?=setFormBasedOnRole($role);?>
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="Admin">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade" id="Admin">
+      <?php else:?>
+        <div class="tab-pane fade active show" id="Admin">
+      <?php endif;?>
         <div class="row justify-content-center ">
           <form action="<?=base_url()?>/update/add/admin" method="post" class="add">
             <div class="row">
@@ -78,7 +93,11 @@
           </form>
         </div>
       </div>
-      <div class="tab-pane fade" id="Student">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade active show" id="Student">
+      <?php else:?>
+        <div class="tab-pane fade" id="Student">
+      <?php endif;?>
         <div class="row justify-content-center">
           <form action="<?=base_url()?>/update/add/student" method="post" class="add">
             <div class="row">

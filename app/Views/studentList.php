@@ -4,7 +4,7 @@
     <div id="bg-modal" class="black-modal">
         <div id="content-modal" class="customModal horizontalCenter verticalCenter">
             <div class="mdl-content">
-                <p>Are you sure you want to delete this user?</p>
+                <p>Are you sure you want to delete this student?</p>
                 <div class="btn-delete">
                     <button id="yesDelete">Yes</button>
                     <button id="dontDelete">No</button>

@@ -18,8 +18,8 @@
                     <div class="dropdown">
                         <a href="#" class="nav-link dropbtn" role="button"><input type="button" value="View Users" name="removeUser"></a>
                         <div class="dropdown-content">
-                            <a class="dropdown-item" href="<?=base_url();?>/update"><input type="button" value="View Students"></a>
-                            <a class="dropdown-item" href="#"><input type="button" value="View Admin"></a>
+                            <a class="dropdown-item" href="<?=base_url();?>/update/student"><input type="button" value="View Students"></a>
+                            <a class="dropdown-item" href="<?=base_url();?>/update/admin"><input type="button" value="View Admin"></a>
                         </div>
                     </div>
                 </nav>

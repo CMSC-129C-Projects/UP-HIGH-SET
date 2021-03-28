@@ -39,7 +39,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox fname">
-                    <input type="text" name="adminFirstName" required>
+                    <input type="text" name="adminFirstName" value="<?=set_value('adminFirstName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
                     <h3>First Name</h3>
@@ -49,7 +49,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox lname">
-                    <input type="text" name="adminLastName" required>
+                    <input type="text" name="adminLastName" value="<?=set_value('adminLastName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
                     <h3>Last Name</h3>
@@ -61,7 +61,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox uname">
-                    <input type="text" name="adminUserName" required>
+                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                     <h3>User Name</h3>
@@ -71,7 +71,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox contactnum">
-                    <input type="text" name="adminContactNum" required>
+                    <input type="text" name="adminContactNum" value="<?=set_value('adminContactNum');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
                     <h3>Contact Number</h3>
@@ -82,7 +82,7 @@
             <div class="row-md-4 email">
               <div class="mailBox">
                 <div class="inputBox">
-                  <input type="email" name="adminEmail" required>
+                  <input type="email" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
                   <br>
                   <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                   <h3>Email</h3>

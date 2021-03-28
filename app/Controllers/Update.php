@@ -13,7 +13,7 @@ class Update extends BaseController
         $this->admin = new Admin($this->userModel);
     }
 
-	public function index() {
+	public function index($role) {
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
@@ -21,8 +21,11 @@ class Update extends BaseController
             'css'   => addExternal($css, 'css')
         ];
 
-        // Place view file here
-		return view('studentList', $data);
+        if(isset($role) && $role === 'student') {
+            return view('studentList', $data);   
+        } else {
+            return view('adminList', $data);
+        }
 	}
 
     public function add($role = null) {
@@ -32,10 +35,14 @@ class Update extends BaseController
         $emailStatus = null;
 
         if($this->request->getMethod() == 'post') {
-            if($this->validate($this->setRules())) {
-                $emailStatus = $this->admin->addStudent($this->request, $role);
+            if($role === 'student') {
+                if($this->validate($this->setRules())) {
+                    $emailStatus = $this->admin->addUser($this->request, $role);
+                } else {
+                    $data['validation'] = $this->validator;
+                }
             } else {
-                $data['validation'] = $this->validator;
+                $emailStatus = $this->admin->addUser($this->request, $role);
             }
         }
 
@@ -58,7 +65,7 @@ class Update extends BaseController
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules($id))) {
-                $this->admin->editStudent($this->request, $role, $id);
+                $this->admin->editUser($this->request, $role, $id);
                 return redirect()->to(base_url('update'));
             } else {
                 $data['validation'] = $this->validator;
@@ -67,8 +74,8 @@ class Update extends BaseController
         return view('editAccount', $data);
     }
 
-    public function delete($id) {
-        $this->admin->deleteStudent($id);
+    public function delete($id, $role = null) {
+        $this->admin->deleteUser($id, $role);
         return redirect()->to(base_url('update'));
     }
 
@@ -80,6 +87,12 @@ class Update extends BaseController
         $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['studentList']);
+    }
+
+    public function adminList() {
+        $data['adminList'] = $this->userModel->where('role', 0)->where('is_deleted', 0)->findAll();
+
+        echo json_encode($data['adminList']);
     }
 
     protected function setDefaultData($id = null) {

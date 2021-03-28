@@ -33,8 +33,7 @@ class Update extends BaseController
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules())) {
-                if($emailStatus = $this->admin->addStudent($this->request, $role))
-                    return redirect()->to(base_url('update'));
+                $emailStatus = $this->admin->addStudent($this->request, $role);
             } else {
                 $data['validation'] = $this->validator;
             }

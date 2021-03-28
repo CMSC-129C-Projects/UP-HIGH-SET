@@ -2,8 +2,8 @@
 
 <?= $this->section('content');?>
   <?php if(isset($emailStatus)):?>
-    <div id="bg-modal" class="black-modal">
-      <div id="content-modal" class="customModal horizontalCenter verticalCenter">
+    <div id="bg-modal" class="black-modal-email">
+      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
         <div class="mdl-content">
           <?php if($emailStatus):?>
             <p>User has been added. Email sent successfully</p>

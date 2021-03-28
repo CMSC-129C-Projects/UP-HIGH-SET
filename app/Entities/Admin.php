@@ -43,8 +43,12 @@ class Admin extends Account {
         $emailStatus = send_acc_notice($this->newStudent->email, $subject, $message);
         // Send account notice to student
 
-        $this->userModel->insert($this->newStudent);
-        
+        try {
+            $this->userModel->insert($this->newStudent);
+        } catch (\Exception $e) {
+            $emailStatus = false;
+        }
+
         return $emailStatus;
     }
 

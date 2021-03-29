@@ -17,7 +17,7 @@ class Send_email extends BaseController {
 
     $css = ['custom/styles.css'];
 
-    if($this->request->getMethod() == 'POST')
+    if($this->request->getMethod() == 'post')
     {
       if($this->validate($rules))
       {

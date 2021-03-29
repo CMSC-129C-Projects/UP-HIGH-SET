@@ -17,13 +17,11 @@ class Send_email extends BaseController {
 
     $css = ['custom/styles.css'];
 
-    if($this->request->getMethod() == 'post')
+    if($this->request->getMethod() == 'POST')
     {
       if($this->validate($rules))
       {
-        $data = [
-          'css'   => addExternal($css, 'css')
-        ];
+        $data['css'] = addExternal($css, 'css');
       } else {
         $data = [
           'css'   => addExternal($css, 'css'),

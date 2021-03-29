@@ -171,7 +171,9 @@ body {
   left: 10%;
 }
 
-#register form input[type="submit"], button#cancel, input[type="submit"]{
+#register form input[type="submit"],
+button#cancel,
+input[type="submit"] {
   outline: none;
   border: none;
   border-radius: 5rem;

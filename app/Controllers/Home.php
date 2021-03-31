@@ -30,6 +30,6 @@ class Home extends BaseController
       }
     }
 
-    return view('dashboard', $data);
+    return view('user_mgt/login', $data);
 	}
 }

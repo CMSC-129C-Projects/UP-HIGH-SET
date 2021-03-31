@@ -6,7 +6,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-    $data = [];
+    $data['validation'] = null;
 
     if($this->request->getMethod() == 'post')
     {
@@ -16,7 +16,7 @@ class Home extends BaseController
       ];
 
       if($this->validate($rules)){
-        $data['validation'] = null;
+
       } else {
         $data['validation'] = $this->validator;
       }

@@ -13,13 +13,13 @@
               <div class="form-group">
                 <label class="control-label" for="email">Email address:</label>
                 <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>
-                <input type="email" name="email" class="form-control" id="email">
+                <input type="email" name="email" class="form-control" id="email" value="<?=set_value('email')?>">
               </div>
 
               <div class="form-group">
                 <label class="control-label" for="pwd">Password:</label>
                 <span class="text-danger"><?=displaySingleError($validation, 'password');?></span>
-                <input type="password" name="pasword" class="form-control" id="pwd">
+                <input type="password" name="password" class="form-control" id="pwd">
               </div>
 
               <div class="form-group">

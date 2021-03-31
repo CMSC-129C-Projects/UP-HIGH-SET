@@ -28,17 +28,10 @@
     <div class="wrapper d-flex align-items-stretch">
 
       <!-- Page Content Holder -->
-      <div class="navIcon">
-          <div class="navbar-header">
-              <button type="button" id="sidebarCollapse" class="navbar-btn"89>
-                <i class="bi bi-list fa-2x"></i>
-              </button>
-          </div>
-      </div>
       <?= $this->renderSection('content');?>
     </div>
-    <!-- footer section starts  -->
 
+    <!-- footer section starts  -->
     <section id="footer" class="container-fluid">
       <div class="row-md-4">
         <div class="contactLinks">
@@ -76,12 +69,5 @@
     <?php if(isset($js)):?>
       <?= echoFiles($js);?>
     <?php endif;?>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-        });
-      });
-    </script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\LoginModel;
 
 class Home extends BaseController
 {
@@ -16,7 +17,10 @@ class Home extends BaseController
       ];
 
       if($this->validate($rules)){
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
 
+        // echo $email . ": " . $password;
       } else {
         $data['validation'] = $this->validator;
       }

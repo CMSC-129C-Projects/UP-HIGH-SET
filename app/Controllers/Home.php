@@ -51,11 +51,12 @@ class Home extends BaseController
       'isLoggedIn' => true,
     ];
 
-    session()->set($session_data);
+    session()->set('logged_user', $session_data);
     return true;
   }
 
   public function logout(){
+    session()->remove('logged_user');
     session()->destroy();
     return redirect()->to('login');
   }

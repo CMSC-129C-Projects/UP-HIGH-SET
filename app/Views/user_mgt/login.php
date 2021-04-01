@@ -10,6 +10,9 @@
           </div>
 
           <form class="form-horizontal" action="" method="post">
+            <?php if(isset($error)!=null) {?>
+              <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
+            <?php } ?>
               <div class="form-group">
                 <label class="control-label" for="email">Email address:</label>
                 <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>

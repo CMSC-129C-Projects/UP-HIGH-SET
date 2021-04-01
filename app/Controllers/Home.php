@@ -21,6 +21,7 @@ class Home extends BaseController
 	public function login()
 	{
     $data['validation'] = null;
+    $data['error'] = null;
 
     if($this->request->getMethod() == 'post')
     {
@@ -40,12 +41,14 @@ class Home extends BaseController
         $model = new LoginModel();
         $user = $model->where('email', $this->request->getVar('email'))->first();
 
-        if($user['is_active'] == 0 || $user['is_deleted']==1)
-          $error = "The account your trying to access is either inactive or deleted. Please contact your school clerk if you wish to reactivate it.";
-
-        if($this->setSession($user))
+        if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
+          $this->session->setTempdata('error', 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.');
+          $data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
+          return view('user_mgt/login', $data);
+        } else {
+          $this->setSession($user);
           return redirect()->to(base_url('dashboard'));
-
+        }
       } else {
         $data['validation'] = $this->validator;
       }
@@ -54,21 +57,16 @@ class Home extends BaseController
     return view('user_mgt/login', $data);
 	}
 
-  public function setSession($user, $error = null)
+  public function setSession($user)
   {
-    if (isset($error) != null) {
-      $this->session->setTempdata('error', $error);
-      return redirect()->to(current_url());
-    } else {
-      $session_data = [
-        'email' => $user['email'],
-        'password' => $user['password'],
-        'isLoggedIn' => true,
-      ];
+    $session_data = [
+      'email' => $user['email'],
+      'password' => $user['password'],
+      'isLoggedIn' => true,
+    ];
 
-      $this->session->set('logged_user', $session_data);
-      return true;
-    }
+    $this->session->set('logged_user', $session_data);
+    return true;
   }
 
 }

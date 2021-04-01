@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\LoginModel;
+use App\Models\UserlogModel;
+
+use \App\Entities\Userlog;
 
 class Home extends BaseController
 {
@@ -42,6 +45,7 @@ class Home extends BaseController
 				$model = new LoginModel();
 				$user = $model->where('email', $this->request->getVar('email'))->first();
 
+				$this->updateUserlog($user['id']);
 				$this->setSession($user);
 				return redirect()->to(base_url('dashboard'));
 
@@ -53,7 +57,7 @@ class Home extends BaseController
 		return view('user_mgt/login', $data);
 	}
 
-  	public function setSession($user)
+  	protected function setSession($user)
   	{
 		$session_data = [
 			'email' => $user['email'],
@@ -63,5 +67,15 @@ class Home extends BaseController
 
 		$this->session->set('logged_user', $session_data);
 		return true;
+	}
+
+	protected function updateUserlog($user_id)
+	{
+		$userlog = new Userlog($this->request);
+		$userlogModel = new UserlogModel();
+
+		$userlog->fillUserlogData($user_id);
+
+		$userlogModel->insert($userlog);
 	}
 }

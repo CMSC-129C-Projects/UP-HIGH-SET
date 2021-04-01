@@ -3,7 +3,7 @@ namespace App\Entities;
 
 use \CodeIgniter\Entity;
 
-class Account extends Entity {
+class Userlog extends Entity {
 
     private $request;
 
@@ -35,8 +35,7 @@ class Account extends Entity {
         $this->attributes['user_token'] = $user_token;
         $this->attributes['platform'] = $currentAgent['platform'];
         $this->attributes['user_agent'] = $currentAgent['agent'];
-
-        return $this;
+        $this->attributes['is_deleted'] = 0;
     }
 
     /**

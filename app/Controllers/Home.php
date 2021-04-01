@@ -50,7 +50,7 @@ class Home extends BaseController
 			}
 		}
 
-		return view('user_mgt/login2', $data);
+		return view('user_mgt/login', $data);
 	}
 
   	public function setSession($user)

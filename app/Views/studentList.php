@@ -1,4 +1,4 @@
-<?=$this->extend('pageTemplate');?>
+<?=$this->extend('template/pageTemplate');?>
 
 <?=$this->section('content');?>
     <div class="main">

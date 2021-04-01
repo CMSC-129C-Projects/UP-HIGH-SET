@@ -42,7 +42,6 @@ class Home extends BaseController
         $user = $model->where('email', $this->request->getVar('email'))->first();
 
         if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
-          $this->session->setTempdata('error', 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.');
           $data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
           return view('user_mgt/login', $data);
         } else {

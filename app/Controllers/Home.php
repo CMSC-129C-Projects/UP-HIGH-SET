@@ -1,10 +1,18 @@
 <?php
 
 namespace App\Controllers;
+
+use App\Controllers\BaseController;
 use App\Models\LoginModel;
 
 class Home extends BaseController
 {
+  public $session;
+
+  public function __construct()
+  {
+    $this->session = session();
+  }
 
   public function index() {
     return redirect()->to(base_url('home/login'));
@@ -51,13 +59,8 @@ class Home extends BaseController
       'isLoggedIn' => true,
     ];
 
-    session()->set('logged_user', $session_data);
+    $this->session->set('logged_user', $session_data);
     return true;
   }
 
-  public function logout(){
-    session()->remove('logged_user');
-    session()->destroy();
-    return redirect()->to('login');
-  }
 }

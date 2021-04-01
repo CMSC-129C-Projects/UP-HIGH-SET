@@ -53,7 +53,7 @@
               <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
               <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
               <div class="logout">
-                  <a class="nav-link" id="logout" href="<?=base_url('home/login')?>"><input type="button" value="LOGOUT" name="logOut"></a>
+                  <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
               </div>
           </ul>
       </nav>

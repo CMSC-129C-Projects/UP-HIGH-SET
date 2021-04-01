@@ -16,6 +16,10 @@ class Home extends BaseController
 
 	public function login()
 	{
+		if ($this->session->has('logged_user')) {
+			return redirect()->to(base_url('dashboard'));
+		}
+		
 		$data['validation'] = null;
 		$css = ['custom/login/login.css'];
 		$data['css'] = addExternal($css, 'css');

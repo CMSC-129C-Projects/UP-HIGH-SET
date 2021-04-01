@@ -15,7 +15,7 @@
 
 .custom-row {
     position: relative;
-    z-index: -1;
+    z-index: 0;
     padding: 7% 0px;
     background-color: rgba(233, 219, 193, 0.5);
 }
@@ -104,5 +104,5 @@
 
 .r-content bold {
     font-size: 2rem;
-    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Alfa Slab One', cursive!important;
 }

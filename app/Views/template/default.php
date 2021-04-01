@@ -9,7 +9,11 @@
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
@@ -28,11 +32,9 @@
       </div>
     </section>
     <!-- header section ends -->
-    <div class="wrapper d-flex align-items-stretch">
 
-      <!-- Page Content Holder -->
-      <?= $this->renderSection('content');?>
-    </div>
+    <!-- Page Content Holder -->
+    <?= $this->renderSection('content');?>
 
     <!-- footer section starts  -->
     <section id="footer" class="container-fluid">

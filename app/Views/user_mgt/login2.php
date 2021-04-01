@@ -7,15 +7,15 @@
             <div class="row custom-row">
                 <div class="col-md 6 d-flex justify-content-center">
                     <div class="form-background">
-                        <form action="">
+                        <form action="" method="post">
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" class="form-control" name="username">
-                                <span><?=displaySingleError($validation, 'username');?></span>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" name="email" value="<?=set_value('email')?>">
+                                <span><?=displaySingleError($validation, 'email');?></span>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" name="password">
+                                <label for="pwd">Password</label>
+                                <input type="password" id="pwd" class="form-control" name="password">
                                 <span><?=displaySingleError($validation, 'password');?></span>
                             </div>
                             <div style="display: flex; flex-direction: column;">

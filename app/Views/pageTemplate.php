@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
@@ -24,9 +28,10 @@
           <h2> Student Evaluation for Teachers</h2>
       </div>
     </section>
-    <!-- header section ends -->
-    <div class="wrapper d-flex align-items-stretch">    
+    <!-- header section ends --> 
     <!-- Sidebar Holder -->
+    <?php if(!isset($isLogin)):?>
+      <div class="wrapper d-flex align-items-stretch">   
       <nav id="sidebar">
           <div class="sidebar-header">
               <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
@@ -64,6 +69,9 @@
       </div>
       <?= $this->renderSection('content');?>
     </div>
+    <?php else:?>
+      <?= $this->renderSection('content');?>
+    <?php endif;?>
     <!-- footer section starts  -->
 
     <section id="footer" class="container-fluid">

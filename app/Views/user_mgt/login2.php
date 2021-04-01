@@ -1,4 +1,4 @@
-<?= $this->extend('pageTemplate');?>
+<?= $this->extend('template/default');?>
 
 <?= $this->section('content');?>
     <img src="<?=base_url('public/images/uphs.jpeg')?>" class="background">

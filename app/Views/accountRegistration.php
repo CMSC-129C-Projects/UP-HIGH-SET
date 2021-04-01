@@ -1,4 +1,4 @@
-<?= $this->extend('pageTemplate');?>
+<?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
   <?php if(isset($emailStatus)):?>
@@ -22,7 +22,7 @@
       <a class="nav-link" href="<?=base_url();?>/update/student"><input type="button" value="Return"></a>
     </div>
     <div class="heading text-center">
-      <h1>Registration Form</h1>
+      <h1>User Registration</h1>
     <div>
 
     <div class="row-md-6">
@@ -93,6 +93,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
+            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>
@@ -180,6 +181,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
+            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>

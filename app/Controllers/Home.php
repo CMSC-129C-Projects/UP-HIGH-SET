@@ -10,13 +10,6 @@ use \App\Entities\Userlog;
 
 class Home extends BaseController
 {
-	public $session;
-
-	public function __construct()
-	{
-		$this->session = session();
-	}
-
 	public function index() {
 		return redirect()->to(base_url('login'));
 	}

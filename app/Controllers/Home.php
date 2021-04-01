@@ -25,6 +25,7 @@ class Home extends BaseController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
+        return redirect()->to(base_url('dashboard'));
       } else {
         $data['validation'] = $this->validator;
       }

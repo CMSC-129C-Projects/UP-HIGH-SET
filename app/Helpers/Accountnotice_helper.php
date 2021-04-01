@@ -27,10 +27,10 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
   }
 
   if($email->send()) {
-    return "Sent Successfully!";
+    return true;
   } else {
-
     $data = $email->printDebugger(['headers']);
     print_r($data);
+    return false;
   }
 }

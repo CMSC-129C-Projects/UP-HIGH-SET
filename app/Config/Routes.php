@@ -35,6 +35,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 // $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'login', 'Home::login', ['filter' => 'noauth']);
+$routes->add('update/admin', 'Update::index/admin');
+$routes->add('update/student', 'Update::index/student');
 
 /*
  * --------------------------------------------------------------------

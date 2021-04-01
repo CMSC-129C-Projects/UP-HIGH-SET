@@ -1,0 +1,108 @@
+.background {
+    opacity: 0.8;
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.login {
+    min-height: 100vh;
+    width: 100vw;
+    background-position: center;
+}
+
+.custom-row {
+    position: relative;
+    z-index: 0;
+    padding: 7% 0px;
+    background-color: rgba(233, 219, 193, 0.5);
+}
+
+.custom-col {
+    justify-content: center;
+}
+
+.w-border {
+    border: solid;
+}
+
+.cntr-custom {
+    position: relative;
+    top: 6vmin;
+}
+
+.form-control {
+    background-color: #e9dbc1!important;
+}
+
+.btn-login {
+    margin-top: 4vh;
+    width: 25%;
+    background-color: #e9dbc1;
+    border-color: rgb(83,71,0);
+    color: black;
+}
+
+.btn-login:hover {
+    background-color: rgb(83,71,0);
+    border-color: rgb(83,71,0);
+    color: #e9dbc1;
+}
+
+.form-background {
+    box-shadow: 0px 0 8px 2px rgba(0, 0, 0, 0.8);
+    background-image: -moz-linear-gradient( 90deg, rgb(136,0,0) 0%, rgb(83,71,0) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(136,0,0) 0%, rgb(83,71,0) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(136,0,0) 0%, rgb(83,71,0) 100%);
+    width: 80%;
+    padding: 6% 9%;
+} 
+
+.form-background label {
+    color: #e9dbc1;
+    font-size: 2rem;
+}
+
+.form-background span {
+    color: #e9dbc1;
+}
+
+.form-background small {
+    color: #e9dbc1;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.form-background a:hover {
+    text-decoration: underline;
+}
+
+.form-background i {
+    color: #e9dbc1;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.r-content {
+    margin: 0px 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.r-content img {
+    /* width: 70%; */
+    width: 50vmin;
+}
+
+.r-content bold {
+    font-size: 2rem;
+    font-family: 'Alfa Slab One', cursive!important;
+}

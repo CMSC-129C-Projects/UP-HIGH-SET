@@ -1,10 +1,26 @@
-<?= $this->extend('pageTemplate');?>
+<?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+    <?php if(isset($status) && $status):?>
+        <div id="bg-modal" class="black-modal-email">
+            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+                <div class="mdl-content">
+                    <p>User updated successfully!</p>
+                    <div class="btn-delete">
+                        <button id="dontDelete">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
     <section id="register" class="container-fluid">
         <div class="heading text-center">
             <h1>Registration Form</h1>
         <div>
+        
+        <div class="nav" style="position: fixed; top: 4vh;">
+            <a class="nav-link" href="<?=base_url();?>/update/admin"><input type="button" value="Return"></a>
+        </div>
 
         <div class="row justify-content-center">
             <ul class="nav nav-tabs">
@@ -28,7 +44,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminFirstName" required>
+                                            <input type="text" name="adminFirstName" value="<?=set_value('adminFirstName', $fN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
                                             <h3>First Name</h3>
@@ -38,7 +54,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminLastName" required>
+                                            <input type="text" name="adminLastName" value="<?=set_value('adminLastName', $lN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
                                             <h3>Last Name</h3>
@@ -50,7 +66,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminUserName" required>
+                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                                             <h3>User Name</h3>
@@ -60,7 +76,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminContactNum" required>
+                                            <input type="text" name="adminContactNum" value="<?=set_value('adminContactNum', $cN);?>" required>
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
                                             <h3>Contact Number</h3>
@@ -71,7 +87,7 @@
                             <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
-                                        <input type="email" name="adminEmail" required>
+                                        <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
                                         <br>
                                         <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                                         <h3>Email</h3>

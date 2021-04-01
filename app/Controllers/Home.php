@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-// use App\Models\LoginModel;
+use App\Models\LoginModel;
 
 class Home extends BaseController
 {
@@ -18,14 +18,23 @@ class Home extends BaseController
     {
       $rules = [
         'email' => 'required|valid_email',
-        'password' => 'required'
+        'password' => 'required|validateUser[email, password]'
       ];
 
-      if($this->validate($rules)){
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+      $errors = [
+        'password' => [
+            'validateUser' => "Email and Password don't match",
+        ],
+      ];
 
+      if($this->validate($rules, $errors)){
+
+        $model = new LoginModel();
+        $user = $model->where('email', $this->request->getVar('email'))->first();
+
+        $this->setSession($user);
         return redirect()->to(base_url('dashboard'));
+
       } else {
         $data['validation'] = $this->validator;
       }
@@ -33,4 +42,21 @@ class Home extends BaseController
 
     return view('user_mgt/login', $data);
 	}
+
+  public function setSession($user)
+  {
+    $session_data = [
+      'email' => $user['email'],
+      'password' => $user['password'],
+      'isLoggedIn' => true,
+    ];
+
+    session()->set($session_data);
+    return true;
+  }
+
+  public function logout(){
+    session()->destroy();
+    return redirect()->to('login');
+  }
 }

@@ -14,8 +14,6 @@ class LoginModel extends Model {
 	protected $protectFields        = true;
 
 	protected $allowedFields        = [
-    "student_num",
-    "username",
 		"email",
 		"password"
 	];

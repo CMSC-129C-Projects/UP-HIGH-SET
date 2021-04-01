@@ -96,9 +96,10 @@ class Home extends BaseController
   	protected function setSession($user)
   	{
 		$session_data = [
-			'email' => $user['email'],
-			'password' => $user['password'],
-			'isLoggedIn' => true,
+			'email'			=> $user['email'],
+			'password' 		=> $user['password'],
+			'role'			=> $user['role'],
+			'isLoggedIn' 	=> true,
 		];
 
 		$this->session->set('logged_user', $session_data);

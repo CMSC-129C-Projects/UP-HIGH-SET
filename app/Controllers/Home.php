@@ -40,8 +40,11 @@ class Home extends BaseController
         $model = new LoginModel();
         $user = $model->where('email', $this->request->getVar('email'))->first();
 
-        $this->setSession($user);
-        return redirect()->to(base_url('dashboard'));
+        if($user['is_active'] == 0 || $user['is_deleted']==1)
+          $error = "The account your trying to access is either inactive or deleted. Please contact your school clerk if you wish to reactivate it.";
+
+        if($this->setSession($user))
+          return redirect()->to(base_url('dashboard'));
 
       } else {
         $data['validation'] = $this->validator;
@@ -51,16 +54,21 @@ class Home extends BaseController
     return view('user_mgt/login', $data);
 	}
 
-  public function setSession($user)
+  public function setSession($user, $error = null)
   {
-    $session_data = [
-      'email' => $user['email'],
-      'password' => $user['password'],
-      'isLoggedIn' => true,
-    ];
+    if (isset($error) != null) {
+      $this->session->setTempdata('error', $error);
+      return redirect()->to(current_url());
+    } else {
+      $session_data = [
+        'email' => $user['email'],
+        'password' => $user['password'],
+        'isLoggedIn' => true,
+      ];
 
-    $this->session->set('logged_user', $session_data);
-    return true;
+      $this->session->set('logged_user', $session_data);
+      return true;
+    }
   }
 
 }

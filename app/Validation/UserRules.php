@@ -6,8 +6,7 @@ class Userrules{
 
   public function validateUser(string $str, string $fields, array $data){
     $model = new LoginModel();
-    $user = $model->where('email', $data['email'])
-                  ->first();
+    $user = $model->where('email', $data['email'])->first();
 
     if(!$user)
       return false;

@@ -54,7 +54,7 @@ body {
 #header .schoolWebsiteName a{
   right: 0;
 }
-  
+
 #register {
   min-height: 100vh;
   width: 100vw;
@@ -171,7 +171,7 @@ body {
   left: 10%;
 }
 
-#register form input[type="submit"] {
+#register form input[type="submit"], button#cancel {
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -185,8 +185,8 @@ body {
   z-index: 1;
   overflow: hidden;
   height: 4rem;
-  width: 12rem;
-  margin-bottom: 2rem;
+  width: 10rem;
+  margin: 2rem 1.5rem;
   background:#7b1113;
   color: #fff;
   margin-left: rem;
@@ -276,16 +276,16 @@ form.add {
     padding: .75rem 0;
 }
 
-  
+
   #footer {
     background: linear-gradient(to top right, #800000 0%,#228B22 100%);
     width: 100%;
     bottom: 0;
     left: 0;
     right: 0;
-    
+
   }
-  
+
   #footer .contactLinks {
     text-align: center;
     display: -webkit-box;
@@ -298,14 +298,14 @@ form.add {
     margin: 1rem 0;
     margin: auto;
   }
-  
+
   #footer .contactLinks h3 {
     font-size: 18px;
     color:#e9dbc1;
     margin-top: 1rem;
 
   }
-  
+
   #footer .contactLinks a {
     color: #e9dbc1;
     font-size: 14px;
@@ -378,7 +378,7 @@ a, a:hover, a:focus {
     min-width: 250px;
     max-width: 250px;
     background: linear-gradient(to bottom, #7b1113 0%, #014421 100%);
-    
+
     opacity: 80%;
     color: #fff;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
@@ -392,15 +392,15 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    
+
     opacity: 200%;
-    
+
 }
 
 #sidebar .user-logo img{
  height: 50px;
   border-radius: 200%;
-  
+
  }
 #sidebar ul.components {
     padding: 20px 0;
@@ -409,7 +409,7 @@ a, a:hover, a:focus {
 #sidebar .components a{
   color: #e9dbc1;
   font-size: 15px;
-} 
+}
 
 #sidebar ul.components a:hover {
   color: #7b1113;
@@ -474,7 +474,7 @@ a.article, a.article:hover {
   color: #7b1113;
 }
 .navIcon .navbar-header #sidebarCollapse{
-  
+
   background-color: #ffed8a;
 }
 #sidebar .nav-link  input[type="button"] {
@@ -487,7 +487,7 @@ a.article, a.article:hover {
   text-transform: capitalize;
   letter-spacing: .2rem;
   cursor: pointer;
-  
+
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
@@ -514,7 +514,7 @@ a.article, a.article:hover {
   text-transform: capitalize;
   letter-spacing: .2rem;
   cursor: pointer;
-  
+
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
@@ -573,7 +573,7 @@ a.article, a.article:hover {
 
 
 #dashboardWelcomeMessage{
-  
+
   width: 100%;
   bottom: 0;
   left: 0;
@@ -613,7 +613,7 @@ a.article, a.article:hover {
   text-transform: capitalize;
   letter-spacing: .2rem;
   cursor: pointer;
-  
+
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
@@ -642,5 +642,3 @@ a.article, a.article:hover {
         transform: none;
     }
 }
-
-  

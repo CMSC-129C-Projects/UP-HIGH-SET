@@ -10,80 +10,106 @@ class Update extends BaseController
 
     function __construct() {
         $this->userModel = new \App\Models\UserModel();
-        $this->admin = new Admin($this->userModel);
+        $this->admin = new Admin();
     }
 
-	public function index() {
-        $css = ['custom/table.css'];
-        $js = ['custom/showList.js'];
+	public function index($role) {
+        $css = ['custom/table.css', 'custom/alert.css'];
+        $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
             'js'    => addExternal($js, 'javascript'),
             'css'   => addExternal($css, 'css')
         ];
 
-        // Place view file here
-		return view('studentList', $data);
+        if(isset($role) && $role === 'student') {
+            return view('studentList', $data);   
+        } else {
+            return view('adminList', $data);
+        }
 	}
 
     public function add($role = null) {
-        $data = $this->setDefaultData();
-
+        $data['role'] = $role;
         $data['validation'] = null;
+        $emailStatus = null;
 
         if($this->request->getMethod() == 'post') {
-            if($this->validate($this->setRules())) {
-                $this->admin->addStudent($this->request, $role);
-                return redirect()->to(base_url('update'));
+            if($role === 'student') {
+                if($this->validate($this->setRules())) {
+                    $emailStatus = $this->admin->addUser($this->request, $role);
+                } else {
+                    $data['validation'] = $this->validator;
+                }
             } else {
-                $data['validation'] = $this->validator;
+                $emailStatus = $this->admin->addUser($this->request, $role);
             }
         }
+
+        $data['emailStatus'] = $emailStatus;
+
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
+
         return view('accountRegistration', $data);
     }
 
     public function edit($role = null, $id = null) {
-        $data = $this->setDefaultData($id);
+        $data = $this->setDefaultData($role, $id);
 
         $data['validation'] = null;
+        $data['status'] = null;
         $data['role'] = $role;
         $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
-            if($this->validate($this->setRules($id))) {
-                $this->admin->editStudent($this->request, $role, $id);
-                return redirect()->to(base_url('update'));
+            if($role === 'student') {
+                if($this->validate($this->setRules($id))) {
+                    $data['status'] = $this->admin->editUser($this->request, $role, $id);
+                } else {
+                    $data['validation'] = $this->validator;
+                }
             } else {
-                $data['validation'] = $this->validator;
+                $data['status'] = $this->admin->editUser($this->request, $role, $id);
             }
         }
+
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
+
         return view('editAccount', $data);
     }
 
-    public function delete($id) {
-        $this->admin->deleteStudent($id);
-        return redirect()->to(base_url('update'));
+    public function delete($id, $role = null) {
+        $this->admin->deleteUser($id, $role);
+        return redirect()->to(base_url('update/' . $role));
     }
 
     /**
-     * FUNCTIONS BELOW ARE FOR EXTRA TASKS ONLY
+     * AUXILIARY FUNCTIONS BELOW
      */
-
     public function studentList($gradeLevel = null) {
         $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['studentList']);
     }
 
-    protected function setDefaultData($id = null) {
-        $student = new \App\Entities\Student();
-        $hasDefaultValues = false;
-        if(isset($id)) {
-            $hasDefaultValues = true;
-            $id = (int)$id;
-            $student = $this->userModel->find($id);
-        }
+    public function adminList() {
+        $data['adminList'] = $this->userModel->where('role', 0)->where('is_deleted', 0)->findAll();
 
-        if ($hasDefaultValues) {
+        echo json_encode($data['adminList']);
+    }
+
+    protected function setDefaultData($role = null, $id = null) {
+        if($role === 'student') {
+            $student = new \App\Entities\Student();
+            if(isset($id)) {
+                $id = (int)$id;
+                $student = $this->userModel->find($id);
+            }
             $data['sNo'] = $student->student_num;
             $data['fName'] = $student->first_name;
             $data['lName'] = $student->last_name;
@@ -92,14 +118,18 @@ class Update extends BaseController
             $data['glevel'] = $student->grade_level;
             $data['email'] = $student->email;
         } else {
-            $data['sNo'] = '';
-            $data['fName'] = '';
-            $data['lName'] = '';
-            $data['uName'] = '';
-            $data['cn'] = '';
-            $data['glevel'] = '';
-            $data['email'] = '';
+            $adminUpdate = new \App\Entities\Admin();
+            if(isset($id)) {
+                $id = (int)$id;
+                $adminUpdate = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            }
+            $data['fN'] = $adminUpdate->first_name;
+            $data['lN'] = $adminUpdate->last_name;
+            $data['uN'] = $adminUpdate->username;
+            $data['cN'] = $adminUpdate->contact_num;
+            $data['eml'] = $adminUpdate->email;
         }
+        
         return $data;
     }
 

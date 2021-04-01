@@ -55,7 +55,7 @@ class Home extends BaseController
 		}
 
 		$data['validation'] = null;
-    $data['error'] = null;
+    	$data['error'] = null;
 		$css = ['custom/login/login.css'];
 		$data['css'] = addExternal($css, 'css');
 
@@ -77,14 +77,14 @@ class Home extends BaseController
 				$model = new LoginModel();
 				$user = $model->where('email', $this->request->getVar('email'))->first();
 
-        if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
-          $data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
-          return view('user_mgt/login', $data);
-        } else {
-          $this->updateUserlog($user['id']);
-          $this->setSession($user);
-          return redirect()->to(base_url('dashboard'));
-        }
+				if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
+					$data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
+					return view('user_mgt/login', $data);
+				} else {
+					$this->updateUserlog($user['id']);
+					$this->setSession($user);
+					return redirect()->to(base_url('dashboard'));
+				}
 			} else {
 				$data['validation'] = $this->validator;
 			}

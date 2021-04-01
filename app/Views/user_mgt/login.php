@@ -37,6 +37,11 @@
                 <div class="col-md 6 d-flex justify-content-center">
                     <div class="form-background">
                         <form action="" method="post">
+
+                          <?php if(isset($error)!=null) {?>
+                            <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
+                          <?php } ?>
+
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" class="form-control" name="email" value="<?=set_value('email')?>">

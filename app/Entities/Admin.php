@@ -33,8 +33,8 @@ class Admin extends Account {
             $this->newStudent->is_deleted = 0;
 
             // Send account notice to student
-            $search = ['-student-','-username-','-password-', '-website_link-'];
-            $replace = [$this->newStudent->first_name, $this->newStudent->username, $password, base_url()];
+            $search = ['-student-','-password-', '-website_link-'];
+            $replace = [$this->newStudent->first_name, $password, base_url()];
 
             $subject = 'Account Notification';
             $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');

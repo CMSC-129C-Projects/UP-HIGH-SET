@@ -35,7 +35,7 @@ class Update extends BaseController
 
         if($this->request->getMethod() == 'post') {
             if($role === 'student') {
-                if($this->validate($this->setRules())) {
+                if($this->validate($this->setRules($role))) {
                     $emailStatus = $this->admin->addUser($this->request, $role);
                 } else {
                     $data['validation'] = $this->validator;
@@ -65,7 +65,7 @@ class Update extends BaseController
 
         if($this->request->getMethod() == 'post') {
             if($role === 'student') {
-                if($this->validate($this->setRules($id))) {
+                if($this->validate($this->setRules($role, $id))) {
                     $data['status'] = $this->admin->editUser($this->request, $role, $id);
                 } else {
                     $data['validation'] = $this->validator;
@@ -133,54 +133,59 @@ class Update extends BaseController
         return $data;
     }
 
-    protected function setRules($id = null) {
-        // $rules = [
-        //     'sampleName1' => [
-        //         'rules' => 'sampleRule1|sampleRule2',
-        //         'errors' => [
-        //             'sampleRule1' => 'rule1-message',
-        //             'sampleRule2' => 'rule2-message'
-        //         ]
-        //     ],
-        //     'sampleName2' => [
-        //         'rules' => 'sampleRule1|sampleRule2',
-        //         'errors' => [
-        //             'sampleRule1' => 'rule1-message',
-        //             'sampleRule2' => 'rule2-message'
-        //         ]
-        //     ]
-        // ];
-        $rules = [
-            'studFirstName' => 'required',
-            'studLastName' => 'required',
-            'gradeLevel' => 'required',
-            'studContactNum' => [
-                'rules'     => 'required|min_length[11]|is_natural|valid_number',
-                'errors'    => [
-                    'is_natural'   => 'Contact number format: 09xxxxxxxxx',
-                    'valid_number' => 'This is not a valid number'
-                ]
-            ],
-            'studUserName' => 'required|min_length[6]',
-            'studEmail' => [
-                'rules'     => 'required|valid_email|is_UP_mail',
-                'errors'    => [
-                    'is_UP_mail'    => 'The email you entered is not a valid UP mail'
-                ]
-            ]
-        ];
-        if(isset($id)) {
-            $rules['studNum'] = [
-                'rules'     => 'required|min_length[9]|owned_student_number['. $id .']',
-                'errors'    => [
-                    'is_existing_data'  => 'Student number already exist'
+    protected function setRules($role = null, $id = null) {
+        if($role === 'student') {
+            $rules = [
+                'studFirstName' => 'required',
+                'studLastName' => 'required',
+                'gradeLevel' => 'required',
+                'studContactNum' => [
+                    'rules'     => 'min_length[11]|is_natural|valid_number',
+                    'errors'    => [
+                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                        'valid_number' => 'This is not a valid number'
+                    ]
+                ],
+                'studUserName' => 'min_length[6]',
+                'studEmail' => [
+                    'rules'     => 'required|valid_email|is_UP_mail',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail'
+                    ]
                 ]
             ];
+            if(isset($id)) {
+                $rules['studNum'] = [
+                    'rules'     => 'required|min_length[9]|owned_student_number['. $id .']',
+                    'errors'    => [
+                        'is_existing_data'  => 'Student number already exist'
+                    ]
+                ];
+            } else {
+                $rules['studNum'] = [
+                    'rules'     => 'required|min_length[9]|is_existing_data',
+                    'errors'    => [
+                        'is_existing_data'  => 'Student number already exist'
+                    ]
+                ];
+            }
         } else {
-            $rules['studNum'] = [
-                'rules'     => 'required|min_length[9]|is_existing_data',
-                'errors'    => [
-                    'is_existing_data'  => 'Student number already exist'
+            $rules = [
+                'adminFirstName' => 'required',
+                'adminLastName' => 'required',
+                'adminContactNum' => [
+                    'rules'     => 'required|uniqueContact|min_length[11]|is_natural|valid_number',
+                    'errors'    => [
+                        'uniqueContact' => 'Contact number already exists',
+                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                        'valid_number' => 'This is not a valid number'
+                    ]
+                ],
+                'adminEmail' => [
+                    'rules'     => 'required|valid_email|is_UP_mail',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail'
+                    ]
                 ]
             ];
         }

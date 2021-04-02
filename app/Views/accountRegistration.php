@@ -64,7 +64,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox uname">
-                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>" required>
+                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>">
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                     <h3>User Name</h3>
@@ -140,7 +140,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studUserName" value="<?=set_value('studUserName');?>" required>
+                      <input type="text" name="studUserName" value="<?=set_value('studUserName');?>">
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studUserName');?></span>
                       <h3>User Name</h3>
@@ -162,7 +162,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
-                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>" required>
+                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>">
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'studContactNum');?></span>
                     <h3>Contact Number</h3>

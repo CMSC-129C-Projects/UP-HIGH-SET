@@ -46,14 +46,10 @@ class Update extends BaseController
         $emailStatus = null;
 
         if($this->request->getMethod() == 'post') {
-            if($role === 'student') {
-                if($this->validate($this->setRules($role))) {
-                    $emailStatus = $this->admin->addUser($this->request, $role);
-                } else {
-                    $data['validation'] = $this->validator;
-                }
-            } else {
+            if($this->validate($this->setRules($role))) {
                 $emailStatus = $this->admin->addUser($this->request, $role);
+            } else {
+                $data['validation'] = $this->validator;
             }
         }
 
@@ -82,14 +78,10 @@ class Update extends BaseController
         $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
-            if($role === 'student') {
-                if($this->validate($this->setRules($role, $id))) {
-                    $data['status'] = $this->admin->editUser($this->request, $role, $id);
-                } else {
-                    $data['validation'] = $this->validator;
-                }
-            } else {
+            if($this->validate($this->setRules($role, $id))) {
                 $data['status'] = $this->admin->editUser($this->request, $role, $id);
+            } else {
+                $data['validation'] = $this->validator;
             }
         }
 

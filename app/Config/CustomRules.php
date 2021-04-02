@@ -40,7 +40,7 @@ class CustomRules {
     public function uniqueContact(string $str): bool {
         $userModel = new \App\Models\UserModel();
 
-        $admins = $userModel->asObject('\App\Entities\Admin')->where('role', '1')->where('contact', $str)->findAll();
+        $admins = $userModel->asObject('\App\Entities\Admin')->where('role', '1')->where('contact_num', $str)->findAll();
         return (count($admins) === 0);
     }
 }

@@ -1,30 +1,48 @@
-<?= $this->extend('pageTemplate');?>
+<?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+  <?php if(isset($emailStatus)):?>
+    <div id="bg-modal" class="black-modal-email">
+      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+        <div class="mdl-content">
+          <?php if($emailStatus):?>
+            <p>User has been added. Email sent successfully</p>
+          <?php else:?>
+            <p>An error has occurred</p>
+          <?php endif;?>
+          <div class="btn-delete">
+            <button id="dontDelete">Dismiss</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif;?>
   <section id="register" class="container-fluid">
+    <div class="nav" style="position: fixed; top: 4vh;">
+      <a class="nav-link" href="<?=base_url();?>/update/student"><input type="button" value="Return"></a>
+    </div>
     <div class="heading text-center">
       <h1>User Registration</h1>
     <div>
 
     <div class="row-md-6">
       <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
-        </li>
-        <li class="nav-item">
-          <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
-        </li>
+        <?=setFormBasedOnRole($role);?>
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="Admin">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade" id="Admin">
+      <?php else:?>
+        <div class="tab-pane fade active show" id="Admin">
+      <?php endif;?>
         <div class="row justify-content-center ">
           <form action="<?=base_url()?>/update/add/admin" method="post" class="add">
             <div class="row">
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox fname">
-                    <input type="text" name="adminFirstName" required>
+                    <input type="text" name="adminFirstName" value="<?=set_value('adminFirstName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminFirstName');?></span>
                     <h3>First Name</h3>
@@ -34,7 +52,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox lname">
-                    <input type="text" name="adminLastName" required>
+                    <input type="text" name="adminLastName" value="<?=set_value('adminLastName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminLastName');?></span>
                     <h3>Last Name</h3>
@@ -46,7 +64,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox uname">
-                    <input type="text" name="adminUserName" required>
+                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                     <h3>User Name</h3>
@@ -56,7 +74,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox contactnum">
-                    <input type="text" name="adminContactNum" required>
+                    <input type="text" name="adminContactNum" value="<?=set_value('adminContactNum');?>" required>
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminContactNum');?></span>
                     <h3>Contact Number</h3>
@@ -67,7 +85,7 @@
             <div class="row-md-4 email">
               <div class="mailBox">
                 <div class="inputBox">
-                  <input type="email" name="adminEmail" required>
+                  <input type="email" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
                   <br>
                   <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                   <h3>Email</h3>
@@ -79,7 +97,11 @@
           </form>
         </div>
       </div>
-      <div class="tab-pane fade" id="Student">
+      <?php if(isset($role) && $role === 'student'):?>
+        <div class="tab-pane fade active show" id="Student">
+      <?php else:?>
+        <div class="tab-pane fade" id="Student">
+      <?php endif;?>
         <div class="row justify-content-center">
           <form action="<?=base_url()?>/update/add/student" method="post" class="add">
             <div class="row">

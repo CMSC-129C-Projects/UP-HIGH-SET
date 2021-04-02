@@ -9,7 +9,11 @@
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
@@ -28,49 +32,11 @@
       </div>
     </section>
     <!-- header section ends -->
-    <div class="wrapper d-flex align-items-stretch">
-    <!-- Sidebar Holder -->
-      <nav id="sidebar">
-          <div class="sidebar-header">
-              <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
-                  <div class="user-logo">
-                      <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                      <h3>CITRONELLA</h3>
-                  </div>
-              </div>
-          </div>
 
-          <ul class="list-unstyled components">
-              <li>
-                  <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                  <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                  <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-                  <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                  <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
-              </li>
-          </ul>
-          <ul class="list-unstyled CTAs">
-              <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
-              <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
-              <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+    <!-- Page Content Holder -->
+    <?= $this->renderSection('content');?>
 
-              <div class="logout">
-                  <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
-              </div>
-          </ul>
-      </nav>
-      <!-- Page Content Holder -->
-      <div class="navIcon">
-          <div class="navbar-header">
-              <button type="button" id="sidebarCollapse" class="navbar-btn"89>
-                <i class="bi bi-list fa-2x"></i>
-              </button>
-          </div>
-      </div>
-      <?= $this->renderSection('content');?>
-    </div>
     <!-- footer section starts  -->
-
     <section id="footer" class="container-fluid">
       <div class="row-md-4">
         <div class="contactLinks">
@@ -108,12 +74,5 @@
     <?php if(isset($js)):?>
       <?= echoFiles($js);?>
     <?php endif;?>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-        });
-      });
-    </script>
   </body>
 </html>

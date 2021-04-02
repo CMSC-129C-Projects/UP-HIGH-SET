@@ -27,7 +27,9 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['form', 'file', 'accountnotice', 'autopass'];
+	protected $helpers = ['form', 'file', 'accountnotice', 'autopass', 'url'];
+
+	public $session;
 
   protected $email_subject;
   protected $email_content;
@@ -48,5 +50,6 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		$this->session = session();
 	}
 }

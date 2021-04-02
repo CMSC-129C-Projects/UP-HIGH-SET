@@ -18,9 +18,6 @@
     </div>
   <?php endif;?>
   <section id="register" class="container-fluid">
-    <div class="nav" style="position: fixed; top: 4vh;">
-      <a class="nav-link" href="<?=base_url();?>/update/student"><input type="button" value="Return"></a>
-    </div>
     <div class="heading text-center">
       <h1>User Registration</h1>
     <div>
@@ -93,7 +90,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
-            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
+            <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>
@@ -181,7 +178,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
-            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
+            <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>

@@ -14,6 +14,12 @@ class Update extends BaseController
     }
 
 	public function index($role) {
+
+        // redirect to login if no session found
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url());
+        }
+
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
@@ -29,6 +35,12 @@ class Update extends BaseController
 	}
 
     public function add($role = null) {
+
+        // redirect to login if no session found
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url());
+        }
+
         $data['role'] = $role;
         $data['validation'] = null;
         $emailStatus = null;
@@ -56,6 +68,12 @@ class Update extends BaseController
     }
 
     public function edit($role = null, $id = null) {
+
+        // redirect to login if no session found
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url());
+        }
+
         $data = $this->setDefaultData($role, $id);
 
         $data['validation'] = null;
@@ -84,6 +102,12 @@ class Update extends BaseController
     }
 
     public function delete($id, $role = null) {
+
+        // redirect to login if no session found
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url());
+        }
+
         $this->admin->deleteUser($id, $role);
         return redirect()->to(base_url('update/' . $role));
     }
@@ -91,6 +115,7 @@ class Update extends BaseController
     /**
      * AUXILIARY FUNCTIONS BELOW
      */
+
     public function studentList($gradeLevel = null) {
         $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 

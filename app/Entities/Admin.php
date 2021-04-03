@@ -30,7 +30,7 @@ class Admin extends Account {
 
             $this->newStudent->first_name = $request->getPost('studFirstName');
             $this->newStudent->last_name = $request->getPost('studLastName');
-            $this->newStudent->role = 1;
+            $this->newStudent->role = 2;
             $this->newStudent->grade_level = $request->getPost('gradeLevel');
             $this->newStudent->contact_num = $request->getPost('studContactNum');
             $this->newStudent->username = $request->getPost('studUserName');
@@ -61,7 +61,7 @@ class Admin extends Account {
 
             $newAdmin->first_name = $request->getPost('adminFirstName');
             $newAdmin->last_name = $request->getPost('adminLastName');
-            $newAdmin->role = 0;
+            $newAdmin->role = 1;
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');

@@ -9,7 +9,7 @@ class EmailModel extends Model {
   protected $primaryKey = 'id';
 
   protected $useAutoIncrement = true;
-  protected $returnType           = 'array';
+  protected $returnType = 'array';
 
   protected $allowedFields = [
       'title',

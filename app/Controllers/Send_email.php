@@ -14,18 +14,22 @@ class Send_email extends BaseController {
     ];
 
     $data['validation'] = null;
+    $data['status'] = null;
 
     $email_subject = $this->request->getVar('email_subject');
     $email_content = $this->request->getVar('email_content');
     $email_purpose = $this->request->getVar('purpose');
 
-    $css = ['custom/styles.css'];
+    $css = ['custom/styles.css', 'custom/alert.css'];
+    $js = ['custom/alert.js'];
+    $data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
 
     if($this->request->getMethod() == 'post')
     {
       if($this->validate($rules))
       {
-        $data['css'] = addExternal($css, 'css');
+        $data['status'] = 'success';
         $emailModel = new EmailModel();
 
         $q_data = [

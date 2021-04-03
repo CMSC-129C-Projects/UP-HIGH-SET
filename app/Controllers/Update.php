@@ -109,13 +109,13 @@ class Update extends BaseController
      */
 
     public function studentList($gradeLevel = null) {
-        $data['studentList'] = $this->userModel->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
+        $data['studentList'] = $this->userModel->where('role','2')->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['studentList']);
     }
 
     public function adminList() {
-        $data['adminList'] = $this->userModel->where('role', 0)->where('is_deleted', 0)->findAll();
+        $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['adminList']);
     }

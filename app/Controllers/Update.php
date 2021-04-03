@@ -66,9 +66,9 @@ class Update extends BaseController
     public function edit($role = null, $id = null) {
 
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url());
+        // }
 
         $data = $this->setDefaultData($role, $id);
 
@@ -173,20 +173,20 @@ class Update extends BaseController
                         'valid_number' => 'This is not a valid number'
                     ]
                 ],
-                'studUserName' => 'min_length[6]',
-                'studEmail' => [
-                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
-                    'errors'    => [
-                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
-                        'isUniqueEmail' => 'Email is already taken'
-                    ]
-                ]
+                'studUserName' => 'min_length[6]'
             ];
             if(isset($id)) {
                 $rules['studNum'] = [
                     'rules'     => 'required|min_length[9]|owned_student_number['. $id .']',
                     'errors'    => [
                         'is_existing_data'  => 'Student number already exist'
+                    ]
+                ];
+                $rules['studEmail'] = [
+                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
                     ]
                 ];
             } else {
@@ -196,27 +196,52 @@ class Update extends BaseController
                         'is_existing_data'  => 'Student number already exist'
                     ]
                 ];
+                $rules['studEmail'] = [
+                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
+                    ]
+                ];
             }
         } else {
             $rules = [
                 'adminFirstName' => 'required',
-                'adminLastName' => 'required',
-                'adminContactNum' => [
+                'adminLastName' => 'required'
+            ];
+            if(isset($id)) {
+                $rules['adminContactNum'] = [
+                    'rules'     => 'required|min_length[11]|is_natural|valid_number|owned_contact['.$id.']',
+                    'errors'    => [
+                        'uniqueContact' => 'Contact number already exists',
+                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                        'valid_number' => 'This is not a valid number'
+                    ]
+                ];
+                $rules['adminEmail'] = [
+                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
+                    ]
+                ];
+            } else {
+                $rules['adminContactNum'] = [
                     'rules'     => 'required|uniqueContact|min_length[11]|is_natural|valid_number',
                     'errors'    => [
                         'uniqueContact' => 'Contact number already exists',
                         'is_natural'   => 'Contact number format: 09xxxxxxxxx',
                         'valid_number' => 'This is not a valid number'
                     ]
-                ],
-                'adminEmail' => [
+                ];
+                $rules['adminEmail'] = [
                     'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
                     ]
-                ]
-            ];
+                ];
+            }
         }
 
         return $rules;

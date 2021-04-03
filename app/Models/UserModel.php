@@ -9,7 +9,7 @@ class UserModel extends Model {
 
     protected $useAutoIncrement = true;
 
-    protected $returnType = 'App\Entities\Student';
+    protected $returnType = 'App\Entities\Account';
 
     protected $allowedFields = [
         'student_num',

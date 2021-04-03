@@ -47,7 +47,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
             
-            $status = send_acc_notice($this->newStudent->email, $subject, $message);
+            // $status = send_acc_notice($this->newStudent->email, $subject, $message);
             // Send account notice to student
 
             try {
@@ -77,7 +77,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
             
-            $status = send_acc_notice($newAdmin->email, $subject, $message);
+            // $status = send_acc_notice($newAdmin->email, $subject, $message);
             // Send account notice to admin
             
             try {
@@ -110,7 +110,8 @@ class Admin extends Account {
             }
         } else {
             $newAdmin = new self();
-            $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            // $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            $newAdmin = $this->userModel->find($id);
 
             $newAdmin->first_name = $request->getPost('adminFirstName');
             $newAdmin->last_name = $request->getPost('adminLastName');
@@ -136,7 +137,8 @@ class Admin extends Account {
         } else {
             $newAdmin = new self();
 
-            $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            // $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            $newAdmin = $this->userModel->find($id);
             $newAdmin->is_deleted = 1;
             $this->userModel->update($id, $newAdmin);
         }

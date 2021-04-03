@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>" required>
+                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>">
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                                             <h3>User Name</h3>
@@ -134,7 +134,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="studUserName" value="<?=set_value('studUserName', $uName);?>" required>
+                                            <input type="text" name="studUserName" value="<?=set_value('studUserName', $uName);?>">
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'studUserName');?></span>
                                             <h3>User Name</h3>
@@ -156,7 +156,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
-                                            <input type="text" name="studContactNum" value="<?=set_value('studContactNum', $cn);?>" required>
+                                            <input type="text" name="studContactNum" value="<?=set_value('studContactNum', $cn);?>">
                                             <br>
                                             <span class="text-danger"><?=displaySingleError($validation, 'studContactNum');?></span>
                                             <h3>Contact Number</h3>

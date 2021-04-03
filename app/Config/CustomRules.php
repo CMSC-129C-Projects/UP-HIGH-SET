@@ -26,7 +26,41 @@ class CustomRules {
 
         if($str == $student->student_num) {
             return true;
-        } elseif($userModel->where('student_num', $str)) {
+        } elseif($userModel->where('student_num', $str)->findAll()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public function owned_email(string $str, string $fields, array $data): bool {
+        $userModel = new \App\Models\UserModel();
+
+        $student = new \App\Entities\Student();
+
+        $fields = (int)$fields;
+        $student = $userModel->find($fields);
+
+        if($str == $student->email) {
+            return true;
+        } elseif($userModel->where('email', $str)->findAll()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function owned_contact(string $str, string $fields, array $data): bool {
+        $userModel = new \App\Models\UserModel();
+
+        $student = new \App\Entities\Admin();
+
+        $fields = (int)$fields;
+        $student = $userModel->find($fields);
+
+        if($str == $student->contact_num) {
+            return true;
+        } elseif($userModel->where('contact_num', $str)->findAll()) {
             return false;
         } else {
             return true;
@@ -40,7 +74,7 @@ class CustomRules {
     public function uniqueContact(string $str): bool {
         $userModel = new \App\Models\UserModel();
 
-        $admins = $userModel->asObject('\App\Entities\Admin')->where('role', '1')->where('contact_num', $str)->findAll();
+        $admins = $userModel->where('role', '1')->where('contact_num', $str)->findAll();
         return (count($admins) === 0);
     }
 

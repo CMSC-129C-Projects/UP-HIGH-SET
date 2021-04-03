@@ -43,4 +43,12 @@ class CustomRules {
         $admins = $userModel->asObject('\App\Entities\Admin')->where('role', '1')->where('contact_num', $str)->findAll();
         return (count($admins) === 0);
     }
+
+    public function isUniqueEmail(string $str): bool {
+        $userModel = new \App\Models\UserModel();
+
+        $user = $userModel->asArray()->where('email', $str)->findAll();
+
+        return (count($user) === 0);
+    }
 }

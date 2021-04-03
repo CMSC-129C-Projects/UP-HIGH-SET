@@ -165,9 +165,10 @@ class Update extends BaseController
                 ],
                 'studUserName' => 'min_length[6]',
                 'studEmail' => [
-                    'rules'     => 'required|valid_email|is_UP_mail',
+                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
                     'errors'    => [
-                        'is_UP_mail'    => 'The email you entered is not a valid UP mail'
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
                     ]
                 ]
             ];
@@ -199,9 +200,10 @@ class Update extends BaseController
                     ]
                 ],
                 'adminEmail' => [
-                    'rules'     => 'required|valid_email|is_UP_mail',
+                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
                     'errors'    => [
-                        'is_UP_mail'    => 'The email you entered is not a valid UP mail'
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
                     ]
                 ]
             ];

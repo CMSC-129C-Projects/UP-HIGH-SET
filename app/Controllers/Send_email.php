@@ -19,8 +19,6 @@ class Send_email extends BaseController {
     $email_content = $this->request->getVar('email_content');
     $email_purpose = $this->request->getVar('purpose');
 
-    // echo "$email_purpose" ;
-
     $css = ['custom/styles.css'];
 
     if($this->request->getMethod() == 'post')

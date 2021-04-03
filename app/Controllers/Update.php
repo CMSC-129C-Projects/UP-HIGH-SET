@@ -110,7 +110,7 @@ class Update extends BaseController
 
     public function studentList($gradeLevel = null) {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
+        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1') {
             return redirect()->to(base_url());
         }
 
@@ -121,7 +121,7 @@ class Update extends BaseController
 
     public function adminList() {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
+        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1') {
             return redirect()->to(base_url());
         }
 

@@ -66,9 +66,9 @@ class Update extends BaseController
     public function edit($role = null, $id = null) {
 
         // redirect to login if no session found
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url());
-        // }
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url());
+        }
 
         $data = $this->setDefaultData($role, $id);
 

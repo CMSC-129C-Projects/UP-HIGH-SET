@@ -19,7 +19,7 @@ class Admin extends Account {
 
         // For sending account notice
         $emailModel = new EmailModel();
-        $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','registration')->first();
+        $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','registration')->orderBy('created_on', 'desc')->first();
         $search = ['-content-', '-student-','-email-','-password-', '-website_link-'];
         $subject = $emailContent['title'];
         $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');

@@ -18,9 +18,6 @@
     </div>
   <?php endif;?>
   <section id="register" class="container-fluid">
-    <div class="nav" style="position: fixed; top: 4vh;">
-      <a class="nav-link" href="<?=base_url();?>/update/student"><input type="button" value="Return"></a>
-    </div>
     <div class="heading text-center">
       <h1>User Registration</h1>
     <div>
@@ -64,7 +61,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox uname">
-                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>" required>
+                    <input type="text" name="adminUserName" value="<?=set_value('adminUserName');?>">
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
                     <h3>User Name</h3>
@@ -93,7 +90,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
-            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
+            <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>
@@ -140,7 +137,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
-                      <input type="text" name="studUserName" value="<?=set_value('studUserName');?>" required>
+                      <input type="text" name="studUserName" value="<?=set_value('studUserName');?>">
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studUserName');?></span>
                       <h3>User Name</h3>
@@ -162,7 +159,7 @@
               <div class="col-md-6 half">
                 <div class="form-group">
                   <div class="inputBox">
-                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>" required>
+                    <input type="text" name="studContactNum" value="<?=set_value('studContactNum');?>">
                     <br>
                     <span class="text-danger"><?=displaySingleError($validation, 'studContactNum');?></span>
                     <h3>Contact Number</h3>
@@ -181,7 +178,7 @@
               </div>
             </div>
             <input type="submit" value="submit">
-            <button onclick="window.location.href='<?=base_url()?>';" id="cancel" type="button" name="cancel">Cancel</button>
+            <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
           </form>
         </div>
       </div>

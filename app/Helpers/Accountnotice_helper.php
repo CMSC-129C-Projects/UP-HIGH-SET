@@ -1,11 +1,12 @@
 <?php
 
-function send_acc_notice($to_email = null, $subject = null, $message = null, $bcc = null, $cc = null)
+function send_acc_notice($to_email = null, $subject = null, $message = null, $attachment = null, $bcc = null, $cc = null)
 {
   if(!isset($to_email) || !isset($subject) || !isset($message))
   {
     return false;
   }
+
   $email = \Config\Services::email();
 
   $email->setTo($to_email); //set email recipient
@@ -18,12 +19,17 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $bc
   $email->setSubject($subject);
   $email->setMessage($message);
 
-  if(isset($bcc)) {
+  if(isset($bcc) != null) {
     $email->setBCC($bcc);
   }
 
-  if(isset($bcc)) {
+  if(isset($bcc) != null ) {
     $email->setCC($cc);
+  }
+
+  if(isset($attachment) != null) {
+    $filename = $attachment;
+    $email->attach($filename);
   }
 
   if($email->send()) {

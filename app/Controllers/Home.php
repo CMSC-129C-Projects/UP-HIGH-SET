@@ -17,39 +17,6 @@ class Home extends BaseController
 	public function login()
 	{
 
-    // $data['validation'] = null;
-    // $data['error'] = null;
-    //
-    // if($this->request->getMethod() == 'post')
-    // {
-    //   $rules = [
-    //     'email' => 'required|valid_email',
-    //     'password' => 'required|validateUser[email, password]'
-    //   ];
-    //
-    //   $errors = [
-    //     'password' => [
-    //         'validateUser' => "Email and Password don't match",
-    //     ],
-    //   ];
-    //
-    //   if($this->validate($rules, $errors)){
-    //
-    //     $model = new LoginModel();
-    //     $user = $model->where('email', $this->request->getVar('email'))->first();
-    //
-    //     if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
-    //       $data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
-    //       return view('user_mgt/login', $data);
-    //     } else {
-    //       $this->setSession($user);
-    //       return redirect()->to(base_url('dashboard'));
-    //     }
-    //   } else {
-    //     $data['validation'] = $this->validator;
-    //   }
-    // }
-
 		if ($this->session->has('logged_user')) {
 			return redirect()->to(base_url('dashboard'));
 		}

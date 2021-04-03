@@ -31,6 +31,9 @@ class BaseController extends Controller
 
 	public $session;
 
+  protected $email_subject;
+  protected $email_content;
+
 	/**
 	 * Constructor.
 	 *

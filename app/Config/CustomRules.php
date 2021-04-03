@@ -36,4 +36,19 @@ class CustomRules {
     public function is_UP_mail(string $str): bool {
         return strpos($str, '@up.edu.ph') !== false;
     }
+
+    public function uniqueContact(string $str): bool {
+        $userModel = new \App\Models\UserModel();
+
+        $admins = $userModel->asObject('\App\Entities\Admin')->where('role', '1')->where('contact_num', $str)->findAll();
+        return (count($admins) === 0);
+    }
+
+    public function isUniqueEmail(string $str): bool {
+        $userModel = new \App\Models\UserModel();
+
+        $user = $userModel->asArray()->where('email', $str)->findAll();
+
+        return (count($user) === 0);
+    }
 }

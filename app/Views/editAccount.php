@@ -17,11 +17,6 @@
         <div class="heading text-center">
             <h1>Registration Form</h1>
         <div>
-        
-        <div class="nav" style="position: fixed; top: 4vh;">
-            <a class="nav-link" href="<?=base_url();?>/update/admin"><input type="button" value="Return"></a>
-        </div>
-
         <div class="row justify-content-center">
             <ul class="nav nav-tabs">
                 <?php if($role == 'admin'):?>
@@ -95,6 +90,7 @@
                                 </div>
                             </div>
                             <input type="submit" value="update">
+                            <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
                         </form>
                     </div>
                 </div>
@@ -179,6 +175,7 @@
                                 </div>
                             </div>
                             <input type="submit" value="update">
+                            <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
                         </form>
                     </div>
                 </div>

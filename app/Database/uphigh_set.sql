@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2021 at 05:53 AM
+-- Generation Time: Apr 03, 2021 at 09:28 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -51,6 +51,22 @@ CREATE TABLE `clicklogs` (
   `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails`
+--
+
+CREATE TABLE `emails` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `purpose` enum('registration','change_pass','forgot_pass','announcement','evaluation') NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `is_deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -239,6 +255,14 @@ CREATE TABLE `userlog` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `userlog`
+--
+
+INSERT INTO `userlog` (`id`, `user_id`, `time_check`, `latest_activity`, `ip_address`, `type`, `user_token`, `platform`, `user_agent`, `created_on`, `updated_on`, `is_deleted`) VALUES
+(690, 30, '2021-04-01 15:29:38', '2021-04-01 15:29:38', '::1', 'login', 'TiNWXOi1DRlMcaxqfD7HxYhPdUFIDRIJrmURMuZwcCJbZGrRPdym1WkcZAxjVpQmqRYMFY0G77y1TSfzavtNIEGc83EUXT1jDh4F', 'Windows 10', 'Chrome 89.0.4389.114', '2021-04-01 10:29:38', '2021-04-01 10:29:38', 0),
+(691, 30, '2021-04-02 03:45:58', '2021-04-02 03:45:58', '::1', 'login', 'BC08nLu1VQ4ERFi73FFDzMYmrLcjyJUFdM36zGniMff3Icxy4b5eIhbkZyHDzaTDqeEEE4rjGZieDHfSZWzKU1ip9n9aQoybdM2g', 'Windows 10', 'Chrome 89.0.4389.114', '2021-04-01 22:45:58', '2021-04-01 22:45:58', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -247,19 +271,30 @@ CREATE TABLE `userlog` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `student_num` int(11) NOT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `grade_level` int(11) DEFAULT NULL,
+  `student_num` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `role` tinyint(1) NOT NULL,
+  `grade_level` int(11) NOT NULL,
   `contact_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `username` varchar(100) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `created_on` datetime DEFAULT NULL,
-  `is_active` tinyint(4) DEFAULT 0,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `is_active` tinyint(4) DEFAULT 1,
+  `is_deleted` tinyint(1) DEFAULT 0,
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `student_num`, `first_name`, `last_name`, `role`, `grade_level`, `contact_num`, `username`, `email`, `password`, `created_on`, `is_active`, `is_deleted`, `updated_on`) VALUES
+(29, '201804275', 'Rosalie', 'Razonabler', 1, 12, '09770194573', 'rsraz123', 'rsrazonable1@up.edu.ph', '$2y$10$/p7tqywBSyA4peNG1Nr7z.yv1Plxg0f6CiolDV/0GIPMNpTxVHf1u', '2021-03-22 04:31:34', 1, 1, '2021-03-22 04:42:22'),
+(30, '201804276', 'Rosalie', 'Razonable', 1, 12, '09770194573', 'rsraz123', 'rsrazonable1218@gmail.com', '$2b$10$E5KzBD3rpWArIuP9N/ABFOS0bQOdzfUruroSZdTthKnBUREp/ZhPu', '2021-03-22 04:46:02', 1, 0, '2021-04-02 12:00:49'),
+(31, '201271676', 'hek', 'hok', 1, 12, '098948374831', 'hekhok123', 'rsrazonable12@up.edu.ph', '$2y$10$lvJj7yBy3n.DtwxNXCqDtuama5VfTQls1Qt7eoif/CKb0zsAEl8Ke', '2021-04-01 04:49:47', 1, 0, '2021-04-01 04:49:47'),
+(32, '238924205', 'ru', 'ru', 1, 7, '09873648323', 'jkhfkd', 'hekehok@up.edu.ph', '$2y$10$vOfHu7UIt9YG5ctbkmGfwOudC.pTDL/AElikk1Wdfe/sxQx4OOkmG', '2021-04-01 22:54:29', 1, 0, '2021-04-01 22:54:29');
 
 --
 -- Indexes for dumped tables
@@ -269,6 +304,12 @@ CREATE TABLE `users` (
 -- Indexes for table `clicklogs`
 --
 ALTER TABLE `clicklogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emails`
+--
+ALTER TABLE `emails`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -330,7 +371,9 @@ ALTER TABLE `userlog`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `studentnum` (`student_num`);
+  ADD UNIQUE KEY `studentnum` (`student_num`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `email_2` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -340,6 +383,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `clicklogs`
 --
 ALTER TABLE `clicklogs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emails`
+--
+ALTER TABLE `emails`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -394,13 +443,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=690;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=692;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

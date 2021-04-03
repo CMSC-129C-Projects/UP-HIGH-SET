@@ -1,6 +1,8 @@
 <?php
 namespace App\Entities;
 
+use App\Models\EmailModel;
+
 class Admin extends Account {
 
     public $action;
@@ -33,10 +35,13 @@ class Admin extends Account {
             $this->newStudent->is_deleted = 0;
 
             // Send account notice to student
-            $search = ['-student-','-password-', '-website_link-'];
-            $replace = [$this->newStudent->first_name, $password, base_url()];
+            $emailModel = new EmailModel();
+            $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','registration')->first();
 
-            $subject = 'Account Notification';
+            $search = ['-content-', '-student-','-email-','-password-', '-website_link-'];
+            $replace = [$emailContent['message'], $this->newStudent->first_name, $this->newStudent->email, $password, base_url()];
+
+            $subject = $emailContent['title'];
             $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
 
             $message = str_replace($search, $replace, $message);

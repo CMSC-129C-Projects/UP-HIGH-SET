@@ -30,9 +30,9 @@
           <h2> Student Evaluation for Teachers</h2>
       </div>
     </section>
-    <!-- header section ends --> 
+    <!-- header section ends -->
     <!-- Sidebar Holder -->
-    <div class="wrapper d-flex align-items-stretch">   
+    <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar">
         <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
@@ -42,6 +42,25 @@
                 </div>
             </div>
         </div>
+
+        <!-- <ul class="list-unstyled components">
+            <li>
+                <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
+                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
+                <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+                <a href="#"><i class="bi bi-zoom-in"></i> About</a>
+                <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
+            </li>
+        </ul>
+        <ul class="list-unstyled CTAs">
+            <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
+            <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+            <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+
+            <div class="logout">
+                <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
+            </div>
+        </ul> -->
 
         <ul class="list-unstyled components">
             <li>
@@ -55,6 +74,8 @@
         <ul class="list-unstyled CTAs">
             <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
             <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+            <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+
             <div class="logout">
                 <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
             </div>

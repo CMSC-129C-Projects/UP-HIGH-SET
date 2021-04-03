@@ -17,6 +17,14 @@ class Admin extends Account {
     public function addUser($request, $role) {
         $status = true;
 
+        // For sending account notice
+        $emailModel = new EmailModel();
+        $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','registration')->first();
+        $search = ['-content-', '-student-','-email-','-password-', '-website_link-'];
+        $subject = $emailContent['title'];
+        $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
+        // For sending account notice
+
         if($role === 'student') {
             $this->newStudent->student_num = $request->getPost('studNum');
 
@@ -35,14 +43,7 @@ class Admin extends Account {
             $this->newStudent->is_deleted = 0;
 
             // Send account notice to student
-            $emailModel = new EmailModel();
-            $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','registration')->first();
-
-            $search = ['-content-', '-student-','-email-','-password-', '-website_link-'];
             $replace = [$emailContent['message'], $this->newStudent->first_name, $this->newStudent->email, $password, base_url()];
-
-            $subject = $emailContent['title'];
-            $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
 
             $message = str_replace($search, $replace, $message);
             
@@ -71,7 +72,13 @@ class Admin extends Account {
             $newAdmin->is_active = 1;
             $newAdmin->is_deleted = 0;
 
-            $statue = true;
+            // Send account notice to admin
+            $replace = [$emailContent['message'], $newAdmin->first_name, $newAdmin->email, $password, base_url()];
+
+            $message = str_replace($search, $replace, $message);
+            
+            $status = send_acc_notice($newAdmin->email, $subject, $message);
+            // Send account notice to admin
             
             try {
                 $this->userModel->insert($newAdmin);

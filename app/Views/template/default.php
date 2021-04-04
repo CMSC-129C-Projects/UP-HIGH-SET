@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style></style>
+
   <head>
     <title>UP High SET</title>
     <meta charset="UTF-8">
@@ -18,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/modalAddition.css" rel="stylesheet">
     <?php if(isset($css)):?>
       <?= echoFiles($css);?>
     <?php endif;?>

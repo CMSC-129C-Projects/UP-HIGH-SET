@@ -1,0 +1,61 @@
+.button {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3rem;
+  width: 25rem;
+  margin-bottom: 1rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button:hover {
+  color: #ffff;
+  background: #014421;
+}
+
+.modal-header {
+  background: linear-gradient(to top right, #800000 25%, #228b22 100%);
+  color: #ffff;
+}
+
+.modal-body {
+  background: #e9dbc1;
+}
+
+.modal-backdrop {
+  opacity: 0.7 !important;
+  display: none;
+}
+
+.modal-dialog {
+  box-shadow: 4px 4px 3px grey;
+  border-color: black;
+  border-width: 2px;
+}
+
+form .inputBox input,
+form .inputBox textarea {
+  outline: none;
+  border: 0.15rem solid #333;
+  border-radius: 0.3rem;
+  margin: 2rem 0;
+  padding: 0 1rem;
+  background: none;
+  height: 4rem;
+  width: 90%;
+  font-size: 2rem;
+}

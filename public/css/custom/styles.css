@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
- font-family: 'Roboto';
+  box-sizing: border-box;
+  font-family: "Roboto";
 
-  -webkit-transition: all .2s linear;
-  transition: all .2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 html {
@@ -26,32 +26,32 @@ body {
   left: 0;
   padding: 2rem 4rem;
   z-index: 1000;
-  background: linear-gradient(to top right, #800000 0%,#228B22 100%);
-  position:sticky;
+  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  position: sticky;
 }
 
-#header .schoolWebsiteName img{
+#header .schoolWebsiteName img {
   float: left;
   width: 60px;
   margin-top: -5px;
 }
 
-#header .schoolWebsiteName h1{
-  margin-left:70px;
+#header .schoolWebsiteName h1 {
+  margin-left: 70px;
   margin-top: 0px;
-  color:#e9dbc1;
+  color: #e9dbc1;
   font-size: 18px;
 }
 
-#header .schoolWebsiteName h2{
-  margin-left:70px;
+#header .schoolWebsiteName h2 {
+  margin-left: 70px;
   margin-top: 5px;
   font-style: italic;
-  color:#e9dbc1;
+  color: #e9dbc1;
   font-size: 15px;
 }
 
-#header .schoolWebsiteName a{
+#header .schoolWebsiteName a {
   right: 0;
 }
 
@@ -62,17 +62,16 @@ body {
   background-color: #e9dbc1;
 }
 
-#register .nav{
-
- margin: auto;
+#register .nav {
+  margin: auto;
   width: 700px;
 }
 
-#register .nav h2{
+#register .nav h2 {
   font-size: 20px;
   color: #7b1113;
   border-radius: 1rem;
-  border-style:outset;
+  border-style: outset;
   border-color: #7b1113;
 }
 
@@ -84,7 +83,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
   position: relative;
   z-index: 1;
@@ -93,7 +92,7 @@ body {
   width: 8rem;
   margin-bottom: 1rem;
   margin-left: 0%;
-  background:#7b1113;
+  background: #7b1113;
   color: #fff;
 }
 
@@ -102,11 +101,12 @@ body {
 }
 
 #register .nav input[type="button"]:hover {
-  color:#ffff;
+  color: #ffff;
   background: #014421;
 }
 
-#register .heading h1, .heading h1 {
+#register .heading h1,
+.heading h1 {
   font-size: 4rem;
   color: #7b1113;
   padding-top: 5rem;
@@ -125,7 +125,7 @@ body {
   box-shadow: 0 0 2rem #333;
 }
 
-#register form .inputBox{
+#register form .inputBox {
   position: relative;
   text-align: center;
 }
@@ -143,24 +143,26 @@ body {
 } */
 
 /* adjust layout and spacing */
-#register form .inputBox input, #register form .inputBox textarea {
-    outline: none;
-    border: .15rem solid #333;
-    border-radius: 1.3rem;
-    margin: 1.65rem 0;
-    padding: 0 1rem;
-    background: none;
-    height: 3.80rem;
-    width: 85%;
-    font-size: 2rem;
+#register form .inputBox input,
+#register form .inputBox textarea {
+  outline: none;
+  border: 0.15rem solid #333;
+  border-radius: 1.3rem;
+  margin: 1.65rem 0;
+  padding: 0 1rem;
+  background: none;
+  height: 3.8rem;
+  width: 85%;
+  font-size: 2rem;
 }
 
 #register form .inputBox input:focus ~ h3,
-#register form .inputBox input:valid ~ h3, #register form .inputBox textarea:focus ~ h3,
+#register form .inputBox input:valid ~ h3,
+#register form .inputBox textarea:focus ~ h3,
 #register form .inputBox textarea:valid ~ h3 {
   font-size: 1.6rem;
   left: 6%;
-  top: -.5rem;
+  top: -0.5rem;
   color: #ff3300;
 }
 
@@ -181,7 +183,7 @@ input[type="submit"] {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
   position: relative;
   z-index: 1;
@@ -189,30 +191,30 @@ input[type="submit"] {
   height: 4rem;
   width: 10rem;
   margin: 2rem 1.5rem;
-  background:#7b1113;
+  background: #7b1113;
   color: #fff;
 }
 
 #register form input[type="submit"]:hover::before,
 button#cancel:hover::before,
-input[type="submit"]:hover::before{
+input[type="submit"]:hover::before {
   width: 100%;
 }
 
 #register form input[type="submit"]:hover,
 button#cancel:hover,
 input[type="submit"]:hover {
-  color:#ffff;
+  color: #ffff;
   background: #014421;
 }
 
-#register form .mailBox{
+#register form .mailBox {
   width: 50%;
-   margin: auto;
+  margin: auto;
 }
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%,#228B22 100%);
+  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
   width: 100%;
   bottom: 0;
   left: 0;
@@ -226,43 +228,44 @@ input[type="submit"]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
   margin: 1rem 0;
   margin: auto;
 }
 
 #footer .contactLinks h3 {
   font-size: 18px;
-  color:#e9dbc1;
+  color: #e9dbc1;
   margin-top: 1rem;
-
 }
 
 #footer .contactLinks a {
   color: #e9dbc1;
   font-size: 14px;
-
 }
 
 /* Additional css for layout */
-.nav-tabs .nav-link.active#btn-admin, .nav-tabs .nav-link.active#btn-student {
-    background-color: transparent !important;
-    border-color: transparent !important;
+.nav-tabs .nav-link.active#btn-admin,
+.nav-tabs .nav-link.active#btn-student {
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .nav-tabs .nav-link#btn-admin,
 .nav-tabs .nav-link#btn-student {
-    margin-right: -10px;
+  margin-right: -10px;
 }
 
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link#btn-admin:hover,
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link#btn-student:hover {
-    border-color: transparent;
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link#btn-admin:hover,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link#btn-student:hover {
+  border-color: transparent;
 }
 
 .col-md-6.half {
-    margin-right: -25px;
+  margin-right: -25px;
 }
 
 form.add {
@@ -270,7 +273,7 @@ form.add {
 }
 
 .row-md-4.email {
-    margin-top: -5px;
+  margin-top: -5px;
 }
 
 .contactLinks {
@@ -278,91 +281,88 @@ form.add {
 }
 
 .schoolWebsiteName {
-    padding: .75rem 0;
+  padding: 0.75rem 0;
 }
 
+#footer {
+  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-  #footer {
-    background: linear-gradient(to top right, #800000 0%,#228B22 100%);
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
+#footer .contactLinks {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  margin: 1rem 0;
+  margin: auto;
+}
 
-  }
+#footer .contactLinks h3 {
+  font-size: 18px;
+  color: #e9dbc1;
+  margin-top: 1rem;
+}
 
-  #footer .contactLinks {
-    text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-            flex-flow: column;
-    margin: 1rem 0;
-    margin: auto;
-  }
+#footer .contactLinks a {
+  color: #e9dbc1;
+  font-size: 14px;
+}
 
-  #footer .contactLinks h3 {
-    font-size: 18px;
-    color:#e9dbc1;
-    margin-top: 1rem;
-
-  }
-
-  #footer .contactLinks a {
-    color: #e9dbc1;
-    font-size: 14px;
-
-  }
-
-  /* STYLE SA DASHBOARD */
-  /*
+/* STYLE SA DASHBOARD */
+/*
     DEMO STYLE
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
 }
 
-a, a:hover, a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 .navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+  box-shadow: none;
+  outline: none !important;
+  border: none;
 }
 
 .line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
 }
 
 /* ---------------------------------------------------
@@ -370,48 +370,45 @@ a, a:hover, a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    align-items: stretch;
-    perspective: 1500px;
-    background-color: #e9dbc1;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: stretch;
+  perspective: 1500px;
+  background-color: #e9dbc1;
 }
 
-
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: linear-gradient(to bottom, #7b1113 0%, #014421 100%);
+  min-width: 250px;
+  max-width: 250px;
+  background: linear-gradient(to bottom, #7b1113 0%, #014421 100%);
 
-    opacity: 80%;
-    color: #fff;
-    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-    transform-origin: bottom left;
+  opacity: 80%;
+  color: #fff;
+  transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
+  transform-origin: bottom left;
 }
 
 #sidebar.active {
-    margin-left: -250px;
-    transform: rotateY(100deg);
+  margin-left: -250px;
+  transform: rotateY(100deg);
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+  padding: 20px;
 
-    opacity: 200%;
-
+  opacity: 200%;
 }
 
-#sidebar .user-logo img{
- height: 50px;
+#sidebar .user-logo img {
+  height: 50px;
   border-radius: 200%;
-
- }
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #e9dbc1;
 }
-#sidebar .components a{
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #e9dbc1;
+}
+#sidebar .components a {
   color: #e9dbc1;
   font-size: 15px;
 }
@@ -422,89 +419,86 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul p {
-    color: #e9dbc1;
-    padding: 10px;
-    font-size: 20px;
+  color: #e9dbc1;
+  padding: 10px;
+  font-size: 20px;
 }
 
 #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #ffed8a;
+  color: #7386d5;
+  background: #ffed8a;
 }
 
-
-
-
 a[data-toggle="collapse"] {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
 }
 
 ul.CTAs {
-    padding: 20px;
+  padding: 20px;
 }
 
 ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
-a.article, a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+a.article,
+a.article:hover {
+  background: #6d7fcc !important;
+  color: #fff !important;
 }
 
-.navIcon .navbar-header i{
+.navIcon .navbar-header i {
   color: #7b1113;
 }
-.navIcon .navbar-header #sidebarCollapse{
-
+.navIcon .navbar-header #sidebarCollapse {
   background-color: #ffed8a;
 }
-#sidebar .nav-link  input[type="button"] {
+#sidebar .nav-link input[type="button"] {
   outline: none;
   border-color: #ffed8a;
-  border-style:groove;
+  border-style: groove;
   border-radius: 5rem;
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
 
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
   width: 15rem;
-  background:#7b1113;
-  color: #ffed8a  ;
+  background: #7b1113;
+  color: #ffed8a;
 }
 #sidebar .nav-link input[type="button"]:hover::before {
   width: 100%;
 }
 #sidebar .nav-link input[type="button"]:hover {
-  color:#7b1113;
+  color: #7b1113;
   background: #ffed8a;
 }
 
@@ -512,26 +506,26 @@ a.article, a.article:hover {
   margin-top: 20px;
   outline: none;
   border-color: #ffed8a;
-  border-style:none;
+  border-style: none;
   border-radius: 5rem;
   font-size: 1rem;
   font-weight: bold;
   text-transform: capitalize;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
 
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
   width: 10rem;
-  background:#ffed8a;
-  color: #7b1113  ;
+  background: #ffed8a;
+  color: #7b1113;
 }
 #sidebar .logout .nav-link input[type="button"]:hover::before {
   width: 100%;
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
-  color:#ffff;
+  color: #ffff;
   background: #014421;
 }
 
@@ -563,22 +557,20 @@ a.article, a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #navIcon {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
 }
 
 #sidebarCollapse {
-    width: 40px;
-    height: 40px;
-    background: #f5f5f5;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  cursor: pointer;
 }
 
-
-#dashboardWelcomeMessage{
-
+#dashboardWelcomeMessage {
   width: 100%;
   bottom: 0;
   left: 0;
@@ -586,7 +578,7 @@ a.article, a.article:hover {
   height: 300px;
 }
 
-#Contents .welcomeMsg img{
+#Contents .welcomeMsg img {
   position: relative;
   margin-top: 50px;
   width: 100%;
@@ -597,17 +589,17 @@ a.article, a.article:hover {
   bottom: 21vh;
 }
 
-#Contents .adminDashboardButtons .nav{
+#Contents .adminDashboardButtons .nav {
   display: flex;
   justify-content: center;
   margin-right: 3.5%;
 }
 
-#Contents .studentDashboardButtons .nav{
+#Contents .studentDashboardButtons .nav {
   left: 40%;
   margin-top: -17.5vh;
   position: relative;
-  }
+}
 #Contents .nav input[type="button"] {
   outline: none;
   border: none;
@@ -616,21 +608,21 @@ a.article, a.article:hover {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
 
   z-index: 1;
   overflow: hidden;
   height: 3.5rem;
   width: 15rem;
-  background:#7b1113;
+  background: #7b1113;
   color: #fff;
 }
 #Contents .nav input[type="button"]:hover::before {
   width: 100%;
 }
 #Contents .nav input[type="button"]:hover {
-  color:#ffff;
+  color: #ffff;
   background: #014421;
 }
 
@@ -638,12 +630,16 @@ a.article, a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-        transform: rotateY(90deg);
-    }
-    #sidebar.active {
-        margin-left: 0;
-        transform: none;
-    }
+  #sidebar {
+    margin-left: -250px;
+    transform: rotateY(90deg);
+  }
+  #sidebar.active {
+    margin-left: 0;
+    transform: none;
+  }
 }
+
+/* ---------------------------------------------------
+    Others
+----------------------------------------------------- */

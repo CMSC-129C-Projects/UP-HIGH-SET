@@ -36,7 +36,7 @@
             <div class="row custom-row">
                 <div class="col-md 6 d-flex justify-content-center">
                     <div class="form-background">
-                        <form action="" method="post">
+                        <form action="<?=base_url()?>/home/login" method="post">
 
                           <?php if(isset($error)!=null) {?>
                             <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
@@ -53,7 +53,7 @@
                                 <span><?=displaySingleError($validation, 'password');?></span>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <small style="float: right;"><a href="">Forgot Password?</a></small>
+                                <small style="float: right;"><a href="#" data-toggle="modal" data-target="#forgotPassword">Forgot Password?</a></small>
                                 <button class="btn btn-primary btn-login" type="submit">Log In</button>
                             </div>
                         </form>
@@ -67,5 +67,28 @@
                 </div>
             </div>
         </div>
-    </section>
+  </section>
+  <div class="modal fade" id="forgotPassword"  role="dialog" position="default">
+    <div class="modal-dialog">
+    <div class="modal-content" style="background: transparent;">
+
+      <div class="modal-header">
+        <h2 style="color: #e9dbc1">Retrieve your account</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </div>
+
+      <div class="modal-body" style="padding: 20px;">
+        <form method="post" action="<?=base_url()?>/forgot_password">
+          <div class="form-group">
+            <label for="e_mail" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
+            <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email">
+            <input type="submit" value="Confirm">
+            <input type="button" class="button2" data-dismiss="modal" value="Close">
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
 <?= $this->endSection();?>

@@ -20,7 +20,7 @@ class Send_email extends BaseController {
     $email_content = $this->request->getVar('email_content');
     $email_purpose = $this->request->getVar('purpose');
 
-    $css = ['custom/styles.css', 'custom/alert.css'];
+    $css = ['custom/modalAddition.css', 'custom/alert.css'];
     $js = ['custom/alert.js'];
     $data['css'] = addExternal($css, 'css');
     $data['js'] = addExternal($js, 'javascript');

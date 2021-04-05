@@ -36,7 +36,7 @@
             <div class="row custom-row">
                 <div class="col-md 6 d-flex justify-content-center">
                     <div class="form-background">
-                        <form action="" method="post">
+                        <form action="<?=base_url()?>/home/login" method="post">
 
                           <?php if(isset($error)!=null) {?>
                             <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
@@ -67,29 +67,28 @@
                 </div>
             </div>
         </div>
+  </section>
+  <div class="modal fade" id="forgotPassword"  role="dialog" position="default">
+    <div class="modal-dialog">
+    <div class="modal-content" style="background: transparent;">
 
-    <div class="modal fade" id="forgotPassword"  role="dialog" position="default">
-      <div class="modal-dialog">
-      <div class="modal-content" style="background: transparent;">
+      <div class="modal-header">
+        <h2 style="color: #e9dbc1">Retrieve your account</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </div>
 
-        <div class="modal-header">
-          <h2 style="color: #e9dbc1">Retrieve your account</h2>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </div>
-
-        <div class="modal-body" style="padding: 20px;">
-          <form method="post" action="">
-            <div class="form-group">
-              <label for="email" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
-              <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email">
-            </div>
+      <div class="modal-body" style="padding: 20px;">
+        <form method="post" action="<?=base_url()?>/home/forgot_pass">
+          <div class="form-group">
+            <label for="e_mail" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
+            <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email">
             <input type="submit" value="Confirm">
             <input type="button" class="button2" data-dismiss="modal" value="Close">
-          </form>
-        </div>
-      </div>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+    </div>
+  </div>
 <?= $this->endSection();?>

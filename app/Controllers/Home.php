@@ -60,8 +60,13 @@ class Home extends BaseController
 		return view('user_mgt/login', $data);
 	}
 
-  	protected function setSession($user)
-  	{
+  public function forgot_pass()
+  {
+    echo "An email will be sent to you shortly!";
+  }
+
+  protected function setSession($user)
+  {
 		$session_data = [
 			'email'			=> $user['email'],
 			'password' 		=> $user['password'],

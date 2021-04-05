@@ -67,6 +67,7 @@
                 </div>
             </div>
         </div>
+
     <div class="modal fade" id="forgotPassword"  role="dialog" position="default">
       <div class="modal-dialog">
       <div class="modal-content" style="background: transparent;">
@@ -75,13 +76,13 @@
           <h2 style="color: #e9dbc1">Retrieve your account</h2>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </div> 
+        </div>
 
         <div class="modal-body" style="padding: 20px;">
           <form method="post" action="">
             <div class="form-group">
               <label for="email" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
-              <input type="text" class="form-control" style="background:white" name = 'email' id="e_mail" value="<?=set_value('email_content')?>" placeholder="Email">
+              <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email">
             </div>
             <input type="submit" value="Confirm">
             <input type="button" class="button2" data-dismiss="modal" value="Close">

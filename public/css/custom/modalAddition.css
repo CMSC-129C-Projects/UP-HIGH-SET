@@ -27,13 +27,43 @@
   background: #014421;
 }
 
+.button2 {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 4rem;
+  width: 10rem;
+  margin-bottom: 1rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+.button2:hover::before {
+  width: 100%;
+}
+
+.button2:hover {
+  color: #ffff;
+  background: grey;
+}
+
 .modal-header {
   background: linear-gradient(to top right, #800000 25%, #228b22 100%);
   color: #ffff;
 }
 
 .modal-body {
-  background: #e9dbc1;
+  background: #dac295;
+  /* background: #e9dbc1; */
 }
 
 .modal-backdrop {
@@ -42,10 +72,32 @@
 }
 
 .modal-dialog {
+  border-color: black;
+  border-width: 2px;
+  position: absolute;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+.form-background i {
+  color: #e9dbc1;
+  font-size: 2rem;
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* .modal-dialog {
   box-shadow: 4px 4px 3px grey;
   border-color: black;
   border-width: 2px;
-}
+} */
 
 form .inputBox input,
 form .inputBox textarea {

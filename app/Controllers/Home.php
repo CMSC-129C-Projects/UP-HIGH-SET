@@ -60,7 +60,7 @@ class Home extends BaseController
 		return view('user_mgt/login', $data);
 	}
 
-  public function forgot_pass()
+  public function forgot_password()
   {
     echo "An email will be sent to you shortly!";
   }

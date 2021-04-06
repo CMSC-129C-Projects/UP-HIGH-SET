@@ -1,8 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
-
 <?= $this->section('content');?>
-  <?php if(isset($status)):?>
+
+<?php if(isset($status)):?>
     <div id="bg-modal" class="black-modal-email">
       <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
         <div class="mdl-content">
@@ -50,16 +50,16 @@
               <option value="forgot_pass">Forgot Password</option>
             </select>
             <br>
-            <span class="text-danger"><?=displaySingleError($validation, 'purpose');?></span>
-          </div>
-
-          <p style="font-size:13px">Attachment is Optional</p>
-          <input type="file" name="attachment[]" value="" >
-          <br>
-          <input type="submit" value="update">
-        </form>
-
+            <p style="font-size:13px">Attachment is Optional</p>
+            <input type="file" name="attachment[]" value="" >
+            <br>
+            <input type="submit" value="update">
+            
+          </form>
+        </div>
       </div>
-    </div>
+      </div>
   </div>
+</section>
+
 <?= $this->endSection();?>

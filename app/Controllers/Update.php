@@ -37,8 +37,8 @@ class Update extends BaseController
     public function add($role = null) {
 
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
+        if (!$this->session->has('logged_user') || !$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('login'));
         }
 
         $data['role'] = $role;
@@ -66,8 +66,8 @@ class Update extends BaseController
     public function edit($role = null, $id = null) {
 
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
+        if (!$this->session->has('logged_user') || !$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('login'));
         }
 
         $data = $this->setDefaultData($role, $id);
@@ -96,8 +96,8 @@ class Update extends BaseController
     public function delete($id, $role = null) {
 
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
+        if (!$this->session->has('logged_user') || !$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('login'));
         }
 
         $this->admin->deleteUser($id, $role);
@@ -110,7 +110,8 @@ class Update extends BaseController
 
     public function studentList($gradeLevel = null) {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1') {
+        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1'
+            || !$_SESSION['logged_user']['emailVerified']) {
             return redirect()->to(base_url());
         }
 
@@ -121,7 +122,8 @@ class Update extends BaseController
 
     public function adminList() {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1') {
+        if (!$this->session->has('logged_user') || $_SESSION['logged_user']['role'] != '1'
+            || !$_SESSION['logged_user']['emailVerified']) {
             return redirect()->to(base_url());
         }
 

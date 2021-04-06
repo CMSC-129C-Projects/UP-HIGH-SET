@@ -6,6 +6,10 @@ use App\Models\EmailModel;
 class Send_email extends BaseController {
 
   public function index() {
+    if (!$this->session->has('logged_user') || !$_SESSION['logged_user']['emailVerified']) {
+      return redirect()->to(base_url('login'));
+    }
+    
     $data = [];
     $rules = [
       'email_subject' => 'required',

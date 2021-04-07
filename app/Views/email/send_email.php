@@ -48,6 +48,7 @@
               <option value="evaluation">Evaluation</option>
               <option value="change_pass">Change Password</option>
               <option value="forgot_pass">Forgot Password</option>
+              <option value="verification">Verification</option>
             </select>
             <br>
             <p style="font-size:13px">Attachment is Optional</p>

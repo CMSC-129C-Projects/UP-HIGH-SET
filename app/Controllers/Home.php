@@ -70,6 +70,9 @@ class Home extends BaseController
 
     $data = [];
 		$data['validation'] = null;
+    $data['validate_error'] = null;
+    $data['success'] = null;
+
     $css = ['custom/login/login.css'];
     $data['css'] = addExternal($css, 'css');
 
@@ -95,6 +98,7 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
           // $data['userToken'] = $userToken;
 					$this->resetPasswordEmail();
+          $data['success'] = true;
           // return redirect()->to(base_url('reset_password'));
         } else {
           $data['validate_error'] = 'Email does not exist.';
@@ -104,7 +108,6 @@ class Home extends BaseController
         $data['validation'] = $this->validator;
       }
     }
-    $data['success'] = true;
     return view('user_mgt/forgot_password', $data);
     // return redirect()->to(base_url('reset_password'));
   }

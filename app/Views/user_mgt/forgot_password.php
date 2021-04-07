@@ -20,6 +20,11 @@
           <div class="alert-success" style="padding: 20px;">
             <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
           </div>
+        <?php } elseif( $success == null && $validate_error == null && $validation == null) {?>
+          <div class="alert-danger" style="padding: 20px;">
+            <h4> You are not authorized to access this page. </h4>
+            <a class="btn btn-primary" href="<?=base_url('login')?>">Back</a>
+          </div>
         <?php } ?>
       </div>
     </div>

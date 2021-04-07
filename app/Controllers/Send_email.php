@@ -6,6 +6,14 @@ use App\Models\EmailModel;
 class Send_email extends BaseController {
 
   public function index() {
+    // redirect to login if no session found
+    // redirect to verifyAccount page if session not yet verified
+    if (!$this->session->has('logged_user')) {
+      return redirect()->to(base_url('login'));
+    } elseif (!$_SESSION['logged_user']['emailVerified']) {
+      return redirect()->to(base_url('verifyAccount'));
+    }
+
     $data = [];
     $rules = [
       'email_subject' => 'required',

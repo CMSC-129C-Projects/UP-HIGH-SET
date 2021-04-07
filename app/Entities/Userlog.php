@@ -36,6 +36,8 @@ class Userlog extends Entity {
         $this->attributes['platform'] = $currentAgent['platform'];
         $this->attributes['user_agent'] = $currentAgent['agent'];
         $this->attributes['is_deleted'] = 0;
+
+        return $user_token;
     }
 
     /**

@@ -36,6 +36,8 @@ $routes->get('/', 'Home::index');
 // $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'login', 'Home::login', ['filter' => 'noauth']);
 $routes->match(['get', 'post'], 'forgot_password', 'Home::forgot_password');
+$routes->add('verification/(:any)', 'Home::verification/$1');
+$routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');
 $routes->add('update/student', 'Update::index/student');
 

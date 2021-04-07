@@ -65,7 +65,7 @@ class Home extends BaseController
 		return view('user_mgt/login', $data);
 	}
 
-<<<<<<< HEAD
+
   public function forgot_password()
   {
     $data = [];
@@ -100,7 +100,7 @@ class Home extends BaseController
     }
     return view('user_mgt/forgot_password', $data);
   }
-=======
+
 	public function verification($userToken)
 	{
 		// In seconds
@@ -120,16 +120,10 @@ class Home extends BaseController
 		}
 	}
 
-	public function forgot_password()
-	{
-		echo "An email will be sent to you shortly!";
-	}
-
 	public function verifyAccount()
 	{
 		return view('verification/verification');
 	}
->>>>>>> 1ab778059c82561d7adcaeee8d05c3a0421dfd31
 
 	protected function setSession($user, $userToken)
 	{

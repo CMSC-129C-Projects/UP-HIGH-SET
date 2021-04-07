@@ -72,6 +72,7 @@
             </li>
         </ul>
         <ul class="list-unstyled CTAs">
+            <a class="nav-link" href="<?=base_url('reset_password')?>"><input type="button" value=" Change Password" name="change_pass"></a>
             <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
             <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
             <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>

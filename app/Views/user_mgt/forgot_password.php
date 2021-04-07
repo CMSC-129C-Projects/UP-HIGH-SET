@@ -32,7 +32,7 @@
               $url = base_url('home/reset_password');
             }?> -->
 
-            <form class="reset_pass" action="" method="post">
+            <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post">
             <!-- <form class="reset_pass" action="<?=$url?>" method="post"> -->
               <div class="form-group">
                 <label for="new_pass">Set new password</label>

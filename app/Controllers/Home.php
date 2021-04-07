@@ -110,18 +110,21 @@ class Home extends BaseController
 
   public function reset_password($userToken = null)
   {
+    if (!$this->session->has('logged_user') && !$_SESSION['logged_user']['emailVerified']) {
+			return redirect()->to(base_url('login'));
+		}
+
     $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
     $data = [];
     $data['error'] = null;
     $data['validation'] = null;
 
-    $userToken = $_SESSION['logged_user']['userToken'];
-
     if(empty($userToken)) {
       $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
+
     } elseif($userToken === $_SESSION['logged_user']['userToken'])
     {
-      if($timeElapsed <= 900)
+      if($timeElapsed <= 900) //15 minutes
       {
         $_SESSION['logged_user']['passwordReset'] = true;
 
@@ -179,9 +182,11 @@ class Home extends BaseController
 		if($_SESSION['logged_user']['emailVerified']) {
 			return redirect()->to(base_url('dashboard'));
 		} elseif($userToken === $_SESSION['logged_user']['userToken']) {
+
 			if($timeDifference <= 1800) {
 				$_SESSION['logged_user']['emailVerified'] = true;
 				unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+
 				return redirect()->to(base_url('dashboard'));
 			} else {
 				// Redirect to a page that notifies the link has expired

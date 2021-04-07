@@ -1,35 +1,6 @@
 <?= $this->extend('template/default');?>
 
 <?= $this->section('content');?>
-<!-- <div class="container-fluid">
-  <div class="row home">
-    <div class="container" style="height: 500px;">
-      <div class="card login" style="margin: 10% auto !important; padding: 3rem; width: 40%; vertical-align: middle; border-radius: .5rem;">
-        <div class="heading text-center">
-          <h3>User Login</h3>
-        </div>
-
-        <form class="form-horizontal" action="" method="post">
-          <?php if(isset($error)!=null) {?>
-            <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
-          <?php } ?>
-            <div class="form-group">
-              <label class="control-label" for="email">Email address:</label>
-              <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>
-              <input type="email" name="email" class="form-control" id="email" value="<?=set_value('email')?>">
-            </div>
-
-            <div class="form-group">
-              <label class="control-label" for="pwd">Password:</label>
-              <span class="text-danger"><?=displaySingleError($validation, 'password');?></span>
-              <input type="password" name="password" class="form-control" id="pwd">
-            </div>
-
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label><input type="checkbox"> Remember me</label>
-                </div> -->
     <img src="<?=base_url('public/images/uphs.jpeg')?>" class="background">
     <section class="login">
         <div class="container cntr-custom">

@@ -48,7 +48,7 @@
 
               <div class="form-group">
                 <input type="submit" name="update" value="Update" class="btn btn-primary">
-                <input type="submit" name="cancel" value="Cancel" class="btn btn-primary">
+                <a href="<?=base_url('dashboard/logout')?>" class="btn button2 btn-primary" style='margin: auto;'>Cancel</a>
               </div>
             </form>
 

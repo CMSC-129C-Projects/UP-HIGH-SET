@@ -11,48 +11,15 @@
           <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
 
-        <?php } ?>
+        <?php } elseif(isset($validate_error)!=null) { ?>
 
-        <?php if(isset($validate_error)!=null) { ?>
-
-          <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></h4>
+          <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=$validate_error?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
 
-        <?php } else { ?>
-          <h3 class="card-title">Reset Password</h3>
-
-          <!-- <?php if(isset($error) != null) { ?>
-            <div class="alert alert-danger">
-              <?=$error?>
-            </div>
-          <?php } else { ?>
-            <?php if(!empty($userToken)) {
-                $url = base_url('home/reset_password') . "/" . $userToken;
-            } else {
-              $url = base_url('home/reset_password');
-            }?> -->
-
-            <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post">
-            <!-- <form class="reset_pass" action="<?=$url?>" method="post"> -->
-              <div class="form-group">
-                <label for="new_pass">Set new password</label>
-                <input id="new_pass" class="form-control" type="password" name="new_pass" value="">
-                <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'new_pass')?></h4>
-              </div>
-
-              <div class="form-group">
-                <label for="confirm_pass">Confirm password</label>
-                <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="">
-                <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
-              </div>
-
-              <div class="form-group">
-                <input type="submit" name="update" value="Update" class="btn btn-primary">
-                <a href="<?=base_url('dashboard/logout')?>" class="btn button2 btn-primary" style='margin: auto;'>Cancel</a>
-              </div>
-            </form>
-
-          <?php } ?>
+        <?php } elseif(isset($success) != null) { ?>
+          <div class="alert-success" style="padding: 20px;">
+            <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
+          </div>
         <?php } ?>
       </div>
     </div>

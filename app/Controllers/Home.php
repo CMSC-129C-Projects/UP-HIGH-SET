@@ -93,8 +93,9 @@ class Home extends BaseController
           $userToken = $this->updateUserlog($user['id']);
 
 					$this->setSession($user, $userToken);
-					$this->resetPasswordEmail();
-
+          $data['userToken'] = $userToken;
+					// $this->resetPasswordEmail();
+          // return redirect()->to(base_url('reset_password'));
         } else {
           $data['validate_error'] = 'Email does not exist.';
           return view('user_mgt/forgot_password', $data);
@@ -103,8 +104,9 @@ class Home extends BaseController
         $data['validation'] = $this->validator;
       }
     }
-
-    return view('user_mgt/forgot_password', $data);
+    $data['success'] = true;
+    // return view('user_mgt/forgot_password', $data);
+    return redirect()->to(base_url('reset_password'));
   }
 
   public function reset_password($userToken = null)
@@ -118,17 +120,17 @@ class Home extends BaseController
     $data['error'] = null;
     $data['validation'] = null;
 
+    $userToken = $_SESSION['logged_user']['userToken'];
+
     if(empty($userToken)) {
       $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
 
-    } elseif($userToken === $_SESSION['logged_user']['userToken'])
-    {
-      if($timeElapsed <= 900) //15 minutes
-      {
+    } elseif($userToken === $_SESSION['logged_user']['userToken']) {
+      if($timeElapsed <= 900) {
         $_SESSION['logged_user']['passwordReset'] = true;
 
-        if($this->request->getMethod() == 'post')
-        {
+        if($this->request->getMethod() == 'post') {
+
           $rules = [
             'new_pass' => [
               'label' => 'New password',
@@ -145,33 +147,34 @@ class Home extends BaseController
               'regex_match' => 'Weak password! <br>Password must have at least one digit, lowercase and uppercase letter and special character.'
             ]
           ];
+
+
+          if($this->validate($rules, $errors)) {
+
+            $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
+            $datum = ['password' => $password];
+
+            $model = new LoginModel();
+            $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+
+            unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+            return redirect()->to(base_url('dashboard/logout'));
+          } else {
+
+            $data['validation'] = $this->validator;
+            return view('user_mgt/reset_password', $data);
+          }
         }
-
-        if($this->validate($rules, $errors)){
-
-          $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
-          $datum = ['password' => $password];
-
-          $model = new LoginModel();
-          $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
-
-          unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
-          return redirect()->to(base_url('dashboard/logout'));
-
-        } else {
-
-          $data['validation'] = $this->validator;
-          return view('user_mgt/forgot_password', $data);
-        }
-
       } else {
         $data['error'] = 'Sorry. Reset password link has expired.';
       }
     } else {
       $data['error'] = 'You are not authorized to access this page.'; //When incorrect usertoken
     }
-    return view('user_mgt/forgot_password', $data);
+
+    return view('user_mgt/reset_password', $data);
   }
+
 
 	public function verification($userToken)
 	{

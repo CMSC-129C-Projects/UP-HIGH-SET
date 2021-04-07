@@ -85,22 +85,48 @@ class Home extends BaseController
       ];
 
       if($this->validate($rules, $errors)) {
-
+        $email = $this->request->getVar('email_fpass', FILTER_SANITIZE_EMAIL);
         $model = new LoginModel();
-				$user = $model->where('email', $this->request->getVar('email_fpass', FILTER_SANITIZE_EMAIL))->first();
+				$user = $model->where('email', $email)->first();
 
-        if(isset($user)!=null) {
+        if(!empty($user)) {
+          $userToken = $this->updateUserlog($user['id']);
+					$this->setSession($user, $userToken);
 
+					$this->resetPasswordEmail();
         } else {
-          // $this->session->setTempdata('error', 'Email does not exist.', 3);
-          $data['error'] = 'Email does not exist.';
+          $data['validate_error'] = 'Email does not exist.';
           return view('user_mgt/forgot_password', $data);
         }
       } else {
         $data['validation'] = $this->validator;
       }
     }
+
     return view('user_mgt/forgot_password', $data);
+  }
+
+  public function reset_password($userToken=null)
+  {
+    $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
+    $data = [];
+    $data['error'] = null;
+
+    if(empty($usertoken)) {
+      $data['error'] = 'Unauthorized access.';
+    } elseif($userToken === $_SESSION['logged_user']['userToken'])
+    {
+      if($timeElapsed <= 1800)
+      {
+        
+        // unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+        // return redirect()->to(base_url('dashboard'));
+      } else {
+        $data['error'] = 'Sorry. Reset password link has expired.';
+      }
+    } else {
+      $data['error'] = 'You are not authorized to access this page.';
+    }
   }
 
 	public function verification($userToken)
@@ -120,7 +146,7 @@ class Home extends BaseController
 				echo 'Sorry. Verification link has expired';
 			}
 		}
-	}
+  }
 
 	public function verifyAccount()
 	{
@@ -173,4 +199,20 @@ class Home extends BaseController
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
 		// For sending 2f verification
 	}
+
+  protected function resetPasswordEmail()
+  {
+    $emailModel = new EmailModel();
+
+    $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','forgot_pass')->orderBy('created_on', 'desc')->first();
+
+    $search = ['-content-', '-student-', '-website_link-'];
+    $subject = $emailContent['title'];
+
+    $message = file_get_contents(base_url() . '/app/Views/verification.html');
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
+
+		$message = str_replace($search, $replace, $message);
+		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+  }
 }

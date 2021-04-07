@@ -65,7 +65,6 @@ class Home extends BaseController
 		return view('user_mgt/login', $data);
 	}
 
-
   public function forgot_password()
   {
 
@@ -110,9 +109,9 @@ class Home extends BaseController
 
   public function reset_password($userToken = null)
   {
-    if (!$this->session->has('logged_user') && !$_SESSION['logged_user']['emailVerified']) {
-			return redirect()->to(base_url('login'));
-		}
+    // if (!$this->session->has('logged_user') && !$_SESSION['logged_user']['emailVerified']) {
+		// 	return redirect()->to(base_url('login'));
+		// }
 
     $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
     $data = [];

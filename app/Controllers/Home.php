@@ -54,7 +54,7 @@ class Home extends BaseController
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
 					$this->sendVerification();
 					// To be changed for a page that notifies the email verification was sent
-					return redirect()->to(base_url('forgot_password'));
+					return redirect()->to(base_url('verifyAccount'));
 				}
 			} else {
 				$data['validation'] = $this->validator;
@@ -86,6 +86,11 @@ class Home extends BaseController
 	public function forgot_password()
 	{
 		echo "An email will be sent to you shortly!";
+	}
+
+	public function verifyAccount()
+	{
+		return view('verification/verification');
 	}
 
 	protected function setSession($user, $userToken)

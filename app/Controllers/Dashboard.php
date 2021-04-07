@@ -7,8 +7,10 @@ use App\Controllers\BaseController;
 class Dashboard extends BaseController
 {
   public function index() {
-    if (!$this->session->has('logged_user') || !$_SESSION['logged_user']['emailVerified']) {
+    if (!$this->session->has('logged_user')) {
       return redirect()->to(base_url('login'));
+    } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        return redirect()->to(base_url('verifyAccount'));
     }
     return view('user_mgt/dashboard');
   }

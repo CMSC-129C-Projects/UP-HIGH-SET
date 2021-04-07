@@ -93,8 +93,8 @@ class Home extends BaseController
           $userToken = $this->updateUserlog($user['id']);
 
 					$this->setSession($user, $userToken);
-          $data['userToken'] = $userToken;
-					// $this->resetPasswordEmail();
+          // $data['userToken'] = $userToken;
+					$this->resetPasswordEmail();
           // return redirect()->to(base_url('reset_password'));
         } else {
           $data['validate_error'] = 'Email does not exist.';
@@ -105,8 +105,8 @@ class Home extends BaseController
       }
     }
     $data['success'] = true;
-    // return view('user_mgt/forgot_password', $data);
-    return redirect()->to(base_url('reset_password'));
+    return view('user_mgt/forgot_password', $data);
+    // return redirect()->to(base_url('reset_password'));
   }
 
   public function reset_password($userToken = null)
@@ -120,7 +120,7 @@ class Home extends BaseController
     $data['error'] = null;
     $data['validation'] = null;
 
-    $userToken = $_SESSION['logged_user']['userToken'];
+    // $userToken = $_SESSION['logged_user']['userToken'];
 
     if(empty($userToken)) {
       $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
@@ -156,6 +156,8 @@ class Home extends BaseController
 
             $model = new LoginModel();
             $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+
+            $_SESSION['logged_user']['passwordReset'] = true;
 
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
             return redirect()->to(base_url('dashboard/logout'));

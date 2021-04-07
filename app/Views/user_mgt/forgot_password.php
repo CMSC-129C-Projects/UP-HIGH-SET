@@ -11,7 +11,9 @@
           <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
 
-        <?php } elseif(isset($valiate_error)!=null) { ?>
+        <?php } ?>
+
+        <?php if(isset($validate_error)!=null) { ?>
 
           <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
@@ -24,16 +26,23 @@
               <?=$error?>
             </div>
           <?php } else { ?>
-
-            <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post">
+            <?php if(!empty($userToken)) {
+                $url = base_url('home/reset_password') . "/" . $userToken;
+            } else {
+              $url = base_url('home/reset_password');
+            }?>
+            <!-- <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post"> -->
+            <form class="reset_pass" action="<?=$url?>" method="post">
               <div class="form-group">
                 <label for="new_pass">Set new password</label>
                 <input id="new_pass" class="form-control" type="password" name="new_pass" value="">
+                <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'new_pass')?></h4>
               </div>
-              
+
               <div class="form-group">
                 <label for="confirm_pass">Confirm password</label>
                 <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="">
+                <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
               </div>
 
               <div class="form-group">

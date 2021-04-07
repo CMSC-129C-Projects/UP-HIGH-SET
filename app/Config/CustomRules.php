@@ -32,7 +32,7 @@ class CustomRules {
             return true;
         }
     }
-    
+
     public function owned_email(string $str, string $fields, array $data): bool {
         $userModel = new \App\Models\UserModel();
 

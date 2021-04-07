@@ -91,9 +91,10 @@ class Home extends BaseController
 
         if(!empty($user)) {
           $userToken = $this->updateUserlog($user['id']);
+          var_dump($userToken);
 					$this->setSession($user, $userToken);
-
-					$this->resetPasswordEmail();
+          $data['userToken'] = $userToken;
+					// $this->resetPasswordEmail();
         } else {
           $data['validate_error'] = 'Email does not exist.';
           return view('user_mgt/forgot_password', $data);
@@ -106,38 +107,50 @@ class Home extends BaseController
     return view('user_mgt/forgot_password', $data);
   }
 
-  public function reset_password($userToken=null)
+  // public function reset_password($userToken=null)
+  public function reset_password($userToken = null)
   {
     $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
     $data = [];
     $data['error'] = null;
     $data['validation'] = null;
 
-    if(empty($usertoken)) {
+    $userToken = $_SESSION['logged_user']['userToken'];
+
+    if(empty($userToken)) {
       $data['error'] = 'Unauthorized access.';
     } elseif($userToken === $_SESSION['logged_user']['userToken'])
     {
-      if($timeElapsed <= 1800)
+      if($timeElapsed <= 900)
       {
         if($this->request->getMethod() == 'post')
         {
           $rules = [
             'new_pass' => [
-              'label' => 'New Password',
-              // 'rules' => 'required|min_length[8]|max_length[16]|call_back_valid_password'
-              'rules' => 'required|min_length[8]|max_length[16]'
+              'label' => 'New password',
+              'rules' => 'required|min_length[8]|max_length[16]|regex_match[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$]'
+              // 'rules' => 'required|min_length[8]|max_length[16]'
             ],
             'confirm_pass' => [
               'label' => 'Confirm Password',
               'rules' => 'required|matches[new_pass]'
             ]
           ];
+
+          $errors = [
+            'new_pass' => [
+              'regex_match' => 'Weak password! <br>Password must have at least one digit, lowercase and uppercase letter and special character.'
+            ]
+          ];
         }
 
-        if($this->validate($rules)){
-
+        if($this->validate($rules, $errors)){
+          $password = password_hash($this->request->getVar('new_pass'), PASSWORD_BCRYPT);
+          echo $password;
         } else {
           $data['validation'] = $this->validator;
+          echo $this->request->getVar('new_pass');
+          return view('user_mgt/forgot_password', $data);
         }
         // unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
         // return redirect()->to(base_url('dashboard'));

@@ -48,17 +48,4 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="container" style="height: ">
-    <div class="reset_password">
-      <h3>Reset Password</h3>
-      <?php if(isset($error) != null) { ?>
-        <div class="alert alert-danger">
-          <?=$error?>;
-        </div>
-      <?php } else { ?>
-
-      <?php } ?>
-    </div>
-  </div> -->
 <?php $this->endSection(); ?>

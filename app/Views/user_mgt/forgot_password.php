@@ -7,32 +7,41 @@
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body">
         <?php if (isset($validation) != null) { ?>
-          <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass');?></h4>
+
+          <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
+
         <?php } elseif(isset($valiate_error)!=null) { ?>
+
           <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></h4>
           <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
+
         <?php } else { ?>
           <h3 class="card-title">Reset Password</h3>
+
           <?php if(isset($error) != null) { ?>
             <div class="alert alert-danger">
-              <?=$error?>;
+              <?=$error?>
             </div>
           <?php } else { ?>
+
             <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post">
               <div class="form-group">
                 <label for="new_pass">Set new password</label>
                 <input id="new_pass" class="form-control" type="password" name="new_pass" value="">
               </div>
+              
               <div class="form-group">
                 <label for="confirm_pass">Confirm password</label>
                 <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="">
               </div>
+
               <div class="form-group">
                 <input type="submit" name="update" value="Update" class="btn btn-primary">
                 <input type="submit" name="cancel" value="Cancel" class="btn btn-primary">
               </div>
             </form>
+
           <?php } ?>
         <?php } ?>
       </div>

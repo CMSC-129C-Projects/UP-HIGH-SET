@@ -111,6 +111,7 @@ class Home extends BaseController
     $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
     $data = [];
     $data['error'] = null;
+    $data['validation'] = null;
 
     if(empty($usertoken)) {
       $data['error'] = 'Unauthorized access.';
@@ -118,7 +119,26 @@ class Home extends BaseController
     {
       if($timeElapsed <= 1800)
       {
-        
+        if($this->request->getMethod() == 'post')
+        {
+          $rules = [
+            'new_pass' => [
+              'label' => 'New Password',
+              // 'rules' => 'required|min_length[8]|max_length[16]|call_back_valid_password'
+              'rules' => 'required|min_length[8]|max_length[16]'
+            ],
+            'confirm_pass' => [
+              'label' => 'Confirm Password',
+              'rules' => 'required|matches[new_pass]'
+            ]
+          ];
+        }
+
+        if($this->validate($rules)){
+
+        } else {
+          $data['validation'] = $this->validator;
+        }
         // unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
         // return redirect()->to(base_url('dashboard'));
       } else {
@@ -127,7 +147,69 @@ class Home extends BaseController
     } else {
       $data['error'] = 'You are not authorized to access this page.';
     }
+    return view('user_mgt/forgot_password', $data)
   }
+
+  // public function valid_password($password = null)
+	// {
+	// 	$password = trim($password);
+  //
+	// 	$regex_lowercase = '/[a-z]/';
+	// 	$regex_uppercase = '/[A-Z]/';
+	// 	$regex_number = '/[0-9]/';
+	// 	$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>ยง~]/';
+  //
+	// 	if (empty($password))
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field is required.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (preg_match_all($regex_lowercase, $password) < 1)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least one lowercase letter.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (preg_match_all($regex_uppercase, $password) < 1)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least one uppercase letter.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (preg_match_all($regex_number, $password) < 1)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field must have at least one number.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (preg_match_all($regex_special, $password) < 1)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>ยง~'));
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (strlen($password) < 5)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least 5 characters in length.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	if (strlen($password) > 32)
+	// 	{
+	// 		$this->form_validation->set_message('valid_password', 'The {field} field cannot exceed 32 characters in length.');
+  //
+	// 		return FALSE;
+	// 	}
+  //
+	// 	return TRUE;
+	// }
 
 	public function verification($userToken)
 	{

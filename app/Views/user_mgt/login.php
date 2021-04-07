@@ -53,7 +53,8 @@
         <form method="post" action="<?=base_url()?>/forgot_password">
           <div class="form-group">
             <label for="e_mail" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
-            <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email">
+            <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email" required>
+            <span><?=displaySingleError($validation, 'email_fpass');?></span>
             <input type="submit" value="Confirm">
             <input type="button" class="button2" data-dismiss="modal" value="Close">
           </div>

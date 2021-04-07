@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\LoginModel;
 use App\Models\UserlogModel;
-// use App\Models\UserModel;
 use App\Models\EmailModel;
 
 use \App\Entities\Userlog;
@@ -48,6 +47,7 @@ class Home extends BaseController
 				if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
 					$data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
 					return view('user_mgt/login', $data);
+
 				} else {
 					$userToken = $this->updateUserlog($user['id']);
 					$this->setSession($user, $userToken);
@@ -68,15 +68,16 @@ class Home extends BaseController
 
   public function forgot_password()
   {
+
     $data = [];
 		$data['validation'] = null;
     $css = ['custom/login/login.css'];
     $data['css'] = addExternal($css, 'css');
 
-    if($this->request->getMethod() == 'post'){
+    if($this->request->getMethod() == 'post')
+    {
 
       $rules = ['email_fpass' => 'required|valid_email|is_UP_mail'];
-
       $errors = [
 				'email_fpass' => [
           'is_UP_mail'  => 'The email you entered is an invalid UP mail',
@@ -91,10 +92,10 @@ class Home extends BaseController
 
         if(!empty($user)) {
           $userToken = $this->updateUserlog($user['id']);
-          var_dump($userToken);
+
 					$this->setSession($user, $userToken);
-          $data['userToken'] = $userToken;
-					// $this->resetPasswordEmail();
+					$this->resetPasswordEmail();
+
         } else {
           $data['validate_error'] = 'Email does not exist.';
           return view('user_mgt/forgot_password', $data);
@@ -107,7 +108,6 @@ class Home extends BaseController
     return view('user_mgt/forgot_password', $data);
   }
 
-  // public function reset_password($userToken=null)
   public function reset_password($userToken = null)
   {
     $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
@@ -118,18 +118,19 @@ class Home extends BaseController
     $userToken = $_SESSION['logged_user']['userToken'];
 
     if(empty($userToken)) {
-      $data['error'] = 'Unauthorized access.';
+      $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
     } elseif($userToken === $_SESSION['logged_user']['userToken'])
     {
       if($timeElapsed <= 900)
       {
+        $_SESSION['logged_user']['passwordReset'] = true;
+
         if($this->request->getMethod() == 'post')
         {
           $rules = [
             'new_pass' => [
               'label' => 'New password',
               'rules' => 'required|min_length[8]|max_length[16]|regex_match[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$]'
-              // 'rules' => 'required|min_length[8]|max_length[16]'
             ],
             'confirm_pass' => [
               'label' => 'Confirm Password',
@@ -145,84 +146,30 @@ class Home extends BaseController
         }
 
         if($this->validate($rules, $errors)){
-          $password = password_hash($this->request->getVar('new_pass'), PASSWORD_BCRYPT);
-          echo $password;
+
+          $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
+          $datum = ['password' => $password];
+
+          $model = new LoginModel();
+          $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+
+          unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+          return redirect()->to(base_url('dashboard/logout'));
+
         } else {
+
           $data['validation'] = $this->validator;
-          echo $this->request->getVar('new_pass');
           return view('user_mgt/forgot_password', $data);
         }
-        // unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
-        // return redirect()->to(base_url('dashboard'));
+
       } else {
         $data['error'] = 'Sorry. Reset password link has expired.';
       }
     } else {
-      $data['error'] = 'You are not authorized to access this page.';
+      $data['error'] = 'You are not authorized to access this page.'; //When incorrect usertoken
     }
     return view('user_mgt/forgot_password', $data);
   }
-
-  // public function valid_password($password = null)
-	// {
-	// 	$password = trim($password);
-  //
-	// 	$regex_lowercase = '/[a-z]/';
-	// 	$regex_uppercase = '/[A-Z]/';
-	// 	$regex_number = '/[0-9]/';
-	// 	$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>ยง~]/';
-  //
-	// 	if (empty($password))
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field is required.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (preg_match_all($regex_lowercase, $password) < 1)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least one lowercase letter.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (preg_match_all($regex_uppercase, $password) < 1)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least one uppercase letter.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (preg_match_all($regex_number, $password) < 1)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field must have at least one number.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (preg_match_all($regex_special, $password) < 1)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>ยง~'));
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (strlen($password) < 5)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field must be at least 5 characters in length.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	if (strlen($password) > 32)
-	// 	{
-	// 		$this->form_validation->set_message('valid_password', 'The {field} field cannot exceed 32 characters in length.');
-  //
-	// 		return FALSE;
-	// 	}
-  //
-	// 	return TRUE;
-	// }
 
 	public function verification($userToken)
 	{
@@ -255,7 +202,8 @@ class Home extends BaseController
 			'email'			=> $user['email'],
 			'password' 		=> $user['password'],
 			'role'			=> $user['role'],
-			'isLoggedIn' 	=> true,
+      'isLoggedIn' 	=> true,
+      'passwordReset' => false,
 			'emailVerified' => false,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')

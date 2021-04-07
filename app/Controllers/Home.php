@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\LoginModel;
 use App\Models\UserlogModel;
-use App\Models\UserModel;
+// use App\Models\UserModel;
 use App\Models\EmailModel;
 
 use \App\Entities\Userlog;
@@ -85,15 +85,17 @@ class Home extends BaseController
       ];
 
       if($this->validate($rules, $errors)) {
-        // $model = new UserModel();
-				// $user = $model->where('email', $this->request->getVar('email'))->first();
-        //
-				// if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
-				// 	$data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
-				// 	return view('user_mgt/login', $data);
-				// } else {
-        //
-				// }
+
+        $model = new LoginModel();
+				$user = $model->where('email', $this->request->getVar('email_fpass', FILTER_SANITIZE_EMAIL))->first();
+
+        if(isset($user)!=null) {
+
+        } else {
+          // $this->session->setTempdata('error', 'Email does not exist.', 3);
+          $data['error'] = 'Email does not exist.';
+          return view('user_mgt/forgot_password', $data);
+        }
       } else {
         $data['validation'] = $this->validator;
       }
@@ -157,14 +159,14 @@ class Home extends BaseController
 	protected function sendVerification()
 	{
 		// For sending 2f verification
-        $emailModel = new EmailModel();
+    $emailModel = new EmailModel();
 
-        $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','verification')->orderBy('created_on', 'desc')->first();
+    $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','verification')->orderBy('created_on', 'desc')->first();
 
-        $search = ['-content-', '-student-', '-website_link-'];
-        $subject = $emailContent['title'];
+    $search = ['-content-', '-student-', '-website_link-'];
+    $subject = $emailContent['title'];
 
-        $message = file_get_contents(base_url() . '/app/Views/verification.html');
+    $message = file_get_contents(base_url() . '/app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);

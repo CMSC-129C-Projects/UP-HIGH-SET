@@ -7,12 +7,25 @@
       <div class="card" style="width:400px; margin: auto !important; position: relative; top: 25%;">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body">
-        <h4><?=displaySingleError($validation, 'email_fpass');?></h4>
+        <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass');?></h4>
         <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
       </div>
     </div>
     </div>
   <?php endif; ?>
+
+  <?php if(isset($error)!=null) {?>
+    <div class="container-fluid" style="height: 420px;">
+      <div class="card" style="width:400px; margin: auto !important; position: relative; top: 25%;">
+      <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
+      <div class="card-body">
+        <!-- <h4><?=displaySingleError($validation, 'email_fpass');?></h4> -->
+        <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></h4>
+        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#forgotPassword">Retry!</a>
+      </div>
+    </div>
+    </div>
+  <?php } ?>
 
   <div class="modal fade" id="forgotPassword"  role="dialog" position="default">
     <div class="modal-dialog">

@@ -147,7 +147,7 @@ class Home extends BaseController
     } else {
       $data['error'] = 'You are not authorized to access this page.';
     }
-    return view('user_mgt/forgot_password', $data)
+    return view('user_mgt/forgot_password', $data);
   }
 
   // public function valid_password($password = null)

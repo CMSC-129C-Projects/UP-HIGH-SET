@@ -53,9 +53,15 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
-					$this->sendVerification();
-					// To be changed for a page that notifies the email verification was sent
-					return redirect()->to(base_url('verifyAccount'));
+          if(!$this->checkPasswordLastUpdate()) {
+					  $this->sendVerification();
+            // To be changed for a page that notifies the email verification was sent
+					  return redirect()->to(base_url('verifyAccount'));
+          } else {
+            $_SESSION['logged_user']['emailVerified'] = true;
+            unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+            return redirect()->to(base_url('dashboard'));
+          }
 				}
 			} else {
 				$data['validation'] = $this->validator;
@@ -64,6 +70,16 @@ class Home extends BaseController
 
 		return view('user_mgt/login', $data);
 	}
+
+  protected function checkPasswordLastUpdate()
+  {
+    $student = new \App\Entities\Student();
+    $model = new UserModel();
+        
+    $student = $model->where('email', $_SESSION['logged_user']['email'])->first();
+    // Check if last password update was less than or equal to 30 minutes
+    return ((strtotime(date('Y-m-d H:i:s')) - strtotime($student->updated_on)) <= 1800);
+  }
 
   public function forgot_password()
   {

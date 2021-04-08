@@ -133,7 +133,7 @@ class Home extends BaseController
     // return redirect()->to(base_url('home/reset_password')."/". $data['userToken']);
 
     if(!$this->session->has('logged_user')) {
-      $data['error'] = 'Unauthorized access.';
+      $data['error'] = 'You need to login to change your password. </br> Otherwise, click forgot password instead.';
       return view('user_mgt/reset_password', $data);
     } else {
       return redirect()->to(base_url('home/reset_password')."/". $_SESSION['logged_user']['userToken']);

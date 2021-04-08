@@ -87,7 +87,7 @@ class CustomRules {
     }
 
     public function validateUser(string $str, string $fields, array $data){
-        $model = new App\Models\UserModel();
+        $model = new \App\Models\UserModel();
         $user = $model->asArray()->where('email', $data['email'])->first();
     
         if(!$user)

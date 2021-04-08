@@ -46,7 +46,7 @@ class Admin extends Account {
             $replace = [$emailContent['message'], $this->newStudent->first_name, $this->newStudent->email, $password, base_url()];
 
             $message = str_replace($search, $replace, $message);
-            
+
             // $status = send_acc_notice($this->newStudent->email, $subject, $message);
             // Send account notice to student
 
@@ -76,10 +76,10 @@ class Admin extends Account {
             $replace = [$emailContent['message'], $newAdmin->first_name, $newAdmin->email, $password, base_url()];
 
             $message = str_replace($search, $replace, $message);
-            
+
             // $status = send_acc_notice($newAdmin->email, $subject, $message);
             // Send account notice to admin
-            
+
             try {
                 $this->userModel->insert($newAdmin);
             } catch (\Exception $e) {

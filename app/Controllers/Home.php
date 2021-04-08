@@ -11,6 +11,8 @@ use \App\Entities\Userlog;
 
 class Home extends BaseController
 {
+  protected $is_change_pass = true;
+
 	public function index() {
 		return redirect()->to(base_url('login'));
 	}
@@ -96,10 +98,10 @@ class Home extends BaseController
           $userToken = $this->updateUserlog($user['id']);
 
 					$this->setSession($user, $userToken);
-          // $data['userToken'] = $userToken;
+          // $data['userToken'] = $userToken; //for testing purposes
+
 					$this->resetPasswordEmail();
-          $data['success'] = true;
-          // return redirect()->to(base_url('reset_password'));
+
         } else {
           $data['validate_error'] = 'Email does not exist.';
           return view('user_mgt/forgot_password', $data);
@@ -109,33 +111,60 @@ class Home extends BaseController
       }
     }
     return view('user_mgt/forgot_password', $data);
-    // return redirect()->to(base_url('reset_password'));
+    // return redirect()->to(base_url('reset_password')); //for testing purposes
+  }
+
+  public function change_password()
+  {
+    $is_change_pass = true;
+
+    /*
+    * Manual input for testing
+   */
+    // $model = new LoginModel();
+    // $user = $model->where('email', 'rosalie@up.edu.ph')->first();
+    //
+    // $userToken = $this->updateUserlog($user['id']);
+    // var_dump($userToken);
+    // $this->setSession($user, $userToken);
+    //
+    // $data['userToken'] = $userToken;
+    // $data['validation'] = null;
+    // return redirect()->to(base_url('home/reset_password')."/". $data['userToken']);
+
+    if(!$this->session->has('logged_user')) {
+      $data['error'] = 'Unauthorized access.';
+      return view('user_mgt/reset_password', $data);
+    } else {
+      return redirect()->to(base_url('home/reset_password')."/". $_SESSION['logged_user']['userToken']);
+    }
   }
 
   public function reset_password($userToken = null)
   {
     $data = [];
-        $data['error'] = null;
-        $data['validation'] = null;
+    $data['error'] = null;
+    $data['validation'] = null;
+
+    $userToken = $_SESSION['logged_user']['userToken']; //for testing
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
     }
 
-    // $userToken = $_SESSION['logged_user']['userToken'];
-
     if(empty($userToken)) {
       $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
 
     } elseif($userToken === $_SESSION['logged_user']['userToken']) {
-      if($timeElapsed <= 900) {
-        $_SESSION['logged_user']['passwordReset'] = true;
+
+      if($timeElapsed <= 900 || $is_change_pass) {
+        // $_SESSION['logged_user']['passwordReset'] = true;
 
         if($this->request->getMethod() == 'post') {
 
           $rules = [
             'new_pass' => [
-              'label' => 'New password',
+              'label' => 'New Password',
               'rules' => 'required|min_length[8]|max_length[16]|regex_match[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$]'
             ],
             'confirm_pass' => [
@@ -146,7 +175,7 @@ class Home extends BaseController
 
           $errors = [
             'new_pass' => [
-              'regex_match' => 'Weak password! <br>Password must have at least one digit, lowercase and uppercase letter and special character.'
+              'regex_match' => 'Weak password! <br>Password must have at least one digit, lowercase and uppercase letter and a special character.'
             ]
           ];
 
@@ -162,7 +191,8 @@ class Home extends BaseController
             $_SESSION['logged_user']['passwordReset'] = true;
 
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
-            return redirect()->to(base_url('dashboard/logout'));
+            return redirect()->to(base_url('dashboard/logout')); //destroy session after password is updated
+
           } else {
 
             $data['validation'] = $this->validator;

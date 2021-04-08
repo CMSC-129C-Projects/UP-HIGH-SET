@@ -64,15 +64,16 @@
 
         <ul class="list-unstyled components">
             <li>
+              <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+              <a href="<?=base_url('change_password')?>"><i class="bi bi-gear-wide-connected"></i>  Change Password</a>
                 <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
                 <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
+                <!-- <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a> -->
+                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
             </li>
         </ul>
         <ul class="list-unstyled CTAs">
-            <a class="nav-link" href="<?=base_url('reset_password')?>"><input type="button" value=" Change Password" name="change_pass"></a>
+            <!-- <a class="nav-link" href="<?=base_url('change_password')?>"><input type="button" value=" Change Password" name="change_pass"></a> -->
             <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
             <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
             <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>

@@ -7,12 +7,12 @@
       <div class="card-body">
         <h3 class="card-title">Reset Password</h3>
 
-        <!-- <?php if(isset($error) != null) { ?>
+        <?php if(isset($error) != null) { ?>
           <div class="alert alert-danger">
             <?=$error?>
           </div>
         <?php } else { ?>
-          <?php if(!empty($userToken)) {
+          <!-- <?php if(!empty($userToken)) {
               $url = base_url('home/reset_password') . "/" . $userToken;
           } else {
             $url = base_url('home/reset_password');

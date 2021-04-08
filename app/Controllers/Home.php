@@ -11,7 +11,7 @@ use \App\Entities\Userlog;
 
 class Home extends BaseController
 {
-  protected $is_change_pass = true;
+  protected $is_change_pass = false;
 
 	public function index() {
 		return redirect()->to(base_url('login'));
@@ -191,8 +191,15 @@ class Home extends BaseController
             $_SESSION['logged_user']['passwordReset'] = true;
 
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
-            return redirect()->to(base_url('dashboard/logout')); //destroy session after password is updated
 
+            if($is_change_pass) {
+              $this->changePasswordEmail();
+              $is_change_pass = false;
+              return redirect()->to(base_url('dashboard'));
+            } else {
+              //destroy session after password is updated
+              return redirect()->to(base_url('dashboard/logout'));
+            }
           } else {
 
             $data['validation'] = $this->validator;
@@ -295,6 +302,23 @@ class Home extends BaseController
 
     $message = file_get_contents(base_url() . '/app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
+
+		$message = str_replace($search, $replace, $message);
+		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+  }
+
+  protected function changePasswordEmail()
+  {
+    $emailModel = new EmailModel();
+
+    $emailContent = $emailModel->where('is_deleted', '0')->where('purpose','change_pass')->orderBy('created_on', 'desc')->first();
+
+    //alert user that his/her account's password changed if you did not do it blahblah --
+    $search = ['-content-', '-student-', '-website_link-'];
+    $subject = $emailContent['title'];
+
+    $message = file_get_contents(base_url() . '/app/Views/verification.html');
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

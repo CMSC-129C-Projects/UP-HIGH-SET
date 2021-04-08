@@ -146,7 +146,7 @@ class Home extends BaseController
     $data['error'] = null;
     $data['validation'] = null;
 
-    $userToken = $_SESSION['logged_user']['userToken']; //for testing
+    // $userToken = $_SESSION['logged_user']['userToken']; //for testing
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds

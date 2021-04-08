@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\LoginModel;
 use App\Models\UserlogModel;
+use App\Models\UserModel;
 use App\Models\EmailModel;
 
 use \App\Entities\Userlog;
@@ -41,8 +41,8 @@ class Home extends BaseController
 
 			if($this->validate($rules, $errors)){
 
-				$model = new LoginModel();
-				$user = $model->where('email', $this->request->getVar('email'))->first();
+				$model = new UserModel();
+				$user = $model->asArray()->where('email', $this->request->getVar('email'))->first();
 
 				if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
 					$data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
@@ -89,8 +89,8 @@ class Home extends BaseController
 
       if($this->validate($rules, $errors)) {
         $email = $this->request->getVar('email_fpass', FILTER_SANITIZE_EMAIL);
-        $model = new LoginModel();
-				$user = $model->where('email', $email)->first();
+        $model = new UserModel();
+				$user = $model->asArray()->where('email', $email)->first();
 
         if(!empty($user)) {
           $userToken = $this->updateUserlog($user['id']);
@@ -109,14 +109,14 @@ class Home extends BaseController
       }
     }
     return view('user_mgt/forgot_password', $data);
-    // return redirect()->to(base_url('reset_password'));
   }
 
   public function reset_password($userToken = null)
   {
     $data = [];
-        $data['error'] = null;
-        $data['validation'] = null;
+    $data['error'] = null;
+    $data['validation'] = null;
+    $data['userToken'] = $userToken;
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
@@ -128,7 +128,7 @@ class Home extends BaseController
       $data['error'] = 'Unauthorized access.'; //when trying to manually access the forgot_password page
 
     } elseif($userToken === $_SESSION['logged_user']['userToken']) {
-      if($timeElapsed <= 900) {
+      if($timeElapsed <= 1800) {
         $_SESSION['logged_user']['passwordReset'] = true;
 
         if($this->request->getMethod() == 'post') {
@@ -156,8 +156,8 @@ class Home extends BaseController
             $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
             $datum = ['password' => $password];
 
-            $model = new LoginModel();
-            $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+            $model = new UserModel();
+            $model->asArray()->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
 
             $_SESSION['logged_user']['passwordReset'] = true;
 

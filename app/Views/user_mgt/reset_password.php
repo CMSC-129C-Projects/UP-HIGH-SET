@@ -7,19 +7,12 @@
       <div class="card-body">
         <h3 class="card-title">Reset Password</h3>
 
-        <?php if(isset($error) != null) { ?>
+        <?php if(isset($error)) { ?>
           <div class="alert alert-danger">
             <?=$error?>
           </div>
         <?php } else { ?>
-          <!-- <?php if(!empty($userToken)) {
-              $url = base_url('home/reset_password') . "/" . $userToken;
-          } else {
-            $url = base_url('home/reset_password');
-          }?> -->
-
-          <form class="reset_pass" action="<?=base_url('home/reset_password')?>" method="post">
-          <!-- <form class="reset_pass" action="<?=$url?>" method="post"> -->
+          <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
             <div class="form-group">
               <label for="new_pass">Set new password</label>
               <input id="new_pass" class="form-control" type="password" name="new_pass" value="">

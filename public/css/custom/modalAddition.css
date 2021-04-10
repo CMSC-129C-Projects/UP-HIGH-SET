@@ -1,3 +1,7 @@
+body {
+  padding-right: 0px !important;
+}
+
 .button {
   outline: none;
   border: none;
@@ -66,9 +70,8 @@
   /* background: #e9dbc1; */
 }
 
-.modal-backdrop {
-  opacity: 0.7 !important;
-  display: none;
+.modal-backdrop.show {
+  opacity: 0.4 !important;
 }
 
 .modal-dialog {
@@ -84,30 +87,6 @@
   overflow-y: auto;
 }
 
-.form-background i {
-  color: #e9dbc1;
-  font-size: 2rem;
-  position: absolute;
-  bottom: 2vh;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* .modal-dialog {
-  box-shadow: 4px 4px 3px grey;
-  border-color: black;
-  border-width: 2px;
-} */
-
-form .inputBox input,
-form .inputBox textarea {
-  outline: none;
-  border: 0.15rem solid #333;
-  border-radius: 0.3rem;
-  margin: 2rem 0;
-  padding: 0 1rem;
-  background: none;
-  height: 4rem;
-  width: 90%;
-  font-size: 2rem;
+.modal-open {
+  overflow-y: auto;
 }

@@ -36,6 +36,7 @@ body {
   margin-top: -5px;
 }
 
+
 #header .schoolWebsiteName h1 {
   margin-left: 70px;
   margin-top: 0px;
@@ -255,6 +256,18 @@ input[type="submit"]:hover {
 #footer .contactLinks a {
   color: #e9dbc1;
   font-size: 14px;
+}
+
+a#btn-student.active {
+    font-size: 25px;
+    color: #7B1113;
+    background: white;
+}
+
+a#btn-admin.active {
+  font-size: 25px;
+  color: #7B1113;
+  background: white;
 }
 
 /* Additional css for layout */

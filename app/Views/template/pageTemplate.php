@@ -63,17 +63,57 @@
         </ul> -->
 
         <ul class="list-unstyled components">
+          
             <li>
-                <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
                 <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+                <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
+                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
                 <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
+                
             </li>
         </ul>
+        <ul class="list-unstyled components">
+        <li class="active">
+                    <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Report</a>
+                    <ul class="collapse list-unstyled" id="report">
+                        <li>
+                            <a href="#">View Report</a>
+                        </li>
+                        <li>
+                            <a href="#">Print Report</a>
+                        </li>
+                        
+                    </ul>
+                    <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evaluation</a>
+                    <ul class="collapse list-unstyled" id="evaluation">
+                        <li>
+                            <a href="#">Set Evaluation Status</a>
+                        </li>
+                        <li>
+                            <a href="#">Monitor Progress</a>
+                        </li>
+                        
+                    </ul>
+                    <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+                    <ul class="collapse list-unstyled" id="users">
+                        <li>
+                            <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url();?>/update/student">View Students</a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url();?>/update/admin">View Admin</a>
+                        </li>
+                    </ul>
+                    
+                        
+                    </ul>
+                </li>
+    </ul>
         <ul class="list-unstyled CTAs">
-            <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
-            <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+          
+           
             <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
 
             <div class="logout">
@@ -90,6 +130,7 @@
         </div>
     </div>
     <?= $this->renderSection('content');?>
+    
   </div>
     <!-- footer section starts  -->
 

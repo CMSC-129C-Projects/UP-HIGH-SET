@@ -15,11 +15,13 @@
   background-color: #7b1113;
   font-family: Roboto;
   color: white;
+  font-size: 12px;
 }
 
 .table-bordered > tbody > tr > td {
   border: 1px solid #7b1113;
   font-family: Roboto;
+  font-size: 11px;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td {

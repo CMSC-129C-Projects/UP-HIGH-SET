@@ -115,7 +115,7 @@ class Home extends BaseController
 
 					$this->setSession($user, $userToken);
           // $data['userToken'] = $userToken;
-					// $this->resetPasswordEmail();
+					$this->resetPasswordEmail();
           $data['success'] = true;
           // return redirect()->to(base_url('reset_password'));
         } else {
@@ -233,7 +233,7 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
-      'emailVerified' => true,
+      'emailVerified' => false,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\LoginModel;
 use App\Models\UserlogModel;
+use App\Models\UserModel;
 use App\Models\EmailModel;
 
 use \App\Entities\Userlog;
@@ -43,8 +43,8 @@ class Home extends BaseController
 
 			if($this->validate($rules, $errors)){
 
-				$model = new LoginModel();
-				$user = $model->where('email', $this->request->getVar('email'))->first();
+				$model = new UserModel();
+				$user = $model->asArray()->where('email', $this->request->getVar('email'))->first();
 
 				if($user['is_active'] != 1 || $user['is_deleted'] != 0) {
 					$data['error'] = 'The account your trying to access is either inactive or deleted. <br> Please contact your school clerk if you wish to reactivate it.';
@@ -55,9 +55,17 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
-					$this->sendVerification();
-					// To be changed for a page that notifies the email verification was sent
-					return redirect()->to(base_url('verifyAccount'));
+          if(!$this->checkPasswordLastUpdate()) {
+					  // $this->sendVerification();
+            // To be changed for a page that notifies the email verification was sent
+					  // return redirect()->to(base_url('verifyAccount'));
+            return redirect()->to(base_url('dashboard'));
+
+          } else {
+            $_SESSION['logged_user']['emailVerified'] = true;
+            unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+            return redirect()->to(base_url('dashboard'));
+          }
 				}
 			} else {
 				$data['validation'] = $this->validator;
@@ -66,6 +74,16 @@ class Home extends BaseController
 
 		return view('user_mgt/login', $data);
 	}
+
+  protected function checkPasswordLastUpdate()
+  {
+    $student = new \App\Entities\Student();
+    $model = new UserModel();
+
+    $student = $model->where('email', $_SESSION['logged_user']['email'])->first();
+    // Check if last password update was less than or equal to 30 minutes
+    return ((strtotime(date('Y-m-d H:i:s')) - strtotime($student->updated_on)) <= 1800);
+  }
 
   public function forgot_password()
   {
@@ -91,8 +109,8 @@ class Home extends BaseController
 
       if($this->validate($rules, $errors)) {
         $email = $this->request->getVar('email_fpass', FILTER_SANITIZE_EMAIL);
-        $model = new LoginModel();
-				$user = $model->where('email', $email)->first();
+        $model = new UserModel();
+				$user = $model->asArray()->where('email', $email)->first();
 
         if(!empty($user)) {
           $userToken = $this->updateUserlog($user['id']);
@@ -111,7 +129,6 @@ class Home extends BaseController
       }
     }
     return view('user_mgt/forgot_password', $data);
-    // return redirect()->to(base_url('reset_password')); //for testing purposes
   }
 
   public function change_password()
@@ -147,6 +164,7 @@ class Home extends BaseController
     $data['validation'] = null;
 
     // $userToken = $_SESSION['logged_user']['userToken']; //for testing
+      $data['userToken'] = $userToken;
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
@@ -157,7 +175,7 @@ class Home extends BaseController
 
     } elseif($userToken === $_SESSION['logged_user']['userToken']) {
 
-      if($timeElapsed <= 900 || $is_change_pass) {
+      if($timeElapsed <= 1800 || $is_change_pass) {
         // $_SESSION['logged_user']['passwordReset'] = true;
 
         if($this->request->getMethod() == 'post') {
@@ -185,8 +203,8 @@ class Home extends BaseController
             $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
             $datum = ['password' => $password];
 
-            $model = new LoginModel();
-            $model->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+            $model = new UserModel();
+            $model->asArray()->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
 
             $_SESSION['logged_user']['passwordReset'] = true;
 
@@ -252,7 +270,8 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
-			'emailVerified' => false,
+      // 'emailVerified' => false,
+			'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

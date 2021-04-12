@@ -36,8 +36,13 @@ $routes->get('/', 'Home::index');
 // $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'login', 'Home::login', ['filter' => 'noauth']);
 $routes->match(['get', 'post'], 'forgot_password', 'Home::forgot_password');
+<<<<<<< HEAD
 $routes->match(['get', 'post'], 'reset_password', 'Home::reset_password');
 $routes->match(['get', 'post'], 'change_password', 'Home::change_password');
+=======
+$routes->match(['get', 'post'], 'reset_password/(:any)', 'Home::reset_password/$1');
+$routes->add('reset_password', 'Home::reset_password');
+>>>>>>> d993c317e7de27dd005af1ab9b9807e12d1f178e
 $routes->add('verification/(:any)', 'Home::verification/$1');
 $routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');

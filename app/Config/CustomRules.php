@@ -85,4 +85,14 @@ class CustomRules {
 
         return (count($user) === 0);
     }
+
+    public function validateUser(string $str, string $fields, array $data){
+        $model = new \App\Models\UserModel();
+        $user = $model->asArray()->where('email', $data['email'])->first();
+    
+        if(!$user)
+          return false;
+    
+        return password_verify($data['password'], $user['password']);
+    }
 }

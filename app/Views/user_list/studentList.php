@@ -12,9 +12,14 @@
             </div>
         </div>
     </div>
+<section id="studentTable" class="container-fluid">
+
+    <div class="heading text-center">
+      <h1 style="padding:35px">Student List</h1>
+    </div>
+
     <div class="main">
-        <h1 style="padding-top: 35px;">STUDENT LIST</h1>
-        <select name="glevel" id="gl" class="form-select">
+        <select name="glevel" id="gl" class="custom-select" style="width:150px">
             <option value="7" selected="selected">Grade 7</option>
             <option value="8">Grade 8</option>
             <option value="9">Grade 9</option>
@@ -22,8 +27,10 @@
             <option value="11">Grade 11</option>
             <option value="12">Grade 12</option>
         </select>
-        <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add/student"><button class="btn btn-primary">Add Student</button></a>
-        <table class="display tbl" id='student'>
+
+        <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
+        <div class="table-responsive">
+        <table class="table-bordered table-striped table-hover" id="student">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -35,5 +42,7 @@
             </thead>
             <tbody></tbody>
         </table>
+        </div>
     </div>
+</section>
 <?=$this->endSection();?>

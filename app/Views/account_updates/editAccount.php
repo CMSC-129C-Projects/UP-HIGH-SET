@@ -57,15 +57,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <div class="inputBox">
-                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>">
-                                            <br>
-                                            <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
-                                            <h3>User Name</h3>
-                                        </div>
+                                      <div class="inputBox">
+                                          <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
+                                          <br>
+                                          <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
+                                          <h3>Email</h3>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -78,8 +78,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
-                            <div class="row-md-4">
+                            </div>
+                            <!-- <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
                                         <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
@@ -88,7 +88,7 @@
                                         <h3>Email</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <input type="submit" value="update">
                             <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
                         </form>

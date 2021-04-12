@@ -294,11 +294,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-.nav-tabs .nav-link#btn-admin input['button'],
-.nav-tabs .nav-link#btn-student input['button'] {
-  border-radius: 0 !important;
-}
-
 #register .nav input[type="button"]:focus,
 .student.focus,
 .admin.focus {
@@ -731,6 +726,12 @@ a.article:hover {
   outline: none !important;
   border-radius: 0 !important;
   font-size: 13px;
+}
+
+#EmailContent form input:focus,
+#EmailContent form textarea:focus {
+  outline: none !important;
+  box-shadow: none;
 }
 
 #EmailContent .card {

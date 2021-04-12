@@ -318,14 +318,9 @@ a#btn-admin.active {
   margin-right: -25px;
 }
 
-<<<<<<< HEAD
-form.add {
-  padding: 2.75rem 1.5rem !important;
-=======
 form.add,
 form.edit {
-    padding: 2.75rem 1.50rem !important;
->>>>>>> d1f127177652c16604ef16cbb67b9872320555bf
+  padding: 2.75rem 1.5rem !important;
 }
 
 .row-md-4.email {
@@ -431,8 +426,8 @@ a:focus {
   align-items: stretch;
   perspective: 1500px;
   background-color: #e9dbc1;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 #sidebar {
@@ -474,7 +469,7 @@ a:focus {
   color: #e9dbc1;
   font-size: 15px;
 }
-#sidebar .components i{
+#sidebar .components i {
   font-size: 20px;
   margin-right: 5px;
 }
@@ -714,14 +709,8 @@ a.article:hover {
     Update email
 ----------------------------------------------------- */
 
-#EmailContent form input:focus ~ h3,
-#EmailContent form input:valid ~ h3,
-#EmailContent form textarea:focus ~ h3,
-#EmailContent form textarea:valid ~ h3 {
-  font-size: 1.6rem;
-  left: 6%;
-  top: -0.5rem;
-  color: #ff3300;
+#EmailContent form input[type="submit"] {
+  border-radius: 1rem;
 }
 
 #EmailContent form textarea {

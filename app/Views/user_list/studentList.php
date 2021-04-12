@@ -15,7 +15,7 @@
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
-      <h1>Student List</h1>
+      <h1 style="padding:35px">Student List</h1>
     </div>
 
     <div class="main">
@@ -27,6 +27,7 @@
             <option value="11">Grade 11</option>
             <option value="12">Grade 12</option>
         </select>
+
         <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
         <div class="table-responsive">
         <table class="table-bordered table-striped table-hover" id="student">
@@ -41,7 +42,7 @@
             </thead>
             <tbody></tbody>
         </table>
-        <div>
+        </div>
     </div>
 </section>
 <?=$this->endSection();?>

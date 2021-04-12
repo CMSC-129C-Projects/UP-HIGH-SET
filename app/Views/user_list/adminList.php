@@ -12,10 +12,16 @@
             </div>
         </div>
     </div>
+<section id="studentTable" class="container-fluid">
+
+    <div class="heading text-center">
+      <h1 style="padding:20px"> Admin List</h1>
+    </div>
+
     <div class="main">
-        <h1 style="padding-top: 35px;">ADMIN LIST</h1>
-        <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add/admin"><button class="btn btn-primary">Add Admin</button></a>
-        <table class="display tbl" id='admin'>
+        <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add/admin"><button class="button">Add Admin</button></a>
+        <div table="table-responsive">
+        <table class="table-bordered table-striped table-hover" id='admin'>
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -27,5 +33,7 @@
             </thead>
             <tbody></tbody>
         </table>
+        </div>
     </div>
+</section>
 <?=$this->endSection();?>

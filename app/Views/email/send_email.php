@@ -43,7 +43,7 @@
           </div>
           <br>
           <div class="form-group">
-            <label for="purpose" style="font-size:13px;">Email Purpose :</label>
+            <label for="purpose" style="font-size:15px;">Email Purpose :</label>
             <select class="custom-select" style="width:150px">
               <option selected>Select...</option>
               <option value="announcement">Announcement</option>

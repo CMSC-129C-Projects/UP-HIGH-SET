@@ -729,7 +729,8 @@ a.article:hover {
 }
 
 #EmailContent form input:focus,
-#EmailContent form textarea:focus {
+#EmailContent form textarea:focus,
+#EmailContent .custom-select:focus {
   outline: none !important;
   box-shadow: none;
 }

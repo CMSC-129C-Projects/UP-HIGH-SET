@@ -185,15 +185,7 @@ class Update extends BaseController
             $rules = [
                 'studFirstName' => 'required',
                 'studLastName' => 'required',
-                'gradeLevel' => 'required',
-                'studContactNum' => [
-                    'rules'     => 'min_length[11]|is_natural|valid_number',
-                    'errors'    => [
-                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
-                        'valid_number' => 'This is not a valid number'
-                    ]
-                ],
-                'studUserName' => 'min_length[6]'
+                'gradeLevel' => 'required'
             ];
             if(isset($id)) {
                 $rules['studNum'] = [

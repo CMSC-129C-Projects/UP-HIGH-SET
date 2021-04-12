@@ -159,7 +159,7 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
 
-    <!-- <script src="<?=base_url()?>/public/js/custom/common.js"></script> -->
+    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
@@ -167,12 +167,5 @@
     <?php if(isset($js)):?>
       <?= echoFiles($js);?>
     <?php endif;?>
-    <script>
-      $(document).ready(function () {
-          $('#sidebarCollapse').on('click', function () {
-              $('#sidebar').toggleClass('active');
-          });
-      });
-    </script>
   </body>
 </html>

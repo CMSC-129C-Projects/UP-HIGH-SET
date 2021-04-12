@@ -1,9 +1,77 @@
 .main {
-    width: 100%;
-    height: 100vh;
-    padding: 0px 10%;
+  width: 100%;
+  height: 100vh;
+  padding: 0px 10%;
 }
 
-.tbl {
-    width: 100%!important;
+.table-bordered {
+  width: 100% !important;
+  border-color: #e9dbc1;
+  border-width: 1px solid;
+}
+
+.table-bordered > thead > tr > th {
+  border: 1px solid #7b1113;
+  background-color: #7b1113;
+  font-family: Roboto;
+  color: white;
+}
+
+.table-bordered > tbody > tr > td {
+  border: 1px solid #7b1113;
+  font-family: Roboto;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: white;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #e8e7ee;
+}
+
+.table-hover > tbody > tr:hover > td {
+  background-color: #d1cfdd;
+}
+
+#studentTable .th {
+  background-color: #7b1113;
+  color: white;
+}
+
+#studentTable .custom-select {
+  background: #7b1113
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+    no-repeat right 0.75rem center/8px 10px !important;
+  color: white;
+  font-size: 12px;
+  font-family: Roboto;
+}
+
+#studentTable .button {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3rem;
+  width: 10rem;
+  margin-bottom: 3rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+#studentTable .button:hover::before {
+  width: 100%;
+}
+
+#studentTable .button:hover {
+  color: #ffff;
+  background: #014421;
 }

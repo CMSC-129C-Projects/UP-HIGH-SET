@@ -418,6 +418,10 @@ a:focus {
   color: #e9dbc1;
   font-size: 15px;
 }
+#sidebar .components i{
+  font-size: 20px;
+  margin-right: 5px;
+}
 
 
 #sidebar ul.components a:hover {
@@ -588,7 +592,7 @@ a.article:hover {
 
 #Contents .welcomeMsg img {
   position: relative;
-  margin-top: 50px;
+  margin-top: 6rem;
   width: 100%;
 }
 

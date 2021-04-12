@@ -74,7 +74,7 @@
           </ul>
           <ul class="list-unstyled components">
             <li class="active">
-              <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Report</a>
+              <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-journal-check"></i> Report</a>
               <ul class="collapse list-unstyled" id="report">
                 <li>
                     <a href="#">View Report</a>
@@ -83,7 +83,7 @@
                     <a href="#">Print Report</a>
                 </li>
               </ul>
-              <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evaluation</a>
+              <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
               <ul class="collapse list-unstyled" id="evaluation">
                 <li>
                   <a href="#">Set Evaluation Status</a>
@@ -92,7 +92,7 @@
                   <a href="#">Monitor Progress</a>
                 </li>
               </ul>
-              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
               <ul class="collapse list-unstyled" id="users">
                 <li>
                   <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
@@ -104,10 +104,17 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
               </ul>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
+              <ul class="collapse list-unstyled" id="announcements">
+                <li>
+                  <a href="<?=base_url()?>/send_email">Update Email Content</a>
+                </li>
+               
+              </ul>
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
-            <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+            <!--<a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>-->
             <div class="logout">
               <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
             </div>

@@ -131,15 +131,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                  <!-- <div class="mailBox"> -->
-                                      <div class="inputBox">
-                                          <input type="email" name="studEmail" value="<?=set_value('studEmail',$email);?>" required>
-                                          <br>
-                                          <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
-                                          <h3>Email</h3>
-                                      </div>
-                                  <!-- </div> -->
+                                <div class="col-md-6 half">
+                                  <div class="form-group">
+                                    <div class="inputBox">
+                                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
+                                      <br>
+                                      <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
+                                      <h3>Grade Level</h3>
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                             <!-- <div class="row">
@@ -154,7 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
@@ -164,7 +164,7 @@
                                         <h3>Email</h3>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <input type="submit" value="update">
                             <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
                         </form>

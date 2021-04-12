@@ -3,25 +3,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model {
-    protected $table      = 'users';
+class UserlogModel extends Model {
+    protected $table      = 'userlog';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
 
-    protected $returnType = 'App\Entities\Account';
+    protected $returnType = 'App\Entities\Userlog';
 
     protected $allowedFields = [
-        'student_num',
-        'first_name',
-        'last_name',
-        'role',
-        'grade_level',
-        'contact_num',
-        'username',
-        'email',
-        'password',
-        'is_active',
+        'user_id',
+        'ip_address',
+        'type',
+        'user_token',
+        'platform',
+        'user_agent',
         'is_deleted'
     ];
 

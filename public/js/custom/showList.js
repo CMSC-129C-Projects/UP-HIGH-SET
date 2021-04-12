@@ -10,6 +10,14 @@ $(function() {
         });
     }
 
+    function getAdmins() {
+        return $.ajax({
+            url: BASE_URI + '/update/adminList/',
+            type: 'POST',
+            dataType: 'json'
+        });
+    }
+
     function setTable(initTable) {
         table = initTable;
     }
@@ -17,7 +25,7 @@ $(function() {
     $.when(getStudents('7').then(
         function(response) {
             response.forEach(element => {
-                element['action'] = '<div><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="btn btn-primary">Edit</button></a><a href="'+ BASE_URI + '/update/delete/' + element.id + '"><button class="btn btn-primary" style="margin-left: 2%;" id="deleteStudent">Delete</button></a></div>';
+                element['action'] = '<div><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width: 6rem; border-radius: 0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="margin-left: 2%; width:6rem; border-radius: 0px; margin-bottom:0px;" id="deleteStudent">Delete</button></div>';
             });
 
             var table = $('#student').DataTable({
@@ -46,7 +54,7 @@ $(function() {
         $.when(getStudents($(this).val()).then(
                 function(response) {
                     response.forEach(element => {
-                        element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="btn btn-primary">Edit</button></a><a href="'+ BASE_URI + '/update/delete/' + element.id + '"><button class="btn btn-primary" style="margin-left: 2%;" id="deleteStudent">Delete</button></a></div>';
+                        element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width:5rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:5rem; margin-left:2%; border-radius:0px; margin-bottom:0px;" id="deleteStudent">Delete</button></div>';
                     });
 
                     table.clear();
@@ -56,4 +64,26 @@ $(function() {
             )
         )
     });
+
+    $.when(getAdmins().then(
+        function(response) {
+            response.forEach(element => {
+                element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="button" style="width:5rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:5rem; margin-left:2%; border-radius:0px; margin-bottom:0px;" id="deleteStudent">Delete</button></div>';
+            });
+            
+            $('#admin').DataTable({
+                data: response,
+                autoWidth: false,
+                columns: [
+                    {data: 'first_name', width: '20%'},
+                    {data: 'last_name', width: '20%'},
+                    {data: 'contact_num', width: '20%'},
+                    {data: 'email', width: '20%'},
+                    {data: 'action', width: '20%'}
+                ],
+                searching: false,
+                ordering: false
+            });
+        }
+    ));
 });

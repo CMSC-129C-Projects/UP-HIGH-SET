@@ -1,0 +1,104 @@
+body {
+  padding-right: 0px !important;
+}
+
+.button {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3rem;
+  width: 25rem;
+  margin-bottom: 1rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button:hover {
+  color: #ffff;
+  background: #014421;
+}
+
+.button2 {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 4rem;
+  width: 10rem;
+  margin-bottom: 1rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+.button2:hover::before {
+  width: 100%;
+}
+
+.button2:hover {
+  color: #ffff;
+  background: grey;
+}
+
+.modal-header {
+  background: linear-gradient(to top right, #800000 25%, #228b22 100%);
+  color: #ffff;
+}
+
+.modal-body {
+  background: #dac295;
+  /* background: #e9dbc1; */
+}
+
+.modal-backdrop.show {
+  opacity: 0.4 !important;
+}
+
+.modal-dialog {
+  border-color: black;
+  border-width: 2px;
+  position: absolute;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow-y: auto;
+}
+
+#bg-modal .reveal-modal-bg {
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto !important;
+  height: auto !important;
+  z-index: 40;
+}

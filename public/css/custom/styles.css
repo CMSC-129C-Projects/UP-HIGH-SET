@@ -414,7 +414,6 @@ a:focus {
   font-size: 15px;
 }
 
-
 #sidebar ul.components a:hover {
   color: #7b1113;
   background-color: #ffed8a;
@@ -432,7 +431,6 @@ a:focus {
   display: block;
 }
 #sidebar ul li a:hover {
-  
   background: #ffed8a;
 }
 
@@ -451,7 +449,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 12.5px !important;
   padding-left: 30px !important;
-  background-color:none;
+  background-color: none;
 }
 
 ul.CTAs {
@@ -477,7 +475,7 @@ a.article:hover {
   font-size: 30px;
 }
 .navIcon .navbar-header #sidebarCollapse {
-  background-color: #e9dbc1
+  background-color: #e9dbc1;
 }
 #sidebar .nav-link input[type="button"] {
   outline: none;
@@ -651,12 +649,22 @@ a.article:hover {
     Update email
 ----------------------------------------------------- */
 
+#EmailContent form input:focus ~ h3,
+#EmailContent form input:valid ~ h3,
+#EmailContent form textarea:focus ~ h3,
+#EmailContent form textarea:valid ~ h3 {
+  font-size: 1.6rem;
+  left: 6%;
+  top: -0.5rem;
+  color: #ff3300;
+}
+
 #EmailContent form textarea,
 #EmailContent form input {
-  border-width: 1.3px;
-  border-color: #7b1113;
+  border-width: 0.15rem;
+  border-color: black;
   border-radius: 1rem;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 #EmailContent .card {

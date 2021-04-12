@@ -38,7 +38,6 @@ body {
   margin-top: -5px;
 }
 
-
 #header .schoolWebsiteName h1 {
   margin-left: 70px;
   margin-top: 0px;
@@ -161,7 +160,7 @@ body {
   font-size: 2rem;
 
   border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
-  border-width: 0.30rem !important;
+  border-width: 0.3rem !important;
   border-image-slice: 1 !important;
   border-top-style: hidden !important;
   border-right-style: hidden !important;
@@ -261,14 +260,14 @@ input[type="submit"]:hover {
 }
 
 a#btn-student.active {
-    font-size: 25px;
-    color: #7B1113;
-    background: white;
+  font-size: 25px;
+  color: #7b1113;
+  background: white;
 }
 
 a#btn-admin.active {
   font-size: 25px;
-  color: #7B1113;
+  color: #7b1113;
   background: white;
 }
 
@@ -295,11 +294,6 @@ a#btn-admin.active {
   border-radius: 0 !important;
 }
 
-
-.nav-tabs .nav-link {
-
-}
-
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
 .nav-tabs .nav-link:focus,
@@ -316,7 +310,7 @@ a#btn-admin.active {
 } */
 
 form.add {
-    padding: 2.75rem 1.50rem !important;
+  padding: 2.75rem 1.5rem !important;
 }
 
 .row-md-4.email {
@@ -704,11 +698,24 @@ a.article:hover {
   color: #ff3300;
 }
 
-#EmailContent form textarea,
-#EmailContent form input {
-  border-width: 0.15rem;
-  border-color: black;
+#EmailContent form textarea {
+  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
   border-radius: 1rem;
+  font-size: 13px;
+}
+
+#EmailContent form input {
+  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: groove !important;
+  outline: none !important;
+  border-radius: 0 !important;
   font-size: 13px;
 }
 

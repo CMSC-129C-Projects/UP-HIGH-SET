@@ -34,9 +34,23 @@
   background-color: #d1cfdd;
 }
 
-#studentTable .th {
-  background-color: #7b1113;
-  color: white;
+.table-bordered > tbody > tr > td .btn btn-primary {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3rem;
+  width: 10rem;
+  margin-bottom: 3rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
 }
 
 #studentTable .custom-select {
@@ -61,6 +75,25 @@
   overflow: hidden;
   height: 3rem;
   width: 10rem;
+  margin-bottom: 3rem;
+  margin-left: 0%;
+  background: #7b1113;
+  color: #fff;
+}
+
+#studentTable .button2 {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3rem;
+  width: 5rem;
   margin-bottom: 3rem;
   margin-left: 0%;
   background: #7b1113;

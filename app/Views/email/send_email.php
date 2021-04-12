@@ -25,7 +25,7 @@
     </div>
     <div id="EmailContent">
     <div class="card">
-      <div class="card-body" style="padding: 25px;">
+      <div class="card-body" style="padding: 40px;">
       
         <form method="post" action="">
           <div class="form-group">
@@ -37,7 +37,7 @@
           <br>
           <div class="form-group">
             <label for="email-content" style="font-size:15px; margin-bottom:7px">Email Content</label>
-            <textarea class="form-control" name="email_content" id="email-content" value="<?=set_value('email_content')?>" rows="4" placeholder="Email notification content ..."></textarea>
+            <textarea class="form-control" name="email_content" id="email-content" value="<?=set_value('email_content')?>" rows="7" placeholder="Email notification content ..."></textarea>
             <br>
             <span class="text-danger"><?=displaySingleError($validation, 'email_content');?></span>
           </div>
@@ -56,7 +56,7 @@
             </div>
             <br><br>  
             <p style="font-size:13px">Attachment is Optional</p>
-            <input type="file" style="border-radius: 1px;" name="attachment[]" value="" >
+            <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
             <br><br>
             <input type="submit" value="update">
           </form>

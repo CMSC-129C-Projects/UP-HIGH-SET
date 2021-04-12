@@ -32,65 +32,97 @@
     </section>
     <!-- header section ends -->
     <!-- Sidebar Holder -->
-    <div class="wrapper d-flex align-items-stretch">
+    <div>
       <nav id="sidebar">
         <div class="sidebar-header">
-            <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
-                <div class="user-logo">
-                    <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                    <h3>CITRONELLA</h3>
-                </div>
+          <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
+            <div class="user-logo">
+              <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
+              <h3>CITRONELLA</h3>
             </div>
+          </div>
         </div>
 
-        <!-- <ul class="list-unstyled components">
-            <li>
-                <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-                <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
-            </li>
-        </ul>
-        <ul class="list-unstyled CTAs">
-            <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
-            <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
-            <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+          <!-- <ul class="list-unstyled components">
+              <li>
+                  <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
+                  <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
+                  <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+                  <a href="#"><i class="bi bi-zoom-in"></i> About</a>
+                  <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
+              </li>
+          </ul>
+          <ul class="list-unstyled CTAs">
+              <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
+              <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
+              <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
 
-            <div class="logout">
-                <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
-            </div>
-        </ul> -->
+              <div class="logout">
+                  <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
+              </div>
+          </ul> -->
 
         <ul class="list-unstyled components">
-            <li>
-                <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-                <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
-            </li>
+          <li>
+            <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+            <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
+            <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
+            <a href="#"><i class="bi bi-zoom-in"></i> About</a>        
+          </li>
+        </ul>
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Report</a>
+            <ul class="collapse list-unstyled" id="report">
+              <li>
+                  <a href="#">View Report</a>
+              </li>
+              <li>
+                  <a href="#">Print Report</a>
+              </li>
+            </ul>
+            <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evaluation</a>
+            <ul class="collapse list-unstyled" id="evaluation">
+              <li>
+                <a href="#">Set Evaluation Status</a>
+              </li>
+              <li>
+                <a href="#">Monitor Progress</a>
+              </li>
+            </ul>
+            <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+            <ul class="collapse list-unstyled" id="users">
+              <li>
+                <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
+              </li>
+              <li>
+                <a href="<?=base_url();?>/update/student">View Students</a>
+              </li>
+              <li>
+                <a href="<?=base_url();?>/update/admin">View Admin</a>
+              </li>
+            </ul>
+          </li>
         </ul>
         <ul class="list-unstyled CTAs">
-            <a class="nav-link" href="#"><input type="button" value=" View Report" name="viewResults"></a>
-            <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
-            <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
-
-            <div class="logout">
-                <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
-            </div>
+          <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
+          <div class="logout">
+            <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
+          </div>
         </ul>
       </nav>
-    <!-- Page Content Holder -->
-    <div class="navIcon">
+      <!-- Page Content Holder -->
+      <div class="navIcon">
         <div class="navbar-header">
-            <button type="button" id="sidebarCollapse" class="navbar-btn"89>
-              <i class="bi bi-list fa-2x"></i>
-            </button>
+          <button type="button" id="sidebarCollapse" class="navbar-btn"89>
+            <i class="bi bi-list fa-2x"></i>
+          </button>
         </div>
+      </div>
     </div>
-    <?= $this->renderSection('content');?>
-  </div>
+    <div class="wrapper d-flex align-items-stretch">
+      <?= $this->renderSection('content');?>
+    </div>
     <!-- footer section starts  -->
 
     <section id="footer" class="container-fluid">

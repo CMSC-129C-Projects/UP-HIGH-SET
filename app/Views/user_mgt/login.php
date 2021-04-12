@@ -5,6 +5,12 @@
     <section class="login">
         <div class="container cntr-custom">
             <div class="row custom-row">
+            <div class="col-md-6 s-col align-items-start">
+                    <div class="r-content">
+                        <img src="<?=base_url('public/images/voice.png');?>">
+                        <bold>Let's create a better environment for both students and teachers.</bold>
+                    </div>
+                </div>
                 <div class="col-md 6 d-flex justify-content-center">
                     <div class="form-background">
                         <form action="<?=base_url()?>/home/login" method="post">
@@ -30,12 +36,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6 s-col align-items-start">
-                    <div class="r-content">
-                        <img src="<?=base_url('public/images/voice.png');?>">
-                        <bold>Let's create a better environment for both students and teachers.</bold>
-                    </div>
-                </div>
+                
             </div>
         </div>
 

@@ -17,11 +17,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url('login'));
+        } elseif (!$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('verifyAccount'));
+        }
 
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
@@ -41,11 +41,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url('login'));
+        } elseif (!$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('verifyAccount'));
+        }
 
         $data['role'] = $role;
         $data['validation'] = null;
@@ -73,11 +73,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url('login'));
+        } elseif (!$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('verifyAccount'));
+        }
 
         $data = $this->setDefaultData($role, $id);
 

@@ -9,6 +9,7 @@
 
                     <img src="public/Welcome Message.png" class="img-fluid" alt="Responsive image">
                 </div>
+                
             </div>
         </section>
     </section>

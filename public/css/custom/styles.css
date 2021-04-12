@@ -95,12 +95,17 @@ body {
   padding: 0.75rem !important;
   text-align: center !important;
   margin-bottom: 0 !important;
-  margin-left: -2px !important;
+  margin-left: -1px !important;
+  margin-right: 0 !important;
   box-sizing: content-box;
   -webkit-box-sizing: content-box;
   -webkit-appearance: none !important;
   -moz-appearance: none;
   appearance: none;
+}
+
+#btn-student {
+  margin-left: -2px;
 }
 
 #register .nav input[type="button"]:hover::before {
@@ -259,17 +264,17 @@ input[type="submit"]:hover {
   font-size: 14px;
 }
 
-a#btn-student.active {
-  font-size: 25px;
-  color: #7b1113;
-  background: white;
+/* a#btn-student.active {
+    font-size: 25px;
+    color: #7B1113;
+    background: white;
 }
 
 a#btn-admin.active {
   font-size: 25px;
   color: #7b1113;
   background: white;
-}
+} */
 
 /* Additional css for layout */
 .nav-tabs .nav-link.active#btn-admin,
@@ -294,6 +299,19 @@ a#btn-admin.active {
   border-radius: 0 !important;
 }
 
+#register .nav input[type="button"]:focus,
+.student.focus,
+.admin.focus {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
+}
+
+/* .student.focus {
+    margin-left: 2px !important;
+  } */
+
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
 .nav-tabs .nav-link:focus,
@@ -304,10 +322,6 @@ a#btn-admin.active {
 .col-md-6.half {
   margin-right: -25px;
 }
-
-/* form.add {
-  padding: 70px 20px 30px;
-} */
 
 form.add {
   padding: 2.75rem 1.5rem !important;

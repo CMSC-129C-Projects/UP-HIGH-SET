@@ -32,8 +32,8 @@ class Admin extends Account {
             $this->newStudent->last_name = $request->getPost('studLastName');
             $this->newStudent->role = 2;
             $this->newStudent->grade_level = $request->getPost('gradeLevel');
-            $this->newStudent->contact_num = $request->getPost('studContactNum');
-            $this->newStudent->username = $request->getPost('studUserName');
+            // $this->newStudent->contact_num = $request->getPost('studContactNum');
+            // $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
 
             $password = randomize_password($this->newStudent->student_num);
@@ -63,7 +63,7 @@ class Admin extends Account {
             $newAdmin->last_name = $request->getPost('adminLastName');
             $newAdmin->role = 1;
             $newAdmin->contact_num = $request->getPost('adminContactNum');
-            $newAdmin->username = $request->getPost('adminUserName');
+            // $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
 
             $password = randomize_password($newAdmin->contact_num);

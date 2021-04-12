@@ -183,9 +183,3 @@
         </div>
     </section>
 <?= $this->endSection();?>
-
-<!-- <style media="screen">
-  form.edit {
-    padding: 2.75rem 1.50rem !important;
-  }
-</style> -->

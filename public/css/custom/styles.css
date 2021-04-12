@@ -375,6 +375,8 @@ a:focus {
   align-items: stretch;
   perspective: 1500px;
   background-color: #e9dbc1;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 #sidebar {
@@ -386,6 +388,11 @@ a:focus {
   color: #e9dbc1;
   transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
   transform-origin: bottom left;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 #sidebar.active {

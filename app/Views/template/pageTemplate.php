@@ -35,7 +35,7 @@
     <!-- <h1>nice</h1> -->
     <div>
       <div class="d-flex" style="position: absolute; z-index: 1;">
-        <nav id="sidebar" style="height: 109.5vh; overflow-y: scroll">
+        <nav id="sidebar" style="height: 109.5vh; overflow-y: scroll" class="active">
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">

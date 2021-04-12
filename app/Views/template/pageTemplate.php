@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UP High SET</title>
+    <title>UPSET</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="<?=base_url('public/CitronellaLogo.png');?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=base_url('public/Logo.png');?>" type="image/x-icon">
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
     <!-- <h1>nice</h1> -->
     <div>
       <div class="d-flex" style="position: absolute; z-index: 1;">
-        <nav id="sidebar" style="height: 109.5vh; overflow-y: scroll">
+        <nav id="sidebar" style="height: 109.5vh; overflow-y: scroll" class="active">
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <div class="wrapper d-flex align-items-stretch">
+      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
         <?= $this->renderSection('content');?>
       </div>
     </div>

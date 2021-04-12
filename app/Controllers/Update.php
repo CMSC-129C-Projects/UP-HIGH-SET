@@ -31,7 +31,7 @@ class Update extends BaseController
         ];
 
         if(isset($role) && $role === 'student') {
-            return view('studentList', $data);   
+            return view('studentList', $data);
         } else {
             return view('adminList', $data);
         }
@@ -176,7 +176,7 @@ class Update extends BaseController
             $data['cN'] = $adminUpdate->contact_num;
             $data['eml'] = $adminUpdate->email;
         }
-        
+
         return $data;
     }
 

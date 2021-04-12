@@ -36,6 +36,7 @@ body {
   margin-top: -5px;
 }
 
+
 #header .schoolWebsiteName h1 {
   margin-left: 70px;
   margin-top: 0px;
@@ -78,8 +79,6 @@ body {
 #register .nav input[type="button"] {
   outline: none;
   border: none;
-  border-radius: 5rem;
-  color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: capitalize;
@@ -88,12 +87,24 @@ body {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  background: #7b1113;
   height: 3rem;
   width: 8rem;
-  margin-bottom: 1rem;
-  margin-left: 0%;
-  background: #7b1113;
   color: #fff;
+  padding: 0.75rem !important;
+  text-align: center !important;
+  margin-bottom: 0 !important;
+  margin-left: -1px !important;
+  margin-right: 0 !important;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: none !important;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#btn-student {
+  margin-left: -2px;
 }
 
 #register .nav input[type="button"]:hover::before {
@@ -116,11 +127,8 @@ body {
 #register form {
   background: #fff;
   width: 700px;
-  margin-left: 12px;
-  margin-right: 12px;
-  padding-top: 2rem;
-  margin-bottom: 5rem;
-  border-radius: 1.5rem;
+  margin-top: -0.25rem;
+  border-radius: 0 0 1.5rem 1.5rem;
   -webkit-box-shadow: 0 0 2rem #333;
   box-shadow: 0 0 2rem #333;
 }
@@ -145,15 +153,25 @@ body {
 /* adjust layout and spacing */
 #register form .inputBox input,
 #register form .inputBox textarea {
-  outline: none;
+  /* outline: none; */
   border: 0.15rem solid #333;
-  border-radius: 1.3rem;
+  /* border-radius: 1.3rem; */
   margin: 1.65rem 0;
   padding: 0 1rem;
   background: none;
   height: 3.8rem;
   width: 85%;
   font-size: 2rem;
+
+  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-width: 0.30rem !important;
+  border-image-slice: 1 !important;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: groove !important;
+  outline: none !important;
+  border-radius: 0 !important;
 }
 
 #register form .inputBox input:focus ~ h3,
@@ -245,6 +263,18 @@ input[type="submit"]:hover {
   font-size: 14px;
 }
 
+/* a#btn-student.active {
+    font-size: 25px;
+    color: #7B1113;
+    background: white;
+}
+
+a#btn-admin.active {
+  font-size: 25px;
+  color: #7B1113;
+  background: white;
+} */
+
 /* Additional css for layout */
 .nav-tabs .nav-link.active#btn-admin,
 .nav-tabs .nav-link.active#btn-student {
@@ -254,8 +284,31 @@ input[type="submit"]:hover {
 
 .nav-tabs .nav-link#btn-admin,
 .nav-tabs .nav-link#btn-student {
-  margin-right: -10px;
+  /* margin-right: -10px; */
+  margin-right: 0;
+  margin-bottom: 0 !important;
+  border: 1px solid transparent;
+  border-radius: 0 !important;
+  /* border-top-right-radius: 0 !important; */
+  padding: 0;
 }
+
+.nav-tabs .nav-link#btn-admin input['button'],
+.nav-tabs .nav-link#btn-student input['button'] {
+  border-radius: 0 !important;
+}
+
+#register .nav input[type="button"]:focus,
+.student.focus, .admin.focus  {
+  background-color: #fff !important;
+  color: #7B1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
+}
+
+  /* .student.focus {
+    margin-left: 2px !important;
+  } */
 
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
@@ -268,8 +321,9 @@ input[type="submit"]:hover {
   margin-right: -25px;
 }
 
-form.add {
-  padding: 70px 20px 30px;
+form.add,
+form.edit {
+    padding: 2.75rem 1.50rem !important;
 }
 
 .row-md-4.email {

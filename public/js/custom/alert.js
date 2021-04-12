@@ -13,7 +13,7 @@ $(function() {
             $bgModal.fadeOut(500);
             $modalContent.fadeOut(500);
         } else {
-            window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '1' ? 'student' : 'admin');
+            window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');
         }
     });
 });

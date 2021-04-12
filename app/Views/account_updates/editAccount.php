@@ -21,11 +21,11 @@
             <ul class="nav nav-tabs">
                 <?php if($role == 'admin'):?>
                     <li class="nav-item">
-                        <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
+                        <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin" style="background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
                 <?php elseif($role == 'student'):?>
                     <li class="nav-item">
-                        <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
+                        <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input type="button" value="Student" style="margin-left: 1px !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
                 <?php endif;?>
             </ul>
@@ -34,7 +34,7 @@
             <?php if($role == 'admin'):?>
                 <div class="tab-pane fade show active" id="Admin">
                     <div class="row justify-content-center">
-                        <form action="<?=base_url()?>/update/edit/admin/<?=$id;?>" method="post">
+                        <form action="<?=base_url()?>/update/edit/admin/<?=$id;?>" method="post" class="edit">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -60,12 +60,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <div class="inputBox">
-                                            <input type="text" name="adminUserName" value="<?=set_value('adminUserName', $uN);?>">
-                                            <br>
-                                            <span class="text-danger"><?=displaySingleError($validation, 'adminUserName');?></span>
-                                            <h3>User Name</h3>
-                                        </div>
+                                      <div class="inputBox">
+                                          <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
+                                          <br>
+                                          <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
+                                          <h3>Email</h3>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-md-4">
+                            <!-- <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
                                         <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
@@ -88,7 +88,7 @@
                                         <h3>Email</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <input type="submit" value="update">
                             <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
                         </form>
@@ -97,7 +97,7 @@
             <?php elseif($role == 'student'):?>
                 <div class="tab-pane fade show active" id="Student">
                     <div class="row justify-content-center">
-                        <form action="<?=base_url()?>/update/edit/student/<?=$id;?>" method="post">
+                        <form action="<?=base_url()?>/update/edit/student/<?=$id;?>" method="post" class="edit">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -131,28 +131,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="inputBox">
-                                            <input type="text" name="studUserName" value="<?=set_value('studUserName', $uName);?>">
-                                            <br>
-                                            <span class="text-danger"><?=displaySingleError($validation, 'studUserName');?></span>
-                                            <h3>User Name</h3>
-                                        </div>
+                                <div class="col-md-6 half">
+                                  <div class="form-group">
+                                    <div class="inputBox">
+                                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
+                                      <br>
+                                      <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
+                                      <h3>Grade Level</h3>
                                     </div>
+                                  </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="inputBox">
-                                            <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel', $glevel);?>" required>
-                                            <br>
-                                            <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
-                                            <h3>Grade Level</h3>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="inputBox">
@@ -163,7 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">

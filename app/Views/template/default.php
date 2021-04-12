@@ -4,11 +4,11 @@
 <style></style>
 
   <head>
-    <title>UP High SET</title>
+    <title>UPSET</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="<?=base_url('public/CitronellaLogo.png');?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=base_url('public/Logo.png');?>" type="image/x-icon">
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>

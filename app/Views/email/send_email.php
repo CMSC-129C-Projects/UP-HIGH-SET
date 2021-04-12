@@ -18,31 +18,35 @@
       </div>
     </div>
   <?php endif;?>
+
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1>Update Email Content</h1>
+      <h1 style= "padding:20px">Update Email Content</h1>
     </div>
 
-    <div class="card" style="width: 80%; margin-left: 10%; vertical-align: middle; background:#e9dbc1; border: #e9dbc1;">
-      <div class="card-body" style="padding: 20px;">
-
+    <div id="EmailContent">
+    <div class="card">
+      <div class="card-body" style="padding: 40px;">
+      
         <form method="post" action="">
           <div class="form-group">
-            <label for="email-subject" style="margin-top: 1rem; font-size:13px;"> Email Subject</label>
+            <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>
             <input type="text" class="form-control" name = 'email_subject' id="email-subject" value="<?=set_value('email_subject')?>" placeholder="Enter Email subject here ...">
             <br>
             <span class="text-danger"><?=displaySingleError($validation, 'email_subject');?></span>
           </div>
+          <br>
           <div class="form-group">
-            <label for="email-content" style="font-size:13px;">Email Content</label>
+            <label for="email-content" style="font-size:15px; margin-bottom:7px">Email Content</label>
             <textarea class="form-control" name="email_content" id="email-content" value="<?=set_value('email_content')?>" rows="7" placeholder="Email notification content ..."></textarea>
             <br>
             <span class="text-danger"><?=displaySingleError($validation, 'email_content');?></span>
           </div>
+          <br>
           <div class="form-group">
-            <label for="purpose" style="font-size:13px;">Email Purpose:</label>
-            <select name="purpose" id="purpose">
-              <option value="">Select...</option>
+            <label for="purpose" style="font-size:15px;">Email Purpose :</label>
+            <select class="custom-select" style="width:150px">
+              <option selected>Select...</option>
               <option value="announcement">Announcement</option>
               <option value="registration">Registration</option>
               <option value="evaluation">Evaluation</option>
@@ -50,16 +54,17 @@
               <option value="forgot_pass">Forgot Password</option>
               <option value="verification">Verification</option>
             </select>
-            <br>
+            </div>
+            <br><br>  
             <p style="font-size:13px">Attachment is Optional</p>
-            <input type="file" name="attachment[]" value="" >
+            <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
             <br><br>
-            <input type="submit" value="update">
-            
+            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 1rem !important" value="update">
           </form>
+          </div>
         </div>
       </div>
-      </div>
+  </div>
   </div>
 </section>
 

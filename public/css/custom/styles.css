@@ -321,7 +321,8 @@ a#btn-admin.active {
   margin-right: -25px;
 }
 
-form.add {
+form.add,
+form.edit {
     padding: 2.75rem 1.50rem !important;
 }
 

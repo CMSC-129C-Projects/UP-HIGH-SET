@@ -34,7 +34,7 @@
             <?php if($role == 'admin'):?>
                 <div class="tab-pane fade show active" id="Admin">
                     <div class="row justify-content-center">
-                        <form action="<?=base_url()?>/update/edit/admin/<?=$id;?>" method="post">
+                        <form action="<?=base_url()?>/update/edit/admin/<?=$id;?>" method="post" class="edit">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -97,7 +97,7 @@
             <?php elseif($role == 'student'):?>
                 <div class="tab-pane fade show active" id="Student">
                     <div class="row justify-content-center">
-                        <form action="<?=base_url()?>/update/edit/student/<?=$id;?>" method="post">
+                        <form action="<?=base_url()?>/update/edit/student/<?=$id;?>" method="post" class="edit">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -183,3 +183,9 @@
         </div>
     </section>
 <?= $this->endSection();?>
+
+<!-- <style media="screen">
+  form.edit {
+    padding: 2.75rem 1.50rem !important;
+  }
+</style> -->

@@ -21,8 +21,8 @@ $(window).resize(function() {
     windowSize = getSize();
     headerHeight = header.clientHeight;
     footerHeight = footer.clientHeight;
-
     $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
+    $('#main').css("max-height", (windowSize - headerHeight - footerHeight) + "px");
 });
 
 $(document).ready(function () {
@@ -30,6 +30,7 @@ $(document).ready(function () {
     headerHeight = header.clientHeight;
     footerHeight = footer.clientHeight;
     $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
+    $('#main').css("height", (windowSize - headerHeight - footerHeight) + "px");
 
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');

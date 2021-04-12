@@ -104,7 +104,7 @@ body {
 }
 
 #btn-student {
-  margin-left: -2px !important;
+  margin-left: -2px;
 }
 
 #register .nav input[type="button"]:hover::before {
@@ -298,12 +298,17 @@ a#btn-admin.active {
   border-radius: 0 !important;
 }
 
-#register .nav input[type="button"]:focus {
-  background-color: #fff;
-  color: #7B1113;
-  text-transform: uppercase;
-  font-size: 1.2rem;
+#register .nav input[type="button"]:focus,
+.student.focus, .admin.focus  {
+  background-color: #fff !important;
+  color: #7B1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
 }
+
+  /* .student.focus {
+    margin-left: 2px !important;
+  } */
 
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
@@ -315,10 +320,6 @@ a#btn-admin.active {
 .col-md-6.half {
   margin-right: -25px;
 }
-
-/* form.add {
-  padding: 70px 20px 30px;
-} */
 
 form.add {
     padding: 2.75rem 1.50rem !important;

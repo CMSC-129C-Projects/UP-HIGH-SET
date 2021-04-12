@@ -58,7 +58,7 @@ class Home extends BaseController
             // To be changed for a page that notifies the email verification was sent
 					  // return redirect()->to(base_url('verifyAccount'));
             return redirect()->to(base_url('dashboard'));
-            
+
           } else {
             $_SESSION['logged_user']['emailVerified'] = true;
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
@@ -233,7 +233,7 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
-      'emailVerified' => false,
+      'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

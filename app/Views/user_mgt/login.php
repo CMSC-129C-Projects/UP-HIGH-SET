@@ -7,8 +7,8 @@
             <div class="row custom-row">
             <div class="col-md-6 s-col align-items-start">
                     <div class="r-content">
-                        <img src="<?=base_url('public/images/voice.png');?>">
-                        <bold>Let's create a better environment for both students and teachers.</bold>
+                        <img src="<?=base_url('public/images/voice.png');?>" style="display: none;">
+                        <bold style="display: none;">Let's create a better environment for both students and teachers.</bold>
                     </div>
                 </div>
                 <div class="col-md 6 d-flex justify-content-center">
@@ -20,7 +20,7 @@
                           <?php } ?>
 
                             <div class="form-group">
-                            
+
                                 <label for="email" class="bi bi-envelope-fill"> Email</label>
                                 <input type="email" id="email" class="form-control" name="email" value="<?=set_value('email')?>">
                                 <span><?=displaySingleError($validation, 'email');?></span>
@@ -37,7 +37,7 @@
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -64,6 +64,6 @@
         </div>
       </div>
       </div>
-    </div>    
-  </section> 
+    </div>
+  </section>
 <?= $this->endSection();?>

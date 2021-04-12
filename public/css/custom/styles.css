@@ -318,8 +318,14 @@ a#btn-admin.active {
   margin-right: -25px;
 }
 
+<<<<<<< HEAD
 form.add {
   padding: 2.75rem 1.5rem !important;
+=======
+form.add,
+form.edit {
+    padding: 2.75rem 1.50rem !important;
+>>>>>>> d1f127177652c16604ef16cbb67b9872320555bf
 }
 
 .row-md-4.email {
@@ -425,6 +431,8 @@ a:focus {
   align-items: stretch;
   perspective: 1500px;
   background-color: #e9dbc1;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 #sidebar {
@@ -436,6 +444,11 @@ a:focus {
   color: #e9dbc1;
   transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
   transform-origin: bottom left;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 #sidebar.active {
@@ -460,6 +473,10 @@ a:focus {
 #sidebar .components a {
   color: #e9dbc1;
   font-size: 15px;
+}
+#sidebar .components i{
+  font-size: 20px;
+  margin-right: 5px;
 }
 
 #sidebar ul.components a:hover {
@@ -633,7 +650,7 @@ a.article:hover {
 
 #Contents .welcomeMsg img {
   position: relative;
-  margin-top: 50px;
+  margin-top: 6rem;
   width: 100%;
 }
 
@@ -683,11 +700,11 @@ a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-  #sidebar {
+  #sidebar.active {
     margin-left: -250px;
     transform: rotateY(90deg);
   }
-  #sidebar.active {
+  #sidebar {
     margin-left: 0;
     transform: none;
   }

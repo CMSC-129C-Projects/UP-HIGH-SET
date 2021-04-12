@@ -31,9 +31,9 @@ class Update extends BaseController
         ];
 
         if(isset($role) && $role === 'student') {
-            return view('studentList', $data);   
+            return view('user_list/studentList', $data);
         } else {
-            return view('adminList', $data);
+            return view('user_list/adminList', $data);
         }
 	}
 
@@ -66,7 +66,7 @@ class Update extends BaseController
         $data['css'] = addExternal($css, 'css');
         $data['js'] = addExternal($js, 'javascript');
 
-        return view('accountRegistration', $data);
+        return view('account_updates/accountRegistration', $data);
     }
 
     public function edit($role = null, $id = null) {
@@ -99,7 +99,7 @@ class Update extends BaseController
         $data['css'] = addExternal($css, 'css');
         $data['js'] = addExternal($js, 'javascript');
 
-        return view('editAccount', $data);
+        return view('account_updates/editAccount', $data);
     }
 
     public function delete($id, $role = null) {
@@ -176,7 +176,7 @@ class Update extends BaseController
             $data['cN'] = $adminUpdate->contact_num;
             $data['eml'] = $adminUpdate->email;
         }
-        
+
         return $data;
     }
 

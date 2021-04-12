@@ -1,7 +1,7 @@
 <?= $this->extend('template/default');?>
 
 <?= $this->section('content');?>
-    <img src="<?=base_url('public/images/uphs.jpeg')?>" class="background">
+    <img src="<?=base_url('public/images/loginbgimage.jpg')?>" class="background">
     <section class="login">
         <div class="container cntr-custom">
             <div class="row custom-row">
@@ -20,12 +20,13 @@
                           <?php } ?>
 
                             <div class="form-group">
-                                <label for="email">Email</label>
+                            
+                                <label for="email" class="bi bi-envelope-fill"> Email</label>
                                 <input type="email" id="email" class="form-control" name="email" value="<?=set_value('email')?>">
                                 <span><?=displaySingleError($validation, 'email');?></span>
                             </div>
                             <div class="form-group">
-                                <label for="pwd">Password</label>
+                                <label for="pwd" class="bi bi-key-fill"> Password</label>
                                 <input type="password" id="pwd" class="form-control" name="password">
                                 <span><?=displaySingleError($validation, 'password');?></span>
                             </div>

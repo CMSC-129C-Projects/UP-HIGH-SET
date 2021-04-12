@@ -1,7 +1,7 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-    <section class="Dashboard">
+    <section class="Dashboard" style="margin: auto;">
         <!-- INSERT CONTENT HERE -->
         <section id="Contents">
             <div class="row-md-6 align-text-center">
@@ -9,9 +9,8 @@
 
                     <img src="public/Welcome Message.png" class="img-fluid" alt="Responsive image">
                 </div>
+                
             </div>
-
-            
         </section>
     </section>
 <?= $this->endSection();?>

@@ -32,7 +32,7 @@
     </section>
     <!-- header section ends -->
     <!-- Sidebar Holder -->
-    <div>
+    <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar">
         <div class="sidebar-header">
           <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
@@ -119,8 +119,6 @@
           </button>
         </div>
       </div>
-    </div>
-    <div class="wrapper d-flex align-items-stretch">
       <?= $this->renderSection('content');?>
     </div>
     <!-- footer section starts  -->

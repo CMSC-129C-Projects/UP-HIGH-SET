@@ -22,7 +22,7 @@ $(window).resize(function() {
     headerHeight = header.clientHeight;
     footerHeight = footer.clientHeight;
     $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
-    $('#main').css("max-height", (windowSize - headerHeight - footerHeight) + "px");
+    $('#main').css("height", (windowSize - headerHeight - footerHeight) + "px");
 });
 
 $(document).ready(function () {

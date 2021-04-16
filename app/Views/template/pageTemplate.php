@@ -72,9 +72,6 @@
                 <li>
                   <a href="#">Monitor Progress</a>
                 </li>
-                <li>
-                  <a href="<?=base_url("home/change_password")?>">Change Password</a>
-                </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
               <ul class="collapse list-unstyled" id="users">

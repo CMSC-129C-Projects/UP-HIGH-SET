@@ -57,6 +57,7 @@ class Home extends BaseController
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
           if(!$this->checkPasswordLastUpdate()) {
 					  // $this->sendVerification();
+
             // To be changed for a page that notifies the email verification was sent
 					  // return redirect()->to(base_url('verifyAccount'));
             return redirect()->to(base_url('dashboard'));
@@ -175,12 +176,14 @@ class Home extends BaseController
 
             if(password_verify($old_password, $user['password'])) {
               $model->asArray()->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+              $this->changePasswordEmail(); //let the user know that his/her password has been changed
+
               return redirect()->to('dashboard');
             } else {
               $data['error'] = "Old Password incorrect. Please review your input.";
               return view('user_mgt/change_password', $data);
             }
-            
+
         } else {
             $data['validation'] = $this->validator;
             return view('user_mgt/change_password', $data);
@@ -241,14 +244,8 @@ class Home extends BaseController
 
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
 
-            if($is_change_pass) {
-              $this->changePasswordEmail();
-              $is_change_pass = false;
-              return redirect()->to(base_url('dashboard'));
-            } else {
               //destroy session after password is updated
-              return redirect()->to(base_url('dashboard/logout'));
-            }
+            return redirect()->to(base_url('dashboard/logout'));
           } else {
 
             $data['validation'] = $this->validator;
@@ -301,8 +298,8 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
-      // 'emailVerified' => false,
-      'emailVerified' => true,
+      'emailVerified' => false,
+      // 'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

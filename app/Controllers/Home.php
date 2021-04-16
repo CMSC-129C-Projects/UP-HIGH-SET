@@ -133,17 +133,17 @@ class Home extends BaseController
 
   public function change_password()
   {
-    $is_change_pass = true;
 
     $data = [];
     $data['error'] = null;
+    $data['is_changed'] = false;
     $data['validation'] = null;
 
     if(!$this->session->has('logged_user')) {
       $data['error'] = 'You need to login to change your password. </br> Otherwise, request to reset your password instead.';
       return view('user_mgt/change_password', $data);
     } else {
-
+      $data['is_changed'] = true;
       if($this->request->getMethod() == 'post') {
 
         $rules = [
@@ -180,6 +180,7 @@ class Home extends BaseController
               $data['error'] = "Old Password incorrect. Please review your input.";
               return view('user_mgt/change_password', $data);
             }
+            
         } else {
             $data['validation'] = $this->validator;
             return view('user_mgt/change_password', $data);
@@ -205,7 +206,7 @@ class Home extends BaseController
 
     } elseif($userToken === $_SESSION['logged_user']['userToken']) {
 
-      if($timeElapsed <= 1800 || $is_change_pass) {
+      if($timeElapsed <= 1800) {
         // $_SESSION['logged_user']['passwordReset'] = true;
 
         if($this->request->getMethod() == 'post') {

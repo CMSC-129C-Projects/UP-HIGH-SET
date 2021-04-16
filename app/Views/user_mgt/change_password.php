@@ -1,4 +1,12 @@
-<?php $this->extend('template/pageTemplate') ?>
+<?php
+  if($is_changed) {
+    $this->extend('template/pageTemplate');
+    $url = base_url('dashboard');
+  } else {
+    $this->extend('template/default');
+    $url = base_url('login');
+  }
+?>
 
 <?php $this->section('content'); ?>
   <div class="container-fluid" style="height: 420px;">
@@ -11,7 +19,7 @@
           <div class="alert alert-danger">
             <?=$error?>
           </div>
-          <a class="btn btn-primary" href="<?=base_url('change_password')?>">Back</a>
+          <a class="btn btn-primary" href="<?=$url?>">Back</a>
         <?php } else { ?>
           <form class="reset_pass" action="<?=base_url('home/change_password')?>" method="post">
             <div class="form-group">

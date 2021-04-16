@@ -9,8 +9,9 @@
                         <div class="form-group">
                             <label for="profs">Professors</label>
                             <select class="form-control" name="professors" id="profs">
-                                <option value="1">Tony Stark</option>
-                                <option value="2">Roberto Basadre</option>
+                                <?php foreach($profs as $p):?>
+                                    <option value="<?=$p['id'];?>"><?=$p['first_name'].' '.$p['last_name'];?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">

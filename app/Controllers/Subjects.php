@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use \App\Models\SubjectModel;
+use \App\Models\FacultyModel;
 
 class Subjects extends BaseController
 {
@@ -17,7 +18,7 @@ class Subjects extends BaseController
         
         $subjectModel = new SubjectModel();
 
-        $subjectsHandled = $subjectModel->where('faculty_id', $role)->findAll();
+        $subjectsHandled = $subjectModel->where('is_deleted', '0')->where('faculty_id', $role)->findAll();
         // $css = ['custom/profs/profs-style.css'];
         // $js = ['custom/profs/profs.js'];
         // $data = [
@@ -33,6 +34,7 @@ class Subjects extends BaseController
 
     public function add_subject() {
         $data['validation'] = null;
+        $data['profs'] = $this->fetchProfessors();
 
         $rules['name'] = [
             'rules'  => 'required',
@@ -57,5 +59,11 @@ class Subjects extends BaseController
             }
         }
         return view('subjects/addSubjects', $data);
+    }
+
+    protected function fetchProfessors() {
+        $faculModel = new FacultyModel();
+
+        return ($profs = $faculModel->where('is_deleted', '0')->findAll()) ? $profs : null;
     }
 }

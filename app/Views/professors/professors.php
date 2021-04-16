@@ -19,7 +19,7 @@
                         <img class="card-img-top" src="https://cdn1.iconfinder.com/data/icons/UltraBuuf/256/Red_Chin_Iron_Man.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Roberto Basadre</h5>
-                            <p class="card-text">Genius, Rich, Math-wizard</p>
+                            <p class="card-text">Genius, Not Billionaire, Math-wizard</p>
                             <button class="btn btn-primary redirect" data-id="2">Subjects handled</button>
                         </div>
                     </div>

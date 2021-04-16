@@ -39,6 +39,7 @@ $routes->match(['get', 'post'], 'forgot_password', 'Home::forgot_password');
 $routes->match(['get', 'post'], 'reset_password/(:any)', 'Home::reset_password/$1');
 $routes->add('reset_password', 'Home::reset_password');
 $routes->add('verification/(:any)', 'Home::verification/$1');
+$routes->add('subjects/(:any)', 'Subjects::index/$1');
 $routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');
 $routes->add('update/student', 'Update::index/student');

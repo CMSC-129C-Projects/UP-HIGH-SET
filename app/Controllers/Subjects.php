@@ -30,4 +30,32 @@ class Subjects extends BaseController
 
         return view('subjects/subjects', $data);
 	}
+
+    public function add_subject() {
+        $data['validation'] = null;
+
+        $rules['name'] = [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Please input a subject title'
+            ]
+        ];
+
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($rules)) {
+                $subjectModel = new SubjectModel();
+
+                $values = [
+                    'faculty_id' => $this->request->getPost('professors'),
+                    'grade_level' => $this->request->getPost('gLevel'),
+                    'name' => $this->request->getPost('name')
+                ];
+
+                $subjectModel->insert($values);
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+        return view('subjects/addSubjects', $data);
+    }
 }

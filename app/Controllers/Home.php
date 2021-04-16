@@ -135,36 +135,66 @@ class Home extends BaseController
   {
     $is_change_pass = true;
 
-    /*
-    * Manual input for testing
-   */
-    // $model = new LoginModel();
-    // $user = $model->where('email', 'rosalie@up.edu.ph')->first();
-    //
-    // $userToken = $this->updateUserlog($user['id']);
-    // var_dump($userToken);
-    // $this->setSession($user, $userToken);
-    //
-    // $data['userToken'] = $userToken;
-    // $data['validation'] = null;
-    // return redirect()->to(base_url('home/reset_password')."/". $data['userToken']);
+    $data = [];
+    $data['error'] = null;
+    $data['validation'] = null;
 
     if(!$this->session->has('logged_user')) {
-      $data['error'] = 'You need to login to change your password. </br> Otherwise, click forgot password instead.';
-      return view('user_mgt/reset_password', $data);
+      $data['error'] = 'You need to login to change your password. </br> Otherwise, request to reset your password instead.';
+      return view('user_mgt/change_password', $data);
     } else {
-      return redirect()->to(base_url('home/reset_password')."/". $_SESSION['logged_user']['userToken']);
+
+      if($this->request->getMethod() == 'post') {
+
+        $rules = [
+          'new_pass' => [
+            'label' => 'New Password',
+            'rules' => 'required|min_length[8]|max_length[16]|regex_match[^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$]'
+          ],
+          'confirm_pass' => [
+            'label' => 'Confirm Password',
+            'rules' => 'required|matches[new_pass]'
+          ]
+        ];
+
+        $errors = [
+          'new_pass' => [
+            'regex_match' => 'Weak password! <br>Password must have at least one digit, lowercase and uppercase letter and a special character.'
+          ]
+        ];
+
+        if($this->validate($rules, $errors)) {
+
+            $old_password = $this->request->getVar('old_pass', FILTER_SANITIZE_EMAIL); //get old password
+
+            $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT); //get new password
+            $datum = ['password' => $password];
+
+            $model = new UserModel();
+            $user = $model->asArray()->where('email', $_SESSION['logged_user']['email'])->first();
+
+            if(password_verify($old_password, $user['password'])) {
+              $model->asArray()->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
+              return redirect()->to('dashboard');
+            } else {
+              $data['error'] = "Old Password incorrect. Please review your input.";
+              return view('user_mgt/change_password', $data);
+            }
+        } else {
+            $data['validation'] = $this->validator;
+            return view('user_mgt/change_password', $data);
+        }
+      }
+      return view('user_mgt/change_password', $data);
     }
   }
+
 
   public function reset_password($userToken = null)
   {
     $data = [];
     $data['error'] = null;
     $data['validation'] = null;
-
-    // $userToken = $_SESSION['logged_user']['userToken']; //for testing
-      $data['userToken'] = $userToken;
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
@@ -234,7 +264,6 @@ class Home extends BaseController
     return view('user_mgt/reset_password', $data);
   }
 
-
 	public function verification($userToken)
 	{
 		// In seconds
@@ -271,7 +300,8 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
-      'emailVerified' => false,
+      // 'emailVerified' => false,
+      'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

@@ -31,8 +31,8 @@
       </div>
     </section>
     <!-- header section ends -->
+
     <!-- Sidebar Holder -->
-    <!-- <h1>nice</h1> -->
     <div>
       <div class="d-flex" style="position: absolute; z-index: 1;">
         <nav id="sidebar" style="height: 109.5vh; overflow-y: scroll" class="active">
@@ -44,25 +44,6 @@
               </div>
             </div>
           </div>
-
-            <!-- <ul class="list-unstyled components">
-                <li>
-                    <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
-                    <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings and Privacy</a>
-                    <a href="<?=base_url();?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-                    <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-                    <a href="#"><i class="bi bi-telephone-fill"></i> Contact</a>
-                </li>
-            </ul>
-            <ul class="list-unstyled CTAs">
-                <a class="nav-link" href="#"><input type="button" value="View Report" name="viewResults"></a>
-                <a class="nav-link" href="#"><input type="button" value="Print Report" name="printReports"></a>
-                <a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>
-
-                <div class="logout">
-                    <a class="nav-link" id="logout" href="#"><input type="button" value="LOGOUT" name="logOut"></a>
-                </div>
-            </ul> -->
 
           <ul class="list-unstyled components">
             <li>
@@ -91,6 +72,9 @@
                 <li>
                   <a href="#">Monitor Progress</a>
                 </li>
+                <li>
+                  <a href="<?=base_url("home/change_password")?>">Change Password</a>
+                </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
               <ul class="collapse list-unstyled" id="users">
@@ -114,7 +98,6 @@
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
-            <!--<a class="nav-link" href="<?=base_url()?>/send_email"><input type="button" value="Update Email" name="printReports"></a>-->
             <div class="logout">
               <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
             </div>

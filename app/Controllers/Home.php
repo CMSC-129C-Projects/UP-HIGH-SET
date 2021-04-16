@@ -252,6 +252,7 @@ class Home extends BaseController
 			} else {
 				// Redirect to a page that notifies the link has expired
 				echo 'Sorry. Verification link has expired';
+        return redirect()->to(base_url('dashboard/logout'));
 			}
 		}
   }

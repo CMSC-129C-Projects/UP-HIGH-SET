@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use \App\Models\FacultyModel;
 use \App\Entities\Admin;
 
 class Professors extends BaseController
@@ -23,4 +24,20 @@ class Professors extends BaseController
 
         return view('professors/professors', $data);
 	}
+
+    public function profList() {
+        // redirect to login if no session found
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url());
+        // } elseif ($_SESSION['logged_user']['role'] != '1') {
+        //     return redirect()->to(base_url());
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
+        $faculModel = new FacultyModel();
+
+        $data['profList'] = $faculModel->where('is_deleted', 0)->findAll();
+
+        echo json_encode($data['profList']);
+    }
 }

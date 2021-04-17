@@ -33,7 +33,17 @@ class Subjects extends BaseController
 	}
 
     public function add_subject() {
+        // Initialize CSS
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+
+        $data = [
+            'css'   => addExternal($css, 'css'),
+            'js'   => addExternal($js, 'javascript')
+        ];
+
         $data['validation'] = null;
+        $data['message'] = null;
         $data['profs'] = $this->fetchProfessors();
 
         $rules['name'] = [
@@ -53,13 +63,21 @@ class Subjects extends BaseController
                     'name' => $this->request->getPost('name')
                 ];
 
-                $subjectModel->insert($values);
+                if($subjectModel->insert($values)) {
+                    $data['message'] = true;
+                } else {
+                    $data['message'] = false;
+                }
             } else {
                 $data['validation'] = $this->validator;
             }
         }
         return view('subjects/addSubjects', $data);
     }
+
+    /**
+     * AUXILIARY FUNCTIONS
+     */
 
     protected function fetchProfessors() {
         $faculModel = new FacultyModel();

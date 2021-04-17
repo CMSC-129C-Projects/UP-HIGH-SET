@@ -6,7 +6,7 @@
             <div class="col-md-6">
                 <ul>
                     <?php foreach($subjects as $s):?>  
-                        <li class="alert-success"><?=$s['name'];?></li>
+                        <li class="alert-success"><h1><?=$s['name'];?></h1></li>
                     <?php endforeach;?>
                 </ul>
             </div>

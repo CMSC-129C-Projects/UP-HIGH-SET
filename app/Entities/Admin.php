@@ -47,7 +47,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
 
-            // $status = send_acc_notice($this->newStudent->email, $subject, $message);
+            $status = send_acc_notice($this->newStudent->email, $subject, $message);
             // Send account notice to student
 
             try {

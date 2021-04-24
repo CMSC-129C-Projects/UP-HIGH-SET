@@ -33,6 +33,8 @@
                             <div style="display: flex; flex-direction: column;">
                                 <small style="float: right;"><a href="#" data-toggle="modal" data-target="#forgotPassword">Forgot Password?</a></small>
                                 <button class="btn btn-primary btn-login" type="submit">Log In</button>
+                                <!-- for testing purposes -->
+                                <!-- <a href="<?=base_url('home/change_password')?>" class="btn btn-primary btn-login">Change Pass</a>  -->
                             </div>
                         </form>
                     </div>

@@ -21,7 +21,7 @@
 
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1 style= "padding:20px">Update Email Content</h1>
+      <h1 style= "padding:4.7rem;">Update Email Content</h1>
     </div>
 
     <div id="EmailContent">

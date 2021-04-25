@@ -22,6 +22,8 @@
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/modalAddition.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
+
     <?php if(isset($css)):?>
       <?= echoFiles($css);?>
     <?php endif;?>

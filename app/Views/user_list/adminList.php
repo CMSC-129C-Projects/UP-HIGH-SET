@@ -15,7 +15,7 @@
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
-      <h1 style="padding:20px"> Admin List</h1>
+      <h1 style="padding:20px"> View Admins </h1>
     </div>
 
     <div class="main">

@@ -1,4 +1,3 @@
-
 .row h2{
 color: #7b1113;
 text-shadow:2px 2px 4px grey; ;
@@ -22,9 +21,7 @@ margin-top: 10px;
   border-style: double;
   color: #014421;
 }
-#privacyStatement .panel-heading{
 
-}
 .tab-content .form-control{
     border-color: #7b1113;
     -webkit-box-shadow: 0 0 2rem #333;

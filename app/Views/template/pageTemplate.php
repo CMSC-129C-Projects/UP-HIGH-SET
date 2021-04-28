@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
     <?php if(isset($css)):?>

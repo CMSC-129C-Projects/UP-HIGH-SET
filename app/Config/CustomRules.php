@@ -86,7 +86,7 @@ class CustomRules {
         return (count($user) === 0);
     }
 
-    public function validateUser(string $str, string $fields, array $data){
+    public function validateUser(string $str, string $fields, array $data) {
         $model = new \App\Models\UserModel();
         $user = $model->asArray()->where('email', $data['email'])->first();
     
@@ -94,5 +94,23 @@ class CustomRules {
           return false;
     
         return password_verify($data['password'], $user['password']);
+    }
+
+    public function uniqueUsername(string $str, string $fields, array $data): bool {
+        $model = new \App\Models\UserModel();
+        $user = $model->asArray()->where('is_deleted', 0)->where('username', $str)->findAll();
+    
+        $fields = (int)$fields;
+        $student = $userModel->asArray()->find($fields);
+
+        // count($user) == 0 ;;; If no duplicate username is found, return true
+        // count($user) == 1 && $user['username'] === $student['username']) ;;; If 1 duplicate username is found, and
+            // that duplicate username is the user's current username, then return true also
+            // (This means the user entered the same username, but still pressed submit)
+        if(count($user) === 0 || (count($user) === 1 && $user['username'] === $student['username'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

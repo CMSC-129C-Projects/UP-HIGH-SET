@@ -53,20 +53,14 @@
           <ul class="list-unstyled components">
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-<<<<<<< HEAD
-              <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
+              <a href="<?=base_url();?>/UpdateProfile"><i class="bi bi-person-circle"></i>  Profile</a>
               <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <ul class="collapse list-unstyled" id="settings">
                 <li>
                     <a href="<?=base_url();?>/home/change_password">Change Password</a>
                 </li>
               </ul>
-              <a href="#"><i class="bi bi-zoom-in"></i> About</a>
-=======
-              <a href="<?=base_url();?>/UpdateProfile"><i class="bi bi-person-circle"></i>  Profile</a>
-              <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>        
->>>>>>> 1491fd13fffb299f095504210e456c8989b8980f
             </li>
           </ul>
           <ul class="list-unstyled components">

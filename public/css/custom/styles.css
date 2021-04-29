@@ -318,9 +318,12 @@ a#btn-admin.active {
   margin-right: -25px;
 }
 
-form.add,
-form.edit {
+form.add {
   padding: 2.75rem 1.5rem !important;
+}
+form.edit {
+    padding: 2.75rem 1.50rem !important;
+
 }
 
 .row-md-4.email {

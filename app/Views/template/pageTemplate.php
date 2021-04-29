@@ -54,12 +54,16 @@
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
               <a href="<?=base_url();?>/profile"><i class="bi bi-person-circle"></i>  Profile</a>
+<<<<<<< HEAD
               <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <ul class="collapse list-unstyled" id="settings">
                 <li>
                     <a href="<?=base_url();?>/home/change_password">Change Password</a>
                 </li>
               </ul>
+=======
+              <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
+>>>>>>> 67e9be549a2db6a75beb7a3f475fe052a2915c25
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>        
             </li>
           </ul>

@@ -1,31 +1,12 @@
 <?php
-<<<<<<< HEAD
-namespace App\Controllers;
-
-use \App\Entities\Admin;
-
-=======
 
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
->>>>>>> a8b3661e5a424284e07c9585a8471cdfbde295d6
 
 class Profile extends BaseController
 {
     public function index() {
-<<<<<<< HEAD
-
-        $css = ['custom/profileUpdate/pUpdate.css'];
-        $js = ['custom/profileUpdate/pUpdate.js'];
-        $data = [
-            'js'    => addExternal($js, 'javascript'),
-            'css'   => addExternal($css, 'css')
-        ];
-
-        $data['role'] = null;
-        return view("account_updates/profileUpdate", $data);
-=======
         $role = $_SESSION['role'];
 
         // redirect to login if no session found
@@ -170,6 +151,5 @@ class Profile extends BaseController
         }
 
         return $rules;
->>>>>>> a8b3661e5a424284e07c9585a8471cdfbde295d6
     }
 }

@@ -30,19 +30,19 @@
             <form class="reset_pass" action="<?=base_url('home/change_password')?>" method="post">
               <div class="form-group">
                 <label for="old_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Old Password:</label>
-                <input id="old_pass" class="form-control" type="password" name="old_pass" value="" required>
+                <input id="old_pass" class="form-control" type="password" name="old_pass" value="" placeholder="Enter Old Password..." required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'old_pass')?></h4>
               </div>
               <br><br>
               <div class="form-group">
                 <label for="new_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Set New Password:</label>
-                <input id="new_pass" class="form-control" type="password" name="new_pass" value="" required>
+                <input id="new_pass" class="form-control" type="password" name="new_pass" value="" placeholder="Enter New Password..." required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'new_pass')?></h4>
               </div>
               <br><br>
               <div class="form-group">
                 <label for="confirm_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Confirm Password:</label>
-                <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" required>
+                <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" placeholder="Enter New Password Again..." required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
               </div>
               <br><br>

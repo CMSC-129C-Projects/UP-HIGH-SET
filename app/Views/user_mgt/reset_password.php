@@ -19,13 +19,13 @@
           <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
             <div class="form-group">
               <label for="new_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Set new password</label>
-              <input id="new_pass" class="form-control" type="password" name="new_pass" value="">
+              <input id="new_pass" class="form-control" type="password" name="new_pass" value="" placeholder="Enter New Password..." required>
               <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'new_pass')?></h4>
             </div>
 
             <div class="form-group">
               <label for="confirm_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Confirm password</label>
-              <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="">
+              <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" placeholder="Enter New Password Again..." required>
               <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
             </div>
 

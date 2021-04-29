@@ -27,7 +27,6 @@
     <div id="EmailContent">
     <div class="card">
       <div class="card-body" style="padding: 40px;">
-      
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>

@@ -11,7 +11,7 @@
           <div class="alert alert-danger">
             <?=$error?>
           </div>
-          <a class="btn btn-primary" href="<?=base_url('login')?>">Back</a>
+          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } else { ?>
           <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
             <div class="form-group">

@@ -41,7 +41,9 @@
     <!-- header section ends -->
 
     <!-- Page Content Holder -->
-    <?= $this->renderSection('content');?>
+    <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+        <?= $this->renderSection('content');?>
+    </div>
 
     <!-- footer section starts  -->
     <section id="footer" class="container-fluid">

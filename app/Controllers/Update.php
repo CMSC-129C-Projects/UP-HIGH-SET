@@ -17,11 +17,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url('login'));
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
@@ -41,11 +41,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url('login'));
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $data['role'] = $role;
         $data['validation'] = null;
@@ -73,11 +73,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url('login'));
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $data = $this->setDefaultData($role, $id);
 
@@ -106,11 +106,11 @@ class Update extends BaseController
 
         // redirect to login if no session found
         // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url('login'));
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $this->admin->deleteUser($id, $role);
         return redirect()->to(base_url('update/' . $role));
@@ -122,13 +122,13 @@ class Update extends BaseController
 
     public function studentList($gradeLevel = null) {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
-        } elseif ($_SESSION['logged_user']['role'] != '1') {
-            return redirect()->to(base_url());
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url());
+        // } elseif ($_SESSION['logged_user']['role'] != '1') {
+        //     return redirect()->to(base_url());
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $data['studentList'] = $this->userModel->where('role','2')->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
@@ -137,13 +137,13 @@ class Update extends BaseController
 
     public function adminList() {
         // redirect to login if no session found
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url());
-        } elseif ($_SESSION['logged_user']['role'] != '1') {
-            return redirect()->to(base_url());
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
+        // if (!$this->session->has('logged_user')) {
+        //     return redirect()->to(base_url());
+        // } elseif ($_SESSION['logged_user']['role'] != '1') {
+        //     return redirect()->to(base_url());
+        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
+        //     return redirect()->to(base_url('verifyAccount'));
+        // }
 
         $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 

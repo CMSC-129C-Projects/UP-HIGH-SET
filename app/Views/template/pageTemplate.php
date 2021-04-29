@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="<?=base_url('public/Logo.png');?>" type="image/x-icon">
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
     <?php if(isset($css)):?>
@@ -50,6 +53,7 @@
           <ul class="list-unstyled components">
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+<<<<<<< HEAD
               <a href="#"><i class="bi bi-person-circle"></i>  Profile</a>
               <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <ul class="collapse list-unstyled" id="settings">
@@ -58,6 +62,11 @@
                 </li>
               </ul>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
+=======
+              <a href="<?=base_url();?>/UpdateProfile"><i class="bi bi-person-circle"></i>  Profile</a>
+              <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
+              <a href="#"><i class="bi bi-zoom-in"></i> About</a>        
+>>>>>>> 1491fd13fffb299f095504210e456c8989b8980f
             </li>
           </ul>
           <ul class="list-unstyled components">

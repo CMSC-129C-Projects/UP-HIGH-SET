@@ -298,8 +298,16 @@ class Home extends BaseController
 			'role'			=> $user['role'],
       'isLoggedIn' 	=> true,
       'passwordReset' => false,
+<<<<<<< HEAD
       // 'emailVerified' => false,
       'emailVerified' => true,
+=======
+
+			'emailVerified' => true,
+
+      'emailVerified' => false,
+
+>>>>>>> 1491fd13fffb299f095504210e456c8989b8980f
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

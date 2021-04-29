@@ -19,24 +19,29 @@ class Profile extends BaseController
         $role = $_SESSION['logged_user']['role'];
 
         $sessionStudent = new Student();
+        $admin = new Admin();
 
         $sessionStudent = $this->userModel->where('is_deleted', 0)->where('email', $_SESSION['logged_user']['email'])->first();
 
         $data = $this->setDefaultData($role, $sessionStudent->id);
 
-        $css = ['custom/profileUpdate/pUpdate.css'];
-        $js = ['custom/profileUpdate/pUpdate.js'];
+        $css = ['custom/profileUpdate/pUpdate.css', 'custom/alert.css'];
+        $js = ['custom/profileUpdate/pUpdate.js', 'custom/alert.js'];
         $data['js'] = addExternal($js, 'javascript');
         $data['css'] = addExternal($css, 'css');
 
         $data['validation'] = null;
-        // $data['status'] = null;
+        $data['status'] = null;
         $data['role'] = $role;
         // $data['id'] = $id;
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules($role, $sessionStudent->id))) {
-                $data['status'] = $this->admin->editUser($this->request, $role, $id);
+                $values = [
+                    'contact_num' => $this->request->getPost('mobile'),
+                    'username'    => $this->request->getPost('username')
+                ];
+                $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -84,14 +89,13 @@ class Profile extends BaseController
             $rules['username'] = [
                 'rules'     => 'uniqueUsername['. $id .']',
                 'errors'    => [
-                    'is_existing_data'  => 'Student number already exist'
+                    'uniqueUsername'  => 'Username already taken'
                 ]
             ];
             $rules['mobile'] = [
-                'rules'     => 'is_natural|valid_number',
+                'rules'     => 'valid_number',
                 'errors'    => [
-                    'is_natural'   => 'Contact number format: 09xxxxxxxxx',
-                    'valid_number' => 'This is not a valid number'
+                    'valid_number' => 'Contact number format: 09xxxxxxxxx'
                 ]
             ];
         } else {

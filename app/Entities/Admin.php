@@ -25,7 +25,7 @@ class Admin extends Account {
         $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
         // For sending account notice
 
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent->student_num = $request->getPost('studNum');
 
             $this->newStudent->first_name = $request->getPost('studFirstName');
@@ -92,7 +92,7 @@ class Admin extends Account {
 
     public function editUser($request, $role, $id) {
         $status = true;
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent = $this->userModel->find($id);
 
             $this->newStudent->student_num = $request->getPost('studNum');
@@ -130,7 +130,7 @@ class Admin extends Account {
     }
 
     public function deleteUser($id, $role) {
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent = $this->userModel->find($id);
             $this->newStudent->is_deleted = 1;
             $this->userModel->update($id, $this->newStudent);

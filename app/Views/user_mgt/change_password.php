@@ -19,8 +19,8 @@
           <div class="card-body" style="padding: 40px; margin: 10px">
             <?php if(isset($error)) { ?>
             <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-            <div class="alert alert-danger">
-              <?=$error?>
+            <div class="alert alert-danger" style="padding:20px;">
+              <h4><?=$error?><h4>
             </div>
             <br>
             <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px; margin-bottom:20px; " href="<?=$url?>">Back</a>

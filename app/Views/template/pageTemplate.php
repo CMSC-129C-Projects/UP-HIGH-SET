@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="<?=base_url('public/Logo.png');?>" type="image/x-icon">
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -15,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
     <?php if(isset($css)):?>

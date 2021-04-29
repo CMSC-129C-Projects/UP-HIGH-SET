@@ -60,7 +60,7 @@
               <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email" required>
               <span><?=displaySingleError($validation, 'email_fpass');?></span>
               <input type="submit" value="Confirm">
-              <input type="button" class="button2" data-dismiss="modal" value="Close">
+              <input type="button" class="button2"  style="border-radius: 2rem !important;" data-dismiss="modal" value="Close">
             </div>
           </form>
         </div>

@@ -1,17 +1,19 @@
 <?php $this->extend('template/default') ?>
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="height: 420px;">
-    <div class="card" style="width:400px; margin: auto !important; position: relative; top: 25%;">
+  <div class="container-fluid" style="height:420px;">
+  <div id="ChangePassword" style="margin-top:4.7rem; margin-left: 185px;">
+    <div class="card" style="width:60%">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
-      <div class="card-body">
-        <h3 class="card-title">Reset Password</h3>
+      <div class="card-body" style="padding: 40px; margin: 10px">
 
         <?php if(isset($error)) { ?>
-          <div class="alert alert-danger">
+          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
+          <div class="alert alert-danger" style="margin-bottom:20px">
             <?=$error?>
           </div>
-          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
+          <br>
+          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } else { ?>
           <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
             <div class="form-group">
@@ -35,6 +37,7 @@
           <?php } ?>
       </div>
     </div>
+  </div>
   </div>
 
 <?php $this->endSection(); ?>

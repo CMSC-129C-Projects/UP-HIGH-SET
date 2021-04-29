@@ -14,7 +14,7 @@
       <div class="heading text-center">
         <h1 style= "padding:4.7rem;">Change Password</h1>
       </div>
-      <div id="ChangePassword" style="margin-left: 185px">
+      <div id="ChangePassword" style="margin-left: 215px">
         <div class="card" style="width:60%;">
           <div class="card-body" style="padding: 40px; margin: 10px">
             <?php if(isset($error)) { ?>

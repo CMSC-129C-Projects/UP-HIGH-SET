@@ -43,7 +43,7 @@
             </div>
         </div>
 
-    <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height:428px">
+    <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height:429px">
       <div class="modal-dialog">
       <div class="modal-content" style="background: transparent;">
 

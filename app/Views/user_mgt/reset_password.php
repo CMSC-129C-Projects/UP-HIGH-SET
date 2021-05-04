@@ -2,8 +2,8 @@
 
 <?php $this->section('content'); ?>
   <div class="container-fluid" style="height:420px;">
-  <div id="ChangePassword" style="margin-top:4.7rem; margin-left: 215px;">
-    <div class="card" style="width:60%">
+  <div id="ChangePassword" style="margin-top:4.7rem;">
+    <div class="card" style="width:70%; margin: auto">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body" style="padding: 40px; margin: 10px">
 
@@ -15,7 +15,7 @@
           <br>
           <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } else { ?>
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">Please reset your password: </h3>
+          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">Please reset your password to continue: </h3>
           <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
             <div class="form-group">
               <label for="new_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Set new password</label>

@@ -111,7 +111,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <br>
-                                    <button type="changePW" style="float: right; margin: 0;">Change Password</button>
+                                    <button type="changePW" style="float: right; margin: 0; width: 15rem;">Change Password</button>
                                     <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                                     <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-repeat"></i> Cancel</button>
                                 </div>

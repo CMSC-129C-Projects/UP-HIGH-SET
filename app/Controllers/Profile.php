@@ -39,9 +39,11 @@ class Profile extends BaseController
             if($this->validate($this->setRules($role, $sessionStudent->id))) {
                 $values = [
                     'contact_num' => $this->request->getPost('mobile'),
-                    'username'    => $this->request->getPost('username')
+                    'username'    => $this->request->getPost('username'),
+                    'avatar_url'  => $this->request->getPost('avatar')
                 ];
                 $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile'));
             } else {
                 $data['validation'] = $this->validator;
             }

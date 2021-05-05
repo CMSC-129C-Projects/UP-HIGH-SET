@@ -6,6 +6,11 @@ $(function() {
         $('#selected_avatar').attr('src', selectedAvatar);
         $('input[name=avatar]').attr('value', selectedAvatar.replace(BASE_URI, ''));
     });
+
+    $('#changePass').click(function() {
+        // Redirect to Patrick's change password page
+        window.location.href = BASE_URI + '/change_password';
+    });
 });
 
 // Get the modal

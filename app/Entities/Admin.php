@@ -35,6 +35,7 @@ class Admin extends Account {
             // $this->newStudent->contact_num = $request->getPost('studContactNum');
             // $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
+            $this->newStudent->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($this->newStudent->student_num);
             $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
@@ -65,6 +66,7 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             // $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($newAdmin->contact_num);
             $newAdmin->password = password_hash($password, PASSWORD_BCRYPT);

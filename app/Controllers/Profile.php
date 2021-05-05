@@ -25,8 +25,8 @@ class Profile extends BaseController
 
         $data = $this->setDefaultData($role, $sessionStudent->id);
 
-        $css = ['custom/profileUpdate/pUpdate.css', 'custom/alert.css'];
-        $js = ['custom/profileUpdate/pUpdate.js', 'custom/alert.js'];
+        $css = ['custom/profileUpdate/pUpdate.css', 'custom/alert.css', 'custom/avatar.css'];
+        $js = ['custom/profileUpdate/pUpdate.js', 'custom/alert.js', 'custom/avatar.js'];
         $data['js'] = addExternal($js, 'javascript');
         $data['css'] = addExternal($css, 'css');
 
@@ -67,6 +67,7 @@ class Profile extends BaseController
             $data['uName'] = $student->username;
             $data['cn'] = $student->contact_num;
             $data['glevel'] = $student->grade_level;
+            $data['avatar_url'] = $student->avatar_url;
             $data['email'] = $student->email;
         } else {
             $adminUpdate = new Admin();
@@ -79,6 +80,7 @@ class Profile extends BaseController
             $data['uN'] = $adminUpdate->username;
             $data['cN'] = $adminUpdate->contact_num;
             $data['eml'] = $adminUpdate->email;
+            $data['avatar_url'] = $adminUpdate->avatar_url;
         }
 
         return $data;

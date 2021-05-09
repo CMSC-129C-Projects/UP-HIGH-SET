@@ -153,7 +153,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['studEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'rules'     => 'required|owned_email['.$id.']',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -167,7 +167,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['studEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
+                    'rules'     => 'required|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -189,7 +189,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['adminEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'rules'     => 'required|owned_email['.$id.']',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -205,7 +205,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['adminEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
+                    'rules'     => 'required|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'

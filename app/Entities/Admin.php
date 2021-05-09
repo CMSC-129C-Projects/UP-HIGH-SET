@@ -35,6 +35,7 @@ class Admin extends Account {
             // $this->newStudent->contact_num = $request->getPost('studContactNum');
             // $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
+            $this->newStudent->email += '@up.edu.ph';
             $this->newStudent->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($this->newStudent->student_num);
@@ -66,6 +67,7 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             // $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->email += '@up.edu.ph';
             $newAdmin->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($newAdmin->contact_num);
@@ -104,6 +106,7 @@ class Admin extends Account {
             $this->newStudent->contact_num = $request->getPost('studContactNum');
             $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
+            $this->newStudent->email += '@up.edu.ph';
 
             try {
                 $this->userModel->update($id, $this->newStudent);
@@ -120,6 +123,7 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->email += '@up.edu.ph';
 
             try{
                 $this->userModel->update($id, $newAdmin);

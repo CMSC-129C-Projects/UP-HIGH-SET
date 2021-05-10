@@ -98,9 +98,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="password"><h4>Password</h4></label>
-                                    <span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" style="color:#7b1113"></span>
-                                    <input type="password" class="form-control" name="password" id="pass_log_id" value="Show PW Here" disabled>
+                                   
+                                   
+                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;">Change Password</button>
                                 </div>
                             </div>
                             <!-- <div class="form-group">
@@ -111,7 +111,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <br>
-                                    <button type="button" id="changePass" style="float: right; margin: 0; width: 15rem;">Change Password</button>
+                                   
                                     <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                                     <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-repeat"></i> Cancel</button>
                                 </div>

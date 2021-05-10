@@ -3,6 +3,8 @@ color: #7b1113;
 text-shadow:2px 2px 4px grey; ;
 
 }
+
+
 .tab-content h4{
     color: #7b1113;
     }
@@ -24,8 +26,8 @@ margin-top: 10px;
 
 .tab-content .form-control{
     border-color: #7b1113;
-    -webkit-box-shadow: 0 0 2rem #333;
-  box-shadow: 0 0 2rem #333;
+    -webkit-box-shadow: 0 0 1rem #505050;
+  box-shadow: 0 0 1rem #505050;
   border-style: double;
 }
 

@@ -444,6 +444,7 @@ a:focus {
   transform-origin: bottom left;
 }
 
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 #sidebar::-webkit-scrollbar {
   display: none;
@@ -493,9 +494,21 @@ a:focus {
   font-size: 1.1em;
   display: block;
 }
+#sidebar ul li a:link {
+  text-decoration: none;
+}
+#sidebar ul li a:visited {
+  text-decoration: none;
+}
+
 #sidebar ul li a:hover {
   background: #ffed8a;
+  text-decoration: none;
 }
+#sidebar ul li a:active {
+  text-decoration: none;
+}
+
 
 a[data-toggle="collapse"] {
   position: relative;

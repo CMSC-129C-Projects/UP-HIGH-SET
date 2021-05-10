@@ -29,7 +29,9 @@ margin-top: 10px;
     -webkit-box-shadow: 0 0 1rem #505050;
   box-shadow: 0 0 1rem #505050;
   border-style: double;
+
 }
+
 
 
 .form-group button{
@@ -65,6 +67,10 @@ button#cancel:hover,
 .form-group button:hover {
   color: #ffff;
   background: #014421;
+}
+.form-group input:focus {
+  
+  border: 2px solid green;
 }
 
 .form-group button[type=changePW]{

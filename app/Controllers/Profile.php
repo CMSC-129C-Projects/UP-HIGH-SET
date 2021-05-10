@@ -49,7 +49,7 @@ class Profile extends BaseController
             }
         }
 
-        return view("account_updates/profileUpdate", $data);
+        return view("account_updates/adminProfileUpdate", $data);
     }
 
     /**

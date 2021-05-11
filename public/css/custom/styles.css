@@ -318,9 +318,12 @@ a#btn-admin.active {
   margin-right: -25px;
 }
 
-form.add,
-form.edit {
+form.add {
   padding: 2.75rem 1.5rem !important;
+}
+form.edit {
+    padding: 2.75rem 1.50rem !important;
+
 }
 
 .row-md-4.email {
@@ -441,6 +444,7 @@ a:focus {
   transform-origin: bottom left;
 }
 
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 #sidebar::-webkit-scrollbar {
   display: none;
@@ -490,9 +494,21 @@ a:focus {
   font-size: 1.1em;
   display: block;
 }
+#sidebar ul li a:link {
+  text-decoration: none;
+}
+#sidebar ul li a:visited {
+  text-decoration: none;
+}
+
 #sidebar ul li a:hover {
   background: #ffed8a;
+  text-decoration: none;
 }
+#sidebar ul li a:active {
+  text-decoration: none;
+}
+
 
 a[data-toggle="collapse"] {
   position: relative;
@@ -587,7 +603,7 @@ a.article:hover {
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
   color: #ffff;
-  background: #014421;
+  background: #7b1114;
 }
 
 /* ---------------------------------------------------
@@ -703,66 +719,4 @@ a.article:hover {
     margin-left: 0;
     transform: none;
   }
-}
-
-/* ---------------------------------------------------
-    Update email
------------------------------------------------------ */
-
-#EmailContent form input[type="submit"] {
-  border-radius: 1rem;
-}
-
-#EmailContent form textarea {
-  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
-  border-width: 0.3rem !important;
-  border-image-slice: 1 !important;
-  border-radius: 1rem;
-  font-size: 13px;
-}
-
-#EmailContent form input {
-  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
-  border-width: 0.3rem !important;
-  border-image-slice: 1 !important;
-  border-top-style: hidden !important;
-  border-right-style: hidden !important;
-  border-left-style: hidden !important;
-  border-bottom-style: groove !important;
-  outline: none !important;
-  border-radius: 0 !important;
-  font-size: 13px;
-}
-
-#EmailContent form input:focus,
-#EmailContent form textarea:focus,
-#EmailContent .custom-select:focus {
-  outline: none !important;
-  box-shadow: none;
-}
-
-#EmailContent .card {
-  width: 80%;
-  margin-left: 10%;
-  vertical-align: middle;
-  border-width: 0px;
-  border-radius: 1rem;
-  background-color: white;
-  margin-bottom: 10%;
-  -webkit-box-shadow: 0 0 2rem #333;
-  box-shadow: 0 0 2rem #333;
-}
-
-#EmailContent .custom-select {
-  background: #7b1113
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-    no-repeat right 0.75rem center/8px 10px !important;
-  color: white;
-  font-size: 12px;
-  font-family: Roboto;
-}
-
-#EmailContent .dropdown-item.active,
-#EmailContent .dropdown-item:active {
-  background-color: #014421;
 }

@@ -21,6 +21,7 @@ class UserModel extends Model {
         'username',
         'email',
         'password',
+        'avatar_url',
         'is_active',
         'is_deleted'
     ];

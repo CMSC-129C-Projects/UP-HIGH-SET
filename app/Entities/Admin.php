@@ -25,7 +25,7 @@ class Admin extends Account {
         $message = file_get_contents(base_url() . '/app/Views/emailTemplate.html');
         // For sending account notice
 
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent->student_num = $request->getPost('studNum');
 
             $this->newStudent->first_name = $request->getPost('studFirstName');
@@ -35,6 +35,8 @@ class Admin extends Account {
             // $this->newStudent->contact_num = $request->getPost('studContactNum');
             // $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
+            $this->newStudent->email .= '@up.edu.ph';
+            $this->newStudent->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($this->newStudent->student_num);
             $this->newStudent->password = password_hash($password, PASSWORD_BCRYPT);
@@ -47,7 +49,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
 
-            // $status = send_acc_notice($this->newStudent->email, $subject, $message);
+            $status = send_acc_notice($this->newStudent->email, $subject, $message);
             // Send account notice to student
 
             try {
@@ -65,6 +67,8 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             // $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->email .= '@up.edu.ph';
+            $newAdmin->avatar_url = '/public/images/avatars/hacker.png';
 
             $password = randomize_password($newAdmin->contact_num);
             $newAdmin->password = password_hash($password, PASSWORD_BCRYPT);
@@ -77,7 +81,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
 
-            // $status = send_acc_notice($newAdmin->email, $subject, $message);
+            $status = send_acc_notice($newAdmin->email, $subject, $message);
             // Send account notice to admin
 
             try {
@@ -92,7 +96,7 @@ class Admin extends Account {
 
     public function editUser($request, $role, $id) {
         $status = true;
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent = $this->userModel->find($id);
 
             $this->newStudent->student_num = $request->getPost('studNum');
@@ -102,6 +106,7 @@ class Admin extends Account {
             $this->newStudent->contact_num = $request->getPost('studContactNum');
             $this->newStudent->username = $request->getPost('studUserName');
             $this->newStudent->email = $request->getPost('studEmail');
+            $this->newStudent->email .= '@up.edu.ph';
 
             try {
                 $this->userModel->update($id, $this->newStudent);
@@ -118,6 +123,7 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->email .= '@up.edu.ph';
 
             try{
                 $this->userModel->update($id, $newAdmin);
@@ -130,7 +136,7 @@ class Admin extends Account {
     }
 
     public function deleteUser($id, $role) {
-        if($role === 'student') {
+        if($role === 'student' || $role == '2') {
             $this->newStudent = $this->userModel->find($id);
             $this->newStudent->is_deleted = 1;
             $this->userModel->update($id, $this->newStudent);

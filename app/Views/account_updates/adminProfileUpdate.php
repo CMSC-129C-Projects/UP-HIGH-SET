@@ -3,8 +3,19 @@
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    
-    
+    <?php if(isset($status) && $status):?>
+        <div id="bg-modal" class="black-modal-email">
+            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+                <div class="mdl-content">
+                    <p>User updated successfully!</p>
+                    <div class="btn-delete">
+                        <button id="dontDelete">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
+
     <div id="myModal" class="custom-modal">
         <!-- Modal content -->
         <div class="m-content">
@@ -39,18 +50,20 @@
                 <div class="col-sm-9">
                     <div class="tab-content">              
                         <hr>
-                        <form class="form" action="<?=base_url();?>/profile" method="post" id="registrationForm">
+                        <form class="form" action="<?=base_url();?>/profile/admin" method="post" id="registrationForm">
                             <input type="hidden" name="avatar" value="<?=set_value('avatar', $avatar_url);?>">
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="first_name"><h4>First name</h4></label>
-                                    <input type="text" class="form-control" name="first_name" id="first_name" value="Admin Fname Here" >
+                                    <input type="text" class="form-control" name="first_name" id="first_name" value="<?=set_value('first_name', $fN);?>" >
+                                    <span class="text-danger"><?=displaySingleError($validation, 'first_name');?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="last_name"><h4>Last name</h4></label>
-                                    <input type="text" class="form-control" name="last_name" id="last_name"  value="Admin Lname Here">
+                                    <input type="text" class="form-control" name="last_name" id="last_name"  value="<?=set_value('last_name', $lN);?>">
+                                    <span class="text-danger"><?=displaySingleError($validation, 'last_name');?></span>
                                 </div>
                             </div>
                            
@@ -58,20 +71,21 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
-                                    <input type="email" class="form-control" name="email" id="email" value="Admin Email Here">
+                                    <input type="text" class="form-control" name="email" id="email" value="<?=set_value('email', $eml);?>">
+                                    <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="mobile"><h4>Mobile</h4></label>
-                                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile number" value="Admin Number Here">
+                                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile number" value="<?=set_value('mobile', $cN);?>">
                                     <span class="text-danger"><?=displaySingleError($validation, 'mobile');?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="username"><h4>Username</h4></label>
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" value="Admin username Here">
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" value="<?=set_value('username', $uN);?>">
                                     <span class="text-danger"><?=displaySingleError($validation, 'username');?></span>
                                 </div>
                             </div>

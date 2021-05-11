@@ -42,7 +42,7 @@ class CustomRules {
 
         $student = new \App\Entities\Student();
 
-        $str += '@up.edu.ph';
+        $str .= '@up.edu.ph';
 
         $fields = (int)$fields;
         $student = $userModel->find($fields);
@@ -87,7 +87,7 @@ class CustomRules {
 
     public function isUniqueEmail(string $str): bool {
         $userModel = new \App\Models\UserModel();
-        $str += '@up.edu.ph';
+        $str .= '@up.edu.ph';
 
         $user = $userModel->asArray()->where('email', $str)->findAll();
 

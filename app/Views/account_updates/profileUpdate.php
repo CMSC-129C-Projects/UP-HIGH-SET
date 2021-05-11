@@ -50,7 +50,7 @@
                 <div class="col-sm-9">
                     <div class="tab-content">              
                         <hr>
-                        <form class="form" action="<?=base_url();?>/profile" method="post" id="registrationForm">
+                        <form class="form" action="<?=base_url();?>/profile/student" method="post" id="registrationForm">
                             <input type="hidden" name="avatar" value="<?=set_value('avatar', $avatar_url);?>">
                             <div class="form-group">
                                 <div class="col-xs-6">

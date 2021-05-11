@@ -26,8 +26,8 @@ margin-top: 10px;
 
 .tab-content .form-control{
     border-color: #7b1113;
-    -webkit-box-shadow: 0 0 1rem #505050;
-  box-shadow: 0 0 1rem #505050;
+    -webkit-box-shadow: 0 0 .5rem #505050;
+  box-shadow: 0 0 .5rem #505050;
   border-style: double;
 
 }

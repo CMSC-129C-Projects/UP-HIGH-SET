@@ -19,7 +19,7 @@
     </div>
 
     <div class="main">
-        <select name="glevel" id="gl" class="custom-select" style="width:150px">
+        <select name="glevel" id="gl" class="custom-select" style="width:100px">
             <option value="7" selected="selected">Grade 7</option>
             <option value="8">Grade 8</option>
             <option value="9">Grade 9</option>
@@ -29,7 +29,7 @@
         </select>
 
         <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
-        <div class="table-responsive">
+        <div style="table-responsive">
         <table class="table-bordered table-striped table-hover" id="student">
             <thead>
                 <tr>

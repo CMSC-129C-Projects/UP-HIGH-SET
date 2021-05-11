@@ -26,7 +26,7 @@
 
     <div id="EmailContent">
     <div class="card">
-      <div class="card-body" style="padding: 40px;">
+      <div class="card-body">
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>
@@ -44,7 +44,7 @@
           <br>
           <div class="form-group">
             <label for="purpose" style="font-size:15px;">Email Purpose :</label>
-            <select class="custom-select" style="width:150px">
+            <select class="custom-select">
               <option selected>Select...</option>
               <option value="announcement">Announcement</option>
               <option value="registration">Registration</option>

@@ -4,7 +4,7 @@
 
   <div class="container-fluid" style="height: 420px;">
   <div id="ChangePassword" style="margin-top: 4.7rem;">
-    <div class="card" style="width: 70%; margin: auto">
+    <div class="card">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body" style="padding: 40px; margin: 10px">
         <?php if (isset($validation) != null) { ?>

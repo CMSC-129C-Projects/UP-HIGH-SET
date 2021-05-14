@@ -36,6 +36,7 @@ $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Dashboard::index');
 // $routes->get('profile', 'Profile::index');
 $routes->match(['get', 'post'], 'login', 'Home::login', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], 'category', 'Evaluation::choose_category');
 $routes->match(['get', 'post'], 'forgot_password', 'Home::forgot_password');
 $routes->match(['get', 'post'], 'change_password', 'Home::change_password');
 $routes->match(['get', 'post'], 'reset_password/(:any)', 'Home::reset_password/$1');

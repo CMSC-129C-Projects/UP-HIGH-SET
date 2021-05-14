@@ -17,7 +17,7 @@ Students and School Admin/s
 
 - Framework: Codeigniter 4
 - Backend: PHP and JQuery
-- Frontend: HTML5, CSS3, BOOTSTRAP, JavaScript, JQuery DataTables
+- Frontend: HTML5, CSS3, BOOTSTRAP, JavaScript, JQuery DataTable
 
 ## Running the project
 

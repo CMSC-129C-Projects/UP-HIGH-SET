@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 02:51 PM
+-- Generation Time: May 14, 2021 at 04:26 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -130,6 +130,7 @@ INSERT INTO `emails` (`id`, `title`, `message`, `purpose`, `created_on`, `update
 CREATE TABLE `evaluation` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
+  `status` enum('open','closed') NOT NULL,
   `year_start` year(4) DEFAULT NULL,
   `year_end` year(4) DEFAULT NULL,
   `semester` enum('1','2') DEFAULT NULL,
@@ -166,11 +167,55 @@ CREATE TABLE `eval_question` (
   `section_id` int(11) NOT NULL,
   `question_order` int(11) NOT NULL,
   `question_text` text NOT NULL,
-  `question_type` enum('singleChoice','openEnded') NOT NULL,
   `created_on` datetime DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `eval_question`
+--
+
+INSERT INTO `eval_question` (`id`, `section_id`, `question_order`, `question_text`, `created_on`, `updated_on`, `is_deleted`) VALUES
+(1, 1, 1, 'Has mastery of subject matter', '2021-05-14 21:28:15', NULL, 0),
+(2, 1, 2, 'Explains clearly course objectives and expectations', '2021-05-14 21:28:15', NULL, 0),
+(3, 1, 3, 'Discusses subject matter clearly and systematically', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(4, 1, 4, 'Provides in-depth treatment of subject matter', '2021-05-14 21:28:15', NULL, 0),
+(5, 1, 5, 'Relates course to other fields and present-day problems', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(6, 1, 6, 'Uses effective teaching techniques, considering the total capacity of the students', '2021-05-14 21:28:15', NULL, 0),
+(7, 1, 7, 'Encourages and respects new ideas and students\' viewpoints', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(8, 1, 8, 'Stimulates students\' desires to learn more about the subject', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(9, 1, 9, 'Gives challenging examinations and asks questions that require analysis', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(10, 1, 10, 'Expresses and communicates effectively', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
+(11, 2, 1, 'Corrects and gives results and feedback of examinations and/or other work within reasonable time', '2021-05-14 21:38:30', NULL, 0),
+(12, 2, 2, 'Uses students\' achievements in class as basis for grades', '2021-05-14 21:38:30', NULL, 0),
+(13, 2, 3, 'Maintains good conduct of students in class', '2021-05-14 21:38:30', NULL, 0),
+(14, 2, 4, 'Comes to class on time', '2021-05-14 21:38:30', NULL, 0),
+(15, 2, 5, 'Attends class regularly', '2021-05-14 21:38:30', NULL, 0),
+(16, 2, 6, 'Maximizes class hour for learning', '2021-05-14 21:38:30', NULL, 0),
+(17, 2, 7, 'Treats students equally and fairly; shows no favoritism', '2021-05-14 21:38:30', NULL, 0),
+(18, 2, 8, 'Firm and consistent, strict but reasonable in disciplining students', '2021-05-14 21:38:30', NULL, 0),
+(19, 2, 9, 'Encourages students to do their best to develop their potentials', '2021-05-14 21:38:30', NULL, 0),
+(20, 2, 10, 'Gives and explains assignments', '2021-05-14 21:38:30', NULL, 0),
+(21, 3, 1, 'Has high intellectual standard', '2021-05-14 21:46:51', NULL, 0),
+(22, 3, 2, 'Is ethical or moral in the performance of his official duties', '2021-05-14 21:46:51', NULL, 0),
+(23, 3, 3, 'Observes university regulations', '2021-05-14 21:46:51', NULL, 0),
+(24, 3, 4, 'Has dedication/sense of commitment', '2021-05-14 21:46:51', NULL, 0),
+(25, 3, 5, 'Admits mistakes and accepts constructive criticism', '2021-05-14 21:46:51', NULL, 0),
+(26, 3, 6, 'Mentally alert and enthusiastic', '2021-05-14 21:46:51', NULL, 0),
+(27, 3, 7, 'Employs wit and has keen sense of humor when the situation so demands', '2021-05-14 21:46:51', NULL, 0),
+(28, 3, 8, 'Is approachable and pleasant', '2021-05-14 21:46:51', NULL, 0),
+(29, 3, 9, 'Maintains poise or calm in different situations', '2021-05-14 21:46:51', NULL, 0),
+(30, 3, 10, 'Keeps individual and/or group appointments', '2021-05-14 21:46:51', NULL, 0),
+(31, 4, 1, 'Maintains cordial but professional relations with students', '2021-05-14 21:49:12', NULL, 0),
+(32, 4, 2, 'Encourages and makes himself/herself available for consultation', '2021-05-14 21:49:12', NULL, 0),
+(33, 4, 3, 'Elicits positive reactions from students', '2021-05-14 21:49:12', NULL, 0),
+(34, 4, 4, 'Shows enthusiasm for and interest in student campus life', '2021-05-14 21:49:12', NULL, 0),
+(35, 4, 5, 'Performs duties and responsibilities in school', '2021-05-14 21:49:12', NULL, 0),
+(36, 5, 1, 'Taking into account instructional skills,  class management,  personal qualities,  and student-faculty relations.\r\n\r\nPlease rate your teacher by encircling, on a scale of 1 to 5 with 5 as excellent.', '2021-05-14 21:51:13', NULL, 0),
+(37, 6, 1, 'My teacher\'s strong points are:', '2021-05-14 21:52:45', NULL, 0),
+(38, 6, 2, 'My teacher\'s weak points are:', '2021-05-14 21:52:45', NULL, 0),
+(39, 6, 3, 'Recommendation for improvement:', '2021-05-14 21:52:45', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -182,6 +227,7 @@ CREATE TABLE `eval_section` (
   `id` int(11) UNSIGNED NOT NULL,
   `sec_order` int(11) NOT NULL,
   `name` enum('Instructional  Skills','Class Management','Personal Qualities','Student Faculty Relations','General Evaluation','Comments') NOT NULL,
+  `question_type_id` int(11) NOT NULL,
   `created_on` datetime DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
@@ -191,13 +237,13 @@ CREATE TABLE `eval_section` (
 -- Dumping data for table `eval_section`
 --
 
-INSERT INTO `eval_section` (`id`, `sec_order`, `name`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 1, 'Instructional  Skills', '2021-05-14 18:41:33', NULL, 0),
-(2, 2, 'Class Management', '2021-05-14 18:41:49', NULL, 0),
-(3, 3, 'Personal Qualities', '2021-05-14 18:41:59', NULL, 0),
-(4, 4, 'Student Faculty Relations', '2021-05-14 18:42:15', NULL, 0),
-(5, 5, 'General Evaluation', '2021-05-14 18:42:27', NULL, 0),
-(6, 6, 'Comments', '2021-05-14 18:42:47', NULL, 0);
+INSERT INTO `eval_section` (`id`, `sec_order`, `name`, `question_type_id`, `created_on`, `updated_on`, `is_deleted`) VALUES
+(1, 1, 'Instructional  Skills', 1, '2021-05-14 18:41:33', '2021-05-14 22:16:18', 0),
+(2, 2, 'Class Management', 1, '2021-05-14 18:41:49', '2021-05-14 22:16:22', 0),
+(3, 3, 'Personal Qualities', 1, '2021-05-14 18:41:59', '2021-05-14 22:16:25', 0),
+(4, 4, 'Student Faculty Relations', 1, '2021-05-14 18:42:15', '2021-05-14 22:16:28', 0),
+(5, 5, 'General Evaluation', 2, '2021-05-14 18:42:27', '2021-05-14 22:16:34', 0),
+(6, 6, 'Comments', 0, '2021-05-14 18:42:47', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -256,8 +302,8 @@ CREATE TABLE `faculty` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `details` text DEFAULT NULL,
-  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
-  `updated_ON` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `created_on` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -320,14 +366,53 @@ CREATE TABLE `permission` (
 
 CREATE TABLE `question_choice` (
   `id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
+  `q_type_id` int(11) NOT NULL,
   `choice_order` int(11) NOT NULL,
-  `weight` decimal(10,0) NOT NULL,
-  `text` text NOT NULL,
-  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `weight` decimal(10,0) NOT NULL DEFAULT 0,
+  `choice` text NOT NULL,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
-  `is_deleted` tinyint(1) NOT NULL
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question_choice`
+--
+
+INSERT INTO `question_choice` (`id`, `q_type_id`, `choice_order`, `weight`, `choice`, `created_on`, `updated_on`, `is_deleted`) VALUES
+(1, 1, 1, '0', 'E', '2021-05-14 22:14:32', NULL, 0),
+(2, 1, 2, '0', 'VG', '2021-05-14 22:14:32', NULL, 0),
+(3, 1, 3, '0', 'G', '2021-05-14 22:14:32', NULL, 0),
+(4, 1, 4, '0', 'F', '2021-05-14 22:14:32', NULL, 0),
+(5, 1, 5, '0', 'P', '2021-05-14 22:14:32', NULL, 0),
+(6, 2, 1, '0', '5', '2021-05-14 22:14:32', NULL, 0),
+(7, 2, 2, '0', '4', '2021-05-14 22:14:32', NULL, 0),
+(8, 2, 3, '0', '3', '2021-05-14 22:14:32', NULL, 0),
+(9, 2, 4, '0', '2', '2021-05-14 22:14:32', NULL, 0),
+(10, 2, 5, '0', '1', '2021-05-14 22:14:32', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_type`
+--
+
+CREATE TABLE `question_type` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question_type`
+--
+
+INSERT INTO `question_type` (`id`, `type`, `is_deleted`, `created_on`, `updated_on`) VALUES
+(1, 'sc_alpha', 0, '2021-05-14 22:03:28', '2021-05-14 22:24:41'),
+(2, 'sc_numeric', 0, '2021-05-14 22:03:28', '2021-05-14 22:24:50'),
+(3, 'open_ended', 0, '2021-05-14 22:03:28', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -713,6 +798,12 @@ ALTER TABLE `eval_answers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `eval_question`
+--
+ALTER TABLE `eval_question`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `eval_section`
 --
 ALTER TABLE `eval_section`
@@ -756,6 +847,18 @@ ALTER TABLE `page`
 -- Indexes for table `permission`
 --
 ALTER TABLE `permission`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `question_choice`
+--
+ALTER TABLE `question_choice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `question_type`
+--
+ALTER TABLE `question_type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -831,6 +934,12 @@ ALTER TABLE `eval_answers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `eval_question`
+--
+ALTER TABLE `eval_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
 -- AUTO_INCREMENT for table `eval_section`
 --
 ALTER TABLE `eval_section`
@@ -871,6 +980,18 @@ ALTER TABLE `page`
 --
 ALTER TABLE `permission`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `question_choice`
+--
+ALTER TABLE `question_choice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `question_type`
+--
+ALTER TABLE `question_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `role`

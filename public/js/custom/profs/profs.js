@@ -41,7 +41,7 @@ $(function() {
     $('input[name="search"]').keyup(function(event) {
         let input = $(this).val();
         if (!(/^[a-zA-Z" "]+$/.test(input)) && event.which != 8) {
-            alertify.error('Input should only contain letters in the alphabet.');
+            alertify.error('Input should only contain letters or space');
             if (!(/^[a-zA-Z" "]+$/.test(input[input.length - 1])))
                 input = input.substring(0, input.length - 1);
             $(this).val(input);

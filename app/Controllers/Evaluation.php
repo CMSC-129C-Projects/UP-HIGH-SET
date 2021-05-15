@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 use App\Models\SectionModel;
+use App\Models\EvalAnswersModel;
 
 class Evaluation extends BaseController
 {
@@ -23,41 +24,77 @@ class Evaluation extends BaseController
   }
 
   public function set_category($evalSheetId = null) {
-    $css = ['custom/modalAddition.css', 'custom/alert.css'];
-    $js = ['custom/alert.js'];
-
-    $data = [];
-    $data['css'] = addExternal($css, 'css');
-    $data['js'] = addExternal($js, 'javascript');
-
-    $sectionModel = new SectionModel();
-    $category = $sectionModel->where('is_deleted', 0)->select('name')->findAll();
-    $categorySize = count($category);
-
-    $questions = array();
-
-    $db = \Config\Database::connect();
-
-    for($i = 1; $i < $categorySize+1; $i++) {
-      
-      $sql = <<<EOT
-SELECT eval_section.name, eval_question.question_text
-FROM eval_section
-LEFT JOIN eval_question ON eval_question.section_id = eval_section.id
-WHERE eval_question.is_deleted = 0 and eval_question.section_id = $i
-ORDER BY eval_question.question_order ASC
-EOT;
-
-  $query = $db->query($sql);
-  $result = $query->getResult();
-
-  $questions[] = $result;
+    if ($this->request->getMethod() === 'post') {
+      // Create input type hidden for question type and question IDs of each question
+      $evaluationDetails = getEvalDetails($questionType, $size);
+      if (!saveDatabase($evaluationDetail)) {
+        $data['saveStatus'] = 'fail';
+      } else {
+        $data['saveStatus'] = 'success';
+      }
+    } else {
+      $css = ['custom/modalAddition.css', 'custom/alert.css'];
+      $js = ['custom/alert.js'];
+  
+      $data = [];
+      $data['css'] = addExternal($css, 'css');
+      $data['js'] = addExternal($js, 'javascript');
+  
+      $category = $sectionModel->where('is_deleted', 0)->select('name')->findAll();
+      $categorySize = count($category);
+  
+      $questions = array();
+      $sectionModel = new SectionModel();
+  
+      for($i = 1; $i < $categorySize+1; $i++) {
+        $result = $sectionModel->getQuestions($i);
+        $questions[] = $result;
+      }
+  
+      $data = [
+        'questions' => $questions,
+      ];
+  
+      return view('evaluation/category', $data);
+    }
   }
 
-  $data = [
-    'questions' => $questions,
-  ];
+  protected function getEvalDetails($questionType, $size) {
+    $evaluationDetail = [];
+    $numberOfAnswers = 0;
+    $answer = $this->request->getPost('choice' . $i);
+    if (strlen($answer) === 0){
+      $answer = null;
+    } else {
+      $numberOfAnswers++;
+    }
+    for($i=1; $i<=$size; $i++) {
+      $evaluationDetails[] = [
+        'user_id'     => $_SESSION['logged_user']['id'],
+        'question_id' => $this->request->getPost('questionID' . $i),
+        'qChoice_id'  => $answer,
+        'status'      => 'save'
+      ];
+    }
 
-    return view('evaluation/category', $data);
+    $progress = computeProgress($numberOfAnswers, $size);
+
+    return $evaluationDetails;
+  }
+
+  protected saveDatabase($evaluationDetails) {
+    $evalAnswersModel = new EvalAnswersModel();
+    foreach($evaluationDetails as $detail) {
+      if (!$evalAnswersModel->insert($detail)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  protected function computeProgress($numberOfAnswers, $size)
+  {
+    $progress = ($numberOfAnswers/$size)*100;
+    return $progress;
   }
 }

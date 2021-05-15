@@ -134,7 +134,7 @@
                                 <div class="col-md-6 half">
                                   <div class="form-group">
                                     <div class="inputBox">
-                                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
+                                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel', $glevel);?>" required>
                                       <br>
                                       <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                                       <h3>Grade Level</h3>

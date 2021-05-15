@@ -12,6 +12,7 @@
 
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -22,6 +23,9 @@
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/modalAddition.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
+
     <?php if(isset($css)):?>
       <?= echoFiles($css);?>
     <?php endif;?>
@@ -38,7 +42,11 @@
     <!-- header section ends -->
 
     <!-- Page Content Holder -->
-    <?= $this->renderSection('content');?>
+    <div>
+      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+          <?= $this->renderSection('content');?>
+      </div>
+    </div>
 
     <!-- footer section starts  -->
     <section id="footer" class="container-fluid">
@@ -71,6 +79,7 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script>
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";

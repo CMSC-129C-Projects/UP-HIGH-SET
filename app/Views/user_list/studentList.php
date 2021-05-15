@@ -15,7 +15,7 @@
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
-      <h1 style="padding:35px">Student List</h1>
+      <h1 style="padding:4.7rem;"> View Students </h1>
     </div>
 
     <div class="main">
@@ -25,7 +25,7 @@
             <option value="9">Grade 9</option>
             <option value="10">Grade 10</option>
             <option value="11">Grade 11</option>
-            <option value="12">Grade 12</option>
+            <option value="12">Grade 12</option>    
         </select>
 
         <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>

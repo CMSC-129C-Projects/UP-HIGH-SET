@@ -1,0 +1,110 @@
+.row h2{
+color: #7b1113;
+text-shadow:2px 2px 4px grey; ;
+
+}
+
+
+.tab-content h4{
+    color: #7b1113;
+    }
+button[type=changeAvatar]{
+width: 110px;
+border-style: solid;
+border-radius: .5rem;
+border-color: #707070;
+border-width: thin;
+margin-top: 10px;
+}
+#privacyStatement{
+    border-color: #7b1113;
+    -webkit-box-shadow: 0 0 2rem #333;
+  box-shadow: 0 0 2rem #333;
+  border-style: double;
+  color: #014421;
+}
+
+.tab-content .form-control{
+    border-color: #7b1113;
+    -webkit-box-shadow: 0 0 .5rem #505050;
+  box-shadow: 0 0 .5rem #505050;
+  border-style: double;
+
+}
+
+
+
+.form-group button{
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 4rem;
+  width: 10rem;
+  margin-right: 10px;
+ 
+  
+  background: #7b1113;
+  color: #fff;
+}
+
+.form-group button:hover::before,
+
+.form-group button:hover::before {
+  width: 100%;
+}
+
+.form-group button:hover,
+button#cancel:hover,
+.form-group button:hover {
+  color: #ffff;
+  background: #014421;
+}
+.form-group input:focus {
+  
+  border: 2px solid green;
+}
+
+.form-group button[type=changePW]{
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    color: #7b1113;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 3rem;
+    width: 10rem;
+    margin-right: 10px;
+    margin-top: 48px;
+   
+    
+    background: #7b1113;
+    color: #fff;
+  }
+  
+  .form-group button[type="changePW"]:hover::before,
+  
+  .form-group button[type="changePW"]:hover::before {
+    width: 100%;
+  }
+  
+  .form-group button[type="changePW"]:hover,
+  button#cancel:hover,
+  .form-group button[type="changePW"]:hover {
+    color: #ffff;
+    background: #014421;
+  }

@@ -15,6 +15,8 @@ class Professors extends BaseController
     // }
 
 	public function index() {
+        $this->hasSession(0);
+
         $css = ['custom/profs/profs-style.css'];
         $js = ['custom/profs/profs.js'];
         $data = [
@@ -26,18 +28,33 @@ class Professors extends BaseController
 	}
 
     public function profList() {
-        // redirect to login if no session found
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url());
-        // } elseif ($_SESSION['logged_user']['role'] != '1') {
-        //     return redirect()->to(base_url());
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(1);
+
         $faculModel = new FacultyModel();
 
         $data['profList'] = $faculModel->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['profList']);
+    }
+
+    protected function hasSession($type) {
+        if ($type === 0) {
+            // redirect to login if no session found
+            // redirect to verifyAccount page if session not yet verified
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url('login'));
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        } else {
+            // redirect to login if no session found
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url());
+            } elseif ($_SESSION['logged_user']['role'] != '1') {
+                return redirect()->to(base_url());
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        }
     }
 }

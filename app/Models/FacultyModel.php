@@ -24,4 +24,14 @@ class FacultyModel extends Model {
     protected $updatedField  = 'updated_on';
 
     protected $skipValidation = true;
+
+    public function searchFaculty($searchFirstName, $searchLastName) {
+        $db = \Config\Database::connect();
+        
+        $sql = "SELECT * FROM faculty WHERE first_name LIKE '%".$searchFirstName."%' OR last_name LIKE '%".$searchLastName."%'";
+
+        $query = $db->query($sql);
+
+        return $query->getResult();
+    }
 }

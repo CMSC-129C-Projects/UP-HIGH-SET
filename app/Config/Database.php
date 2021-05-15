@@ -31,8 +31,8 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-    'DSN'      => '',
-		// 'DSN'      => 'mysql:host=localhost;port=3306;dbname=uphigh_set',
+    // 'DSN'      => '',
+		'DSN'      => 'mysql:host=localhost;port=3306;dbname=uphigh_set',
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',

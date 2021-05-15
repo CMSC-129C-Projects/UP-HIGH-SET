@@ -27,12 +27,20 @@ class Professors extends BaseController
         return view('professors/professors', $data);
 	}
 
-    public function profList() {
-        $this->hasSession(1);
+    public function profList($search = null) {
+        // $this->hasSession(1);
 
         $faculModel = new FacultyModel();
-
-        $data['profList'] = $faculModel->where('is_deleted', 0)->findAll();
+        if (!isset($search)) {
+            $data['profList'] = $faculModel->where('is_deleted', 0)->findAll();
+        } else {
+            if (strpos($search, ' ') !== false) {
+                $fullName = explode(' ', $search);
+                $data['profList'] = $faculModel->searchFaculty($fullName[0], $fullName[1]);
+            } else {
+                $data['profList'] = $faculModel->searchFaculty($search, $search);
+            }
+        }
 
         echo json_encode($data['profList']);
     }

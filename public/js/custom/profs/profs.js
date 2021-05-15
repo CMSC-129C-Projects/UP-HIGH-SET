@@ -6,6 +6,10 @@ function getProfs() {
     });
 }
 
+function filterProfs(searchItem) {
+    $('.prof-content').empty();
+}
+
 $(function() {
     $('.redirect').click(function() {
         window.location.href = BASE_URI + '/view_subjects/' + $(this).attr('data-id');

@@ -76,7 +76,7 @@
               <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
               <ul class="collapse list-unstyled" id="evaluation">
                 <li>
-                  <a href="#">Set Evaluation Status</a>
+                  <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
                 </li>
                 <li>
                   <a href="#">Monitor Progress</a>

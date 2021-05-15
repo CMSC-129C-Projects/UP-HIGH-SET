@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 use App\Models\SectionModel;
-use App\Models\SecSheetModel;
 
 class Evaluation extends BaseController
 {
@@ -19,46 +18,45 @@ class Evaluation extends BaseController
     return redirect()->to(base_url('category'));
   }
 
-  public function choose_category($evalSheetId = null) {
+  public function set_status() {
+    return view('evaluation/setStatus');
+  }
 
+  public function set_category($evalSheetId = null) {
     $css = ['custom/modalAddition.css', 'custom/alert.css'];
     $js = ['custom/alert.js'];
 
     $data = [];
     $data['css'] = addExternal($css, 'css');
     $data['js'] = addExternal($js, 'javascript');
-    $data['validation'] = null;
 
-    $rules = [
-      'category' => 'required',
-      'eval_sheet' => 'required' //not sure asa pa ko ni kwaon haha
-    ];
+    $sectionModel = new SectionModel();
+    $category = $sectionModel->where('is_deleted', 0)->select('name')->findAll();
+    $categorySize = count($category);
 
-    $eval_section = $this->request->getVar('category');
-    $eval_sheet = $this->request->getVar('eval_sheet');
+    $questions = array();
 
-    if($this->request->getMethod == 'post') {
+    $db = \Config\Database::connect();
 
-      if($this->validate($rules))
-      {
-        $secModel = new SectionModel();
-        $secSheetModel = new SecSheetModel();
+    for($i = 1; $i < $categorySize+1; $i++) {
+      
+      $sql = <<<EOT
+SELECT eval_section.name, eval_question.question_text
+FROM eval_section
+LEFT JOIN eval_question ON eval_question.section_id = eval_section.id
+WHERE eval_question.is_deleted = 0 and eval_question.section_id = $i
+ORDER BY eval_question.question_order ASC
+EOT;
 
-        $section = $secModel->where('name', $eval_section)->first();
+  $query = $db->query($sql);
+  $result = $query->getResult();
 
+  $questions[] = $result;
+  }
 
-        $q_data = [
-          'eval_section_id' = $section['id'],
-          'eval_sheet_id' = $eval_sheet
-        ];
-
-        $secSheetModel->insert($q_data);
-      } else {
-        $data = [
-          'validation' => $this->validator
-        ];
-      }
-    }
+  $data = [
+    'questions' => $questions,
+  ];
 
     return view('evaluation/category', $data);
   }

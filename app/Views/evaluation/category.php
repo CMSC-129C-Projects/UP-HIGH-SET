@@ -6,7 +6,7 @@
       <h1 style="padding: 4.7rem; text-align: center; margin: auto !important;">Evaluation</h1>
     <div>
 
-    <?php
+  <?php
     $is_questions = array();
     $cm_questions = array();
     $pq_questions = array();
@@ -33,7 +33,7 @@
           }
         }
       }
-     ?>
+   ?>
 
   </section>
 <?= $this->endSection();?>

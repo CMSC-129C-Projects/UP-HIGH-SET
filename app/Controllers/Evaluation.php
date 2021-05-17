@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\SectionModel;
 use App\Models\EvalAnswersModel;
+use App\Models\QuestionchoiceModel;
 
 class Evaluation extends BaseController
 {
@@ -23,52 +24,70 @@ class Evaluation extends BaseController
     return view('evaluation/setStatus');
   }
 
-  public function set_category($evalSheetId = null) {
+  public function evaluate($evalSheetId = null)
+  {
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
-      $evaluationDetails = getEvalDetails($questionType, $size);
-      if (!saveDatabase($evaluationDetail)) {
+      $evaluationDetails = $this->getEvalDetails($questionType, $size);
+      if (!$this->saveDatabase($evaluationDetail)) {
         $data['saveStatus'] = 'fail';
       } else {
         $data['saveStatus'] = 'success';
       }
     } else {
-      $css = ['custom/modalAddition.css', 'custom/alert.css'];
-      $js = ['custom/alert.js'];
+      $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
+      $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
   
       $data = [];
       $data['css'] = addExternal($css, 'css');
       $data['js'] = addExternal($js, 'javascript');
   
-      $category = $sectionModel->where('is_deleted', 0)->select('name')->findAll();
-      $categorySize = count($category);
+      $items = $this->getAllItems();
+      $data['questions'] = $items[0];
+      $data['choices'] = $items[1];
   
-      $questions = array();
-      $sectionModel = new SectionModel();
-  
-      for($i = 1; $i < $categorySize+1; $i++) {
-        $result = $sectionModel->getQuestions($i);
-        $questions[] = $result;
-      }
-  
-      $data = [
-        'questions' => $questions,
-      ];
-  
-      return view('evaluation/category', $data);
+      return view('evaluation/evaluate', $data);
     }
+  }
+
+  protected function getAllItems()
+  {
+    $sectionModel = new SectionModel();
+
+    $categories = $sectionModel->where('is_deleted', 0)->select('id, name, question_type_id')->findAll();
+
+    $questions = array();
+
+    foreach($categories as $category) {
+      $qType_id = $category['question_type_id'];
+      $choices[$category['name']] = $this->getChoices($qType_id);
+
+      $result = $sectionModel->getQuestions($category['id']);
+      $questions[$category['name']] = $result;
+    }
+
+    return [$questions, $choices];
+  }
+
+  protected function getChoices($q_type_id)
+  {
+    $qChoiceModel = new QuestionchoiceModel();
+
+    $choices = $qChoiceModel->where('q_type_id', $q_type_id)->where('is_deleted', 0)->select('id, choice')->findAll();
+    return $choices;
   }
 
   protected function getEvalDetails($questionType, $size) {
     $evaluationDetail = [];
     $numberOfAnswers = 0;
-    $answer = $this->request->getPost('choice' . $i);
-    if (strlen($answer) === 0){
-      $answer = null;
-    } else {
-      $numberOfAnswers++;
-    }
     for($i=1; $i<=$size; $i++) {
+      $answer = $this->request->getPost('choice' . $i);
+      if (strlen($answer) === 0){
+        $answer = null;
+      } else {
+        $numberOfAnswers++;
+      }
+
       $evaluationDetails[] = [
         'user_id'     => $_SESSION['logged_user']['id'],
         'question_id' => $this->request->getPost('questionID' . $i),
@@ -77,12 +96,12 @@ class Evaluation extends BaseController
       ];
     }
 
-    $progress = computeProgress($numberOfAnswers, $size);
+    $progress = $this->computeProgress($numberOfAnswers, $size);
 
     return $evaluationDetails;
   }
 
-  protected saveDatabase($evaluationDetails) {
+  protected function saveDatabase($evaluationDetails) {
     $evalAnswersModel = new EvalAnswersModel();
     foreach($evaluationDetails as $detail) {
       if (!$evalAnswersModel->insert($detail)) {

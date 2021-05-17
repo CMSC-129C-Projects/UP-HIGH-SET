@@ -294,6 +294,7 @@ class Home extends BaseController
 	protected function setSession($user, $userToken)
 	{
 		$session_data = [
+      'id'        => $user['id'],
 			'name'			=> $user['first_name'],
 			'email'			=> $user['email'],
 			'password' 		=> $user['password'],

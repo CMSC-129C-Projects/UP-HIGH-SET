@@ -58,6 +58,6 @@ AND users.id = $id
 ORDER BY subjects.name ASC
 EOT;    
         $query = $db->query($sql);
-        $return $query->getResult();
+        return $query->getResult();
     }
 }

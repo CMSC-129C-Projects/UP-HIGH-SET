@@ -4,18 +4,26 @@
   <section id="evaluation" class="container-fluid">
     <div class="heading text-center" style="margin:2.5rem  auto !important;">
       <h1 style="padding: 4.7rem; text-align: center; margin: auto !important;">Evaluation</h1>
-    <div>
+    </div>
     <form method="post">
       <div class="row" style="width: 100%;">
         <div class="col-md-12">
           <!-- Tab links -->
           <div class="tab">
             <?php foreach($questions as $key => $value):?>
-              <button type="button" class="tablinks" onclick="openQuestionnaire(event, '<?=strtolower(str_replace(' ', '_', $key));?>')"><?=$key;?></button>
+              <?php if($key === 'Instructional Skills'):?>
+                <button type="button" class="tablinks active" onclick="openQuestionnaire(event, '<?=strtolower(str_replace(' ', '_', $key));?>')"><?=$key;?></button>
+              <?php else:?>
+                <button type="button" class="tablinks" onclick="openQuestionnaire(event, '<?=strtolower(str_replace(' ', '_', $key));?>')"><?=$key;?></button>
+              <?php endif;?>
             <?php endforeach;?>
           </div>
           <?php foreach($questions as $key => $value):?>
-            <div id="<?=strtolower(str_replace(' ', '_', $key));?>" class="tabcontent">
+              <?php if($key === 'Instructional Skills'):?>
+                <div id="<?=strtolower(str_replace(' ', '_', $key));?>" class="tabcontent text-center" style="display: block;">
+              <?php else:?>
+                <div id="<?=strtolower(str_replace(' ', '_', $key));?>" class="tabcontent text-center">
+              <?php endif;?>
               <?php foreach($value as $q):?>
                 <h4><?=$q->question_text;?></h4>
                 <div class="form-group form-inline" style="display: flex; justify-content: center;">

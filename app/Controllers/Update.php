@@ -143,7 +143,12 @@ class Update extends BaseController
             $rules = [
                 'studFirstName' => 'required',
                 'studLastName' => 'required',
-                'gradeLevel' => 'required'
+                'gradeLevel' => [
+                    'rules'  => 'required|correctGradeLevel',
+                    'errors' => [
+                        'correctGradeLevel' => 'Please choose a grade level'
+                    ]
+                ]
             ];
             if(isset($id)) {
                 $rules['studNum'] = [

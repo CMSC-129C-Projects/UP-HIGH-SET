@@ -10,7 +10,8 @@ use App\Models\QuestionchoiceModel;
 
 class Evaluation extends BaseController
 {
-  public function index() {
+  public function index()
+  {
     if (!$this->session->has('logged_user')) {
       return redirect()->to(base_url('login'));
     } elseif (!$_SESSION['logged_user']['emailVerified']) {
@@ -20,7 +21,8 @@ class Evaluation extends BaseController
     return redirect()->to(base_url('category'));
   }
 
-  public function set_status() {
+  public function set_status()
+  {
     return view('evaluation/setStatus');
   }
 
@@ -28,26 +30,28 @@ class Evaluation extends BaseController
   {
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
-      $evaluationDetails = $this->getEvalDetails($questionType, $size);
-      if (!$this->saveDatabase($evaluationDetail)) {
+      $questionIDs = $this->getQuestionIDs();
+      $evaluationDetails = $this->getEvalDetails($questionIDs);
+      if (!$this->saveDatabase($evaluationDetails)) {
         $data['saveStatus'] = 'fail';
       } else {
         $data['saveStatus'] = 'success';
       }
-    } else {
-      $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
-      $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
-  
-      $data = [];
-      $data['css'] = addExternal($css, 'css');
-      $data['js'] = addExternal($js, 'javascript');
-  
-      $items = $this->getAllItems();
-      $data['questions'] = $items[0];
-      $data['choices'] = $items[1];
-  
-      return view('evaluation/evaluate', $data);
     }
+
+    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
+    $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
+
+    $data = [];
+    $data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
+
+    $items = $this->getAllItems();
+    $data['prevAnswers'] = $this->getPreviousAnswers();
+    $data['questions'] = $items[0];
+    $data['choices'] = $items[1];
+
+    return view('evaluation/evaluate', $data);
   }
 
   protected function getAllItems()
@@ -69,6 +73,21 @@ class Evaluation extends BaseController
     return [$questions, $choices];
   }
 
+  /**
+   * Get Previous Answers of user
+   */
+  protected function getPreviousAnswers()
+  {
+    $evalAnswersModel = new EvalAnswersModel();
+    $prevAnswers = $evalAnswersModel
+      ->where('user_id', $_SESSION['logged_user']['id'])
+      ->where('is_deleted', 0)
+      ->select('id, qChoice_id')
+      ->findAll();
+
+    return $prevAnswers;
+  }
+
   protected function getChoices($q_type_id)
   {
     $qChoiceModel = new QuestionchoiceModel();
@@ -77,11 +96,12 @@ class Evaluation extends BaseController
     return $choices;
   }
 
-  protected function getEvalDetails($questionType, $size) {
+  protected function getEvalDetails($questionIDs)
+  {
     $evaluationDetail = [];
     $numberOfAnswers = 0;
-    for($i=1; $i<=$size; $i++) {
-      $answer = $this->request->getPost('choice' . $i);
+    foreach($questionIDs as $id) {
+      $answer = $this->request->getPost('choices_' . $id);
       if (strlen($answer) === 0){
         $answer = null;
       } else {
@@ -90,24 +110,37 @@ class Evaluation extends BaseController
 
       $evaluationDetails[] = [
         'user_id'     => $_SESSION['logged_user']['id'],
-        'question_id' => $this->request->getPost('questionID' . $i),
+        'question_id' => $id,
         'qChoice_id'  => $answer,
         'status'      => 'save'
       ];
     }
 
-    $progress = $this->computeProgress($numberOfAnswers, $size);
+    $progress = $this->computeProgress($numberOfAnswers, count($questionIDs));
 
     return $evaluationDetails;
   }
 
-  protected function saveDatabase($evaluationDetails) {
+  protected function saveDatabase($evaluationDetails)
+  {
     $evalAnswersModel = new EvalAnswersModel();
-    foreach($evaluationDetails as $detail) {
-      if (!$evalAnswersModel->insert($detail)) {
-        return false;
+    $prevAnswers = $this->getPreviousAnswers();
+    if (count($prevAnswers) === 0) {
+      foreach($evaluationDetails as $detail) {
+        if (!$evalAnswersModel->insert($detail)) {
+          return false;
+        }
+      }
+    } else {
+      $index = 0;
+      foreach($evaluationDetails as $detail) {
+        if (!$evalAnswersModel->update($prevAnswers[$index]['id'], $detail)) {
+          return false;
+        }
+        $index++;
       }
     }
+    
     return true;
   }
 
@@ -115,5 +148,19 @@ class Evaluation extends BaseController
   {
     $progress = ($numberOfAnswers/$size)*100;
     return $progress;
+  }
+
+  /**
+   * Get question IDs
+   */
+  protected function getQuestionIDs()
+  {
+    $questionIDs = [];
+    foreach ($_POST as $field => $value) {
+        if (strpos($field, 'question_id_') === 0) {
+            $questionIDs[] = $value;
+        }
+    }
+    return $questionIDs; 
   }
 }

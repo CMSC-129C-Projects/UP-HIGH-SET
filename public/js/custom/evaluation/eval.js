@@ -20,3 +20,10 @@ function openQuestionnaire(evt, type) {
 
     resize();
 }
+
+$(function() {
+  $('.clear').click(function() {
+    const id = $(this).attr('data-id');
+    $('input[name="choices_'+ id +'"]:checked').prop('checked', false);
+  });
+});

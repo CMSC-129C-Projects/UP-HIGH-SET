@@ -40,7 +40,6 @@ function resize() {
 
 $(function() {
     resize();
-    console.log(defaultHeight);
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

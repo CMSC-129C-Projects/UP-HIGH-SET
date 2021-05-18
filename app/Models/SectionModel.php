@@ -28,7 +28,7 @@ class SectionModel extends Model {
     $db = \Config\Database::connect();
     
     $sql = <<<EOT
-SELECT eval_question.id, eval_question.question_text
+SELECT eval_question.id as id, eval_question.question_text
 FROM eval_section
 LEFT JOIN eval_question ON eval_question.section_id = eval_section.id
 WHERE eval_question.is_deleted = 0 and eval_question.section_id = $eval_question_section_id

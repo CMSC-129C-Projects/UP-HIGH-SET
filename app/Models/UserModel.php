@@ -56,7 +56,7 @@ subjects.is_deleted = 0 AND users.role = 2
 AND users.is_active = 1
 AND users.id = $id
 ORDER BY subjects.name ASC
-EOT;    
+EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }

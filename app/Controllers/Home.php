@@ -13,7 +13,27 @@ class Home extends BaseController
 {
   protected $is_change_pass = false;
 
-	public function index() {
+  public function _remap($method, $param1=null)
+  {
+    switch($method)
+    {
+        case 'index':
+        case 'login':
+        case 'forgot_password':
+        case 'change_password':
+        case 'verifyAccount':
+          return $this->$method();
+          break;
+        case 'reset_password':
+        case 'verification':
+          return $this->$method($param1);
+          break;
+        default:
+          return redirect()->to(base_url('login'));
+    }
+  }
+
+  public function index() {
 		return redirect()->to(base_url('login'));
 	}
 

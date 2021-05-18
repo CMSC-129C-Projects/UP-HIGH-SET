@@ -132,14 +132,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 half">
-                                  <div class="form-group">
-                                    <div class="inputBox">
-                                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel', $glevel);?>" required>
-                                      <br>
-                                      <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
-                                      <h3>Grade Level</h3>
+                                    <div class="form-group">     
+                                        <select class="form-select" name="gradeLevel" aria-label="Grade Level">
+                                        <option value="0" <?=set_select('gradeLevel', 0)?>>Grade Level</option>
+                                        <option value="7" <?=set_select('gradeLevel', 7, $glevel=='7')?>>Grade 7</option>
+                                        <option value="8" <?=set_select('gradeLevel', 8, $glevel=='8')?>>Grade 8</option>
+                                        <option value="9" <?=set_select('gradeLevel', 9, $glevel=='9')?>>Grade 9</option>
+                                        <option value="10" <?=set_select('gradeLevel', 10, $glevel=='10')?>>Grade 10</option>
+                                        <option value="11" <?=set_select('gradeLevel', 11, $glevel=='11')?>>Grade 11</option>
+                                        <option value="12" <?=set_select('gradeLevel', 12, $glevel=='12')?>>Grade 12</option>
+                                        </select>
+                                        <br>
+                                        <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                                     </div>
-                                  </div>
                                 </div>
                             </div>
                             <!-- <div class="row">

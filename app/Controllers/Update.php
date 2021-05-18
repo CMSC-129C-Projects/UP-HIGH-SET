@@ -13,9 +13,38 @@ class Update extends BaseController
         $this->admin = new Admin();
     }
 
-	public function index($role) {
-        $this->hasSession(0);
+    public function _remap($method, $param1=null, $param2=null)
+    {
+        if ($method === 'studentList' || $method === 'adminList') {
+            $this->hasSession(1);
+        } else {
+            $this->hasSession(0);
+        }
+        if ($_SESSION['logged_user']['role'] === '2') {
+            return redirect()->to(base_url('dashboard'));
+        }
 
+        switch($method)
+        {
+            case 'index':
+            case 'add':
+            case 'studentList':
+                return $this->$method($param1);
+                break;
+            case 'edit':
+            case 'delete':
+                return $this->$method($param1, $param2);
+                break;
+            case 'adminList':
+                return $this->$method();
+                break;
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
+
+	public function index($role)
+    {
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
         $data = [
@@ -30,9 +59,8 @@ class Update extends BaseController
         }
 	}
 
-    public function add($role = null) {
-        $this->hasSession(0);
-
+    public function add($role = null)
+    {
         $data['role'] = $role;
         $data['validation'] = null;
         $emailStatus = null;
@@ -55,9 +83,8 @@ class Update extends BaseController
         return view('account_updates/accountRegistration', $data);
     }
 
-    public function edit($role = null, $id = null) {
-        $this->hasSession(0);
-
+    public function edit($role = null, $id = null)
+    {
         $data = $this->setDefaultData($role, $id);
 
         $data['validation'] = null;
@@ -81,9 +108,8 @@ class Update extends BaseController
         return view('account_updates/editAccount', $data);
     }
 
-    public function delete($id, $role = null) {
-        $this->hasSession(0);
-
+    public function delete($id, $role = null)
+    {
         $this->admin->deleteUser($id, $role);
         return redirect()->to(base_url('update/' . $role));
     }
@@ -92,23 +118,22 @@ class Update extends BaseController
      * AUXILIARY FUNCTIONS BELOW
      */
 
-    public function studentList($gradeLevel = null) {
-        $this->hasSession(1);
-
+    public function studentList($gradeLevel = null)
+    {
         $data['studentList'] = $this->userModel->where('role','2')->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['studentList']);
     }
 
-    public function adminList() {
-        $this->hasSession(1);
-
+    public function adminList()
+    {
         $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['adminList']);
     }
 
-    protected function setDefaultData($role = null, $id = null) {
+    protected function setDefaultData($role = null, $id = null)
+    {
         if($role === 'student') {
             $student = new \App\Entities\Student();
             if(isset($id)) {
@@ -138,7 +163,8 @@ class Update extends BaseController
         return $data;
     }
 
-    protected function setRules($role = null, $id = null) {
+    protected function setRules($role = null, $id = null)
+    {
         if($role === 'student') {
             $rules = [
                 'studFirstName' => 'required',
@@ -222,7 +248,8 @@ class Update extends BaseController
         return $rules;
     }
 
-    protected function hasSession($type) {
+    protected function hasSession($type)
+    {
         if ($type === 0) {
             // redirect to login if no session found
             // redirect to verifyAccount page if session not yet verified

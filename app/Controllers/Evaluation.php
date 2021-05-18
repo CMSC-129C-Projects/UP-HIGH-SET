@@ -97,7 +97,7 @@ class Evaluation extends BaseController
     $prevAnswers = $evalAnswersModel
       ->where('user_id', $_SESSION['logged_user']['id'])
       ->where('is_deleted', 0)
-      ->select('id, qChoice_id')
+      ->select('id, qChoice_id, answer_text')
       ->findAll();
 
     return $prevAnswers;
@@ -123,17 +123,14 @@ class Evaluation extends BaseController
     $evaluationDetail = [];
     $numberOfAnswers = 0;
     foreach($questionIDs as $id) {
-      $answer = $this->request->getPost('choices_' . $id);
-      if (strlen($answer) === 0){
-        $answer = null;
-      } else {
-        $numberOfAnswers++;
-      }
+      $answerMultiple = $this->request->getPost('choices_' . $id);
+      $answerComments = $this->request->getPost('answer_' . $id);
 
       $evaluationDetails[] = [
         'user_id'     => $_SESSION['logged_user']['id'],
         'question_id' => $id,
-        'qChoice_id'  => $answer,
+        'qChoice_id'  => strlen($answerMultiple)!==0 ? $answerMultiple : null,
+        'answer_text' => strlen($answerComments)!==0 ? $answerComments : null,
         'status'      => 'save'
       ];
     }
@@ -185,11 +182,12 @@ class Evaluation extends BaseController
   protected function getQuestionIDs()
   {
     $questionIDs = [];
+    $types = [];
     foreach ($_POST as $field => $value) {
         if (strpos($field, 'question_id_') === 0) {
-            $questionIDs[] = $value;
+          $questionIDs[] = $value;
         }
     }
-    return $questionIDs; 
+    return $questionIDs;
   }
 }

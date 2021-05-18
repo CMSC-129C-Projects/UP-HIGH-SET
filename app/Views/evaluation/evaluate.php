@@ -28,22 +28,28 @@
             <?php foreach($value as $q):?>
               <input type="hidden" name="question_id_<?=$q->id?>" value="<?=$q->id?>">
               <h4><?=$q->question_text;?></h4>
-              <div class="form-group form-inline" style="display: flex; justify-content: center;">
-                <?php foreach($choices[$key] as $choice):?>
-                  <?php $name = 'choices_' . $q->id;?>
-                  <div style="padding: 0 2%;">
-                    <label for="<?=$name;?>"><?=$choice['choice'];?></label>
-                    <?php if(count($prevAnswers) != 0 && $prevAnswers[$index]['qChoice_id'] === $choice['id']):?>
-                      <input type="radio" class="form-control" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'], TRUE)?> name="<?=$name;?>">
-                    <?php else:?>
-                      <input type="radio" class="form-control" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'])?> name="<?=$name;?>">
-                    <?php endif;?>
-                  </div>
-                <?php endforeach;
-                $index++;?>
-
-                <div class="clear" data-id="<?=$q->id;?>"><i class="fa fa-times-circle"></i><span> Clear</span></div>
-              </div>
+              <?php if ($key === 'Comments'):?>
+                <div class="form-group" style="width: 50%; margin: auto;">
+                  <?php $name = 'answer_' . $q->id;?>
+                  <input type="text" name="<?=$name?>" value="<?=set_value($name, $prevAnswers ? $prevAnswers[$index]['answer_text']: '')?>" class="form-control">
+                </div>
+              <?php else:?>
+                <div class="form-group form-inline" style="display: flex; justify-content: center;">
+                  <?php foreach($choices[$key] as $choice):?>
+                    <?php $name = 'choices_' . $q->id;?>
+                    <div style="padding: 0 2%;">
+                      <label for="<?=$name;?>"><?=$choice['choice'];?></label>
+                      <?php if(count($prevAnswers) != 0 && $prevAnswers[$index]['qChoice_id'] === $choice['id']):?>
+                        <input type="radio" class="form-control" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'], TRUE)?> name="<?=$name;?>">
+                      <?php else:?>
+                        <input type="radio" class="form-control" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'])?> name="<?=$name;?>">
+                      <?php endif;?>
+                    </div>
+                  <?php endforeach;?>
+                  <div class="clear" data-id="<?=$q->id;?>"><i class="fa fa-times-circle"></i><span> Clear</span></div>
+                </div>
+              <?php endif;?>
+              <?php $index++;?>
             <?php endforeach;?>
             </div>
           <?php endforeach;?>

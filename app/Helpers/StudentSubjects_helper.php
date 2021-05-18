@@ -7,11 +7,15 @@ function fetch_stud_subjects($id = null) {
     $sql =<<<EOT
 SELECT
 users.grade_level ,
-subjects.faculty_id,
+faculty.first_name,
+faculty.last_name,
+faculty.details,
 subjects.name
 FROM users
 LEFT JOIN subjects
 ON users.grade_level = subjects.grade_level
+LEFT JOIN faculty
+on subjects.faculty_id = faculty.id
 WHERE
 subjects.is_deleted = 0 AND users.role = 2
 AND users.is_active = 1
@@ -28,12 +32,14 @@ EOT;
       $data= [
         'grade_level' => $r->grade_level,
         'subject_name' => $r->name,
-        'faculty_id' => $r->faculty_id
+        'faculty_fName' => $r->first_name,
+        'faculty_lName' => $r->last_name,
+        'faculty_details' => $r->details
       ];
       $subjects[] = $data;
     }
     return $subjects;
   }
-  
+
   return false;
 }

@@ -18,7 +18,7 @@ class Evaluation extends BaseController
       return redirect()->to(base_url('verifyAccount'));
     }
 
-    return redirect()->to(base_url('category'));
+    return redirect()->to(base_url('evaluation/evaluate'));
   }
 
   public function set_status()

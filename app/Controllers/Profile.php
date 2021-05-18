@@ -9,6 +9,20 @@ class Profile extends BaseController
 {
     protected $userModel;
 
+    public function _remap($method)
+    {
+        $this->hasSession();
+        switch($method)
+        {
+            case 'student':
+            case 'admin':
+                return $this->$method();
+                break;
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
+
     function __construct()
     {
         $this->userModel = new UserModel();

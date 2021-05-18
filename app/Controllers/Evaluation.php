@@ -10,15 +10,27 @@ use App\Models\QuestionchoiceModel;
 
 class Evaluation extends BaseController
 {
-  public function index()
+  public function _remap($method, $param1=null)
   {
     if (!$this->session->has('logged_user')) {
       return redirect()->to(base_url('login'));
     } elseif (!$_SESSION['logged_user']['emailVerified']) {
       return redirect()->to(base_url('verifyAccount'));
     }
-
-    return redirect()->to(base_url('evaluation/evaluate'));
+    switch ($method)
+    {
+      case 'set_status':
+        if ($_SESSION['logged_user']['role'] === 2)
+          return redirect()->to(base_url('dashboard'));
+        else
+          return $this->$method();
+      case 'evaluate':
+      case 'index':
+        if ($_SESSION['logged_user']['role'] === 1)
+          return redirect()->to(base_url('dashboard'));
+        else
+          return $this->evaluate($param1);
+      }
   }
 
   public function set_status()
@@ -54,6 +66,9 @@ class Evaluation extends BaseController
     return view('evaluation/evaluate', $data);
   }
 
+  /**
+   * Get questions with its choices
+   */
   protected function getAllItems()
   {
     $sectionModel = new SectionModel();
@@ -88,6 +103,9 @@ class Evaluation extends BaseController
     return $prevAnswers;
   }
 
+  /**
+   * get choices from the database
+   */
   protected function getChoices($q_type_id)
   {
     $qChoiceModel = new QuestionchoiceModel();
@@ -96,6 +114,10 @@ class Evaluation extends BaseController
     return $choices;
   }
 
+  /**
+   * Get details from input that
+   * should be sent to database
+   */
   protected function getEvalDetails($questionIDs)
   {
     $evaluationDetail = [];
@@ -121,6 +143,10 @@ class Evaluation extends BaseController
     return $evaluationDetails;
   }
 
+  /**
+   * Call insert or update to save
+   * answers to database
+   */
   protected function saveDatabase($evaluationDetails)
   {
     $evalAnswersModel = new EvalAnswersModel();
@@ -144,6 +170,9 @@ class Evaluation extends BaseController
     return true;
   }
 
+  /**
+   * Computer progress of student
+   */
   protected function computeProgress($numberOfAnswers, $size)
   {
     $progress = ($numberOfAnswers/$size)*100;

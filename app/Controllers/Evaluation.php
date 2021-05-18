@@ -20,13 +20,13 @@ class Evaluation extends BaseController
     switch ($method)
     {
       case 'set_status':
-        if ($_SESSION['logged_user']['role'] === 2)
+        if ($_SESSION['logged_user']['role'] === '2')
           return redirect()->to(base_url('dashboard'));
         else
           return $this->$method();
       case 'evaluate':
       case 'index':
-        if ($_SESSION['logged_user']['role'] === 1)
+        if ($_SESSION['logged_user']['role'] === '1')
           return redirect()->to(base_url('dashboard'));
         else
           return $this->evaluate($param1);

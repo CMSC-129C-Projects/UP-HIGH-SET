@@ -6,7 +6,21 @@ use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
 {
-  public function index() {
+  public function _remap($method)
+  {
+    switch($method)
+    {
+      case 'index':
+      case 'logout':
+        return $this->$method();
+        break;
+      default:
+        return $this->index();
+    }
+  }
+
+  public function index()
+  {
     if (!$this->session->has('logged_user')) {
       return redirect()->to(base_url('login'));
     } elseif (!$_SESSION['logged_user']['emailVerified']) {

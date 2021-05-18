@@ -90,7 +90,6 @@ class Home extends BaseController
 
   public function forgot_password()
   {
-
     $data = [];
 		$data['validation'] = null;
     $data['validate_error'] = null;
@@ -272,7 +271,6 @@ class Home extends BaseController
 		if($_SESSION['logged_user']['emailVerified']) {
 			return redirect()->to(base_url('dashboard'));
 		} elseif($userToken === $_SESSION['logged_user']['userToken']) {
-
 			if($timeDifference <= 1800) {
 				$_SESSION['logged_user']['emailVerified'] = true;
 				unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
@@ -294,16 +292,17 @@ class Home extends BaseController
 	protected function setSession($user, $userToken)
 	{
 		$session_data = [
-			'name'			=> $user['first_name'],
-			'email'			=> $user['email'],
-			'password' 		=> $user['password'],
-			'role'			=> $user['role'],
-      'isLoggedIn' 	=> true,
+      'id'            => $user['id'],
+			'name'			    => $user['first_name'],
+			'email'			    => $user['email'],
+			'password' 		  => $user['password'],
+			'role'			    => $user['role'],
+      'isLoggedIn' 	  => true,
       'passwordReset' => false,
       'emailVerified' => false,
       // 'emailVerified' => true,
-			'userToken'		=> $userToken,
-			'loginDate'		=> date('Y-m-d H:i:s')
+			'userToken'		  => $userToken,
+			'loginDate'		  => date('Y-m-d H:i:s')
 		];
 
 		$this->session->set('logged_user', $session_data);

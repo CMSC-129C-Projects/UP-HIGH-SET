@@ -1,3 +1,9 @@
+let windowSize;
+let header = document.getElementById("header");
+let footer = document.getElementById("footer");
+let main = document.getElementById("main");
+
+const defaultHeight = main.clientHeight;
 function getSize() {
     // const width  = window.innerWidth || document.documentElement.clientWidth || 
     // document.body.clientWidth;
@@ -13,25 +19,27 @@ function getSize() {
     return height;
 }
 
-let windowSize;
-let header = document.getElementById("header");
-let footer = document.getElementById("footer");
-
 $(window).resize(function() {
     windowSize = getSize();
     headerHeight = header.clientHeight;
     footerHeight = footer.clientHeight;
-    $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
-    $('#main').css("height", (windowSize - headerHeight - footerHeight) + "px");
 });
 
-$(document).ready(function () {
-    windowSize = getSize();
+function resize() {
+    // windowSize = getSize();
     headerHeight = header.clientHeight;
-    footerHeight = footer.clientHeight;
-    $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
-    $('#main').css("height", (windowSize - headerHeight - footerHeight) + "px");
+    // footerHeight = footer.clientHeight;
+    if (main.clientHeight < defaultHeight) {
+        $('#sidebar').css("height", (defaultHeight) + "px");    
+        $('#main').css("height", (defaultHeight) + "px");
+    } else {
+        $('#sidebar').css("height", (main.clientHeight) + "px");
+    }    
+    // $('#main').css("height", (windowSize - headerHeight) + "px");
+}
 
+$(function() {
+    resize();
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

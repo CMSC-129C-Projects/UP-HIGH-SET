@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\SubjectModel;
+use App\Models\FacultyModel;
+use App\Models\UserModel;
+
 function fetch_stud_subjects($id = null) {
   if(isset($id)) {
     $db = \Config\Database::connect();
@@ -42,4 +46,27 @@ EOT;
   }
 
   return false;
+}
+
+function fetch_student_via_model($id = null) {
+  if(isset($id)) {
+
+    $subjectModel = new SubjectModel();
+    $facultyModel = new FacultyModel();
+    $userModel = new UserModel();
+
+    $user = $userModel->where('id', $id)->first();
+    $subjects = $subjectModel->where('grade_level', $user->grade_level)->findAll();
+    $faculty_id = $subjects[0]['faculty_id'];
+    $faculty = $facultyModel->where('id', $faculty_id)->findAll();
+
+    $data= [
+      'grade_level' => $user->grade_level,
+      'subjects' => $subjects, // array
+      'faculties' => $faculty // array
+    ];
+
+    return $data;
+  }
+    return false;
 }

@@ -42,7 +42,7 @@
 }
 
 #special .heading .input-group input[type="search"]:focus{
-    border-color: #7b1113 !important;
+    border-color: #7b1113;
     border-style: solid;
     border-width: 2px;
 
@@ -50,11 +50,11 @@
 }
 #special .heading .input-group button[type="button"]{
     font-size: 12px;
-    color: #7b1113 !important;;
+    color: #7b1113 !important;
     border-color: #7b1113;
 }
 #special .heading .input-group button[type="button"]:hover{
-    color: white;
+    color:white !important;
     background-color: #7b1113;
    
 }

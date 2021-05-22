@@ -11,6 +11,6 @@ class Test extends BaseController
         $data = [
             'js'    => addExternal($js, 'javascript')
         ];
-        return view('Evaluation/evaluation', $data);
+        return view('searchviewprof', $data);
     }
 }

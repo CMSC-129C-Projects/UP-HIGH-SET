@@ -254,6 +254,13 @@ input[type="submit"]:hover {
   margin: auto;
 }
 
+
+
+
+
+
+/* FOOTER */
+
 #footer {
   background: linear-gradient(to top right, #800000 0%, #228b22 100%);
   width: 100%;
@@ -501,9 +508,13 @@ a:focus {
   margin-right: 5px;
 }
 
-#sidebar ul.components a:hover {
+#sidebar ul.components  a:hover {
   color: #7b1113;
   background-color: #ffed8a;
+}
+#sidebar ul.components ul.CTAs  a:hover {
+  
+  background-color:none;
 }
 
 #sidebar ul p {

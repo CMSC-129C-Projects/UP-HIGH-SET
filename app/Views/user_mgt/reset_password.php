@@ -1,7 +1,7 @@
 <?php $this->extend('template/default') ?>
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="height:420px;">
+  <div class="container-fluid" style="height:100vh;">
   <div id="ChangePassword" style="margin-top:4.7rem;">
     <div class="card">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
@@ -13,7 +13,7 @@
             <h4><?=$error?><h4>
           </div>
           <br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
+          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } else { ?>
           <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">Please reset your password to continue: </h3>
           <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">
@@ -30,8 +30,8 @@
             </div>
 
             <div class="form-group">
-              <input type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 2rem !important; margin: none; font-weight: bold; font-size: 13px" value="Update">
-              <a href="<?=base_url('dashboard/logout')?>" class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;">Cancel</a>
+              <input type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 1rem !important; margin: none; font-weight: bold; font-size: 13px" value="Update">
+              <a href="<?=base_url('dashboard/logout')?>" class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;">Cancel</a>
             </div>
           </form>
 

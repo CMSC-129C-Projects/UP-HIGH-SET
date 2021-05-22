@@ -190,4 +190,21 @@ class Evaluation extends BaseController
     }
     return $questionIDs;
   }
+
+  protected function notifyStudents()
+  {
+    $emailModel = new EmailModel();
+
+    $emailContent = $emailModel->where('is_deleted', '0')->where('purpose', 'announcement')->orderBy('created_on', 'desc')->first();
+
+    //alert user that his/her account's password changed if you did not do it blahblah --
+    $search = ['-content-', '-student-', '-website_link-'];
+    $subject = $emailContent['title'];
+
+    $message = file_get_contents(base_url() . '/app/Views/announcement.html');
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
+
+		$message = str_replace($search, $replace, $message);
+		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+  }
 }

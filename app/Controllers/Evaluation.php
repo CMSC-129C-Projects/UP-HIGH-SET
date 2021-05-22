@@ -48,6 +48,8 @@ class Evaluation extends BaseController
 
   public function evaluate($evalSheetId = null)
   {
+    $data = [];
+    
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
@@ -59,16 +61,16 @@ class Evaluation extends BaseController
       }
     }
 
-    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/eval.css'];
-    $js = ['custom/alert.js', 'custom/evalbtn.js'];
-
-    $data = [];
-    $data['css'] = addExternal($css, 'css');
-    $data['js'] = addExternal($js, 'javascript');
+    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
+    $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
 
     $items = $this->getAllItems();
-    $data['prevAnswers'] = $this->getPreviousAnswers();
-    $numbers = $this->countAnswers($data['prevAnswers']);
+    $prevAnswers = $this->getPreviousAnswers();
+    $numbers = $this->countAnswers($prevAnswers);
+
+    $data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
+    $data['prevAnswers'] = $prevAnswers;
     $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];

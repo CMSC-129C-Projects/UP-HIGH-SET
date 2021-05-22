@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 use App\Models\SectionModel;
+use App\Models\UserModel;
+use App\Models\EvalSheetModel;
 
 class Evaluation extends BaseController
 {
@@ -39,7 +41,7 @@ class Evaluation extends BaseController
     $db = \Config\Database::connect();
 
     for($i = 1; $i < $categorySize+1; $i++) {
-      
+
       $sql = <<<EOT
 SELECT eval_section.name, eval_question.question_text
 FROM eval_section
@@ -58,6 +60,24 @@ EOT;
     'questions' => $questions,
   ];
 
+    $this->get_progress_by_subject();
+
     return view('evaluation/category', $data);
+  }
+
+  public function get_progress_by_subject($subject_id = null) {
+    if(isset($subject_id)) {
+      $userModel = new UserModel();
+      $evalSheetModel = new EvalSheetModel();
+
+      $students_per_subjects =  $userModel->get_all_students_per_subject($subject_id);
+      $student_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject_id);
+
+      $percentage = ($student_who_evaluated / $students_per_subjects) * 100;
+
+      return $percentage;
+    } else {
+      return false;
+    }
   }
 }

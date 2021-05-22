@@ -14,14 +14,7 @@ class Update extends BaseController
     }
 
 	public function index($role) {
-
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(0);
 
         $css = ['custom/table.css', 'custom/alert.css'];
         $js = ['custom/showList.js', 'custom/alert.js'];
@@ -38,14 +31,7 @@ class Update extends BaseController
 	}
 
     public function add($role = null) {
-
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(0);
 
         $data['role'] = $role;
         $data['validation'] = null;
@@ -62,7 +48,7 @@ class Update extends BaseController
         $data['emailStatus'] = $emailStatus;
 
         $css = ['custom/alert.css'];
-        $js = ['custom/alert.js'];
+        $js = ['custom/alert.js', 'custom/glevel.js'];
         $data['css'] = addExternal($css, 'css');
         $data['js'] = addExternal($js, 'javascript');
 
@@ -70,14 +56,7 @@ class Update extends BaseController
     }
 
     public function edit($role = null, $id = null) {
-
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(0);
 
         $data = $this->setDefaultData($role, $id);
 
@@ -103,14 +82,7 @@ class Update extends BaseController
     }
 
     public function delete($id, $role = null) {
-
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url('login'));
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(0);
 
         $this->admin->deleteUser($id, $role);
         return redirect()->to(base_url('update/' . $role));
@@ -121,14 +93,7 @@ class Update extends BaseController
      */
 
     public function studentList($gradeLevel = null) {
-        // redirect to login if no session found
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url());
-        // } elseif ($_SESSION['logged_user']['role'] != '1') {
-        //     return redirect()->to(base_url());
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(1);
 
         $data['studentList'] = $this->userModel->where('role','2')->where('grade_level', $gradeLevel)->where('is_deleted', 0)->findAll();
 
@@ -136,14 +101,7 @@ class Update extends BaseController
     }
 
     public function adminList() {
-        // redirect to login if no session found
-        // if (!$this->session->has('logged_user')) {
-        //     return redirect()->to(base_url());
-        // } elseif ($_SESSION['logged_user']['role'] != '1') {
-        //     return redirect()->to(base_url());
-        // } elseif (!$_SESSION['logged_user']['emailVerified']) {
-        //     return redirect()->to(base_url('verifyAccount'));
-        // }
+        $this->hasSession(1);
 
         $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 
@@ -195,7 +153,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['studEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'rules'     => 'required|owned_email['.$id.']',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -209,7 +167,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['studEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
+                    'rules'     => 'required|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -231,7 +189,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['adminEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|owned_email['.$id.']',
+                    'rules'     => 'required|owned_email['.$id.']',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -247,7 +205,7 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['adminEmail'] = [
-                    'rules'     => 'required|valid_email|is_UP_mail|isUniqueEmail',
+                    'rules'     => 'required|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',
                         'isUniqueEmail' => 'Email is already taken'
@@ -257,5 +215,26 @@ class Update extends BaseController
         }
 
         return $rules;
+    }
+
+    protected function hasSession($type) {
+        if ($type === 0) {
+            // redirect to login if no session found
+            // redirect to verifyAccount page if session not yet verified
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url('login'));
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        } else {
+            // redirect to login if no session found
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url());
+            } elseif ($_SESSION['logged_user']['role'] != '1') {
+                return redirect()->to(base_url());
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        }
     }
 }

@@ -3,7 +3,11 @@ namespace Config;
 
 class CustomRules {
     public function valid_number(string $str): bool {
-        return $str[0] == '0' && $str[1] == '9';
+        if(strlen($str) === 0)
+            return true;
+        if(!is_numeric($str))
+            return false;
+        return $str[0] == '0' && $str[1] == '9' && strlen($str) == 11;
     }
 
     public function is_existing_data(string $str): bool {
@@ -38,6 +42,8 @@ class CustomRules {
 
         $student = new \App\Entities\Student();
 
+        $str .= '@up.edu.ph';
+
         $fields = (int)$fields;
         $student = $userModel->find($fields);
 
@@ -60,7 +66,7 @@ class CustomRules {
 
         if($str == $student->contact_num) {
             return true;
-        } elseif($userModel->where('contact_num', $str)->findAll()) {
+        } elseif($userModel->where('role', '1')->where('contact_num', $str)->findAll()) {
             return false;
         } else {
             return true;
@@ -74,12 +80,14 @@ class CustomRules {
     public function uniqueContact(string $str): bool {
         $userModel = new \App\Models\UserModel();
 
+        // No admins should have the same mobile number
         $admins = $userModel->where('role', '1')->where('contact_num', $str)->findAll();
         return (count($admins) === 0);
     }
 
     public function isUniqueEmail(string $str): bool {
         $userModel = new \App\Models\UserModel();
+        $str .= '@up.edu.ph';
 
         $user = $userModel->asArray()->where('email', $str)->findAll();
 
@@ -97,17 +105,20 @@ class CustomRules {
     }
 
     public function uniqueUsername(string $str, string $fields, array $data): bool {
+        if(strlen($str) === 0) {
+            return true;
+        }
         $model = new \App\Models\UserModel();
         $user = $model->asArray()->where('is_deleted', 0)->where('username', $str)->findAll();
     
         $fields = (int)$fields;
-        $student = $userModel->asArray()->find($fields);
+        $student = $model->asArray()->find($fields);
 
         // count($user) == 0 ;;; If no duplicate username is found, return true
         // count($user) == 1 && $user['username'] === $student['username']) ;;; If 1 duplicate username is found, and
             // that duplicate username is the user's current username, then return true also
             // (This means the user entered the same username, but still pressed submit)
-        if(count($user) === 0 || (count($user) === 1 && $user['username'] === $student['username'])) {
+        if(count($user) === 0 || (count($user) === 1 && $user[0]['username'] === $student['username'])) {
             return true;
         } else {
             return false;

@@ -7,6 +7,7 @@ use App\Controllers\BaseController;
 use App\Models\SectionModel;
 use App\Models\UserModel;
 use App\Models\EvalSheetModel;
+use App\Models\EvaluationModel;
 
 class Evaluation extends BaseController
 {
@@ -60,7 +61,7 @@ EOT;
     'questions' => $questions,
   ];
 
-    $this->get_progress_by_subject();
+    $this->submit_evaluation();
 
     return view('evaluation/category', $data);
   }
@@ -79,5 +80,13 @@ EOT;
     } else {
       return false;
     }
+  }
+
+  public function submit_evaluation() {
+    $evalModel = new EvaluationModel();
+
+    $datum = ['status' => 'closed'];
+    $evalModel->where('status', 'open')->set($datum)->update();
+    
   }
 }

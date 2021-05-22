@@ -55,10 +55,10 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
-          if($_SESSION['logged_user']['emailVerified']) {
+          if($_SESSION['logged_user']['emailVerified']){
             return redirect()->to(base_url('dashboard'));
-          } elseif(!$this->checkPasswordLastUpdate()){
-					  $this->sendVerification();
+          } elseif(!$this->checkPasswordLastUpdate()) {
+					  // $this->sendVerification();
 
             // To be changed for a page that notifies the email verification was sent
 					  return redirect()->to(base_url('verifyAccount'));
@@ -90,7 +90,6 @@ class Home extends BaseController
 
   public function forgot_password()
   {
-
     $data = [];
 		$data['validation'] = null;
     $data['validate_error'] = null;
@@ -272,7 +271,6 @@ class Home extends BaseController
 		if($_SESSION['logged_user']['emailVerified']) {
 			return redirect()->to(base_url('dashboard'));
 		} elseif($userToken === $_SESSION['logged_user']['userToken']) {
-
 			if($timeDifference <= 1800) {
 				$_SESSION['logged_user']['emailVerified'] = true;
 				unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
@@ -294,16 +292,17 @@ class Home extends BaseController
 	protected function setSession($user, $userToken)
 	{
 		$session_data = [
-			'name'			=> $user['first_name'],
-			'email'			=> $user['email'],
-			'password' 		=> $user['password'],
-			'role'			=> $user['role'],
-      'isLoggedIn' 	=> true,
+      'id'            => $user['id'],
+			'name'			    => $user['first_name'],
+			'email'			    => $user['email'],
+			'password' 		  => $user['password'],
+			'role'			    => $user['role'],
+      'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      'emailVerified' => false,
-      // 'emailVerified' => true,
-			'userToken'		=> $userToken,
-			'loginDate'		=> date('Y-m-d H:i:s')
+      // 'emailVerified' => false,
+      'emailVerified' => true,
+			'userToken'		  => $userToken,
+			'loginDate'		  => date('Y-m-d H:i:s')
 		];
 
 		$this->session->set('logged_user', $session_data);

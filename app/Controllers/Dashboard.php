@@ -12,11 +12,10 @@ class Dashboard extends BaseController
     } elseif (!$_SESSION['logged_user']['emailVerified']) {
         return redirect()->to(base_url('verifyAccount'));
     }
-    if ($_SESSION['logged_user']['role']==2)
-    {
+
+    if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
-    }
-    else
+    } else
       return view('user_mgt/dashboard');
   }
 

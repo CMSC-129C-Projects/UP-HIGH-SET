@@ -7,6 +7,8 @@ use App\Controllers\BaseController;
 use App\Models\SectionModel;
 use App\Models\EvalAnswersModel;
 use App\Models\QuestionchoiceModel;
+use App\Models\EvalSheetModel;
+use App\Models\EvalquestionModel;
 
 class Evaluation extends BaseController
 {
@@ -24,6 +26,12 @@ class Evaluation extends BaseController
           return redirect()->to(base_url('dashboard'));
         else
           return $this->$method();
+      case 'getUnfinished':
+        if ($_SESSION['logged_user']['role'] === '2')
+          return redirect()->to(base_url('dashboard'));
+        else
+          return $this->$method($param1);
+        break;
       case 'evaluate':
       case 'index':
         if ($_SESSION['logged_user']['role'] === '1')
@@ -206,5 +214,33 @@ class Evaluation extends BaseController
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+  }
+
+  /**
+   * Fetch students not yet finished evaluation a subject
+   */
+  public function getUnfinished($subjectID)
+  {
+    $evalsheetModel = new EvalSheetModel();
+    $evalAnswersModel = new EvalAnswersModel();
+    $evalQuestionModel = new EvalquestionModel();
+
+    $size = $evalQuestionModel->getNumberOfQuestions();
+
+    $size = $size[0]->size;
+
+    $sheets = $evalsheetModel->getUnfinishedStudents($subjectID);
+
+    $progress = [];
+
+    foreach($sheets as $sheet) {
+      $studentAnswers = $evalAnswersModel->getNotNull($sheet->id);
+      $progress[] = [
+        'student_id' => $sheet->student_id,
+        'progress' => sprintf('%.0f', $this->computeProgress($studentAnswers[0]->answersTotal, $size))
+      ];
+    }
+
+    echo json_encode($progress);
   }
 }

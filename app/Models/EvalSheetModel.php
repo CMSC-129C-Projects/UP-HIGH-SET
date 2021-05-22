@@ -3,19 +3,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EvalAnswersModel extends Model {
-  protected $table = 'eval_answers';
+class EvalSheetModel extends Model {
+  protected $table = 'eval_sheet';
   protected $primaryKey = 'id';
 
   protected $useAutoIncrement = true;
   protected $returnType = 'array';
 
   protected $allowedFields = [
-      'user_id',
-      'question_id',
-      'qChoice_id',
-      'answer_text',
-      'status'
+      'evaluation_id',
+      'student_id',
+      'subject_id',
+      'rating',
+      'status',
+      'is_deleted'
   ];
 
   protected $useTimestamps = true;
@@ -24,12 +25,18 @@ class EvalAnswersModel extends Model {
 
   protected $skipValidation = true;
 
-  public function getNotNull($eval_sheet_id) {
+
+  public function getUnfinishedStudents($subjectID)
+  {
+    if(!isset($subjectID)) {
+      return false;
+    }
+
     $db = \Config\Database::connect();
     $sql =<<<EOT
-SELECT id, COUNT(*) as answersTotal
-FROM eval_answers
-WHERE eval_sheet_id = $eval_sheet_id AND qChoice_id IS NOT NULL
+SELECT id, status, student_id
+FROM eval_sheet
+WHERE subject_id = $subjectID AND (status = 'Open' OR status = 'Inprogress')
 EOT;
 
     $query = $db->query($sql);

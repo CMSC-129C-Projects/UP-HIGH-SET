@@ -59,8 +59,8 @@ class Evaluation extends BaseController
       }
     }
 
-    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
-    $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
+    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/eval.css'];
+    $js = ['custom/alert.js', 'custom/evalbtn.js'];
 
     $data = [];
     $data['css'] = addExternal($css, 'css');
@@ -68,10 +68,32 @@ class Evaluation extends BaseController
 
     $items = $this->getAllItems();
     $data['prevAnswers'] = $this->getPreviousAnswers();
+    $numbers = $this->countAnswers($data['prevAnswers']);
+    $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
 
     return view('evaluation/evaluate', $data);
+  }
+
+  protected function countAnswers($prevAnswers)
+  {
+    $multipleChoiceTotal = 0;
+    $openEndedTotal = 0;
+
+    $numberOfQuestions = 0;
+
+    foreach($prevAnswers as $answer) {
+      if (strlen($answer['qChoice_id']) !== 0) {
+        $multipleChoiceTotal += 1;
+      }
+      if (strlen($answer['answer_text']) !== 0) {
+        $openEndedTotal += 1;
+      }
+      $numberOfQuestions += 1;
+    }
+
+    return [$multipleChoiceTotal + $openEndedTotal, $numberOfQuestions];
   }
 
   /**
@@ -180,8 +202,11 @@ class Evaluation extends BaseController
    */
   protected function computeProgress($numberOfAnswers, $size)
   {
+    if ($size === 0) {
+      return '0';
+    }
     $progress = ($numberOfAnswers/$size)*100;
-    return $progress;
+    return number_format($progress, 0);
   }
 
   /**

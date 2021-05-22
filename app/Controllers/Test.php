@@ -7,6 +7,10 @@ use \App\Entities\Admin;
 class Test extends BaseController
 {
     public function index() {
-        return view('UpdateProfile.php');
+        $js = ['custom/evalbtn.js'];
+        $data = [
+            'js'    => addExternal($js, 'javascript')
+        ];
+        return view('Evaluation/evaluation', $data);
     }
 }

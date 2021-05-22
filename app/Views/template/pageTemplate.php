@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
@@ -51,7 +53,11 @@
           <ul class="list-unstyled components">
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-              <a href="<?=base_url();?>/profile"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php if ($_SESSION['logged_user']['role'] === '2'):?>
+                <a href="<?=base_url();?>/profile/student"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php else:?>
+                <a href="<?=base_url();?>/profile/admin"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php endif;?>
               <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>

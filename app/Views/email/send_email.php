@@ -21,13 +21,12 @@
 
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1 style= "padding:20px">Update Email Content</h1>
+      <h1 style= "padding:4.7rem;">Update Email Content</h1>
     </div>
 
     <div id="EmailContent">
     <div class="card">
       <div class="card-body" style="padding: 40px;">
-      
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>

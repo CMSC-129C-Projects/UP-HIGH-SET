@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group" style="float: right;">
                                         <input type="submit">
                                     </div>
                                 </div>

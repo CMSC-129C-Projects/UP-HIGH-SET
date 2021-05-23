@@ -28,7 +28,12 @@ class FacultyModel extends Model {
     public function searchFaculty($searchFirstName, $searchLastName) {
         $db = \Config\Database::connect();
         
-        $sql = "SELECT * FROM faculty WHERE first_name LIKE '%".$searchFirstName."%' OR last_name LIKE '%".$searchLastName."%'";
+        $sql = <<<EOT
+SELECT *
+FROM faculty
+WHERE (first_name LIKE '%$searchFirstName%' OR last_name LIKE '%$searchLastName%')
+AND is_deleted = 0;
+EOT;
 
         $query = $db->query($sql);
 

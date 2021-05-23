@@ -1,11 +1,12 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
   <section id="evaluation" class="container-fluid">
-    <div class="heading text-center" style="margin-bottom: 2.5rem !important;">
+  <!-- style="margin-bottom: 2.5rem !important; border: solid;" -->
+    <div class="heading text-center">
       <h1>EVALUATION</h1>
     </div>
-    <div class="tabs">
+    <div class="tabs" id="questionnaire">
       <!-- <div class="row"> -->
       <ul class="row nav nav-tabs tab-content">
         <?php foreach($questions as $key => $value):?>

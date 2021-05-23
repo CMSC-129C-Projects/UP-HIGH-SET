@@ -19,22 +19,22 @@
 
     <div class="card">
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
-        <h1> Subject Name</h1>
-        <p>This Subject is handled by NAME OF PROFESSOR.</p>
+        <h1> SUBJECT NAME</h1>
+        <p>NAME OF PROFESSOR.</p>
         <a href="#"><button>Evaluate</button></a>
     </div>
 
     <div class="card">
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
-        <h1> Subject Name</h1>
-        <p>This Subject is handled by NAME OF PROFESSOR.</p>
+        <h1> SUBJECT NAME</h1>
+        <p>NAME OF PROFESSOR.</p>
         <a href="#"><button>Evaluate</button></a>
     </div>
 
     <div class="card">
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
-        <h1> Subject Name</h1>
-        <p>This Subject is handled by NAME OF PROFESSOR.</p>
+        <h1> SUBJECT NAME</h1>
+        <p>NAME OF PROFESSOR.</p>
         <a href="#"><button>Evaluate</button></a>
     </div>
 

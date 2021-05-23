@@ -126,19 +126,18 @@
                   </div>
                 </div>
                 <div class="col-md-6 half">
-                  <div class="form-group">
-                    
-                    <select class="form-select" aria-label="Grade Level">
-                      <option selected>Grade Level</option>
-                      <option value="1">Grade 7</option>
-                      <option value="2">Grade 8</option>
-                      <option value="3">Grade 9</option>
-                      <option value="1">Grade 10</option>
-                      <option value="2">Grade 11</option>
-                      <option value="3">Grade 12</option>
+                  <div class="form-group">     
+                    <select class="form-select" name="gradeLevel" aria-label="Grade Level">
+                      <option value="0" selected>Grade Level</option>
+                      <option value="7">Grade 7</option>
+                      <option value="8">Grade 8</option>
+                      <option value="9">Grade 9</option>
+                      <option value="10">Grade 10</option>
+                      <option value="11">Grade 11</option>
+                      <option value="12">Grade 12</option>
                     </select>
-                
-                    
+                    <br>
+                    <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                   </div>
                 </div>
               </div>
@@ -147,7 +146,7 @@
                 <div class="mailBox">
                   <div class="inputBox">
                   
-                      <input type="email" name="studEmail" value="<?=set_value('studEmail');?>" required>
+                      <input type="text" name="studEmail" value="<?=set_value('studEmail');?>" required>
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                       <h3>Email</h3>

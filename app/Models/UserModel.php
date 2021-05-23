@@ -60,4 +60,24 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
+    
+    public function get_all_students_per_subject($id) {
+      $db = \Config\Database::connect();
+
+      $sql = <<<EOT
+SELECT count(users.id) as student_perSub
+FROM users
+LEFT JOIN subjects
+ON users.grade_level = subjects.grade_level
+WHERE
+users.is_deleted = 0 AND users.is_active = 1 AND
+users.role = 2 AND subjects.is_deleted = 0 AND
+subjects.id = $id
+EOT;
+
+      $query = $db->query($sql);
+      $result = $query->getResult();
+
+      return $result[0]->student_perSub;
+  }
 }

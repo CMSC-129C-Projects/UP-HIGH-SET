@@ -1,26 +1,27 @@
 <?php
-
 namespace App\Models;
 
 use CodeIgniter\Model;
 
 class SubjectModel extends Model {
-  protected $table = 'subjects';
-  protected $primaryKey = 'id';
+    protected $table      = 'subjects';
+    protected $primaryKey = 'id';
 
-  protected $useAutoIncrement = true;
-  protected $returnType = 'array';
+    protected $useAutoIncrement = true;
 
-  protected $allowedFields = [
-      'faculty_id',
-      'grade_level',
-      'name',
-      'is_deleted'
-  ];
+    // protected $returnType = 'App\Entities\Userlog';
+    protected $returnType = 'array';
 
-  protected $useTimestamps = true;
-  protected $createdField  = 'created_on';
-  protected $updatedField  = 'updated_on';
+    protected $allowedFields = [
+        'faculty_id',
+        'grade_level',
+        'name',
+        'is_deleted'
+    ];
 
-  protected $skipValidation = true;
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_on';
+    protected $updatedField  = 'updated_on';
+
+    protected $skipValidation = true;
 }

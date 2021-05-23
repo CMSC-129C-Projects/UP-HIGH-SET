@@ -47,6 +47,11 @@ $routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');
 $routes->add('update/student', 'Update::index/student');
 
+// VIEW SUBECTS HANDLED BY A PROFESSOR
+$routes->add('view_subjects/(:any)', 'Subjects::index/$1');
+// ADD SUBJECT HANDLED
+$routes->add('subjects/add_subject', 'Subjects::add_subject');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

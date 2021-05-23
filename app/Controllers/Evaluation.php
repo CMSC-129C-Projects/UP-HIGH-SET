@@ -9,6 +9,8 @@ use App\Models\EvalAnswersModel;
 use App\Models\QuestionchoiceModel;
 use App\Models\EvalSheetModel;
 use App\Models\EvalquestionModel;
+use App\Models\UserModel;
+use App\Models\EvaluationModel;
 
 class Evaluation extends BaseController
 {
@@ -48,6 +50,8 @@ class Evaluation extends BaseController
 
   public function evaluate($evalSheetId = null)
   {
+    $data = [];
+    
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
@@ -62,16 +66,38 @@ class Evaluation extends BaseController
     $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
     $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
 
-    $data = [];
+    $items = $this->getAllItems();
+    $prevAnswers = $this->getPreviousAnswers();
+    $numbers = $this->countAnswers($prevAnswers);
+
     $data['css'] = addExternal($css, 'css');
     $data['js'] = addExternal($js, 'javascript');
-
-    $items = $this->getAllItems();
-    $data['prevAnswers'] = $this->getPreviousAnswers();
+    $data['prevAnswers'] = $prevAnswers;
+    $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
 
     return view('evaluation/evaluate', $data);
+  }
+
+  protected function countAnswers($prevAnswers)
+  {
+    $multipleChoiceTotal = 0;
+    $openEndedTotal = 0;
+
+    $numberOfQuestions = 0;
+
+    foreach($prevAnswers as $answer) {
+      if (strlen($answer['qChoice_id']) !== 0) {
+        $multipleChoiceTotal += 1;
+      }
+      if (strlen($answer['answer_text']) !== 0) {
+        $openEndedTotal += 1;
+      }
+      $numberOfQuestions += 1;
+    }
+
+    return [$multipleChoiceTotal + $openEndedTotal, $numberOfQuestions];
   }
 
   /**
@@ -180,8 +206,11 @@ class Evaluation extends BaseController
    */
   protected function computeProgress($numberOfAnswers, $size)
   {
+    if ($size === 0) {
+      return '0';
+    }
     $progress = ($numberOfAnswers/$size)*100;
-    return $progress;
+    return number_format($progress, 0);
   }
 
   /**
@@ -242,5 +271,43 @@ class Evaluation extends BaseController
     }
 
     echo json_encode($progress);
+  }
+
+  public function get_progress_by_subject($subject_id = null) {
+    if(isset($subject_id)) {
+      $userModel = new UserModel();
+      $evalSheetModel = new EvalSheetModel();
+
+      $students_per_subjects =  $userModel->get_all_students_per_subject($subject_id);
+      $student_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject_id);
+
+      $percentage = ($student_who_evaluated / $students_per_subjects) * 100;
+
+      return $percentage;
+    } else {
+      return false;
+    }
+  }
+
+  public function submit_evaluation() {
+    $evalModel = new EvaluationModel();
+
+    $datum = ['status' => 'closed'];
+    $evalModel->where('status', 'open')->set($datum)->update();
+
+    $this->emailCardbonCopy();
+  }
+
+  protected function emailCardbonCopy($evalSheetId = null) {
+    if(isset($evalSheetId)) {
+      $search = ['-content-', '-student-', '-website_link-'];
+      $subject = "Copy of Evaluation " + $evalSheetId;
+
+      $message = file_get_contents(base_url() . '/app/Views/email/carbon-copy.php');
+  		$replace = [$message, $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
+
+  		$message = str_replace($search, $replace, $message);
+  		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+    }
   }
 }

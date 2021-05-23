@@ -155,6 +155,7 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
+    <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>

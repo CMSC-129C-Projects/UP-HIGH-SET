@@ -28,7 +28,7 @@ class Professors extends BaseController
 	}
 
     public function profList($search = null) {
-        // $this->hasSession(1);
+        $this->hasSession(1);
 
         $faculModel = new FacultyModel();
         if (!isset($search)) {

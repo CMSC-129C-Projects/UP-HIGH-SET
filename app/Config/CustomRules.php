@@ -85,6 +85,10 @@ class CustomRules {
         return (count($admins) === 0);
     }
 
+    public function correctGradeLevel(string $str): bool {
+        return $str !== '0';
+    }
+
     public function isUniqueEmail(string $str): bool {
         $userModel = new \App\Models\UserModel();
         $str .= '@up.edu.ph';

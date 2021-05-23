@@ -3,20 +3,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SubjectModel extends Model {
-    protected $table      = 'subjects';
+class QuestionchoiceModel extends Model {
+    protected $table = 'question_choice';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
-
-    // protected $returnType = 'App\Entities\Userlog';
     protected $returnType = 'array';
 
     protected $allowedFields = [
-        'faculty_id',
-        'grade_level',
-        'name',
-        'is_deleted'
+        'q_type_id',
+        'choice_order',
+        'weight',
+        'choice'
     ];
 
     protected $useTimestamps = true;

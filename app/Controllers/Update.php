@@ -48,7 +48,7 @@ class Update extends BaseController
         $data['emailStatus'] = $emailStatus;
 
         $css = ['custom/alert.css'];
-        $js = ['custom/alert.js'];
+        $js = ['custom/alert.js', 'custom/glevel.js'];
         $data['css'] = addExternal($css, 'css');
         $data['js'] = addExternal($js, 'javascript');
 

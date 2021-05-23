@@ -10,16 +10,12 @@
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
-    <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
-    <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
-    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
@@ -55,55 +51,15 @@
           <ul class="list-unstyled components">
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-              <?php if ($_SESSION['logged_user']['role'] === '2'):?>
-                <a href="<?=base_url();?>/profile/student"><i class="bi bi-person-circle"></i>  Profile</a>
-              <?php else:?>
-                <a href="<?=base_url();?>/profile/admin"><i class="bi bi-person-circle"></i>  Profile</a>
-              <?php endif;?>
+              <a href="<?=base_url();?>/profile"><i class="bi bi-person-circle"></i>  Profile</a>
               <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>
           </ul>
-          <ul class="list-unstyled components">
-            <li class="active">
-              <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-journal-check"></i> Report</a>
-              <ul class="collapse list-unstyled" id="report">
-                <li>
-                    <a href="#">View Report</a>
-                </li>
-                <li>
-                    <a href="#">Print Report</a>
-                </li>
-              </ul>
-              <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
-              <ul class="collapse list-unstyled" id="evaluation">
-                <li>
-                  <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
-                </li>
-                <li>
-                  <a href="#">Monitor Progress</a>
-                </li>
-              </ul>
-              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
-              <ul class="collapse list-unstyled" id="users">
-                <li>
-                  <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
-                </li>
-                <li>
-                  <a href="<?=base_url();?>/update/student">View Students</a>
-                </li>
-                <li>
-                  <a href="<?=base_url();?>/update/admin">View Admin</a>
-                </li>
-              </ul>
-              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
-              <ul class="collapse list-unstyled" id="announcements">
-                <li>
-                  <a href="<?=base_url()?>/send_email">Update Email Content</a>
-                </li>
-
-              </ul>
-            </li>
+          <ul class="list-unstyled CTAs components">
+            <div class="evaluate">
+                <a class="nav-link" id="evaluate" href="#"><input type="button" value="EVALUATE" name="evaluate"></a>
+            </div>
           </ul>
           <ul class="list-unstyled CTAs">
             <div class="logout">
@@ -156,7 +112,6 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>

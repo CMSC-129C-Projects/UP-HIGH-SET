@@ -57,6 +57,9 @@
     color:white !important;
     background-color: #7b1113;
    
+}#special .heading .input-group button[type="button"]:focus{
+  box-shadow: none !important;
+ 
 }
  
   

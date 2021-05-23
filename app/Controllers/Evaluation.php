@@ -8,6 +8,7 @@ use App\Models\SectionModel;
 use App\Models\UserModel;
 use App\Models\EvalSheetModel;
 use App\Models\EvaluationModel;
+// use App\Models\EmailModel;
 
 class Evaluation extends BaseController
 {
@@ -61,8 +62,6 @@ EOT;
     'questions' => $questions,
   ];
 
-    $this->submit_evaluation();
-
     return view('evaluation/category', $data);
   }
 
@@ -87,6 +86,20 @@ EOT;
 
     $datum = ['status' => 'closed'];
     $evalModel->where('status', 'open')->set($datum)->update();
-    
+
+    $this->emailCardbonCopy();
+  }
+
+  protected function emailCardbonCopy($evalSheetId = null) {
+    if(isset($evalSheetId)) {
+      $search = ['-content-', '-student-', '-website_link-'];
+      $subject = "Copy of Evaluation " + $evalSheetId;
+
+      $message = file_get_contents(base_url() . '/app/Views/email/carbon-copy.php');
+  		$replace = [$message, $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
+
+  		$message = str_replace($search, $replace, $message);
+  		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+    }
   }
 }

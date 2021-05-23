@@ -74,7 +74,9 @@ height: 100%;
 margin: auto;
 margin-bottom: 1rem;
 }
-  
+#special h3{
+    color: #7b1113
+}
   
   #special .card-container .card:hover {
     -webkit-transform: scale(0.9);

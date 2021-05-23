@@ -9,6 +9,7 @@
 
 <div class="heading text-center">
 <h1>Subjects</h1>
+<h3> Please Choose a Subject to Evaluate </h3>
 
 
 </div>
@@ -20,21 +21,21 @@
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
         <h1> Subject Name</h1>
         <p>This Subject is handled by NAME OF PROFESSOR.</p>
-        <a href="#"><button>View Subjects</button></a>
+        <a href="#"><button>Evaluate</button></a>
     </div>
 
     <div class="card">
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
         <h1> Subject Name</h1>
         <p>This Subject is handled by NAME OF PROFESSOR.</p>
-        <a href="#"><button>View Subjects</button></a>
+        <a href="#"><button>Evaluate</button></a>
     </div>
 
     <div class="card">
         <img src="<?=base_url();?>/public/images/EvaluationCover.jpg" alt="">
         <h1> Subject Name</h1>
         <p>This Subject is handled by NAME OF PROFESSOR.</p>
-        <a href="#"><button>View Subjects</button></a>
+        <a href="#"><button>Evaluate</button></a>
     </div>
 
 </div>

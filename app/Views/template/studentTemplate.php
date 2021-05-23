@@ -51,7 +51,11 @@
           <ul class="list-unstyled components">
             <li>
               <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
-              <a href="<?=base_url();?>/profile"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php if ($_SESSION['logged_user']['role'] === '2'):?>
+                <a href="<?=base_url();?>/profile/student"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php else:?>
+                <a href="<?=base_url();?>/profile/admin"><i class="bi bi-person-circle"></i>  Profile</a>
+              <?php endif;?>
               <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>

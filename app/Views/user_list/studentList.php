@@ -29,8 +29,9 @@
         </select>
 
         <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
+        <br><br>
         <div style="table-responsive">
-        <table class="table-bordered" id="student">
+        <table class="table-bordered table-striped table-hover" id="student">
             <thead>
                 <tr>
                     <th>First Name</th>

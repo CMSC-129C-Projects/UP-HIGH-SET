@@ -14,7 +14,7 @@
             <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
           </div>
           <br><br>
-          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
         <?php } elseif(isset($validate_error)!=null) { ?>
 
@@ -23,7 +23,7 @@
             <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
           </div>
           <br>
-          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
         <?php } elseif(isset($success) != null) { ?>
           <div class="alert-success" style="padding: 20px;">
@@ -35,7 +35,7 @@
             <h4> You are not authorized to access this page. </h4>
           </div>
           <br><br>
-          <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } ?>
       </div>
     </div>

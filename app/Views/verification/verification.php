@@ -6,7 +6,7 @@
             <h1 style="margin-top: 5.2rem; margin-bottom: -3%;"> An email has been sent to verify this activity. <h1>
             <h2 style="color:grey"> You have 30 minutes before the verification email will expire. <h2>
             <br><br>
-            <a href="<?=base_url();?>/dashboard/logout"><button class="button" style="border-radius: 1rem; height:50px; font-size: 15px;">Try on Different Account</button></a> 
+            <a href="<?=base_url();?>/dashboard/logout"><button class="button" style="height:50px; font-size: 15px;">Try on Different Account</button></a> 
         </div>    
     </div> 
 <?= $this->endSection();?>

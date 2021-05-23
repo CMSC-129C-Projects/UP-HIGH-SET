@@ -22,7 +22,7 @@
               <h4 style><?=$error?><h4>
             </div>
             <br>
-            <a class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px; margin-bottom:20px; " href="<?=$url?>">Back</a>
+            <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px; " href="<?=$url?>">Back</a>
             <?php } else { ?>
             <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">Fill up the form to change password.</h3>
             <br>
@@ -46,8 +46,8 @@
               </div>
               <br><br>
               <div style="text-align:center">
-                <input type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 1rem !important; font-weight: bold; font-size: 13px;" value="Update">
-                <a href="<?=base_url('dashboard')?>" class="button" style="border-radius: 1rem !important; padding: 12px 21px; font-size: 13px;">Cancel</a>
+                <input type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 13px;" value="Update">
+                <a href="<?=base_url('dashboard')?>" class="button" style="padding: 12px 21px; font-size: 13px;">Cancel</a>
               </div>
               </form>
             <?php } ?>

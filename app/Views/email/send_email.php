@@ -58,7 +58,7 @@
             <p style="font-size:13px">Attachment is Optional</p>
             <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
             <br><br>
-            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 1rem !important" value="update">
+            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="update">
           </form>
           </div>
         </div>

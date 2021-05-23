@@ -4,6 +4,10 @@
   padding: 0px 7%;
 }
 
+.table-bordered {
+  overflow-x: scroll;
+}
+
 .table-bordered > thead > tr > th {
   border: 1px solid #7b1113;
   background-color: #7b1113;
@@ -82,15 +86,9 @@
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 320px) {
-  #EmailContent .card {
-    width: 100%;
-    padding: 0px;
-    margin-left: 1%;
-    margin-bottom: 5%;
-  }
-
-  #EmailContent .custom-select {
-    width: 125px;
+@media (max-width: 540px) {
+  .table-bordered {
+    display: block;
+    overflow-x: scroll;
   }
 }

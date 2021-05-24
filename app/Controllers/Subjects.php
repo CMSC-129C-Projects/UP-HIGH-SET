@@ -24,6 +24,8 @@ class Subjects extends BaseController
                 return $this->$method();
                 break;
             case 'index':
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
                 $this->hasSession(0);
                 return $this->$method($param1);
             default:

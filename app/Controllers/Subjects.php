@@ -14,7 +14,12 @@ class Subjects extends BaseController
         {
             case 'add_subject':
             case 'get_subjects_taken':
+                $this->hasSession(0);
+                return $this->$method();
+                break;
             case 'student_subjects':
+                if ($_SESSION['logged_user']['role'] === '1')
+                    return redirect()->to(base_url('dashboard'));
                 $this->hasSession(0);
                 return $this->$method();
                 break;
@@ -45,7 +50,7 @@ class Subjects extends BaseController
 	}
 
     /**
-     * Display subjects taken by a student
+     * Display subjects taken by a student (FOR student page)
      */
     public function student_subjects()
     {
@@ -58,7 +63,8 @@ class Subjects extends BaseController
         return view('evaluation/evaluationSubjects', $data);
     }
 
-    public function add_subject() {
+    public function add_subject()
+    {
         // Initialize CSS
         $css = ['custom/alert.css'];
         $js = ['custom/alert.js'];
@@ -103,7 +109,6 @@ class Subjects extends BaseController
 
     public function get_subjects_taken()
     {
-        $this->hasSession(0);
         $userModel = new UserModel();
         $sessionStudent = $userModel->asArray()->find($_SESSION['logged_user']['id']);
 
@@ -112,6 +117,7 @@ class Subjects extends BaseController
 
         echo json_encode($subjects);
     }
+
     /**
      * AUXILIARY FUNCTIONS
      */

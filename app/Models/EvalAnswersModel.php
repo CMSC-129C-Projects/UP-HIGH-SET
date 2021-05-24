@@ -12,6 +12,7 @@ class EvalAnswersModel extends Model {
 
   protected $allowedFields = [
       'user_id',
+      'eval_sheet_id',
       'question_id',
       'qChoice_id',
       'answer_text',

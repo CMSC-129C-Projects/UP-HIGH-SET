@@ -56,7 +56,7 @@ class Evaluation extends BaseController
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
       $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id);
-      if (!$this->saveDatabase($evaluationDetails, $eval_sheet_id)) {
+      if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id)) {
         $data['saveStatus'] = 'fail';
       } else {
         $data['saveStatus'] = 'success';
@@ -170,18 +170,23 @@ class Evaluation extends BaseController
         'answer_text'   => strlen($answerComments)!==0 ? $answerComments : null,
         'status'        => 'save'
       ];
+
+      if (strlen($answerMultiple)!==0 || strlen($answerComments)!==0) {
+        $numberOfAnswers++;
+      }
     }
 
     $progress = $this->computeProgress($numberOfAnswers, count($questionIDs));
+    $progress = number_format($progress, 0);
 
-    return $evaluationDetails;
+    return [$evaluationDetails, $progress];
   }
 
   /**
    * Call insert or update to save
    * answers to database
    */
-  protected function saveDatabase($evaluationDetails, $eval_sheet_id)
+  protected function saveDatabase($evaluationDetails, $progress, $eval_sheet_id)
   {
     $evalAnswersModel = new EvalAnswersModel();
     $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
@@ -199,6 +204,18 @@ class Evaluation extends BaseController
         }
         $index++;
       }
+    }
+
+    if ($progress == 100) {
+      $value = ['status' => 'Completed'];
+    } elseif ($progress != 0) {
+      $value = ['status' => 'Inprogress'];
+    } else {
+      $value = ['status' => 'Open'];
+    }
+    $evalsheetModel = new EvalSheetModel();
+    if (!$evalsheetModel->update($eval_sheet_id, $value)) {
+      return false;
     }
     
     return true;

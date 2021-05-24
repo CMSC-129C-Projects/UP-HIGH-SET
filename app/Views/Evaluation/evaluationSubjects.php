@@ -1,4 +1,4 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
     <section id="special" class="container-fluid">

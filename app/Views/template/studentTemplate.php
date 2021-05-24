@@ -62,7 +62,7 @@
           </ul>
           <ul class="list-unstyled CTAs components">
             <div class="evaluate">
-                <a class="nav-link" id="evaluate" href="#"><input type="button" value="EVALUATE" name="evaluate"></a>
+                <a class="nav-link" id="evaluate" href="<?=base_url('subjects/student_subjects')?>"><input type="button" value="EVALUATE" name="evaluate"></a>
             </div>
           </ul>
           <ul class="list-unstyled CTAs">

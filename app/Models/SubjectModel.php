@@ -24,4 +24,23 @@ class SubjectModel extends Model {
     protected $updatedField  = 'updated_on';
 
     protected $skipValidation = true;
+
+    public function get_subjects_taken($studentID, $glevel)
+    {
+        $db = \Config\Database::connect();
+
+        $sql = <<<EOT
+SELECT *, eval_sheet.id as eval_sheet_id
+FROM subjects
+LEFT JOIN eval_sheet
+ON subjects.id = eval_sheet.subject_id AND eval_sheet.student_id = $studentID AND eval_sheet.is_deleted = 0
+LEFT JOIN faculty
+ON subjects.faculty_id = faculty.id
+WHERE grade_level = $glevel
+    AND subjects.is_deleted = 0
+EOT;
+
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
 }

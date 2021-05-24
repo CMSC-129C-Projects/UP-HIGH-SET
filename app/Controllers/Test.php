@@ -7,12 +7,12 @@ use \App\Entities\Admin;
 class Test extends BaseController
 {
     public function index() {
-        // $css = ['custom/eval.css'];
-        // $js = ['custom/evalbtn.js'];
-        // $data = [
-        //     'css' => addExternal($css, 'css'),
-        //     'js'  => addExternal($js, 'javascript')
-        // ];
-        return view('Evaluation/evaluationSubjects');
+        $css = ['custom/evaluation/evalSubjects.css'];
+        $js = ['custom/evaluation/evalSubjects.js'];
+        $data = [
+            'css' => addExternal($css, 'css'),
+            'js'  => addExternal($js, 'javascript')
+        ];
+        return view('evaluation/evaluationSubjects', $data);
     }
 }

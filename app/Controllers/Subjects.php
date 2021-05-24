@@ -3,23 +3,23 @@ namespace App\Controllers;
 
 use \App\Models\SubjectModel;
 use \App\Models\FacultyModel;
+use \App\Models\UserModel;
+use \App\Models\EvalSheetModel;
 
 class Subjects extends BaseController
 {
     public function _remap($method, $param1 = null)
     {
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
-
         switch($method)
         {
             case 'add_subject':
+            case 'get_subjects_taken':
+            case 'student_subjects':
+                $this->hasSession(0);
                 return $this->$method();
                 break;
             case 'index':
+                $this->hasSession(0);
                 return $this->$method($param1);
             default:
                 return redirect()->to(base_url('dashboard'));
@@ -43,6 +43,20 @@ class Subjects extends BaseController
 
         return view('subjects/subjects', $data);
 	}
+
+    /**
+     * Display subjects taken by a student
+     */
+    public function student_subjects()
+    {
+        $css = ['custom/evaluation/evalSubjects.css'];
+        $js = ['custom/evaluation/evalSubjects.js'];
+        $data = [
+            'css' => addExternal($css, 'css'),
+            'js'  => addExternal($js, 'javascript')
+        ];
+        return view('evaluation/evaluationSubjects', $data);
+    }
 
     public function add_subject() {
         // Initialize CSS
@@ -87,6 +101,17 @@ class Subjects extends BaseController
         return view('subjects/addSubjects', $data);
     }
 
+    public function get_subjects_taken()
+    {
+        $this->hasSession(0);
+        $userModel = new UserModel();
+        $sessionStudent = $userModel->asArray()->find($_SESSION['logged_user']['id']);
+
+        $subjectModel = new SubjectModel();
+        $subjects = $subjectModel->get_subjects_taken($_SESSION['logged_user']['id'], $sessionStudent['grade_level']);
+
+        echo json_encode($subjects);
+    }
     /**
      * AUXILIARY FUNCTIONS
      */
@@ -95,5 +120,26 @@ class Subjects extends BaseController
         $faculModel = new FacultyModel();
 
         return ($profs = $faculModel->where('is_deleted', '0')->findAll()) ? $profs : null;
+    }
+
+    protected function hasSession($type) {
+        if ($type === 0) {
+            // redirect to login if no session found
+            // redirect to verifyAccount page if session not yet verified
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url('login'));
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        } else {
+            // redirect to login if no session found
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url());
+            } elseif ($_SESSION['logged_user']['role'] != '1') {
+                return redirect()->to(base_url());
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        }
     }
 }

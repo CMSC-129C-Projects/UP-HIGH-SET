@@ -48,15 +48,15 @@ class Evaluation extends BaseController
     return view('evaluation/setStatus');
   }
 
-  public function evaluate($evalSheetId = null)
+  public function evaluate($eval_sheet_id = null)
   {
     $data = [];
     
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
-      $evaluationDetails = $this->getEvalDetails($questionIDs);
-      if (!$this->saveDatabase($evaluationDetails)) {
+      $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id);
+      if (!$this->saveDatabase($evaluationDetails, $eval_sheet_id)) {
         $data['saveStatus'] = 'fail';
       } else {
         $data['saveStatus'] = 'success';
@@ -67,7 +67,7 @@ class Evaluation extends BaseController
     $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
 
     $items = $this->getAllItems();
-    $prevAnswers = $this->getPreviousAnswers();
+    $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
     $numbers = $this->countAnswers($prevAnswers);
 
     $data['css'] = addExternal($css, 'css');
@@ -125,12 +125,13 @@ class Evaluation extends BaseController
   /**
    * Get Previous Answers of user
    */
-  protected function getPreviousAnswers()
+  protected function getPreviousAnswers($eval_sheet_id)
   {
     $evalAnswersModel = new EvalAnswersModel();
     $prevAnswers = $evalAnswersModel
       ->where('user_id', $_SESSION['logged_user']['id'])
       ->where('is_deleted', 0)
+      ->where('eval_sheet_id', $eval_sheet_id)
       ->select('id, qChoice_id, answer_text')
       ->findAll();
 
@@ -152,7 +153,7 @@ class Evaluation extends BaseController
    * Get details from input that
    * should be sent to database
    */
-  protected function getEvalDetails($questionIDs)
+  protected function getEvalDetails($questionIDs, $eval_sheet_id)
   {
     $evaluationDetail = [];
     $numberOfAnswers = 0;
@@ -161,11 +162,12 @@ class Evaluation extends BaseController
       $answerComments = $this->request->getPost('answer_' . $id);
 
       $evaluationDetails[] = [
-        'user_id'     => $_SESSION['logged_user']['id'],
-        'question_id' => $id,
-        'qChoice_id'  => strlen($answerMultiple)!==0 ? $answerMultiple : null,
-        'answer_text' => strlen($answerComments)!==0 ? $answerComments : null,
-        'status'      => 'save'
+        'user_id'       => $_SESSION['logged_user']['id'],
+        'eval_sheet_id' => $eval_sheet_id,
+        'question_id'   => $id,
+        'qChoice_id'    => strlen($answerMultiple)!==0 ? $answerMultiple : null,
+        'answer_text'   => strlen($answerComments)!==0 ? $answerComments : null,
+        'status'        => 'save'
       ];
     }
 
@@ -178,10 +180,10 @@ class Evaluation extends BaseController
    * Call insert or update to save
    * answers to database
    */
-  protected function saveDatabase($evaluationDetails)
+  protected function saveDatabase($evaluationDetails, $eval_sheet_id)
   {
     $evalAnswersModel = new EvalAnswersModel();
-    $prevAnswers = $this->getPreviousAnswers();
+    $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
     if (count($prevAnswers) === 0) {
       foreach($evaluationDetails as $detail) {
         if (!$evalAnswersModel->insert($detail)) {

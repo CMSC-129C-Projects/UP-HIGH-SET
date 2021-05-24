@@ -6,17 +6,26 @@ use \App\Entities\Admin;
 
 class Professors extends BaseController
 {
-    // protected $admin;
-    // protected $userModel;
-
-    // function __construct() {
-    //     $this->userModel = new \App\Models\UserModel();
-    //     $this->admin = new Admin();
-    // }
+    public function _remap($method, $param1 = null)
+    {
+        switch($method)
+        {
+            case 'index':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));    
+                }
+                $this->hasSession(0);
+                return $this->$method();
+                break;
+            case 'profList':
+                $this->hasSession(1);
+                return $this->$method($param1);
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
 
 	public function index() {
-        $this->hasSession(0);
-
         $css = ['custom/profs/profs-style.css'];
         $js = ['custom/profs/profs.js'];
         $data = [
@@ -28,8 +37,6 @@ class Professors extends BaseController
 	}
 
     public function profList($search = null) {
-        $this->hasSession(1);
-
         $faculModel = new FacultyModel();
         if (!isset($search)) {
             $data['profList'] = $faculModel->where('is_deleted', 0)->findAll();

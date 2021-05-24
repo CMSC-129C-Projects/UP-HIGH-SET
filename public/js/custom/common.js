@@ -30,6 +30,16 @@
 //     // resize();
 // });
 
+function capitalize(str) {
+    if (str.length == 0) {
+        return false
+    } else if (str.length > 1) {
+        return str[0].toUpperCase() + str.substring(1);
+    } else {
+        return str.toUpperCase();
+    }
+}
+
 let main = document.getElementById("main");
 
 new ResizeSensor(main, function() {

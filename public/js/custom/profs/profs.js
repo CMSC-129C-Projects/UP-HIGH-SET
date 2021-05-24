@@ -21,7 +21,7 @@ function appendProfCards(search = undefined) {
         response.forEach((element) => {
             let professor = '<div class="card">' +
                                 '<img src="' + BASE_URI + '/public/images/avatars/rasta.png" alt="">' + 
-                                '<h1>' + element.first_name + ' ' + element.last_name + '</h1>' +
+                                '<h1>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</h1>' +
                                 '<p>' + element.details + '</p>' +
                                 '<button class="redirect" data-id="' + element.id + '" style="margin:auto;">View Subjects</button>' +
                             '</div>';

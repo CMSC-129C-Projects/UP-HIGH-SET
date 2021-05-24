@@ -31,20 +31,23 @@ class Subjects extends BaseController
         }
     }
 
-	public function index($role) {
-        
-        $subjectModel = new SubjectModel();
-
-        $subjectsHandled = $subjectModel->where('is_deleted', '0')->where('faculty_id', $role)->findAll();
-        // $css = ['custom/profs/profs-style.css'];
-        // $js = ['custom/profs/profs.js'];
-        // $data = [
-        //     'js'    => addExternal($js, 'javascript'),
-        //     'css'   => addExternal($css, 'css')
-        // ];
+	public function index($faculty_id)
+    {    
+        $css = ['custom/profs/viewsubjects-style.css'];
+        // $js = ['custom/evaluation/evalSubjects.js'];
         $data = [
-            'subjects' => $subjectsHandled
+            // 'js'  => addExternal($js, 'javascript'),
+            'css' => addExternal($css, 'css')
         ];
+
+        $subjectModel = new SubjectModel();
+        $faculModel = new FacultyModel();
+
+        $prof = $faculModel->where('is_deleted', 0)->find($faculty_id);
+        $subjectsHandled = $subjectModel->get_subjects_by_faculty($faculty_id);
+
+        $data['subjects'] = $subjectsHandled;
+        $data['prof'] = $prof;
 
         return view('subjects/subjects', $data);
 	}

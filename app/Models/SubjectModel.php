@@ -43,4 +43,22 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
+
+    public function get_subjects_by_faculty($facultyID)
+    {
+        $db = \Config\Database::connect();
+
+        $sql = <<<EOT
+SELECT subjects.* , COUNT(subjects.grade_level) as total_students
+FROM subjects
+LEFT JOIN users
+ON subjects.grade_level = users.grade_level
+WHERE faculty_id = $facultyID
+AND subjects.is_deleted = 0
+GROUP BY subjects.grade_level
+EOT;
+
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
 }

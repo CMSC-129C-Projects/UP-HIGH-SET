@@ -16,15 +16,17 @@
 
 
 <div class="card-container">
-
-    <div class="card">
-        <img src="<?=base_url();?>/public/images/SubjectCover.jpg" alt="">
-        <h1> PRE-CALCULUS</h1>
-        <p> 42 STUDENTS ENROLLED.</p>
-        <a href="#"><button>View Progress</button></a>
-    </div>
-
-    <div class="card">
+    <?php if (isset($subjects)):?>
+        <?php foreach($subjects as $subject):?>
+            <div class="card">
+                <img src="<?=base_url();?>/public/images/SubjectCover.jpg" alt="">
+                <h1><?=$subject->name?></h1>
+                <p> 42 STUDENTS ENROLLED.</p>
+                <a href="#"><button>View Progress</button></a>
+            </div>
+        <?php endforeach;?>
+    <?php endif;?>
+    <!-- <div class="card">
         <img src="<?=base_url();?>/public/images/SubjectCover.jpg" alt="">
         <h1> GENERAL MATH</h1>
         <p>42 STUDENTS ENROLLED.</p>
@@ -36,7 +38,7 @@
         <h1>CALCULUS </h1>
         <p>42 STUDENTS ENROLLED.</p>
         <a href="#"><button>View Progress</button></a>
-    </div>
+    </div> -->
 
 </div>
 

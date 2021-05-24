@@ -72,6 +72,7 @@ class Evaluation extends BaseController
 
     $data['css'] = addExternal($css, 'css');
     $data['js'] = addExternal($js, 'javascript');
+    $data['eval_sheet_id'] = $eval_sheet_id;
     $data['prevAnswers'] = $prevAnswers;
     $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
     $data['questions'] = $items[0];

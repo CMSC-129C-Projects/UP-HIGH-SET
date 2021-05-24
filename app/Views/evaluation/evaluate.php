@@ -79,7 +79,7 @@
         </div>
         <div class="row">
           <div class="buttons tab-content">
-            <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
+            <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate/<?=$eval_sheet_id?>" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
             <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
             <button class="btn btn-lg btn-review" type="Review"> Review</button>  
           </div>

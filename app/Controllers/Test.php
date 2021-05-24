@@ -13,6 +13,6 @@ class Test extends BaseController
         //     'css' => addExternal($css, 'css'),
         //     'js'  => addExternal($js, 'javascript')
         // ];
-        return view('Evaluation/evaluationSubjects');
+        return view('professors/viewsubjects');
     }
 }

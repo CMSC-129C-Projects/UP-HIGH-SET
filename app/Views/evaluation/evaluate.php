@@ -1,11 +1,12 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
   <section id="evaluation" class="container-fluid">
-    <div class="heading text-center" style="margin-bottom: 2.5rem !important;">
+  <!-- style="margin-bottom: 2.5rem !important; border: solid;" -->
+    <div class="heading text-center">
       <h1>EVALUATION</h1>
     </div>
-    <div class="tabs">
+    <div class="tabs" id="questionnaire">
       <!-- <div class="row"> -->
       <ul class="row nav nav-tabs tab-content">
         <?php foreach($questions as $key => $value):?>
@@ -29,7 +30,7 @@
         <p  class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Unsaved Changes</p>
       </div>
       <!-- </div> -->
-      <form action="">
+      <form method="post">
         <div class="row">
           <div class="tab-content col-md-offset-2">  
             <h1 class="likert-header">Please evaluate honestly</h1>
@@ -37,6 +38,8 @@
               foreach($questions as $key => $value):?>
               <?php if($key === 'Instructional Skills'):?>
                 <div class="tab-pane fade show active" id="<?=strtolower(str_replace(' ', '_', $key));?>">
+              <?php elseif($key === 'Comments'):?>
+                <div class="tab-pane fade" id="<?=strtolower(str_replace(' ', '_', $key));?>" style="padding-bottom: 5%;">
               <?php else:?>
                 <div class="tab-pane fade" id="<?=strtolower(str_replace(' ', '_', $key));?>">
               <?php endif;?>
@@ -47,7 +50,7 @@
                     <?php if ($key === 'Comments'):?>
                       <div class="inputBox">
                         <?php $name = 'answer_' . $q->id;?>
-                        <textarea value="<?=set_value($name, $prevAnswers ? $prevAnswers[$index]['answer_text']: '')?>" name="<?=$name?>" id="" cols="100" rows="5"></textarea>
+                        <textarea name="<?=$name?>" id="" cols="100" rows="5"><?=set_value($name, $prevAnswers ? $prevAnswers[$index]['answer_text']: '')?></textarea>
                       </div>
                     <?php else:?>
                       <?php $name = 'choices_' . $q->id;?>
@@ -71,17 +74,17 @@
             <?php endforeach;?>
           </div> <!-- tab content-->
         </div>
-      </form>
-      <div class="arrowup">
-        <a href="#"><i class="bi bi-arrow-up-square"></i></a>
-      </div>
-      <div class="row">
-        <div class="buttons tab-content" style="">
-          <button class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
-          <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
-          <button class="btn btn-lg btn-review" type="Review"> Review</button>  
+        <div class="arrowup">
+          <a href="#"><i class="bi bi-arrow-up-square"></i></a>
         </div>
-      </div>
+        <div class="row">
+          <div class="buttons tab-content">
+            <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
+            <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+            <button class="btn btn-lg btn-review" type="Review"> Review</button>  
+          </div>
+        </div>
+      </form>
     </div> <!--Para sa tabs -->
   </section>
 <?= $this->endSection();?>

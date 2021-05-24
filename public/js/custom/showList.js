@@ -45,8 +45,9 @@ $(function() {
             setTable(table);
         },
         function(jqXHR) {
-            var response = JSON.parse(jqXHR.responseText);
-            alertify.error(response.message);
+            // var response = JSON.parse(jqXHR.responseText);
+            console.log(jqXHR.responseText);
+            // alertify.error(jqXHR.responseText);
         }
     ));
 

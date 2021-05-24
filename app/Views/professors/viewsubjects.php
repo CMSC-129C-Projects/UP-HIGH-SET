@@ -9,7 +9,7 @@
 
 <div class="heading text-center">
 <h1>PROFESSOR ROBERTO BASADRE</h1>
-<h3> Civil Engineer, UPHS Faculty</h3>
+<h3> Civil Engineer, UPHS Faculty (Any description sa profs)</h3>
 
 
 </div>

@@ -6,13 +6,25 @@ use \App\Models\FacultyModel;
 
 class Subjects extends BaseController
 {
-    // protected $admin;
-    // protected $userModel;
+    public function _remap($method, $param1 = null)
+    {
+        if (!$this->session->has('logged_user')) {
+            return redirect()->to(base_url('login'));
+        } elseif (!$_SESSION['logged_user']['emailVerified']) {
+            return redirect()->to(base_url('verifyAccount'));
+        }
 
-    // function __construct() {
-    //     $this->userModel = new \App\Models\UserModel();
-    //     $this->admin = new Admin();
-    // }
+        switch($method)
+        {
+            case 'add_subject':
+                return $this->$method();
+                break;
+            case 'index':
+                return $this->$method($param1);
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
 
 	public function index($role) {
         

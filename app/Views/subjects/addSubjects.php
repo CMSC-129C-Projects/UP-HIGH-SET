@@ -1,71 +1,70 @@
-<?=$this->extend('template/pageTemplate');?>
+<?= $this->extend('template/pageTemplate');?>
 
-<?=$this->section('content');?>
-    <?php if(isset($message)):?>
-        <div id="bg-modal" class="black-modal-email">
-            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-                <div class="mdl-content">
-                    <?php if($message):?>
-                        <p>Subject added successfully</p>
-                    <?php else:?>
-                        <p>An error has occurred</p>
-                    <?php endif;?>
-                    <div class="btn-delete">
-                        <button id="dontDelete">Dismiss</button>
-                    </div>
-                </div>
-            </div>
+<?= $this->section('content');?>
+  <?php if(isset($message)):?>
+    <div id="bg-modal" class="black-modal-email">
+      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
+        <div class="mdl-content">
+          <?php if($message):?>
+              <p>Subject added successfully</p>
+          <?php else:?>
+              <p>An error has occurred</p>
+          <?php endif;?>
+          <div class="btn-delete">
+              <button id="dontDelete">Dismiss</button>
+          </div>
         </div>
-    <?php endif;?>
-    <section style="width: 100%;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bg-dark text-white" style="padding: 30px; width: 60%; margin: auto;">
-                        <form action="<?=base_url();?>/subjects/add_subject" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="profs">Professors</label>
-                                        <select class="form-control" name="professors" id="profs">
-                                            <?php foreach($profs as $p):?>
-                                                <option value="<?=$p['id'];?>"><?=$p['first_name'].' '.$p['last_name'];?></option>
-                                            <?php endforeach;?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="gl">Grade Level</label>
-                                        <select class="form-control" name="gLevel" id="gl">
-                                            <option value="7">Grade 7</option>
-                                            <option value="8">Grade 8</option>
-                                            <option value="9">Grade 9</option>
-                                            <option value="10">Grade 10</option>
-                                            <option value="11">Grade 11</option>
-                                            <option value="12">Grade 12</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name">Subject Title</label>
-                                        <input type="text" name="name" class="form-control" id="name">
-                                        <span><?=displaySingleError($validation, 'name');?></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group" style="float: right;">
-                                        <input type="submit">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  <?php endif;?>
+  <section class="container-fluid">
+    <div>
+      <div class="heading text-center">
+        <h1 style= "padding:4.7rem;">Add Subject</h1>
+      </div>
+
+      <div id="AddSubject">
+        <div class="card">
+          <div class="card-body">
+            <form method="post" action="">
+              <div class="form-group">
+                <label for="purpose" style="font-size:15px; margin-bottom: 7px;">Subject Professor:</label>
+                <br>
+                <select class="custom-select" name="professor">
+                  <?php if(isset($profs) and count($profs) > 0):?>
+                    <?php foreach($profs as $prof):?>
+                      <option value="<?=$prof['id']?>"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></option>
+                    <?php endforeach;?>
+                  <?php endif;?>
+                </select>
+                <span class="text-danger"><?=displaySingleError($validation, 'professor');?></span>
+              </div>
+              <div class="form-group">
+                <label for="purpose" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Grade Level:</label>
+                <br>
+                <select class="custom-select" name="gLevel">
+                  <option value="7">Grade 7</option>
+                  <option value="8">Grade 8</option>
+                  <option value="9">Grade 9</option>
+                  <option value="10">Grade 10</option>
+                  <option value="11">Grade 11</option>
+                  <option value="12">Grade 12</option>
+                </select>
+                <span class="text-danger"><?=displaySingleError($validation, 'gLevel');?></span>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="subjectname" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Subject</label>
+                <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>" placeholder="Enter Subject here ...">
+                <br>
+                <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>
+              </div>
+              <br> 
+              <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="Save">
+            </form>
+          </div>
         </div>
-    </section>
-<?=$this->endSection();?>
+      </div>
+    </div>
+  </section>
+<?= $this->endSection();?>

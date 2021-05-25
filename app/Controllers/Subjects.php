@@ -71,7 +71,7 @@ class Subjects extends BaseController
     public function add_subject()
     {
         // Initialize CSS
-        $css = ['custom/alert.css'];
+        $css = ['custom/alert.css', 'custom/addSubject.css'];
         $js = ['custom/alert.js'];
 
         $data = [
@@ -83,11 +83,10 @@ class Subjects extends BaseController
         $data['message'] = null;
         $data['profs'] = $this->fetchProfessors();
 
-        $rules['name'] = [
-            'rules'  => 'required',
-            'errors' => [
-                'required' => 'Please input a subject title'
-            ]
+        $rules = [
+            'subjectname' => 'required',
+            'professor'   => 'required',
+            'gLevel'      => 'required'
         ];
 
         if($this->request->getMethod() == 'post') {
@@ -95,9 +94,9 @@ class Subjects extends BaseController
                 $subjectModel = new SubjectModel();
 
                 $values = [
-                    'faculty_id' => $this->request->getPost('professors'),
+                    'faculty_id' => $this->request->getPost('professor'),
                     'grade_level' => $this->request->getPost('gLevel'),
-                    'name' => $this->request->getPost('name')
+                    'name' => $this->request->getPost('subjectname')
                 ];
 
                 if($subjectModel->insert($values)) {

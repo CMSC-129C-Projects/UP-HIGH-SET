@@ -1,20 +1,12 @@
 /* ---------------------------------------------------
-    Update email
+    Add subjects for evaluation
 ----------------------------------------------------- */
 
-#EmailContent form input[type="submit"] {
+#AddSubject form input[type="submit"] {
   border-radius: 2rem;
 }
 
-#EmailContent form textarea {
-  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
-  border-width: 0.3rem !important;
-  border-image-slice: 1 !important;
-  border-radius: 1rem;
-  font-size: 13px;
-}
-
-#EmailContent form input {
+#AddSubject form input {
   border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;
@@ -27,7 +19,7 @@
   font-size: 13px;
 }
 
-#EmailContent .card {
+#AddSubject .card {
   width: 80%;
   padding: 20px;
   margin-left: 10%;
@@ -40,28 +32,23 @@
   box-shadow: 0 0 2rem #333;
 }
 
-#EmailContent .card-body {
+#AddSubject .card-body {
   padding: 40px;
 }
 
-#EmailContent .custom-select {
+#AddSubject .custom-select {
   background: #7b1113
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
     no-repeat right 0.75rem center/8px 10px !important;
   color: white;
   font-size: 12px;
   font-family: Roboto;
-  width: 150px;
+  width: 100%;
+  height: 35px;
 }
 
-#EmailContent .dropdown-item.active,
-#EmailContent .dropdown-item:active {
-  background-color: #014421;
-}
-
-#EmailContent form input:focus,
-#EmailContent form textarea:focus,
-#EmailContent .custom-select:focus {
+#AddSubject form input:focus,
+#AddSubject .custom-select:focus {
   outline: none !important;
   box-shadow: none;
 }
@@ -70,14 +57,21 @@
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 320px) {
-  #EmailContent .card {
+  #AddSubject .card {
     width: 100%;
     padding: 0px;
     margin-left: 1%;
     margin-bottom: 5%;
   }
 
-  #EmailContent .custom-select {
-    width: 125px;
+  #AddSubject .custom-select {
+    background: #7b1113
+      url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+      no-repeat right 0.75rem center/8px 10px !important;
+    color: white;
+    font-size: 12px;
+    font-family: Roboto;
+    width: 100%;
+    height: 35px;
   }
 }

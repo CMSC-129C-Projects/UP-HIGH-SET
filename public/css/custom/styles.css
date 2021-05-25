@@ -174,8 +174,7 @@ body {
   outline: none !important;
   border-radius: 0 !important;
 }
-.form-group .form-select{
-
+.form-group .form-select {
   border: 0.15rem solid #333;
   font-family: "Roboto";
   /* border-radius: 1.3rem; */
@@ -219,7 +218,7 @@ button#cancel,
 input[type="submit"] {
   outline: none;
   border: none;
-  border-radius: 5rem;
+  border-radius: 2rem;
   color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
@@ -254,11 +253,6 @@ input[type="submit"]:hover {
   margin: auto;
 }
 
-
-
-
-
-
 /* FOOTER */
 
 #footer {
@@ -281,7 +275,6 @@ input[type="submit"]:hover {
   margin: 1rem 0;
   margin: auto;
 }
-
 
 #footer .contactLinks h3 {
   font-size: 18px;
@@ -352,8 +345,7 @@ form.add {
   padding: 2.75rem 1.5rem !important;
 }
 form.edit {
-    padding: 2.75rem 1.50rem !important;
-
+  padding: 2.75rem 1.5rem !important;
 }
 
 .row-md-4.email {
@@ -474,7 +466,6 @@ a:focus {
   transform-origin: bottom left;
 }
 
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 #sidebar::-webkit-scrollbar {
   display: none;
@@ -508,13 +499,12 @@ a:focus {
   margin-right: 5px;
 }
 
-#sidebar ul.components  a:hover {
+#sidebar ul.components a:hover {
   color: #7b1113;
   background-color: #ffed8a;
 }
-#sidebar ul.components ul.CTAs  a:hover {
-  
-  background-color:none;
+#sidebar ul.components ul.CTAs a:hover {
+  background-color: none;
 }
 
 #sidebar ul p {
@@ -542,7 +532,6 @@ a:focus {
 #sidebar ul li a:active {
   text-decoration: none;
 }
-
 
 a[data-toggle="collapse"] {
   position: relative;

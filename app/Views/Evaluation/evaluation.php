@@ -292,7 +292,7 @@
                   <div class="wrap">
                       
                       <form action="">
-                        <label class="statement">Corrects and gives results and feedback of examinations and/or other work withiin reasonable time.</label>
+                        <label class="statement">Corrects and gives results and feedback of examinations and/or other work within reasonable time.</label>
                         <ul class='likert'>
                           <li>
                             <input type="radio" name="classmgt1" value="Excellent">

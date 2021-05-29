@@ -19,6 +19,7 @@
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/addSubject.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/evaluation/submitModal.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 

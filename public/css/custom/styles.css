@@ -66,7 +66,8 @@ body {
 
 #register .nav {
   margin: auto;
-  width: 700px;
+  /* width: 700px; */
+  width: 60%;
 }
 
 #register .nav h2 {
@@ -127,7 +128,8 @@ body {
 
 #register form {
   background: #fff;
-  width: 700px;
+  /* width: 700px; */
+  width: 60%;
   margin-top: -0.25rem;
   border-radius: 0 0 1.5rem 1.5rem;
   -webkit-box-shadow: 0 0 2rem #333;

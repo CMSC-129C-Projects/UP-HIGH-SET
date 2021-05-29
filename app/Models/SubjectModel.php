@@ -49,13 +49,19 @@ EOT;
         $db = \Config\Database::connect();
 
         $sql = <<<EOT
-SELECT subjects.* , COUNT(subjects.grade_level) as total_students
-FROM subjects
-LEFT JOIN users
-ON subjects.grade_level = users.grade_level
-WHERE faculty_id = $facultyID
-AND subjects.is_deleted = 0
-GROUP BY subjects.grade_level
+SELECT subs.*, CASE WHEN u.id IS NOT NULL 
+    THEN COUNT(subs.grade_level)
+    ELSE 0
+END  as total_students
+FROM (SELECT *
+    FROM subjects as s
+    WHERE s.faculty_id = $facultyID
+    AND s.is_deleted = 0) as subs
+LEFT JOIN users as u
+ON subs.grade_level = u.grade_level
+AND u.is_active = 1
+AND u.is_deleted = 0
+GROUP BY subs.grade_level
 EOT;
 
         $query = $db->query($sql);

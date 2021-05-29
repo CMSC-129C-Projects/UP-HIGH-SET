@@ -7,25 +7,25 @@
                 <div class="container-fluid" style="padding: 5%;">
                     <div class="row">
                         <div class="col-md-12">
-                            <p style="font-weight: bold; font-size: 2rem; color: #7b1113;;">Professors Not Completed</p>
-                            <div class="prof-names d-flex justify-content-center align-items-center">
-                                <p style="margin: 2% auto;">Basadre</p>
-                            </div>
-                            <div class="prof-names d-flex justify-content-center align-items-center">
-                                <p style="margin: 2% auto;">Laus</p>
-                            </div>
-                            <div class="prof-names d-flex justify-content-center align-items-center">
-                                <p style="margin: 2% auto;">Bondoc</p>
-                            </div>
-                            <div class="prof-names d-flex justify-content-center align-items-center">
-                                <p style="margin: 2% auto;">Vilbar</p>
-                            </div>
+                            <p class="titles">Professors</p>
+                            <?php if(isset($profs)):?>
+                                <?php foreach($profs as $prof):?>
+                                    <div data-id="<?=$prof['id']?>" class="prof-names d-flex justify-content-center align-items-center">
+                                        <p style="margin: 2% auto;"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></p>
+                                    </div>
+                                <?php endforeach;?>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div id="piechart" style="box-shadow: 0 0 1rem #333;"></div>
+                <div id="piechart" class="detail-container"></div>
+                <div class="detail-container subject-container d-none" style="background-color: transparent;">
+                    <p class="titles">Subjects Handled</p>
+                    <div id="subjects">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

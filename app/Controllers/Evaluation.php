@@ -265,50 +265,6 @@ class Evaluation extends BaseController
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
   }
 
-  /**
-   * Fetch students not yet finished evaluation a subject
-   */
-  public function getUnfinished($subjectID)
-  {
-    $evalsheetModel = new EvalSheetModel();
-    $evalAnswersModel = new EvalAnswersModel();
-    $evalQuestionModel = new EvalquestionModel();
-
-    $size = $evalQuestionModel->getNumberOfQuestions();
-
-    $size = $size[0]->size;
-
-    $sheets = $evalsheetModel->getUnfinishedStudents($subjectID);
-
-    $progress = [];
-
-    foreach($sheets as $sheet) {
-      $studentAnswers = $evalAnswersModel->getNotNull($sheet->id);
-      $progress[] = [
-        'student_id' => $sheet->student_id,
-        'progress' => sprintf('%.0f', $this->computeProgress($studentAnswers[0]->answersTotal, $size))
-      ];
-    }
-
-    echo json_encode($progress);
-  }
-
-  public function get_progress_by_subject($subject_id = null) {
-    if(isset($subject_id)) {
-      $userModel = new UserModel();
-      $evalSheetModel = new EvalSheetModel();
-
-      $students_per_subjects =  $userModel->get_all_students_per_subject($subject_id);
-      $student_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject_id);
-
-      $percentage = ($student_who_evaluated / $students_per_subjects) * 100;
-
-      return $percentage;
-    } else {
-      return false;
-    }
-  }
-
   public function submit_evaluation() {
     $evalModel = new EvaluationModel();
 

@@ -50,7 +50,8 @@ class Monitoring extends BaseController
             $subjectsWithProgress = [];
             foreach($subjects as $subject) {
                 $subject->progress = $this->get_progress_by_subject($subject->id);
-                $subject->studentsNotDone = $this->getUnfinished($subject->id);
+                $subject->studentsNotDone = $this->createAccordion($this->getUnfinished($subject->id));
+
             }
 
             $response = [
@@ -60,6 +61,28 @@ class Monitoring extends BaseController
             ];
         }
         echo json_encode($response);
+    }
+
+    /**
+     * Create Accordion for students
+     * Not yet done answering
+     */
+    protected function createAccordion($studentsNotDone)
+    {
+        if (isset($studentsNotDone)) {
+            $accordion = '<button class="accordion">Student Not Finished Evaluating</button><div class="panel">';
+            foreach($studentsNotDone as $student) {
+                $accordion .=   '<div>' .
+                                    '<p>' . $student['student_name'] . '</p>' .
+                                    '<div class="progress">' .
+                                        '<div class="progress-bar bg-danger" style="width:' . $student['progress'] . '%">' . $student['progress'] . '%</div>' .
+                                    '</div>' .
+                                '</div>';
+            }
+            $accordion .= '</div>';
+            return $accordion;
+        }
+        return false;
     }
 
     /**   
@@ -87,6 +110,7 @@ class Monitoring extends BaseController
             ];
         }
 
+        // echo json_encode($progress);
         return $progress;
     }
 

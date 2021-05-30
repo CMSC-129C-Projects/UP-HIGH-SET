@@ -41,9 +41,10 @@ SELECT unfinished.id, unfinished.status, CONCAT(
               SUBSTRING(u.last_name, 2))) as full_name
 FROM (SELECT eval_sheet.id, status, eval_sheet.student_id
 			FROM eval_sheet
-			WHERE subject_id = 2 AND (status = 'Open' OR status = 'Inprogress')) AS unfinished
+			WHERE subject_id = $subjectID AND (status = 'Open' OR status = 'Inprogress')) AS unfinished
 LEFT JOIN users as u
 ON unfinished.student_id = u.id
+WHERE u.is_active = 1 AND u.is_deleted = 0
 EOT;
 
     $query = $db->query($sql);

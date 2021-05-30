@@ -40,12 +40,14 @@ function displaySubjects(facultyID) {
                     progress = progress + '%';
                     pBar = pBar.replaceAll('percentage', progress);
                     element = '<strong>' + subject.name + '</strong>' + pBar;
-
-                    accordion = createAccordion(subject);
                 } else {
                     element = '<strong>' + subject.name + '</strong><p style="color: #7b1113;">' + progress + '</p>';
                 }
-                let $div = $('<div style="margin: 2% 0;">' + element + accordion + '</div>');
+                let $div;
+                if (subject.studentsNotDone)
+                    $div = $('<div style="margin: 2% 0;">' + element + subject.studentsNotDone + '</div>');
+                else
+                    $div = $('<div style="margin: 2% 0;">' + element + '</div>');
                 $div.on('click', '.accordion', function (){
                     if ($(this).hasClass('active')) {
                         $(this).removeClass("active");    
@@ -86,6 +88,16 @@ function accord() {
 
 $(function() {
     $('.prof-names').click(function() {
+        let profnames = $('.prof-names');
+        for(let i=0; i<profnames.length; i++) {
+            if ($(profnames[i]).hasClass('chosen')) {
+                $(profnames[i]).removeClass('chosen');
+                $(profnames[i]).css('transform', '');
+            }
+        }
+
+        $(this).css('transform', 'scale(1.05)');
+        $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });
 });

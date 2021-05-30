@@ -11,7 +11,7 @@
                             <?php if(isset($profs)):?>
                                 <?php foreach($profs as $prof):?>
                                     <div data-id="<?=$prof['id']?>" class="prof-names d-flex justify-content-center align-items-center">
-                                        <p style="margin: 2% auto;"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></p>
+                                        <p style="margin: 2% auto;"><?=strtoupper($prof['first_name']) . ' ' . strtoupper($prof['last_name'])?></p>
                                     </div>
                                 <?php endforeach;?>
                             <?php endif;?>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6">
                 <div id="piechart" class="detail-container"></div>
-                <div class="detail-container subject-container d-none" style="background-color: transparent;">
+                <div class="detail-container subject-container d-none" style="background-color: #ffffff;">
                     <p class="titles">Subjects Handled</p>
                     <div id="subjects">
                     </div>

@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6">
                 <div id="piechart" class="detail-container"></div>
-                <div class="detail-container subject-container d-none" style="background-color: #ffffff;">
+                <div class="detail-container subject-container d-none" style="background-color: transparent;">
                     <p class="titles">Subjects Handled</p>
                     <div id="subjects">
                     </div>

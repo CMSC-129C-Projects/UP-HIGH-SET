@@ -9,7 +9,7 @@
 ?>  
 
 <?php $this->section('content'); ?> 
-  <div class="container-fluid" style="height:120vh;">
+  <div class="container-fluid">
       <div class="heading text-center">
         <h1 style= "padding:4.7rem;">Change Password</h1>
       </div>

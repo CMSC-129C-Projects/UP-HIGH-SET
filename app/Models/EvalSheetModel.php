@@ -73,4 +73,22 @@ EOT;
 
     return $result[0]->students_evaluated;
   }
+
+  public function get_eval_sheet_dets($eval_sheet_id)
+  {
+    $db = \Config\Database::connect();
+    
+    $sql = <<<EOT
+SELECT s.name as 'subject', CONCAT(f.first_name, ' ', f.last_name) as prof
+FROM eval_sheet as es
+LEFT JOIN subjects as s
+ON es.subject_id = s.id
+LEFT JOIN faculty as f
+ON f.id = s.faculty_id
+WHERE es.id = $eval_sheet_id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 }

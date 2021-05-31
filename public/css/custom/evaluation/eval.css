@@ -341,26 +341,26 @@ color: #7b1113;
   background-color: #ffffff;
    color: #7b1113 !important;
    text-transform: uppercase !important;
-   font-size: 16px;
+   font-size: 17px;
    border-radius: 0px !important;
 }
 .categories a:focus {
   background-color: #ffffff;
    color: #7b1113 !important;
    text-transform: uppercase !important;
-   font-size: 16px;
+   font-size: 17px;
    border-radius: 0px !important;
 }
 
 .categories .icon {
   display: none;
 }
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1260px){
 .categories{
   font-size: 14px;
 }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1260px) {
   .categories a:not(:first-child) {display: none;}
   .categories a.icon {
     float: right;
@@ -368,7 +368,7 @@ color: #7b1113;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1260px) {
   .categories.responsive {position: relative;}
   .categories.responsive .icon {
     position: absolute;

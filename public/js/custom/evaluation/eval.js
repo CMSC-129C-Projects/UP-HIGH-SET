@@ -10,6 +10,8 @@ $(function() {
         $(this).addClass('active');
     });
 
+    setCurrentProgress();
+
     $('input[name^="choices_"], textarea[name^="answer_"').change(function() {
         let $savestatus = $('.savestatus');
         if ($savestatus.hasClass('d-none')) {

@@ -10,6 +10,8 @@
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -18,8 +20,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
+<<<<<<< HEAD
     <link href="<?=base_url()?>/public/css/custom/addSubject.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/evaluation/submitModal.css" rel="stylesheet">
+=======
+>>>>>>> d493dc71513a392bec034401fe2f777196a8841b
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
@@ -156,8 +161,10 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>

@@ -321,8 +321,8 @@ class Home extends BaseController
       'passwordReset' => false,
       // 'emailVerified' => false,
       'emailVerified' => true,
-			'userToken'		  => $userToken,
-			'loginDate'		  => date('Y-m-d H:i:s')
+			'userToken'		=> $userToken,
+			'loginDate'		=> date('Y-m-d H:i:s')
 		];
 
 		$this->session->set('logged_user', $session_data);

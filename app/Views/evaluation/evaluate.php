@@ -201,19 +201,10 @@
             <div class="row">
               <div class="col-4">
                 <div style="text-align: center;">
-                  <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100%" data-dismiss="modal" value="Submit">
-                </div>
-              </div>
-              <div class="col-4">
-                <div style="text-align: center;">
-                  <br>
+                  <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100px; height: 40px; margin-right: 20px;" data-dismiss="modal" value="Submit">
+                  <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100px; height: 40px;" data-dismiss="modal" value="Close">
                 </div>
               </div>  
-              <div class="col-4">
-                <div style="text-align: center;">
-                  <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100%" data-dismiss="modal" value="Close">
-                </div>
-              </div>
             </div>
           </div>
         </div>

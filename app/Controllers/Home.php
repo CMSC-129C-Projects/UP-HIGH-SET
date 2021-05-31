@@ -78,7 +78,7 @@ class Home extends BaseController
           if($_SESSION['logged_user']['emailVerified']){
             return redirect()->to(base_url('dashboard'));
           } elseif(!$this->checkPasswordLastUpdate()) {
-					  // $this->sendVerification();
+					  $this->sendVerification();
 
             // To be changed for a page that notifies the email verification was sent
 					  return redirect()->to(base_url('verifyAccount'));
@@ -141,6 +141,7 @@ class Home extends BaseController
           // $data['userToken'] = $userToken; //for testing purposes
 
 					$this->resetPasswordEmail();
+          $data['success'] = true;
 
         } else {
           $data['validate_error'] = 'Email does not exist.';
@@ -220,6 +221,7 @@ class Home extends BaseController
     $data = [];
     $data['error'] = null;
     $data['validation'] = null;
+    $data['userToken'] = $userToken;
 
     if(!empty($userToken)) {
       $timeElapsed = strtotime(date('Y-m-d H:i:s')) - strtotime($_SESSION['logged_user']['loginDate']); //in seconds
@@ -319,8 +321,8 @@ class Home extends BaseController
 			'role'			    => $user['role'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      // 'emailVerified' => false,
-      'emailVerified' => true,
+      'emailVerified' => false,
+      // 'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];

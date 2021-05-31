@@ -7,16 +7,16 @@
     <div class="card">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body" style="padding: 40px; margin: 10px">
-        <?php if (isset($validation) != null) { ?>
+        <?php if (isset($validation)) { ?>
 
           <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
           <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
+            <h4 style="color: #7b1113; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
           </div>
           <br><br>
           <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
-        <?php } elseif(isset($validate_error)!=null) { ?>
+        <?php } elseif(isset($validate_error)) { ?>
 
           <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
           <div class= "alert alert-danger" style="padding: 20px;">
@@ -25,7 +25,7 @@
           <br>
           <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
-        <?php } elseif(isset($success) != null) { ?>
+        <?php } elseif(isset($success)) { ?>
           <div class="alert-success" style="padding: 20px;">
             <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
           </div>

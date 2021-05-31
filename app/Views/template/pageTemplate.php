@@ -99,7 +99,7 @@
               <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
                 <li>
-                  <a href="#">View Professors</a>
+                  <a href="<?=base_url()?>/professors">View Professors</a>
                 </li>
 
               </ul>

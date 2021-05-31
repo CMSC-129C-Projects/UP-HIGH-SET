@@ -62,9 +62,9 @@ EOT;
     }
     
     public function get_all_students_per_subject($id) {
-      $db = \Config\Database::connect();
+        $db = \Config\Database::connect();
 
-      $sql = <<<EOT
+        $sql = <<<EOT
 SELECT count(users.id) as student_perSub
 FROM users
 LEFT JOIN subjects
@@ -75,9 +75,29 @@ users.role = 2 AND subjects.is_deleted = 0 AND
 subjects.id = $id
 EOT;
 
-      $query = $db->query($sql);
-      $result = $query->getResult();
+        $query = $db->query($sql);
+        $result = $query->getResult();
 
-      return $result[0]->student_perSub;
-  }
+        return $result[0]->student_perSub;
+    }
+
+    public function get_students_complete_count()
+    {
+        $db = \Config\Database::connect();
+
+        $sql = <<<EOT
+SELECT u.id, u.first_name, u.last_name, u.grade_level, IFNULL(completes.total, 0) as 'count'
+FROM users as u
+LEFT JOIN (SELECT u.id, COUNT(u.id) as total
+        FROM users as u
+        LEFT JOIN eval_sheet as es
+        ON u.id = es.student_id
+        WHERE es.is_deleted = 0 AND u.is_active = 1 AND u.is_deleted = 0 AND es.status = 'Completed'
+        GROUP BY u.id) AS completes
+ON completes.id = u.id
+WHERE u.role = '2'
+EOT;
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
 }

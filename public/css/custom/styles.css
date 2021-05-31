@@ -454,7 +454,7 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
@@ -753,4 +753,7 @@ a.article:hover {
     margin-left: 0;
     transform: none;
   }
+}
+.tabs .mobiletab{
+  float: left;
 }

@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+      <div class="wrapper align-items-stretch" id="main" style="height: 109.5">
         <?= $this->renderSection('content');?>
       </div>
     </div>

@@ -1,14 +1,25 @@
 <?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
-  <section id="evaluation" class="container-fluid">
+  
+
+<section id="evaluation" class="container-fluid">
+  
   <!-- style="margin-bottom: 2.5rem !important; border: solid;" -->
     <div class="heading text-center">
       <h1>EVALUATION</h1>
     </div>
+    
     <div class="tabs" id="questionnaire">
+
+
+    
+
+
+
       <!-- <div class="row"> -->
-      <ul class="row nav nav-tabs tab-content">
+      <!-- <ul class="row nav nav-tabs tab-content topnav" id="myTopnav">
+      
         <?php foreach($questions as $key => $value):?>
           <?php if($key === 'Instructional Skills'):?>
             <li class="nav-item col-md-2 btncat"style="width:100%;">
@@ -20,15 +31,44 @@
             </li>
           <?php endif;?>
         <?php endforeach;?>
-      </ul>
-      <div class="container">
-        <div class="progress tab-content">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%;"><?=$progress?>%</div>
-        </div>
+      </ul> -->
+
+
+      <div class="categories" id="evalCategories">
+        <a href="#"class="" >Instructional Skills</a>
+        <a href="#"class="" >Class Manangement</a>
+        <a href="#" class="" >Personal Qualities</a>
+        <a href="#" class="" >Student Faculty Relation</a>
+        <a href="#" class="" >General Evaluation</a>
+        <a href="#" class="" >Comments</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
-      <div class="savestatus tab-content d-none">
+      
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("evalCategories");
+  if (x.className === "categories") {
+    x.className += " responsive";
+  } else {
+    x.className = "categories";
+  }
+}
+</script>
+
+<div class="savestatus tab-content d-none">
         <p  class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Unsaved Changes</p>
       </div>
+      
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%;"><?=$progress?>%</div>
+        </div>
+      
+     
       <!-- </div> -->
       <form method="post">
         <div class="row">
@@ -74,17 +114,23 @@
             <?php endforeach;?>
           </div> <!-- tab content-->
         </div>
-        <div class="arrowup">
-          <a href="#"><i class="bi bi-arrow-up-square"></i></a>
-        </div>
+        
         <div class="row">
           <div class="buttons tab-content">
             <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate/<?=$eval_sheet_id?>" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
+            <button class="btn btn-lg btn-review" type="Review"><i class="bi bi-pencil-square"></i> Review</button>
             <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
-            <button class="btn btn-lg btn-review" type="Review"> Review</button>  
+              
           </div>
         </div>
+        
       </form>
+      <div class="arrowup">
+          <a href="#"><i class="bi bi-arrow-up-square"></i></a>
+        </div>
     </div> <!--Para sa tabs -->
   </section>
+
+  
+  
 <?= $this->endSection();?>

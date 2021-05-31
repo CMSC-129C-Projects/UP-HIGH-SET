@@ -12,6 +12,15 @@
   box-shadow: 0 0 3rem #333;
 }
 
+#subModal {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#subModal::-webkit-scrollbar {
+  background-color: transparent;
+}
+
 #submitModal .modal-body {
   background: #dac295;
   overflow-y: auto;

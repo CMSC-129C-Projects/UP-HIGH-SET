@@ -18,6 +18,7 @@ $(function() {
             $savestatus.removeClass('d-none');
         }
 
+        updateReview($(this));
         setCurrentProgress();
     });
 });
@@ -31,6 +32,23 @@ function setCurrentProgress() {
     
     $('.progress-bar').css('width', (progress.toFixed(0)) + '%');
     $('.progress-bar').text((progress.toFixed(0)) + '%');
+}
+
+function updateReview($this) {
+    let name = $this.attr('name');
+    if (name.includes('answer')) {
+        let textarea = $('textarea[name="review_' + name + '"]');
+        textarea.text($this.val());
+    } else if (name.includes('choices')) {
+        let radios = $('input[name="review_' + name + '"]');
+        for(let i=0; i<radios.length; i++) {
+            if ($(radios[i]).val() === $this.val()) {
+                $(radios[i]).prop('checked', true);
+            } else {
+                $(radios[i]).prop('checked', false);
+            }
+        }
+    }
 }
 
 function getAnsweredQuestions() {

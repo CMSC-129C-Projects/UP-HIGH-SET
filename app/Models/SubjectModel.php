@@ -63,8 +63,7 @@ AND u.is_active = 1
 AND u.is_deleted = 0
 GROUP BY subs.grade_level
 EOT;
-
-  protected $skipValidation = true;
+    }
 
   public function get_total_subjects_by_glevel()
   {

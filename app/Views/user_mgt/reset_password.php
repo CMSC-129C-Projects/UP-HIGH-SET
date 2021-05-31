@@ -30,7 +30,7 @@
             </div>
 
             <div class="form-group">
-              <input type="submit" name="update" style="border-bottom-style: hidden !important; margin: none; font-weight: bold; font-size: 13px" value="Update">
+              <input type="submit" name="update" style="border-bottom-style: hidden !important; margin: none; font-weight: bold; font-size: 13px; border-radius:2rem" value="Update">
               <a href="<?=base_url('dashboard/logout')?>" class="button" style="padding: 12px 21px; font-size: 13px;">Cancel</a>
             </div>
           </form>

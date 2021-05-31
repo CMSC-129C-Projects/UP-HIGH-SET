@@ -206,6 +206,11 @@
               </div>
               <div class="col-4">
                 <div style="text-align: center;">
+                  <br>
+                </div>
+              </div>  
+              <div class="col-4">
+                <div style="text-align: center;">
                   <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100%" data-dismiss="modal" value="Close">
                 </div>
               </div>

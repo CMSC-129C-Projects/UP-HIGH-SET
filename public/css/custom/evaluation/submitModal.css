@@ -1,6 +1,6 @@
 #submitModal .modal {
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -60%);
 }
@@ -8,13 +8,17 @@
 #submitModal .modal-header {
   background: linear-gradient(to top right, #800000 25%, #228b22 100%);
   color: #ffff;
+  -webkit-box-shadow: 0 0 3rem #333;
+  box-shadow: 0 0 3rem #333;
 }
 
 #submitModal .modal-body {
   background: #dac295;
-  height: 63.6vh;
+  height: 100vh;
   overflow-y: auto;
   /* background: #e9dbc1; */
+  -webkit-box-shadow: 0 0 3rem #333;
+  box-shadow: 0 0 3rem #333;
 }
 
 #submitModal .modal-backdrop {
@@ -31,8 +35,8 @@
   left: 0;
   z-index: 10040;
   overflow-y: initial;
-  -webkit-box-shadow: 0 0 3rem #333;
-  box-shadow: 0 0 3rem #333;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 #submitModal .modal-open {

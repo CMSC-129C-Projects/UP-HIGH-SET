@@ -96,6 +96,13 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
               </ul>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
+              <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="#">View Professors</a>
+                </li>
+
+              </ul>
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
@@ -103,6 +110,7 @@
                 </li>
 
               </ul>
+              
             </li>
           </ul>
           <ul class="list-unstyled CTAs">

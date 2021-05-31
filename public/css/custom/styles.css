@@ -516,6 +516,9 @@ a:focus {
   
   background-color:none;
 }
+#sidebar .list-unstyled.CTAs.components .evaluate a:hover{
+  background-color: transparent !important;
+}
 
 #sidebar ul p {
   color: #e9dbc1;

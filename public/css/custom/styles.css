@@ -319,15 +319,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-#register .nav input[type="button"]:focus,
-.student.focus,
-.admin.focus {
-  background-color: #fff !important;
-  color: #7b1113 !important;
-  text-transform: uppercase !important;
-  font-size: 1.2rem !important;
-}
-
 /* .student.focus {
     margin-left: 2px !important;
   } */
@@ -730,6 +721,13 @@ a.article:hover {
 #Contents .nav input[type="button"]:hover {
   color: #ffff;
   background: #014421;
+}
+
+#register .nav .active input[type="button"] {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
 }
 
 /* ---------------------------------------------------

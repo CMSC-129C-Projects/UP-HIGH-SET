@@ -34,6 +34,11 @@ class Evaluation extends BaseController
         else
           return $this->$method($param1);
         break;
+      case 'submit':
+        if ($_SESSION['logged_user']['role'] === '1')
+          return redirect()->to(base_url('dashboard'));
+        else
+          return $this->$method($param1);
       case 'evaluate':
       case 'index':
         if ($_SESSION['logged_user']['role'] === '1')
@@ -79,6 +84,39 @@ class Evaluation extends BaseController
     $data['choices'] = $items[1];
 
     return view('evaluation/evaluate', $data);
+  }
+
+  public function submit($eval_sheet_id = null)
+  {
+    $data = [];
+    
+    if ($this->request->getMethod() === 'post') {
+      // Create input type hidden for question type and question IDs of each question
+      $questionIDs = $this->getQuestionIDs(true);
+      $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id, true);
+      if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id)) {
+        $data['saveStatus'] = 'fail';
+      } else {
+        $data['saveStatus'] = 'success';
+      }
+    }
+
+    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css', 'custom/evaluation/submitModal.css'];
+    $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
+
+    $items = $this->getAllItems();
+    $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
+    $numbers = $this->countAnswers($prevAnswers);
+
+    $data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
+    $data['eval_sheet_id'] = $eval_sheet_id;
+    $data['prevAnswers'] = $prevAnswers;
+    $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
+    $data['questions'] = $items[0];
+    $data['choices'] = $items[1];
+
+    return view('evaluation/evaluate', $data); 
   }
 
   protected function countAnswers($prevAnswers)
@@ -157,15 +195,25 @@ class Evaluation extends BaseController
    * Get details from input that
    * should be sent to database
    */
-  protected function getEvalDetails($questionIDs, $eval_sheet_id)
+  protected function getEvalDetails($questionIDs, $eval_sheet_id, $isSubmit = null)
   {
-    $evaluationDetail = [];
+    $evaluationDetails = [];
     $numberOfAnswers = 0;
     foreach($questionIDs as $id) {
-      $answerMultiple = $this->request->getPost('choices_' . $id);
-      $answerComments = $this->request->getPost('answer_' . $id);
 
-      $evaluationDetails[] = [
+      if ($isSubmit) {
+        if ($id === 36) {
+          print_r($id);
+          print_r(data());
+        }
+        $answerMultiple = $this->request->getPost('review_final_choices_' . $id);
+        $answerComments = $this->request->getPost('review_answer_' . $id);
+      } elseif (!$isSubmit) {
+        $answerMultiple = $this->request->getPost('choices_' . $id);
+        $answerComments = $this->request->getPost('answer_' . $id);
+      }
+
+      $details = [
         'user_id'       => $_SESSION['logged_user']['id'],
         'eval_sheet_id' => $eval_sheet_id,
         'question_id'   => $id,
@@ -173,6 +221,12 @@ class Evaluation extends BaseController
         'answer_text'   => strlen($answerComments)!==0 ? $answerComments : null,
         'status'        => 'save'
       ];
+
+      if ($isSubmit) {
+        $details['status'] = 'submit';
+      }
+
+      $evaluationDetails[] = $details;
 
       if (strlen($answerMultiple)!==0 || strlen($answerComments)!==0) {
         $numberOfAnswers++;
@@ -239,13 +293,19 @@ class Evaluation extends BaseController
   /**
    * Get question IDs
    */
-  protected function getQuestionIDs()
+  protected function getQuestionIDs($isSubmit = null)
   {
     $questionIDs = [];
     $types = [];
     foreach ($_POST as $field => $value) {
-        if (strpos($field, 'question_id_') === 0) {
-          $questionIDs[] = $value;
+        if ($isSubmit) {
+          if (strpos($field, 'review_question_id_') === 0) {
+            $questionIDs[] = $value;
+          }
+        } else {
+          if (strpos($field, 'question_id_') === 0) {
+            $questionIDs[] = $value;
+          }
         }
     }
     return $questionIDs;
@@ -282,7 +342,7 @@ class Evaluation extends BaseController
 
   }
 
-  protected function emailCardbonCopy($evalSheetId = null) {
+  protected function emailCarbonCopy($evalSheetId = null) {
     if(isset($evalSheetId)) {
       $search = ['-content-', '-student-', '-website_link-'];
       $subject = "Copy of Evaluation " + $evalSheetId;

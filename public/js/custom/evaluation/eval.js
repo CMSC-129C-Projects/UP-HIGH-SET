@@ -44,6 +44,7 @@ function updateReview($this) {
         for(let i=0; i<radios.length; i++) {
             if ($(radios[i]).val() === $this.val()) {
                 $(radios[i]).prop('checked', true);
+                $('input[name="review_final_' + name + '"]').val($(radios[i]).val());
             } else {
                 $(radios[i]).prop('checked', false);
             }

@@ -23,4 +23,18 @@ class SubjectModel extends Model {
   protected $updatedField  = 'updated_on';
 
   protected $skipValidation = true;
+
+  public function get_total_subjects_by_glevel()
+  {
+    $db = \Config\Database::connect();
+    $sql = <<<EOT
+SELECT grade_level, COUNT(id) as total
+FROM subjects
+WHERE is_deleted = 0
+GROUP BY grade_level
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 }

@@ -63,7 +63,7 @@ class Evaluation extends BaseController
       }
     }
 
-    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css'];
+    $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css', 'custom/evaluation/submitModal.css'];
     $js = ['custom/alert.js', 'custom/evaluation/eval.js'];
 
     $items = $this->getAllItems();
@@ -112,7 +112,10 @@ class Evaluation extends BaseController
     $questions = array();
 
     foreach($categories as $category) {
+      // Get type of question
       $qType_id = $category['question_type_id'];
+      // get choices and store in a list with the
+      // category name as the key
       $choices[$category['name']] = $this->getChoices($qType_id);
 
       $result = $sectionModel->getQuestions($category['id']);
@@ -296,6 +299,11 @@ class Evaluation extends BaseController
     $evalModel->where('status', 'open')->set($datum)->update();
 
     $this->emailCardbonCopy();
+  }
+
+  protected function createEmail()
+  {
+
   }
 
   protected function emailCardbonCopy($evalSheetId = null) {

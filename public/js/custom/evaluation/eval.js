@@ -10,6 +10,31 @@ $(function() {
         $(this).addClass('active');
     });
 
+    $('.category').click(function() {
+        let evalbtns = $('.category');
+
+        for(let i=0; i<evalbtns.length; i++) {
+            if ($(evalbtns[i]).hasClass('activeCategory')) {
+                $(evalbtns[i]).removeClass('activeCategory');
+            }
+        }
+        $(this).addClass('activeCategory');
+
+        let tabs = $('.tab-pane');
+
+        for(let i=0; i<tabs.length; i++) {
+            if ($(tabs[i]).hasClass('active')) {
+                $(tabs[i]).removeClass('active');
+            }
+            if ($(tabs[i]).hasClass('show')) {
+                $(tabs[i]).removeClass('show');
+            }
+        }
+        let target = $(this).attr('data-target');
+        $('#' + target).addClass('show');
+        $('#' + target).addClass('active');
+    });
+
     setCurrentProgress();
 
     $('input[name^="choices_"], textarea[name^="answer_"').change(function() {

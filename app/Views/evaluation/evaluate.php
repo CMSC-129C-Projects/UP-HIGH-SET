@@ -91,19 +91,29 @@
       </div>
       <div class="tabs" id="questionnaire">
           <!-- <div class="row"> -->
-          <ul class="row nav nav-tabs tab-content">
-              <?php foreach($questions as $key => $value):?>
-                  <?php if($key === 'Instructional Skills'):?>
-                      <li class="nav-item col-md-2 btncat"style="width:100%;">
-                          <a href="#<?=strtolower(str_replace(' ', '_', $key));?>" class="nav-link"  data-toggle="tab" id="btn-<?=strtolower(str_replace(' ', '_', $key));?>"><button type="button" class="evalbtn active"><?=$key?></button></a>
-                      </li>
-                  <?php else:?>
-                      <li class="nav-item col-md-2 btncat"style="width:100%;">
-                          <a href="#<?=strtolower(str_replace(' ', '_', $key));?>" class="nav-link"  data-toggle="tab" id="btn-<?=strtolower(str_replace(' ', '_', $key));?>"><button type="button" class="evalbtn"><?=$key?></button></a>
-                      </li>
-                  <?php endif;?>
-              <?php endforeach;?>
-          </ul>
+          
+          <div class="categories" id="evalCategories">
+            <?php foreach($questions as $key => $value):?>
+              <?php if($key === 'Instructional Skills'):?>
+                <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category activeCategory"><?=$key?></a>
+              <?php else:?>
+                <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category"><?=$key?></a>
+              <?php endif;?>
+            <?php endforeach;?>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("evalCategories");
+        if (x.className === "categories") {
+          x.className += " responsive";
+        } else {
+          x.className = "categories";
+        }
+      }
+    </script>
           <div class="container">
               <div class="progress tab-content">
                   <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%;"><?=$progress?>%</div>

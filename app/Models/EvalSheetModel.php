@@ -34,9 +34,17 @@ class EvalSheetModel extends Model {
 
     $db = \Config\Database::connect();
     $sql =<<<EOT
-SELECT id, status, student_id
-FROM eval_sheet
-WHERE subject_id = $subjectID AND (status = 'Open' OR status = 'Inprogress')
+SELECT unfinished.id, unfinished.status, CONCAT(
+  CONCAT(UCASE(LEFT(u.first_name, 1)), 
+        SUBSTRING(u.first_name, 2)), ' ', 
+        CONCAT(UCASE(LEFT(u.last_name, 1)), 
+              SUBSTRING(u.last_name, 2))) as full_name
+FROM (SELECT eval_sheet.id, status, eval_sheet.student_id
+			FROM eval_sheet
+			WHERE subject_id = $subjectID AND (status = 'Open' OR status = 'Inprogress')) AS unfinished
+LEFT JOIN users as u
+ON unfinished.student_id = u.id
+WHERE u.is_active = 1 AND u.is_deleted = 0
 EOT;
 
     $query = $db->query($sql);

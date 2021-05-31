@@ -60,6 +60,7 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
     }
@@ -103,6 +104,7 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);
     }

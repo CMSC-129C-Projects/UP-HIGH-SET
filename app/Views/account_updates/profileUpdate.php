@@ -1,4 +1,8 @@
-<?= $this->extend('template/pageTemplate');?>
+<?php if ($role === '1'):?>
+    <?= $this->extend('template/pageTemplate');?>
+<?php else:?>
+    <?= $this->extend('template/studentTemplate');?>
+<?php endif;?>
 
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

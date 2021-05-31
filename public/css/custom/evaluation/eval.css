@@ -344,7 +344,8 @@ color: #7b1113;
    font-size: 17px;
    border-radius: 0px !important;
 }
-.categories a:focus {
+
+.categories .activeCategory {
   background-color: #ffffff;
    color: #7b1113 !important;
    text-transform: uppercase !important;

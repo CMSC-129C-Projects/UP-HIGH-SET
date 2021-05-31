@@ -35,7 +35,7 @@
 
 
       <div class="categories" id="evalCategories">
-        <a href="#"class="" >Instructional Skills</a>
+        <a href="#"class="activeCategory" >Instructional Skills</a>
         <a href="#"class="" >Class Manangement</a>
         <a href="#" class="" >Personal Qualities</a>
         <a href="#" class="" >Student Faculty Relation</a>

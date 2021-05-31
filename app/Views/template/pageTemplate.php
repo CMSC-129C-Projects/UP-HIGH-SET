@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="<?=base_url()?>/public/css/custom/addSubject.css" rel="stylesheet">
-    <link href="<?=base_url()?>/public/css/custom/evaluation/submitModal.css" rel="stylesheet">
-=======
->>>>>>> d493dc71513a392bec034401fe2f777196a8841b
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 

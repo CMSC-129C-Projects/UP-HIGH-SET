@@ -93,10 +93,15 @@ $(function() {
             if ($(profnames[i]).hasClass('chosen')) {
                 $(profnames[i]).removeClass('chosen');
                 $(profnames[i]).css('transform', '');
+                $(profnames[i]).css('border-color', '');
+                $(profnames[i]).css('border-width', '');
+
             }
         }
 
         $(this).css('transform', 'scale(1.05)');
+        $(this).css('border-color', '#014421');
+        $(this).css('border-width', '3px');   
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });

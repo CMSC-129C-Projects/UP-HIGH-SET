@@ -114,13 +114,12 @@
         }
       }
     </script>
-          <div class="container">
-              <div class="progress tab-content">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%;"><?=$progress?>%</div>
-              </div>
-          </div>
           <div class="savestatus tab-content d-none">
-              <p  class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Unsaved Changes</p>
+            <p  class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Unsaved Changes</p>
+          </div>
+          
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%;"><?=$progress?>%</div>
           </div>
           <!-- </div> -->
           <form method="post">

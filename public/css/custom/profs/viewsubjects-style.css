@@ -1,6 +1,6 @@
 #special .card-container {
     width: 100%;
-    margin: 7rem auto;
+    padding-bottom: 10vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

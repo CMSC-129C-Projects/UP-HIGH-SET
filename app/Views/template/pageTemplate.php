@@ -81,7 +81,7 @@
                   <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
                 </li>
                 <li>
-                  <a href="#">Monitor Progress</a>
+                  <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>

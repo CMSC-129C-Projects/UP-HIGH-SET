@@ -99,7 +99,7 @@ class Evaluation extends BaseController
       } else {
         $data['saveStatus'] = 'success';
 
-        $this->emailCarbonCopy($eval_sheet_id);
+        // $this->emailCarbonCopy($eval_sheet_id);
       }
     }
 

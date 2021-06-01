@@ -56,6 +56,7 @@ class Profile extends BaseController
                     'avatar_url'  => $this->request->getPost('avatar')
                 ];
                 $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile/student'));
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -70,8 +71,6 @@ class Profile extends BaseController
         $role = $_SESSION['logged_user']['role'];
 
         $sessionAdmin = new Admin();
-
-        // print_r($_SESSION['logged_user']['email']);
 
         $sessionAdmin = $this->userModel->asObject('App\Entities\Admin')->where('is_deleted', 0)->where('role', $role)->where('email', $_SESSION['logged_user']['email'])->first();
 

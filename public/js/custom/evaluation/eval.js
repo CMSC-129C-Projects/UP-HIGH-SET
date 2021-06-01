@@ -33,6 +33,12 @@ $(function() {
         let target = $(this).attr('data-target');
         $('#' + target).addClass('show');
         $('#' + target).addClass('active');
+
+        if ($('#evalCategories').hasClass('responsive')) {
+            $('#evalCategories').removeClass('responsive');
+        }
+
+        $('.action-display').text($(this).text());
     });
 
     setCurrentProgress();

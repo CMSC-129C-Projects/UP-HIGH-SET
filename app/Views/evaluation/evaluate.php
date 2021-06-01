@@ -65,16 +65,17 @@
                     <br>
                 <?php endforeach;?>
                 <br>
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div style="text-align: center;">
-                      <input type="submit" class="button" formaction="<?=base_url()?>/evaluation/submit/<?=$eval_sheet_id?>" style="border-radius: 2rem !important; margin-top: 20px; width: 100%" value="Submit">
+                <div class="row" style="width:100%;">
+                  <div class="col-md-12">
+                    <div>
+                      <input type="submit" class="button" formaction="<?=base_url()?>/evaluation/submit/<?=$eval_sheet_id?>" style="border-radius: 2rem !important; margin-top: 20px; width: 20%" value="Submit">
+                      <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 20%; height: 4rem;" data-dismiss="modal" value="Close">
                     </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div style="text-align: center;">
-                      <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 100%" data-dismiss="modal" value="Close">
-                    </div>
+                  <!-- </div> -->
+                  <!-- <div class="col-md-6 col-sm-6"> -->
+                    <!-- <div>
+                      <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 20%" data-dismiss="modal" value="Close">
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -95,6 +96,7 @@
           <div class="categories" id="evalCategories">
             <?php foreach($questions as $key => $value):?>
               <?php if($key === 'Instructional Skills'):?>
+                <a class="category action-display"><?=$key?></a>
                 <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category activeCategory"><?=$key?></a>
               <?php else:?>
                 <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category"><?=$key?></a>

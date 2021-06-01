@@ -96,7 +96,7 @@
           <div class="categories" id="evalCategories">
             <?php foreach($questions as $key => $value):?>
               <?php if($key === 'Instructional Skills'):?>
-                <a class="category action-display"><?=$key?></a>
+                <a class="category display-none action-display"><?=$key?></a>
                 <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category activeCategory"><?=$key?></a>
               <?php else:?>
                 <a data-target="<?=strtolower(str_replace(' ', '_', $key));?>" class="category"><?=$key?></a>

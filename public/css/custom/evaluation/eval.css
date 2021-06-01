@@ -356,6 +356,11 @@ color: #7b1113;
 .categories .icon {
   display: none;
 }
+
+.categories a.display-none {
+  display: none;
+}
+
 @media screen and (max-width: 1260px){
 .categories{
   font-size: 14px;
@@ -365,6 +370,10 @@ color: #7b1113;
   .categories a:not(:first-child) {display: none;}
   .categories a.icon {
     float: right;
+    display: block;
+  }
+
+  .categories a.display-none {
     display: block;
   }
 }
@@ -380,6 +389,10 @@ color: #7b1113;
     float: none;
     display: block;
     text-align: left;
+  }
+
+  .categories a.display-none {
+    display: block;
   }
 }
 

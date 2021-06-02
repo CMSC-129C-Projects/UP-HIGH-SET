@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\UserlogModel;
-use App\Models\UserModel;
-use App\Models\EmailModel;
+use \App\Models\UserlogModel;
+use \App\Models\UserModel;
+use \App\Models\EmailModel;
 
 use \App\Entities\Userlog;
 
@@ -44,7 +44,7 @@ class Home extends BaseController
 		}
 
 		$data['validation'] = null;
-    $data['error'] = null;
+        $data['error'] = null;
 		$css = ['custom/login/login.css'];
 		$data['css'] = addExternal($css, 'css');
 
@@ -110,6 +110,7 @@ class Home extends BaseController
 
   public function forgot_password()
   {
+      helper(“file”);
     $data = [];
 		$data['validation'] = null;
     $data['validate_error'] = null;
@@ -353,7 +354,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents(base_url() . '/app/Views/verification.html');
+    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
@@ -370,7 +371,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents(base_url() . '/app/Views/verification.html');
+    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
@@ -387,7 +388,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents(base_url() . '/app/Views/verification.html');
+    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
 
 		$message = str_replace($search, $replace, $message);

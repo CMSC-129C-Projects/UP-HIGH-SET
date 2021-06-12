@@ -10,6 +10,7 @@ function appendSubjectCards() {
     $.when(getSubjects()).then((response) => {
         $('#subjects').empty();
         response.forEach((element) => {
+            console.log(element);
             let subject = '<div class="card">' +
                                 '<img src="' + BASE_URI + '/public/images/EvaluationCover.jpg" class="img-fluid" alt="">' + 
                                 '<h1>' + capitalize(element.name) + '</h1>' +

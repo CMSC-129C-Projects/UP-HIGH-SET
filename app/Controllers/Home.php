@@ -322,8 +322,8 @@ class Home extends BaseController
 			'role'			    => $user['role'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      'emailVerified' => false,
-      // 'emailVerified' => true,
+      // 'emailVerified' => false,
+      'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];
@@ -354,7 +354,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
+    $message = file_get_contents('app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
@@ -371,7 +371,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
+    $message = file_get_contents('app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
@@ -388,7 +388,7 @@ class Home extends BaseController
     $search = ['-content-', '-student-', '-website_link-'];
     $subject = $emailContent['title'];
 
-    $message = file_get_contents('../uni-sandbox/app/Views/verification.html');
+    $message = file_get_contents('app/Views/verification.html');
 		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
 
 		$message = str_replace($search, $replace, $message);

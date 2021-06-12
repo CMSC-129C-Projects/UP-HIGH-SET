@@ -35,7 +35,7 @@ class Evaluation extends BaseController
           return $this->$method($param1);
         break;
       case 'submit':
-        if ($_SESSION['logged_user']['role'] === '1')
+        if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3') // admin or clerk
           return redirect()->to(base_url('dashboard'));
         else
           return $this->$method($param1);
@@ -56,7 +56,7 @@ class Evaluation extends BaseController
   public function evaluate($eval_sheet_id = null)
   {
     $data = [];
-    
+
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
@@ -89,7 +89,7 @@ class Evaluation extends BaseController
   public function submit($eval_sheet_id = null)
   {
     $data = [];
-    
+
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs(true);
@@ -118,7 +118,7 @@ class Evaluation extends BaseController
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
 
-    return view('evaluation/evaluate', $data); 
+    return view('evaluation/evaluate', $data);
   }
 
   protected function countAnswers($prevAnswers)
@@ -276,7 +276,7 @@ class Evaluation extends BaseController
     if (!$evalsheetModel->update($eval_sheet_id, $value)) {
       return false;
     }
-    
+
     return true;
   }
 
@@ -382,7 +382,7 @@ class Evaluation extends BaseController
             }
             $content .= '</li>';
           }
-          
+
           $content .= '<li style="display:inline;">
                           <i style="font-size: 14px;"> Poor </i>
                         </li>';

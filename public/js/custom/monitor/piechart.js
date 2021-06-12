@@ -1,6 +1,8 @@
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+$(function() {
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+});
 
 // Draw the chart and set the chart values
 function drawChart() {

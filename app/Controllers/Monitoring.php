@@ -50,7 +50,11 @@ class Monitoring extends BaseController
             $subjectsWithProgress = [];
             foreach($subjects as $subject) {
                 $subject->progress = $this->get_progress_by_subject($subject->id);
-                $subject->studentsNotDone = $this->createAccordion($this->getUnfinished($subject->id));
+                
+                $unfinished = $this->getUnfinished($subject->id);
+
+                $subject->studentsNotDone = $this->createAccordion($unfinished);
+                $subject->numNotDone = count($unfinished);
 
             }
 

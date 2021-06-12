@@ -16,7 +16,7 @@
                         <img src="<?=base_url();?>/public/images/SubjectCover.jpg" alt="">
                         <h1><?=$subject->name?></h1>
                         <p><?=$subject->total_students?> STUDENTS ENROLLED.</p>
-                        <a href="#"><button>View Progress</button></a>
+                        <a href="<?= base_url();?>/reports/progress_per_subject/<?=$subject->id;?>"><button>View Progress</button></a>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>

@@ -15,7 +15,6 @@ function displaySubjects(facultyID) {
             $('#piechart').addClass('d-none')
 
             response.subjects.forEach(subject => {
-                console.log(subject);
                 let progress = subject.progress;
                 let element;
                 let pBar = '<div class="progress">' +
@@ -33,7 +32,8 @@ function displaySubjects(facultyID) {
                     element = '<strong>' + subject.name + '</strong><p style="color: #7b1113;">' + progress + '</p>';
                 }
                 let $div;
-                if (subject.studentsNotDone)
+                console.log(progress);
+                if (subject.studentsNotDone && (progress !== '100%'))
                     $div = $('<div style="margin: 2% 0;">' + element + subject.studentsNotDone + '</div>');
                 else
                     $div = $('<div style="margin: 2% 0;">' + element + '</div>');

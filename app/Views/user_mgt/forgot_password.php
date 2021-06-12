@@ -2,30 +2,30 @@
 
 <?php $this->section('content'); ?>
 
-  <div class="container-fluid" style="height: 420px;">
+  <div class="container-fluid" style="height: 100vh">
   <div id="ChangePassword" style="margin-top: 4.7rem;">
-    <div class="card" style="width: 70%; margin: auto">
+    <div class="card">
       <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
       <div class="card-body" style="padding: 40px; margin: 10px">
-        <?php if (isset($validation) != null) { ?>
+        <?php if (isset($validation)) { ?>
 
           <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
           <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
+            <h4 style="color: #7b1113; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
           </div>
           <br><br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
-        <?php } elseif(isset($validate_error)!=null) { ?>
+        <?php } elseif(isset($validate_error)) { ?>
 
           <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
           <div class= "alert alert-danger" style="padding: 20px;">
             <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
           </div>
           <br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
 
-        <?php } elseif(isset($success) != null) { ?>
+        <?php } elseif(isset($success)) { ?>
           <div class="alert-success" style="padding: 20px;">
             <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
           </div>
@@ -35,7 +35,7 @@
             <h4> You are not authorized to access this page. </h4>
           </div>
           <br><br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
+          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
         <?php } ?>
       </div>
     </div>

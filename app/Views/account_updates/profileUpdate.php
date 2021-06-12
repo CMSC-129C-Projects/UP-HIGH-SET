@@ -1,4 +1,8 @@
-<?= $this->extend('template/pageTemplate');?>
+<?php if ($role === '1'):?>
+    <?= $this->extend('template/pageTemplate');?>
+<?php else:?>
+    <?= $this->extend('template/studentTemplate');?>
+<?php endif;?>
 
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -33,7 +37,7 @@
         </div>
     </div>
 
-    <section class="profileupdate" style="margin: auto; margin-top:50px; martin-bottom:50px;">
+    <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
                 <div class="col-sm-10"><h2><?=$lName;?>, <?=$fName;?></h2></div>

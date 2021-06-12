@@ -109,7 +109,7 @@
                         <input type="text" name= "studLastName" value="<?=set_value('studLastName');?>" required>
                         <br>
                         <span class="text-danger"><?=displaySingleError($validation, 'studLastName');?></span>
-                        <h3>Last Name</h3>
+                        <h3 >Last Name</h3>
                     </div>
                   </div>
                 </div>
@@ -126,13 +126,18 @@
                   </div>
                 </div>
                 <div class="col-md-6 half">
-                  <div class="form-group">
-                    <div class="inputBox">
-                      <input type="text" name="gradeLevel" value="<?=set_value('gradeLevel');?>" required>
-                      <br>
-                      <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
-                      <h3>Grade Level</h3>
-                    </div>
+                  <div class="form-group">     
+                    <select class="form-select" name="gradeLevel" aria-label="Grade Level">
+                      <option value="0" selected>Grade Level</option>
+                      <option value="7">Grade 7</option>
+                      <option value="8">Grade 8</option>
+                      <option value="9">Grade 9</option>
+                      <option value="10">Grade 10</option>
+                      <option value="11">Grade 11</option>
+                      <option value="12">Grade 12</option>
+                    </select>
+                    <br>
+                    <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                   </div>
                 </div>
               </div>
@@ -140,13 +145,17 @@
               <div class="row-md-4">
                 <div class="mailBox">
                   <div class="inputBox">
-                      <input type="email" name="studEmail" value="<?=set_value('studEmail');?>" required>
+                  
+                      <input type="text" name="studEmail" value="<?=set_value('studEmail');?>" required>
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                       <h3>Email</h3>
                   </div>
+
                 </div>
+                
               </div>
+              
               <input type="submit" value="submit">
               <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
             </form>

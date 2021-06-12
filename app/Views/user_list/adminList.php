@@ -20,6 +20,7 @@
 
     <div class="main">
         <a style="float: right; padding: 10px;" href="<?=base_url();?>/update/add/admin"><button class="button">Add Admin</button></a>
+        <br><br>
         <div table="table-responsive">
         <table class="table-bordered table-striped table-hover" id='admin'>
             <thead>

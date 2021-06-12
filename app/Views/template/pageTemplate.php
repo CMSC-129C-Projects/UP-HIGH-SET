@@ -10,6 +10,8 @@
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -76,10 +78,10 @@
               <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
               <ul class="collapse list-unstyled" id="evaluation">
                 <li>
-                  <a href="#">Set Evaluation Status</a>
+                  <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
                 </li>
                 <li>
-                  <a href="#">Monitor Progress</a>
+                  <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
@@ -94,6 +96,13 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
               </ul>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
+              <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="<?=base_url()?>/professors">View Professors</a>
+                </li>
+
+              </ul>
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
@@ -101,6 +110,7 @@
                 </li>
 
               </ul>
+              
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
@@ -118,7 +128,7 @@
           </div>
         </div>
       </div>
-      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+      <div class="wrapper align-items-stretch" id="main" style="height: 109.5">
         <?= $this->renderSection('content');?>
       </div>
     </div>
@@ -154,7 +164,10 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
+    <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>

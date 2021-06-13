@@ -150,11 +150,4 @@ class Monitoring extends BaseController
         $progress = ($numberOfAnswers/$size)*100;
         return number_format($progress, 0);
     }
-
-    /*
-    * Fetch Subjects that have successfully been rated by students enrolled
-    */
-    // public function get_subjects_evaluated() {
-    //
-    // }
 }

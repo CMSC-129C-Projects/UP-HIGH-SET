@@ -36,7 +36,7 @@ class Dashboard extends BaseController
     if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
     } else {
-      $this->fetch_evaluated_subjects();
+      echo  $this->get_subjects_stat();
       return view('user_mgt/dashboard');
     }
   }
@@ -69,8 +69,6 @@ class Dashboard extends BaseController
 
         $percentage = ($students_who_evaluated / $student_count) * 100;
 
-        echo $subject['id'] . "-" . $subject['name'] . " " . $student_count . " " . $students_who_evaluated . " " . $percentage . " | ";
-
         if( $percentage === 100)
           array_push($subjects_evaluated, $subject['name']);
       }
@@ -87,7 +85,7 @@ class Dashboard extends BaseController
 
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
 
-    return count($this->fetch_evaluated_subjects()) / count($subjects);
+    return round(count($this->fetch_evaluated_subjects()) / count($subjects) * 100, 2);
   }
 
 

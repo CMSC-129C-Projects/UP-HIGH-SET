@@ -3,7 +3,7 @@
 <?php $this->section('content'); ?>
 
   <div class="container-fluid" style="min-height: 100vh">
-    
+  <div id="ChangePassword">  
     <?php if (isset($validation) != null) { ?>
       <div class="heading text-center" style="padding: 20px;">
         <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
@@ -41,6 +41,7 @@
       </div>
           
     <?php } ?>
+  </div>
   </div>
 
   <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height: 429px">

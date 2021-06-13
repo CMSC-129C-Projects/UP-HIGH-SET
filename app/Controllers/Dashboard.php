@@ -7,6 +7,7 @@ use App\Controllers\BaseController;
 use App\Models\SubjectModel;
 use App\Models\EvalSheetModel;
 use App\Models\UserModel;
+use App\Models\EvaluationModel;
 
 
 class Dashboard extends BaseController
@@ -33,9 +34,9 @@ class Dashboard extends BaseController
     }
 
     if ($_SESSION['logged_user']['role'] === '2') {
-      $this->fetch_evaluated_subjects();
       return view('user_mgt/studentDashboard');
     } else {
+      $this->fetch_evaluated_subjects();
       return view('user_mgt/dashboard');
     }
   }
@@ -61,16 +62,16 @@ class Dashboard extends BaseController
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
 
     foreach ($subjects as $subject) {
-      $student_total_count = $userModel->get_all_students_per_subject($subject['id']);
+      $student_count = $userModel->get_all_students_per_subject($subject['id']);
 
-      if($student_total_count > 0) {
-        $student_who_evaluated_count = $evalSheetModel->get_all_students_who_evaluated($subject['id']);
+      if($student_count !== 0) {
+        $students_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject['id']);
 
-        $progress = ($student_who_evaluated_count / $student_total_count) * 100;
+        $percentage = ($students_who_evaluated / $student_count) * 100;
 
-        echo $subject['name'] . " " . $student_total_count . " " . $student_who_evaluated_count . " " . $progress . " | ";
+        echo $subject['id'] . "-" . $subject['name'] . " " . $student_count . " " . $students_who_evaluated . " " . $percentage . " | ";
 
-        if( $progress === 100)
+        if( $percentage === 100)
           array_push($subjects_evaluated, $subject['name']);
       }
     }
@@ -89,5 +90,12 @@ class Dashboard extends BaseController
     return count($this->fetch_evaluated_subjects()) / count($subjects);
   }
 
-  
+
+  /*
+  * Fetch evaluated subjects under a certain prof
+  */
+  public function get_subjects_completed() {
+
+  }
+
 }

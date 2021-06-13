@@ -140,6 +140,28 @@ class Monitoring extends BaseController
     }
 
     /**
+     * Get Count of eval_sheet per status
+     * Per subject
+     */
+    public function count_sheet_per_status_per_subject()
+    {
+        $evalSheetModel = new EvalSheetModel();
+
+        if (!$statuses = $evalSheetModel->count_perStatus_perSubject()) {
+            $response = [
+                'is_available' => 0,
+                'message' => 'An error has occurred.'
+            ];
+        } else {
+            $response = [
+                'is_available' => 1,
+                'statuses' => $statuses
+            ];
+        }
+        echo json_encode($response);
+    }
+
+    /**
      * Computer progress of student
      */
     protected function computeProgress($numberOfAnswers, $size)

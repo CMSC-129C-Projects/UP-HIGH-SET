@@ -23,6 +23,12 @@ class Subjects extends BaseController
                 $this->hasSession(0);
                 return $this->$method();
                 break;
+            case 'get_all_subjects':
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
+                $this->hasSession(0);
+                return $this->$method();
+                break;
             case 'index':
                 if ($_SESSION['logged_user']['role'] === '2')
                     return redirect()->to(base_url('dashboard'));
@@ -120,6 +126,27 @@ class Subjects extends BaseController
         $subjects = $subjectModel->get_subjects_taken($_SESSION['logged_user']['id'], $sessionStudent['grade_level']);
 
         echo json_encode($subjects);
+    }
+
+    /**
+     * Get all subjects
+     * in the database
+     */
+    public function get_all_subjects()
+    {
+        $subjectModel = new SubjectModel();
+        if (!$subjects = $subjectModel->where('is_deleted', 0)->findAll()) {
+            $response = [
+                'is_available' => 0,
+                'message' => 'No subjects found.'
+            ];
+        } else {
+            $response = [
+                'is_available' => 1,
+                'subjects' => $subjects
+            ];
+        }
+        echo json_encode($response);
     }
 
     /**

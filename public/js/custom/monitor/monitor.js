@@ -15,7 +15,6 @@ function displaySubjects(facultyID) {
             $('#piechart').addClass('d-none')
 
             response.subjects.forEach(subject => {
-                console.log(subject);
                 let progress = subject.progress;
                 let element;
                 let pBar = '<div class="progress">' +

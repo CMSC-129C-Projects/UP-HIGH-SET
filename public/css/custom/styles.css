@@ -28,7 +28,7 @@ body {
   left: 0;
   padding: 2rem 4rem;
   z-index: 1000;
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background:#7b1113;
   position: sticky;
 }
 
@@ -67,7 +67,8 @@ body {
 #register .nav {
   margin: auto;
   /* width: 700px; */
-  width: 60%;
+  width: 61.4%;
+  
 }
 
 #register .nav h2 {
@@ -214,6 +215,15 @@ body {
   top: 3rem;
   left: 10%;
 }
+#register form .inputBox h4 {
+  font-size: 1.4rem;
+  /* position: absolute; */
+  text-align: right;
+  float: right;
+  margin-right: 10%;
+  position: relative;
+  margin-top: -40px;
+}
 
 #register form input[type="submit"],
 button#cancel,
@@ -354,7 +364,7 @@ form.edit {
 }
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background: #7b1113;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -567,7 +577,8 @@ a.article:hover {
 
 .navIcon .navbar-header i {
   color: #7b1113;
-  font-size: 30px;
+  font-size: 45px;
+  margin-left: 1rem !important;
 }
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;
@@ -622,7 +633,7 @@ a.article:hover {
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
   color: #ffff;
-  background: #7b1114;
+  background: #7b1113;
 }
 
 /* ---------------------------------------------------

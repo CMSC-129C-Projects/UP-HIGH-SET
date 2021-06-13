@@ -117,8 +117,9 @@ form .statement {
   display:block;
   font-size: 14px;
   font-weight: bold;
-  padding: 30px 0 0 4.25%;
+  padding: 30px 0 0 10.8%;
   margin-bottom:10px;
+  text-align: left;
 }
 form .likert {
   list-style:none;
@@ -152,6 +153,10 @@ form .likert li input[type=radio] {
   left:50%;
   margin-left:-6px;
   
+}
+form .likert li input[type=radio]:active{
+ background-color: #7b1113 !important;
+color: #7b1113 !important;
 }
 ul.row.nav.nav-tabs.tab-content {
 
@@ -269,7 +274,7 @@ button#cancel:hover,
 }
 
 #comments textarea {
-  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;
   border-radius: 1rem;
@@ -277,14 +282,26 @@ button#cancel:hover,
 }
 .progress{
   height: 2rem;
-  width: 80% !important;
+  width: 79.6% !important;
    border-radius: 0% !important;
     box-shadow: none !important;
     background-color: #7b1113 !important;
     margin: auto;
-    position: relative
+    position: relative;
+    margin-bottom: .3rem;
     
   }
+
+@media only screen and (max-width: 432px) {
+  .progress{
+      width: 85% !important;
+    }
+  }
+  @media only screen and (max-width: 1125px) {
+    .progress{
+        width: 80% !important;
+      }
+    }
 .progress-bar.progress-bar-striped.progress-bar-animated{
   width:40%; 
   font-size:12px;
@@ -303,9 +320,9 @@ button#cancel:hover,
 color: #7b1113;
 }
 
-@media only screen and (max-width: 482px) {
-  button[type="button"][class="btn btn-lg cancel"]{
-    margin-top: 10%;
+@media only screen and (max-width: 432px) {
+  button[type="button"][class="btn btn-lg btn-review"]{
+    margin-top: 7%;
   }
   
 }
@@ -339,18 +356,21 @@ color: #7b1113;
 
 .categories a.active {
   background-color: #ffffff;
+  height: 5.2rem;
    color: #7b1113 !important;
    text-transform: uppercase !important;
-   font-size: 17px;
+   font-size: 15px;
    border-radius: 0px !important;
 }
 
 .categories .activeCategory {
   background-color: #ffffff;
+  height: 5.2rem;
    color: #7b1113 !important;
    text-transform: uppercase !important;
-   font-size: 17px;
+   font-size: 15px;
    border-radius: 0px !important;
+   /* width: 20%; */
 }
 
 .categories .icon {

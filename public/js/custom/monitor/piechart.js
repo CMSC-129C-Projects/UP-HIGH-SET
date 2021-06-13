@@ -25,7 +25,6 @@ function drawChart() {
                     professors.push(element.full_name);
 
                     statusList.push(element.inprogress === '0' && element.open === '0');
-                    console.log(statusList);
                 } else {
                     let profIndex = professors.indexOf(element.full_name);
 

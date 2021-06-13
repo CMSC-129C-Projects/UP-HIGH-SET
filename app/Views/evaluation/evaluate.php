@@ -152,12 +152,13 @@
                                         <?php foreach($choices[$key] as $choice):?>
                                             <li>
                                               <?php if(count($prevAnswers) != 0 && $prevAnswers[$index]['qChoice_id'] === $choice['id']):?>
-                                                  <input type="radio" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'], TRUE)?> name="<?=$name;?>">
+                                                  <input type="radio" value="<?=$choice['id'];?>, css" checked <?=set_radio($name, $choice['id'], TRUE)?> name="<?=$name;?>">
                                               <?php else:?>
                                                   <input type="radio" value="<?=$choice['id'];?>" <?=set_radio($name, $choice['id'])?> name="<?=$name;?>">
                                               <?php endif;?>
                                               <label><?=$choice['choice'];?></label>
                                             </li>
+                                            
                                         <?php endforeach;?>
                                     </ul>
                                   <?php endif;?>
@@ -175,7 +176,7 @@
                   <div class="buttons tab-content">
                       <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate/<?=$eval_sheet_id?>" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
                       <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
-                      <button data-toggle="modal" data-target="#subModal" class="btn btn-lg btn-review" type="button"> Review</button>  
+                      <button data-toggle="modal" data-target="#subModal" class="btn btn-lg btn-review" type="button"> <i class="bi bi-journal-check"></i> Review</button>  
                   </div>
               </div>
           </form>

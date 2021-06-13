@@ -28,8 +28,9 @@
                     <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" placeholder="Enter New Password Again..." required>
                     <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
                   </div>
-                  <div class="form-group">
-                    <input type="submit" name="update" style="border-bottom-style: hidden !important; margin: none; font-weight: bold; font-size: 13px; border-radius:2rem" value="Update">
+                  <div class="form-group" style="text-align: center;">
+                    <br>
+                    <input type="submit" name="update" style="border-bottom-style: hidden !important; margin: none; font-weight: bold; font-size: 13px; border-radius:2rem !important;" value="Update">
                     <a href="<?=base_url('dashboard/logout')?>" class="button" style="padding: 12px 21px; font-size: 13px; border-radius:2rem">Cancel</a>
                   </div>
                 </form>

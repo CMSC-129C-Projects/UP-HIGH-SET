@@ -461,8 +461,8 @@ a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  /* background: linear-gradient(to bottom, #7b1113 0%, #014421 100%); */
-background:#7b1113;
+  background: linear-gradient(to bottom, #7b1113 0%, #014421 100%);
+
   opacity: 80%;
   color: #e9dbc1;
   transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
@@ -633,7 +633,7 @@ a.article:hover {
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
   color: #ffff;
-  background: #014421;
+  background: #7b1113;
 }
 
 /* ---------------------------------------------------

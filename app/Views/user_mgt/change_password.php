@@ -11,7 +11,8 @@
 <?php $this->section('content'); ?>
   <div class="container-fluid" style="min-height:100vh">
 
-    <?php if(isset($error)) { ?>            
+    <?php if(isset($error)) { ?>
+      <div id="ChangePassword">            
       <div class="heading text-center" style="padding: 20px;">
         <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
         <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
@@ -19,6 +20,7 @@
         </div> 
         <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px;" href="<?=$url?>">Return to login page</a>
       </div>
+      <div>
 
     <?php } else { ?>
       <div class="heading text-center">

@@ -62,12 +62,17 @@
                 <div class="col-md-6 half">
                   <div class="form-group">
                     <div class="inputBox uname">
-                      <input type="email" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
+                      <input type="text" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                     </div>
                   </div>
+                 
+                 
+
+                
                 </div>
                 <div class="col-md-6 half">
                   <div class="form-group">
@@ -150,6 +155,7 @@
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                   </div>
 
                 </div>

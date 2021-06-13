@@ -8,22 +8,25 @@
   }
 ?>  
 
-<?php $this->section('content'); ?> 
-  <div class="container-fluid">
+<?php $this->section('content'); ?>
+  <div class="container-fluid" style="min-height:100vh">
+
+    <?php if(isset($error)) { ?>            
+      <div class="heading text-center" style="padding: 20px;">
+        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
+        <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
+            <h2 style=""><?=$error?><h2>
+        </div> 
+        <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px;" href="<?=$url?>">Return to login page</a>
+      </div>
+
+    <?php } else { ?>
       <div class="heading text-center">
         <h1 style= "padding:4.7rem;">Change Password</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">
           <div class="card-body" style="padding: 40px; margin: 10px">
-            <?php if(isset($error)) { ?>            
-            <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-            <div class="alert alert-danger" style="padding:20px;">
-              <h4 style><?=$error?><h4>
-            </div>
-            <br>
-            <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px; " href="<?=$url?>">Back</a>
-            <?php } else { ?>
             <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">Fill up the form to change password.</h3>
             <br>
             <form class="reset_pass" action="<?=base_url('home/change_password')?>" method="post">

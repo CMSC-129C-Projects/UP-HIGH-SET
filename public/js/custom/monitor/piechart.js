@@ -17,6 +17,7 @@ const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 :
 // Draw the chart and set the chart values
 function drawChart() {
     $.when(getSheetStatusCount()).then(function(response) {
+        console.log('here');
         if (response.is_available) {
             let professors = [];
             let statusList = []; // List of statuses for each professor whether done or not
@@ -36,7 +37,6 @@ function drawChart() {
                     statusList[profIndex] = !status ? status: statusList[profIndex];
                 }
 
-                // console.log(index, response.statuses.length)
                 if (index == response.statuses.length-1) {
 
                     let completeTotal = countOccurrences(statusList, true);

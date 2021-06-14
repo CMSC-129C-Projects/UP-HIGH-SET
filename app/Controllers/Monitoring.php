@@ -28,9 +28,11 @@ class Monitoring extends BaseController
                 break;
             case 'get_subjects':
                 $this->hasSession(1);
+                $this->$method($param1);
                 break;
             case 'count_sheet_per_status_per_subject':
                 $this->hasSession(1);
+                $this->$method();
                 break;
             default:
 

@@ -90,7 +90,6 @@ class Dashboard extends BaseController
   /*
   * Fetch evaluated subjects under a certain prof
   */
-
   // default choice is 1: get associative array (Prof: percentage of completion based on subjects evaluated),
   // 2: return number of professors that have been completely evaluated (all subjects handled have been evaluated)
   public function get_faculty_stat($choice = 1) {
@@ -138,7 +137,57 @@ class Dashboard extends BaseController
           $faculty_evaluated_count++;
       }
 
-      return $faculty_evaluated_count; // number of faculties that have 100% evaluated subjects 
+      return $faculty_evaluated_count; // number of faculties that have 100% evaluated subjects
     }
+  }
+
+  /*
+  * Get Students statistics
+  */
+  // choice 1: percentage (student done evaluating / total students) [DEFAULT]
+  // choice 2: array of students done evaluating (student object from database)
+  // choice 3: array of students still evaluating  or will have to evaluate with  their details (first name, last name and id)
+  public function get_student_stat($choice = 1) {
+    $subjectModel = new SubjectModel();
+    $userModel = new UserModel();
+
+    $students = $userModel->where('role', 2)->where('is_deleted', 0)->findAll();
+
+    $student_done_evaluating = [];
+    $students_in_progress = [];
+
+    foreach ($students as $student) {
+      $data = $subjectModel->get_in_progress_subjects_by_student($student->id);
+
+      if(count($data) === 0)
+        array_push($student_done_evaluating, $student);
+      else
+        array_push($students_in_progress, $student);
+    }
+
+    if($choice === 1)
+      return round((count($student_done_evaluating) / count($students)) * 100, 2);
+    elseif($choice === 2)
+      return $student_done_evaluating;
+    else
+      return $students_in_progress;
+  }
+
+  /*
+  * Returns an associative array: Student Name => array of subjects in progress
+  */
+  public function get_subject_in_progress_by_student() {
+    $subjectModel = new SubjectModel();
+    $keys = [];
+    $values = [];
+
+    $students_still_evaluating = $this->get_student_stat(3);
+
+    foreach ($students_still_evaluating as $student) {
+        array_push($keys, ($student->first_name . " " . $student->last_name));
+        array_push($values, $subjectModel->get_in_progress_subjects_by_student($student->id));
+    }
+
+    return $student_subjects_inprog = array_combine($keys, $values);
   }
 }

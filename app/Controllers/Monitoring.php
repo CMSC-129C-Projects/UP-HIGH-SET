@@ -16,6 +16,29 @@ use App\Models\FacultyModel;
 
 class Monitoring extends BaseController
 {
+    public function _remap($method, $param1 = null)
+    {
+        switch($method) {
+            case 'monitor_progress':
+                $this->hasSession(0);
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
+                else
+                    return $this->$method();
+                break;
+            case 'get_subjects':
+                $this->hasSession(1);
+                $this->$method($param1);
+                break;
+            case 'count_sheet_per_status_per_subject':
+                $this->hasSession(1);
+                $this->$method();
+                break;
+            default:
+
+        }
+    }
+
     /**
      * Monitor progress of subjects
      */
@@ -68,6 +91,28 @@ class Monitoring extends BaseController
     }
 
     /**
+     * Get Count of eval_sheet per status
+     * Per subject
+     */
+    public function count_sheet_per_status_per_subject()
+    {
+        $evalSheetModel = new EvalSheetModel();
+
+        if (!$statuses = $evalSheetModel->count_perStatus_perSubject()) {
+            $response = [
+                'is_available' => 0,
+                'message' => 'An error has occurred.'
+            ];
+        } else {
+            $response = [
+                'is_available' => 1,
+                'statuses' => $statuses
+            ];
+        }
+        echo json_encode($response);
+    }
+
+    /**
      * Create Accordion for students
      * Not yet done answering
      */
@@ -92,7 +137,7 @@ class Monitoring extends BaseController
     /**
      * Fetch students not yet finished evaluating a subject
      */
-    public function getUnfinished($subjectID)
+    protected function getUnfinished($subjectID)
     {
         $evalsheetModel = new EvalSheetModel();
         $evalAnswersModel = new EvalAnswersModel();
@@ -118,7 +163,7 @@ class Monitoring extends BaseController
         return $progress;
     }
 
-    public function get_progress_by_subject($subject_id = null)
+    protected function get_progress_by_subject($subject_id = null)
     {
         if(isset($subject_id)) {
             $userModel = new UserModel();
@@ -149,5 +194,30 @@ class Monitoring extends BaseController
         }
         $progress = ($numberOfAnswers/$size)*100;
         return number_format($progress, 0);
+    }
+
+
+    /**
+     * Check current session
+     */
+    protected function hasSession($type) {
+        if ($type === 0) {
+            // redirect to login if no session found
+            // redirect to verifyAccount page if session not yet verified
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url('login'));
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        } else {
+            // redirect to login if no session found
+            if (!$this->session->has('logged_user')) {
+                return redirect()->to(base_url());
+            } elseif ($_SESSION['logged_user']['role'] != '1') {
+                return redirect()->to(base_url());
+            } elseif (!$_SESSION['logged_user']['emailVerified']) {
+                return redirect()->to(base_url('verifyAccount'));
+            }
+        }
     }
 }

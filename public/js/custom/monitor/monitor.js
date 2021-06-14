@@ -15,7 +15,6 @@ function displaySubjects(facultyID) {
             $('#piechart').addClass('d-none')
 
             response.subjects.forEach(subject => {
-                console.log(subject);
                 let progress = subject.progress;
                 let element;
                 let pBar = '<div class="progress">' +
@@ -25,8 +24,7 @@ function displaySubjects(facultyID) {
                     // Compute students not finished evaluation over total number of students
                     // Result is percent of students not done. Subtract to 100 to get number of
                     // students done
-                    progress = 100 - ((subject.numNotDone/subject.total_students) * 100).toFixed(0);
-                    progress = progress + '%';
+                    progress = progress.toFixed(0) + '%';
                     pBar = pBar.replaceAll('percentage', progress);
                     element = '<strong>' + subject.name + '</strong>' + pBar;
                 } else {

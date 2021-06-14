@@ -17,6 +17,13 @@ class Professors extends BaseController
                 $this->hasSession(0);
                 return $this->$method();
                 break;
+            case 'get_all_professors':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));    
+                }
+                $this->hasSession(1);
+                return $this->$method();
+                break;
             case 'profList':
                 $this->hasSession(1);
                 return $this->$method($param1);
@@ -50,6 +57,27 @@ class Professors extends BaseController
         }
 
         echo json_encode($data['profList']);
+    }
+
+    /**
+     * Get all professors
+     * in the database
+     */
+    public function get_all_professors()
+    {
+        $facultyModel = new FacultyModel();
+        if (!$professors = $facultyModel->where('is_deleted', 0)->findAll()) {
+            $response = [
+                'is_available' => 0,
+                'message' => 'No subjects found.'
+            ];
+        } else {
+            $response = [
+                'is_available' => 1,
+                'professors' => $professors
+            ];
+        }
+        echo json_encode($response);
     }
 
     protected function hasSession($type) {

@@ -110,7 +110,6 @@ class Home extends BaseController
 
   public function forgot_password()
   {
-      helper(“file”);
     $data = [];
 		$data['validation'] = null;
     $data['validate_error'] = null;

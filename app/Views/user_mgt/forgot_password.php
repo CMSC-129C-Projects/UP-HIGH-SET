@@ -2,43 +2,47 @@
 
 <?php $this->section('content'); ?>
 
-  <div class="container-fluid" style="height: 100vh">
-  <div id="ChangePassword" style="margin-top: 4.7rem;">
-    <div class="card">
-      <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
-      <div class="card-body" style="padding: 40px; margin: 10px">
-        <?php if (isset($validation)) { ?>
-
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=displaySingleError($validation, 'email_fpass')?></h4>
-          </div>
-          <br><br>
-          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
-
-        <?php } elseif(isset($validate_error)) { ?>
-
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
-          </div>
-          <br>
-          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
-
-        <?php } elseif(isset($success)) { ?>
-          <div class="alert-success" style="padding: 20px;">
-            <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
-          </div>
-        <?php } elseif( $success == null && $validate_error == null && $validation == null) {?>
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class="alert-danger" style="padding: 20px;">
-            <h4> You are not authorized to access this page. </h4>
-          </div>
-          <br><br>
-          <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
-        <?php } ?>
+  
+<div class="container-fluid" style="min-height: 100vh">
+  <div id="ChangePassword">  
+    <?php if (isset($validation) != null) { ?>
+      <div class="heading text-center" style="padding: 20px;">
+        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
+        <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
+            <h2 style=""><?=displaySingleError($validation, 'email_fpass')?><h2>
+        </div>
+        <br>  
+        <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Create Another Request</a>
       </div>
-    </div>
+
+    <?php } elseif(isset($validate_error)!=null) { ?> <!-- verify email in db -->
+      <div class="heading text-center" style="padding: 20px;">
+        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
+        <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
+            <h2 style=""><?=$validate_error?><h2>
+        </div>  
+        <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Create Another Request</a>
+      </div>
+<!-- New CHanges -->
+
+    <?php } elseif(isset($success) != null) { ?> <!-- email has been set for change -->
+      <div class="heading text-center" style="padding: 20px;">
+        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> Your request has been processed. <h1>
+        <div class="alert alert-success" style="padding:30px; border-color: #014421; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
+            <h2 style="">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
+        </div>  
+      </div>
+
+    <?php } elseif( $success == null && $validate_error == null && $validation == null) {?> <!-- gone from external sources -->
+      <div class="heading text-center" style="padding: 20px;">
+        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
+        <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
+            <h2 style="">You are not authorized to access this page.<h2>
+        </div>  
+        <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Go Back to Main Page</a>
+      </div>
+          
+    <?php } ?>
   </div>
   </div>
 

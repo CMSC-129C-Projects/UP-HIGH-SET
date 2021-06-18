@@ -67,22 +67,6 @@
   font-size: 15px;
 }
 
-.accordion:hover {
-  border-color: #7b1113;
-}
-
-.accordion:focus {
-  background: #7b1113
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-    no-repeat right 0.75rem center/8px 10px !important;
-  border-radius: 0px;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  border-color: #7b1113;
-  color: white;
-  transition: 0.4s;
-}
-
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 /* .active, .accordion:hover {
     background-color: #ccc;

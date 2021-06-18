@@ -319,15 +319,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-#register .nav input[type="button"]:focus,
-.student.focus,
-.admin.focus {
-  background-color: #fff !important;
-  color: #7b1113 !important;
-  text-transform: uppercase !important;
-  font-size: 1.2rem !important;
-}
-
 /* .student.focus {
     margin-left: 2px !important;
   } */
@@ -448,7 +439,7 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
@@ -507,6 +498,9 @@ a:focus {
 }
 #sidebar ul.components ul.CTAs a:hover {
   background-color: none;
+}
+#sidebar .list-unstyled.CTAs.components .evaluate a:hover{
+  background-color: transparent !important;
 }
 
 #sidebar ul p {
@@ -732,6 +726,13 @@ a.article:hover {
   background: #014421;
 }
 
+#register .nav .active input[type="button"] {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -744,4 +745,7 @@ a.article:hover {
     margin-left: 0;
     transform: none;
   }
+}
+.tabs .mobiletab{
+  float: left;
 }

@@ -20,9 +20,11 @@ function drawChart() {
             'duration':1000,
             'easing':'in'
         },
+        'colors': ['#014421', '#7b1113'],
         'width':'100%',
         'height':'100%',
-        'backgroundColor':'transparent'
+        'backgroundColor':'transparent',
+        'is3D':'true',
     };
 
     // Display the chart inside the <div> element with id="piechart"

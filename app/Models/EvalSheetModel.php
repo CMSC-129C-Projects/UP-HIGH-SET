@@ -73,4 +73,45 @@ EOT;
 
     return $result[0]->students_evaluated;
   }
+
+  public function get_eval_sheet_dets($eval_sheet_id)
+  {
+    $db = \Config\Database::connect();
+    
+    $sql = <<<EOT
+SELECT s.name as 'subject', CONCAT(f.first_name, ' ', f.last_name) as prof
+FROM eval_sheet as es
+LEFT JOIN subjects as s
+ON es.subject_id = s.id
+LEFT JOIN faculty as f
+ON f.id = s.faculty_id
+WHERE es.id = $eval_sheet_id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
+
+  /**
+   * Get Students and Evaluation sheets
+   * based on subject
+   */
+  public function collect_eval_sheets($subject_id)
+  {
+    $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+SELECT u.id as user_id, es.*
+FROM subjects as s
+LEFT JOIN users as u
+ON s.grade_level = u.grade_level
+LEFT JOIN eval_sheet as es
+ON u.id = es.student_id
+WHERE s.id = $subject_id AND es.subject_id = $subject_id
+AND u.is_active = 1 AND u.is_deleted = 0 AND es.is_deleted = 0 AND s.is_deleted = 0
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 }

@@ -10,6 +10,37 @@ $(function() {
         $(this).addClass('active');
     });
 
+    $('.category').click(function() {
+        let evalbtns = $('.category');
+
+        for(let i=0; i<evalbtns.length; i++) {
+            if ($(evalbtns[i]).hasClass('activeCategory')) {
+                $(evalbtns[i]).removeClass('activeCategory');
+            }
+        }
+        $(this).addClass('activeCategory');
+
+        let tabs = $('.tab-pane');
+
+        for(let i=0; i<tabs.length; i++) {
+            if ($(tabs[i]).hasClass('active')) {
+                $(tabs[i]).removeClass('active');
+            }
+            if ($(tabs[i]).hasClass('show')) {
+                $(tabs[i]).removeClass('show');
+            }
+        }
+        let target = $(this).attr('data-target');
+        $('#' + target).addClass('show');
+        $('#' + target).addClass('active');
+
+        if ($('#evalCategories').hasClass('responsive')) {
+            $('#evalCategories').removeClass('responsive');
+        }
+
+        $('.action-display').text($(this).text());
+    });
+
     setCurrentProgress();
 
     $('input[name^="choices_"], textarea[name^="answer_"').change(function() {
@@ -44,6 +75,7 @@ function updateReview($this) {
         for(let i=0; i<radios.length; i++) {
             if ($(radios[i]).val() === $this.val()) {
                 $(radios[i]).prop('checked', true);
+                $('input[name="review_final_' + name + '"]').val($(radios[i]).val());
             } else {
                 $(radios[i]).prop('checked', false);
             }

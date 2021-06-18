@@ -26,7 +26,7 @@
 
     <div id="EmailContent">
     <div class="card">
-      <div class="card-body" style="padding: 40px;">
+      <div class="card-body">
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>
@@ -44,7 +44,7 @@
           <br>
           <div class="form-group">
             <label for="purpose" style="font-size:15px;">Email Purpose :</label>
-            <select class="custom-select" style="width:150px">
+            <select class="custom-select">
               <option selected>Select...</option>
               <option value="announcement">Announcement</option>
               <option value="registration">Registration</option>
@@ -58,13 +58,12 @@
             <p style="font-size:13px">Attachment is Optional</p>
             <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
             <br><br>
-            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 1rem !important" value="update">
+            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="update">
           </form>
           </div>
         </div>
       </div>
   </div>
   </div>
-</section>
 
 <?= $this->endSection();?>

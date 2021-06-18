@@ -5,7 +5,8 @@ use App\Models\EmailModel;
 
 class Send_email extends BaseController {
 
-  public function index() {
+  public function _remap($method)
+  {
     // redirect to login if no session found
     // redirect to verifyAccount page if session not yet verified
     if (!$this->session->has('logged_user')) {
@@ -13,7 +14,21 @@ class Send_email extends BaseController {
     } elseif (!$_SESSION['logged_user']['emailVerified']) {
       return redirect()->to(base_url('verifyAccount'));
     }
+    if ($_SESSION['logged_user']['role'] === '2') {
+      return redirect()->to(base_url('dashboard'));
+    }
 
+    switch($method)
+    {
+        case 'index':
+          return $this->$method();
+          break;
+        default:
+          return redirect()->to(base_url('dashboard'));
+    }
+  }
+
+  public function index() {
     $data = [];
     $rules = [
       'email_subject' => 'required',

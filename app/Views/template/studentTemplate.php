@@ -10,6 +10,8 @@
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -20,6 +22,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
+
+    <style>
+      .alertify .ajs-header, .alertify .ajs-footer {        
+        color: #e9dbc1 !important;
+        background-color: #7b1113 !important;
+        margin: 0 !important;
+      }
+
+      .alertify .ajs-commands {
+        margin: 10px 10px 0 0;
+      }
+
+      .alertify .ajs-dialog {
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      .alertify .ajs-body {
+        border-color: #7b1113 !important;
+        color: #7b1113 !important;
+        background-color: #e9dbc1 !important;
+      }
+    </style>
+
     <?php if(isset($css)):?>
       <?=echoFiles($css);?>
     <?php endif;?>
@@ -116,11 +142,17 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
+        // overried defaults of alertify
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.glossary.ok = "Dismiss";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
     </script>

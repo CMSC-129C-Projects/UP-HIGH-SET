@@ -83,7 +83,7 @@ class Profile extends BaseController
         $data['css'] = addExternal($css, 'css');
 
         $data['validation'] = null;
-        $data['status'] = $status;
+        $data['status'] = null;
         $data['role'] = $role;
         // $data['id'] = $id;
 

@@ -42,7 +42,7 @@
             </div>
         </div>
 
-    <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height:429px">
+    <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height:420px">
       <div class="modal-dialog">
       <div class="modal-content" style="background: transparent;">
 
@@ -59,8 +59,8 @@
               <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email" required>
               <span><?=displaySingleError($validation, 'email_fpass');?></span>
               <div class="row">
-                  <input type="submit" value="Confirm">
-                  <input type="button" class="button2"  style="border-radius: 2rem !important; margin-top: 20px;" data-dismiss="modal" value="Close">
+                  <button class="button2" style="border-radius: 2rem !important; margin-top: 20px; margin-left: 12px;" type="submit"><i class="bi bi-check-circle"></i> Confirm</button>
+                  <button class="button2"  style="border-radius: 2rem !important; margin-top: 20px; margin-left: 10px;" data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
               </div>
             </div>
           </form>

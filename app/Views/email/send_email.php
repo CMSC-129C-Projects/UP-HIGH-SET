@@ -30,7 +30,7 @@
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>
-            <input type="text" class="form-control" name = 'email_subject' id="email-subject" value="<?=set_value('email_subject')?>" placeholder="Enter Email subject here ...">
+            <input type="text" class="form-control" name = 'email_subject' id="email-subject" value="<?=set_value('email_subject')?>">
             <br>
             <span class="text-danger"><?=displaySingleError($validation, 'email_subject');?></span>
           </div>
@@ -54,11 +54,9 @@
               <option value="verification">Verification</option>
             </select>
             </div>
-            <br><br>  
-            <p style="font-size:13px">Attachment is Optional</p>
-            <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
-            <br><br>
-            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="update">
+            <br><br><br>
+            <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Update</button>
+            <button class="button" href="#" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important;"><i class="bi bi-x-circle"></i> Cancel</button>
           </form>
           </div>
         </div>

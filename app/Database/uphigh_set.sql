@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2021 at 03:35 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Jun 19, 2021 at 02:36 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uphigh_set`
+-- Database: `uphigh_set2`
 --
 
 -- --------------------------------------------------------
@@ -142,6 +142,13 @@ CREATE TABLE `evaluation` (
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`id`, `name`, `status`, `date_start`, `date_end`, `year_start`, `year_end`, `semester`, `grading`, `is_deleted`, `created_on`, `updated_on`) VALUES
+(1, 'SET S.Y. 2020 - 2021 | First Semester', 'open', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2020, 2021, '1', NULL, 0, '2021-05-22 13:58:53', '2021-06-13 16:32:36');
+
 -- --------------------------------------------------------
 
 --
@@ -150,12 +157,12 @@ CREATE TABLE `evaluation` (
 
 CREATE TABLE `eval_answers` (
   `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `eval_sheet_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `eval_sheet_id` int(11) NOT NULL,
   `question_id` int(10) UNSIGNED NOT NULL,
   `qChoice_id` int(10) UNSIGNED DEFAULT NULL,
   `answer_text` text DEFAULT NULL,
-  `status` varchar(7) DEFAULT NULL,
+  `status` varchar(7) NOT NULL,
   `created_on` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
@@ -166,45 +173,123 @@ CREATE TABLE `eval_answers` (
 --
 
 INSERT INTO `eval_answers` (`id`, `user_id`, `eval_sheet_id`, `question_id`, `qChoice_id`, `answer_text`, `status`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 58, 6, 1, 1, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(2, 58, 6, 2, 2, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(3, 58, 6, 3, 1, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(4, 58, 6, 4, 2, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(5, 58, 6, 5, 2, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(6, 58, 6, 6, 3, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(7, 58, 6, 7, 4, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(8, 58, 6, 8, 5, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(9, 58, 6, 9, 5, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(10, 58, 6, 10, 4, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(11, 58, 6, 11, 1, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(12, 58, 6, 12, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(13, 58, 6, 13, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(14, 58, 6, 14, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(15, 58, 6, 15, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(16, 58, 6, 16, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(17, 58, 6, 17, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(18, 58, 6, 18, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(19, 58, 6, 19, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(20, 58, 6, 20, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(21, 58, 6, 21, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(22, 58, 6, 22, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(23, 58, 6, 23, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(24, 58, 6, 24, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(25, 58, 6, 25, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(26, 58, 6, 26, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(27, 58, 6, 27, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(28, 58, 6, 28, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(29, 58, 6, 29, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(30, 58, 6, 30, NULL, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(31, 58, 6, 31, 1, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(32, 58, 6, 32, 3, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(33, 58, 6, 33, 3, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(34, 58, 6, 34, 2, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(35, 58, 6, 35, 2, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(36, 58, 6, 36, 8, NULL, 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(37, 58, 6, 37, NULL, 'dfgdfgdfg', 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(38, 58, 6, 38, NULL, 'bnvnbnvbnb', 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0),
-(39, 58, 6, 39, NULL, 'yuiuyiyuiyu', 'save', '2021-05-23 21:28:31', '2021-05-23 21:28:31', 0);
+(118, 237, 4, 1, 1, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(119, 237, 4, 2, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(120, 237, 4, 3, 1, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(121, 237, 4, 4, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(122, 237, 4, 5, 1, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(123, 237, 4, 6, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(124, 237, 4, 7, 1, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(125, 237, 4, 8, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(126, 237, 4, 9, 1, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(127, 237, 4, 10, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(128, 237, 4, 11, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(129, 237, 4, 12, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(130, 237, 4, 13, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(131, 237, 4, 14, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(132, 237, 4, 15, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(133, 237, 4, 16, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(134, 237, 4, 17, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(135, 237, 4, 18, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(136, 237, 4, 19, 2, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(137, 237, 4, 20, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(138, 237, 4, 21, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(139, 237, 4, 22, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(140, 237, 4, 23, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(141, 237, 4, 24, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(142, 237, 4, 25, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(143, 237, 4, 26, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(144, 237, 4, 27, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(145, 237, 4, 28, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(146, 237, 4, 29, 3, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(147, 237, 4, 30, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(148, 237, 4, 31, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(149, 237, 4, 32, 5, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(150, 237, 4, 33, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(151, 237, 4, 34, 5, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(152, 237, 4, 35, 4, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(153, 237, 4, 36, 8, NULL, 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(154, 237, 4, 37, NULL, 'Sample strong points', 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(155, 237, 4, 38, NULL, 'Sample weak points', 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(156, 237, 4, 39, NULL, 'Sampple recommendations', 'save', '2021-06-12 14:32:20', '2021-06-12 14:32:20', 0),
+(157, 237, 6, 1, 1, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(158, 237, 6, 2, 2, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(159, 237, 6, 3, 1, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(160, 237, 6, 4, 1, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(161, 237, 6, 5, 2, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(162, 237, 6, 6, 1, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(163, 237, 6, 7, 2, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(164, 237, 6, 8, 2, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(165, 237, 6, 9, 3, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(166, 237, 6, 10, 2, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(167, 237, 6, 11, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(168, 237, 6, 12, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(169, 237, 6, 13, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(170, 237, 6, 14, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(171, 237, 6, 15, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(172, 237, 6, 16, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(173, 237, 6, 17, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(174, 237, 6, 18, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(175, 237, 6, 19, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(176, 237, 6, 20, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(177, 237, 6, 21, 3, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(178, 237, 6, 22, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(179, 237, 6, 23, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(180, 237, 6, 24, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(181, 237, 6, 25, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(182, 237, 6, 26, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(183, 237, 6, 27, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(184, 237, 6, 28, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(185, 237, 6, 29, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(186, 237, 6, 30, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(187, 237, 6, 31, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(188, 237, 6, 32, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(189, 237, 6, 33, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(190, 237, 6, 34, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(191, 237, 6, 35, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(192, 237, 6, 36, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(193, 237, 6, 37, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(194, 237, 6, 38, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(195, 237, 6, 39, NULL, NULL, 'save', '2021-06-12 14:59:11', '2021-06-12 14:59:11', 0),
+(196, 69, 10, 1, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(197, 69, 10, 2, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(198, 69, 10, 3, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(199, 69, 10, 4, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(200, 69, 10, 5, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(201, 69, 10, 6, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(202, 69, 10, 7, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(203, 69, 10, 8, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(204, 69, 10, 9, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(205, 69, 10, 10, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(206, 69, 10, 11, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(207, 69, 10, 12, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(208, 69, 10, 13, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(209, 69, 10, 14, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(210, 69, 10, 15, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(211, 69, 10, 16, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(212, 69, 10, 17, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(213, 69, 10, 18, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(214, 69, 10, 19, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(215, 69, 10, 20, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(216, 69, 10, 21, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(217, 69, 10, 22, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(218, 69, 10, 23, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(219, 69, 10, 24, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(220, 69, 10, 25, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(221, 69, 10, 26, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(222, 69, 10, 27, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(223, 69, 10, 28, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(224, 69, 10, 29, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(225, 69, 10, 30, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(226, 69, 10, 31, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(227, 69, 10, 32, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(228, 69, 10, 33, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(229, 69, 10, 34, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(230, 69, 10, 35, 1, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(231, 69, 10, 36, 6, NULL, 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(232, 69, 10, 37, NULL, 'Strong Points 101', 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(233, 69, 10, 38, NULL, 'Weak points 101', 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0),
+(234, 69, 10, 39, NULL, 'Recommendations 101', 'save', '2021-06-12 22:17:25', '2021-06-12 22:17:25', 0);
 
 -- --------------------------------------------------------
 
@@ -227,45 +312,45 @@ CREATE TABLE `eval_question` (
 --
 
 INSERT INTO `eval_question` (`id`, `section_id`, `question_order`, `question_text`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 1, 1, 'Has mastery of subject matter', '2021-05-14 21:28:15', '2021-05-22 13:26:28', 0),
-(2, 1, 2, 'Explains clearly course objectives and expectations', '2021-05-14 21:28:15', NULL, 0),
-(3, 1, 3, 'Discusses subject matter clearly and systematically', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(4, 1, 4, 'Provides in-depth treatment of subject matter', '2021-05-14 21:28:15', NULL, 0),
-(5, 1, 5, 'Relates course to other fields and present-day problems', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(6, 1, 6, 'Uses effective teaching techniques, considering the total capacity of the students', '2021-05-14 21:28:15', NULL, 0),
-(7, 1, 7, 'Encourages and respects new ideas and students\' viewpoints', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(8, 1, 8, 'Stimulates students\' desires to learn more about the subject', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(9, 1, 9, 'Gives challenging examinations and asks questions that require analysis', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(10, 1, 10, 'Expresses and communicates effectively', '2021-05-14 21:28:15', '2021-05-14 21:29:36', 0),
-(11, 2, 1, 'Corrects and gives results and feedback of examinations and/or other work within reasonable time', '2021-05-14 21:38:30', NULL, 0),
-(12, 2, 2, 'Uses students\' achievements in class as basis for grades', '2021-05-14 21:38:30', NULL, 0),
-(13, 2, 3, 'Maintains good conduct of students in class', '2021-05-14 21:38:30', NULL, 0),
-(14, 2, 4, 'Comes to class on time', '2021-05-14 21:38:30', NULL, 0),
-(15, 2, 5, 'Attends class regularly', '2021-05-14 21:38:30', NULL, 0),
-(16, 2, 6, 'Maximizes class hour for learning', '2021-05-14 21:38:30', NULL, 0),
-(17, 2, 7, 'Treats students equally and fairly; shows no favoritism', '2021-05-14 21:38:30', NULL, 0),
-(18, 2, 8, 'Firm and consistent, strict but reasonable in disciplining students', '2021-05-14 21:38:30', NULL, 0),
-(19, 2, 9, 'Encourages students to do their best to develop their potentials', '2021-05-14 21:38:30', NULL, 0),
-(20, 2, 10, 'Gives and explains assignments', '2021-05-14 21:38:30', NULL, 0),
-(21, 3, 1, 'Has high intellectual standard', '2021-05-14 21:46:51', NULL, 0),
-(22, 3, 2, 'Is ethical or moral in the performance of his official duties', '2021-05-14 21:46:51', NULL, 0),
-(23, 3, 3, 'Observes university regulations', '2021-05-14 21:46:51', NULL, 0),
-(24, 3, 4, 'Has dedication/sense of commitment', '2021-05-14 21:46:51', NULL, 0),
-(25, 3, 5, 'Admits mistakes and accepts constructive criticism', '2021-05-14 21:46:51', NULL, 0),
-(26, 3, 6, 'Mentally alert and enthusiastic', '2021-05-14 21:46:51', NULL, 0),
-(27, 3, 7, 'Employs wit and has keen sense of humor when the situation so demands', '2021-05-14 21:46:51', NULL, 0),
-(28, 3, 8, 'Is approachable and pleasant', '2021-05-14 21:46:51', NULL, 0),
-(29, 3, 9, 'Maintains poise or calm in different situations', '2021-05-14 21:46:51', NULL, 0),
-(30, 3, 10, 'Keeps individual and/or group appointments', '2021-05-14 21:46:51', NULL, 0),
-(31, 4, 1, 'Maintains cordial but professional relations with students', '2021-05-14 21:49:12', NULL, 0),
-(32, 4, 2, 'Encourages and makes himself/herself available for consultation', '2021-05-14 21:49:12', NULL, 0),
-(33, 4, 3, 'Elicits positive reactions from students', '2021-05-14 21:49:12', NULL, 0),
-(34, 4, 4, 'Shows enthusiasm for and interest in student campus life', '2021-05-14 21:49:12', NULL, 0),
-(35, 4, 5, 'Performs duties and responsibilities in school', '2021-05-14 21:49:12', NULL, 0),
-(36, 5, 1, 'Taking into account instructional skills,  class management,  personal qualities,  and student-faculty relations.\r\n\r\nPlease rate your teacher by encircling, on a scale of 1 to 5 with 5 as excellent.', '2021-05-14 21:51:13', NULL, 0),
-(37, 6, 1, 'My teacher\'s strong points are:', '2021-05-14 21:52:45', NULL, 0),
-(38, 6, 2, 'My teacher\'s weak points are:', '2021-05-14 21:52:45', NULL, 0),
-(39, 6, 3, 'Recommendation for improvement:', '2021-05-14 21:52:45', NULL, 0);
+(1, 1, 1, 'Has mastery of subject matter.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(2, 1, 2, 'Explains clearly course objectives and expectations.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(3, 1, 3, 'Discusses subject matter clearly and systematically.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(4, 1, 4, 'Provides in-depth treatment of subject matter.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(5, 1, 5, 'Relates course to other fields and present-day problems.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(6, 1, 6, 'Uses effective teaching techniques, considering the total capacity of the students.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(7, 1, 7, 'Encourages and respects new ideas and students\' viewpoints.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(8, 1, 8, 'Stimulates students\' desires to learn more about the subject.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(9, 1, 9, 'Gives challenging examinations and asks questions that require analysis.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(10, 1, 10, 'Expresses and communicates effectively.', '2021-05-14 21:28:15', '2021-06-13 22:21:57', 0),
+(11, 2, 1, 'Corrects and gives results and feedback of examinations and/or other work within reasonable time.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(12, 2, 2, 'Uses students\' achievements in class as basis for grades.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(13, 2, 3, 'Maintains good conduct of students in class.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(14, 2, 4, 'Comes to class on time.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(15, 2, 5, 'Attends class regularly.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(16, 2, 6, 'Maximizes class hour for learning.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(17, 2, 7, 'Treats students equally and fairly; shows no favoritism.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(18, 2, 8, 'Firm and consistent, strict but reasonable in disciplining students.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(19, 2, 9, 'Encourages students to do their best to develop their potentials.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(20, 2, 10, 'Gives and explains assignments.', '2021-05-14 21:38:30', '2021-06-13 22:21:57', 0),
+(21, 3, 1, 'Has high intellectual standard.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(22, 3, 2, 'Is ethical or moral in the performance of his official duties.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(23, 3, 3, 'Observes university regulations.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(24, 3, 4, 'Has dedication/sense of commitment.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(25, 3, 5, 'Admits mistakes and accepts constructive criticism.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(26, 3, 6, 'Mentally alert and enthusiastic.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(27, 3, 7, 'Employs wit and has keen sense of humor when the situation so demands.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(28, 3, 8, 'Is approachable and pleasant.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(29, 3, 9, 'Maintains poise or calm in different situations.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(30, 3, 10, 'Keeps individual and/or group appointments.', '2021-05-14 21:46:51', '2021-06-13 22:21:57', 0),
+(31, 4, 1, 'Maintains cordial but professional relations with students.', '2021-05-14 21:49:12', '2021-06-13 22:21:57', 0),
+(32, 4, 2, 'Encourages and makes himself/herself available for consultation.', '2021-05-14 21:49:12', '2021-06-13 22:21:57', 0),
+(33, 4, 3, 'Elicits positive reactions from students.', '2021-05-14 21:49:12', '2021-06-13 22:21:57', 0),
+(34, 4, 4, 'Shows enthusiasm for and interest in student campus life.', '2021-05-14 21:49:12', '2021-06-13 22:21:57', 0),
+(35, 4, 5, 'Performs duties and responsibilities in school.', '2021-05-14 21:49:12', '2021-06-13 22:21:57', 0),
+(36, 5, 1, 'Taking into account instructional skills,  class management,  personal qualities,  and student-faculty relations.\r\n\r\nPlease rate your teacher by encircling, on a scale of 1 to 5 with 5 as excellent..', '2021-05-14 21:51:13', '2021-06-13 22:21:57', 0),
+(37, 6, 1, 'My teacher\'s strong points are:.', '2021-05-14 21:52:45', '2021-06-13 22:21:57', 0),
+(38, 6, 2, 'My teacher\'s weak points are:.', '2021-05-14 21:52:45', '2021-06-13 22:21:57', 0),
+(39, 6, 3, 'Recommendation for improvement:.', '2021-05-14 21:52:45', '2021-06-13 22:21:57', 0);
 
 -- --------------------------------------------------------
 
@@ -288,7 +373,7 @@ CREATE TABLE `eval_section` (
 --
 
 INSERT INTO `eval_section` (`id`, `sec_order`, `name`, `question_type_id`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 1, 'Instructional Skills', 1, '2021-05-17 22:37:17', '2021-05-17 22:37:01', 0),
+(1, 1, 'Instructional Skills', 1, '2021-05-14 18:41:33', '2021-05-15 16:17:39', 0),
 (2, 2, 'Class Management', 1, '2021-05-14 18:41:49', '2021-05-14 22:16:22', 0),
 (3, 3, 'Personal Qualities', 1, '2021-05-14 18:41:59', '2021-05-14 22:16:25', 0),
 (4, 4, 'Student Faculty Relations', 1, '2021-05-14 18:42:15', '2021-05-14 22:16:28', 0),
@@ -308,7 +393,7 @@ CREATE TABLE `eval_sheet` (
   `subject_id` int(11) NOT NULL,
   `verified` varchar(15) NOT NULL DEFAULT 'false',
   `rating` decimal(10,0) NOT NULL,
-  `status` enum('Open','Inprogress','Completed') NOT NULL,
+  `status` enum('Open','Inprogress','Completed') NOT NULL DEFAULT 'Open',
   `created_on` datetime DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
@@ -319,13 +404,29 @@ CREATE TABLE `eval_sheet` (
 --
 
 INSERT INTO `eval_sheet` (`id`, `evaluation_id`, `student_id`, `subject_id`, `verified`, `rating`, `status`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 2, 1, 1, 'false', '12', 'Open', '2021-05-22 15:21:16', NULL, 0),
-(2, 2, 1, 2, 'false', '14', 'Open', '2021-05-22 15:21:16', NULL, 0),
-(3, 2, 1, 3, 'false', '123', 'Inprogress', '2021-05-22 15:21:16', NULL, 0),
-(4, 2, 1, 4, 'false', '232', 'Open', '2021-05-22 15:21:16', NULL, 0),
-(5, 2, 1, 5, 'false', '212', 'Inprogress', '2021-05-22 15:21:16', NULL, 0),
-(6, 2, 3, 1, 'false', '123', 'Inprogress', '2021-05-22 15:26:26', NULL, 0),
-(7, 2, 5, 1, 'false', '23', 'Completed', '2021-05-22 15:26:26', NULL, 0);
+(4, 1, 237, 5, 'false', '0', 'Completed', '2021-06-01 10:28:30', '2021-06-12 14:32:20', 0),
+(5, 1, 237, 9, 'false', '0', 'Open', '2021-06-01 10:28:30', '2021-06-12 14:23:19', 0),
+(6, 1, 237, 10, 'false', '0', 'Inprogress', '2021-06-01 10:28:30', '2021-06-12 14:59:11', 0),
+(8, 1, 69, 1, 'false', '0', 'Open', '2021-06-01 10:31:12', NULL, 0),
+(9, 1, 69, 2, 'false', '0', 'Open', '2021-06-01 10:31:12', NULL, 0),
+(10, 1, 69, 3, 'false', '0', 'Completed', '2021-06-01 10:31:12', '2021-06-12 22:17:25', 0),
+(11, 1, 69, 4, 'false', '0', 'Completed', '2021-06-01 10:31:12', '2021-06-13 20:49:27', 0),
+(12, 1, 73, 5, 'false', '0', 'Open', '2021-06-01 10:32:46', NULL, 0),
+(13, 1, 73, 9, 'false', '0', 'Open', '2021-06-01 10:32:46', NULL, 0),
+(14, 1, 73, 10, 'false', '0', 'Open', '2021-06-01 10:32:46', NULL, 0),
+(15, 1, 138, 5, 'false', '0', 'Open', '2021-06-01 10:33:30', NULL, 0),
+(16, 1, 138, 9, 'false', '0', 'Open', '2021-06-01 10:33:30', NULL, 0),
+(17, 1, 138, 10, 'false', '0', 'Open', '2021-06-01 10:33:30', NULL, 0),
+(18, 1, 77, 6, 'false', '0', 'Open', '2021-06-01 10:34:09', NULL, 0),
+(19, 1, 77, 7, 'false', '0', 'Open', '2021-06-01 10:34:09', NULL, 0),
+(20, 1, 77, 8, 'false', '0', 'Open', '2021-06-01 10:34:09', NULL, 0),
+(21, 1, 105, 6, 'false', '0', 'Open', '2021-06-01 10:35:04', NULL, 0),
+(22, 1, 105, 7, 'false', '0', 'Open', '2021-06-01 10:35:04', NULL, 0),
+(23, 1, 105, 8, 'false', '0', 'Open', '2021-06-01 10:35:04', NULL, 0),
+(24, 1, 68, 1, 'false', '0', 'Open', '2021-06-01 10:31:12', NULL, 0),
+(25, 1, 68, 2, 'false', '0', 'Open', '2021-06-01 10:31:12', NULL, 0),
+(26, 1, 68, 3, 'false', '0', 'Completed', '2021-06-01 10:31:12', '2021-06-12 22:17:25', 0),
+(27, 1, 68, 4, 'false', '0', 'Completed', '2021-06-01 10:31:12', '2021-06-13 20:49:34', 0);
 
 -- --------------------------------------------------------
 
@@ -365,8 +466,8 @@ CREATE TABLE `faculty` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `details` text DEFAULT NULL,
-  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
-  `updated_on` datetime DEFAULT NULL,
+  `created_on` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -375,10 +476,12 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `first_name`, `last_name`, `details`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 'Tony', 'Stark', 'Genius, Billionaire, Playboy, Philanthropist', '2021-04-16 13:16:20', '2021-04-16 13:16:20', 0),
-(2, 'Roberto', 'Basadre', 'Genius, Not Billionaire, Math-wizard', '2021-04-16 13:16:20', '2021-04-16 13:16:20', 0),
-(3, 'Fernand', 'Bernardez', 'Tech Lord', '2021-04-16 13:17:38', '2021-04-16 13:17:38', 0),
-(4, 'Thor', 'Hor', 'God of Thunder, God of Hammer', '2021-05-15 11:41:27', '2021-04-16 13:17:38', 0);
+(1, 'Roberto', 'Basadre', 'Sample details', '2021-05-18 12:45:01', NULL, 0),
+(2, 'Nand', 'Fernandez', 'Sample', '2021-05-18 12:45:01', NULL, 0),
+(3, 'Kim', 'Bondoc', 'Details1', '2021-06-01 11:04:22', '2021-06-01 11:04:22', 0),
+(4, 'Magnolia', 'Laus', 'Details2', '2021-06-01 11:06:49', '2021-06-01 11:06:49', 0),
+(5, 'Jeraline', 'Gumalal', 'Details3', '2021-06-01 11:06:56', '2021-06-01 11:06:56', 0),
+(6, 'Sample', 'Faculty', 'Details4', '2021-06-01 11:04:32', '2021-06-01 11:04:32', 0);
 
 -- --------------------------------------------------------
 
@@ -453,11 +556,11 @@ CREATE TABLE `question_choice` (
 --
 
 INSERT INTO `question_choice` (`id`, `q_type_id`, `choice_order`, `weight`, `choice`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 1, 1, '0', 'E', '2021-05-14 22:14:32', NULL, 0),
-(2, 1, 2, '0', 'VG', '2021-05-14 22:14:32', NULL, 0),
-(3, 1, 3, '0', 'G', '2021-05-14 22:14:32', NULL, 0),
-(4, 1, 4, '0', 'F', '2021-05-14 22:14:32', NULL, 0),
-(5, 1, 5, '0', 'P', '2021-05-14 22:14:32', NULL, 0),
+(1, 1, 1, '0', 'Excellent', '2021-05-14 22:14:32', '2021-06-13 22:22:18', 0),
+(2, 1, 2, '0', 'Very Good', '2021-05-14 22:14:32', '2021-06-13 22:22:23', 0),
+(3, 1, 3, '0', 'Good', '2021-05-14 22:14:32', '2021-06-13 22:22:26', 0),
+(4, 1, 4, '0', 'Fair', '2021-05-14 22:14:32', '2021-06-13 22:22:28', 0),
+(5, 1, 5, '0', 'Poor', '2021-05-14 22:14:32', '2021-06-13 22:22:31', 0),
 (6, 2, 1, '0', '5', '2021-05-14 22:14:32', NULL, 0),
 (7, 2, 2, '0', '4', '2021-05-14 22:14:32', NULL, 0),
 (8, 2, 3, '0', '3', '2021-05-14 22:14:32', NULL, 0),
@@ -548,7 +651,7 @@ CREATE TABLE `subjects` (
   `faculty_id` int(11) NOT NULL,
   `grade_level` int(11) NOT NULL,
   `name` text NOT NULL,
-  `created_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `created_on` datetime DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -558,14 +661,16 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`id`, `faculty_id`, `grade_level`, `name`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(1, 1, 7, 'Mathematics in Everyday Life', '2021-04-16 13:14:37', '2021-04-16 13:14:35', 0),
-(2, 1, 10, 'Elementary Calculus', '2021-04-16 12:06:14', '2021-04-16 12:06:14', 0),
-(3, 2, 8, 'Math is Life', '2021-04-16 13:13:13', '2021-04-16 13:13:13', 0),
-(4, 4, 12, 'Thunder Sorcery 12', '2021-04-17 16:30:30', '2021-04-17 16:30:30', 0),
-(5, 3, 9, 'Hacking', '2021-04-17 16:37:27', '2021-04-17 16:37:27', 0),
-(8, 3, 11, 'Hacking NASA using HTML', '2021-04-17 16:40:36', '2021-04-17 16:40:36', 0),
-(9, 4, 9, 'VECO Internship', '2021-04-17 16:41:54', '2021-04-17 16:41:54', 0),
-(10, 1, 12, 'Creating JARVIS', '2021-04-17 16:42:58', '2021-04-17 16:42:58', 0);
+(1, 1, 12, 'Calculus I', NULL, '2021-06-01 10:20:16', 0),
+(2, 2, 12, 'Physics II', NULL, NULL, 0),
+(3, 4, 12, 'Economics', '2021-06-01 10:23:24', NULL, 0),
+(4, 4, 12, 'SocSci 12', '2021-06-01 10:23:24', NULL, 0),
+(5, 5, 11, 'Arts 11', '2021-06-01 10:24:11', NULL, 0),
+(6, 5, 7, 'Arts 7', '2021-06-01 10:24:11', NULL, 0),
+(7, 6, 7, 'Algebra', '2021-06-01 10:25:04', NULL, 0),
+(8, 2, 7, 'Programming 7', '2021-06-01 10:25:04', NULL, 0),
+(9, 6, 11, 'Lit 11', '2021-06-01 10:25:48', NULL, 0),
+(10, 2, 11, 'Java ', '2021-06-01 10:25:48', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -774,30 +879,83 @@ INSERT INTO `userlog` (`id`, `user_id`, `time_check`, `latest_activity`, `ip_add
 (868, 68, '2021-05-10 00:22:11', '2021-05-10 00:22:11', '::1', 'login', 'bz0sJIFjVMzGybsGAlJoU9gxplHV9VGeGCmgm2LykfwbLYW7049D9OGofro8KAo1cHuaAZDPsfD8HekejF27OEY8WeqqgjC5yVxR', 'Windows 10', 'Chrome 90.0.4430.93', '2021-05-10 08:22:11', '2021-05-10 08:22:11', 0),
 (869, 68, '2021-05-11 03:15:37', '2021-05-11 03:15:37', '::1', 'login', 'b8eFSHtlsOaHtBOJvWhNUAvOeGJUArsXZTqce66k8sCC8ivyo9LOp1HnOV9o7dq0rzv6gWIzk4I3X6mcuARM6ZrnEFsiz60SCCKR', 'Windows 10', 'Chrome 90.0.4430.93', '2021-05-11 11:15:37', '2021-05-11 11:15:37', 0),
 (870, 68, '2021-05-11 03:17:16', '2021-05-11 03:17:16', '::1', 'login', 'oauURGlXrpn7btSyIdkT6uK80X9SLHQAKURNuk4yWbbaelDlwUNZe2auwIerdkWwKhCizTcGOI3bkkaFjy2MyBZjrHIsJrGGTY3b', 'Windows 10', 'Chrome 90.0.4430.93', '2021-05-11 11:17:16', '2021-05-11 11:17:16', 0),
-(871, 30, '2021-05-15 02:45:26', '2021-05-15 02:45:26', '::1', 'login', '0uDWLMNz2Kq6GWEOGx25tQjSRa4LRe9MrcIczIO2CSoerohPheJtsq8fARVT7hs1ex7gjra5mCVT0nGeJDKzWit0YNASmrjxrIiH', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-15 10:45:26', '2021-05-15 10:45:26', 0),
-(872, 30, '2021-05-15 02:45:55', '2021-05-15 02:45:55', '::1', 'login', 'RbAqiRngShc22te1euTxd2RizM5wwudisIHdSVGKxQCpLGsrLGQxZFGWNoTv0B35rJHiZVDsVpddWKoBd21lrVUAMbQz1VON0pnB', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-15 10:45:55', '2021-05-15 10:45:55', 0),
-(873, 58, '2021-05-15 09:54:59', '2021-05-15 09:54:59', '::1', 'login', 'qtHz6HVhYoAP4kELKNNXvpyDeF2t29NQ9fPuGUMfRibyJtmVhKueDcDtGdCSODaeEUDsv9UnO1Suunro4E6rV3Chi3qlYdIu6Ij5', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-15 17:54:59', '2021-05-15 17:54:59', 0),
-(874, 36, '2021-05-17 12:59:30', '2021-05-17 12:59:30', '::1', 'login', 'YEJ8rDvcnvvTRLutPn6GIi1IaWbLRRjel3OBUeMA8fUQU0qJzyqpwa9klIlNRMFX9742ewHcBvtDkDjFvsUljtMWFYpAOys8uA38', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 20:59:30', '2021-05-17 20:59:30', 0),
-(875, 36, '2021-05-17 13:00:56', '2021-05-17 13:00:56', '::1', 'login', 's6uN5jdglXk9rnEhDVSBmWqmnKA2nxVFTzD29hfCwlPEnrQ2A39NH8R11fOeN8yZ8CNDXiy9UNEH2O57yopS4bI20l9dAUIgs02n', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:00:56', '2021-05-17 21:00:56', 0),
-(876, 36, '2021-05-17 13:02:31', '2021-05-17 13:02:31', '::1', 'login', 'LbqnjjeqIKl8G7qMRVLyw8QIr3a0ZAbd55lufLiFqsLSSGL2d6nmrc5nsaxk6EFV6ZvZkLya5JrGvQ7yIsqgSChGHH6j4maDsNsO', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:02:31', '2021-05-17 21:02:31', 0),
-(877, 36, '2021-05-17 13:03:05', '2021-05-17 13:03:05', '::1', 'login', 'f357RuwXQlc42AG85qr3yTiWum7FpmIjJ7m1XEN3guYzS8wV3LHkU2c4CffD3mak7YGZJVKu3Dnb8KerFhIVC9HilquFl4vd7UBK', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:03:05', '2021-05-17 21:03:05', 0),
-(878, 36, '2021-05-17 13:03:53', '2021-05-17 13:03:53', '::1', 'login', 'l5Fm4pDo0nSuV5f9HInDGiMoOeVSYSnPTPhEiISxc7yA8frjcNCz6MaMGSQiyULGEJToWq4hnIUcyzS8173Cs8MryiuGp3kxg3fl', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:03:53', '2021-05-17 21:03:53', 0),
-(879, 58, '2021-05-17 13:09:50', '2021-05-17 13:09:50', '::1', 'login', 'KEhTkwRWgh7gaHofb2JY26p9HyAhaxZDHrDemgjoUdkdih9IZxdjreWriELX1X4WEYAwDjrVWEGKSxh6rzwq08I7aq5rMhlHkwTq', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:09:50', '2021-05-17 21:09:50', 0);
+(871, 30, '2021-05-15 02:05:24', '2021-05-15 02:05:24', '::1', 'login', 'NCaKLh7PPoPDo2hRRdOkaxmvMk8YQbFBTb3YR5wxxVtdrv672BPf8u2kykAzHMQS5noIGi4oRqIHxpzvLShzXHNzVP9hZ5Lagnif', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:05:24', '2021-05-15 10:05:24', 0),
+(872, 30, '2021-05-15 02:06:02', '2021-05-15 02:06:02', '::1', 'login', 'dJu735tbmVWZQOSRH1Yrph7bGjnGHB1dJ8xm5swqoZWKCiyQHFdjRW24u9gAU33rKRAXYkJpBfll1ED8ksshkxUHqikfmtaOgSjw', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:06:02', '2021-05-15 10:06:02', 0),
+(873, 30, '2021-05-15 02:06:15', '2021-05-15 02:06:15', '::1', 'login', 'rnLMZKdY8qYFzUxwVsSMZ8LK1wLMpRFbw3dXRNAf446hLEWFZDxnJYxvN7ma9Y77a2zaixn4zl9cXXkbGipREXOapyOtpE5fbLXJ', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:06:15', '2021-05-15 10:06:15', 0),
+(874, 30, '2021-05-15 02:07:05', '2021-05-15 02:07:05', '::1', 'login', 'o3LsVhtZdVq9w0fxN203I2wfcjhCUNgmq25Vsw4oxtmuDxMTE38VWV34HyfFxcfoXJwCE91f0iZmfn8bJyV4M6JbGIuxrPPxvtjp', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:07:05', '2021-05-15 10:07:05', 0),
+(875, 30, '2021-05-15 02:08:25', '2021-05-15 02:08:25', '::1', 'login', 'cPlhKmE9Wa3gZ05WF4neVlcLp00gD01FpzgN1AqytcPfAPJNZYKvLHwSB1pub7T6P6n8iIFT1uKCnHYJKyvBhCnr7EDxIbwJi9U3', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:08:25', '2021-05-15 10:08:25', 0),
+(876, 30, '2021-05-15 02:09:38', '2021-05-15 02:09:38', '::1', 'login', '8tNOysRCJnCPj0H7fFbd2U46fqm1W88ERy7FVHkrjSaGb77RTXrNVdKUAKkQ8K2kXA4H9VLsan6sLFJTVj8pLEfvKURN2gtg5WNV', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:09:38', '2021-05-15 10:09:38', 0),
+(877, 30, '2021-05-15 02:12:24', '2021-05-15 02:12:24', '::1', 'login', 't5XWk0y9YoczbIkIyWPqn8rhBjqnYhHuB6KMS0OqpEdHJ0DfjptuTFupNyTorSXmzIWg2GuXGxTkuP2GYCheSSVWL9VfIw3iqCL8', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:12:24', '2021-05-15 10:12:24', 0),
+(878, 30, '2021-05-15 02:13:05', '2021-05-15 02:13:05', '::1', 'login', '8LzGs8z7kbnDvRf4sTeZURjurtimvZPXBKq4Jj2PSMLt3BT6LzJ6FGreuGrcB66GLmYVr9WG5Wh66UsTlalhcrpeH7Zhhh3fRtbW', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:13:05', '2021-05-15 10:13:05', 0),
+(879, 30, '2021-05-15 02:20:45', '2021-05-15 02:20:45', '::1', 'login', 'gcIIhm39QzFNNxxi1KY7Rc6KQzjqTrFgH3uF1fwbHggPsKiuClYJeqcuoDeaShyz0holbM0UbEsH1A3H0CD00QV6m7LDjQBBj09r', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:20:45', '2021-05-15 10:20:45', 0);
 INSERT INTO `userlog` (`id`, `user_id`, `time_check`, `latest_activity`, `ip_address`, `type`, `user_token`, `platform`, `user_agent`, `created_on`, `updated_on`, `is_deleted`) VALUES
-(880, 36, '2021-05-17 13:25:01', '2021-05-17 13:25:01', '::1', 'login', 'lzoWX8kru3fAX7qgpRCivsVU2mV7Us78vfFbmIvS9PXoCKy7ZaLVCmqREFFcw29ECwgKzf5gVPWXmmINOgrp1mUPlWMjlwKJ2pay', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-17 21:25:01', '2021-05-17 21:25:01', 0),
-(881, 36, '2021-05-18 02:20:43', '2021-05-18 02:20:43', '::1', 'login', '4HlGMl84WwkHbPug8dhIaQ62aPL5ewayjgMRavmHBmGOLQmrJqk6sEQ1XgLYJcR2UqyoekaYWq8AKHpSANsjIuNGTpE3UbaBqCdx', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 10:20:43', '2021-05-18 10:20:43', 0),
-(882, 58, '2021-05-18 04:32:15', '2021-05-18 04:32:15', '::1', 'login', 'mO8OuLMZzAv1wnx9ESr6R85tWRs838YIClQlh5xx4t65JNh5hWBeLkV8buhZxOyp6KPyFMWAeJqVPcNgtHOeW9HrQ7GZssmHMIUB', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 12:32:15', '2021-05-18 12:32:15', 0),
-(883, 36, '2021-05-18 08:57:39', '2021-05-18 08:57:39', '::1', 'login', 'L0wyIZoStjITZl7BDc59TrHkE7OmGrkF5H3jM1XxbE2W2w2Xp3kt5rDatNbmIGlMTMvbFzxjzcdCB2fIW8XwhQGdeeIoAlh3rtbT', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 16:57:39', '2021-05-18 16:57:39', 0),
-(884, 36, '2021-05-18 08:58:13', '2021-05-18 08:58:13', '::1', 'login', 'e59BzRANZWoOZYGIJGFDecZ7jeTczNzb9iOfa8nMw5cKldyANSF7eTT3UBs9mpt8G33rzrvFaVf1Yh9sOI4Xv4QntcWPDiOoJ7No', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 16:58:13', '2021-05-18 16:58:13', 0),
-(885, 58, '2021-05-18 09:44:59', '2021-05-18 09:44:59', '::1', 'login', 'ncL2fZ4KxhvOggOo2bhqjX9zanPysYWOtJv7IE20O5HCdmRH3gWsqY0WJu1pnNHF0Vu5HqcMDaqjlivvXuoPODOohajmqSsLpX0p', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 17:44:59', '2021-05-18 17:44:59', 0),
-(886, 58, '2021-05-18 09:55:31', '2021-05-18 09:55:31', '::1', 'login', 'NW7KxQiGc9OMDNYJ2L7eaEh9BtvQSZ1K2EqPKaYzsgjRMXil97TlM4hGSvOjOdzotFoQJXrIg5wlbFLGUQOyG6PuMgFLBcqAxwc3', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-18 17:55:31', '2021-05-18 17:55:31', 0),
-(887, 58, '2021-05-22 03:06:51', '2021-05-22 03:06:51', '::1', 'login', 'MU2ufs80YkG2jBxgjv5rq4zPGrNxWuxhH4l4bDXlmMYUkHHFcOEnhV1Vxu1LcKLV0ydixts1QBtWrIRMdYpZnGKbIME9hM3DdyMD', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 11:06:51', '2021-05-22 11:06:51', 0),
-(888, 36, '2021-05-22 05:14:07', '2021-05-22 05:14:07', '::1', 'login', 'x2J8HV6eh2wbPWbzAReRDZ03ytEqxN4FyTtKZdXZHf4s71RsJVX5DBuW8lp5qZ1nhuRPfvZ7dGbFerB0H7N7c20enJ6Ny8SGtcGC', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 13:14:07', '2021-05-22 13:14:07', 0),
-(889, 58, '2021-05-22 05:26:06', '2021-05-22 05:26:06', '::1', 'login', 'zQj16KvD1d0xTufu6yExA96jdhlKo8D5RA8Lc3fl2hvQvtjsYPKQM6E2dlPXMd6S9yqcVJ1lkta88CYZHz7RNOKsWKoFpStyIGTs', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 13:26:06', '2021-05-22 13:26:06', 0),
-(890, 36, '2021-05-22 05:28:37', '2021-05-22 05:28:37', '::1', 'login', '23L647HJCwY5BvuVrXpMqn5NnDgEebJe2mlW0TTZsUydCL8IwgJlmtfsYtUlJLXtzcn8JnX4XgKkXE7BESNDc1Ig4ShLVzslQQGE', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 13:28:37', '2021-05-22 13:28:37', 0),
-(891, 36, '2021-05-22 07:23:40', '2021-05-22 07:23:40', '::1', 'login', 'nDg9BMHrdMyLkGEMDtfu2b4mLKRsdUeSMvXerCgEEOAS8RbgHMOONMa2xAnglLZQ0u5Wny4jqcZanA7AbwxIEkCmV08whBbozgN4', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 15:23:40', '2021-05-22 15:23:40', 0),
-(892, 58, '2021-05-22 14:04:20', '2021-05-22 14:04:20', '::1', 'login', 's4jWn2VUwMvStff5Sw1xOvq3PR7Guqu8k56nxYEzecp8TEN6gJblVNZ6g5dkstzavcx0sASySrYrkFOzuNIoClOGB6FOUYNuxbVN', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-22 22:04:20', '2021-05-22 22:04:20', 0),
-(893, 58, '2021-05-23 10:38:34', '2021-05-23 10:38:34', '::1', 'login', '8izCDpisLEvH8AzJ24dFr8KD9wMPnBIxh4HvTwzS2VWu2dHRI1L1Lbj6FEEZ1VhnhIPYVvJLl5RBtSP7EZ3uGS8crOLa5DLAFiDx', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-05-23 18:38:34', '2021-05-23 18:38:34', 0);
+(880, 30, '2021-05-15 02:21:44', '2021-05-15 02:21:44', '::1', 'login', 'Kbcdsl8VQcdKUOJlIk4hVoMcoKY7fhJb8Ttpr4PVHbIac5bH2ybRGbmar07qHwVPKhukOS5zyuoPWi1qnLbJZLnL8SHEpAem2iwD', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:21:44', '2021-05-15 10:21:44', 0),
+(881, 30, '2021-05-15 02:24:38', '2021-05-15 02:24:38', '::1', 'login', 'RgUqXMqI9PoXeV0rdMoaZnWlPBZ1qN4J3jOoI3iqwJzYgrZkS5Q1acDJcmidJaN5EM7fmjBGWfx05WK9TV5V4xeiNRYJu1nC7w6Y', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:24:38', '2021-05-15 10:24:38', 0),
+(882, 30, '2021-05-15 02:31:00', '2021-05-15 02:31:00', '::1', 'login', '1VVAVHDVm2MIS8dXcIoQ1fYoTqZEpq01b98yy8fUb20zWcnzEaguyUMbcN1mRY39bg6Ub2QVZ1VFOLGn6sCqHdcllyafgj1i9kO2', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:31:00', '2021-05-15 10:31:00', 0),
+(883, 30, '2021-05-15 02:33:38', '2021-05-15 02:33:38', '::1', 'login', 'a3yGeS45mbGc9G2cA6pHvbkEvFaWryr3Qz1OZnZ8dTfrK96uVxMjxUr43UgIjMQkiaF19w3mXnUlo4mJKhVs3k4B9AmqLniCoBmL', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:33:38', '2021-05-15 10:33:38', 0),
+(884, 30, '2021-05-15 02:35:34', '2021-05-15 02:35:34', '::1', 'login', 'lQPg3LLaQpOPIovVu9nkAzkIusbWPENs0fVldd6Z3HQmgCDZJUt3oVwYmLZf7KAHlgI8tyKirCKdJ54y5ZEYmda5rC0KcbxidAp8', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:35:34', '2021-05-15 10:35:34', 0),
+(885, 30, '2021-05-15 02:49:23', '2021-05-15 02:49:23', '::1', 'login', 'sS24T9bnZoZH2Vsjn7YYqTCSMMcAqzWDWLEETbMLDnRbIujbNeCON3PsqgI4SnIhS4AzozXOgBV51vzFTfVm1RSyP4NSgtZaj99Q', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:49:23', '2021-05-15 10:49:23', 0),
+(886, 30, '2021-05-15 02:53:29', '2021-05-15 02:53:29', '::1', 'login', 'GrOMjnXIwU3RwZ29kocKtoQa52AxFxFGHpvo5Q3bqm3iGT5hEiOBp8LGoVvknfdnxYNB727qRNrvlj5Zxq1O1w2Y4IIXjzX0IJIJ', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 10:53:29', '2021-05-15 10:53:29', 0),
+(887, 30, '2021-05-15 03:11:40', '2021-05-15 03:11:40', '::1', 'login', 'BU7V8LILra4aszETaC5qgTzwYIN6zane5z9BUlhNE02goAWaiNBSQwuyGYGzGnMiITrbb3mlQOs15wDRRZgwPnfHRhrepXGhM8H7', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 11:11:40', '2021-05-15 11:11:40', 0),
+(888, 30, '2021-05-15 03:19:26', '2021-05-15 03:19:26', '::1', 'login', 'Vf9NFUuPe3hr1n7aTkoB3UGt6Qq4vfPPYGrn5IlFZA98yRO9NHfi4shbzFx8PuYU8ru2Tdey3ufMhoTK42H5hlP2ktaI1LSi5Tej', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 11:19:26', '2021-05-15 11:19:26', 0),
+(889, 30, '2021-05-15 08:12:48', '2021-05-15 08:12:48', '::1', 'login', 'EczXwlreilLRCnJixNYZGMp9iJ8N7qkNlo0DVpfrpo5rPaZ4EeQKvwhwfJTt98qiosVYS2plDVb6tH2R0ZFnnrUYsOGBaUQddT7V', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 16:12:48', '2021-05-15 16:12:48', 0),
+(890, 30, '2021-05-15 09:09:23', '2021-05-15 09:09:23', '::1', 'login', 'uOVgwHHmg2SZrgcPgOshsgIdIXZ3Us1cJVEvzjf7NTsP81KYMsEd25lvUPB88nQeZlaFbU94l72xf2jqIrncu8kdLAHlkQavl7dE', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-15 17:09:23', '2021-05-15 17:09:23', 0),
+(891, 30, '2021-05-17 08:07:14', '2021-05-17 08:07:14', '::1', 'login', 'n0m7iBQ3EruD8PC4sPpz7bVEtOVt2jEDJxI9V93CFh55SFwjvLTvOYM0RfDMv9lewx23Wzu7Z0Ep1rgciJdNu4xKaAO8zW6tBxNi', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 16:07:14', '2021-05-17 16:07:14', 0),
+(892, 68, '2021-05-17 08:25:23', '2021-05-17 08:25:23', '::1', 'login', 'exEfCKZ5EO0l3mxaNYFYaWxjvWBaqlCpsLRNnFi1Tcg4kedVZ42w008RQXeNJamH0t9qnIAC0fxZP4IlLdCQfLq6MS46BFlgTaBI', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 16:25:23', '2021-05-17 16:25:23', 0),
+(893, 68, '2021-05-17 08:29:18', '2021-05-17 08:29:18', '::1', 'login', 'wBopdSLzGBKvKH7HpPFgWzZnEJwlFwZrM0SzlEzb4ppN8KIsyNe26ilb3wMenEnNYcG4qeEljnNb26XbPWfAf1zclUB6iT69jlmW', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 16:29:18', '2021-05-17 16:29:18', 0),
+(894, 30, '2021-05-17 09:03:15', '2021-05-17 09:03:15', '::1', 'login', 'S7srxoSPRUfip4keVh97w2OJEymWVifalKlHoX1PaQZ6jooc4ko7Mj9wD5TJz8waVsgyfpby2lZfwie4rUxQ6wiHoeQMWJh6WmQJ', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 17:03:15', '2021-05-17 17:03:15', 0),
+(895, 30, '2021-05-17 09:04:15', '2021-05-17 09:04:15', '::1', 'login', 'gSthhSMJS2OlKIbBX0i7v32xb5cO64XvSPVNmpg7aKhh4zdArhcX231naVp72uMGjfVsfGzZ8Rm83FfExVZpwp0WbQBAYKwwjlKU', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 17:04:15', '2021-05-17 17:04:15', 0),
+(896, 68, '2021-05-17 09:14:27', '2021-05-17 09:14:27', '::1', 'login', 'aDeusg2vkJg7972USGAiMWU694JEW3NeRPHhXESA3wZsaOwwewnXnmMwbpc1GlOKsFlWZ2hQKUPSAgQpzcTZHHsZSbbYDAZTeh3N', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-17 17:14:27', '2021-05-17 17:14:27', 0),
+(897, 68, '2021-05-18 04:48:17', '2021-05-18 04:48:17', '::1', 'login', 'FLCLTUz4fyR9Wfk3zIeJxYHwUWXjUbnhDdxNHLB5M7YXx86oziVywXj2NOwXXST7oKHiBNiuZvUrFfGCGPhHmV8MwfUix8iSv1WA', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-18 12:48:17', '2021-05-18 12:48:17', 0),
+(898, 68, '2021-05-18 07:12:37', '2021-05-18 07:12:37', '::1', 'login', 'kQshnYiHN9Bagoo7bbnhWOAMKtqVGsBPn0uIermWKib8yGK4LUC8fcsUwORfjEYEsm31Swb1c1SBB8QdchPO4ocTSKc1qDhtzF3N', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-18 15:12:37', '2021-05-18 15:12:37', 0),
+(899, 68, '2021-05-22 04:53:01', '2021-05-22 04:53:01', '::1', 'login', 'ybyKDdnFWTvsIPDMaNiBRCUfGxLqe4H4BoUwGsaTKOgqSBmfLxxrHHNNwr6vFw8NgXFaOX2n48kFkyyHawq2EvY6X0pwETWyO2KJ', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-22 12:53:01', '2021-05-22 12:53:01', 0),
+(900, 30, '2021-05-22 08:49:43', '2021-05-22 08:49:43', '::1', 'login', 'YZjGQTx3noHTXJfJgZmhaSWbw7SIjiiUt5M4r7XyQ5me4f7WCePCXiQcpkx68Fr9mW551qfO6RE6M2JgB9bp5BTuYjrDN70duZMY', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-22 16:49:43', '2021-05-22 16:49:43', 0),
+(901, 30, '2021-05-23 12:19:31', '2021-05-23 12:19:31', '::1', 'login', 'k5LHJdbqYQbpYtk7tNNxMZilD3PEz443Xks3dXirNtm4CNhMaz6Olsy78dqxiqKnsISWKYaCuUV9im9rTwd0QMpNdYZoWqLEVmZ5', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-23 20:19:31', '2021-05-23 20:19:31', 0),
+(902, 68, '2021-05-23 13:16:15', '2021-05-23 13:16:15', '::1', 'login', 'xVB13tMXjuXvT3WqCN6q9xhuakHni0M4gIxOxeDyMQeGCHHcrK1unP5GYTR4QnvdLGsdMkJaNndKPAlvhPTN0APTvxEFUtWSSLNb', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-23 21:16:15', '2021-05-23 21:16:15', 0),
+(903, 68, '2021-05-24 13:31:44', '2021-05-24 13:31:44', '::1', 'login', 'czSAmbuyaYwEa2THx8OtDkAUnamGf69zRNNXQ6FOk7OazVgKXVmQL9oXMTlEc4VFaCWdHBsmEZwqtNP5VCIrPn1TJEoGpCDsktti', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-24 21:31:44', '2021-05-24 21:31:44', 0),
+(904, 68, '2021-05-31 10:32:53', '2021-05-31 10:32:53', '::1', 'login', 'Yc3XstyXiEt9YMOMp1OojWV7o23bGhjTzTGsM4YllocNNhpfR6AzmDUHPo1swFlXFBEAOqtxDy5Tj3LI2xKAC1LOqT3hsnkBNDsS', 'Windows 10', 'Chrome 90.0.4430.212', '2021-05-31 18:32:53', '2021-05-31 18:32:53', 0),
+(905, 68, '2021-05-31 16:47:26', '2021-05-31 16:47:26', '::1', 'login', 'FQEXiLnEAoxyagmbDbmX3cIA77MirBqUTzOu4ezTaCW92vuPMtEEE9yy6Y6ISBO6WSOXddYNTwQkFCvr71EHNuXcXK1ubPvFiPpi', 'Windows 10', 'Chrome 90.0.4430.212', '2021-06-01 00:47:26', '2021-06-01 00:47:26', 0),
+(906, 68, '2021-05-31 17:19:47', '2021-05-31 17:19:47', '::1', 'login', 'srUh5B4ibV0HCiNiiriWycqB7eE7oNhbOX0WhejFTA8YmkJqQkbymtK7i4Qv8Amrka1kPnLBUaVYhxLkQVvV9TBiC6SG3pYdtwhV', 'Windows 10', 'Chrome 90.0.4430.212', '2021-06-01 01:19:47', '2021-06-01 01:19:47', 0),
+(907, 30, '2021-05-31 17:31:20', '2021-05-31 17:31:20', '::1', 'login', 'MAlltIDnUGmg1FvAJI9wMTGSEU6SbJhoAvnL31RvC4pjhtqM8quBNxBvLCi2yk2OboszKKdwiY5g3TYx9FUY5dhIXqnd85tJw73k', 'Windows 10', 'Chrome 90.0.4430.212', '2021-06-01 01:31:20', '2021-06-01 01:31:20', 0),
+(908, 234, '2021-06-01 03:01:00', '2021-06-01 03:01:00', '::1', 'login', 'ti90oacjvcEKjUmxpmO8bXOEHPgwN1DWLOcqu3MSYs63v3oLE8uVJD8M2n3SGJJylCQY4vGkw4KNZI6K8YbDdTRrc12lJaEZYG3I', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:01:00', '2021-06-01 11:01:00', 0),
+(909, 234, '2021-06-01 03:01:11', '2021-06-01 03:01:11', '::1', 'login', 'RKTMn0mq60Q0b3vk1lgx8Y84c3SKaWoNqOgAilkCx3FQ6jIBb6g4pjA5mRUhu0yYCAFjI2iqAlFVfSIEcLiv35dL5xwlPPX7U5eh', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:01:11', '2021-06-01 11:01:11', 0),
+(910, 234, '2021-06-01 03:18:18', '2021-06-01 03:18:18', '::1', 'login', 'rBPrKpYlpUVF7tkoetJfBdEWmWmdPjOB4QrTOJFJJWdwINlyn1TpcNoAn07ZWLT3OMWonoZwOgGAKyuEIXsOXzbS0NFl4SDRoy7Q', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:18:18', '2021-06-01 11:18:18', 0),
+(911, 68, '2021-06-01 03:21:30', '2021-06-01 03:21:30', '::1', 'login', 'zZQ05xMT8HtrRBOb50YRjV7YdfGMiDkxA8XPJczRCklsI4zNCNnSznjJ9lGEdC5ZSscuS6OXSvHtmlmPoXWY9ec0TxjvGm2xDK3W', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:21:30', '2021-06-01 11:21:30', 0),
+(912, 234, '2021-06-01 03:22:35', '2021-06-01 03:22:35', '::1', 'login', 'beBBVTPTh1lfOtynejgXJHDr7nIIW3aq5vMX3qLS9zwKD1YAyMJ8T5oYzbn95GJEM0CWq95GpFPXf7rkQ8XwCGfxxtinfHVa3iaa', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:22:35', '2021-06-01 11:22:35', 0),
+(913, 68, '2021-06-01 03:32:20', '2021-06-01 03:32:20', '::1', 'login', 'xK9A2QcIhTnE9N6fKHljYEFsbzHqI3zS1VHryiVAU1Yxj6EdF5Z2UsgBAA1zphQhToTmsujM5ymuJkfdlk4pqigNmcsTnaYGxo4k', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:32:20', '2021-06-01 11:32:20', 0),
+(914, 234, '2021-06-01 03:33:26', '2021-06-01 03:33:26', '::1', 'login', 'YgqjMA5ksNPVslZM8ebgRPYyjh6DlS3ZAcb0DhrOHjazuA60rpnKyfkw160F78VWyxn88lF37akCVBsBuKWhMapWwM3rGgO09U27', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:33:26', '2021-06-01 11:33:26', 0),
+(915, 237, '2021-06-01 03:36:08', '2021-06-01 03:36:08', '::1', 'login', 'qirIWRC5WpnvNUyzFpbqXMahLvigBvl9usXZyMoVaOPnrRbFwLqy5C9DsFk3xunoPqZOf8G0fBCskvzv0bXK96YVwncZQbWoNSif', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:36:08', '2021-06-01 11:36:08', 0),
+(916, 237, '2021-06-01 03:43:43', '2021-06-01 03:43:43', '::1', 'login', 'MxG3OXWpRqKgSNiLnQ7GTz75CGyIpaMwCXHdyupl4dnuju5YjoBzjJJrAfshzBTDHcOo1TXKntmKCr2830IRQs5KBfjmsRHXxBiv', 'Mac OS X', 'Chrome 90.0.4430.212', '2021-06-01 11:43:43', '2021-06-01 11:43:43', 0),
+(917, 237, '2021-06-12 06:04:38', '2021-06-12 06:04:38', '::1', 'login', 'LfdQGInFRM8dbXJWL8ZoTQsodCGVOufVU5oEnb0V2OngGEgU7jZOvae6KLVXR8Rl8GLQgIF8iOmwlMIxYT8vUxPJGd3KtXZXjUqr', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:04:38', '2021-06-12 14:04:38', 0),
+(918, 237, '2021-06-12 06:05:22', '2021-06-12 06:05:22', '::1', 'login', 'VabEucLmI65anRfalIiw8cn28Dqbh3bcd29gfUmm9h8GJ7QUaanK7xYxFyphWiAgIgGpMwzt7AQimJUfRabB6FLsmG0p0Wu0pszD', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:05:22', '2021-06-12 14:05:22', 0),
+(919, 237, '2021-06-12 06:05:50', '2021-06-12 06:05:50', '::1', 'login', '7c8LF3YFZYosZuaCZOMlHvN6GFYp2LiWJ8OQJfXGUYEloMJWO7ZiBRdV3IY45wvYDS1U9zVtwhG1SVYrFqEU2HQH5Ne4zuORCg8g', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:05:50', '2021-06-12 14:05:50', 0),
+(920, 237, '2021-06-12 06:06:37', '2021-06-12 06:06:37', '::1', 'login', '8Kf3uTj5SU0S6NLkr5zu6n64hWhwWCOV1H6FtXexmtBVIMBTwMBAh6dSy2dHO5z77lXpxiXSgWLhjEJaL3mEfsvidtyEx9eQEYjj', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:06:37', '2021-06-12 14:06:37', 0),
+(921, 237, '2021-06-12 06:26:10', '2021-06-12 06:26:10', '::1', 'login', 'MVBjQBMgepuAPxS0matho0dSQMSXrkA8uJ3nYWcBqW6ujUKlwBOhffcJc1BiV8TGYn15L0cS2ZFUXLN9GUDE1izqfE4fgWbrvSuS', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:26:10', '2021-06-12 14:26:10', 0),
+(922, 237, '2021-06-12 06:27:12', '2021-06-12 06:27:12', '::1', 'login', '8qG7nsJHvXPlSNZqVIpvp2qYIhhGrtkLsbRQDcRjs04fYOI3UfayHaSfYGqBNQoJ4XLkW9IYNwSW0rdnQ3Wp4JristBSdln9e8Vy', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:27:12', '2021-06-12 14:27:12', 0),
+(923, 234, '2021-06-12 06:27:45', '2021-06-12 06:27:45', '::1', 'login', 'vzsfOLhkSvkCU6AKevwd79T6zuwxe8qJimxpIs1cCWIpNkm6tTvrTHU1IXrEPpYlPevW3NJHkDEIfatARSK6t6m60aOQn03wRoi6', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:27:45', '2021-06-12 14:27:45', 0),
+(924, 237, '2021-06-12 06:30:40', '2021-06-12 06:30:40', '::1', 'login', '0whK4FOl9MX4YE9ZLF5l89SUALUdUXsDSgvTZ8AG8o0uHRDII0m9BMHBJeE1r3qPpsD9lnEGXTBg7ZqHE03V33AWDWRb0VEkCIu2', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:30:40', '2021-06-12 14:30:40', 0),
+(925, 234, '2021-06-12 06:32:46', '2021-06-12 06:32:46', '::1', 'login', 'a4x5LdrxHHjxhilarU6zqCMi5D5YOdGjCM2HCH5mfJHFiV07jLu4K6a7fLY81E47qe8Li0SUdfk5RBS8G98Xn9PyUfyt42vIRQE1', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:32:46', '2021-06-12 14:32:46', 0),
+(926, 237, '2021-06-12 06:58:30', '2021-06-12 06:58:30', '::1', 'login', 'T5R8RZ97C8iPgeWzMqOGaAMeaTHNOxYdvzAUYiSE3u20FaBCbJNORJIUtzQVAqpmFlAItSNZolmBW7jIqAQbd2WrIIR6uOHEeuWX', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:58:30', '2021-06-12 14:58:30', 0),
+(927, 234, '2021-06-12 06:59:24', '2021-06-12 06:59:24', '::1', 'login', 'Cie1SJhSAWuj5Pb93ffrSCJEWLEAm20tmYeY2Tw8HPwOcqIqhA72tZeLIv3NeBm3MNIbgypV70hjSZTji5mZvVCcRFOKD9bxs4zR', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 14:59:24', '2021-06-12 14:59:24', 0),
+(928, 237, '2021-06-12 09:04:31', '2021-06-12 09:04:31', '::1', 'login', 'GZnPkyxz0cP4d4n7VG1pZJ0BnPQ2SXhE52LI4GEBuUyDX2AHk8FAECIsdduBRfrPgDIQ5kORMOmq3WbTDyily5X1kq3TqaKcfnCx', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 17:04:31', '2021-06-12 17:04:31', 0),
+(929, 234, '2021-06-12 09:22:26', '2021-06-12 09:22:26', '::1', 'login', '1ylCA2tj6CT1atVniFKDFjDO0clRjzjAbTsNqnW62w3jfyKvWfEFn3TpaU0URqodri1fUkfN553W4f1JJxpkUFATnYehdrgh4e6u', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 17:22:26', '2021-06-12 17:22:26', 0),
+(930, 237, '2021-06-12 12:10:13', '2021-06-12 12:10:13', '::1', 'login', 'iivYlH0sJszn316T7p8ZcmLtX7Hbj90hIuNpn6yZmfFYP4JuhVODolBTNPRyouqhjMrVzm3Qzetz8gBUHlIp9Kvn6BZ7ouxTZvRr', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 20:10:13', '2021-06-12 20:10:13', 0),
+(931, 234, '2021-06-12 12:46:03', '2021-06-12 12:46:03', '::1', 'login', 'Oija9wl2zE87XQgBizC7rRLkgvKcInU92zBcrMB8F3VHLbTsbaO96kAJiQWXlfB0rMw2mrHOrZusNAFJgLikPoXa7IdGIzWBtKVj', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 20:46:03', '2021-06-12 20:46:03', 0),
+(932, 237, '2021-06-12 13:37:15', '2021-06-12 13:37:15', '::1', 'login', 'CP6UYZd8QiHwunFRQS9tdbIM66gj0AnpyjZX4RoiEWC2wZFvSYOIPROBtL3DoJRtdDeXe5fdXL1bfc5ID7be8hCZ31jLl3hT03eL', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 21:37:15', '2021-06-12 21:37:15', 0),
+(933, 234, '2021-06-12 14:06:56', '2021-06-12 14:06:56', '::1', 'login', 'AzNPMJV9mMfDCH9jKviobmdLE9P5jeXKZdDglKErdHZrIzPS3IEe0RYoXZJ7fwrOxd33bKo5FPHnMEWaosa3u5UNr9Ffn7nFh5EE', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 22:06:56', '2021-06-12 22:06:56', 0),
+(934, 69, '2021-06-12 14:15:32', '2021-06-12 14:15:32', '::1', 'login', '3fnm2AjeIr5YSSDMwSl6UpNG3qNx3ARcRDUMwX2a0eMocH5bHZaH09aE9K0mVsc87QTi5eRhRXNRHqvlGDMSyujqZQ6XicgsCe8c', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 22:15:32', '2021-06-12 22:15:32', 0),
+(935, 234, '2021-06-12 14:17:40', '2021-06-12 14:17:40', '::1', 'login', 'YZTmUtG5tcY74E6dkDLy9Psci2DDkIdiyiEzUOZL9bAlENLLa61I85fnVhFs6bV6FUGzrkaW5m0rhglh8AsyHX48eD6cq8qDhjgl', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 22:17:40', '2021-06-12 22:17:40', 0),
+(936, 234, '2021-06-12 15:47:22', '2021-06-12 15:47:22', '::1', 'login', 'WR42kRvtZ4078SROEtKeChZzTOCyGx2H0ooAJIKbiDVYx7dD6KvvjDsN096CJfjc23NUTTzX579d9n4eWudVvWgcl96YEXHTOBJ2', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-12 23:47:22', '2021-06-12 23:47:22', 0),
+(937, 237, '2021-06-13 08:05:18', '2021-06-13 08:05:18', '::1', 'login', 'MGpNK00fWXQcf68NxAgxgM3kbmhxYitbbqh78kXSvKO8n8FyBifSbdDtx6vuRvvDOKbFQrzXKPz74SmZjvARd31neAK49lxxMUC2', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 16:05:18', '2021-06-13 16:05:18', 0),
+(938, 234, '2021-06-13 08:13:04', '2021-06-13 08:13:04', '::1', 'login', 'Hu0mXDHaCA7DAp26pjIzXGjeSKExwIwAxE94vu8mSBfFPxDVIIwYsNcE8D9TakhwYxPApteVUjIlKmATS5k9a5Xxup9rfSECmSQo', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 16:13:04', '2021-06-13 16:13:04', 0),
+(939, 234, '2021-06-13 09:15:25', '2021-06-13 09:15:25', '::1', 'login', 'LAIDrVyWirDklFzzzxgIT8bANxHKpymv23otyzuTsXOJ5k0RbF3QPV7fpwwFxBG9LBcww4fHSaucMFX0JLUSSWDVwHFtLvYXUbRD', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 17:15:25', '2021-06-13 17:15:25', 0),
+(940, 237, '2021-06-13 09:42:44', '2021-06-13 09:42:44', '::1', 'login', 'StJ8OtD1tsU2PGEyKUbMKEPkyY3zdGfUPxxVw5BfBCtkMtizVloFeZr6dYZFbOperdSnkaDqsMlzJiA8U8ZeOyjRGpRT4VGaINcG', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 17:42:44', '2021-06-13 17:42:44', 0),
+(941, 234, '2021-06-13 10:02:00', '2021-06-13 10:02:00', '::1', 'login', 'SqKM8Vwi5B8FKsAFkUb6qRjwbmSSqQZauC2FUlFVYEuyrcD9qa3XcwDJ6zIaHnqSn4pmrq2RMu4GDxzkwiVlEE2wbhhEBKOnfqCq', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 18:02:00', '2021-06-13 18:02:00', 0),
+(942, 234, '2021-06-13 10:22:14', '2021-06-13 10:22:14', '::1', 'login', 'l7KDMF5IpYQSS4e0gdpQIiaZjKmFukCU8vrWOhsxbf4GY3pUPMHwgdXpfOkORD6FAxBJTUNwJ8ma17H1wHymdNAjIX7bOdK60jAb', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 18:22:14', '2021-06-13 18:22:14', 0),
+(943, 237, '2021-06-13 15:02:56', '2021-06-13 15:02:56', '::1', 'login', 'fgpxCNqu1nivMWHP5rpeWZ1gn2tGmpC1aKPc0a1WhNGtgf6yYwejJ4owKgLEvU6DlvHW4tmQ6DkZCrc5ex8xVwu2xSeen0ier4gV', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-13 23:02:56', '2021-06-13 23:02:56', 0),
+(944, 237, '2021-06-14 08:42:41', '2021-06-14 08:42:41', '::1', 'login', 'BcDmLy0FNxVlL7t2DKpAFF6Hq4925fGmy3vDfglsMbstVaLlRFr5Hq1cF39Y71OznqSDZovjvUXZuYcVrlZHI37ElJMTA8GGGUlK', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-14 16:42:41', '2021-06-14 16:42:41', 0),
+(945, 234, '2021-06-14 09:49:52', '2021-06-14 09:49:52', '::1', 'login', 'ELE4A5rx8m2ggx7CDvBxKyxtwZPxCbFxp8pP4PvVUdTM5cNn1eyCYJA0tPqZFXYJJoaftf0UpGZ7dXFeKSmfpoWVcAhqsCgwAIZj', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-14 17:49:52', '2021-06-14 17:49:52', 0),
+(946, 234, '2021-06-14 10:18:34', '2021-06-14 10:18:34', '::1', 'login', 'APE3VFM50z7EMSa6cYPB1R45Iq1qQQ2Uu9ynXO5RXmsklh6z1EwVQRgaVdyE7homHoKvEg8CedOuEdT6t69rThiiv0wFWwQL0hyG', 'Mac OS X', 'Chrome 91.0.4472.101', '2021-06-14 18:18:34', '2021-06-14 18:18:34', 0);
 
 -- --------------------------------------------------------
 
@@ -814,9 +972,9 @@ CREATE TABLE `users` (
   `grade_level` int(11) NOT NULL,
   `contact_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `username` varchar(100) DEFAULT NULL,
+  `avatar_url` text NOT NULL DEFAULT '/public/images/avatars/hacker.png',
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `avatar_url` text DEFAULT NULL,
   `created_on` datetime NOT NULL DEFAULT current_timestamp(),
   `is_active` tinyint(4) DEFAULT 1,
   `is_deleted` tinyint(1) DEFAULT 0,
@@ -827,25 +985,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `student_num`, `first_name`, `last_name`, `role`, `grade_level`, `contact_num`, `username`, `email`, `password`, `avatar_url`, `created_on`, `is_active`, `is_deleted`, `updated_on`) VALUES
-(34, '123125135', 'asdasdasd', 'asdasdad', 2, 11, NULL, NULL, 'lprosales@up.edu.ph', '$2y$10$JlU07TGPYutWVdrcTfnnIebW0.yNuj/IYrnfVsNdfaenG0Q/GDCEC', '/public/images/avatars/hacker.png', '2021-04-03 05:50:41', 1, 0, '2021-05-05 15:23:41'),
-(35, '211212456', 'asdasd', 'snqkwe', 2, 9, '09177788999', 'asdasd', 'hsj@up.edu.ph', '$2y$10$XZ9/1mEpEPULE2.QUSXtnuMcdqyP0pYFfUHNa8ayjhxnbwsqbLe/y', '/public/images/avatars/hacker.png', '2021-04-03 08:18:43', 1, 0, '2021-05-05 15:23:41'),
-(36, '', 'asdasd', 'asdsadasd', 1, 0, '09123456788', 'asasas', 'sd@up.edu.ph', '$2y$10$14I/NjC0zYkhuOn8V11XXeiPAwAq0U3HVAJJ1Hp.ymjBRx8BGJzD6', '/public/images/avatars/soldier.png', '2021-04-03 08:19:16', 1, 0, '2021-05-22 16:37:56'),
-(41, '1231242151', 'adasda', 'asdadas', 2, 9, '09123123123', 'sfgefa', 'asdq@up.edu.ph', '$2y$10$ulVH4B8X3BdVW7X4ao8X/O2aOXaN2jxxGoBGlhnxSF/hgJBbojVh.', '/public/images/avatars/hacker.png', '2021-04-03 09:27:12', 1, 0, '2021-05-05 15:23:41'),
-(48, '2314125121', 'bcvnvnfg', 'sftyrtye', 2, 8, '09120568809', 'sdsadadasd', 'fdw@up.edu.ph', '$2y$10$WQrNYAUtah8oRIzWCBcE3u3ulERyKIiMcVTY7DBddf9S02lpI/i.O', '/public/images/avatars/hacker.png', '2021-04-08 09:40:52', 1, 0, '2021-05-05 15:23:41'),
-(49, '', 'sdasfghe', 'sdfsasda', 1, 0, '09111111111', '', 'ssa@up.edu.ph', '$2y$10$7fJr0dBiDY6z404mesfhl.S8mJPL5W4rMHRtb9KJR7uq8MZLJOcJ.', '/public/images/avatars/hacker.png', '2021-04-08 23:05:22', 1, 0, '2021-05-05 15:23:41'),
-(50, '', 'sdkja', 'wqnsma', 1, 0, '09222222222', '', 'wwee@up.edu.ph', '$2y$10$xoIHBtvKGLHpFnVvqzRw4eR3BD0reoApONoZxvIEt0sJH5BXEacu2', '/public/images/avatars/hacker.png', '2021-04-12 14:40:46', 1, 0, '2021-05-05 15:23:41'),
-(51, '2135573531', 'asfxcxbx', 'xsrqer', 2, 7, '09333333334', 'asfafweqwe', 'bnbn@up.edu.ph', '$2y$10$0B3jmJ0ozhppY1ngqcUIU.XpY/E/Lb/4W0lUE6pHvvA1GIqCfzWVi', '/public/images/avatars/hacker.png', '2021-04-12 14:42:11', 1, 1, '2021-05-05 15:23:41'),
-(52, '', 'asda', 'asdadasd', 1, 0, '09444444444', NULL, 'cvc@up.edu.ph', '$2y$10$O/.iOoNqmD03EF8g/6hmre2iZIVeNJuQekOL1i7VzaCGNQqZ9qS3i', '/public/images/avatars/hacker.png', '2021-04-12 14:45:54', 1, 0, '2021-05-05 15:23:41'),
-(53, '23155124132', 'sdasd', 'asda', 2, 11, NULL, NULL, 'sdas@up.edu.ph', '$2y$10$5RC7ANRAjcUvRVjG9/Dhl.H8aFOHlnpgAaQsBQLoE9fi5ypbjb/u.', '/public/images/avatars/hacker.png', '2021-04-12 14:49:09', 1, 0, '2021-05-05 15:23:41'),
-(54, '1314135151', 'adsadasd', 'asdasd', 2, 11, NULL, NULL, 'gfdgdfg@up.edu.ph', '$2y$10$nIlg3mgWJ23prSYcVYDm7uwU2nOIzHLSIJrunTok3/ZmAxZ9bMKCS', '/public/images/avatars/hacker.png', '2021-04-12 14:54:33', 1, 0, '2021-05-05 15:23:41'),
-(55, '', 'asdasd', 'asdasd', 1, 0, '09555555555', NULL, 'vcb@up.edu.ph', '$2y$10$691j7pDrC04X5rWInU8q8uyjrJjWAra//rH1ZGihvyOhYW.7c6U86', '/public/images/avatars/hacker.png', '2021-04-12 14:55:18', 1, 0, '2021-05-05 15:23:41'),
-(56, '131515353', 'asdads', 'asdasdas', 2, 11, NULL, NULL, 'bv@up.edu.ph', '$2y$10$chDUOuZZsUnkhKI.PTJ8G.8XMt9kaIveI/i5LCNUaqUUkz1ETvx2.', '/public/images/avatars/hacker.png', '2021-04-12 14:57:15', 1, 0, '2021-05-05 15:23:41'),
-(58, '321212551', 'Crispaul John', 'Rubi', 2, 10, '09444444445', 'crubib', 'cbrubi@up.edu.ph', '$2y$10$YHTa.eyunIb/44Pg09S6.OXASgsazAZBDLXJF/SrBZhRbnEApuai2', '/public/images/avatars/ninja.png', '2021-04-20 11:39:23', 1, 0, '2021-05-11 10:20:10'),
-(59, '', 'ASDADSasdasd', 'asdasda', 1, 0, '09999999999', NULL, 'asdsa@up.edu.ph', '$2y$10$.3OLvZ0mVkT3.DVMnApY6u2VjzYJHKQg1H.IG4jpYdrV9yGasT64S', '/public/images/avatars/hacker.png', '2021-05-07 14:34:23', 1, 0, '2021-05-07 14:34:23'),
-(60, '', 'hghghg', 'bnbnbbn', 1, 0, '09888888888', NULL, 'lklklk@up.edu.ph', '$2y$10$R3WJMHNRKnxqVsWuxSU3A.21hUIUXy9.Nh9EAjBIHMZMESeqZzPGS', '/public/images/avatars/hacker.png', '2021-05-07 14:38:20', 1, 0, '2021-05-07 14:38:20'),
-(61, '12313123131312', 'dragon', 'nest', 2, 10, NULL, NULL, 'dn@up.edu.ph', '$2y$10$NoocJ7ZgWsaCKCOvc9s5M.6hd7Yc/1FNj.MsKP7F2rYszz21biZDS', '/public/images/avatars/hacker.png', '2021-05-18 15:25:18', 1, 0, '2021-05-18 15:25:18'),
-(62, '3453346322', 'mr', 'krabs', 2, 8, NULL, NULL, 'spongebob@up.edu.ph', '$2y$10$gx/Uc1gdgorS/LpCLQ98ZulPBNUZAGPHsSxWeMC7CwNuBFumb9wSq', '/public/images/avatars/hacker.png', '2021-05-18 15:34:37', 1, 0, '2021-05-18 15:34:37');
+INSERT INTO `users` (`id`, `student_num`, `first_name`, `last_name`, `role`, `grade_level`, `contact_num`, `username`, `avatar_url`, `email`, `password`, `created_on`, `is_active`, `is_deleted`, `updated_on`) VALUES
+(30, '201804276', 'Rosalie', 'Razonable', 1, 8, '09770194572', 'rsraz123', '/public/images/avatars/soldier.png', 'rosalie@up.edu.ph', '$2y$10$Tz/8dMSrarOuJBPrwcaOCeaRw1MvoJU.mog2ePh3zoXHpDJIqELCK', '2021-03-22 04:46:02', 1, 0, '2021-06-01 10:41:09'),
+(68, '112233445', 'Student', '1', 2, 12, '09112233445', 'user_student', '/public/images/avatars/businesswoman.png', 'ssd@up.edu.ph', '$2y$10$/GJf6VvoSJ7EFKYweE974uO6JQHPlRgvmmpoJ.CRYlZprWrCo3aqe', '2021-05-04 15:07:54', 0, 1, '2021-06-12 20:29:38'),
+(69, '012938475', 'Student', '2', 2, 12, NULL, NULL, '/public/images/avatars/hacker.png', 's@up.edu.ph', '$2y$10$iC2otEe365m2im4hkcfgQ.5T16YuTXNZgCAJI9sLsYZvvLonJBne6', '2021-05-06 18:32:52', 1, 0, '2021-06-12 22:15:15'),
+(73, '012938470', 'Studentt', '3', 2, 11, NULL, NULL, '/public/images/avatars/hacker.png', 's1@up.edu.ph', '$2y$10$oV89ScnbYFjphCnKLnkDH.01kE0h50zQhOSA64CwR/soSGGRskpoa', '2021-05-06 18:41:01', 1, 0, '2021-06-01 10:15:41'),
+(77, '012938472', 'Student ', '4', 2, 7, NULL, NULL, '/public/images/avatars/hacker.png', 's2@up.edu.ph', '$2y$10$CA/gVQf9emH33gydkm7n2OX5NRhf05f2m22CimpFbk/bgiM9hqU8y', '2021-05-06 18:54:14', 1, 0, '2021-06-01 10:15:51'),
+(105, '012938474', 'Student', '5', 2, 7, NULL, NULL, '/public/images/avatars/hacker.png', 's3@up.edu.ph', '$2y$10$z57XG2nxVPmMrN8IWiGR5eGpJhc9cUsk4F4Dqy0I53xBBAw9crnsG', '2021-05-07 07:59:44', 1, 0, '2021-06-01 10:16:15'),
+(138, '082030474', 'Student', '6', 2, 11, NULL, NULL, '/public/images/avatars/hacker.png', 's5@up.edu.ph', '$2y$10$fB4KE63yVyii2S9s.0W/oOiB5gAGTAAaLlr4pWTy1Fmyw/ct2uWEG', '2021-05-07 08:31:19', 1, 0, '2021-06-01 10:16:19'),
+(234, '', 'Admin', 'Sample', 1, 0, '09111222333', 'adminsample', '/public/images/avatars/rapper.png', 'admin@up.edu.ph', '$2y$10$/GJf6VvoSJ7EFKYweE974uO6JQHPlRgvmmpoJ.CRYlZprWrCo3aqe', '2021-06-01 10:50:07', 1, 0, '2021-06-01 11:24:30'),
+(235, '2018-02222', 'Sample', 'Student', 2, 10, NULL, NULL, '/public/images/avatars/hacker.png', 'sd@up.edu.ph', '$2y$10$GArVvfjAgVmHNl7psmT8s.O3fgXfHAjxnrglEOBQbzQkLgKob.F.G', '2021-06-01 11:27:13', 1, 0, '2021-06-01 11:27:13'),
+(237, '2018122222', 'Crispaul', 'Rubi', 2, 11, '09111222333', 'crubi', '/public/images/avatars/hacker.png', 'cbrubi@up.edu.ph', '$2y$10$iC2otEe365m2im4hkcfgQ.5T16YuTXNZgCAJI9sLsYZvvLonJBne6', '2021-06-01 11:35:27', 1, 0, '2021-06-14 16:45:30');
 
 --
 -- Indexes for dumped tables
@@ -1019,13 +1169,13 @@ ALTER TABLE `emails`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `eval_answers`
 --
 ALTER TABLE `eval_answers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 
 --
 -- AUTO_INCREMENT for table `eval_question`
@@ -1043,7 +1193,7 @@ ALTER TABLE `eval_section`
 -- AUTO_INCREMENT for table `eval_sheet`
 --
 ALTER TABLE `eval_sheet`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `factories`
@@ -1055,7 +1205,7 @@ ALTER TABLE `factories`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1109,13 +1259,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=894;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=947;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

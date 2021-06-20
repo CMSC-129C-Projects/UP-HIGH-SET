@@ -3,7 +3,6 @@ $(function() {
         alertify.alert('Notification', 'Profile updated successfully.', function() {
             window.location.href = BASE_URI + '/profile/student/';
         });
-        // alertify.alert().set('title', 'Notification').set('message', 'Profile updated successfully.').showModal('ajs-custom');
     }
 
     // var $bgModal = $('#bg-modal');

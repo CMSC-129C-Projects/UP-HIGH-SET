@@ -60,12 +60,14 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
         $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
     }
 
-    public function admin($status = null)
+    public function admin()
     {
         $role = $_SESSION['logged_user']['role'];
 
@@ -102,6 +104,8 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
         $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);

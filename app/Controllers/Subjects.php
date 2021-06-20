@@ -86,7 +86,7 @@ class Subjects extends BaseController
         ];
 
         $data['validation'] = null;
-        $data['message'] = null;
+        $data['status'] = null;
         $data['profs'] = $this->fetchProfessors();
 
         $rules = [
@@ -106,14 +106,16 @@ class Subjects extends BaseController
                 ];
 
                 if($subjectModel->insert($values)) {
-                    $data['message'] = true;
+                    $data['status'] = true;
                 } else {
-                    $data['message'] = false;
+                    $data['status'] = false;
                 }
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
         return view('subjects/addSubjects', $data);
     }
 

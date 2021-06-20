@@ -4,11 +4,11 @@ $(function() {
     }
 
     if (CURRENT_URI.includes('update/add') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
-        if ($('#status').attr('data-status') === 'true') {
-            displayAlertify(CURRENT_URI, 'User has been added. Email sent successfully.');
-        } else {
-            displayAlertify(CURRENT_URI, 'An error has occurred.');
-        }
+        displayAlertify(CURRENT_URI, 'User has been added. Email sent successfully.');
+    }
+
+    if (CURRENT_URI.includes('subjects/add_subject') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Subject added successfully.');
     }
 
     // var $bgModal = $('#bg-modal');
@@ -30,8 +30,14 @@ $(function() {
     // });
 });
 
-function displayAlertify(url, message) {
-    alertify.alert('Notification', message, function() {
-        window.location.href = BASE_URI + url;
-    });
+function displayAlertify(url, successMessage) {
+    if ($('#status').attr('data-status') === 'true') {
+        alertify.alert('Notification', successMessage, function() {
+            window.location.href = BASE_URI + url;
+        });
+    } else {
+        alertify.alert('Notification', 'An error has occurred.', function() {
+            window.location.href = BASE_URI + url;
+        });
+    }
 }

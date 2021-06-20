@@ -28,7 +28,7 @@ body {
   left: 0;
   padding: 2rem 4rem;
   z-index: 1000;
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background:#7b1113;
   position: sticky;
 }
 
@@ -67,7 +67,8 @@ body {
 #register .nav {
   margin: auto;
   /* width: 700px; */
-  width: 60%;
+  width: 61.4%;
+  
 }
 
 #register .nav h2 {
@@ -214,6 +215,15 @@ body {
   top: 3rem;
   left: 10%;
 }
+#register form .inputBox h4 {
+  font-size: 1.4rem;
+  /* position: absolute; */
+  text-align: right;
+  float: right;
+  margin-right: 10%;
+  position: relative;
+  margin-top: -40px;
+}
 
 #register form input[type="submit"],
 button#cancel,
@@ -319,15 +329,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-#register .nav input[type="button"]:focus,
-.student.focus,
-.admin.focus {
-  background-color: #fff !important;
-  color: #7b1113 !important;
-  text-transform: uppercase !important;
-  font-size: 1.2rem !important;
-}
-
 /* .student.focus {
     margin-left: 2px !important;
   } */
@@ -363,7 +364,7 @@ form.edit {
 }
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background: #7b1113;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -448,7 +449,7 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
@@ -507,6 +508,9 @@ a:focus {
 }
 #sidebar ul.components ul.CTAs a:hover {
   background-color: none;
+}
+#sidebar .list-unstyled.CTAs.components .evaluate a:hover{
+  background-color: transparent !important;
 }
 
 #sidebar ul p {
@@ -573,7 +577,8 @@ a.article:hover {
 
 .navIcon .navbar-header i {
   color: #7b1113;
-  font-size: 30px;
+  font-size: 45px;
+  margin-left: 1rem !important;
 }
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;
@@ -628,7 +633,7 @@ a.article:hover {
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
   color: #ffff;
-  background: #7b1114;
+  background: #7b1113;
 }
 
 /* ---------------------------------------------------
@@ -732,6 +737,13 @@ a.article:hover {
   background: #014421;
 }
 
+#register .nav .active input[type="button"] {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -744,4 +756,7 @@ a.article:hover {
     margin-left: 0;
     transform: none;
   }
+}
+.tabs .mobiletab{
+  float: left;
 }

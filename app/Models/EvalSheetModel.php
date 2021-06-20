@@ -73,4 +73,46 @@ EOT;
 
     return $result[0]->students_evaluated;
   }
+
+  public function get_eval_sheet_dets($eval_sheet_id)
+  {
+    $db = \Config\Database::connect();
+    
+    $sql = <<<EOT
+SELECT s.name as 'subject', CONCAT(f.first_name, ' ', f.last_name) as prof
+FROM eval_sheet as es
+LEFT JOIN subjects as s
+ON es.subject_id = s.id
+LEFT JOIN faculty as f
+ON f.id = s.faculty_id
+WHERE es.id = $eval_sheet_id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
+
+  public function count_perStatus_perSubject()
+  {
+    $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+SELECT CONCAT(faculty.first_name, ' ', faculty.last_name) as full_name, subjects.name,
+  sum(eval_sheet.status = 'Inprogress') as inprogress,
+  sum(eval_sheet.status = 'Open') as open,
+  sum(eval_sheet.status = 'Completed') as completed
+FROM subjects
+LEFT JOIN faculty
+ON subjects.faculty_id = faculty.id
+LEFT JOIN eval_sheet
+ON eval_sheet.subject_id = subjects.id
+WHERE subjects.is_deleted = 0
+	AND faculty.is_deleted = 0
+  AND eval_sheet.is_deleted = 0
+GROUP BY subjects.id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 }

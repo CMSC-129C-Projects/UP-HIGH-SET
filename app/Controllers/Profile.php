@@ -9,14 +9,14 @@ class Profile extends BaseController
 {
     protected $userModel;
 
-    public function _remap($method)
+    public function _remap($method, $param = null)
     {
         $this->hasSession();
         switch($method)
         {
             case 'student':
             case 'admin':
-                return $this->$method();
+                return $this->$method($param);
                 break;
             default:
                 return redirect()->to(base_url('dashboard'));
@@ -28,7 +28,7 @@ class Profile extends BaseController
         $this->userModel = new UserModel();
     }
 
-    public function student()
+    public function student($status = null)
     {
         $role = $_SESSION['logged_user']['role'];
 
@@ -44,7 +44,7 @@ class Profile extends BaseController
         $data['css'] = addExternal($css, 'css');
 
         $data['validation'] = null;
-        $data['status'] = null;
+        $data['status'] = $status;
         $data['role'] = $role;
         // $data['id'] = $id;
 
@@ -56,6 +56,7 @@ class Profile extends BaseController
                     'avatar_url'  => $this->request->getPost('avatar')
                 ];
                 $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile/student/true'));
             } else {
                 $data['validation'] = $this->validator;
             }
@@ -65,13 +66,11 @@ class Profile extends BaseController
         return view("account_updates/profileUpdate", $data);
     }
 
-    public function admin()
+    public function admin($status = null)
     {
         $role = $_SESSION['logged_user']['role'];
 
         $sessionAdmin = new Admin();
-
-        // print_r($_SESSION['logged_user']['email']);
 
         $sessionAdmin = $this->userModel->asObject('App\Entities\Admin')->where('is_deleted', 0)->where('role', $role)->where('email', $_SESSION['logged_user']['email'])->first();
 
@@ -83,7 +82,7 @@ class Profile extends BaseController
         $data['css'] = addExternal($css, 'css');
 
         $data['validation'] = null;
-        $data['status'] = null;
+        $data['status'] = $status;
         $data['role'] = $role;
         // $data['id'] = $id;
 
@@ -99,7 +98,7 @@ class Profile extends BaseController
                     'email'       => $email
                 ];
                 $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
-                return redirect()->to(base_url('profile/admin'));
+                return redirect()->to(base_url('profile/admin/true'));
             } else {
                 $data['validation'] = $this->validator;
             }

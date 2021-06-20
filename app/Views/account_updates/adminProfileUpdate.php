@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <section class="profileupdate" style="margin: auto; margin-top:50px; martin-bottom:50px;">
+    <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
                 <div class="col-sm-10"><h2>ADMIN NAME HERE</h2></div>

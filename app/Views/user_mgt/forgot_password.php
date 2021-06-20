@@ -2,13 +2,14 @@
 
 <?php $this->section('content'); ?>
 
-  <div class="container-fluid" style="min-height: 100vh">
+  
+<div class="container-fluid" style="min-height: 100vh">
   <div id="ChangePassword">  
     <?php if (isset($validation) != null) { ?>
       <div class="heading text-center" style="padding: 20px;">
         <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
         <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
-            <h2 style=""><?=$validate_error?><h2>
+            <h2 style=""><?=displaySingleError($validation, 'email_fpass')?><h2>
         </div>
         <br>  
         <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Create Another Request</a>
@@ -22,6 +23,7 @@
         </div>  
         <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Create Another Request</a>
       </div>
+<!-- New CHanges -->
 
     <?php } elseif(isset($success) != null) { ?> <!-- email has been set for change -->
       <div class="heading text-center" style="padding: 20px;">

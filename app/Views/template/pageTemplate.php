@@ -24,6 +24,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
+
+    <style>
+      .alertify .ajs-header, .alertify .ajs-footer {        
+        color: #e9dbc1 !important;
+        background-color: #7b1113 !important;
+        margin: 0 !important;
+      }
+
+      .alertify .ajs-commands {
+        margin: 10px 10px 0 0;
+      }
+
+      .alertify .ajs-dialog {
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      .alertify .ajs-body {
+        border-color: #7b1113 !important;
+        color: #7b1113 !important;
+        background-color: #e9dbc1 !important;
+      }
+    </style>
     <?php if(isset($css)):?>
       <?=echoFiles($css);?>
     <?php endif;?>
@@ -81,7 +104,7 @@
                   <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
                 </li>
                 <li>
-                  <a href="#">Monitor Progress</a>
+                  <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
@@ -96,6 +119,13 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
               </ul>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
+              <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="<?=base_url()?>/professors">View Professors</a>
+                </li>
+
+              </ul>
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
@@ -103,6 +133,7 @@
                 </li>
 
               </ul>
+              
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
@@ -120,7 +151,7 @@
           </div>
         </div>
       </div>
-      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+      <div class="wrapper align-items-stretch" id="main" style="height: 109.5">
         <?= $this->renderSection('content');?>
       </div>
     </div>

@@ -62,12 +62,17 @@
                 <div class="col-md-6 half">
                   <div class="form-group">
                     <div class="inputBox uname">
-                      <input type="email" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
+                      <input type="text" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                     </div>
                   </div>
+                 
+                 
+
+                
                 </div>
                 <div class="col-md-6 half">
                   <div class="form-group">
@@ -140,9 +145,10 @@
                     <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                   </div>
                 </div>
+
               </div>
 
-              <div class="row-md-4">
+              <!-- <div class="row-md-4">
                 <div class="mailBox">
                   <div class="inputBox">
                   
@@ -150,14 +156,36 @@
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                   </div>
 
                 </div>
                 
+              </div> -->
+              <div class="row">
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox uname">
+                    <input type="text" name="studEmail" value="<?=set_value('studEmail');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
+                      <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
+                    </div>
+                  </div>
+                 
+                 
+
+                
+                </div>
+                <div class="col-md-6 half">
+                  <div class="form-group" style="margin-left:0%;">
+                  <input type="submit" value="submit">
+                  <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+                  </div>
+                </div>
               </div>
-              
-              <input type="submit" value="submit">
-              <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+             
             </form>
           </div>
         </div>

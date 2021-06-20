@@ -29,7 +29,8 @@
       <div class="heading text-center" style="padding: 20px;">
         <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> Your request has been processed. <h1>
         <div class="alert alert-success" style="padding:30px; border-color: #014421; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
-            <h2 style="">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
+            <img src="<?=base_url()?>/public/success.png" style="width:7em; height:7em;">
+            <h2 style="padding-top:1em;">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
         </div>  
       </div>
 

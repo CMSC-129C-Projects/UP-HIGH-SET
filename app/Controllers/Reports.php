@@ -6,6 +6,7 @@ use \App\Models\EvalSheetModel;
 use \App\Models\EvalAnswersModel;
 use \App\Models\UserModel;
 use \App\Models\SectionModel;
+use \App\Models\SubjectModel;
 
 class Reports extends BaseController
 {
@@ -22,7 +23,72 @@ class Reports extends BaseController
     /**
      * View Progress Per Subject
      */
-    public function progress_per_subject($subject_id)
+    public function report_per_subject($subject_id)
+    {
+        $this->compute_progress_per_subject($subject_id);   
+
+        echo json_encode($ratings);
+    }
+
+    /**
+     * View all reports per faculty
+     */
+    public function report_per_faculty($faculty_id)
+    {
+        $evalAnswersModel = new EvalAnswersModel();
+        $subjectModel = new SubjectModel();
+
+        $subjects_handled = $subjectModel->get_subjects_by_faculty($faculty_id);
+
+        // when displaying, loop through subjects_handled and use the subject id as a key
+        // to check ratings of that subject in "all_ratings" variable
+        $info = $this->get_all_ratings($subjects_handled);
+
+        $all_ratings = $info[0];
+
+        $all_open_ended = $info[1];
+
+        echo json_encode($all_ratings);
+    }
+
+    protected function get_open_ended_per_sub($subject_id)
+    {
+        $evalSheets = $evalSheetModel->collect_eval_sheets($subject->id);
+
+        $all_open_ended = [];
+        foreach($evalSheets as $evalSheet) {
+            $open_ended = $evalAnswersModel->get_open_ended($evalSheet->id, $evalSheet->student_id);
+            
+            $all_open_ended[] = $open_ended[0];
+        }
+        return $all_open_ended;
+    }
+
+    /**
+     * Get all ratings of subjetcs
+     * and open ended
+     * handled by a professor
+     */
+    protected function get_all_ratings($subjects_handled)
+    {
+        $evalSheetModel = new EvalSheetModel();
+        $evalAnswersModel = new EvalAnswersModel();
+
+        foreach($subjects_handled as $subject) {
+            $rating = $this->compute_progress_per_subject($subject->id);
+
+            $all_ratings[$subject->id] = $rating;
+        }
+        // print_r($all_open_ended[3][0]);
+
+        return [$all_ratings, $all_open_ended];
+    }
+
+    /**
+     * Get ratings of each subject
+     * handled by the professor
+     */
+    protected function compute_progress_per_subject($subject_id)
     {
         $sectionModel = new SectionModel();
         $sections = $sectionModel->get_eval_sections_by_type(1);
@@ -31,7 +97,7 @@ class Reports extends BaseController
         $userModel = new UserModel();
 
         $size = $userModel->get_all_students_per_subject($subject_id);
-        $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);        
+        $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);
 
         // Section ID serves as the key
         foreach($sections as $section) {
@@ -52,7 +118,7 @@ class Reports extends BaseController
 
         $ratings = $this->compute_rating($tally, $size);
 
-        echo json_encode($ratings);
+        return $ratings;
     }
 
     /**
@@ -77,7 +143,8 @@ class Reports extends BaseController
     }
 
     /**
-     * Segregate answers
+     * Segregate answers bsdrf on section id..
+     * All answers will belong to the key which is the section id
      */
     protected function tally_answers($answers, $tally)
     {
@@ -108,7 +175,12 @@ class Reports extends BaseController
     }
 
     /** 
+     * AR: Average Rating
+     * WR: Weighted Rating
+     * FR: Final Rating
+     * 
      * Compute Rating
+     * Returns AR and WR, including FR
     */
     protected function compute_rating($tally, $size)
     {

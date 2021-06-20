@@ -1,6 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+
   <div class="container-fluid">
     <div class="heading text-center">
       <h1 style= "padding:4.7rem;">Update Email Content</h1>

@@ -1,6 +1,8 @@
 <?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+  
   <div id="submitModal">
     <div class="modal fade" id="subModal"  role="dialog" position="default">
       <div class="modal-dialog modal-lg">

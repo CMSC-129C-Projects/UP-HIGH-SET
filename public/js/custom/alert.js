@@ -15,6 +15,10 @@ $(function() {
         displayAlertify(CURRENT_URI, 'Email content updated succesfully.');
     }
 
+    if (CURRENT_URI.includes('evaluation/evaluate') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Responses are saved to the database.');
+    }
+
     // var $bgModal = $('#bg-modal');
     // var $modalContent = $('#content-modal');
     // var id = '';
@@ -40,7 +44,7 @@ function displayAlertify(url, successMessage) {
             window.location.href = BASE_URI + url;
         });
     } else {
-        alertify.alert('Notification', 'An error has occurred.', function() {
+        alertify.alert('Notification', 'An error has occurred. Please try again.', function() {
             window.location.href = BASE_URI + url;
         });
     }

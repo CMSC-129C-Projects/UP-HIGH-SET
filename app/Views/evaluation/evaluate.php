@@ -177,7 +177,7 @@
               <div class="row">
                   <div class="buttons tab-content">
                       <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate/<?=$eval_sheet_id?>" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
-                      <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+                      <button type="button" class="btn btn-lg cancel" onclick="window.location.href = BASE_URI + '/subjects/student_subjects'"><i class="bi bi-x-circle"></i> Cancel</button>
                       <button data-toggle="modal" data-target="#subModal" class="btn btn-lg btn-review" type="button"> <i class="bi bi-journal-check"></i> Review</button>  
                   </div>
               </div>

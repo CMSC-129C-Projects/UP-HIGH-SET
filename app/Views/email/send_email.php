@@ -38,10 +38,7 @@
               <option value="verification">Verification</option>
             </select>
             </div>
-            <br><br>  
-            <p style="font-size:13px">Attachment is Optional</p>
-            <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
-            <br><br>
+            <br>
             <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="update">
           </form>
           </div>

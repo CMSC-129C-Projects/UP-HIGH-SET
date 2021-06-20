@@ -47,8 +47,8 @@
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
-                <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                <h3>CITRONELLA</h3>
+                <img class="rounded-cricle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>">
+                <h3><?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
           </div>

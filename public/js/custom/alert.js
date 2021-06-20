@@ -1,8 +1,14 @@
 $(function() {
-    if ($('#status').attr('data-status').length !== 0) {
-        alertify.alert('Notification', 'Profile updated successfully.', function() {
-            window.location.href = BASE_URI + '/profile/student/';
-        });
+    if (CURRENT_URI.includes('profile') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify('/profile/student/', 'Profile updated successfully.');
+    }
+
+    if (CURRENT_URI.includes('update/add') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        if ($('#status').attr('data-status') === 'true') {
+            displayAlertify(CURRENT_URI, 'User has been added. Email sent successfully.');
+        } else {
+            displayAlertify(CURRENT_URI, 'An error has occurred.');
+        }
     }
 
     // var $bgModal = $('#bg-modal');
@@ -23,3 +29,9 @@ $(function() {
     //     }
     // });
 });
+
+function displayAlertify(url, message) {
+    alertify.alert('Notification', message, function() {
+        window.location.href = BASE_URI + url;
+    });
+}

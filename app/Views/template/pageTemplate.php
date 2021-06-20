@@ -194,6 +194,11 @@
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
+        // overried defaults of alertify
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.glossary.ok = "Dismiss";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
     </script>

@@ -315,10 +315,12 @@ class Home extends BaseController
 	{
 		$session_data = [
       'id'            => $user['id'],
-			'name'			    => $user['first_name'],
+			'first_name'		=> $user['first_name'],
+      'last_name'			=> $user['last_name'],
 			'email'			    => $user['email'],
 			'password' 		  => $user['password'],
 			'role'			    => $user['role'],
+      'avatar_url'    => $user['avatar_url'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
       // 'emailVerified' => false,

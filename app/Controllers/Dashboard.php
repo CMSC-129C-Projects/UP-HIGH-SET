@@ -27,10 +27,16 @@ class Dashboard extends BaseController
         return redirect()->to(base_url('verifyAccount'));
     }
 
+    $data = [
+      'avatar_url' => $_SESSION['logged_user']['avatar_url'],
+      'first_name' => $_SESSION['logged_user']['first_name'],
+      'last_name' => $_SESSION['logged_user']['last_name'],
+    ];
+
     if ($_SESSION['logged_user']['role'] === '2') {
-      return view('user_mgt/studentDashboard');
+      return view('user_mgt/studentDashboard', $data);
     } else
-      return view('user_mgt/dashboard');
+      return view('user_mgt/dashboard', $data);
   }
 
   public function logout()

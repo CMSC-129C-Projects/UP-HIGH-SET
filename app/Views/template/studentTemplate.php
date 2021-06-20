@@ -45,8 +45,8 @@
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
-                <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                <h3>CITRONELLA</h3>
+                <img class="rounded-circle" src="<?=base_url() . $avatar_url?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
+                <h3><?=$first_name?></h3>
               </div>
             </div>
           </div>

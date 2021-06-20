@@ -11,6 +11,10 @@ $(function() {
         displayAlertify(CURRENT_URI, 'Subject added successfully.');
     }
 
+    if (CURRENT_URI.includes('send_email') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Email content updated succesfully.');
+    }
+
     // var $bgModal = $('#bg-modal');
     // var $modalContent = $('#content-modal');
     // var id = '';

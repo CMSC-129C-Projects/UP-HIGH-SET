@@ -1,23 +1,7 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-
-<?php if(isset($status)):?>
-    <div id="bg-modal" class="black-modal-email">
-      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-        <div class="mdl-content">
-          <?php if($status):?>
-            <p>Email content updated succesfully</p>
-          <?php else:?>
-            <p>Error on Update. Please try again</p>
-          <?php endif;?>
-          <div class="btn-delete">
-            <button id="dontDelete">Dismiss</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
 
   <div class="container-fluid">
     <div class="heading text-center">

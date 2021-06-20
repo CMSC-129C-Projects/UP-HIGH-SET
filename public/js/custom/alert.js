@@ -1,9 +1,22 @@
 $(function() {
-    if ($('#status').attr('data-status').length !== 0) {
-        alertify.alert('Notification', 'Profile updated successfully.', function() {
-            window.location.href = BASE_URI + '/profile/student/';
-        });
-        // alertify.alert().set('title', 'Notification').set('message', 'Profile updated successfully.').showModal('ajs-custom');
+    if (CURRENT_URI.includes('profile') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify('/profile/student/', 'Profile updated successfully.');
+    }
+
+    if (CURRENT_URI.includes('update/add') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'User has been added. Email sent successfully.');
+    }
+
+    if (CURRENT_URI.includes('subjects/add_subject') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Subject added successfully.');
+    }
+
+    if (CURRENT_URI.includes('send_email') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Email content updated succesfully.');
+    }
+
+    if (CURRENT_URI.includes('evaluation/evaluate') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Responses are saved to the database.');
     }
 
     // var $bgModal = $('#bg-modal');
@@ -24,3 +37,15 @@ $(function() {
     //     }
     // });
 });
+
+function displayAlertify(url, successMessage) {
+    if ($('#status').attr('data-status') === 'true') {
+        alertify.alert('Notification', successMessage, function() {
+            window.location.href = BASE_URI + url;
+        });
+    } else {
+        alertify.alert('Notification', 'An error has occurred. Please try again.', function() {
+            window.location.href = BASE_URI + url;
+        });
+    }
+}

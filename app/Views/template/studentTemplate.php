@@ -23,29 +23,6 @@
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
 
-    <style>
-      .alertify .ajs-header, .alertify .ajs-footer {        
-        color: #e9dbc1 !important;
-        background-color: #7b1113 !important;
-        margin: 0 !important;
-      }
-
-      .alertify .ajs-commands {
-        margin: 10px 10px 0 0;
-      }
-
-      .alertify .ajs-dialog {
-        border: none !important;
-        padding: 0 !important;
-      }
-
-      .alertify .ajs-body {
-        border-color: #7b1113 !important;
-        color: #7b1113 !important;
-        background-color: #e9dbc1 !important;
-      }
-    </style>
-
     <?php if(isset($css)):?>
       <?=echoFiles($css);?>
     <?php endif;?>
@@ -68,8 +45,8 @@
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
-                <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                <h3>CITRONELLA</h3>
+                <img class="rounded-circle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
+                <h3><?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ class Profile extends BaseController
         {
             case 'student':
             case 'admin':
-                return $this->$method($param);
+                return $this->$method();
                 break;
             default:
                 return redirect()->to(base_url('dashboard'));
@@ -28,7 +28,7 @@ class Profile extends BaseController
         $this->userModel = new UserModel();
     }
 
-    public function student($status = null)
+    public function student()
     {
         $role = $_SESSION['logged_user']['role'];
 
@@ -44,7 +44,7 @@ class Profile extends BaseController
         $data['css'] = addExternal($css, 'css');
 
         $data['validation'] = null;
-        $data['status'] = $status;
+        $data['status'] = null;
         $data['role'] = $role;
         // $data['id'] = $id;
 
@@ -56,17 +56,18 @@ class Profile extends BaseController
                     'avatar_url'  => $this->request->getPost('avatar')
                 ];
                 $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
-                return redirect()->to(base_url('profile/student/true'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
         $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
     }
 
-    public function admin($status = null)
+    public function admin()
     {
         $role = $_SESSION['logged_user']['role'];
 
@@ -103,6 +104,8 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
         $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);

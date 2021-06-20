@@ -52,7 +52,6 @@ class Send_email extends BaseController {
     {
       if($this->validate($rules))
       {
-        $data['status'] = 'success';
         $emailModel = new EmailModel();
 
         $q_data = [
@@ -61,7 +60,8 @@ class Send_email extends BaseController {
           'purpose' => $email_purpose
         ];
 
-        $emailModel->insert($q_data);
+        $data['status'] = $emailModel->insert($q_data) ? true: false;
+        
       } else {
         $data = [
           'css'   => addExternal($css, 'css'),
@@ -69,6 +69,7 @@ class Send_email extends BaseController {
         ];
       }
     }
+    $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
 
     return view('email/send_email', $data);
   }

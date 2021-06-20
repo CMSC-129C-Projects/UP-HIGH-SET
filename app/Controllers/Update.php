@@ -100,6 +100,8 @@ class Update extends BaseController
             }
         }
 
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
         $css = ['custom/alert.css'];
         $js = ['custom/alert.js'];
         $data['css'] = addExternal($css, 'css');

@@ -19,7 +19,7 @@
   <?php endif;?>
   <section id="register" class="container-fluid">
     <div class="heading text-center" style="margin-bottom: 2.5rem !important;">
-      <h1 style="padding: 4.7rem;">User Registration</h1>
+      <h1 style="padding: 8rem 0 2rem;">User Registration</h1>
     <div>
 
     <div class="tabs">

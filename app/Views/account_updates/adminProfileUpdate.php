@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div class="text-center">
-                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar">
+                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem; >
                         <button type="changeAvatar" id="myBtn">Change Avatar</button>
                     </div>
                     </hr>
@@ -70,6 +70,7 @@
                            
                             <div class="form-group">
                                 <div class="col-xs-6">
+                                <p style="float:right; position:relative; top:5.2rem; right:1rem; font-size:2vmin;">@up.edu.ph</p>
                                     <label for="email"><h4>Email</h4></label>
                                     <input type="text" class="form-control" name="email" id="email" value="<?=set_value('email', $eml);?>">
                                     <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>

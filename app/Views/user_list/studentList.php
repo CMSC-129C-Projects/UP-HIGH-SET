@@ -28,7 +28,7 @@
             <option value="12">Grade 12</option>    
         </select>
 
-        <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
+        <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button" style="width: 13em;"><i class="bi bi-plus-square"></i> Add Student</button></a>
         <br><br>
         <div style="table-responsive">
         <table class="table-bordered table-striped table-hover" id="student">

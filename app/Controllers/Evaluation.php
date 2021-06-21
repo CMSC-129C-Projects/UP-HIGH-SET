@@ -56,15 +56,16 @@ class Evaluation extends BaseController
   public function evaluate($eval_sheet_id = null)
   {
     $data = [];
+    $data['status'] = null;
 
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
       $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id);
       if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id)) {
-        $data['saveStatus'] = 'fail';
+        $data['status'] = 'false';
       } else {
-        $data['saveStatus'] = 'success';
+        $data['status'] = 'true';
       }
     }
 

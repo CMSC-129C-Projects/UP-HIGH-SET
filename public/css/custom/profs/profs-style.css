@@ -6,13 +6,23 @@
 
 }
 
+.dot {
+  height: 170px;
+  width: 180px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: auto;
+}
+.initials {
+  font-size: 10em;
+}
+
 #special .input-group input[type="search"]:focus{
   border-color: #7b1113;
   border-style: solid;
-  border-width: 2px;
-
-  
+  border-width: 2px;  
 }
+
 #special .input-group button[type="button"]{
   font-size: 12px;
   color: #7b1113 !important;

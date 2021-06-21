@@ -50,8 +50,8 @@ class Dashboard extends BaseController
   /*
   * Fetch all the subjects that have been evaluated successfully
   */
-  public function fetch_evaluated_subjects() {
-
+  public function fetch_evaluated_subjects()
+  {
     $subjects_evaluated = [];
 
     $userModel = new UserModel();
@@ -79,7 +79,8 @@ class Dashboard extends BaseController
   /*
   * Calculate percentage of subjects completed / total subjects
   */
-  public function get_subjects_stat() {
+  public function get_subjects_stat()
+  {
     $subjectModel = new SubjectModel();
 
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
@@ -92,7 +93,8 @@ class Dashboard extends BaseController
   */
   // default choice is 1: get associative array (Prof: percentage of completion based on subjects evaluated),
   // 2: return number of professors that have been completely evaluated (all subjects handled have been evaluated)
-  public function get_faculty_stat($choice = 1) {
+  public function get_faculty_stat($choice = 1)
+  {
     $facultyModel = new FacultyModel();
 
     $faculties = $facultyModel->where('is_deleted', 0)->findAll();

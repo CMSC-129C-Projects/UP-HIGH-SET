@@ -44,7 +44,7 @@ class Home extends BaseController
 		}
 
 		$data['validation'] = null;
-        $data['error'] = null;
+    $data['error'] = null;
 		$css = ['custom/login/login.css'];
 		$data['css'] = addExternal($css, 'css');
 

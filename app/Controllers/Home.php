@@ -215,7 +215,6 @@ class Home extends BaseController
     }
   }
 
-
   public function reset_password($userToken = null)
   {
     $data = [];

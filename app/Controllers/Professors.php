@@ -113,7 +113,12 @@ class Professors extends BaseController
     return view('professors/add_faculty', $data))
   }
 
+  /*
+  * Delete Faculty
+  */
+  public function delete_faculty() {
 
+  }
 
   /**
    * Get all professors

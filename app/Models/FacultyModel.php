@@ -25,7 +25,8 @@ class FacultyModel extends Model {
 
     protected $skipValidation = true;
 
-    public function searchFaculty($searchFirstName, $searchLastName) {
+    public function searchFaculty($searchFirstName, $searchLastName)
+    {
         $db = \Config\Database::connect();
 
         $sql = <<<EOT
@@ -40,7 +41,8 @@ EOT;
         return $query->getResult();
     }
 
-    public function get_subjects_handled($id) {
+    public function get_subjects_handled($id)
+    {
       $db = \Config\Database::connect();
 
       $sql = <<<EOT
@@ -58,6 +60,20 @@ EOT;
 
       $query = $db->query($sql);
 
+      return $query->getResult();
+    }
+
+    public function add_faculty($data)
+    {
+      $db = \Config\Database::connect();
+
+      $sql = <<<EOT
+INSERT INTO
+faculty (`first_name`, `last_name`, `details`)
+VALUES ($data['first_name'], $data['last_name'], $data['details'])
+EOT;
+
+      $query = $db->query($sql);
       return $query->getResult();
     }
 }

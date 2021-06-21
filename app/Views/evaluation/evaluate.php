@@ -14,7 +14,9 @@
           </div>
           <form method="post">
               <div class="modal-body" style="padding: 25px;">
-                <i style="font-size: 15px;"> Please double-check your answers before submitting this form. Your review will be unmodifiable after submission. </i>
+                <i style="font-size: 1.5em;"> Please double-check your answers before submitting this form. </i> 
+                <br>
+                <i style="font-size: 1.5em;"> Your review will be unmodifiable after submission. </i>
                 <br><br>
                 <?php $index = 0;?>
                 <?php foreach($questions as $key => $value):?>
@@ -69,9 +71,9 @@
                 <br>
                 <div class="row" style="width:100%;">
                   <div class="col-md-12">
-                    <div>
-                      <input type="submit" class="button" formaction="<?=base_url()?>/evaluation/submit/<?=$eval_sheet_id?>" style="border-radius: 2rem !important; margin-top: 20px; width: 20%" value="Submit">
-                      <input type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 20%; height: 4rem;" data-dismiss="modal" value="Close">
+                    <div style="text-align: center;">
+                      <button type="submit" class="button" formaction="<?=base_url()?>/evaluation/submit/<?=$eval_sheet_id?>" style="border-radius: 2rem !important; margin-top: 20px; width:9em; height:3em; margin-right:2.25%"><i class="bi bi-check-circle"></i> Submit</button>
+                      <button type="button" class="button"  style="border-radius: 2rem !important; margin-top: 20px; width: 9em; height: 3em;" data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
                     </div>
                   <!-- </div> -->
                   <!-- <div class="col-md-6 col-sm-6"> -->

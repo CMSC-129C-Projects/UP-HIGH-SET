@@ -16,7 +16,9 @@
         </div>
 
         <div class="modal-body" style="padding: 25px;">
-          <i style="font-size: 15px;"> Please double-check your answers before submitting this form. Your review will be unmodifiable after submission. </i>
+          <i style="font-size: 15px;"> Please double-check your answers before submitting this form. 
+          <br>
+          <i style="font-size: 15px;"> Your review will be unmodifiable after submission. </i>
           <br><br>
           <div class="row" style="background-color:#7b1113;">
             <p style="font-size: 19px; color: #e9dbc1; padding-left:10px; margin-top:5px; margin-bottom: 3px;">Instructional Skills</p>

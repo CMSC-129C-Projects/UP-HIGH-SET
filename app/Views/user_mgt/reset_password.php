@@ -1,7 +1,7 @@
 <?php $this->extend('template/default') ?>
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="min-height:100vh">
+  <div class="container-fluid" style="min-height:100vh; padding 8rem 0 2rem;">
         
         <?php if(isset($error)) { ?>
           <div class="heading text-center" style="padding: 20px;">
@@ -13,7 +13,7 @@
           </div>
     
         <?php } else { ?>
-          <div id="ChangePassword" style="margin-top:4.7rem;">
+          <div id="ChangePassword">
             <div class="card">
               <div class="card-body" style="padding: 40px; margin: 10px">
                 <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 2em;">Please reset your password to continue: </h3>
@@ -30,7 +30,7 @@
                   </div>
                   <br>
                   <div class="form-group" style="text-align: center;">
-                    <button class="button" type="submit" name="update" style="height: 3em; width: 8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin-right:2.25%;"><i class="bi bi-check-circle"></i> Confirm</button>
+                    <button class="button" type="submit" name="update" style="height: 3em; width: 8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin: 0 2em 0.5em 0.5em"><i class="bi bi-check-circle"></i> Confirm</button>
                     <button href="<?=base_url('dashboard/logout')?>" class="button" style="height: 3.15em; width: 7.8em; padding: 12px 0px; font-size: 1.3em;"><i class="bi bi-x-circle"></i> Cancel</button>
                   </div>
                 </form>

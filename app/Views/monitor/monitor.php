@@ -10,7 +10,8 @@
                 <div class="container-fluid" style="padding: 5%">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="titles">Professors</p>
+                            <p class="titles">PROFESSORS</p>
+                            <br>
                             <?php if(isset($profs)):?>
                                 <?php foreach($profs as $prof):?>
                                     <div data-id="<?=$prof['id']?>" class="prof-names d-flex justify-content-center align-items-center">
@@ -25,7 +26,7 @@
             <div class="col-md-8">
                 <div id="piechart" class="detail-container"></div>
                 <div class="detail-container subject-container d-none" style="background-color: transparent;">
-                    <p class="titles">Subjects Handled</p>
+                    <p class="titles">HANDLED SUBJECTS</p>
                     <div id="subjects">
                     </div>
                 </div>

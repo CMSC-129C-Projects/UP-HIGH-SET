@@ -9,10 +9,9 @@
 ?>  
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="min-height:100vh">
+  <div class="container-fluid" style="min-height:100vh; padding: 8rem 0 2rem;">
 
-    <?php if(isset($error)) { ?>
-      <div id="ChangePassword">            
+    <?php if(isset($error)) { ?>         
       <div class="heading text-center" style="padding: 20px;">
         <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">  
           <img src="<?=base_url()?>/public/error.png" style="width:7em; height:7em;">
@@ -20,11 +19,10 @@
         </div> 
         <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px;" href="<?=$url?>"><i class="bi bi-arrow-left"></i> Return to login page</a>
       </div>
-      <div>
 
     <?php } else { ?>
       <div class="heading text-center">
-        <h1 style= "padding:4.7rem;">Change Password</h1>
+        <h1 style="padding-bottom:4.7rem;">Change Password</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">
@@ -51,7 +49,7 @@
               </div>
               <br><br>
               <div style="text-align:center">
-                <button class="button" type="submit" name="update" style="height: 3em; width:8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin-right:2.25%;"><i class="bi bi-check-circle"></i> Update</button>
+                <button class="button" type="submit" name="update" style="height: 3em; width: 8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin: 0 2em 0.5em 0.5em"><i class="bi bi-check-circle"></i> Update</button>
                 <button href="<?=base_url('dashboard')?>" class="button" style="height: 3.15em; width:7.8em; padding: 12px 0px; font-size: 1.3em;"><i class="bi bi-x-circle"></i> Cancel</button>
               </div>
               </form>

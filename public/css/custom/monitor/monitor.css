@@ -5,7 +5,11 @@
 }
 
 .detail-container {
-  border: solid #7b1113;
+  border: solid;
+  border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-radius: 1rem;
   box-shadow: 0 0 1rem #333;
   width: 100%;
   height: 100%;
@@ -16,7 +20,9 @@
 }
 
 .progress {
-  border: solid #7b1113 1px;
+  border: solid #014421 0.3em;
+  height: 2.25em;
+  margin-bottom: 1em;
 }
 
 .prof-names {
@@ -52,36 +58,32 @@
   background: #eee
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='maroon' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
     no-repeat right 0.75rem center/8px 10px !important;
-  border-radius: 0.5rem;
   color: #7b1113;
   cursor: pointer;
   padding-left: 18px;
   width: 100%;
-  border-width: 1.5px;
-  border-color: #e9dbc1;
+  border-style: solid;
+  border-width: 0.2em 0.2em 0.1em 1em;
+  border-color: #7b1113;
   text-align: left;
   outline: none;
-  height: 50px;
+  height: 2.5em;
   transition: 0.4s;
   font-family: Roboto;
   font-size: 15px;
 }
 
-.accordion:hover {
-  border-color: #7b1113;
-}
-
 .accordion:focus {
-  background: #7b1113
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-    no-repeat right 0.75rem center/8px 10px !important;
-  border-radius: 0px;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  border-color: #7b1113;
-  color: white;
   transition: 0.4s;
 }
+
+/* .accordion:active {
+  background: #014421
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+    no-repeat right 0.75rem center/8px 10px !important;
+  color: white;
+  border-color: #014421;
+} */
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 /* .active, .accordion:hover {
@@ -90,13 +92,19 @@
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
+  border-left: solid #7b1113 0.2em;
+  border-bottom: solid #7b1113 0.2em;
+  border-right: solid #7b1113 0.2em;
   padding: 0 18px;
-  background-color: #eee;
+  background-color: #fdeded;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  border-width: 1.5px;
-  border-color: #7b1113;
+  margin-bottom: 2.5em;
+}
+
+.accordion:active > .panel {
+  border-color: #014421;
 }

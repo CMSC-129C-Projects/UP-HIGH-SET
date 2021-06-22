@@ -119,12 +119,12 @@ class Monitoring extends BaseController
     protected function createAccordion($studentsNotDone)
     {
         if (isset($studentsNotDone)) {
-            $accordion = '<button class="accordion">Student Not Finished Evaluating</button><div class="panel">';
+            $accordion = '<button class="accordion">Incomplete Evaluations</button><div class="panel">';
             foreach($studentsNotDone as $student) {
                 $accordion .=   '<div>' .
-                                    '<p>' . $student['student_name'] . '</p>' .
+                                    '<h3 style="font-size:1.3em; color:#7b1113; margin: 1em 0 0.3em 0;">' . $student['student_name'] . '</h3>' .
                                     '<div class="progress">' .
-                                        '<div class="progress-bar bg-danger" style="width:' . $student['progress'] . '%">' . $student['progress'] . '%</div>' .
+                                        '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:' . $student['progress'] . '%">' . $student['progress'] . '%</div>' .
                                     '</div>' .
                                 '</div>';
             }

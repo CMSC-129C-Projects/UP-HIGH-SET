@@ -46,7 +46,8 @@
                 <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>
               </div>
               <br> 
-              <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="Save">
+              <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Save</button>
+              <button class="button" href="#" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important;"><i class="bi bi-x-circle"></i> Cancel</button>
             </form>
           </div>
         </div>

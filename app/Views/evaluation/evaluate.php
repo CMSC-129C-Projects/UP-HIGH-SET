@@ -37,13 +37,13 @@
                                         <?php $name = 'review_answer_' . $q->id;?>
                                         <div class="row">
                                             <div class="col-12" style="margin-top: 3px;">
-                                                <textarea class="form-control" style="font-size: 13px;" name="<?=$name?>" rows="3" readonly><?=set_value($name, $prevAnswers ? $prevAnswers[$index]['answer_text']: '')?></textarea>
+                                                <textarea class="form-control" style="font-size: 1.3em;" name="<?=$name?>" rows="3" readonly><?=set_value($name, $prevAnswers ? $prevAnswers[$index]['answer_text']: '')?></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 <?php else:?>
                                     <li>
-                                        <i style="font-size: 13px;"> Excellent </i>
+                                        <i style="font-size: 1.3em;"> Excellent </i>
                                     </li>
                                     <?php $name = 'review_choices_' . $q->id;?>
                                     <?php foreach($choices[$key] as $choice):?>
@@ -59,7 +59,7 @@
                                         </li>
                                     <?php endforeach;?>
                                     <li>
-                                        <i style="font-size: 13px;"> Poor </i>
+                                        <i style="font-size: 1.3em;"> Poor </i>
                                     </li>
                                 <?php endif;?>
                             </div>

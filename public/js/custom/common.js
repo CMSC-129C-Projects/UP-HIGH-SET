@@ -57,8 +57,6 @@ new ResizeSensor(main, function() {
 });
 
 $(function () {
-    // $(".bg-loader").fadeOut("slow");
-
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

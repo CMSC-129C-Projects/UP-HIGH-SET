@@ -119,8 +119,17 @@ class Professors extends BaseController
   /*
   * Delete Faculty
   */
-  public function delete_professor($faculty_id) {
+  public function delete_professor($faculty_id = null) {
+    if(isset($faculty_id)) {
+      $facultyModel = new FacultyModel();
 
+      $result = $facultyModel->where('id', $faculty_id)->delete();
+
+      if($result)
+        return true;
+      else
+        return false;
+    }
   }
 
   /**

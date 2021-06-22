@@ -2,19 +2,66 @@
     color: #e9dbc1 !important;
     background-color: #7b1113 !important;
     margin: 0 !important;
-  }
+}
 
-  .alertify .ajs-commands {
+.alertify .ajs-footer {
+  border: solid #e9dbc1!important;
+  background-color: #e9dbc1!important;
+}
+
+.alertify .ajs-content {
+  font-size: 1.5em;
+}
+
+.alertify .ajs-commands {
     margin: 10px 10px 0 0;
-  }
+}
 
-  .alertify .ajs-dialog {
+.alertify .ajs-dialog {
     border: none !important;
     padding: 0 !important;
-  }
+}
 
-  .alertify .ajs-body {
+.alertify .ajs-body {
     border-color: #7b1113 !important;
     color: #7b1113 !important;
     background-color: #e9dbc1 !important;
-  }
+}
+
+
+.alertify .ajs-button{
+  outline: none !important;
+  border: none !important;
+  border-radius: 5rem !important;
+  color: #7b1113 !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  text-transform: capitalize !important;
+  letter-spacing: 0.2rem !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+  height: 4rem !important;
+  width: 10rem !important;
+  margin-right: 10px !important;
+ 
+  
+  background: #7b1113;
+  color: #fff !important;
+}
+
+.alertify .ajs-button:hover::before,
+.alertify .ajs-button:hover::before {
+  width: 100% !important;
+}
+
+.alertify .ajs-button:hover,
+.alertify .ajs-button #cancel:hover {
+  color: #ffff !important;
+  background: #014421 !important;
+}
+
+.alertify .ajs-button:focus {
+  border: 2px solid green !important;
+}

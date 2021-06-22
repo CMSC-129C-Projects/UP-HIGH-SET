@@ -1,7 +1,7 @@
 <?=$this->extend('template/pageTemplate');?>
 
 <?=$this->section('content');?>
-    <div id="bg-modal" class="black-modal">
+    <!-- <div id="bg-modal" class="black-modal">
         <div id="content-modal" class="customModal horizontalCenter verticalCenter">
             <div class="mdl-content">
                 <p>Are you sure you want to delete this student?</p>
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
@@ -31,7 +31,7 @@
         <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button" style="width: 13em;"><i class="bi bi-plus-square"></i> Add Student</button></a>
         <br><br>
         <div style="table-responsive">
-        <table class="table-bordered table-striped table-hover" id="student">
+        <table class="table-bordered table-striped table-hover item-table" id="student">
             <thead>
                 <tr>
                     <th>First Name</th>

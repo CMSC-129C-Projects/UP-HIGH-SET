@@ -63,17 +63,4 @@ EOT;
       return $query->getResult();
     }
 
-//     public function add_faculty($data)
-//     {
-//       $db = \Config\Database::connect();
-//
-//       $sql = <<<EOT
-// INSERT INTO
-// faculty (`first_name`, `last_name`, `details`)
-// VALUES ((string) $data['first_name'], (string) $data['last_name'], (string) $data['details'])
-// EOT;
-//
-//       $query = $db->query($sql);
-//       return $query->getResult();
-//     }
 }

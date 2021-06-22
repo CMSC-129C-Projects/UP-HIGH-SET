@@ -27,7 +27,7 @@ class FacultyModel extends Model {
 
     public function searchFaculty($searchFirstName, $searchLastName) {
         $db = \Config\Database::connect();
-        
+
         $sql = <<<EOT
 SELECT *
 FROM faculty
@@ -38,5 +38,26 @@ EOT;
         $query = $db->query($sql);
 
         return $query->getResult();
+    }
+
+    public function get_subjects_handled($id) {
+      $db = \Config\Database::connect();
+
+      $sql = <<<EOT
+SELECT
+  subjects.id,
+  subjects.name,
+  CONCAT(faculty.first_name, " " , faculty.last_name) as faculty_name
+FROM subjects
+LEFT JOIN faculty
+ON subjects.faculty_id = faculty.id
+WHERE
+  faculty.id = $id AND faculty.is_deleted = 0
+  AND subjects.is_deleted = 0
+EOT;
+
+      $query = $db->query($sql);
+
+      return $query->getResult();
     }
 }

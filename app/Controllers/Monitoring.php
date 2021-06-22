@@ -73,7 +73,7 @@ class Monitoring extends BaseController
             $subjectsWithProgress = [];
             foreach($subjects as $subject) {
                 $subject->progress = $this->get_progress_by_subject($subject->id);
-                
+
                 $unfinished = $this->getUnfinished($subject->id);
 
                 $subject->studentsNotDone = $this->createAccordion($unfinished);
@@ -134,7 +134,7 @@ class Monitoring extends BaseController
         return false;
     }
 
-    /**   
+    /**
      * Fetch students not yet finished evaluating a subject
      */
     protected function getUnfinished($subjectID)
@@ -168,15 +168,15 @@ class Monitoring extends BaseController
         if(isset($subject_id)) {
             $userModel = new UserModel();
             $evalSheetModel = new EvalSheetModel();
-        
+
             $students_per_subjects = $userModel->get_all_students_per_subject($subject_id);
             if ($students_per_subjects === '0') {
                 return ('No students');
             } else {
                 $student_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject_id);
-        
+
                 $percentage = ($student_who_evaluated / $students_per_subjects) * 100;
-        
+
                 return $percentage;
             }
         } else {

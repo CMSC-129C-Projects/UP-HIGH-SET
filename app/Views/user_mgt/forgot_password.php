@@ -2,8 +2,13 @@
 
 <?php $this->section('content'); ?>
 
+<<<<<<< HEAD
   
 <div class="container-fluid" style="min-height: 100vh; padding: 8rem 0 2rem;">  
+=======
+  <div class="container-fluid" style="min-height: 100vh">
+  <div id="ChangePassword">  
+>>>>>>> 2f93648931354402631427993d4270de0d7cd1cd
     <?php if (isset($validation) != null) { ?>
       <div class="heading text-center" style="padding: 20px;">
         <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
@@ -22,7 +27,10 @@
         </div>  
         <a class="button" style="padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</a>
       </div>
+<<<<<<< HEAD
 <!-- New CHanges -->
+=======
+>>>>>>> 2f93648931354402631427993d4270de0d7cd1cd
 
     <?php } elseif(isset($success) != null) { ?> <!-- email has been set for change -->
       <div class="heading text-center" style="padding: 20px;">
@@ -38,7 +46,11 @@
             <img src="<?=base_url()?>/public/error.png" style="width:7em; height:7em;">
             <h2 style="padding-top:1em; font-size:2em;">You are not authorized to access this page.<h2>
         </div>  
+<<<<<<< HEAD
         <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Main Page</a>
+=======
+        <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Go Back to Main Page</a>
+>>>>>>> 2f93648931354402631427993d4270de0d7cd1cd
       </div>
           
     <?php } ?>

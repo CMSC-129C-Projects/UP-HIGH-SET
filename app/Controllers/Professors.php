@@ -26,9 +26,9 @@ class Professors extends BaseController
               return $this->$method();
               break;
           case 'add_professors':
-              // if ($_SESSION['logged_user']['role'] === '2') {
-              //     return redirect()->to(base_url('dashboard'));
-              // }
+              if ($_SESSION['logged_user']['role'] === '2') {
+                  return redirect()->to(base_url('dashboard'));
+              }
               $this->hasSession(1);
               return $this->$method();
                   break;

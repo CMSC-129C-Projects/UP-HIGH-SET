@@ -1,12 +1,14 @@
+.reportTable {
+  padding: 0 5%; 
+}
 
 .reportTable .table{
-   margin: auto, !important;
-   font-family: arial;
-   font-size: 2vmin;
-    text-align: center;
-
-
+  margin: auto, !important;
+  font-family: arial;
+  font-size: 2vmin;
+  text-align: center;
 }
+
 .reportTable .reportHeader p{
     text-align: center;
     margin: auto;
@@ -73,11 +75,11 @@ margin-bottom: 3rem;
   border:solid 2px;  
   } 
 .reportTable .inputBox p{
-font-size: 2vmin;
-font-family: arial;
-color: black;
-font-weight: bold;
-margin-top: 2rem;
+  font-size: 2vmin;
+  font-family: arial;
+  color: black;
+  font-weight: bold;
+  margin-top: 2rem;
 
 }
 
@@ -102,21 +104,23 @@ margin-top: 2rem;
   
  /* background: linear-gradient(to bottom, #e9dbc1 0%, # 100%); */
  border-radius: 10px;
-  width: 70%;
+  width: 90%;
   margin:auto;
   min-height: 5rem;
 
   
 }
 .reportTable .inputBox .comments .commentBox .pcomments{
-font-weight: normal !important;
-text-align: left;
-margin-top: 20px !important;
-margin-left: 10px;
-color: 	#2e242c;
-   
- }
-  .comments::-webkit-scrollbar {
+  font-weight: normal !important;
+  text-align: left;
+  margin-top: 20px !important;
+  margin-left: 10px;
+  color: 	#2e242c;
+  word-wrap: break-word;
+  padding: 2%;  
+}
+
+.comments::-webkit-scrollbar {
   width: 12px;
 }
 
@@ -143,4 +147,17 @@ color: 	#2e242c;
   -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
+}
+
+.item-table {
+  margin: 2vh 0 4vh 0;
+}
+
+.item-table .table td,
+.item-table .table th {
+  border: solid 2px #7b1113 !important;
+}
+
+.item-table .table .empty {
+  background-color: #7b1113 !important;
 }

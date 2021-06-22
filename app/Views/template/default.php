@@ -35,6 +35,10 @@
     <?php endif;?>
   </head>
   <body>
+    <div class="bg-loader">
+      <div class="se-pre-con"></div>
+    </div>
+    
     <!-- header section starts -->
     <section id="header">
       <div class="schoolWebsiteName">
@@ -84,6 +88,8 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
+
+    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";

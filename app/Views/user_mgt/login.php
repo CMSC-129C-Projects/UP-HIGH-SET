@@ -5,18 +5,21 @@
     <section class="login">
         <div class="container cntr-custom">
           <div class="row custom-row">
-            <div class="d-flex col-md-6 s-col justify-content-center align-middle">
+            <div class="d-flex col-md-6 s-col justify-content-center align-middle" style="margin-left: 3%;">
               <div class="r-content">
-                  <?php if (isset($evaluation_info)):?>                    
-                    <bold>Evaluation period closes in</bold>
-                    <bold class="days"><?=$daysLeft?> days</bold>
-                    <bold>and</bold>
-                    <bold class="time"><?=$timeLeft?></bold>
-
-                    <img class="stopwatch" src="<?=base_url()?>/public/images/stopwatch.png" alt="">
+                  <?php if (isset($evaluation_info)):?>
+                    <!-- <img class="logo" src="<?=base_url()?>/public/images/CitronellaLogo.png" alt=""> -->
+                    <span>The UP Student-Teacher Evaluation will close in</span>
+                    <span class="countdown"><?=$daysLeft?> DAYS & <span class="time"><?=$timeLeft?></span></span>
+                    <hr class="line">
+                    <span class="closing">Let your voice be heard. Evaluate your teachers now.</span>
                   <?php else:?>
                     <span style="display: none;" id="eval_status"></span>
-                    <bold class="closed">CLOSED</bold>
+                    <!-- <img class="logo" src="<?=base_url()?>/public/images/CitronellaLogo.png" alt=""> -->
+                    <span>The UP Student-Teacher Evaluation is still</span>
+                    <span class="closed">CLOSED</span>
+                    <hr class="line">
+                    <span class="closing">If you think this is a mistake,<br>please approach your school clerk.</span>
                   <?php endif;?>
               </div>
             </div>

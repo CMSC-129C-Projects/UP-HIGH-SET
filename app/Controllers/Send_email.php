@@ -66,9 +66,9 @@ class Send_email extends BaseController {
       } else {
         $data = [
           'css'   => addExternal($css, 'css'),
-          'validation' => $this->validator
+          'validation' => $this->validator,
+          'status' => null
         ];
-        $data['status'] = null;
       }
     }
 
@@ -83,12 +83,12 @@ class Send_email extends BaseController {
     {
       $emailModel = new EmailModel();
 
-      //alert user that his/her account's password changed if you did not do it 
+      //alert user that his/her account's password changed if you did not do it
       $search = ['-content-', '-student-', '-website_link-'];
       $subject = $data['title'];
 
       $message = file_get_contents('app/Views/verification.html');
-  		$replace = [$data['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
+  		$replace = [$data['message'], $_SESSION['logged_user']['first_name'], base_url()]; //redirect to login page
 
   		$message = str_replace($search, $replace, $message);
   		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

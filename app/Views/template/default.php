@@ -35,6 +35,10 @@
     <?php endif;?>
   </head>
   <body>
+    <div class="bg-loader">
+      <div class="se-pre-con"></div>
+    </div>
+    
     <!-- header section starts -->
     <section id="header">
       <div class="schoolWebsiteName">

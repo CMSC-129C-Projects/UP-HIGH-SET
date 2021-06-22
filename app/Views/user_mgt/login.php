@@ -7,11 +7,13 @@
           <div class="row custom-row">
             <div class="d-flex col-md-6 s-col justify-content-center align-middle">
               <div class="r-content">
-                  <?php if (isset($evaluation_info)):?>
+                  <?php if (isset($evaluation_info)):?>                    
                     <bold>Evaluation period closes in</bold>
                     <bold class="days"><?=$daysLeft?> days</bold>
                     <bold>and</bold>
                     <bold class="time"><?=$timeLeft?></bold>
+
+                    <img class="stopwatch" src="<?=base_url()?>/public/images/stopwatch.png" alt="">
                   <?php else:?>
                     <span style="display: none;" id="eval_status"></span>
                     <bold class="closed">CLOSED</bold>

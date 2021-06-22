@@ -81,7 +81,6 @@ class Monitoring extends BaseController
             'profs' => $faculModel->findAll()
         ];
 
-        $this->transcend_students();
         return view('monitor/monitor', $data);
     }
 

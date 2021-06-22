@@ -40,10 +40,12 @@ function capitalize(str) {
     }
 }
 
-let main = document.getElementById("main");
+let header = document.getElementById("header");
+let footer = document.getElementById("footer");
 
 new ResizeSensor(main, function() {
-    $('#sidebar').css("height", (main.clientHeight) + 'px');
+    let sidebarHeight = document.documentElement.clientHeight
+    $('#sidebar').css("height", (sidebarHeight - header.clientHeight - footer.clientHeight) + 'px');
 });
 
 $(document).ready(function () {

@@ -104,6 +104,9 @@ EOT;
         return $query->getResult();
     }
 
+    /*
+    * Update Grade Level
+    */
     public function update_grade_level($grade_level, $higher_level) {
       $db = \Config\Database::connect();
 

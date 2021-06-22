@@ -70,7 +70,10 @@
               <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-journal-check"></i> Report</a>
               <ul class="collapse list-unstyled" id="report">
                 <li>
-                    <a href="#">View Report</a>
+                    <a href="#">View Subject Summary Report</a>
+                </li>
+                <li>
+                    <a href="#">View Faculty Summary Report</a>
                 </li>
                 <li>
                     <a href="#">Print Report</a>

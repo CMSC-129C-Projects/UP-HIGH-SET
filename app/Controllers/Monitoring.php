@@ -21,9 +21,9 @@ class Monitoring extends BaseController
         switch($method) {
             case 'monitor_progress':
                 $this->hasSession(0);
-                // if ($_SESSION['logged_user']['role'] === '2')
-                    // return redirect()->to(base_url('dashboard'));
-                // else
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
+                else
                     return $this->$method();
                 break;
             case 'get_subjects':

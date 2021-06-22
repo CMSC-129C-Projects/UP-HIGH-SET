@@ -5,7 +5,7 @@
 
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1 style= "padding:4.7rem;">Update Email Content</h1>
+      <h1 style= "padding:4.7rem;">Send Notification</h1>
     </div>
 
     <div id="EmailContent">
@@ -39,7 +39,7 @@
             </select>
             </div>
             <br><br><br>
-            <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Update</button>
+            <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Send </button>
             <button class="button" href="#" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important;"><i class="bi bi-x-circle"></i> Cancel</button>
           </form>
           </div>

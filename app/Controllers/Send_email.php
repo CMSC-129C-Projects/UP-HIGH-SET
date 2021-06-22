@@ -67,6 +67,7 @@ class Send_email extends BaseController {
           'css'   => addExternal($css, 'css'),
           'validation' => $this->validator
         ];
+        $data['status'] = null;
       }
     }
     $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);

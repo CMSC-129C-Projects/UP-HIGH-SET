@@ -104,6 +104,7 @@
 }
 
 .r-content bold {
-    font-size: 2rem;
-    font-family: 'Alfa Slab One', cursive!important;
+    font-size: 6vmin;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
 }

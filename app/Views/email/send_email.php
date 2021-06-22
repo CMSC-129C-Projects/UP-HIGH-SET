@@ -28,7 +28,7 @@
           <br>
           <div class="form-group">
             <label for="purpose" style="font-size:15px;">Email Purpose :</label>
-            <select class="custom-select">
+            <select name="purpose" class="custom-select">
               <option selected>Select...</option>
               <option value="announcement">Announcement</option>
               <option value="registration">Registration</option>

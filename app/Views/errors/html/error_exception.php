@@ -14,7 +14,7 @@
 		<?= file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.js') ?>
 	</script>
 </head>
-<body onload="init()">
+<body>
 
 	<!-- Header -->
 	<div class="header">

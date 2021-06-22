@@ -45,11 +45,12 @@ let footer = document.getElementById("footer");
 
 new ResizeSensor(main, function() {
     let sidebarHeight = document.documentElement.clientHeight
-    $('#sidebar').css("height", (sidebarHeight - header.clientHeight - footer.clientHeight) + 'px');
+    $('#sidebar').css("height", (document.body.scrollHeight - header.clientHeight - footer.clientHeight) + 'px');
 });
 
-$(document).ready(function () {
+$(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
+    console.log($('#sidebar').css("height"));
 });

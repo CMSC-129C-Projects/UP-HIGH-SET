@@ -96,6 +96,9 @@
                 <li>
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
+                <li>
+                  <a href="#">Transcend Students</a>
+                </li>
               </ul>
               <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
@@ -107,11 +110,11 @@
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
-                  <a href="<?=base_url()?>/send_email">Update Email Content</a>
+                  <a href="<?=base_url()?>/send_email">Send Email Notification</a>
                 </li>
 
               </ul>
-              
+
             </li>
           </ul>
           <ul class="list-unstyled CTAs">

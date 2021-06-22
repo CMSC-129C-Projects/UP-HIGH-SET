@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <style>
+            .email-content {
+                padding: 10% 5%;
+                width: 34rem;
+                height:auto;
+                background-color:#e9dbc1;
+            }
+
+            .email-container {
+                width:34rem;
+                height:1000px;
+            }
+
+            .email-content p {
+                color: #000000;
+                font-family: roboto;
+                font-size: 12pt;
+                text-align: justify;
+                margin: 15px;
+                line-height: 1.32;
+                letter-spacing: 1.02px;
+            }
+
+            #greeting {
+                font-size: 13pt;
+            }
+
+            #cred {
+                font-weight: bold;
+            }
+
+            #closing {
+                font-style: italic;
+            }
+
+            .footer {
+                width:600px;
+                height:50px;
+                background-color:#014421;
+                position: relative;
+            }
+
+            .footer #message {
+                color: #fff;
+                font-family: Roboto;
+                font-size: 11pt;
+                text-align: left;
+                margin: 0px;
+                padding: 10px 20px;
+                vertical-align: middle !important;
+            }
+
+            .footer #contactno {
+                position: relative;
+                top: -90%;
+                left: 65%;
+                font-weight: bolder;
+                color: antiquewhite;
+            }
+
+            .header {
+                width:600px;
+                height:120px;
+                background-color:#7b1113;
+            }
+
+            #up {
+                color: #fff;
+                font-family:Roboto;
+                font-size:15pt;
+                text-align: center;
+                margin:0px;
+                font-weight:bold;
+            }
+
+            #sub-header {
+                color: #fff;
+                font-family:Roboto;
+                font-size:11pt;
+                text-align: center;
+                margin:0px;
+            }
+            
+            .row {
+                margin-bottom: 3px;
+            }
+
+            textarea {
+                border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+                border-width: 0.3rem !important;
+                border-image-slice: 1 !important;
+                font-size: 13px;
+            }
+        </style>
+
+        <script>
+            AllowChecks = false;
+            function CheckIt(X){
+                if(!AllowChecks)X.checked=false;
+            }
+        </script>
+
+    </head>
+    <body style="font-family:Roboto;">
+        <div class="email-container container-xs">
+            <div class="header">
+                <p id="up" style="margin-top:-40px;"><br><br>UNIVERSITY OF THE PHILIPPINES CEBU - HIGH SCHOOL</p>
+                <p id="sub-header"> Gorordo Avenue, Lahug, Cebu City</p>
+            </div>
+            <div class="email-content">
+                <i style="font-size: 15px;"> Thank you for answering this evaluation form. This email serves both as your own copy of answers in the evaluation and a confirmation that your reviews have been received. </i>
+                <br><br>
+                <b style="font-size: 16px;"> Professor : &nbsp; -professor- </b>
+                <br>
+                <b style="font-size: 16px;"> Subject : &nbsp; -subject- </b>
+                <br><br>
+                -content-
+            </div>
+            <div class="footer">
+                <p id="message">For concerns and suggestions, connect with us through: <span id="contactno">(032) 383-7005</span></p>
+            </div>
+        </div>
+    </body>
+</html>

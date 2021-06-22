@@ -52,7 +52,6 @@ class Send_email extends BaseController {
     {
       if($this->validate($rules))
       {
-        $data['status'] = 'success';
         $emailModel = new EmailModel();
 
         $q_data = [
@@ -61,15 +60,40 @@ class Send_email extends BaseController {
           'purpose' => $email_purpose
         ];
 
-        $emailModel->insert($q_data);
+        // $data['status'] = $emailModel->insert($q_data) ? true: false;
+        $data['status'] = $this->send_notification($q_data);
+
       } else {
         $data = [
           'css'   => addExternal($css, 'css'),
-          'validation' => $this->validator
+          'validation' => $this->validator,
+          'status' => null
         ];
       }
     }
 
+    $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
     return view('email/send_email', $data);
+  }
+
+  protected function send_notification($data = null)
+  {
+    if(isset($data))
+    {
+      $emailModel = new EmailModel();
+
+      //alert user that his/her account's password changed if you did not do it
+      $search = ['-content-', '-student-', '-website_link-'];
+      $subject = $data['title'];
+
+      $message = file_get_contents('app/Views/verification.html');
+  		$replace = [$data['message'], $_SESSION['logged_user']['first_name'], base_url()]; //redirect to login page
+
+  		$message = str_replace($search, $replace, $message);
+  		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+
+      return $status;
+    }
   }
 }

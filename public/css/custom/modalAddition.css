@@ -5,7 +5,7 @@ body {
 .button {
   outline: none;
   border: none;
-  border-radius: 1rem;
+  border-radius: 2rem;
   color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
@@ -61,12 +61,13 @@ body {
 }
 
 .modal-header {
-  background: linear-gradient(to top right, #800000 25%, #228b22 100%);
+  background: #7b1113;
   color: #ffff;
 }
 
 .modal-body {
   background: #dac295;
+  overflow-y: auto;
   /* background: #e9dbc1; */
 }
 
@@ -83,7 +84,6 @@ body {
   bottom: 0;
   left: 0;
   z-index: 10040;
-  overflow: auto;
   overflow-y: auto;
   -webkit-box-shadow: 0 0 3rem #333;
   box-shadow: 0 0 3rem #333;
@@ -93,14 +93,19 @@ body {
   overflow-y: auto;
 }
 
-#bg-modal .reveal-modal-bg {
-  display: none;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: auto !important;
-  height: auto !important;
-  z-index: 40;
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 700px) {
+  .modal-dialog {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .modal-dialog {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }

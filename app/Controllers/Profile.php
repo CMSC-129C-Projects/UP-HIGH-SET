@@ -9,7 +9,7 @@ class Profile extends BaseController
 {
     protected $userModel;
 
-    public function _remap($method)
+    public function _remap($method, $param = null)
     {
         $this->hasSession();
         switch($method)
@@ -60,6 +60,9 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
+        $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
     }
@@ -96,10 +99,14 @@ class Profile extends BaseController
                     'email'       => $email
                 ];
                 $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile/admin/true'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
+        $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);
     }
@@ -122,7 +129,7 @@ class Profile extends BaseController
             $data['cn'] = $student->contact_num;
             $data['glevel'] = $student->grade_level;
             $data['avatar_url'] = $student->avatar_url;
-            $data['email'] = $student->email;
+            $data['email'] = str_replace('@up.edu.ph', '', $student->email);
         } else {
             $adminUpdate = new Admin();
             if(isset($id)) {
@@ -133,7 +140,7 @@ class Profile extends BaseController
             $data['lN'] = $adminUpdate->last_name;
             $data['uN'] = $adminUpdate->username;
             $data['cN'] = $adminUpdate->contact_num;
-            $data['eml'] = $adminUpdate->email;
+            $data['eml'] = str_replace('@up.edu.ph', '', $adminUpdate->email);
             $data['avatar_url'] = $adminUpdate->avatar_url;
         }
 

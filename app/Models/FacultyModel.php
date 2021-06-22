@@ -62,5 +62,4 @@ EOT;
 
       return $query->getResult();
     }
-
 }

@@ -82,7 +82,7 @@ class Send_email extends BaseController {
     {
       $emailModel = new EmailModel();
 
-      //alert user that his/her account's password changed if you did not do it blahblah --
+      //alert user that his/her account's password changed if you did not do it 
       $search = ['-content-', '-student-', '-website_link-'];
       $subject = $data['title'];
 

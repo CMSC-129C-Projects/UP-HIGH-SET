@@ -103,4 +103,22 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
+
+    /*
+    * Update Grade Level
+    */
+    public function update_grade_level($grade_level, $higher_level) {
+      $db = \Config\Database::connect();
+
+      $sql = <<<EOT
+UPDATE users
+SET grade_level = $higher_level
+WHERE
+	grade_level = $grade_level AND is_active = 1
+  AND is_deleted = 0 AND role = 2
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+    }
 }

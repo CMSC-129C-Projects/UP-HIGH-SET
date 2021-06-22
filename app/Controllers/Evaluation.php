@@ -57,7 +57,7 @@ class Evaluation extends BaseController
   {
     $data = [];
     $data['status'] = null;
-    
+
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
@@ -84,6 +84,7 @@ class Evaluation extends BaseController
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
 
+    $this->archive_evaluation();
     return view('evaluation/evaluate', $data);
   }
 
@@ -327,13 +328,25 @@ class Evaluation extends BaseController
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
   }
 
-  public function submit_evaluation() {
+  public function submit_evaluation()
+  {
     $evalModel = new EvaluationModel();
 
     $datum = ['status' => 'closed'];
     $evalModel->where('status', 'open')->set($datum)->update();
 
     $this->emailCardbonCopy();
+  }
+
+  /*
+  * Archive current evaluation: is_deleted = 0, thus when the evaluation is done and archived, evaluation papers will not be retrieved by the clerk
+  */
+  public function archive_evaluation() {
+    $evaluationModel = new EvaluationModel();
+
+    $data = $evaluationModel->get_latest_evaluation();
+    $evaluationModel->archive_eval_sheet($data[0]->id);
+    $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
   }
 
   protected function createCarbonCopy($eval_sheet_id)
@@ -393,7 +406,8 @@ class Evaluation extends BaseController
     return $content;
   }
 
-  protected function emailCarbonCopy($evalSheetId = null) {
+  protected function emailCarbonCopy($evalSheetId = null)
+  {
     if(isset($evalSheetId)) {
       $evalsheetModel = new EvalSheetModel();
       $details = $evalsheetModel->get_eval_sheet_dets($evalSheetId);

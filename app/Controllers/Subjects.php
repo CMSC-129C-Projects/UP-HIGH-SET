@@ -18,7 +18,7 @@ class Subjects extends BaseController
                 return $this->$method();
                 break;
             case 'student_subjects':
-                if ($_SESSION['logged_user']['role'] === '1')
+                if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3')
                     return redirect()->to(base_url('dashboard'));
                 $this->hasSession(0);
                 return $this->$method();
@@ -40,7 +40,7 @@ class Subjects extends BaseController
     }
 
 	public function index($faculty_id)
-    {    
+    {
         $css = ['custom/profs/viewsubjects-style.css'];
         // $js = ['custom/evaluation/evalSubjects.js'];
         $data = [
@@ -115,8 +115,23 @@ class Subjects extends BaseController
             }
         }
         $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
-        
+
         return view('subjects/addSubjects', $data);
+    }
+
+    public function delete_subject($subject_id = null)
+    {
+      if(isset($subject_id))
+      {
+        $subjectModel = new SubjectModel();
+
+        $result = $subjectModel->where('id', $subject_id)->delete();
+
+        if($result)
+          return true;
+      }
+
+      return false;
     }
 
     public function get_subjects_taken()

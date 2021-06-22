@@ -91,4 +91,28 @@ EOT;
     $query = $db->query($sql);
     return $query->getResult();
   }
+
+  public function count_perStatus_perSubject()
+  {
+    $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+SELECT CONCAT(faculty.first_name, ' ', faculty.last_name) as full_name, subjects.name,
+  sum(eval_sheet.status = 'Inprogress') as inprogress,
+  sum(eval_sheet.status = 'Open') as open,
+  sum(eval_sheet.status = 'Completed') as completed
+FROM subjects
+LEFT JOIN faculty
+ON subjects.faculty_id = faculty.id
+LEFT JOIN eval_sheet
+ON eval_sheet.subject_id = subjects.id
+WHERE subjects.is_deleted = 0
+	AND faculty.is_deleted = 0
+  AND eval_sheet.is_deleted = 0
+GROUP BY subjects.id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 }

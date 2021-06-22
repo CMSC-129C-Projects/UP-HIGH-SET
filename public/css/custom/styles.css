@@ -17,9 +17,24 @@ html {
 body {
   overflow-x: hidden;
   color: black;
-  background-color: black;
+  background-color: #e9dbc1 !important;
   padding: 0;
   margin: 0;
+}
+
+body { min-height: 100vh !important; margin: 0 !important; }
+
+#header { min-height:50px !important; }
+#footer { min-height:50px !important; }
+
+/* Trick */
+body{ 
+  display:flex !important; 
+  flex-direction:column !important;
+}
+
+#footer {
+  margin-top:auto !important;
 }
 
 #header {

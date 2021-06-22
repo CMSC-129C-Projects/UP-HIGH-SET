@@ -6,21 +6,6 @@ function getSubjectsByFaculty(facultyID) {
     });
 }
 
-function createAccordion(subject) {
-    let accordion = '<button class="accordion">Student Not Finished Evaluating</button>' +
-                    '<div class="panel">';
-    subject.studentsNotDone.forEach(studentDetail => {
-        accordion += '<div>'
-                        '<p>' + studentDetail.student_name + '</p>' +
-                        '<div class="progress">' +
-                            '<div class="progress-bar bg-danger" style="width:' + studentDetail.progress + '%">' + studentDetail.progress + '%</div>' +
-                        '</div>' +
-                    '</div>';
-    });
-    accordion += '</div>';
-    return accordion;
-}
-
 function displaySubjects(facultyID) {
     $.when(getSubjectsByFaculty(facultyID)).then(function(response) {
         if (response.is_available) {
@@ -32,12 +17,14 @@ function displaySubjects(facultyID) {
             response.subjects.forEach(subject => {
                 let progress = subject.progress;
                 let element;
-                let accordion;
                 let pBar = '<div class="progress">' +
                                 '<div class="progress-bar bg-danger" style="width:percentage">percentage</div>' +
                             '</div>';
                 if (progress !== 'No students') {
-                    progress = progress + '%';
+                    // Compute students not finished evaluation over total number of students
+                    // Result is percent of students not done. Subtract to 100 to get number of
+                    // students done
+                    progress = progress.toFixed(0) + '%';
                     pBar = pBar.replaceAll('percentage', progress);
                     element = '<strong>' + subject.name + '</strong>' + pBar;
                 } else {

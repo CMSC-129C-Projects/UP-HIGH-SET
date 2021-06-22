@@ -1,6 +1,8 @@
 <?= $this->extend('template/studentTemplate');?>
 
 <?= $this->section('content');?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+  
   <div id="submitModal">
     <div class="modal fade" id="subModal"  role="dialog" position="default">
       <div class="modal-dialog modal-lg">
@@ -175,8 +177,8 @@
               <div class="row">
                   <div class="buttons tab-content">
                       <button type="submit" formaction="<?=base_url()?>/evaluation/evaluate/<?=$eval_sheet_id?>" class="btn btn-lg btn-success" type="save"><i class="bi bi-check-circle"></i> Save</button>  
-                      <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
-                      <button data-toggle="modal" data-target="#subModal" class="btn btn-lg btn-review" type="button"> <i class="bi bi-journal-check"></i> Review</button>  
+                      <button type="button" class="btn btn-lg cancel" onclick="window.location.href = BASE_URI + '/subjects/student_subjects'"><i class="bi bi-x-circle"></i> Cancel</button>
+                      <button data-toggle="modal" data-target="#subModal" id="review" class="btn btn-lg btn-review" type="button"> <i class="bi bi-journal-check"></i> Review</button>  
                   </div>
               </div>
           </form>

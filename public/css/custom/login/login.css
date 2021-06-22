@@ -98,12 +98,32 @@
     text-align: center;
 }
 
-.r-content img {
-    /* width: 70%; */
-    width: 50vmin;
-}
+.stopwatch {
+    margin: auto;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    opacity: 0.6;
+}  
 
 .r-content bold {
-    font-size: 2rem;
-    font-family: 'Alfa Slab One', cursive!important;
+    font-size: 4.5vmin;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    z-index: 1;
+}
+
+.r-content .time , .r-content .days{
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: 10vmin;
+}
+
+.r-content .closed {
+    font-size: 12vmin;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
 }

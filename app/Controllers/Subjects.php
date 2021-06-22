@@ -18,7 +18,13 @@ class Subjects extends BaseController
                 return $this->$method();
                 break;
             case 'student_subjects':
-                if ($_SESSION['logged_user']['role'] === '1')
+                if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3')
+                    return redirect()->to(base_url('dashboard'));
+                $this->hasSession(0);
+                return $this->$method();
+                break;
+            case 'get_all_subjects':
+                if ($_SESSION['logged_user']['role'] === '2')
                     return redirect()->to(base_url('dashboard'));
                 $this->hasSession(0);
                 return $this->$method();
@@ -34,7 +40,7 @@ class Subjects extends BaseController
     }
 
 	public function index($faculty_id)
-    {    
+    {
         $css = ['custom/profs/viewsubjects-style.css'];
         // $js = ['custom/evaluation/evalSubjects.js'];
         $data = [
@@ -80,7 +86,7 @@ class Subjects extends BaseController
         ];
 
         $data['validation'] = null;
-        $data['message'] = null;
+        $data['status'] = null;
         $data['profs'] = $this->fetchProfessors();
 
         $rules = [
@@ -100,15 +106,32 @@ class Subjects extends BaseController
                 ];
 
                 if($subjectModel->insert($values)) {
-                    $data['message'] = true;
+                    $data['status'] = true;
                 } else {
-                    $data['message'] = false;
+                    $data['status'] = false;
                 }
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
         return view('subjects/addSubjects', $data);
+    }
+
+    public function delete_subject($subject_id = null)
+    {
+      if(isset($subject_id))
+      {
+        $subjectModel = new SubjectModel();
+
+        $result = $subjectModel->where('id', $subject_id)->delete();
+
+        if($result)
+          return true;
+      }
+
+      return false;
     }
 
     public function get_subjects_taken()
@@ -120,6 +143,27 @@ class Subjects extends BaseController
         $subjects = $subjectModel->get_subjects_taken($_SESSION['logged_user']['id'], $sessionStudent['grade_level']);
 
         echo json_encode($subjects);
+    }
+
+    /**
+     * Get all subjects
+     * in the database
+     */
+    public function get_all_subjects()
+    {
+        $subjectModel = new SubjectModel();
+        if (!$subjects = $subjectModel->where('is_deleted', 0)->findAll()) {
+            $response = [
+                'is_available' => 0,
+                'message' => 'No subjects found.'
+            ];
+        } else {
+            $response = [
+                'is_available' => 1,
+                'subjects' => $subjects
+            ];
+        }
+        echo json_encode($response);
     }
 
     /**

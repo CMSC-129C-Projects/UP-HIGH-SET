@@ -1,27 +1,11 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-
-<?php if(isset($status)):?>
-    <div id="bg-modal" class="black-modal-email">
-      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-        <div class="mdl-content">
-          <?php if($status):?>
-            <p>Email content updated succesfully</p>
-          <?php else:?>
-            <p>Error on Update. Please try again</p>
-          <?php endif;?>
-          <div class="btn-delete">
-            <button id="dontDelete">Dismiss</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
 
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1 style= "padding:4.7rem;">Update Email Content</h1>
+      <h1 style= "padding:4.7rem;">Send Notification</h1>
     </div>
 
     <div id="EmailContent">
@@ -30,7 +14,7 @@
         <form method="post" action="">
           <div class="form-group">
             <label for="email-subject" style="margin-top: 1rem; font-size:15px; margin-bottom:7px"> Email Subject</label>
-            <input type="text" class="form-control" name = 'email_subject' id="email-subject" value="<?=set_value('email_subject')?>" placeholder="Enter Email subject here ...">
+            <input type="text" class="form-control" name = 'email_subject' id="email-subject" value="<?=set_value('email_subject')?>">
             <br>
             <span class="text-danger"><?=displaySingleError($validation, 'email_subject');?></span>
           </div>
@@ -44,7 +28,7 @@
           <br>
           <div class="form-group">
             <label for="purpose" style="font-size:15px;">Email Purpose :</label>
-            <select class="custom-select">
+            <select name="purpose" class="custom-select">
               <option selected>Select...</option>
               <option value="announcement">Announcement</option>
               <option value="registration">Registration</option>
@@ -54,16 +38,14 @@
               <option value="verification">Verification</option>
             </select>
             </div>
-            <br><br>  
-            <p style="font-size:13px">Attachment is Optional</p>
-            <input type="file" style="border-bottom-style: hidden !important" name="attachment[]" value="" >
-            <br><br>
-            <input type="submit" style="border-bottom-style: hidden !important; border-radius: 2rem !important" value="update">
+            <br><br><br>
+            <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Send </button>
+            <button class="button" href="#" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important;"><i class="bi bi-x-circle"></i> Cancel</button>
           </form>
           </div>
         </div>
       </div>
   </div>
-  </div>\
+  </div>
 
 <?= $this->endSection();?>

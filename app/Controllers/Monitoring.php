@@ -21,12 +21,16 @@ class Monitoring extends BaseController
         switch($method) {
             case 'monitor_progress':
                 $this->hasSession(0);
-                if ($_SESSION['logged_user']['role'] === '2')
-                    return redirect()->to(base_url('dashboard'));
-                else
+                // if ($_SESSION['logged_user']['role'] === '2')
+                    // return redirect()->to(base_url('dashboard'));
+                // else
                     return $this->$method();
                 break;
             case 'get_subjects':
+                $this->hasSession(1);
+                $this->$method($param1);
+                break;
+            case 'transcend_students':
                 $this->hasSession(1);
                 $this->$method($param1);
                 break;
@@ -37,6 +41,26 @@ class Monitoring extends BaseController
             default:
 
         }
+    }
+
+    /*
+    * Moving Up: Increment Student's Grade Level
+    */
+    public function transcend_students()
+    {
+      $userModel = new UserModel();
+
+      $data = [
+          'grade_level' => NULL,
+          'is_active' => 0,
+          'is_deleted' => 1
+        ];
+
+      $userModel->where('role', 2)->where('is_active', 1)->where('is_deleted', 0)->where('grade_level', 12)->set($data)->update();
+
+      for ($i = 11; $i < 6; $i++) {
+        $userModel->update_grade_level($i, $i + 1);
+      }
     }
 
     /**
@@ -55,6 +79,7 @@ class Monitoring extends BaseController
             'profs' => $faculModel->findAll()
         ];
 
+        $this->transcend_students();
         return view('monitor/monitor', $data);
     }
 
@@ -200,7 +225,8 @@ class Monitoring extends BaseController
     /**
      * Check current session
      */
-    protected function hasSession($type) {
+    protected function hasSession($type)
+    {
         if ($type === 0) {
             // redirect to login if no session found
             // redirect to verifyAccount page if session not yet verified

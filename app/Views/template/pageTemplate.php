@@ -124,7 +124,10 @@
                   <a href="<?=base_url()?>/send_email">Send Email Notification</a>
                 </li>
                 <li>
-                  <a href="<?=base_url()?>/send_email">Archive Evaluation</a>
+                  <a href="<?=base_url()?>/send_email">Archive Evaluation</a> <!-- Archives the latest/recently closed Evaluation since possible na giclose na daan before i-archive -->
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> <!-- Clerk/Admin must indicate which evaluation to unarchive : What Semester and year -->
                 </li>
               </ul>
 

@@ -1,4 +1,7 @@
 $(function() {
+    let avatar_url = $('input[name="avatar"]').val();
+    $("#selected_avatar").attr('src', BASE_URI + avatar_url);
+
     $('#avatars').imagepicker();
 
     $('#avatars').change(function() {

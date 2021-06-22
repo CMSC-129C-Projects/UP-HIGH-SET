@@ -9,7 +9,7 @@ class Profile extends BaseController
 {
     protected $userModel;
 
-    public function _remap($method)
+    public function _remap($method, $param = null)
     {
         $this->hasSession();
         switch($method)
@@ -56,11 +56,12 @@ class Profile extends BaseController
                     'avatar_url'  => $this->request->getPost('avatar')
                 ];
                 $data['status'] = ($this->userModel->update($sessionStudent->id, $values)) ? true : false;
-                return redirect()->to(base_url('profile/student'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
         $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
@@ -98,11 +99,13 @@ class Profile extends BaseController
                     'email'       => $email
                 ];
                 $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
-                return redirect()->to(base_url('profile/admin'));
+                return redirect()->to(base_url('profile/admin/true'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
         $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);

@@ -1,22 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-  <?php if(isset($message)):?>
-    <div id="bg-modal" class="black-modal-email">
-      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-        <div class="mdl-content">
-          <?php if($message):?>
-              <p>Subject added successfully</p>
-          <?php else:?>
-              <p>An error has occurred</p>
-          <?php endif;?>
-          <div class="btn-delete">
-              <button id="dontDelete">Dismiss</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+
   <section class="container-fluid">
     <div>
       <div class="heading text-center">

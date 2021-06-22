@@ -1,22 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-  <?php if(isset($emailStatus)):?>
-    <div id="bg-modal" class="black-modal-email">
-      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-        <div class="mdl-content">
-          <?php if($emailStatus):?>
-            <p>User has been added. Email sent successfully</p>
-          <?php else:?>
-            <p>An error has occurred</p>
-          <?php endif;?>
-          <div class="btn-delete">
-            <button id="dontDelete">Dismiss</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+
   <section id="register" class="container-fluid">
     <div class="heading text-center" style="margin-bottom: 2.5rem !important;">
       <h1 style="padding: 4.7rem;">User Registration</h1>
@@ -69,9 +55,6 @@
                       <h4> @up.edu.ph </h4>
                     </div>
                   </div>
-                 
-                 
-
                 
                 </div>
                 <div class="col-md-6 half">

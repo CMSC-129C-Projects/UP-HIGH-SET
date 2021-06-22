@@ -56,15 +56,16 @@ class Evaluation extends BaseController
   public function evaluate($eval_sheet_id = null)
   {
     $data = [];
-
+    $data['status'] = null;
+    
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs();
       $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id);
       if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id)) {
-        $data['saveStatus'] = 'fail';
+        $data['status'] = 'false';
       } else {
-        $data['saveStatus'] = 'success';
+        $data['status'] = 'true';
       }
     }
 
@@ -204,10 +205,6 @@ class Evaluation extends BaseController
     foreach($questionIDs as $id) {
 
       if ($isSubmit) {
-        if ($id === 36) {
-          print_r($id);
-          print_r(data());
-        }
         $answerMultiple = $this->request->getPost('review_final_choices_' . $id);
         $answerComments = $this->request->getPost('review_answer_' . $id);
       } elseif (!$isSubmit) {

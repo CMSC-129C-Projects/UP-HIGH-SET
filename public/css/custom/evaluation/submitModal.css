@@ -6,7 +6,7 @@
 }
 
 #submitModal .modal-header {
-  background: linear-gradient(to top right, #800000 25%, #228b22 100%);
+  background: #7b1113;
   color: #ffff;
   -webkit-box-shadow: 0 0 3rem #333;
   box-shadow: 0 0 3rem #333;
@@ -65,7 +65,7 @@
 }
 
 #submitModal textarea {
-  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;
   font-size: 13px;

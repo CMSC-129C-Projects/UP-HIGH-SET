@@ -17,7 +17,6 @@ const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 :
 // Draw the chart and set the chart values
 function drawChart() {
     $.when(getSheetStatusCount()).then(function(response) {
-        console.log('here');
         if (response.is_available) {
             let professors = [];
             let statusList = []; // List of statuses for each professor whether done or not
@@ -42,16 +41,16 @@ function drawChart() {
                     let completeTotal = countOccurrences(statusList, true);
 
                     var data = google.visualization.arrayToDataTable([
-                        ['Not Done', 'Done'],
-                        ['Professors Not Done Evaluating', (professors.length - completeTotal)],
-                        ['Professors Done Evaluating', completeTotal]
+                        ['Incomplete', 'Complete'],
+                        ['Incomplete Evaluations', (professors.length - completeTotal)],
+                        ['Complete Evaluations', completeTotal]
                     ]);
                 
                     // const container = document.getElementById('col-container');
                     // console.log(container.clientWidth);
                 
                     var options = {
-                        'title':'Professors Done Answering',
+                        'title':'Evaluation Status Overview',
                         'animation':
                         {
                             'duration':1000,
@@ -59,7 +58,9 @@ function drawChart() {
                         },
                         'width':'100%',
                         'height':'100%',
-                        'backgroundColor':'transparent'
+                        'backgroundColor':'transparent',
+                        'colors':[ '#7b1113', '#014421' ],
+                        'is3D':'true'
                     };
                 
                     // Display the chart inside the <div> element with id="piechart"

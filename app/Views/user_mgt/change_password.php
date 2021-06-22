@@ -14,11 +14,11 @@
     <?php if(isset($error)) { ?>
       <div id="ChangePassword">            
       <div class="heading text-center" style="padding: 20px;">
-        <h1 style="margin-top: 5.2rem; margin-bottom: -1%;"> An error occured. <h1>
-        <div class="alert alert-danger" style="padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px;">
-            <h2 style=""><?=$error?><h2>
+        <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">  
+          <img src="<?=base_url()?>/public/error.png" style="width:7em; height:7em;">
+          <h2 style="padding-top:1em;"><?=$error?><h2>
         </div> 
-        <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px;" href="<?=$url?>">Return to login page</a>
+        <a class="button" style="padding: 12px 21px; font-size: 13px; margin-bottom:20px;" href="<?=$url?>"><i class="bi bi-arrow-left"></i> Return to login page</a>
       </div>
       <div>
 
@@ -34,25 +34,25 @@
             <form class="reset_pass" action="<?=base_url('home/change_password')?>" method="post">
               <div class="form-group">
                 <label for="old_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Old Password:</label>
-                <input id="old_pass" class="form-control" type="password" name="old_pass" value="" placeholder="Enter Old Password..." required>
+                <input id="old_pass" class="form-control" type="password" name="old_pass" value="" required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'old_pass')?></h4>
               </div>
               <br><br>
               <div class="form-group">
                 <label for="new_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Set New Password:</label>
-                <input id="new_pass" class="form-control" type="password" name="new_pass" value="" placeholder="Enter New Password..." required>
+                <input id="new_pass" class="form-control" type="password" name="new_pass" value="" required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'new_pass')?></h4>
               </div>
               <br><br>
               <div class="form-group">
                 <label for="confirm_pass" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Confirm Password:</label>
-                <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" placeholder="Enter New Password Again..." required>
+                <input id="confirm_pass" class="form-control" type="password" name="confirm_pass" value="" required>
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
               </div>
               <br><br>
               <div style="text-align:center">
-                <input type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 13px;" value="Update">
-                <a href="<?=base_url('dashboard')?>" class="button" style="padding: 12px 21px; font-size: 13px;">Cancel</a>
+                <a type="submit" name="update" style="border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 13px;"><i class="bi bi-check-circle"></i> Update</a>
+                <a href="<?=base_url('dashboard')?>" class="button" style="padding: 12px 21px; font-size: 13px;"><i class="bi bi-x-circle"></i> Cancel</a>
               </div>
               </form>
             <?php } ?>

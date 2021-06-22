@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use \App\Models\UserlogModel;
 use \App\Models\UserModel;
 use \App\Models\EmailModel;
+use \App\Models\EvaluationModel;
 
 use \App\Entities\Userlog;
 
@@ -43,10 +44,37 @@ class Home extends BaseController
 			return redirect()->to(base_url('dashboard'));
 		}
 
+    $data = [];
+
+    // Get Evaluation info (i.e. days left, status, etc.) [start]
+    $evaluationModel = new EvaluationModel();
+    
+    $evaluation_info = $evaluationModel->where('is_deleted', 0)
+                                    ->where('status', 'open')->first();
+
+    $data['evaluation_info'] = $evaluation_info;
+
+    if (isset($evaluation_info)) {
+      $datetime1 = date_create(date('Y-m-d H:i:s'));
+      $datetime2 = date_create($evaluation_info['date_end']);
+    
+      $interval = date_diff($datetime2, $datetime1);
+
+      $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
+
+      // Convert to days difference
+      $data['daysLeft'] = $interval->format('%a');
+
+      $data['timeLeft'] = $timeLeft;
+    }
+    // Get Evaluation info (i.e. days left, status, etc.) [end]
+
 		$data['validation'] = null;
-        $data['error'] = null;
+    $data['error'] = null;
 		$css = ['custom/login/login.css'];
+    $js = ['custom/login/login.js'];
 		$data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
 
 		if($this->request->getMethod() == 'post')
 		{
@@ -97,6 +125,13 @@ class Home extends BaseController
 
 		return view('user_mgt/login', $data);
 	}
+
+  protected function add_leading_zeros($timeLeft)
+  {
+    $times = explode(':', $timeLeft);
+
+    return $times[0] . ':' . ((strlen($times[1]) == 1) ? ('0' . $times[1]) : $times[1]) . ':' . ((strlen($times[2]) == 1) ? ('0' . $times[2]) : $times[2]);
+  }
 
   protected function checkPasswordLastUpdate()
   {
@@ -315,10 +350,12 @@ class Home extends BaseController
 	{
 		$session_data = [
       'id'            => $user['id'],
-			'name'			    => $user['first_name'],
+			'first_name'		=> $user['first_name'],
+      'last_name'			=> $user['last_name'],
 			'email'			    => $user['email'],
 			'password' 		  => $user['password'],
 			'role'			    => $user['role'],
+      'avatar_url'    => $user['avatar_url'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
       // 'emailVerified' => false,
@@ -371,7 +408,7 @@ class Home extends BaseController
     $subject = $emailContent['title'];
 
     $message = file_get_contents('app/Views/verification.html');
-		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['first_name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

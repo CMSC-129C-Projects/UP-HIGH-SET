@@ -92,7 +92,11 @@ EOT;
     return $query->getResult();
   }
 
-  public function count_perStatus_perSubject()
+  /**
+   * Get Students and Evaluation sheets
+   * based on subject
+   */
+  public function collect_eval_sheets($subject_id)
   {
     $db = \Config\Database::connect();
 

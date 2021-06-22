@@ -372,7 +372,7 @@ class Home extends BaseController
     $subject = $emailContent['title'];
 
     $message = file_get_contents('app/Views/verification.html');
-		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['first_name'], base_url().'/reset_password'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

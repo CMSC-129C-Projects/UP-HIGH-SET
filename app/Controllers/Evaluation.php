@@ -205,10 +205,6 @@ class Evaluation extends BaseController
     foreach($questionIDs as $id) {
 
       if ($isSubmit) {
-        if ($id === 36) {
-          print_r($id);
-          print_r(data());
-        }
         $answerMultiple = $this->request->getPost('review_final_choices_' . $id);
         $answerComments = $this->request->getPost('review_answer_' . $id);
       } elseif (!$isSubmit) {

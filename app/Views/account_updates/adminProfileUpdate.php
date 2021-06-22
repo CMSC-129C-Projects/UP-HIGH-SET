@@ -3,18 +3,7 @@
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <?php if(isset($status) && $status):?>
-        <div id="bg-modal" class="black-modal-email">
-            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-                <div class="mdl-content">
-                    <p>User updated successfully!</p>
-                    <div class="btn-delete">
-                        <button id="dontDelete">Dismiss</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif;?>
+    <span style="display: none;" id="status" data-status="<?=$status?>"></span>
 
     <div id="myModal" class="custom-modal">
         <!-- Modal content -->

@@ -33,10 +33,10 @@
 
 
 // Wait for window load
-// $(window).on('load', function(){
-// 	// Animate loader off screen
-// 	$(".bg-loader").fadeOut("slow");
-// });
+$(window).on('load', function(){
+	// Animate loader off screen
+	$(".bg-loader").fadeOut("slow");
+});
 
 function capitalize(str) {
     if (str.length == 0) {
@@ -57,8 +57,8 @@ new ResizeSensor(main, function() {
 });
 
 $(function () {
-    $(".bg-loader").fadeOut("slow");
-    
+    // $(".bg-loader").fadeOut("slow");
+
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

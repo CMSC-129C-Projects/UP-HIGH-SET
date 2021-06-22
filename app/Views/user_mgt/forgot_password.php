@@ -11,7 +11,7 @@
             <h2 style="padding-top:1em; font-size:2em;"><?=displaySingleError($validation, 'email_fpass')?><h2>
         </div>  
         <button class="button" style="padding: 0 21px; height:3em; width:12em; font-size: 1.3em; margin:1.3em;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
-        <button class="button" style="padding: 0 21px; height:3em; width:11em; font-size: 1.3em;" href="<?=base_url('dashboard/logout')?>"><i class="bi bi-x-circle"></i> Cancel </button>
+        <button class="button" style="padding: 0 21px; height:3em; width:11em; font-size: 1.3em;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 
     <?php } elseif(isset($validate_error)!=null) { ?> <!-- verify email in db -->
@@ -21,7 +21,7 @@
             <h2 style="padding-top:1em; font-size:2em;"><?=$validate_error?><h2>
         </div>  
         <button class="button" style="padding: 0 21px; height:3em; width:12em; font-size: 1.3em; margin:1.3em;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
-        <button class="button" style="padding: 0 21px; height:3em; width:11em; font-size: 1.3em;" href="<?=base_url('dashboard/logout')?>"><i class="bi bi-x-circle"></i> Cancel </button>
+        <button class="button" style="padding: 0 21px; height:3em; width:11em; font-size: 1.3em;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 <!-- New CHanges -->
 

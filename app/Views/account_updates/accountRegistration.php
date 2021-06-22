@@ -1,22 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-  <?php if(isset($emailStatus)):?>
-    <div id="bg-modal" class="black-modal-email">
-      <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-        <div class="mdl-content">
-          <?php if($emailStatus):?>
-            <p>User has been added. Email sent successfully</p>
-          <?php else:?>
-            <p>An error has occurred</p>
-          <?php endif;?>
-          <div class="btn-delete">
-            <button id="dontDelete">Dismiss</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+
   <section id="register" class="container-fluid">
     <div class="heading text-center" style="margin-bottom: 2.5rem !important;">
       <h1 style="padding: 4.7rem;">User Registration</h1>
@@ -62,12 +48,14 @@
                 <div class="col-md-6 half">
                   <div class="form-group">
                     <div class="inputBox uname">
-                      <input type="email" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
+                      <input type="text" name="adminEmail" value="<?=set_value('adminEmail');?>" required>
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                     </div>
                   </div>
+                
                 </div>
                 <div class="col-md-6 half">
                   <div class="form-group">
@@ -140,9 +128,10 @@
                     <span class="text-danger"><?=displaySingleError($validation, 'gradeLevel');?></span>
                   </div>
                 </div>
+
               </div>
 
-              <div class="row-md-4">
+              <!-- <div class="row-md-4">
                 <div class="mailBox">
                   <div class="inputBox">
                   
@@ -150,14 +139,36 @@
                       <br>
                       <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                       <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
                   </div>
 
                 </div>
                 
+              </div> -->
+              <div class="row">
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox uname">
+                    <input type="text" name="studEmail" value="<?=set_value('studEmail');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
+                      <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
+                    </div>
+                  </div>
+                 
+                 
+
+                
+                </div>
+                <div class="col-md-6 half">
+                  <div class="form-group" style="margin-left:0%;">
+                  <input type="submit" value="submit">
+                  <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+                  </div>
+                </div>
               </div>
-              
-              <input type="submit" value="submit">
-              <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+             
             </form>
           </div>
         </div>

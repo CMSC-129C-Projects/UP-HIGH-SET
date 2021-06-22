@@ -24,6 +24,7 @@ class App extends BaseConfig
 	 * @var string
 	 */
 	public $baseURL = 'http://localhost/UP-HIGH-SET';
+	// public $baseURL = 'http://192.168.1.5/UP-HIGH-SET';
 
 	/**
 	 * --------------------------------------------------------------------------

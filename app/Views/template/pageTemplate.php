@@ -10,6 +10,8 @@
     <link href="<?=base_url()?>/public/css/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -22,6 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
+
     <?php if(isset($css)):?>
       <?=echoFiles($css);?>
     <?php endif;?>
@@ -44,8 +47,8 @@
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
-                <img class="rounded-cricle" src="<?=base_url()?>/public/LogoCitronella.png">
-                <h3>CITRONELLA</h3>
+                <img class="rounded-cricle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
+                <h3><?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
           </div>
@@ -67,7 +70,10 @@
               <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-journal-check"></i> Report</a>
               <ul class="collapse list-unstyled" id="report">
                 <li>
-                    <a href="#">View Report</a>
+                    <a href="#">View Subject Summary Report</a>
+                </li>
+                <li>
+                    <a href="#">View Faculty Summary Report</a>
                 </li>
                 <li>
                     <a href="#">Print Report</a>
@@ -79,7 +85,7 @@
                   <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
                 </li>
                 <li>
-                  <a href="#">Monitor Progress</a>
+                  <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
               <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
@@ -93,14 +99,38 @@
                 <li>
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
+                <li>
+                  <a href="#">Transcend Students</a>
+                </li>
               </ul>
-              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Database Management</a>
+              <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="#">Add Professors</a>
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/professors">View Professors</a>
+                </li>
+                <li>
+                  <a href="#">Add Subjects</a>
+                </li>
+                <li>
+                  <a href="#">View Subjects</a>
+                </li>
+              </ul>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
-                  <a href="<?=base_url()?>/send_email">Update Email Content</a>
+                  <a href="<?=base_url()?>/send_email">Send Email Notification</a>
                 </li>
-
+                <li>
+                  <a href="<?=base_url()?>/send_email">Archive Evaluation</a> <!-- Archives the latest/recently closed Evaluation since possible na giclose na daan before i-archive -->
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> <!-- Clerk/Admin must indicate which evaluation to unarchive : What Semester and year -->
+                </li>
               </ul>
+
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
@@ -118,7 +148,7 @@
           </div>
         </div>
       </div>
-      <div class="wrapper d-flex align-items-stretch" id="main" style="height: 109.5">
+      <div class="wrapper align-items-stretch" id="main" style="height: 109.5">
         <?= $this->renderSection('content');?>
       </div>
     </div>
@@ -154,10 +184,18 @@
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
+    <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
+        // overried defaults of alertify
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.glossary.ok = "Dismiss";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
     </script>

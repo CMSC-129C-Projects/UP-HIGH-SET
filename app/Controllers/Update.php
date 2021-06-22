@@ -63,17 +63,17 @@ class Update extends BaseController
     {
         $data['role'] = $role;
         $data['validation'] = null;
-        $emailStatus = null;
+        $data['status'] = null;
 
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules($role))) {
-                $emailStatus = $this->admin->addUser($this->request, $role);
+                $data['status'] = $this->admin->addUser($this->request, $role);
+                // $data['status'] = false;
             } else {
                 $data['validation'] = $this->validator;
             }
         }
-
-        $data['emailStatus'] = $emailStatus;
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
 
         $css = ['custom/alert.css'];
         $js = ['custom/alert.js', 'custom/glevel.js'];
@@ -99,6 +99,8 @@ class Update extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
 
         $css = ['custom/alert.css'];
         $js = ['custom/alert.js'];

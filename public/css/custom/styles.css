@@ -17,9 +17,24 @@ html {
 body {
   overflow-x: hidden;
   color: black;
-  background-color: black;
+  background-color: #e9dbc1 !important;
   padding: 0;
   margin: 0;
+}
+
+body { min-height: 100vh !important; margin: 0 !important; }
+
+#header { min-height:50px !important; }
+#footer { min-height:50px !important; }
+
+/* Trick */
+body{ 
+  display:flex !important; 
+  flex-direction:column !important;
+}
+
+#footer {
+  margin-top:auto !important;
 }
 
 #header {
@@ -28,7 +43,7 @@ body {
   left: 0;
   padding: 2rem 4rem;
   z-index: 1000;
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background:#7b1113;
   position: sticky;
 }
 
@@ -66,7 +81,9 @@ body {
 
 #register .nav {
   margin: auto;
-  width: 700px;
+  /* width: 700px; */
+  width: 61.4%;
+  
 }
 
 #register .nav h2 {
@@ -127,7 +144,8 @@ body {
 
 #register form {
   background: #fff;
-  width: 700px;
+  /* width: 700px; */
+  width: 60%;
   margin-top: -0.25rem;
   border-radius: 0 0 1.5rem 1.5rem;
   -webkit-box-shadow: 0 0 2rem #333;
@@ -174,8 +192,7 @@ body {
   outline: none !important;
   border-radius: 0 !important;
 }
-.form-group .form-select{
-
+.form-group .form-select {
   border: 0.15rem solid #333;
   font-family: "Roboto";
   /* border-radius: 1.3rem; */
@@ -213,13 +230,22 @@ body {
   top: 3rem;
   left: 10%;
 }
+#register form .inputBox h4 {
+  font-size: 1.4rem;
+  /* position: absolute; */
+  text-align: right;
+  float: right;
+  margin-right: 10%;
+  position: relative;
+  margin-top: -40px;
+}
 
 #register form input[type="submit"],
 button#cancel,
 input[type="submit"] {
   outline: none;
   border: none;
-  border-radius: 5rem;
+  border-radius: 2rem;
   color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
@@ -254,6 +280,8 @@ input[type="submit"]:hover {
   margin: auto;
 }
 
+/* FOOTER */
+
 #footer {
   background: linear-gradient(to top right, #800000 0%, #228b22 100%);
   width: 100%;
@@ -274,7 +302,6 @@ input[type="submit"]:hover {
   margin: 1rem 0;
   margin: auto;
 }
-
 
 #footer .contactLinks h3 {
   font-size: 18px;
@@ -317,15 +344,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-#register .nav input[type="button"]:focus,
-.student.focus,
-.admin.focus {
-  background-color: #fff !important;
-  color: #7b1113 !important;
-  text-transform: uppercase !important;
-  font-size: 1.2rem !important;
-}
-
 /* .student.focus {
     margin-left: 2px !important;
   } */
@@ -345,8 +363,7 @@ form.add {
   padding: 2.75rem 1.5rem !important;
 }
 form.edit {
-    padding: 2.75rem 1.50rem !important;
-
+  padding: 2.75rem 1.5rem !important;
 }
 
 .row-md-4.email {
@@ -362,7 +379,7 @@ form.edit {
 }
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background: #7b1113;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -447,7 +464,7 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
@@ -466,7 +483,6 @@ a:focus {
   transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
   transform-origin: bottom left;
 }
-
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #sidebar::-webkit-scrollbar {
@@ -505,6 +521,12 @@ a:focus {
   color: #7b1113;
   background-color: #ffed8a;
 }
+#sidebar ul.components ul.CTAs a:hover {
+  background-color: none;
+}
+#sidebar .list-unstyled.CTAs.components .evaluate a:hover{
+  background-color: transparent !important;
+}
 
 #sidebar ul p {
   color: #e9dbc1;
@@ -531,7 +553,6 @@ a:focus {
 #sidebar ul li a:active {
   text-decoration: none;
 }
-
 
 a[data-toggle="collapse"] {
   position: relative;
@@ -571,7 +592,8 @@ a.article:hover {
 
 .navIcon .navbar-header i {
   color: #7b1113;
-  font-size: 30px;
+  font-size: 45px;
+  margin-left: 1rem !important;
 }
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;
@@ -626,7 +648,7 @@ a.article:hover {
 }
 #sidebar .logout .nav-link input[type="button"]:hover {
   color: #ffff;
-  background: #7b1114;
+  background: #7b1113;
 }
 
 /* ---------------------------------------------------
@@ -730,6 +752,13 @@ a.article:hover {
   background: #014421;
 }
 
+#register .nav .active input[type="button"] {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.2rem !important;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -742,4 +771,7 @@ a.article:hover {
     margin-left: 0;
     transform: none;
   }
+}
+.tabs .mobiletab{
+  float: left;
 }

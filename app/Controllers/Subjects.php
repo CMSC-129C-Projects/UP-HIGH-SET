@@ -18,7 +18,7 @@ class Subjects extends BaseController
                 return $this->$method();
                 break;
             case 'student_subjects':
-                if ($_SESSION['logged_user']['role'] === '1')
+                if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3')
                     return redirect()->to(base_url('dashboard'));
                 $this->hasSession(0);
                 return $this->$method();

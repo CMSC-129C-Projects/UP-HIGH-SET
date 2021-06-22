@@ -100,19 +100,29 @@
                   <a href="#">Transcend Students</a>
                 </li>
               </ul>
-              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Faculty Members</a>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Database Management</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="#">Add Professors</a>
+                </li>
                 <li>
                   <a href="<?=base_url()?>/professors">View Professors</a>
                 </li>
-
+                <li>
+                  <a href="#">Add Subjects</a>
+                </li>
+                <li>
+                  <a href="#">View Subjects</a>
+                </li>
               </ul>
-              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Announcements</a>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
                   <a href="<?=base_url()?>/send_email">Send Email Notification</a>
                 </li>
-
+                <li>
+                  <a href="<?=base_url()?>/send_email">Archive Evaluation</a>
+                </li>
               </ul>
 
             </li>

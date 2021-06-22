@@ -58,9 +58,11 @@ class Monitoring extends BaseController
 
       $userModel->where('role', 2)->where('is_active', 1)->where('is_deleted', 0)->where('grade_level', 12)->set($data)->update();
 
-      for ($i = 11; $i < 6; $i++) {
-        $userModel->update_grade_level($i, $i + 1);
-      }
+      $userModel->update_grade_level(11, 12);
+      $userModel->update_grade_level(10, 11);
+      $userModel->update_grade_level(9, 10);
+      $userModel->update_grade_level(8, 9);
+      $userModel->update_grade_level(7, 8);
     }
 
     /**

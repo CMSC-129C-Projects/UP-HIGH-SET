@@ -25,6 +25,13 @@ class Professors extends BaseController
               $this->hasSession(1);
               return $this->$method();
               break;
+          case 'add_professors':
+              // if ($_SESSION['logged_user']['role'] === '2') {
+              //     return redirect()->to(base_url('dashboard'));
+              // }
+              $this->hasSession(1);
+              return $this->$method();
+                  break;
           case 'profList':
               $this->hasSession(1);
               return $this->$method($param1);
@@ -65,7 +72,8 @@ class Professors extends BaseController
   /*
   * Add Professors / Faculty
   */
-  public function add_professors() {
+  public function add_professors()
+  {
 
     $data['validation'] = null;
     $css = ['custom/login/login.css']; // change with the correct css please
@@ -93,30 +101,25 @@ class Professors extends BaseController
       {
         $facultyModel = new FacultyModel();
 
-        $first_name = $this->request->getVar('first_name');
-        $last_name = $this->request->getVar('last_name');
-        $details = $this->request->getVar('details');
-
-        $data_entry = [
-          'first_name' => $first_name,
-          'last_name' => $last_name,
-          'details' => $details
-        ];
-
-        $facultyModel->add_faculty($data_entry);
+        // $result = $facultyModel->add_faculty($data_entry);
+        $facultyModel->insert([
+          'first_name' => $this->request->getVar('first_name'),
+          'last_name' => $this->request->getVar('last_name'),
+          'details' => $this->request->getVar('details')
+        ]);
       } else {
 
         $data['validation'] = $this->validator;
         return view('professors/add_faculty', $data);
       }
     }
-    return view('professors/add_faculty', $data))
+    return view('professors/add_faculty', $data);
   }
 
   /*
   * Delete Faculty
   */
-  public function delete_faculty() {
+  public function delete_professor($faculty_id) {
 
   }
 

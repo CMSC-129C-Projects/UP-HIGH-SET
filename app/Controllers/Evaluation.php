@@ -91,17 +91,16 @@ class Evaluation extends BaseController
   public function submit($eval_sheet_id = null)
   {
     $data = [];
+    $data['status'] = null;
 
     if ($this->request->getMethod() === 'post') {
       // Create input type hidden for question type and question IDs of each question
       $questionIDs = $this->getQuestionIDs(true);
       $evaluationDetails = $this->getEvalDetails($questionIDs, $eval_sheet_id, true);
-      if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id)) {
-        $data['saveStatus'] = 'fail';
+      if (!$this->saveDatabase($evaluationDetails[0], $evaluationDetails[1], $eval_sheet_id, true)) {
+        $data['status'] = 'false';
       } else {
-        $data['saveStatus'] = 'success';
-
-        // $this->emailCarbonCopy($eval_sheet_id);
+        return redirect()->to(base_url('subjects/student_subjects'));
       }
     }
 
@@ -243,7 +242,7 @@ class Evaluation extends BaseController
    * Call insert or update to save
    * answers to database
    */
-  protected function saveDatabase($evaluationDetails, $progress, $eval_sheet_id)
+  protected function saveDatabase($evaluationDetails, $progress, $eval_sheet_id, $isSubmit = false)
   {
     $evalAnswersModel = new EvalAnswersModel();
     $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
@@ -263,7 +262,7 @@ class Evaluation extends BaseController
       }
     }
 
-    if ($progress == 100) {
+    if ($isSubmit) {
       $value = ['status' => 'Completed'];
     } elseif ($progress != 0) {
       $value = ['status' => 'Inprogress'];
@@ -334,93 +333,20 @@ class Evaluation extends BaseController
 
     $datum = ['status' => 'closed'];
     $evalModel->where('status', 'open')->set($datum)->update();
-
-    $this->emailCardbonCopy();
   }
 
   /*
   * Archive current evaluation: is_deleted = 0, thus when the evaluation is done and archived, evaluation papers will not be retrieved by the clerk
   */
-  public function archive_evaluation() {
+  public function archive_evaluation()
+  {
     $evaluationModel = new EvaluationModel();
 
     $data = $evaluationModel->get_latest_evaluation();
-    $evaluationModel->archive_eval_sheet($data[0]->id);
-    $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
-  }
 
-  protected function createCarbonCopy($eval_sheet_id)
-  {
-    $items = $this->getAllItems();
-    $prevAnswers = $this->getPreviousAnswers($eval_sheet_id);
-    $numbers = $this->countAnswers($prevAnswers);
-
-    $progress = $this->computeProgress($numbers[0], $numbers[1]);
-    $questions = $items[0];
-    $choices = $items[1];
-    $index = 0;
-
-    $content = '';
-
-    foreach($questions as $key => $value) {
-      $content .= '<div class="row" style="background-color:#7b1113;">
-                      <p style="font-size: 19px; color: #e9dbc1; padding-left:10px; padding-top:5px; padding-bottom:5px; margin-top:3px; margin-bottom: 3px;">' . $key . '</p>
-                  </div>';
-      foreach($value as $q) {
-        $content .=   '<div class="row" style="margin-top: 3px;">
-                        <div class="col-12" style="margin-top: 3px;">
-                          <p style="font-size: 15px; color: #7b1113; padding-top: 3px;">' . $q->question_text . '</p>
-                        </div>
-                      </div>
-                      <div class="row">';
-        if ($key === 'Comments') {
-          $content .= '<div class="col-12" style="margin-top: 3px;">
-                        <textarea class="form-control" style="font-size: 13px; width:536px; border-color: #7b1113; border-width: 3px;" rows="6" readonly>' . $prevAnswers ? $prevAnswers[$index]['answer_text']: '' . '</textarea>
-                      </div>
-                      </div>';
-        } else {
-          $content .= '<div class="col-12" style="text-align:center;">
-                        <li style="display:inline;">
-                          <i style="font-size: 14px;"> Excellent </i>
-                        </li>';
-          foreach($choices[$key] as $choice) {
-            $content .= '<li style="display:inline;">';
-            if(count($prevAnswers) != 0 && $prevAnswers[$index]['qChoice_id'] === $choice['id']) {
-              $content .= '<input type="radio" name="review_choices_' . $q->id . '" value="' . $choice['id'] . '" checked="checked" disabled>';
-            } else {
-              $content .= '<input type="radio" name="review_choices_' . $q->id . '" value="' . $choice['id'] . '" disabled>';
-            }
-            $content .= '</li>';
-          }
-
-          $content .= '<li style="display:inline;">
-                          <i style="font-size: 14px;"> Poor </i>
-                        </li>';
-        }
-        $content .= '</div></div>';
-        $index++;
-      }
-      $content .= '<br>';
-    }
-    $content = $this->sanitize_output($content);
-    return $content;
-  }
-
-  protected function emailCarbonCopy($evalSheetId = null)
-  {
-    if(isset($evalSheetId)) {
-      $evalsheetModel = new EvalSheetModel();
-      $details = $evalsheetModel->get_eval_sheet_dets($evalSheetId);
-
-      $search = ['-professor-', '-subject-', '-content-'];
-      $subject = "Copy of Evaluation " . $evalSheetId;
-
-      $message = file_get_contents(base_url() . '/app/Views/email/evalCarbonCopy.html');
-  		$replace = [$details[0]->prof, $details[0]->subject, $this->createCarbonCopy($evalSheetId)]; //redirect to login page
-
-  		$message = str_replace($search, $replace, $message);
-  		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
-      return $status;
+    if (count($data) !== 0) {
+      $evaluationModel->archive_eval_sheet($data[0]->id);
+      $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
     }
   }
 }

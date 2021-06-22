@@ -1,4 +1,6 @@
 $(function() {
+    initializeReviewButton();
+    
     $('.evalbtn').click(function() {
         let evalbtns = $('.evalbtn');
 
@@ -63,6 +65,9 @@ function setCurrentProgress() {
     
     $('.progress-bar').css('width', (progress.toFixed(0)) + '%');
     $('.progress-bar').text((progress.toFixed(0)) + '%');
+
+    // Disable review button if progress less than 100
+    toggleReviewButton(progress.toFixed(0) != 100);
 }
 
 function updateReview($this) {
@@ -94,4 +99,15 @@ function getAnsweredQuestions() {
         }
     }
     return alreadyAnswered;
+}
+
+function toggleReviewButton (status) {
+    $('#review').prop('disabled', status);
+}
+
+// Determine whether to enable or disable review button onload of page
+function initializeReviewButton() {
+    let progress = ($('.progress-bar').width() / $('.progress-bar').parent().width()) * 100;
+
+    toggleReviewButton(progress.toFixed(0) != 100);
 }

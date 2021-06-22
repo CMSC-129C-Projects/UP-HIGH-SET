@@ -112,16 +112,20 @@ margin-bottom: 1rem;
     color: #fff;
   }
 
+  .card-container button:disabled {
+    opacity: 0.5!important;
+    cursor: default;
+  }
+
   
   .card-container button:hover::before,
-  
   .card-container button:hover::before {
     width: 100%;
   }
   
-  .card-container  button:hover,
-  button#cancel:hover,
-  .card-container  button:hover {
+  .card-container  button:hover:enabled,
+  button#cancel:hover:enabled,
+  .card-container  button:hover:enabled {
     color: #ffff;
     background: #014421;
   }

@@ -61,6 +61,6 @@ WHERE
 EOT;
 
     $query = $db->query($sql);
-    return $query->getResult();
+    return $query;
   }
 }

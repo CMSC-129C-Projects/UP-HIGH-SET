@@ -5,9 +5,17 @@
     <section class="login">
         <div class="container cntr-custom">
           <div class="row custom-row">
-            <div class="col-md-6 s-col align-items-start">
+            <div class="d-flex col-md-6 s-col justify-content-center align-middle">
               <div class="r-content">
-                  <bold>Let's create a better environment for both students and teachers.</bold>
+                  <?php if (isset($evaluation_info)):?>
+                    <bold>Evaluation period closes in</bold>
+                    <bold class="days"><?=$daysLeft?> days</bold>
+                    <bold>and</bold>
+                    <bold class="time"><?=$timeLeft?></bold>
+                  <?php else:?>
+                    <span style="display: none;" id="eval_status"></span>
+                    <bold class="closed">CLOSED</bold>
+                  <?php endif;?>
               </div>
             </div>
             <div class="col-md 6 d-flex justify-content-center">

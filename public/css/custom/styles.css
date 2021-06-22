@@ -592,8 +592,9 @@ a.article:hover {
 
 .navIcon .navbar-header i {
   color: #7b1113;
-  font-size: 45px;
+  font-size: 6.5vmin;
   margin-left: 1rem !important;
+  background-color: transparent !important;
 }
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;

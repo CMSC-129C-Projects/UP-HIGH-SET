@@ -4,8 +4,8 @@
     <section id="special" class="container-fluid">
 
         <div class="heading text-center">
-            <h1>Professor <?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
-            <h3><?=$prof['details']?></h3>
+            <h1 style="padding: 8rem 0 2rem;">Professor <?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
+            <h3 style="margin-bottom:3rem;"><?=$prof['details']?></h3>
         </div>
 
 

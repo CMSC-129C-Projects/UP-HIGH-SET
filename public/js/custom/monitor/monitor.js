@@ -31,7 +31,7 @@ function displaySubjects(facultyID) {
                     element = '<strong>' + subject.name + '</strong><p style="color: #7b1113;">' + progress + '</p>';
                 }
                 let $div;
-                if (subject.studentsNotDone)
+                if (subject.studentsNotDone && (progress !== '100%'))
                     $div = $('<div style="margin: 2% 0;">' + element + subject.studentsNotDone + '</div>');
                 else
                     $div = $('<div style="margin: 2% 0;">' + element + '</div>');

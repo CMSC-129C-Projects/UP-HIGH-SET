@@ -13,6 +13,8 @@ function appendSubjectCards() {
             
             const disableEvaluate = (element.status === 'Completed') ? 'disabled' : '';
 
+            console.log(element);
+
             let subject = '<div class="card">' +
                                 '<img src="' + BASE_URI + '/public/images/EvaluationCover.jpg" class="img-fluid" alt="">' + 
                                 '<h1>' + capitalize(element.name) + '</h1>' +

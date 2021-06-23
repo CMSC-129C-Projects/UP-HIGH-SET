@@ -80,13 +80,11 @@
             <?php endforeach;?>
             <td><?=$ratings[1];?></td>
           </tr>
-         
-
         </tbody>
-        
-      </table>
-      
+      </table>      
     </div>
+    <span>Note: Scroll right to see the rest of the table.</span>
+
     <div class="row">
         <div class="col-md-4">
             <div class="inputBox">

@@ -23,6 +23,11 @@ class Subjects extends BaseController
                 $this->hasSession(0);
                 return $this->$method();
                 break;
+            case 'delete_subject':
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
+                $this->hasSession(0);
+                return $this->$method($param1);
             case 'get_all_subjects':
                 if ($_SESSION['logged_user']['role'] === '2')
                     return redirect()->to(base_url('dashboard'));
@@ -121,17 +126,20 @@ class Subjects extends BaseController
 
     public function delete_subject($subject_id = null)
     {
-      if(isset($subject_id))
-      {
-        $subjectModel = new SubjectModel();
+        if(isset($subject_id))
+        {
+            $subjectModel = new SubjectModel();
 
-        $result = $subjectModel->where('id', $subject_id)->delete();
+            $value = ['is_deleted' => 1];
+            $result = $subjectModel->update($subject_id, $value);
 
-        if($result)
-          return true;
-      }
+            if(!$result)
+                return false;
+            else
+                return redirect()->to(base_url('professors'));
+        }
 
-      return false;
+        return false;
     }
 
     public function get_subjects_taken()

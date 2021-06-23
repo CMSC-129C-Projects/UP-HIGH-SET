@@ -44,16 +44,35 @@
 
 .btn-login {
     margin-top: 4vh;
-    width: 25%;
-    background-color: #e9dbc1;
-    border-color: #014421;
-    color: black;
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    color: #7b1113;
+    font-size: 1.5vh;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    /* position: relative; */
+    z-index: 1;
+    border: solid #e9dbc1 2px;
+    overflow: hidden;
+    height: 25px;
+    width: 30%;
+    margin-bottom: 0%;
+    margin-right: 10px;   
+    background: #e9dbc1;
+    color: #7b1113;
 }
 
+.btn-login:hover::before {
+    width: 100%;
+}
+  
 .btn-login:hover {
-    background-color: #014421;
+    color: #ffff;
+    background: #014421;
     border-color: #014421;
-    color: #e9dbc1;
 }
 
 .form-background {
@@ -68,7 +87,7 @@
 
 .form-background label {
     color: #e9dbc1;
-    font-size: 2rem;
+    font-size: 3vmin;
 }
 
 .form-background span {
@@ -78,21 +97,21 @@
 .form-background small {
     color: #e9dbc1;
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.5vmin;
 }
 
 .form-background a:hover {
     text-decoration: underline;
 }
 
-.form-background i {
+/* .form-background i {
     color: #e9dbc1;
     font-size: 2rem;
     position: absolute;
     bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
-}
+} */
 
 .r-content {
     margin: 0px 2%;
@@ -126,7 +145,7 @@
 .r-content .countdown .time {
     font-family: 'Bicubik';
     font-weight: 500;
-    font-size: 7vmin !important;
+    font-size: 8vmin !important;
 }
 
 .r-content .closed {
@@ -148,6 +167,17 @@
     font-family: 'Anonymous Pro', monospace;
 }
 
+@media (max-aspect-ratio: 414/677) {
+    .btn-login {
+        width: 40%;
+    }
+}
+
+@media (max-aspect-ratio: 494/677) {
+    .btn-login {
+        font-size: 1vh;
+    }
+}
 
 @media (max-width: 768px) {
     .r-content {
@@ -158,3 +188,22 @@
         margin: 0 3%;
     }
 }
+
+@media (min-width: 768px) {
+    .btn-login {
+        width: 45%;
+    }
+}
+
+@media (min-width: 991px) {
+    .btn-login {
+        width: 30%;
+        height: 30px;
+    }
+}
+
+/* @media (max-width: 992px) {
+    .btn-login {
+        font-size: 0.9vh;
+    }
+} */

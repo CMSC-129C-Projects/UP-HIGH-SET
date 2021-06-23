@@ -83,6 +83,7 @@ $(function() {
                 $(profnames[i]).css('border-color', '');
                 $(profnames[i]).css('border-width', '');
                 $(profnames[i]).css('background-color', '');
+                $(profnames[i]).children().css('color', '');
             }
         }
 
@@ -90,6 +91,7 @@ $(function() {
         $(this).css('border-color', '#7b1113');
         $(this).css('border-width', '3px');
         $(this).css('background-color', '#7b1113');
+        $(this).children().css('color', 'white');
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });

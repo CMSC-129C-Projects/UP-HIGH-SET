@@ -92,20 +92,11 @@ EOT;
     return $query->getResult();
   }
 
-<<<<<<< HEAD
   public function count_perStatus_perSubject()
-=======
-  /**
-   * Get Students and Evaluation sheets
-   * based on subject
-   */
-  public function collect_eval_sheets($subject_id)
->>>>>>> 2f93648931354402631427993d4270de0d7cd1cd
   {
     $db = \Config\Database::connect();
 
     $sql = <<<EOT
-<<<<<<< HEAD
 SELECT CONCAT(faculty.first_name, ' ', faculty.last_name) as full_name, subjects.name,
   sum(eval_sheet.status = 'Inprogress') as inprogress,
   sum(eval_sheet.status = 'Open') as open,
@@ -119,7 +110,21 @@ WHERE subjects.is_deleted = 0
 	AND faculty.is_deleted = 0
   AND eval_sheet.is_deleted = 0
 GROUP BY subjects.id
-=======
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
+
+  /**
+   * Get Students and Evaluation sheets
+   * based on subject
+   */
+  public function collect_eval_sheets($subject_id)
+  {
+    $db = \Config\Database::connect();
+
+$sql = <<<EOT
 SELECT u.id as user_id, es.*
 FROM subjects as s
 LEFT JOIN users as u
@@ -128,7 +133,6 @@ LEFT JOIN eval_sheet as es
 ON u.id = es.student_id
 WHERE s.id = $subject_id AND es.subject_id = $subject_id
 AND u.is_active = 1 AND u.is_deleted = 0 AND es.is_deleted = 0 AND s.is_deleted = 0
->>>>>>> 2f93648931354402631427993d4270de0d7cd1cd
 EOT;
 
     $query = $db->query($sql);

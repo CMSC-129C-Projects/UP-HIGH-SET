@@ -80,7 +80,10 @@
   cursor: pointer;
   z-index: 1;
   overflow: hidden;
-  margin-left: -5%;
+  height: 3em;
+  width: 10em;
+  margin-right: 1.75em;
+  margin-bottom: 0.5em;
   background: #7b1113;
   color: #fff;
 }

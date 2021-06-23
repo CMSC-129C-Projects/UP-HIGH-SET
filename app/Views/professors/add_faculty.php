@@ -33,7 +33,7 @@
                     <span><?=displaySingleError($validation, 'details');?></span>
                 </div>
                 <br><br>
-                <div>
+                <div style="text-align:center;">
                   <button class="button2" type="submit" style="margin-left: 0.5em; width: 10em; height  : 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; "><i class="bi bi-check-circle"></i> Submit</button>
                   <button class="button2" onclick="window.location='<?=base_url('login')?>'" style="margin-left: 0.5em; margin-top: 1em; width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right:4em;  "><i class="bi bi-x-circle"></i> Cancel</button>
                 </div>

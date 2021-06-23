@@ -10,7 +10,7 @@
                   <?php if (isset($evaluation_info)):?>
                     <!-- <img class="logo" src="<?=base_url()?>/public/images/CitronellaLogo.png" alt=""> -->
                     <span>The UP Student-Teacher Evaluation will close in</span>
-                    <span class="countdown"><?=$daysLeft?> DAYS & <span class="time"><?=$timeLeft?></span></span>
+                    <span class="countdown"><?=($daysLeft === '1') ? ($daysLeft . ' DAY') : ($daysLeft . ' DAYS')?> & <span class="time"><?=$timeLeft?></span></span>
                     <hr class="line">
                     <span class="closing">Let your voice be heard. Evaluate your teachers now.</span>
                   <?php else:?>

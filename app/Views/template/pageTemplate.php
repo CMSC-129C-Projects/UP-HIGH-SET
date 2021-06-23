@@ -116,7 +116,7 @@
                   <a href="<?=base_url()?>/professors">View Professors</a>
                 </li>
                 <li>
-                  <a href="#">Add Subjects</a>
+                  <a href="<?=base_url()?>/subjects/add_subject">Add Subjects</a>
                 </li>
                 <li>
                   <a href="#">View Subjects</a>
@@ -186,7 +186,7 @@
     </section>
     <script src="<?=base_url()?>/public/js/jquery/jquery-3.6.0.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
+    <!-- <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script> -->
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>

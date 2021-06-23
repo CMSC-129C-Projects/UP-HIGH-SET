@@ -30,7 +30,6 @@ function appendProfCards(search = undefined) {
         $('#prof-content').empty();
         response.forEach((element) => {
             let chosenColor = getRandomNumber(0, COLORS.length);
-            console.log(chosenColor);
 
             let professor = '<div class="card">' +
                                 '<div class="dot text-center d-flex align-items-center justify-content-center" style="background-color: ' + COLORS[chosenColor]+ ';">' +
@@ -38,12 +37,19 @@ function appendProfCards(search = undefined) {
                                 '</div>' +
                                 '<h1>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</h1>' +
                                 '<p>' + element.details + '</p>' +
-                                '<button class="redirect" data-id="' + element.id + '" style="margin:auto;">View Subjects</button>' +
+                                '<div class="dropdown" style="margin:auto;">' +
+                                    '<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>' +
+                                    '<div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">'+
+                                        '<a class="dropdown-item" href="' + BASE_URI + '/view_subjects/' + element.id + '">View Subjects</a>' +
+                                        '<hr>' +
+                                        '<a class="dropdown-item" href="#">Edit Subject</a>' +
+                                        '<hr>' +
+                                        '<a class="dropdown-item" href="' + BASE_URI + '/professors/delete_professor/' + element.id + '">Delete Subject</a>' +
+                                    '</div>' +
+                                '</div>' +
                             '</div>';
 
-            $('#prof-content').append(professor).on('click', '.redirect', function() {
-                window.location.href = BASE_URI + '/view_subjects/' + $(this).attr('data-id');
-            });
+            $('#prof-content').append(professor);
         });
     });
 }

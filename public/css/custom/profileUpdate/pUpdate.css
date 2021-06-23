@@ -1,7 +1,8 @@
 .row h2{
 color: #7b1113;
 text-shadow:2px 2px 4px grey; ;
-margin-top: 8rem;;
+margin-top: 8rem;
+font-size: 4.5vmin;
 
 }
 
@@ -111,4 +112,72 @@ button#cancel:hover,
   .form-group button[type="changePW"]:hover {
     color: #ffff;
     background: #014421;
+  }
+/* 
+  @media (max-width: 1199px){
+  button[type=changeAvatar] {
+    position: relative;
+    top: 17rem;
+    right: 19rem;
+    margin-bottom: 18rem;
+  }
+}
+@media (max-width: 399px){
+  button[type=changeAvatar] {
+    position: relative;
+top: 0rem;
+left: 0rem;
+
+  }
+} */
+@media (max-width: 1199px){
+  .profileupdate .container .col-sm-3.custom {
+      -ms-flex: 0 0 100% !important;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      float: left !important;
+      width:100%;
+      position: relative!important;
+      min-height: 1px!important;
+      padding-right: 15px!important;
+      padding-left: 15px!important;
+  }
+  }
+  @media (max-width: 1199px){
+    .profileupdate .container .col-sm-9.align {
+        -ms-flex: 0 0 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        float: left !important;
+        width:100%!important;
+        position: relative!important;
+        min-height: 1px!important;
+        padding-right: 15px!important;
+        padding-left: 15px!important;
+        align-items: center!important;
+        margin: auto!important;
+    }
+    
+    }
+    /* @media (max-width: 351px){
+      .profileupdate .container .col-sm-9.align {
+          -ms-flex: none !important;
+          flex: none !important;
+          max-width: 75% !important;
+          float: left !important;
+          width:100%!important;
+          position: relative!important;
+          min-height: 1px!important;
+          padding-right: 15px!important;
+          padding-left: 15px!important;
+          align-items: center!important;
+          margin: auto!important;
+      }
+      } */
+  h4{
+    font-size: 2.7vmin !important;
+  }
+
+  .tab-content .form-group input{
+    font-size: 2vmin;
   }

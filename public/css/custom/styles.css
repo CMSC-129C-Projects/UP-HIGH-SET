@@ -82,8 +82,7 @@ body{
 #register .nav {
   margin: auto;
   /* width: 700px; */
-  width: 61.4%;
-  
+  width: 61.4%; 
 }
 
 #register .nav h2 {
@@ -225,13 +224,13 @@ body{
 }
 
 #register form .inputBox h3 {
-  font-size: 1.4rem;
+  font-size: 2vmin;
   position: absolute;
   top: 3rem;
   left: 10%;
 }
 #register form .inputBox h4 {
-  font-size: 1.4rem;
+  font-size: 2vmin;
   /* position: absolute; */
   text-align: right;
   float: right;
@@ -710,6 +709,18 @@ a.article:hover {
   margin-top: 6rem;
   width: 100%;
 }
+#Contents .welcomeMsg img.img-fluid.image2{
+display: none;
+}
+@media (max-width: 500px){
+  #Contents .welcomeMsg img.img-fluid.image1{
+    display: none;
+    }
+
+    #Contents .welcomeMsg img.img-fluid.image2{
+      display: block;
+      }
+}
 
 .adminDashboardButtons {
   position: relative;
@@ -868,3 +879,47 @@ if it's not present, don't show loader */
 .tabs .mobiletab{
   float: left;
 }
+
+@media (max-width: 1199px){
+.profileupdate .container .col-sm-3.custom {
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    float: left !important;
+    width:100%;
+    position: relative!important;
+    min-height: 1px!important;
+    padding-right: 15px!important;
+    padding-left: 15px!important;
+}
+}
+@media (max-width: 1199px){
+  .profileupdate .container .col-sm-9.align {
+      -ms-flex: 0 0 100% !important;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      float: left !important;
+      width:100%!important;
+      position: relative!important;
+      min-height: 1px!important;
+      padding-right: 15px!important;
+      padding-left: 15px!important;
+      align-items: center!important;
+      margin: auto!important;
+  }
+  }
+  /* @media (max-width: 351px){
+    .profileupdate .container .col-sm-9.align {
+        -ms-flex: none !important;
+        flex: none !important;
+        max-width: 75% !important;
+        float: left !important;
+        width:100%!important;
+        position: relative!important;
+        min-height: 1px!important;
+        padding-right: 15px!important;
+        padding-left: 15px!important;
+        align-items: center!important;
+        margin: auto!important;
+    }
+    } */

@@ -8,10 +8,10 @@ class Test extends BaseController
 {
     public function index() {
         $css = ['custom/reporting/profreport.css'];
-        // $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
+        $js = ['custom/reporting/print.min.js'];
         $data = [
             'css' => addExternal($css, 'css'),
-            // 'js'  => addExternal($js, 'javascript')
+            'js'  => addExternal($js, 'javascript')
         ];
         return view('reporting/profreport', $data);
     }

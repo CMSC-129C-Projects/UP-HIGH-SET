@@ -221,4 +221,8 @@ margin-bottom: 3rem;
   .no-print, .no-print * {
       display: none !important;
   }
+
+  .reportHeader {
+    margin-top: 3vh;
+  }
 }

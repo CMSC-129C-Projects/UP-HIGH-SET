@@ -4,8 +4,8 @@
     <section id="special" class="container-fluid">
 
         <div class="heading text-center">
-            <h1>Professor <?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
-            <h3><?=$prof['details']?></h3>
+            <h1 style="padding: 8rem 0 2rem;">Professor <?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
+            <h3 style="margin-bottom:3rem;"><?=$prof['details']?></h3>
         </div>
 
 
@@ -16,7 +16,7 @@
                         <img src="<?=base_url();?>/public/images/SubjectCover.jpg" alt="">
                         <h1><?=$subject->name?></h1>
                         <p><?=$subject->total_students?> STUDENTS ENROLLED.</p>
-                        <a href="#"><button>View Progress</button></a>
+                        <a href="<?= base_url();?>/reports/report_per_subject/<?=$subject->id;?>"><button>View Progress</button></a>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>

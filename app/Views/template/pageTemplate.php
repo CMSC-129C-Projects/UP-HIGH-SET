@@ -35,7 +35,7 @@
     </div>
     
     <!-- header section starts -->
-    <section id="header">
+    <section id="header" class="no-print">
       <div class="schoolWebsiteName">
           <a href="<?=base_url();?>"><img src="<?=base_url()?>/public/Logo.png"></a>
           <h1> University of the Philippines High School Cebu</h1>
@@ -144,7 +144,7 @@
           </ul>
         </nav>
         <!-- Page Content Holder -->
-        <div class="navIcon">
+        <div class="navIcon no-print">
           <div class="navbar-header">
             <button type="button" id="sidebarCollapse" class="navbar-btn"89>
               <i class="bi bi-list fa-2x"></i>
@@ -158,7 +158,7 @@
     </div>
     <!-- footer section starts  -->
 
-    <section id="footer" class="container-fluid" style="position: relative; z-index: 1000;">
+    <section id="footer" class="no-print container-fluid" style="position: relative; z-index: 1000;">
       <div class="row-md-4">
         <div class="contactLinks">
           <h3><i class="bi bi-person-circle"></i> Contact Us:</h3>

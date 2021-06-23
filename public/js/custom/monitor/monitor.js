@@ -31,7 +31,7 @@ function displaySubjects(facultyID) {
                     element = '<strong>' + subject.name + '</strong><p style="color: #7b1113;">' + progress + '</p>';
                 }
                 let $div;
-                if (subject.studentsNotDone)
+                if (subject.studentsNotDone && (progress !== '100%'))
                     $div = $('<div style="margin: 2% 0;">' + element + subject.studentsNotDone + '</div>');
                 else
                     $div = $('<div style="margin: 2% 0;">' + element + '</div>');
@@ -88,7 +88,8 @@ $(function() {
 
         $(this).css('transform', 'scale(1.05)');
         $(this).css('border-color', '#014421');
-        $(this).css('border-width', '3px');   
+        $(this).css('border-width', '3px');
+        $(this).children().css('color', 'white');
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });

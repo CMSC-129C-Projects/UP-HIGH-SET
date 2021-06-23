@@ -88,7 +88,8 @@ $(function() {
 
         $(this).css('transform', 'scale(1.05)');
         $(this).css('border-color', '#014421');
-        $(this).css('border-width', '3px');   
+        $(this).css('border-width', '3px');
+        $(this).children().css('color', 'white');
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });

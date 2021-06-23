@@ -97,7 +97,7 @@ EOT;
     $db = \Config\Database::connect();
 
     $sql = <<<EOT
-SELECT ONCAT(faculty.first_name, ' ', faculty.last_name) as full_name, subjects.name,
+SELECT CONCAT(faculty.first_name, ' ', faculty.last_name) as full_name, subjects.name,
   sum(eval_sheet.status = 'Inprogress') as inprogress,
   sum(eval_sheet.status = 'Open') as open,
   sum(eval_sheet.status = 'Completed') as completed

@@ -2,11 +2,13 @@
 namespace App\Controllers;
 
 use \App\Entities\Admin;
+use \App\Models\EvaluationModel;
 use \App\Models\EvalSheetModel;
 use \App\Models\EvalAnswersModel;
 use \App\Models\UserModel;
 use \App\Models\SectionModel;
 use \App\Models\SubjectModel;
+use \App\Models\FacultyModel;
 
 class Reports extends BaseController
 {
@@ -34,7 +36,10 @@ class Reports extends BaseController
     public function report_per_subject($subject_id)
     {
         $userModel = new UserModel();
+        $evaluationModel = new EvaluationModel();
         $subjectModel = new SubjectModel();
+        $facultyModel = new FacultyModel();
+
         $data = [];
 
         $css = ['custom/reporting/profreport.min.css'];
@@ -47,8 +52,14 @@ class Reports extends BaseController
         // $results = [ratings, tally]
         $results = $this->compute_progress_per_subject($subject_id);
         $open_ended = $this->get_open_ended_per_sub($subject_id);
+        $subject_info = $subjectModel->find($subject_id);
+        $faculty_in_charge = $facultyModel->find($subject_info['faculty_id']);
+        $evaluation_info = $evaluationModel->where('is_deleted', 0)->where('status', 'open')->first();
 
-        $data['subject_info'] = $subjectModel->find($subject_id);
+
+        $data['subject_info'] = $subject_info;
+        $data['evaluation_info'] = $evaluation_info;
+        $data['faculty'] = $faculty_in_charge;
         $data['ratings'] = $results[0];
         $data['tally'] = $results[1];
         $data['open_ended'] = $this->segregate_open_ended($open_ended);

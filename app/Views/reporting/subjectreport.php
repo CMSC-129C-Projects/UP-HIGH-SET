@@ -7,8 +7,9 @@
     </div>
         
     <div class ="profName">
-      <h2>NAME: <b>DARIUOS KINCADE</b></h2>
-      <h2>SCHOOL YEAR: <b>2020-2021</b></h2>
+      <h2>NAME: <b><?=strtoupper($faculty['first_name']) . ' ' . strtoupper($faculty['last_name'])?></b></h2>
+      <h2>SCHOOL YEAR: <b><?=$evaluation_info['year_start'] . ' - ' . $evaluation_info['year_end']?></b></h2>
+      <h2>SEMESTER: <b><?=$evaluation_info['semester']?></b></h2>
     </div>
     
     <div class="table-responsive item-table">

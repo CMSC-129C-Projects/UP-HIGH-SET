@@ -36,6 +36,7 @@
     </div>
     <div class="text-center">
       <button type="button" ><i class="bi bi-check-circle"></i> Confirm</button>
+      <button type="button" ><i class="bi bi-x-circle"></i> Cancel</button>
     </div>
 
   </section>

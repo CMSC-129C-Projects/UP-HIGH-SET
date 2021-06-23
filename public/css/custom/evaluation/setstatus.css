@@ -82,6 +82,28 @@ background-color: rgba(229, 229, 229, 1);
 .createEval h3{
     margin-left: 5px;
 }
+#setStatus .inputBox input,
+#setStatus .inputBox textarea {
+  /* outline: none; */
+  border: 0.15rem solid #333;
+  /* border-radius: 1.3rem; */
+  margin: 1.65rem 0;
+  padding: 0 1rem;
+  background: none;
+  height: 3.8rem;
+  width: 85%;
+  font-size: 2rem;
+
+  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: groove !important;
+  outline: none !important;
+  border-radius: 0 !important;
+}
 .effect1{
     -webkit-box-shadow: 0 10px 6px -6px #777;
        -moz-box-shadow: 0 10px 6px -6px #777;

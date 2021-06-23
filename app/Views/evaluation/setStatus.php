@@ -13,18 +13,18 @@
       <div class="box effect6">
         <h3>SET DATE START</h3>
 
-        <div class="setdate">
-          <h2>DD:HH:MM:SS<h2>
+        <div class="inputBox">
+          <input type="text">
         </div>
-          <a href><i class="bi bi-calendar2-week"></i></a>
+       <i class="bi bi-calendar2-week-fill"></i>
       </div>
 
       <div class="box effect6">
         <h3>SET DATE END</h3>
-        <div class="setdate">
-          <h2>DD:HH:MM:SS<h2>
+        <div class="inputBox">
+          <input type="text">
         </div>
-        <a href><i class="bi bi-calendar2-week"></i></a>
+        <i class="bi bi-calendar2-week-fill"></i>
       </div>
     </div>
     

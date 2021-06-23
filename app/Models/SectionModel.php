@@ -38,4 +38,19 @@ EOT;
       $query = $db->query($sql);
       return $query->getResult();
   }
+
+
+  public function get_ids()
+  {
+      $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+SELECT id
+FROM eval_section
+WHERE is_deleted = 0
+EOT;
+
+      $query = $db->query($sql);
+      return $query->getResult();
+  }
 }

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Bicubik';
+    src: url('../../../fonts/bicubik/Bicubik.OTF');
+}
+
 .background {
     opacity: 0.8;
     pointer-events: none;
@@ -98,12 +103,58 @@
     text-align: center;
 }
 
-.r-content img {
-    /* width: 70%; */
-    width: 50vmin;
+.logo {
+    margin: auto;
+    border-radius: 50%;
+    width: 10%;
+    /* position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    opacity: 0.6; */
+}  
+
+.r-content span {
+    font-size: 3.5vmin;
+    font-weight: 500;
+    color: #191919;
+    font-family: 'Anonymous Pro', monospace;
 }
 
-.r-content bold {
-    font-size: 2rem;
-    font-family: 'Alfa Slab One', cursive!important;
+.r-content .countdown,
+.r-content .countdown .time {
+    font-family: 'Bicubik';
+    font-weight: 500;
+    font-size: 7vmin !important;
+}
+
+.r-content .closed {
+    font-size: 7vmin;
+    font-weight: 500;
+    font-family: 'Bicubik';
+}
+
+.r-content .line {
+    margin: -0.5vh 0 1vh 0;
+    border: 2px solid #191919;
+    background-color: #191919;
+}
+
+.r-content .closing {
+    font-size: 2vmin;
+    font-weight: 600;
+    color: #191919;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+
+@media (max-width: 768px) {
+    .r-content {
+        margin-bottom: 6vh;
+    }
+    
+    .custom-row {
+        margin: 0 3%;
+    }
 }

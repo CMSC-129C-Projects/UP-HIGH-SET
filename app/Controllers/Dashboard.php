@@ -4,6 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use App\Models\SubjectModel;
+use App\Models\EvalSheetModel;
+use App\Models\UserModel;
+use App\Models\FacultyModel;
+
+
 class Dashboard extends BaseController
 {
   public function _remap($method)
@@ -29,8 +35,9 @@ class Dashboard extends BaseController
 
     if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
-    } else
+    } else {
       return view('user_mgt/dashboard');
+    }
   }
 
   public function logout()
@@ -38,5 +45,151 @@ class Dashboard extends BaseController
     $this->session->remove('logged_user');
     $this->session->destroy();
     return redirect()->to(base_url('login'));
+  }
+
+  /*
+  * Fetch all the subjects that have been evaluated successfully
+  */
+  public function fetch_evaluated_subjects()
+  {
+    $subjects_evaluated = [];
+
+    $userModel = new UserModel();
+    $subjectModel = new SubjectModel();
+    $evalSheetModel = new EvalSheetModel();
+
+    $subjects = $subjectModel->where('is_deleted', 0)->findAll();
+
+    foreach ($subjects as $subject) {
+      $student_count = $userModel->get_all_students_per_subject($subject['id']);
+
+      if($student_count !== 0) {
+        $students_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject['id']);
+
+        $percentage = ($students_who_evaluated / $student_count) * 100;
+
+        if( $percentage === 100)
+          array_push($subjects_evaluated, $subject['id']);
+      }
+    }
+
+    return $subjects_evaluated;
+  }
+
+  /*
+  * Calculate percentage of subjects completed / total subjects
+  */
+  public function get_subjects_stat()
+  {
+    $subjectModel = new SubjectModel();
+
+    $subjects = $subjectModel->where('is_deleted', 0)->findAll();
+
+    return round(count($this->fetch_evaluated_subjects()) / count($subjects) * 100, 2);
+  }
+
+  /*
+  * Fetch evaluated subjects under a certain prof
+  */
+  // default choice is 1: get associative array (Prof: percentage of completion based on subjects evaluated),
+  // 2: return number of professors that have been completely evaluated (all subjects handled have been evaluated)
+  public function get_faculty_stat($choice = 1)
+  {
+    $facultyModel = new FacultyModel();
+
+    $faculties = $facultyModel->where('is_deleted', 0)->findAll();
+    $evaluated_subject_ids = $this->fetch_evaluated_subjects(); // returns completed subject ids
+
+    $subjects_per_faculty = [];
+    $keys = []; // array of keys
+    $values = []; // array of values
+    $count_matched_subjects = 0;
+
+    // fetch subjects per faculty
+    foreach ($faculties as $faculty) {
+      array_push($subjects_per_faculty, $facultyModel->get_subjects_handled($faculty['id']));
+    }
+
+    // check whether any of the subjects handled by each prof belongs to the completely evaluated subjects
+    foreach ($subjects_per_faculty as $subject) {
+      foreach ($subject as $subj) {
+        if(!in_array($subj->faculty_name, $keys)) {
+          array_push($keys, $subj->faculty_name);
+        }
+
+        if(in_array($subj->id, $evaluated_subject_ids)) { // checks whether the subject id of the subjects handled by the professor matched those that are already evaluated
+          $count_matched_subjects++;
+        }
+      }
+       // an associative array for Prof -> percentage of completion (subjects evaluated / total subjects handled)
+      array_push($values, ($count_matched_subjects / count($subject)) * 100);
+
+      $count_matched_subjects = 0;
+    }
+
+    if($choice === 1) {
+      $faculty_subject_stats = array_combine($keys, $values);
+
+      return $faculty_subject_stats;
+    } else {
+      $faculty_evaluated_count = 0;
+
+      foreach ($values as $percentage) {
+        if($percentage === 100)
+          $faculty_evaluated_count++;
+      }
+
+      return $faculty_evaluated_count; // number of faculties that have 100% evaluated subjects
+    }
+  }
+
+  /*
+  * Get Students statistics
+  */
+  // choice 1: percentage (student done evaluating / total students) [DEFAULT]
+  // choice 2: array of students done evaluating (student object from database)
+  // choice 3: array of students still evaluating  or will have to evaluate with  their details (first name, last name and id)
+  public function get_student_stat($choice = 1) {
+    $subjectModel = new SubjectModel();
+    $userModel = new UserModel();
+
+    $students = $userModel->where('role', 2)->where('is_deleted', 0)->findAll();
+
+    $student_done_evaluating = [];
+    $students_in_progress = [];
+
+    foreach ($students as $student) {
+      $data = $subjectModel->get_in_progress_subjects_by_student($student->id);
+
+      if(count($data) === 0)
+        array_push($student_done_evaluating, $student);
+      else
+        array_push($students_in_progress, $student);
+    }
+
+    if($choice === 1)
+      return round((count($student_done_evaluating) / count($students)) * 100, 2);
+    elseif($choice === 2)
+      return $student_done_evaluating;
+    else
+      return $students_in_progress;
+  }
+
+  /*
+  * Returns an associative array: Student Name => array of subjects in progress
+  */
+  public function get_subject_in_progress_by_student() {
+    $subjectModel = new SubjectModel();
+    $keys = [];
+    $values = [];
+
+    $students_still_evaluating = $this->get_student_stat(3);
+
+    foreach ($students_still_evaluating as $student) {
+        array_push($keys, ($student->first_name . " " . $student->last_name));
+        array_push($values, $subjectModel->get_in_progress_subjects_by_student($student->id));
+    }
+
+    return $student_subjects_inprog = array_combine($keys, $values);
   }
 }

@@ -29,6 +29,14 @@
 //     });
 //     // resize();
 // });
+//paste this code under the head tag or in a separate js file.
+
+
+// Wait for window load
+$(window).on('load', function(){
+	// Animate loader off screen
+	$(".bg-loader").fadeOut("slow");
+});
 
 function capitalize(str) {
     if (str.length == 0) {
@@ -40,13 +48,15 @@ function capitalize(str) {
     }
 }
 
-let main = document.getElementById("main");
+let header = document.getElementById("header");
+let footer = document.getElementById("footer");
 
 new ResizeSensor(main, function() {
-    $('#sidebar').css("height", (main.clientHeight) + 'px');
+    let sidebarHeight = document.documentElement.clientHeight
+    $('#sidebar').css("height", (document.body.scrollHeight - header.clientHeight - footer.clientHeight) + 'px');
 });
 
-$(document).ready(function () {
+$(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

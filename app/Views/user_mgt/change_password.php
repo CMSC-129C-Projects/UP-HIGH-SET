@@ -9,7 +9,7 @@
 ?>  
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="min-height:100vh; padding: 8rem 0 2rem;">
+  <div class="container-fluid" style="min-height:100vh;">
 
     <?php if(isset($error)) { ?>         
       <div class="heading text-center" style="padding: 20px;">

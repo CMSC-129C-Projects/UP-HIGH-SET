@@ -74,20 +74,30 @@ class Reports extends BaseController
      */
     public function report_per_faculty($faculty_id)
     {
-        $evalAnswersModel = new EvalAnswersModel();
+        $evaluationModel = new EvaluationModel();
         $subjectModel = new SubjectModel();
+        $facultyModel = new FacultyModel();
 
+        $faculty_in_charge = $facultyModel->find($faculty_id);
         $subjects_handled = $subjectModel->get_subjects_by_faculty($faculty_id);
 
         // when displaying, loop through subjects_handled and use the subject id as a key
         // to check ratings of that subject in "all_ratings" variable
-        $info = $this->get_all_ratings($subjects_handled);
+        $all_info = $this->get_all_info($subjects_handled);
 
-        $all_ratings = $info[0];
+        // print_r($all_info);
 
-        $all_open_ended = $info[1];
+        $css = ['custom/reporting/profreport.css'];
+        $js = ['custom/reporting/print.min.js'];
+        $data = [
+            'css' => addExternal($css, 'css'),
+            'js'  => addExternal($js, 'javascript'),
+            'evaluation_info' => $evaluationModel->where('is_deleted', 0)->where('status', 'open')->first(),
+            'faculty' => $faculty_in_charge,
+            'all_info' => $all_info
+        ];
 
-        echo json_encode($all_ratings);
+        return view('reporting/profreport', $data);
     }
 
     /**
@@ -136,19 +146,30 @@ class Reports extends BaseController
 
     /**
      * Get all ratings of subjetcs
-     * and open ended
-     * handled by a professor
+     * including subject name, section and number of students
      */
-    protected function get_all_ratings($subjects_handled)
+    protected function get_all_info($subjects_handled)
     {
+        $subjectModel = new SubjectModel();
+        $userModel = new UserModel();
+
+        $all_info = [];
+
         foreach($subjects_handled as $subject) {
             $rating = $this->compute_progress_per_subject($subject->id);
 
-            $all_ratings[$subject->id] = $rating;
-        }
-        // print_r($all_open_ended[3][0]);
+            $subject_info = $subjectModel->find($subject->id);
+            
+            $total_students = $userModel->get_all_students_per_subject($subject->id);
 
-        return [$all_ratings, $all_open_ended];
+            $all_info[$subject->id] = [
+                'subject_info' => $subject_info,
+                'total_students' => $total_students,
+                'rating' => $rating[0]
+            ];
+        }
+
+        return $all_info;
     }
 
     /**

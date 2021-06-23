@@ -179,6 +179,10 @@ margin-bottom: 3rem;
   font-size: 1.5vmin !important;
 }
 
+.item-table-prof .table tfoot td {
+  border: none !important;
+}
+
 
 .underline {
   border: solid black .1rem;
@@ -206,6 +210,10 @@ margin-bottom: 3rem;
 .signature {
   width: 75%;
   float: right;
+}
+
+.overall {
+  font-size: 1.8vmin;
 }
 
 

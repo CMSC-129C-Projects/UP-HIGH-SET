@@ -5,7 +5,7 @@
 
   <div class="container-fluid">
     <div class="heading text-center">
-      <h1 style= "padding:4.7rem;">Send Notification</h1>
+      <h1 style="padding:4.7rem;">SEND EMAIL</h1>
     </div>
 
     <div id="EmailContent">

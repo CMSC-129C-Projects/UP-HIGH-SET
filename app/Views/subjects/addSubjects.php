@@ -6,7 +6,7 @@
   <section class="container-fluid">
     <div>
       <div class="heading text-center">
-        <h1 style= "padding:4.7rem;">Add Subject</h1>
+        <h1 style= "padding:4.7rem;">ADD SUBJECT</h1>
       </div>
       <div id="EmailContent">
       <div id="AddSubject">

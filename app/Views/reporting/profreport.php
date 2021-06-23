@@ -67,7 +67,7 @@
     </div>
     <br><br>
       <div class="row info">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <div class="legend d-flex flex-direction-column">
             <div class="legend-cntr text-right">
               <h4>Legend:</h4>
@@ -79,11 +79,11 @@
           </div>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 col-sm-4 text-center">
           <h4>* Sum of weighted ratings</h4>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <div class="signature text-center">
             <h4>CATHERINE M. RODEL</h4>
             <hr class="underline">

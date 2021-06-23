@@ -134,7 +134,7 @@ margin-bottom: 3rem;
 }
  
 /* Handle */
-.item-table::-webkit-scrollbar-track,
+/* .item-table::-webkit-scrollbar-track, */
 .comments::-webkit-scrollbar-thumb {
   background:#7b1113; 
   border-radius: 10px;

@@ -150,7 +150,7 @@ class Monitoring extends BaseController
                 $accordion .=   '<div>' .
                                     '<h3 style="font-size:1.3em; color:#7b1113; margin: 1em 0 0.3em 0;">' . $student['student_name'] . '</h3>' .
                                     '<div class="progress">' .
-                                        '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:' . $student['progress'] . '%">' . $student['progress'] . '%</div>' .
+                                        '<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:' . $student['progress'] . '%">' . $student['progress'] . '%</div>' .
                                     '</div>' .
                                 '</div>';
             }

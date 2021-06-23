@@ -18,7 +18,7 @@ function displaySubjects(facultyID) {
                 let progress = subject.progress;
                 let element;
                 let pBar = '<div class="progress">' +
-                                '<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:percentage;">percentage</div>' +
+                                '<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:percentage;">percentage</div>' +
                             '</div>';
                 if (progress !== 'No students') {
                     // Compute students not finished evaluation over total number of students

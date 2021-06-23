@@ -60,14 +60,8 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
-<<<<<<< HEAD
 
     public function get_all_students_per_subject($id) {
-=======
-    
-    public function get_all_students_per_subject($id)
-    {
->>>>>>> 3b8a42c4fafdbc85be148c998d2e546ed8eaa22e
         $db = \Config\Database::connect();
 
         $sql = <<<EOT
@@ -87,17 +81,11 @@ EOT;
         return $result[0]->student_perSub;
     }
 
-<<<<<<< HEAD
-    /*
-    * Fetch number of evaluated subjects per student
-    */
-=======
     /**
      * Get Number Of Students
      * That Have Completed
      * Evaluating
      */
->>>>>>> 3b8a42c4fafdbc85be148c998d2e546ed8eaa22e
     public function get_students_complete_count()
     {
         $db = \Config\Database::connect();

@@ -3,7 +3,7 @@
 <?php $this->section('content'); ?>
 
   
-<div class="container-fluid" style="min-height: 100vh;"> 
+<div class="container-fluid" style="min-height: 100vh; padding: 3rem 0 2rem;"> 
   <div id="ChangePassword">
     <?php if (isset($validation) != null) { ?>
       <div class="heading text-center" style="padding: 20px;">

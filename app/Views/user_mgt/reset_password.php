@@ -1,7 +1,7 @@
 <?php $this->extend('template/default') ?>
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="min-height:100vh;">
+  <div class="container-fluid" style="min-height:100vh; padding: 3rem 0 2rem;">
         
         <?php if(isset($error)) { ?>
           <div class="heading text-center" style="padding: 20px;">
@@ -14,7 +14,7 @@
     
         <?php } else { ?>
           <div id="ChangePassword">
-            <div class="card" style="padding: 8rem 0 2rem;">
+            <div class="card">
               <div class="card-body" style="padding: 40px; margin: 10px">
                 <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 2em;">Please reset your password to continue: </h3>
                 <form class="reset_pass" action="<?=base_url()?>/reset_password/<?=$userToken?>" method="post">

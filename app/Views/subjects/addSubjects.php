@@ -3,10 +3,10 @@
 <?= $this->section('content');?>
   <span style="display: none;" id="status" data-status="<?=$status?>"></span>
 
-  <section class="container-fluid">
+  <section class="container-fluid" style="padding: 4rem 0 2rem;">
     <div>
       <div class="heading text-center">
-        <h1 style= "padding:4.7rem;">ADD SUBJECT</h1>
+        <h1 style= "padding:3rem;">ADD SUBJECT</h1>
       </div>
       <div id="EmailContent">
       <div id="AddSubject">

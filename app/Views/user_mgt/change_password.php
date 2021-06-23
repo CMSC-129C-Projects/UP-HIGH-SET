@@ -9,7 +9,7 @@
 ?>  
 
 <?php $this->section('content'); ?>
-  <div class="container-fluid" style="min-height:100vh;">
+  <div class="container-fluid" style="min-height:100vh; padding: 3rem 0 2rem;">>
 
     <?php if(isset($error)) { ?>         
       <div class="heading text-center" style="padding: 20px;">
@@ -22,7 +22,7 @@
 
     <?php } else { ?>
       <div class="heading text-center">
-        <h1 style="padding-bottom:4.7rem;">Change Password</h1>
+        <h1 style="padding-bottom:4.7rem;">CHANGE PASSWORD</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">

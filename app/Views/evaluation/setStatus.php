@@ -11,29 +11,24 @@
     <div class=" container box-container">
 
       <div class="box effect6">
-        <h3>SET DATE START</h3>
+        <h3>START DATE</h3>
 
         <div class="inputBox">
           <input type="text">
         </div>
-       <i class="bi bi-calendar2-week-fill"></i>
+      
       </div>
 
       <div class="box effect6">
-        <h3>SET DATE END</h3>
+        <h3>END DATE</h3>
         <div class="inputBox">
           <input type="text">
         </div>
-        <i class="bi bi-calendar2-week-fill"></i>
+       
       </div>
     </div>
     
-    <div class="form-check text-center createEval" id="createEval">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-      <label class="form-check-label" for="flexCheckDefault">
-        <h3>Create Evaluation Sheets</h3>
-    </label>
-    </div>
+    
     <div class="text-center">
       <button type="button" ><i class="bi bi-check-circle"></i> Confirm</button>
       <button type="button" ><i class="bi bi-x-circle"></i> Cancel</button>

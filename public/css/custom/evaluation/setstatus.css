@@ -15,14 +15,17 @@
     width: 90%;
     
 }
+
 #setStatus .box-container .box{
 
 justify-content: center;
 text-align: center;
 margin-bottom: 2rem;
 height: 16rem;
-width: 40rem;
+width: 30rem;
 background-color: rgba(229, 229, 229, 1);
+margin-right: 11%;
+margin-left: 11%;
 }
 #setStatus .box-container .box h3{
     background: linear-gradient(to top right, #7b1113 0%, #014421 100%);
@@ -58,7 +61,8 @@ background-color: rgba(229, 229, 229, 1);
     margin-right: 10px;
     background: #7b1113;
     color: #fff;
-     margin-bottom: 8rem;
+     margin-bottom: 14rem;
+     margin-top: 5rem;
 
   }
   
@@ -104,6 +108,9 @@ background-color: rgba(229, 229, 229, 1);
   border-bottom-style: groove !important;
   outline: none !important;
   border-radius: 0 !important;
+}
+#setStatus .inputBox{
+  margin-top: 3rem;
 }
 .effect1{
     -webkit-box-shadow: 0 10px 6px -6px #777;

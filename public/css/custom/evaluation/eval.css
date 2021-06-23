@@ -115,7 +115,7 @@ h1.likert-header {
 }
 form .statement {
   display:block;
-  font-size: 14px;
+  font-size: 2.3vmin !important;
   font-weight: bold;
   padding: 30px 0 0 9.4%;
   margin-bottom:10px;
@@ -164,7 +164,10 @@ ul.row.nav.nav-tabs.tab-content {
 webkit-box-shadow: transparent;
 box-shadow: none !important;
 }
-form .likert li label {width:100%;}
+form .likert li label {width:100%;
+font-size: 1.9vmin;
+}
+
 /* .tab-content .buttons {
   margin:30px 0;
   padding:0 4.25%;
@@ -229,7 +232,8 @@ label[class=statement]{
   overflow: hidden;
   height: 4rem;
   width: 10rem;
-  margin-bottom: 0%;
+  margin-bottom: 12rem;
+  margin-top: 2rem;
   margin-right: 10px;
   
  

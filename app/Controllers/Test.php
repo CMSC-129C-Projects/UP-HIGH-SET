@@ -7,12 +7,12 @@ use \App\Entities\Admin;
 class Test extends BaseController
 {
     public function index() {
-        // $css = ['custom/monitor/monitor.css'];
+        $css = ['custom/reporting/profreport.css'];
         // $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
-        // $data = [
-        //     'css' => addExternal($css, 'css'),
-        //     'js'  => addExternal($js, 'javascript')
-        // ];
-        return view('reporting/subjectreport');
+        $data = [
+            'css' => addExternal($css, 'css'),
+            // 'js'  => addExternal($js, 'javascript')
+        ];
+        return view('reporting/profreport', $data);
     }
 }

@@ -120,25 +120,29 @@ margin-bottom: 3rem;
   padding: 2%;  
 }
 
+.item-table::-webkit-scrollbar,
 .comments::-webkit-scrollbar {
   width: 12px;
 }
 
 
 /* Track */
- .comments::-webkit-scrollbar-track {
+.item-table::-webkit-scrollbar-track,
+.comments::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
  
 /* Handle */
- .comments::-webkit-scrollbar-thumb {
+.item-table::-webkit-scrollbar-track,
+.comments::-webkit-scrollbar-thumb {
   background:#7b1113; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
- .comments::-webkit-scrollbar-thumb:hover {
+.item-table::-webkit-scrollbar-thumb:hover,
+.comments::-webkit-scrollbar-thumb:hover {
   background: #014421; 
   
 }

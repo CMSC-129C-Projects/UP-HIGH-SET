@@ -31,7 +31,8 @@
         <div class="alert alert-success" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
             <img src="<?=base_url()?>/public/success.png" style="width:7em; height:7em;">
             <h2 style="padding-top:1em; font-size:2em;">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
-        </div>  
+        </div>
+        <a class="button" style="padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>"><i class="bi bi-x-left"></i> Cancel Reset Password</a>  
       </div>
 
     <?php } elseif( $success == null && $validate_error == null && $validation == null) {?> <!-- gone from external sources -->

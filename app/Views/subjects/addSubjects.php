@@ -8,7 +8,7 @@
       <div class="heading text-center">
         <h1 style= "padding:4.7rem;">Add Subject</h1>
       </div>
-
+      <div id="EmailContent">
       <div id="AddSubject">
         <div class="card">
           <div class="card-body">
@@ -45,13 +45,16 @@
                 <br>
                 <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>
               </div>
-              <br> 
-              <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Save</button>
-              <button class="button" href="#" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important;"><i class="bi bi-x-circle"></i> Cancel</button>
+              <br>
+              <div style="text-align: center;"> 
+                <button class="button2" type="submit" style=""><i class="bi bi-check-circle"></i> Save</button>
+                <button class="button2" href="#" style=""><i class="bi bi-x-circle"></i> Cancel</button>
+              </div>
             </form>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 <?= $this->endSection();?>

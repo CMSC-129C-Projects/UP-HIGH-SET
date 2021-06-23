@@ -11,6 +11,7 @@
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;
   border-radius: 1rem;
+  background: white !important;
   font-size: 13px;
 }
 
@@ -24,6 +25,7 @@
   border-bottom-style: groove !important;
   outline: none !important;
   border-radius: 0 !important;
+  background-color: white !important;
   font-size: 13px;
 }
 
@@ -66,6 +68,31 @@
   box-shadow: none;
 }
 
+#EmailContent .button2 {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  margin-left: -5%;
+  background: #7b1113;
+  color: #fff;
+}
+
+#EmailContent .button2:hover::before {
+  width: 100%;
+}
+
+#EmailContent .button2:hover {
+  color: #ffff;
+  background: #014421;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

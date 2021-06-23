@@ -60,8 +60,14 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
+<<<<<<< HEAD
 
     public function get_all_students_per_subject($id) {
+=======
+    
+    public function get_all_students_per_subject($id)
+    {
+>>>>>>> 3b8a42c4fafdbc85be148c998d2e546ed8eaa22e
         $db = \Config\Database::connect();
 
         $sql = <<<EOT
@@ -81,9 +87,17 @@ EOT;
         return $result[0]->student_perSub;
     }
 
+<<<<<<< HEAD
     /*
     * Fetch number of evaluated subjects per student
     */
+=======
+    /**
+     * Get Number Of Students
+     * That Have Completed
+     * Evaluating
+     */
+>>>>>>> 3b8a42c4fafdbc85be148c998d2e546ed8eaa22e
     public function get_students_complete_count()
     {
         $db = \Config\Database::connect();
@@ -107,18 +121,18 @@ EOT;
     /*
     * Update Grade Level
     */
-    public function update_grade_level($grade_level, $higher_level) {
+    public function update_grade_level($grade_level, $higher_level)
+    {
       $db = \Config\Database::connect();
 
       $sql = <<<EOT
 UPDATE users
 SET grade_level = $higher_level
-WHERE
-	grade_level = $grade_level AND is_active = 1
-  AND is_deleted = 0 AND role = 2
+WHERE grade_level = $grade_level AND is_active = 1
+AND is_deleted = 0 AND role = 2
 EOT;
 
-    $query = $db->query($sql);
-    return $query->getResult();
+        $query = $db->query($sql);
+        return $query;
     }
 }

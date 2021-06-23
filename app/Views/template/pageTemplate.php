@@ -41,7 +41,7 @@
       <div class="schoolWebsiteName">
           <a href="<?=base_url();?>"><img src="<?=base_url()?>/public/Logo.png"></a>
           <h1> University of the Philippines High School Cebu</h1>
-          <h2> Student Evaluation for Teachers</h2>
+          <h2> Student Evaluation of Teachers</h2>
       </div>
     </section>
     <!-- header section ends -->

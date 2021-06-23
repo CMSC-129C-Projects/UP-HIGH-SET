@@ -89,7 +89,6 @@
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
-    
     <script>
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";

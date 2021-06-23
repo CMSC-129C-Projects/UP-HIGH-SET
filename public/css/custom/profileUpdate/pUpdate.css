@@ -1,12 +1,14 @@
 .row h2{
 color: #7b1113;
 text-shadow:2px 2px 4px grey; ;
+margin-top: 8rem;;
 
 }
 
 
 .tab-content h4{
     color: #7b1113;
+    font-size: 3  vmin;
     }
 button[type=changeAvatar]{
 width: 110px;
@@ -54,6 +56,8 @@ margin-top: 10px;
   
   background: #7b1113;
   color: #fff;
+  margin-bottom: 8rem;
+  margin-top: -8rem;
 }
 
 .form-group button:hover::before,

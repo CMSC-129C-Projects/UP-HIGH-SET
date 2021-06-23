@@ -8,7 +8,7 @@
 <section id="special" class="container-fluid">
 
 <div class="heading text-center">
-<h1>PROFESSOR ROBERTO BASADRE</h1>
+<h1 style="padding: 8rem 0 2rem;">PROFESSOR ROBERTO BASADRE</h1>
 <h3> Civil Engineer, UPHS Faculty (Any description sa profs)</h3>
 
 

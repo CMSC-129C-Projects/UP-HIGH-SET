@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div class="text-center">
-                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar">
+                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem;">
                         <button type="changeAvatar" id="myBtn">Change Avatar</button>
                     </div>
                     </hr>
@@ -72,6 +72,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
+                                    <p style="float:right; position:relative; top:4.8rem; right:1rem;">@up.edu.ph</p>
                                     <input type="email" class="form-control" name="email" id="email" value="<?=set_value('email', $email);?>" disabled>
                                 </div>
                             </div>

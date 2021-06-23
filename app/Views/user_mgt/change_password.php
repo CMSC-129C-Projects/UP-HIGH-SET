@@ -48,8 +48,8 @@
                 <h4 class="text-danger" style="text-align: center; margin: auto !important;"><?=displaySingleError($validation, 'confirm_pass')?></h4>
               </div>
               <br><br>
-              <div style="text-align:center">
-                <button class="button" type="submit" name="update" style="height: 3em; width: 8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin: 0 2em 0.5em 0.5em"><i class="bi bi-check-circle"></i> Update</button>
+              <div style="text-align:center;">
+                <button class="button" type="submit" name="update" style="height: 3em; width: 8em; border-bottom-style: hidden !important; border-radius: 2rem !important; font-weight: bold; font-size: 1.3em; margin: 0 1.75em 0.5em 0.5em"><i class="bi bi-check-circle"></i> Update</button>
                 <button href="<?=base_url('dashboard')?>" class="button" style="height: 3.15em; width:7.8em; padding: 12px 0px; font-size: 1.3em;"><i class="bi bi-x-circle"></i> Cancel</button>
               </div>
               </form>

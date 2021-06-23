@@ -12,7 +12,7 @@
       <h2>SEMESTER: <b><?=$evaluation_info['semester']?></b></h2>
     </div>
     
-    <div class="table-responsive item-table" style="border: solid .3rem #7b1113">
+    <div class="table-responsive item-table">
       <table class="table">
         <thead>
           <tr>
@@ -83,7 +83,10 @@
         </tbody>
       </table>      
     </div>
-    <span>Note: Scroll right to see the rest of the table.</span>
+
+    <div class="note text-center">
+      <b>Note: Scroll right to see the rest of the table.</b>
+    </div>
 
     <div class="row">
         <div class="col-md-4">

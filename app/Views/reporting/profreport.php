@@ -16,6 +16,10 @@
       <h2>SCHOOL YEAR: <b><?=$evaluation_info['year_start'] . ' - ' . $evaluation_info['year_end']?></b></h2>
       <h2>SEMESTER: <b><?=$evaluation_info['semester']?></b></h2>
     </div>
+
+    <div class="printBtn no-print float-right">
+      <button type="button" id="print" class="button"><i class="bi bi-printer-fill"></i> Print</button>
+    </div>
     
     <div class="table-responsive item-table-prof">
       <table class="table">
@@ -89,14 +93,6 @@
             <hr class="underline">
             <h5>Principal</h5>
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
           <div class="signature text-center">
             <h4>MA. ROWENA V. MENDE</h4>
             <hr class="underline">
@@ -104,12 +100,5 @@
           </div>
         </div>
       </div>
-
-      <div class="printBtn no-print">
-        <button type="button" id="print" class="button"><i class="bi bi-printer-fill"></i> Print</button>
-      </div>
-
-   
-
 </section>
 <?= $this->endSection();?>

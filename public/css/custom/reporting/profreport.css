@@ -225,4 +225,8 @@ margin-bottom: 3rem;
   .reportHeader {
     margin-top: 3vh;
   }
+
+  .signature {
+    width: 100%;
+  }
 }

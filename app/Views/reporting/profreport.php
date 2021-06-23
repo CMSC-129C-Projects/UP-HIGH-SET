@@ -1,7 +1,7 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-<link href="<?=base_url()?>/public/css/custom/profs/profreport.css" rel="stylesheet">
+<link href="<?=base_url()?>/public/css/custom/reporting/profreport.css" rel="stylesheet">
 <section class="reportTable">
     <div class="heading text-center">
           <h1 style="padding: 8rem 0 2rem;"> Professor's Summary Report </h1>

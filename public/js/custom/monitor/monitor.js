@@ -19,6 +19,7 @@ function displaySubjects(facultyID) {
                 let element;
                 let pBar = '<div class="progress">' +
                                 '<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:percentage;">percentage</div>' +
+                                // '<div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:empty"></div>' +
                             '</div>';
                 if (progress !== 'No students') {
                     // Compute students not finished evaluation over total number of students
@@ -83,6 +84,7 @@ $(function() {
                 $(profnames[i]).css('border-color', '');
                 $(profnames[i]).css('border-width', '');
                 $(profnames[i]).css('background-color', '');
+                $(profnames[i]).children().css('color', '');
             }
         }
 
@@ -90,6 +92,7 @@ $(function() {
         $(this).css('border-color', '#7b1113');
         $(this).css('border-width', '3px');
         $(this).css('background-color', '#7b1113');
+        $(this).children().css('color', 'white');
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));
     });

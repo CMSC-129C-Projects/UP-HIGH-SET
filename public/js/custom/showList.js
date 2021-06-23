@@ -25,7 +25,7 @@ $(function() {
     $.when(getStudents('7').then(
         function(response) {
             response.forEach(element => {
-                element['action'] = '<div><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width: 6rem; border-radius: 0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="margin-left: 1%; width:6rem; border-radius: 0px; margin-bottom:0px;" id="deleteStudent">Delete</button></div>';
+                element['action'] = '<div><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width: 6rem; border-radius: 0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style=" width:6rem; border-radius: 0px; margin-bottom:0px;" id="deleteStudent">Delete</button></div>';
             });
 
             var table = $('#student').DataTable({
@@ -55,7 +55,7 @@ $(function() {
         $.when(getStudents($(this).val()).then(
                 function(response) {
                     response.forEach(element => {
-                        element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem; margin-left:1%; border-radius:0px; margin-bottom:0.8px;" id="deleteStudent">Delete</button></div>';
+                        element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/student/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem;  border-radius:0px; margin-bottom:0.8px;" id="deleteStudent">Delete</button></div>';
                     });
 
                     table.clear();
@@ -69,7 +69,7 @@ $(function() {
     $.when(getAdmins().then(
         function(response) {
             response.forEach(element => {
-                element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem; margin-left:1%; border-radius:0px; margin-bottom:0.8%;" id="deleteStudent">Delete</button></div>';
+                element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem;  border-radius:0px; margin-bottom:0.8%;" id="deleteStudent">Delete</button></div>';
             });
             
             $('#admin').DataTable({

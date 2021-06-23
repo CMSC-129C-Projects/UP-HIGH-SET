@@ -62,7 +62,6 @@ align-items: center;
 margin: auto;
 text-align: center;
 margin-bottom: 3rem;
-
 }
 .reportTable .inputBox textarea{
   align-items: center;
@@ -86,11 +85,12 @@ margin-bottom: 3rem;
 .reportTable .inputBox .comments{
   border:solid;
   /* border-color: linear-gradient(to top right, #7b1113 0%, #014421 100%); */
-  width: 50%;
+  width: 100%;
+  padding-bottom: 3.5vh;
   margin:auto;
-  padding: 2rem;
   overflow-y: auto;
-  max-height: 20rem;
+  overflow-x: hidden;
+  max-height: 50rem;
   border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;

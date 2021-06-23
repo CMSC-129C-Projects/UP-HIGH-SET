@@ -33,10 +33,12 @@ class SubjectModel extends Model {
 SELECT *, eval_sheet.id as eval_sheet_id
 FROM subjects
 LEFT JOIN eval_sheet
-ON subjects.id = eval_sheet.subject_id AND eval_sheet.student_id = $studentID AND eval_sheet.is_deleted = 0
+ON subjects.id = eval_sheet.subject_id
 LEFT JOIN faculty
 ON subjects.faculty_id = faculty.id
 WHERE grade_level = $glevel
+    AND eval_sheet.student_id = $studentID
+    AND eval_sheet.is_deleted = 0
     AND subjects.is_deleted = 0
 EOT;
 

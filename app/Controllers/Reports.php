@@ -10,6 +10,14 @@ use \App\Models\SubjectModel;
 
 class Reports extends BaseController
 {
+    protected $sections;
+
+
+    function __construct()
+    {
+        $this->sections = [7 => 'Bartlett', 8 => 'Villamor', 9 => 'Benton', 10 => 'Palma', 11 => 'Bocobo', 12 => 'Sison'];
+    }
+
     public function index() {
         $css = ['custom/monitor/monitor.css'];
         $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
@@ -25,9 +33,29 @@ class Reports extends BaseController
      */
     public function report_per_subject($subject_id)
     {
-        $this->compute_progress_per_subject($subject_id);   
+        $userModel = new UserModel();
+        $subjectModel = new SubjectModel();
+        $data = [];
 
-        echo json_encode($ratings);
+        $css = ['custom/reporting/profreport.min.css'];
+        // $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
+        $data = [
+            'css' => addExternal($css, 'css'),
+            // 'js'  => addExternal($js, 'javascript')
+        ];
+
+        // $results = [ratings, tally]
+        $results = $this->compute_progress_per_subject($subject_id);
+        $open_ended = $this->get_open_ended_per_sub($subject_id);
+
+        $data['subject_info'] = $subjectModel->find($subject_id);
+        $data['ratings'] = $results[0];
+        $data['tally'] = $results[1];
+        $data['open_ended'] = $this->segregate_open_ended($open_ended);
+        $data['sections'] = $this->sections;
+        $data['total_students'] = $userModel->get_all_students_per_subject($subject_id);
+
+        return view('reporting/subjectreport', $data);
     }
 
     /**
@@ -51,15 +79,46 @@ class Reports extends BaseController
         echo json_encode($all_ratings);
     }
 
+    /**
+     * Group answers into strong points, weak points, and recommendations
+     */
+    protected function segregate_open_ended($open_ended)
+    {
+        $strongPoints = [];
+        $weakPoints = [];
+        $recommendations = [];
+        foreach($open_ended as $user_answer) {
+            foreach($user_answer as $answer) {
+                switch($answer->question_id) {
+                    case '37':
+                        $strongPoints[] = $answer->answer_text;
+                        break;
+                    case '38':
+                        $weakPoints[] = $answer->answer_text;
+                        break;
+                    case '39':
+                        $recommendations[] = $answer->answer_text;
+                        break;
+                }
+            }
+        }
+        return [$strongPoints, $weakPoints, $recommendations];
+    }
+
     protected function get_open_ended_per_sub($subject_id)
     {
-        $evalSheets = $evalSheetModel->collect_eval_sheets($subject->id);
+        $evalSheetModel = new EvalSheetModel();
+        $evalAnswersModel = new EvalAnswersModel();
+
+        $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);
 
         $all_open_ended = [];
+
         foreach($evalSheets as $evalSheet) {
-            $open_ended = $evalAnswersModel->get_open_ended($evalSheet->id, $evalSheet->student_id);
+            $open_ended = $evalAnswersModel->get_open_ended($evalSheet->id, $evalSheet->user_id);
             
-            $all_open_ended[] = $open_ended[0];
+            if ($open_ended)
+                $all_open_ended[] = $open_ended;
         }
         return $all_open_ended;
     }
@@ -71,9 +130,6 @@ class Reports extends BaseController
      */
     protected function get_all_ratings($subjects_handled)
     {
-        $evalSheetModel = new EvalSheetModel();
-        $evalAnswersModel = new EvalAnswersModel();
-
         foreach($subjects_handled as $subject) {
             $rating = $this->compute_progress_per_subject($subject->id);
 
@@ -118,7 +174,7 @@ class Reports extends BaseController
 
         $ratings = $this->compute_rating($tally, $size);
 
-        return $ratings;
+        return [$ratings, $tally];
     }
 
     /**

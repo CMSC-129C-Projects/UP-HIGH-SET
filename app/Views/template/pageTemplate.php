@@ -34,7 +34,7 @@
     <div class="bg-loader">
       <div class="se-pre-con"></div>
     </div>
-    
+
     <!-- header section starts -->
     <section id="header" class="no-print">
       <div class="schoolWebsiteName">
@@ -87,7 +87,7 @@
               <a href="#report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-journal-check"></i> Report</a>
               <ul class="collapse list-unstyled" id="report">
                 <li>
-                    <a href="#">View Subject Summary Report</a>
+                    <a href="#" data-toggle="modal" data-target="#subjectReport">View Subject Summary Report</a>
                 </li>
                 <li>
                     <a href="#">View Faculty Summary Report</a>
@@ -163,8 +163,127 @@
         <?= $this->renderSection('content');?>
       </div>
     </div>
-    <!-- footer section starts  -->
 
+    <!-- MODAL FOR SUBJECT SUMMARY REPORT -->
+    <div class="subj modal fade" id="subjectReport"  role="dialog" position="default" style="height:420px">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background: transparent;">
+
+          <div class="subj modal-header">
+            <h2 style="color: #e9dbc1">Subject Summary Report</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </div>
+
+          <div class="subj modal-body" style="padding: 20px;">
+            <form method="post" action="<?=base_url()?>/reports_per_subject">
+              <div class="form-group" id="subj-form">
+                <select name="subject" id="subject-dropdown" class="subj-select">
+                  <option selected>Select Faculty</option>
+                  <option value="announcement">Announcement</option>
+                  <option value="registration">Registration</option>
+                  <option value="evaluation">Evaluation</option>
+                  <option value="change_pass">Change Password</option>
+                  <option value="forgot_pass">Forgot Password</option>
+                  <option value="verification">Verification</option>
+                </select>
+                <div class="row modal-button">
+                    <button class="button2" type="submit"><i class="bi bi-check-circle"></i> Confirm</button>
+                    <button class="button2"  data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <style>
+
+    div#subj-form {
+      padding: 1.25rem;
+    }
+
+    .modal {
+      position: fixed !important;
+      top: 30vh !important;
+      left: 0;
+      z-index: 1050;
+      display: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      outline: 0;
+    }
+
+    .subj.modal-header {
+      background: #7b1113;
+      padding: 2rem 1.5rem !important;
+    }
+      .subj.modal-body {
+          position: relative;
+          -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+          padding: 2rem !important;
+          background: #E9DBC1 !important;
+      }
+
+      #subject-dropdown.subj-select {
+        background: #7b1113 url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right 0.75rem center/8px 10px !important;
+        font-size: 1.5rem;
+        font-family: Roboto;
+        /* width: 150px; */
+      }
+
+    .subj-select {
+      display: inline-block;
+      width: 100%;
+      height: calc(1.75em + .75rem + 2px) !important;
+      padding: .375rem 1.75rem .375rem .75rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #000;
+      vertical-align: middle;
+      /* background: #7b1113 url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) right .75rem center/8px 10px no-repeat !important; */
+      border: 1px solid #025741 !important;
+      border-radius: .25rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: inherit;
+    }
+
+    .row.modal-button {
+        margin: auto !important;
+        text-align-last: center !important;
+        margin-top: 2rem !important;
+        justify-content: center !important;
+    }
+
+    .modal-button .button2 {
+      outline: none;
+      border: none;
+      border-radius: 5rem;
+      color: #7b1113;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: capitalize;
+      letter-spacing: 0.2rem;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      height: 4rem;
+      width: 10rem;
+      margin-top: 1.5rem !important;
+      margin-bottom: 0%;
+      margin-right: 10px;
+      background: #7b1113;
+      color: #fff;
+    }
+  </style>
+
+    <!-- footer section starts  -->
     <section id="footer" class="no-print container-fluid" style="position: relative; z-index: 1000;">
       <div class="row-md-4">
         <div class="contactLinks">
@@ -188,8 +307,6 @@
           </div>
         </div>
       </div>
-
-
     </section>
     <script src="<?=base_url()?>/public/js/jquery/jquery-3.6.0.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>

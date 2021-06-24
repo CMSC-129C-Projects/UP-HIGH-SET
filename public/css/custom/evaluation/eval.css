@@ -1,64 +1,79 @@
 /* PARA SA EVALUATION */
-.tabs{
-    margin: auto;
-  }
-  #evaluation {
-    min-height: 100vh;
-    width: 100vw;
-    background-position: center;
-    background-color: #e9dbc1;
-  }
-  
-  #evaluation .nav {
-    margin-left: auto;
-    margin-right: auto;
-    /* width: 68.9%; */
+.tabs {
+  margin: auto;
+}
+#evaluation {
+  min-height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-color: #e9dbc1;
+}
 
-  }
-  #evaluation .nav button[type="button"] {
-    outline: none;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: capitalize;
-    letter-spacing: 0.2rem;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    background: #7b1113;
-    height: 5rem;
-    width: 14rem;
-    color: #fff;
-    padding: 0.75rem !important;
-    text-align: center !important;
-    /* margin-bottom: 0 !important;
+#evaluation .nav {
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 68.9%; */
+}
+#evaluation .nav button[type="button"] {
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: #7b1113;
+  height: 5rem;
+  width: 14rem;
+  color: #fff;
+  padding: 0.75rem !important;
+  text-align: center !important;
+  /* margin-bottom: 0 !important;
     margin-left: -1px !important;
     margin-right: 0 !important; */
-    margin: auto;
-    box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    -webkit-appearance: none !important;
-    -moz-appearance: none;
-    appearance: none;
-  }
-  
-  #evaluation .nav button[type="button"]:hover::before {
-    width: 100%;
-  }
-  
-  #evaluation .nav button[type="button"]:hover {
-    color: #ffff;
-    background: #014421;
-  }
-  .evalbtn.active{
-    background-color: #fff !important;
-    color: #7b1113 !important;
-    text-transform: uppercase !important;
-    font-size: 1.3rem !important;
-  }
-  
-  /* .nav-tabs .nav-link.active#btn-instructionalSkills,
+  margin: auto;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: none !important;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#evaluation .nav button[type="button"]:hover::before {
+  width: 100%;
+}
+
+#evaluation .nav button[type="button"]:hover {
+  color: #ffff;
+  background: #014421;
+}
+.evalbtn.active {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 1.3rem !important;
+}
+
+#evaluation form input {
+  border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: groove !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  width: 80%;
+  margin-left: 10%;
+  background-color: white !important;
+  font-size: 13px;
+}
+
+/* .nav-tabs .nav-link.active#btn-instructionalSkills,
   .nav-tabs .nav-link.active#btn-classManagement,
   .nav-tabs .nav-link.active#btn-personalQualities,
   .nav-tabs .nav-link.active#btn-sfRelations
@@ -71,98 +86,103 @@
   .nav-tabs .nav-link.active#btn-classManagement,
   .nav-tabs .nav-link.active#btn-personalQualities,
   .nav-tabs .nav-link.active#btn-sfRelations { */
-    /* margin-right: -10px; */
-    /* margin-right: 0;
+/* margin-right: -10px; */
+/* margin-right: 0;
     margin-bottom: 0 !important;
     border: 1px solid transparent;
     border-radius: 0 !important; */
-    /* border-top-right-radius: 0 !important; */
-    /* padding: 0;
+/* border-top-right-radius: 0 !important; */
+/* padding: 0;
   } */
-  #btn-classManagement,
-  #btn-personalQualities,
-  #btn-sfRelations{
-    margin: auto;
-  }
-  #evaluation ul li a.nav-link{
-    padding:0 !important;
-  }
-  .btncat{
-    padding: 0 !important;
-  }
+#btn-classManagement,
+#btn-personalQualities,
+#btn-sfRelations {
+  margin: auto;
+}
+#evaluation ul li a.nav-link {
+  padding: 0 !important;
+}
+.btncat {
+  padding: 0 !important;
+}
 
-  #evaluation .tab-content {
-    background: #fff;
-    width: 78% !important;
-    margin-top: -0.25rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    
-    border-radius: 0 0 1.5rem 1.5rem;
-    -webkit-box-shadow: 0 0 2rem #333;
-    box-shadow: 0 0 2rem #333;
-    text-align: center;
-    
-  }
-  html,body {padding:0;margin:0;}
+#evaluation .tab-content {
+  background: #fff;
+  width: 78% !important;
+  margin-top: -0.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+
+  border-radius: 0 0 1.5rem 1.5rem;
+  -webkit-box-shadow: 0 0 2rem #333;
+  box-shadow: 0 0 2rem #333;
+  text-align: center;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
 .wrap {
-  font:12px Arial, san-serif;
+  font: 12px Arial, san-serif;
 }
 h1.likert-header {
-  padding-left:4.25%;
-  margin:20px 0 0;
+  padding-left: 4.25%;
+  margin: 20px 0 0;
 }
 form .statement {
-  display:block;
-  font-size: 2.3vmin !important;
+  display: block;
+  font-size: 14px;
   font-weight: bold;
   padding: 30px 0 0 9.4%;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   text-align: left;
 }
 form .likert {
-  list-style:none;
-  width:100%;
-  margin:0;
-  padding:0 0 35px;
-  display:block;
-  border-bottom:2px solid #efefef;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 35px;
+  display: block;
+  border-bottom: 2px solid #efefef;
 }
-form .likert:last-of-type {border-bottom:0;}
+form .likert:last-of-type {
+  border-bottom: 0;
+}
 form .likert:before {
-  content: '';
-  position:relative;
-  top:11px;
-  left:9.5%;
-  display:block;
-  background-color:#efefef;
-  height:4px;
-  width:78%;
+  content: "";
+  position: relative;
+  top: 11px;
+  left: 9.5%;
+  display: block;
+  background-color: #efefef;
+  height: 4px;
+  width: 78%;
 }
 form .likert li {
-  display:inline-block;
-  width:19%;
-  text-align:center;
+  display: inline-block;
+  width: 19%;
+  text-align: center;
   vertical-align: top;
 }
-form .likert li input[type=radio] {
-  display:block;
-  position:relative;
-  top:0;
-  left:50%;
-  margin-left:-6px;
-  
+form .likert li input[type="radio"] {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 50%;
+  margin-left: -6px;
 }
-form .likert li input[type=radio]:active{
- background-color: #7b1113 !important;
-color: #7b1113 !important;
+form .likert li input[type="radio"]:active {
+  background-color: #7b1113 !important;
+  color: #7b1113 !important;
 }
 ul.row.nav.nav-tabs.tab-content {
-
-
-webkit-box-shadow: transparent;
-box-shadow: none !important;
+  -webkit-box-shadow: transparent;
+  box-shadow: none !important;
+}
+form .likert li label {
+  width: 100%;
 }
 form .likert li label {width:100%;
 font-size: 1.9vmin;
@@ -184,40 +204,36 @@ font-size: 1.9vmin;
 .tab-content .buttons .clear:hover {background-color: #ccc;}
 .tab-content .buttons .submit:hover {background-color: #14892c;}  */
 
-#evaluation form{
+#evaluation form {
   font-size: 15px;
   justify-content: left;
   text-align: center;
 }
-label[class=statement]{
+label[class="statement"] {
   font-size: 16px;
 }
 
-.inputBox textarea{
+.inputBox textarea {
   font-size: 16px;
-  padding: 1.5rem 1.5rem ;
+  padding: 1.5rem 1.5rem;
   margin-left: 1.5rem;
 }
-.inputBox h2{
+.inputBox h2 {
   text-align: left;
   margin-top: 2rem;
   margin-left: 4rem;
   font-size: 16px;
 }
 
- .buttons.tab-content{
- 
+.buttons.tab-content {
   margin-bottom: 0%;
   position: relative;
   box-shadow: none !important;
   /* top: -5vh; */
   background-color: transparent !important;
   /* right: 20.5%; */
- 
-  
- 
 }
-.buttons.tab-content button{
+.buttons.tab-content button {
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -260,16 +276,15 @@ button#cancel:hover,
   color: #ffff;
   background: #014421;
 }
-.arrowup{
+.arrowup {
   display: inline-block;
   font-size: 30px;
-  position:fixed; 
+  position: fixed;
   bottom: 5vh;
   right: 5%;
   /* left:36%;
   top: -11vh; */
-  color: #7b1113; 
-  
+  color: #7b1113;
 }
 /* .arrowup i{
   -webkit-box-shadow: 0 0 2rem #333;
@@ -287,54 +302,49 @@ button#cancel:hover,
   border-radius: 1rem;
   font-size: 13px;
 }
-.progress{
+.progress {
   height: 2rem;
   width: 79.6% !important;
-   border-radius: 0% !important;
-    box-shadow: none !important;
-    background-color: #7b1113 !important;
-    margin: auto;
-    position: relative;
-    margin-bottom: .3rem;
-    
-  }
+  border-radius: 0% !important;
+  box-shadow: none !important;
+  background-color: #7b1113 !important;
+  margin: auto;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
 
 @media only screen and (max-width: 432px) {
-  .progress{
-      width: 85% !important;
-    }
+  .progress {
+    width: 85% !important;
   }
-  @media only screen and (max-width: 1125px) {
-    .progress{
-        width: 80% !important;
-      }
-    }
-.progress-bar.progress-bar-striped.progress-bar-animated{
-  width:40%; 
-  font-size:12px;
+}
+@media only screen and (max-width: 1125px) {
+  .progress {
+    width: 80% !important;
+  }
+}
+.progress-bar.progress-bar-striped.progress-bar-animated {
+  width: 40%;
+  font-size: 12px;
   background-color: #014421;
 }
-.progress p{
+.progress p {
   position: relative;
   text-align: center;
 }
-.savestatus.tab-content{
+.savestatus.tab-content {
   background-color: transparent !important;
   box-shadow: none !important;
-  position:relative;
-  top:-3vh;
-  margin-bottom: -3vh!important;
-color: #7b1113;
+  position: relative;
+  top: -3vh;
+  margin-bottom: -3vh !important;
+  color: #7b1113;
 }
 
-/* @media only screen and (max-width: 432px) {
-  button[type="button"][class="btn btn-lg btn-review"]{
+@media only screen and (max-width: 432px) {
+  button[type="button"][class="btn btn-lg btn-review"] {
     margin-top: 7%;
-  } */
-@media(max-width: 432px){
-button[type="button"][class="btn btn-lg cancel"] {
-    margin-top: -10rem !important;
-}
+  }
 }
 .categories {
   overflow: hidden;
@@ -367,20 +377,20 @@ button[type="button"][class="btn btn-lg cancel"] {
 .categories a.active {
   background-color: #ffffff;
   height: 5.2rem;
-   color: #7b1113 !important;
-   text-transform: uppercase !important;
-   font-size: 15px;
-   border-radius: 0px !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 15px;
+  border-radius: 0px !important;
 }
 
 .categories .activeCategory {
   background-color: #ffffff;
   height: 5.2rem;
-   color: #7b1113 !important;
-   text-transform: uppercase !important;
-   font-size: 15px;
-   border-radius: 0px !important;
-   /* width: 20%; */
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 15px;
+  border-radius: 0px !important;
+  /* width: 20%; */
 }
 
 .categories .icon {
@@ -391,13 +401,15 @@ button[type="button"][class="btn btn-lg cancel"] {
   display: none;
 }
 
-@media screen and (max-width: 2140px){
-.categories{
-  font-size: 18px;
+@media screen and (max-width: 1260px) {
+  .categories {
+    font-size: 14px;
+  }
 }
-}
-@media screen and (max-width: 2140px) {
-  .categories a:not(:first-child) {display: none;}
+@media screen and (max-width: 1260px) {
+  .categories a:not(:first-child) {
+    display: none;
+  }
   .categories a.icon {
     float: right;
     display: block;
@@ -408,8 +420,10 @@ button[type="button"][class="btn btn-lg cancel"] {
   }
 }
 
-@media screen and (max-width: 2140px) {
-  .categories.responsive {position: relative;}
+@media screen and (max-width: 1260px) {
+  .categories.responsive {
+    position: relative;
+  }
   .categories.responsive .icon {
     position: absolute;
     right: 0;
@@ -425,8 +439,3 @@ button[type="button"][class="btn btn-lg cancel"] {
     display: block;
   }
 }
-
-
-
-
-

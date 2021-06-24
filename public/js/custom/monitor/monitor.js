@@ -18,7 +18,8 @@ function displaySubjects(facultyID) {
                 let progress = subject.progress;
                 let element;
                 let pBar = '<div class="progress">' +
-                                '<div class="progress-bar bg-danger" style="width:percentage">percentage</div>' +
+                                '<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:percentage;">percentage</div>' +
+                                // '<div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:empty"></div>' +
                             '</div>';
                 if (progress !== 'No students') {
                     // Compute students not finished evaluation over total number of students
@@ -26,7 +27,7 @@ function displaySubjects(facultyID) {
                     // students done
                     progress = progress.toFixed(0) + '%';
                     pBar = pBar.replaceAll('percentage', progress);
-                    element = '<strong>' + subject.name + '</strong>' + pBar;
+                    element = '<strong style="font-size:1.3em; margin-bottom: 5%;">' + subject.name + '</strong>' + '<br><strong style="font-size:1em; color: #7b1113;">OVERALL PROGRESS :</strong>' + pBar;
                 } else {
                     element = '<strong>' + subject.name + '</strong><p style="color: #7b1113;">' + progress + '</p>';
                 }
@@ -82,13 +83,15 @@ $(function() {
                 $(profnames[i]).css('transform', '');
                 $(profnames[i]).css('border-color', '');
                 $(profnames[i]).css('border-width', '');
-
+                $(profnames[i]).css('background-color', '');
+                $(profnames[i]).children().css('color', '');
             }
         }
 
-        $(this).css('transform', 'scale(1.05)');
-        $(this).css('border-color', '#014421');
+        $(this).css('transform', 'scale(1.1)');
+        $(this).css('border-color', '#7b1113');
         $(this).css('border-width', '3px');
+        $(this).css('background-color', '#7b1113');
         $(this).children().css('color', 'white');
         $(this).addClass('chosen');
         displaySubjects($(this).attr('data-id'));

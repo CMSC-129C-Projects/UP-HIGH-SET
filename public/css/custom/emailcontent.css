@@ -11,6 +11,7 @@
   border-width: 0.3rem !important;
   border-image-slice: 1 !important;
   border-radius: 1rem;
+  background: white !important;
   font-size: 13px;
 }
 
@@ -24,12 +25,13 @@
   border-bottom-style: groove !important;
   outline: none !important;
   border-radius: 0 !important;
+  background-color: white !important;
   font-size: 13px;
 }
 
 #EmailContent .card {
   width: 80%;
-  padding: 20px;
+  padding: 4vmin;
   margin-left: 10%;
   vertical-align: middle;
   border-width: 0px;
@@ -66,10 +68,38 @@
   box-shadow: none;
 }
 
+#EmailContent .button2 {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  color: #7b1113;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  height: 3em;
+  width: 8em;
+  margin-right: 1.75em;
+  margin-bottom: 0.5em;
+  background: #7b1113;
+  color: #fff;
+}
+
+#EmailContent .button2:hover::before {
+  width: 100%;
+}
+
+#EmailContent .button2:hover {
+  color: #ffff;
+  background: #014421;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 320px) {
+/* @media (max-width: 320px) {
   #EmailContent .card {
     width: 100%;
     padding: 0px;
@@ -80,4 +110,4 @@
   #EmailContent .custom-select {
     width: 125px;
   }
-}
+} */

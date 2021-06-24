@@ -1,40 +1,49 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
-  <section id="special" class="container-fluid">
+  <section id="special" class="container-fluid" style="padding: 4rem 0 2rem;">
     <div class="heading text-center">
-      <h1>Add Faculty</h1>
+      <h1 style="font-size:5.8vmin; padding-bottom:4vmin;">ADD FACULTY</h1>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <form action="<?=base_url()?>/professors/add_professors" method="post">
+    <div id="EmailContent">
+    <div class="card">
+      <div class="card-body">
+            <form action="<?=base_url()?>/professors/add_professors" method="post">
 
-          <?php if(isset($error)!=null) {?>
-            <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
-          <?php } ?>
+              <?php if(isset($error)!=null) {?>
+                <span class="text-danger" style="text-align: center; margin: auto !important;"><?=$error?></span>
+              <?php } ?>
 
-            <div class="form-group">
-
-                <label for="first_name">First Name</label>
-                <input type="text" id="first_name" class="form-control" name="first_name" value="<?=set_value('first_name')?>">
-                <span><?=displaySingleError($validation, 'first_name');?></span>
-            </div>
-            <div class="form-group">
-
-                <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" class="form-control" name="last_name" value="<?=set_value('last_name')?>">
-                <span><?=displaySingleError($validation, 'last_name');?></span>
-            </div>
-            <div class="form-group">
-                <label for="details"> Details</label>
-                <textarea  id="details" class="form-control" name="details" rows="7" placeholder="Faculty Details "></textarea>
-                <span><?=displaySingleError($validation, 'details');?></span>
-            </div>
-            <button class="button" type="submit" style="width: 10em; height: 3em; border-bottom-style: hidden !important; border-radius: 2rem !important; margin-right: 10px;"><i class="bi bi-check-circle"></i> Submit</button>
-        </form>
-      </div>
+                <div class="form-group">
+                    <label for="first_name" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">First Name</label>
+                    <input type="text" id="first_name" class="form-control" name="first_name" value="<?=set_value('first_name')?>">
+                    <br>
+                    <span><?=displaySingleError($validation, 'first_name');?></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="last_name" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Last Name</label>
+                    <input type="text" id="last_name" class="form-control" name="last_name" value="<?=set_value('last_name')?>">
+                    <br>
+                    <span><?=displaySingleError($validation, 'last_name');?></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="details" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px"> Details</label>
+                    <textarea  id="details" class="form-control" name="details" rows="7" placeholder="Faculty Details "></textarea>
+                    <br>
+                    <span><?=displaySingleError($validation, 'details');?></span>
+                </div>
+                <br><br>
+                <div style="text-align:center;">
+                  <button class="button2" type="submit" style=""><i class="bi bi-check-circle"></i> Submit</button>
+                  <button class="button2" onclick="window.location='<?=base_url('login')?>'" style=""><i class="bi bi-x-circle"></i> Cancel</button>
+                </div>
+            </form>
+      </div>  
     </div>
-    <div class="card-container" id="prof-content">
+    </div>
+    <div class="card-container" id="prof-content">  
     </div>
   </section>
 <?= $this->endSection();?>

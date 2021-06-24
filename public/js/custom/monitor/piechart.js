@@ -59,7 +59,7 @@ function drawChart() {
                         'width':'100%',
                         'height':'100%',
                         'backgroundColor':'transparent',
-                        'colors':[ '#7b1113', '#014421' ],
+                        'colors':[ '#7b1113' , '#014421' ],
                         'is3D':'true'
                     };
                 

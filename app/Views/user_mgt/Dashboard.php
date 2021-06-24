@@ -46,8 +46,7 @@
                                 <span class="progress-bar subject-progress"></span>
                             </span>
                             <div class="progress-value progress-value-green">
-                                <div><i class="bi bi-people-fill"></i> <?=$subject_stat[0]?>%</div>
-                                <!-- <p></p> -->
+                                <div><i class="bi bi-book-half"></i> <?=$subject_stat[0]?>%</div>
                             </div>
                         </div>
                         <div>
@@ -57,7 +56,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="card effect6">
-                        <!-- <span style="display: none;" data-faculstat="<?=$subject_stat[0]?>" id="faculstat"></span> -->
+                        <span style="display: none;" data-faculstat="<?=$faculty_stat[0]?>" id="faculstat"></span>
                         <b>Faculty Progress</b><br>
                         <i>Faculty that are evaluated over the total number of faculty</i>
                         <hr>
@@ -69,12 +68,11 @@
                                 <span class="progress-bar faculty-progress"></span>
                             </span>
                             <div class="progress-value">
-                                <div><i class="bi bi-people-fill"></i> 90%</div>
-                                <!-- <p></p> -->
+                                <div><i class="bi bi-person-badge-fill"></i> <?=$faculty_stat[0]?>%</div>
                             </div>
                         </div>
                         <div>
-                            <i>Total Number of Professors: </i>
+                            <i>Total Number of Professors: <?=$faculty_stat[1]?></i>
                         </div>
                     </div>
                 </div>

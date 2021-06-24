@@ -50,7 +50,7 @@ class Dashboard extends BaseController
 
       $data['daysLeft'] = $daysLeft;
       $data['subject_stat'] = $subject_stat;
-      $data['faculty_stat'] = $faculty_stat;
+      $data['faculty_stat'] = $this->get_faculty_percentage($faculty_stat);
       $data['student_stat'] = $student_stat;
       $data['faculty_list'] = $subjectModel->get_final_rating();
 
@@ -63,6 +63,19 @@ class Dashboard extends BaseController
     $this->session->remove('logged_user');
     $this->session->destroy();
     return redirect()->to(base_url('login'));
+  }
+
+
+  protected function get_faculty_percentage($faculty_stat)
+  {
+    $completed_count = 0;
+
+    foreach($faculty_stat as $key => $value) {
+      if ($value == 100) {
+        $completed_count++;
+      }
+    }
+    return [round(($completed_count/ count($faculty_stat)) * 100, 2), count($faculty_stat)];
   }
 
   /**

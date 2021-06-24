@@ -1,4 +1,4 @@
-function animateProgressBars(studElement, studLeft, studRight, subElement, subLeft, subRight) {
+function animateProgressBars(studElement, studLeft, studRight, subElement, subLeft, subRight, faculElement, faculLeft, faculRight) {
     var supportedFlag = $.keyframe.isSupported();
 
     $.keyframe.define([{
@@ -17,6 +17,14 @@ function animateProgressBars(studElement, studLeft, studRight, subElement, subLe
         name: 'loading-subjectr',
         '0%': {'transform': 'rotate(0deg)'},
         '100%': {'transform': 'rotate(' + subRight + 'deg)'}
+    }, {
+        name: 'loading-faculL',
+        '0%': {'transform': 'rotate(0deg)'},
+        '100%': {'transform': 'rotate(' + faculLeft + 'deg)'}
+    }, {
+        name: 'loading-faculR',
+        '0%': {'transform': 'rotate(0deg)'},
+        '100%': {'transform': 'rotate(' + faculRight + 'deg)'}
     }]);
 
     $('.progress .progress-right .' + studElement).playKeyframe({
@@ -42,6 +50,20 @@ function animateProgressBars(studElement, studLeft, studRight, subElement, subLe
 
     $('.progress .progress-left .' + subElement).playKeyframe({
         name: 'loading-subjectl',
+        duration: '1.5s',
+        timingFunction: 'linear',
+        delay: '1.8s',
+    });
+
+    $('.progress .progress-right .' + faculElement).playKeyframe({
+        name: 'loading-faculR',
+        duration: '1.8s',
+        timingFunction: 'linear',
+        fillMode: 'forwards'
+    });
+
+    $('.progress .progress-left .' + faculElement).playKeyframe({
+        name: 'loading-faculL',
         duration: '1.5s',
         timingFunction: 'linear',
         delay: '1.8s',
@@ -92,10 +114,12 @@ function interpret() {
 $(function() {
     let studentStat = parseFloat($('#studentstat').attr('data-studentstat'));
     let subjectStat = parseFloat($('#subjectstat').attr('data-subjectstat'));
+    let faculStat = parseFloat($('#faculstat').attr('data-faculstat'));
 
     let studfinalstats = computeProgress(studentStat);
     let subfinalstats = computeProgress(subjectStat);
-    animateProgressBars('student-progress', studfinalstats[0], studfinalstats[1], 'subject-progress', subfinalstats[0], subfinalstats[1]);
+    let faculfinalstats = computeProgress(faculStat);
+    animateProgressBars('student-progress', studfinalstats[0], studfinalstats[1], 'subject-progress', subfinalstats[0], subfinalstats[1], 'faculty-progress', faculfinalstats[0], faculfinalstats[1]);
 
     interpret();
 });

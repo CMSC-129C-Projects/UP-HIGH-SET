@@ -24,6 +24,7 @@
                   <?php endif;?>
                 </select>
                 <span class="text-danger"><?=displaySingleError($validation, 'professor');?></span>
+                <br><br><br>
               </div>
               <div class="form-group">
                 <label for="purpose" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Grade Level:</label>
@@ -38,7 +39,7 @@
                 </select>
                 <span class="text-danger"><?=displaySingleError($validation, 'gLevel');?></span>
               </div>
-              <br>
+              <br><br>
               <div class="form-group">
                 <label for="subjectname" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Subject</label>
                 <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>" placeholder="Enter Subject here ...">

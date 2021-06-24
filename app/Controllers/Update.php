@@ -69,7 +69,6 @@ class Update extends BaseController
         if($this->request->getMethod() == 'post') {
             if($this->validate($this->setRules($role))) {
                 $data['status'] = $this->admin->addUser($this->request, $role);
-                // $data['status'] = false;
             } else {
                 $data['validation'] = $this->validator;
             }

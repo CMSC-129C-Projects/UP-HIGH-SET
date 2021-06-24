@@ -15,10 +15,10 @@
             <?=setFormBasedOnRole($role);?>
           </ul>
         </div>
-        <?php if(isset($role) && $role === 'student'):?>
-          <div class="tab-pane fade" id="Admin">
-        <?php else:?>
+        <?php if(isset($role) && $role === 'admin'):?>
           <div class="tab-pane fade active show" id="Admin">
+        <?php else:?>
+          <div class="tab-pane fade" id="Admin">
         <?php endif;?>
           <div class="row justify-content-center ">
             <form action="<?=base_url()?>/update/add/admin" method="post" class="add">
@@ -74,10 +74,10 @@
           </div>
         </div>
 
-        <?php if(isset($role) && $role === 'student'):?>
-          <div class="tab-pane fade" id="Clerk">
+        <?php if(isset($role) && $role === 'clerk'):?>
+          <div class="tab-pane fade active show" id="Clerk">
         <?php else:?>
-          <div class="tab-pane fade active" id="Clerk">
+          <div class="tab-pane fade" id="Clerk">
         <?php endif;?>
           <div class="row justify-content-center ">
             <form action="<?=base_url()?>/update/add/clerk" method="post" class="add">
@@ -128,7 +128,7 @@
                 </div>
               </div>
               <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
-              <button onclick="window.location.href='<?=base_url();?>/update/clerk';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+              <button onclick="window.location.href='<?=base_url();?>/dashboard';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
             </form>
           </div>
         </div>

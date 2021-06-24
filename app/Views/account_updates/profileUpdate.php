@@ -32,15 +32,15 @@
                 <div class="col-sm-10"><h2><?=$lName;?>, <?=$fName;?></h2></div>
             </div>
             <div class="row">
-                <div class="col-sm-3"><!--left col-->
-                    <div class="text-center">
-                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem;">
-                        <button type="changeAvatar" id="myBtn">Change Avatar</button>
+                <div class="col-sm-3 custom"><!--left col-->
+                    <div class="text-center" style="align-items:center;">
+                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem;" class="text-center">
+                        <button type="changeAvatar" id="myBtn" class="text-center">Change Avatar</button>
                     </div>
                     </hr>
                     <br>
                 </div><!--/col-3-->
-                <div class="col-sm-9">
+                <div class="col-sm-9 align">
                     <div class="tab-content">              
                         <hr>
                         <form class="form" action="<?=base_url();?>/profile/student" method="post" id="registrationForm">
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
-                                    <p style="float:right; position:relative; top:4.8rem; right:1rem;">@up.edu.ph</p>
+                                    <p style="float:right; position:relative; top:4.9rem; right:1rem; color:black; font-size:2.1vmin; ">@up.edu.ph</p>
                                     <input type="email" class="form-control" name="email" id="email" value="<?=set_value('email', $email);?>" disabled>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                 <div class="col-xs-6">
                                    
                                    
-                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;">Change Password</button>
+                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;"><i class="bi bi-lock"></i> Change Password</button>
                                 </div>
                             </div>
                             <!-- <div class="form-group">
@@ -106,8 +106,8 @@
                                 <div class="col-xs-12">
                                     <br>
                                    
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="bi bi-check-circle"></i> Save</button>
+                                    <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                                 </div>
                             </div>
                         </form>

@@ -68,8 +68,8 @@
                   </div>
                 </div>
               </div>
-              <input type="submit" value="submit">
-              <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
+              <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+              <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
             </form>
           </div>
         </div>
@@ -163,8 +163,8 @@
                 </div>
                 <div class="col-md-6 half">
                   <div class="form-group" style="margin-left:0%;">
-                  <input type="submit" value="submit">
-                  <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+                  <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+                  <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                   </div>
                 </div>
               </div>

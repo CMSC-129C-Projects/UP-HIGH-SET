@@ -22,6 +22,8 @@
 .reportTable .profName h2{
     position: relative;
     color: #7b1113;
+    left:2.9%;
+    font-size: 3vmin;
 }
 .reportTable .printBtn button{
     outline: none;

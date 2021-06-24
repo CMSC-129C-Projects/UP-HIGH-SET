@@ -66,6 +66,8 @@
   #special .card-container .card p {
     font-size: 1.4rem;
    margin-bottom: 5%;
+   font-family: Arial, Helvetica, sans-serif !important;
+   color: black;
   }
 
   #special .card-container .card h1 {

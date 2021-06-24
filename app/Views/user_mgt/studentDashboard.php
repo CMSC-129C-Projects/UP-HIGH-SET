@@ -7,7 +7,8 @@
             <div class="row-md-6 align-text-center">
                 <div class="welcomeMsg">
 
-                    <img src="public/Welcome Message.png" class="img-fluid" alt="Responsive image">
+                    <img src="public/Welcome Message1.png" class="img-fluid image1" alt="Responsive image">
+                    <img src="public/Welcome Message2.png" class="img-fluid image2" alt="Responsive image">
                 </div>
                 
                 

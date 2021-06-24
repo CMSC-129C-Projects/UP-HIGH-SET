@@ -105,6 +105,8 @@ box-shadow: none !important;
 #special .card-container .card p {
   font-size: 1.4rem;
  margin-bottom: 15%;
+ color: black !important;
+ font-family: Arial, Helvetica, sans-serif;
 }
 
 #special .card-container .card h1 {

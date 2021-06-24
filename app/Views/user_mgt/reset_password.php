@@ -6,7 +6,7 @@
         <?php if(isset($error)) { ?>
           <div class="heading text-center" style="padding: 20px;">
             <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
-              <img src="<?=base_url()?>/public/error.png" style="width:20vmin; height:20vmin;">
+              <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
               <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$error?><h2>
             </div> 
             <a class="button" style="padding: 3vmin 8vmin; font-size: 2.2vmin;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Login Page</a>

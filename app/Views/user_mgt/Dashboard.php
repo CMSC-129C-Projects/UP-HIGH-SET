@@ -105,7 +105,7 @@
                                             <td scope="row"><?=$index?></td>
                                             <td><?=$faculty->first_name;?></td>
                                             <td><?=$faculty->last_name;?></td>
-                                            <td class="rating_<?=$index?>"><?=$faculty->final_rating;?></td>
+                                            <td class="rating_<?=$index?>"><?=number_format($faculty->final_rating, 2);?></td>
                                             <td class="interpretation_<?=$index?>"></td>
                                         </tr>
                                         <?php $index++;?>

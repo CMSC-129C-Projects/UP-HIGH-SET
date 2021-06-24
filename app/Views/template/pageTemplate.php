@@ -98,7 +98,7 @@
                   <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
-              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
+              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person"></i> Users</a>
               <ul class="collapse list-unstyled" id="users">
                 <li>
                   <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
@@ -113,7 +113,7 @@
                   <a href="#">Transcend Students</a>
                 </li>
               </ul>
-              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Database Management</a>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person"></i> Database Management</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
                 <li>
                   <a href="#">Add Professors</a>
@@ -128,7 +128,7 @@
                   <a href="#">View Subjects</a>
                 </li>
               </ul>
-              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone"></i> Administration </a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
                   <a href="<?=base_url()?>/send_email">Send Email Notification</a>
@@ -145,7 +145,7 @@
           </ul>
           <ul class="list-unstyled CTAs">
             <div class="logout">
-              <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
+              <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><button type="button"  name="logOut"><i class="bi bi-box-arrow-left"></i> LOG OUT</button></a>
             </div>
           </ul>
         </nav>

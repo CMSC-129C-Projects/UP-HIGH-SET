@@ -1,6 +1,10 @@
 <?php
   if($is_changed) {
-    $this->extend('template/pageTemplate');
+    if ($_SESSION['logged_user']['role'] === '2') {
+      $this->extend('template/studentTemplate');
+    } else {
+      $this->extend('template/pageTemplate');
+    }
     $url = base_url('dashboard');
   } else {
     $this->extend('template/default');
@@ -24,7 +28,7 @@
 
     <?php } else { ?>
       <div class="heading text-center">
-        <h1 style= "padding:4.7rem;">Change Password</h1>
+        <h1  style="padding: 8rem 0 2rem;">Change Password</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">

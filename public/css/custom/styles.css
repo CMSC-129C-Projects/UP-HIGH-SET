@@ -102,7 +102,7 @@ body{
 #register .nav input[type="button"] {
   outline: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.7vmin;
   font-weight: bold;
   text-transform: capitalize;
   letter-spacing: 0.2rem;
@@ -111,8 +111,8 @@ body{
   z-index: 1;
   overflow: hidden;
   background: #7b1113;
-  height: 3rem;
-  width: 8rem;
+  height: 4vmin;
+  width: 12vmin;
   color: #fff;
   padding: 0.75rem !important;
   text-align: center !important;
@@ -127,6 +127,9 @@ body{
 }
 
 #btn-student {
+  margin-left: -2px;
+}
+#btn-clerk {
   margin-left: -2px;
 }
 
@@ -336,13 +339,16 @@ a#btn-admin.active {
 
 /* Additional css for layout */
 .nav-tabs .nav-link.active#btn-admin,
-.nav-tabs .nav-link.active#btn-student {
+.nav-tabs .nav-link.active#btn-student,
+.nav-tabs .nav-link.active#btn-clerk {
   background-color: transparent !important;
   border-color: transparent !important;
 }
 
 .nav-tabs .nav-link#btn-admin,
-.nav-tabs .nav-link#btn-student {
+.nav-tabs .nav-link#btn-student,
+.nav-tabs .nav-link#btn-clerk,
+.nav-tabs .nav-link.active#btn-student {
   /* margin-right: -10px; */
   margin-right: 0;
   margin-bottom: 0 !important;
@@ -359,7 +365,8 @@ a#btn-admin.active {
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
 .nav-tabs .nav-link:focus,
-.nav-tabs .nav-link#btn-student:hover {
+.nav-tabs .nav-link#btn-student:hover,
+.nav-tabs .nav-link#btn-clerk:hover {
   border-color: transparent;
 }
 
@@ -633,8 +640,10 @@ a.article:hover {
   color: #7b1113;
   background: #ffed8a;
 }
-
-#sidebar .logout .nav-link input[type="button"] {
+#sidebar .logout .nav-link button[type="button"] i{
+  font-size: 1.3rem;;
+}
+#sidebar .logout .nav-link button[type="button"] {
   margin-top: 20px;
   outline: none;
   border-color: #ffed8a;
@@ -653,10 +662,10 @@ a.article:hover {
   background: #ffed8a;
   color: #7b1113;
 }
-#sidebar .logout .nav-link input[type="button"]:hover::before {
+#sidebar .logout .nav-link button[type="button"]:hover::before {
   width: 100%;
 }
-#sidebar .logout .nav-link input[type="button"]:hover {
+#sidebar .logout .nav-link button[type="button"]:hover {
   color: #ffff;
   background: #7b1113;
 }
@@ -778,7 +787,7 @@ display: none;
   background-color: #fff !important;
   color: #7b1113 !important;
   text-transform: uppercase !important;
-  font-size: 1.2rem !important;
+  font-size: 2vmin !important;
 }
 
 /* LOADER */
@@ -957,6 +966,15 @@ if it's not present, don't show loader */
       #header .schoolWebsiteName.portrait h1{
         font-size: 15px;
         margin-top: -4.5px !important;
+      }
+      #header .schoolWebsiteName.portrait h2{
+        font-size: 12.5px;
+      }
+    }
+    @media (max-width: 332px){
+      #header .schoolWebsiteName.portrait h1{
+        font-size: 14px;
+        margin-top: -3.5px !important;
       }
       #header .schoolWebsiteName.portrait h2{
         font-size: 12.5px;

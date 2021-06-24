@@ -12,12 +12,14 @@
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
+    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
@@ -55,7 +57,7 @@
           <div class="sidebar-header">
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
-                <img class="rounded-circle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
+                <img class="rounded-cricle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
                 <h3><?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
@@ -63,7 +65,7 @@
 
           <ul class="list-unstyled components">
             <li>
-              <a href="<?=base_url('dashboard');?>"><i class="bi bi-house"></i> Dashboard</a>
+              <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
               <?php if ($_SESSION['logged_user']['role'] === '2'):?>
                 <a href="<?=base_url();?>/profile/student"><i class="bi bi-person-circle"></i>  Profile</a>
               <?php else:?>
@@ -73,14 +75,66 @@
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>
           </ul>
-          <ul class="list-unstyled CTAs components">
-            <div class="evaluate">
-                <a class="nav-link" id="evaluate" href="<?=base_url('subjects/student_subjects')?>"><input type="button" value="EVALUATE" name="evaluate"></a>
-            </div>
+          <ul class="list-unstyled components">
+            <li class="active">
+              
+              <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
+              <ul class="collapse list-unstyled" id="evaluation">
+                <li>
+                  <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
+                </li>
+              </ul>
+              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
+              <ul class="collapse list-unstyled" id="users">
+                <li>
+                  <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>/update/student">View Students</a>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>/update/admin">View Admin</a>
+                </li>
+                <li>
+                  <a href="#">Transcend Students</a>
+                </li>
+              </ul>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Database Management</a>
+              <ul class="collapse list-unstyled" id="facultyMembers">
+                <li>
+                  <a href="#">Add Professors</a>
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/professors">View Professors</a>
+                </li>
+                <li>
+                  <a href="#">Add Subjects</a>
+                </li>
+                <li>
+                  <a href="#">View Subjects</a>
+                </li>
+              </ul>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
+              <ul class="collapse list-unstyled" id="announcements">
+                <li>
+                  <a href="<?=base_url()?>/send_email">Send Email Notification</a>
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/send_email">Archive Evaluation</a> <!-- Archives the latest/recently closed Evaluation since possible na giclose na daan before i-archive -->
+                </li>
+                <li>
+                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> <!-- Clerk/Admin must indicate which evaluation to unarchive : What Semester and year -->
+                </li>
+              </ul>
+
+            </li>
           </ul>
           <ul class="list-unstyled CTAs">
             <div class="logout">
-              <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
+            <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><button type="button"  name="logOut"><i class="bi bi-box-arrow-left"></i> LOG OUT</button></a>
             </div>
           </ul>
         </nav>
@@ -111,7 +165,7 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
+                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope-fill"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
               </div>
             </div>
             <div class="col-md-4 ">
@@ -132,6 +186,7 @@
     <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>

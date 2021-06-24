@@ -38,7 +38,7 @@ function appendProfCards(search = undefined) {
                                 '</div>' +
                                 '<h1>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</h1>' +
                                 '<p>' + element.details + '</p>' +
-                                '<button class="redirect" data-id="' + element.id + '" style="margin:auto;">View Subjects</button>' +
+                                '<button class="redirect" data-id="' + element.id + '" style="margin:auto;"><i class="bi bi-eye"></i> View Subjects</button>' +
                             '</div>';
 
             $('#prof-content').append(professor).on('click', '.redirect', function() {

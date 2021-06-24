@@ -73,6 +73,67 @@
             </form>
           </div>
         </div>
+
+        <?php if(isset($role) && $role === 'student'):?>
+          <div class="tab-pane fade" id="Clerk">
+        <?php else:?>
+          <div class="tab-pane fade active" id="Clerk">
+        <?php endif;?>
+          <div class="row justify-content-center ">
+            <form action="<?=base_url()?>/update/add/clerk" method="post" class="add">
+              <div class="row">
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox fname">
+                      <input type="text" name="clerkFirstName" value="<?=set_value('clerkFirstName');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'clerkFirstName');?></span>
+                      <h3>First Name</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox lname">
+                      <input type="text" name="clerkLastName" value="<?=set_value('clerkLastName');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'clerkLastName');?></span>
+                      <h3>Last Name</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox uname">
+                      <input type="text" name="clerkEmail" value="<?=set_value('clerkEmail');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'clerkEmail');?></span>
+                      <h3>Email</h3>
+                      <h4> @up.edu.ph </h4>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="col-md-6 half">
+                  <div class="form-group">
+                    <div class="inputBox contactnum">
+                      <input type="text" name="clerkContactNum" value="<?=set_value('clerkContactNum');?>" required>
+                      <br>
+                      <span class="text-danger"><?=displaySingleError($validation, 'clerkContactNum');?></span>
+                      <h3>Contact Number</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+              <button onclick="window.location.href='<?=base_url();?>/update/clerk';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+            </form>
+          </div>
+        </div>
+
+
         <?php if(isset($role) && $role === 'student'):?>
           <div class="tab-pane fade active show" id="Student">
         <?php else:?>

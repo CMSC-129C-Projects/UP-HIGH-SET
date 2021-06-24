@@ -1,4 +1,4 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/clerkTemplate');?>
 
 <?= $this->section('content');?>
     <section class="Dashboard" style="margin: auto;">

@@ -39,17 +39,18 @@ EOT;
       return $query->getResult();
   }
 
-  public function get_eval_sections_by_type($question_type_id)
+
+  public function get_ids()
   {
-    $db = \Config\Database::connect();
+      $db = \Config\Database::connect();
 
     $sql = <<<EOT
 SELECT id
 FROM eval_section
-WHERE question_type_id = $question_type_id
+WHERE is_deleted = 0
 EOT;
 
-    $query = $db->query($sql);
-    return $query->getResult();
+      $query = $db->query($sql);
+      return $query->getResult();
   }
 }

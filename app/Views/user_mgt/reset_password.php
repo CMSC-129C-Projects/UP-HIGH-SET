@@ -9,7 +9,7 @@
               <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
               <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$error?><h2>
             </div> 
-            <a class="button" style="padding: 3vmin 8vmin; font-size: 2.2vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Login Page</a>
+            <a class="button" style="padding: 2.5vmin 6vmin; font-size: 1.5vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left" style="font-size:1.31vmin"></i> Return to Login Page</a>
           </div>
     
         <?php } else { ?>
@@ -30,8 +30,8 @@
                   </div>
                   <br>
                   <div style="text-align: center;">
-                    <button class="button2" type="submit" name="update" style="2.2vmin"><i class="bi bi-check-circle"></i> Confirm</button>
-                    <button href="<?=base_url('dashboard/logout')?>" class="button2" style="2.2vmin"><i class="bi bi-x-circle"></i> Cancel</button>
+                    <button class="button2" type="submit" name="update" style="1.5vmin"><i class="bi bi-check-circle" style="font-size:1.31vmin"></i> Confirm</button>
+                    <button href="<?=base_url('dashboard/logout')?>" class="button2" style="1.5vmin"><i class="bi bi-x-circle" style="font-size:1.31vmin"></i> Cancel</button>
                   </div>
                 </form>
         <?php } ?>

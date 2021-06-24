@@ -15,9 +15,9 @@
       <div class="heading text-center" style="padding: 20px;">
         <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">  
           <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
-          <h2 style="padding-top:1em; font-size:4vmin;"><?=$error?><h2>
+          <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$error?><h2>
         </div> 
-        <a class="button" style="padding: 3vmin 8vmin; font-size: 2.2vmin; margin-bottom:20px; border-radius: 5rem;" href="<?=$url?>"><i class="bi bi-arrow-left"></i> Return to login page</a>
+        <a class="button" style="padding: 2.5vmin 6vmin; font-size: 1.5vmin; margin-bottom:20px; border-radius: 5rem;" href="<?=$url?>"><i class="bi bi-arrow-left" style="font-size: 1.31vmin"></i> Return to login page</a>
       </div>
 
     <?php } else { ?>
@@ -49,8 +49,8 @@
               </div>
               <br>  
               <div style="text-align:center;">
-                <button class="button2" type="submit" name="update" style="font-size:2.2vmin"><i class="bi bi-check-circle"></i> Update</button>
-                <button href="<?=base_url('dashboard')?>" class="button2" style="font-size:2.2vmin"><i class="bi bi-x-circle"></i> Cancel</button>
+                <button class="button2" type="submit" name="update" style="font-size:1.5vmin"><i class="bi bi-check-circle" style="font-size: 1.31vmin"></i> Update</button>
+                <button href="<?=base_url('dashboard')?>" class="button2" style="font-size:1.5vmin"><i class="bi bi-x-circle" style="font-size: 1.31vmin"></i> Cancel</button>
               </div>
               </form>
             <?php } ?>

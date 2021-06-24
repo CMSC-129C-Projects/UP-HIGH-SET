@@ -90,7 +90,14 @@ class Monitoring extends BaseController
      */
     public function update_set_status()
     {
-        // insert logic for validation form checking
+        $css = ['custom/evaluation/setstatus.css'];
+        $js = ['custom/evaluation/setStatus.js'];
+        $data = [
+            'css' => addExternal($css, 'css'),
+            'js'  => addExternal($js, 'javascript')
+        ];
+
+        return view('evaluation/setStatus', $data);
     }
 
     /**

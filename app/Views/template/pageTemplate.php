@@ -12,9 +12,9 @@
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="<?=base_url()?>/public/css/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <!-- <link href="<?=base_url()?>/public/css/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet" type="text/css"/> -->
-    <!-- <link href="<?=base_url()?>/public/css/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/> -->
+    <link href="<?=base_url()?>/public/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="<?=base_url()?>/public/jquery-ui-1.12.1/jquery-ui.structure.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?=base_url()?>/public/jquery-ui-1.12.1/jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/> -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -208,7 +208,7 @@
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
     <script src="<?=base_url()?>/public/js/keyframes/jquery.keyframes.js"></script>
-    <script src="<?=base_url()?>/public/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?=base_url()?>/public/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script>

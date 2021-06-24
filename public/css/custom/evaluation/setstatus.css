@@ -215,3 +215,8 @@ margin-left: 11%;
   right: 10px;
   left: auto;
 }
+
+
+.ui-datepicker-trigger{
+  display: inline;
+}

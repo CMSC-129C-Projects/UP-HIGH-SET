@@ -19,7 +19,7 @@
                 <select class="custom-select" name="professor">
                   <?php if(isset($profs) and count($profs) > 0):?>
                     <?php foreach($profs as $prof):?>
-                      <option value="<?=$prof['id']?>"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></option>
+                      <option value="<?=$prof['id']?>" <?=set_select('professor', $prof['id']);?>><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></option>
                     <?php endforeach;?>
                   <?php endif;?>
                 </select>
@@ -29,12 +29,12 @@
                 <label for="purpose" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Grade Level:</label>
                 <br>
                 <select class="custom-select" name="gLevel">
-                  <option value="7">Grade 7</option>
-                  <option value="8">Grade 8</option>
-                  <option value="9">Grade 9</option>
-                  <option value="10">Grade 10</option>
-                  <option value="11">Grade 11</option>
-                  <option value="12">Grade 12</option>
+                  <option value="7" <?=set_select('gLevel', 7);?>>Grade 7</option>
+                  <option value="8" <?=set_select('gLevel', 8);?>>Grade 8</option>
+                  <option value="9" <?=set_select('gLevel', 9);?>>Grade 9</option>
+                  <option value="10" <?=set_select('gLevel', 10);?>>Grade 10</option>
+                  <option value="11" <?=set_select('gLevel', 11);?>>Grade 11</option>
+                  <option value="12" <?=set_select('gLevel', 12);?>>Grade 12</option>
                 </select>
                 <span class="text-danger"><?=displaySingleError($validation, 'gLevel');?></span>
               </div>

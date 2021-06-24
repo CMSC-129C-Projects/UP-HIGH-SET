@@ -118,9 +118,6 @@
                 <li>
                   <a href="<?=base_url()?>/subjects/add_subject">Add Subjects</a>
                 </li>
-                <li>
-                  <a href="#">View Subjects</a>
-                </li>
               </ul>
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
               <ul class="collapse list-unstyled" id="announcements">

@@ -23,7 +23,7 @@
                                 <hr>
                                 <a class="dropdown-item" href="#">Edit Subject</a>
                                 <hr>
-                                <a class="dropdown-item" href="<?=base_url()?>/subjects/delete_subject/<?=$subject->id;?>">Delete Subject</a>
+                                <a class="dropdown-item" href="<?=base_url()?>/subjects/delete_subject/<?=$subject->id;?>/<?=$prof['id']?>">Delete Subject</a>
                             </div>
                         </div>
                     </div>

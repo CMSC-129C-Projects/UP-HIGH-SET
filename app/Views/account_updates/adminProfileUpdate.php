@@ -83,7 +83,7 @@
                                 <div class="col-xs-6">
                                    
                                    
-                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;">Change Password</button>
+                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;"><i class="bi bi-lock"></i> Change Password</button>
                                 </div>
                             </div>
                             <!-- <div class="form-group">

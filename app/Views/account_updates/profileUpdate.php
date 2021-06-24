@@ -94,7 +94,7 @@
                                 <div class="col-xs-6">
                                    
                                    
-                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;">Change Password</button>
+                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;"><i class="bi bi-lock"></i> Change Password</button>
                                 </div>
                             </div>
                             <!-- <div class="form-group">
@@ -106,8 +106,8 @@
                                 <div class="col-xs-12">
                                     <br>
                                    
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="bi bi-check-circle"></i> Save</button>
+                                    <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                                 </div>
                             </div>
                         </form>

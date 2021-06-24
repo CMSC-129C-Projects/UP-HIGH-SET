@@ -326,11 +326,14 @@ button#cancel:hover,
 color: #7b1113;
 }
 
-@media only screen and (max-width: 432px) {
+/* @media only screen and (max-width: 432px) {
   button[type="button"][class="btn btn-lg btn-review"]{
     margin-top: 7%;
-  }
-  
+  } */
+@media(max-width: 432px){
+button[type="button"][class="btn btn-lg cancel"] {
+    margin-top: -10rem !important;
+}
 }
 .categories {
   overflow: hidden;

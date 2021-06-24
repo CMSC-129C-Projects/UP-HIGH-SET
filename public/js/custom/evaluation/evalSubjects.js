@@ -20,7 +20,7 @@ function appendSubjectCards() {
                                 '<h1>' + capitalize(element.name) + '</h1>' +
                                 '<p>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</p>' +
                                 '<p>Status: ' + capitalize(element.status) + '</p>' +
-                                '<button type="button" class="redirect" ' + disableEvaluate + ' data-id="' + element.eval_sheet_id + '" style="margin:auto;">Evaluate</button>' +
+                                '<button type="button" class="redirect" ' + disableEvaluate + ' data-id="' + element.eval_sheet_id + '" style="margin:auto;"><i class="bi bi-pencil-square"></i> Evaluate</button>' +
                             '</div>';
 
             $('#subjects').append(subject).on('click', '.redirect', function() {

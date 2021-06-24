@@ -239,9 +239,9 @@ body{
   margin-top: -40px;
 }
 
-#register form input[type="submit"],
+#register form button[type="submit"],
 button#cancel,
-input[type="submit"] {
+button[type="submit"] {
   outline: none;
   border: none;
   border-radius: 2rem;
@@ -261,15 +261,15 @@ input[type="submit"] {
   color: #fff;
 }
 
-#register form input[type="submit"]:hover::before,
+#register form button[type="submit"]:hover::before,
 button#cancel:hover::before,
-input[type="submit"]:hover::before {
+button[type="submit"]:hover::before {
   width: 100%;
 }
 
-#register form input[type="submit"]:hover,
+#register form button[type="submit"]:hover,
 button#cancel:hover,
-input[type="submit"]:hover {
+button[type="submit"]:hover {
   color: #ffff;
   background: #014421;
 }

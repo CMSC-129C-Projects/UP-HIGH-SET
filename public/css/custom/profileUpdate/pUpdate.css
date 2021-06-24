@@ -3,6 +3,8 @@ color: #7b1113;
 text-shadow:2px 2px 4px grey; ;
 margin-top: 8rem;
 font-size: 4.5vmin;
+position: relative;
+margin-left: 1%;
 
 }
 
@@ -52,14 +54,23 @@ margin-top: 10px;
   overflow: hidden;
   height: 4rem;
   width: 10rem;
+  margin-bottom: 12rem;
+  margin-top: 2rem;
   margin-right: 10px;
- 
-  
   background: #7b1113;
   color: #fff;
+
   margin-bottom: 8rem;
   margin-top: -8rem;
+  text-align: center;
 }
+#changePass{
+width: 38vmin !important;
+font-size: 1.8vmin;
+}
+/* .form-group button i{
+  font-size: 1.4vmin;
+} */
 
 .form-group button:hover::before,
 
@@ -130,6 +141,15 @@ left: 0rem;
 
   }
 } */
+
+@media (max-width: 399px){
+  .row h2{
+    text-align: center;
+    margin: auto;
+    margin-top: 8rem;
+  }
+
+}
 @media (max-width: 1199px){
   .profileupdate .container .col-sm-3.custom {
       -ms-flex: 0 0 100% !important;
@@ -142,6 +162,7 @@ left: 0rem;
       padding-right: 15px!important;
       padding-left: 15px!important;
   }
+  
   }
   @media (max-width: 1199px){
     .profileupdate .container .col-sm-9.align {

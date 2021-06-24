@@ -64,6 +64,8 @@ class Monitoring extends BaseController
       $userModel->update_grade_level(9, 10);
       $userModel->update_grade_level(8, 9);
       $userModel->update_grade_level(7, 8);
+
+      return redirect()->to(base_url('dashboard'));
     }
 
     /**

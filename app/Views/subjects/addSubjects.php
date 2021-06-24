@@ -42,7 +42,7 @@
               <br><br>
               <div class="form-group">
                 <label for="subjectname" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Subject</label>
-                <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>" placeholder="Enter Subject here ...">
+                <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>">
                 <br>
                 <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>
               </div>

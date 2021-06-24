@@ -160,7 +160,7 @@ class Reports extends BaseController
 
             $subject_info = $subjectModel->find($subject->id);
             
-            $total_students = $userModel->get_all_students_per_subject($subject->id);
+            $total_students = $subjectModel->get_subjects_complete_count($subject->id);
 
             $all_info[$subject->id] = [
                 'subject_info' => $subject_info,
@@ -182,9 +182,9 @@ class Reports extends BaseController
         $sections = $sectionModel->get_eval_sections_by_type(1);
         
         $evalSheetModel = new EvalSheetModel();
-        $userModel = new UserModel();
+        $subjectModel = new SubjectModel();
 
-        $size = $userModel->get_all_students_per_subject($subject_id);
+        $size = $subjectModel->get_subjects_complete_count($subject_id);
         $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);
 
         // Section ID serves as the key

@@ -70,19 +70,19 @@ EOT;
         return $query->getResult();
     }
 
-  public function get_total_subjects_by_glevel()
-  {
-    $db = \Config\Database::connect();
-    $sql = <<<EOT
+    public function get_total_subjects_by_glevel()
+    {
+        $db = \Config\Database::connect();
+        $sql = <<<EOT
 SELECT grade_level, COUNT(id) as total
 FROM subjects
 WHERE is_deleted = 0
 GROUP BY grade_level
 EOT;
 
-    $query = $db->query($sql);
-    return $query->getResult();
-  }
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
 
 //   public function get_evaluated_subjects_by_student()
 //   {
@@ -150,6 +150,17 @@ ORDER BY final_rating
 EOT;
         $query = $db->query($sql);
         return $query->getResult();
-
+    }
+    
+    public function get_subjects_by_gradelevel($gradelevel)
+    {
+        $db = \Config\Database::connect();
+        $sql = <<<EOT
+SELECT *
+FROM subjects
+WHERE grade_level = $gradelevel
+EOT;
+        $query = $db->query($sql);
+        return $query->getResult();
     }
 }

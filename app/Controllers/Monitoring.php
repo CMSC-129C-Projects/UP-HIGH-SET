@@ -20,6 +20,7 @@ class Monitoring extends BaseController
     {
         switch($method) {
             case 'monitor_progress':
+            case 'update_set_status':
                 $this->hasSession(0);
                 if ($_SESSION['logged_user']['role'] === '2')
                     return redirect()->to(base_url('dashboard'));
@@ -82,6 +83,131 @@ class Monitoring extends BaseController
         ];
 
         return view('monitor/monitor', $data);
+    }
+
+    /**
+     * Changing set status to open or close
+     */
+    public function update_set_status()
+    {
+        // insert logic for validation form checking
+    }
+
+    /**
+     * Close SET period
+     */
+    protected function close_SET()
+    {
+        $evaluationModel = new EvaluationModel();
+
+        // this assumes that in every period, there is only one 
+        // open evaluation entry
+        $currentEvaluation = $evaluationModel
+                            ->where('is_deleted', 0)
+                            ->where('status', 'open')
+                            ->first();
+
+        $value = ['status' => 'closed'];
+        $where = ['id' => $currentEvaluation->id];
+
+        return $evaluationModel->update($where, $value) ? true: false;
+    }
+
+    /**
+     * Open SET period
+     */
+    protected function open_SET()
+    {
+        $db = \Config\Database::connect();
+        $db->transBegin();
+
+        $evaluationModel = new EvaluationModel();
+
+        /**
+         * Use this when frontend is ready
+         */ 
+        // $values = [
+        //     'name' => $this->request->getPost('name'),
+        //     'status' => 'open',
+        //     'date_start' => $this->request->getPost('date_start'),
+        //     'date_end' => $this->request->getPost('date_end'),
+        //     'year_start' => $this->request->getPost('year_start'),
+        //     'year_end' => $this->request->getPost('year_end'),
+        // ];
+
+        $values = [
+            'name' => 'Semeter 2',
+            'status' => 'open',
+            'date_start' => date('Y-m-d H:i:s'),
+            'date_end' => date('Y-m-d H:i:s'),
+            'year_start' => '2021',
+            'year_end' => '2022',
+        ];
+
+        $evaluationModel->insert($values);
+        $evaluation_id = $evaluationModel->getInsertID();
+
+        $this->generate_eval_sheets($evaluation_id);
+
+        if ($db->transStatus() === FALSE) {
+            $db->transRollback();
+        } else {
+            $db->transCommit();
+        }
+    }
+
+    /**
+     * Every opening of set status, eval sheets will be
+     * given to each student
+     */
+    protected function generate_eval_sheets($evaluation_id)
+    { 
+        $userModel = new UserModel();
+        $evalSheetModel = new EvalSheetModel();
+
+        $all_subjects = $this->get_subjects_per_gradelevel();
+
+        $students = $userModel->asArray()
+                        ->where('role', 2)
+                        ->where('is_active', 1)
+                        ->where('is_deleted', 0)
+                        ->findAll();
+        
+        foreach($students as $student) {
+            foreach($all_subjects[$student['grade_level']] as $subject) {
+                $values = [
+                    'evaluation_id' => $evaluation_id,
+                    'student_id' => $student['id'],
+                    'subject_id' => $subject->id,
+                    'verified' => false,
+                    'rating' => 0,
+                    'status' => 'Open'
+                ];
+
+                if (!$evalSheetModel->insert($values)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Get all subjects and store in an array (key-value pair)
+     * where gradelevel will serve as the key
+     */
+    protected function get_subjects_per_gradelevel()
+    {
+        $gLevels = [7,8,9,10,11,12];
+        $allSubjects = [];
+
+        $subjectModel = new SubjectModel();
+
+        foreach($gLevels as $gLevel) {
+            $allSubjects[$gLevel] = $subjectModel->get_subjects_by_gradelevel($gLevel);
+        }
+
+        return $allSubjects;
     }
 
     /**

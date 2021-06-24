@@ -111,6 +111,7 @@ margin-left: 11%;
 }
 #setStatus .inputBox{
   margin-top: 3rem;
+  padding: 0 8%;
 }
 .effect1{
     -webkit-box-shadow: 0 10px 6px -6px #777;
@@ -216,7 +217,6 @@ margin-left: 11%;
   left: auto;
 }
 
-
-.ui-datepicker-trigger{
-  display: inline;
+#startDate, #endDate {
+  cursor: pointer;
 }

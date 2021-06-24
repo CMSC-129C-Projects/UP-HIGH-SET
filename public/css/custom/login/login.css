@@ -43,36 +43,36 @@
 }
 
 .btn-login {
-    margin-top: 4vh;
-    outline: none;
-    border: none;
-    border-radius: 5rem;
-    color: #7b1113;
-    font-size: 1.5vh;
-    font-weight: bold;
-    text-transform: capitalize;
-    letter-spacing: 0.2rem;
-    cursor: pointer;
-    /* position: relative; */
-    z-index: 1;
-    border: solid #e9dbc1 2px;
-    overflow: hidden;
-    height: 25px;
-    width: 30%;
-    margin-bottom: 0%;
-    margin-right: 10px;   
-    background: #e9dbc1;
-    color: #7b1113;
+    margin-top: 4vh !important;
+    outline: none !important;
+    border: none !important;
+    border-radius: 5rem !important;
+    color: #7b1113 !important;
+    font-size: 1.5vh !important;
+    font-weight: bold !important;
+    text-transform: capitalize !important;
+    letter-spacing: 0.2rem !important;
+    cursor: pointer !important;
+    /* position: relative !important; */
+    z-index: 1 !important;
+    border: solid #e9dbc1 2px !important;
+    overflow: hidden !important;
+    height: 30px !important;
+    width: 30% !important;
+    margin-bottom: 0% !important;
+    margin-right: 10px !important;   
+    background: #e9dbc1 !important;
+    color: #7b1113 !important;
 }
 
 .btn-login:hover::before {
-    width: 100%;
+    width: 100% !important;
 }
   
 .btn-login:hover {
-    color: #ffff;
-    background: #014421;
-    border-color: #014421;
+    color: #ffff !important;
+    background: #014421 !important;
+    border-color: #014421 !important;
 }
 
 .form-background {

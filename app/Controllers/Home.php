@@ -57,15 +57,20 @@ class Home extends BaseController
     if (isset($evaluation_info)) {
       $datetime1 = date_create(date('Y-m-d H:i:s'));
       $datetime2 = date_create($evaluation_info['date_end']);
-    
-      $interval = date_diff($datetime2, $datetime1);
 
-      $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
+      if ($datetime2 < $datetime1) {
+        $data['daysLeft'] = '0';
+        $data['timeLeft'] = '00:00:00';
+      } else {
+        $interval = date_diff($datetime2, $datetime1);
 
-      // Convert to days difference
-      $data['daysLeft'] = $interval->format('%a');
+        $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
 
-      $data['timeLeft'] = $timeLeft;
+        // Convert to days difference
+        $data['daysLeft'] = $interval->format('%a');
+
+        $data['timeLeft'] = $timeLeft;
+      }
     }
     // Get Evaluation info (i.e. days left, status, etc.) [end]
 

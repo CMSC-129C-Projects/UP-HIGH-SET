@@ -90,6 +90,16 @@ class Monitoring extends BaseController
      */
     public function update_set_status()
     {
+        $data['validation'] = null;
+
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($this->get_rules())) {
+                $this->open_SET();
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+
         $css = ['custom/evaluation/setstatus.css'];
         $js = ['custom/evaluation/setStatus.js'];
         $data = [
@@ -98,6 +108,26 @@ class Monitoring extends BaseController
         ];
 
         return view('evaluation/setStatus', $data);
+    }
+
+    protected function get_rules()
+    {
+        $rules = [
+            'dateStart' => [
+                'rules'  => 'required|correctDateFormat',
+                'errors' => [
+                    'correctDateFormat' => 'Date format should by Y-m-d'
+                ]
+            ],
+            'dateEnd' => [
+                'rules'  => 'required|correctDateFormat',
+                'errors' => [
+                    'correctDateFormat' => 'Date format should by Y-m-d'
+                ]
+            ]
+        ];
+
+        return $rules;
     }
 
     /**
@@ -130,26 +160,24 @@ class Monitoring extends BaseController
 
         $evaluationModel = new EvaluationModel();
 
-        /**
-         * Use this when frontend is ready
-         */ 
-        // $values = [
-        //     'name' => $this->request->getPost('name'),
-        //     'status' => 'open',
-        //     'date_start' => $this->request->getPost('date_start'),
-        //     'date_end' => $this->request->getPost('date_end'),
-        //     'year_start' => $this->request->getPost('year_start'),
-        //     'year_end' => $this->request->getPost('year_end'),
-        // ];
+        $date_start = explode('-', $this->request->getPost('dateStart'));
+        $date_end = explode('-', $this->request->getPost('dateEnd'));
+
+        // print_r($this->request->getPost('dateStart'));
+        // print_r($this->request->getPost('dateEnd'));
+        // print_r(data());
 
         $values = [
-            'name' => 'Semeter 2',
             'status' => 'open',
-            'date_start' => date('Y-m-d H:i:s'),
-            'date_end' => date('Y-m-d H:i:s'),
-            'year_start' => '2021',
-            'year_end' => '2022',
+            'date_start' => $this->request->getPost('dateStart'),
+            'date_end' => $this->request->getPost('dateEnd'),
+            'year_start' => $date_start[0],
+            'year_end' => $date_end[0],
         ];
+
+        $evaluationIDs = $evaluationModel->select('id')->findAll();
+
+        $evaluationModel->update($this->convert_to_list($evaluationIDs), ['status' => 'closed', 'is_deleted' => 1]);
 
         $evaluationModel->insert($values);
         $evaluation_id = $evaluationModel->getInsertID();
@@ -161,6 +189,16 @@ class Monitoring extends BaseController
         } else {
             $db->transCommit();
         }
+    }
+
+    protected function convert_to_list($evaluationIDs)
+    {
+        $idList = [];
+
+        foreach($evaluationIDs as $id) {
+            $idList[] = $id['id'];
+        }
+        return $idList;
     }
 
     /**

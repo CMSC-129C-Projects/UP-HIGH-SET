@@ -79,7 +79,7 @@
                   <ul class="collapse list-unstyled" id="settings">
                       <div class="d-flex flex-direction-row">
                         <p style="font-size: 1.3rem; margin-bottom: 0;">Allow Two-step Verification</p>
-                        <div class="button r" id="button-6">
+                        <div class="button-2f r" id="button-6">
                             <input type="checkbox" name="allow_verification" <?=set_checkbox('allow_verification', '', $_SESSION['logged_user']['allow_verify'])?> class="checkbox">
                             <div class="knobs">
                               <span class="dot"></span>
@@ -105,7 +105,7 @@
               <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
               <ul class="collapse list-unstyled" id="evaluation">
                 <li>
-                  <a href="<?=base_url();?>/evaluation/set_status">Set Evaluation Status</a>
+                  <a href="<?=base_url();?>/monitoring/update_set_status">Set Evaluation Status</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>

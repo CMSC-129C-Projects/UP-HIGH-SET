@@ -14,6 +14,8 @@ class EvaluationModel extends Model {
   protected $allowedFields = [
       'name',
       'status',
+      'date_start',
+      'date_end',
       'year_start',
       'year_end',
       'semester',

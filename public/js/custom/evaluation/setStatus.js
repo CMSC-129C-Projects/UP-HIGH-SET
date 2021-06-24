@@ -1,6 +1,7 @@
 $(function() {
     $("#datepickerStart, #datepickerEnd").datepicker({
-        showAnim: 'show'
+        showAnim: 'show',
+        dateFormat: 'yy-mm-dd'
     });
     // $("#datepickerStart").datepicker( "option", "showAnim", "show");
     // $("#datepickerEnd").datepicker( "option", "showAnim", "show");

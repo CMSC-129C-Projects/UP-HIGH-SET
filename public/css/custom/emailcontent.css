@@ -12,7 +12,7 @@
   border-image-slice: 1 !important;
   border-radius: 1rem;
   background: white !important;
-  font-size: 13px;
+  font-size: 3.2vmin;
 }
 
 #EmailContent form input {
@@ -26,7 +26,7 @@
   outline: none !important;
   border-radius: 0 !important;
   background-color: white !important;
-  font-size: 13px;
+  font-size: 3.2vmin;
 }
 
 #EmailContent .card {

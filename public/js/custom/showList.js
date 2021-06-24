@@ -18,6 +18,14 @@ $(function() {
         });
     }
 
+    function getClerks() {
+        return $.ajax({
+            url: BASE_URI + '/update/clerkList/',
+            type: 'POST',
+            dataType: 'json'
+        });
+    }
+
     function setTable(initTable) {
         table = initTable;
     }
@@ -66,25 +74,52 @@ $(function() {
         )
     });
 
-    $.when(getAdmins().then(
-        function(response) {
-            response.forEach(element => {
-                element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem;  border-radius:0px; margin-bottom:0.8%;" id="deleteStudent">Delete</button></div>';
-            });
-            
-            $('#admin').DataTable({
-                data: response,
-                autoWidth: false,
-                columns: [
-                    {data: 'first_name', width: '20%'},
-                    {data: 'last_name', width: '20%'},
-                    {data: 'contact_num', width: '20%'},
-                    {data: 'email', width: '20%'},
-                    {data: 'action', width: '20%'}
-                ],
-                searching: false,
-                ordering: false
-            });
-        }
-    ));
+    if (CURRENT_URI.includes('update/admin')) {
+        $.when(getAdmins().then(
+            function(response) {
+                response.forEach(element => {
+                    element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/admin/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem;  border-radius:0px; margin-bottom:0.8%;" id="deleteStudent">Delete</button></div>';
+                });
+                
+                $('#admin').DataTable({
+                    data: response,
+                    autoWidth: false,
+                    columns: [
+                        {data: 'first_name', width: '20%'},
+                        {data: 'last_name', width: '20%'},
+                        {data: 'contact_num', width: '20%'},
+                        {data: 'email', width: '20%'},
+                        {data: 'action', width: '20%'}
+                    ],
+                    searching: false,
+                    ordering: false
+                });
+            }
+        ));
+    }
+
+
+    if (CURRENT_URI.includes('update/clerk')) {
+        $.when(getClerks().then(
+            function(response) {
+                response.forEach(element => {
+                    element['action'] = '<div"><a href="'+ BASE_URI + '/update/edit/clerk/' + element.id + '"><button class="button" style="width:6rem; border-radius:0px; margin-bottom:0px;">Edit</button></a><button data-id="' + element.id + '" data-role="' + element.role + '" class="button" style="width:6rem;  border-radius:0px; margin-bottom:0.8%;" id="deleteStudent">Delete</button></div>';
+                });
+                
+                $('#admin').DataTable({
+                    data: response,
+                    autoWidth: false,
+                    columns: [
+                        {data: 'first_name', width: '20%'},
+                        {data: 'last_name', width: '20%'},
+                        {data: 'contact_num', width: '20%'},
+                        {data: 'email', width: '20%'},
+                        {data: 'action', width: '20%'}
+                    ],
+                    searching: false,
+                    ordering: false
+                });
+            }
+        ));
+    }
 });

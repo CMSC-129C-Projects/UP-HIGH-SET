@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" style="margin-bottom: 4vh;">
-                    <h1>Welcome, Admin Name!</h1>
+                    <h1>Welcome, <?=ucwords($_SESSION['logged_user']['first_name']) . ' ' . ucwords($_SESSION['logged_user']['last_name'])?>!</h1>
                     <h3>UPSET has already generated the evaluation statistics for you! Here's how the evaluation has gone so far...</h3>
                 </div>
             </div>
@@ -81,8 +81,9 @@
             <br><br>
 
             <div class="row">
-                <div class="col-md-9">
-                    <div class="card effect6">
+                <?php if ($_SESSION['logged_user']['role'] === '1'):?>
+                    <div class="col-md-9">
+                        <div class="card effect6">
                             <b>Faculty Performance Overview</b>
                             <i>Professors list are ordered by their evaluation rating</i>
                             <hr>
@@ -110,8 +111,9 @@
                                     <?php endforeach;?>
                                 </tbody>
                             </table>
+                        </div>
                     </div>
-                </div>
+                <?php endif;?>
 
                 <div class="col-md-3">
                     <div class="card effect6">

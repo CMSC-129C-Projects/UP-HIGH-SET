@@ -1,4 +1,4 @@
-<?= $this->extend('template/studentTemplate');?>
+<?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
 

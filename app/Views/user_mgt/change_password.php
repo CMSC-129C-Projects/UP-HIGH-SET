@@ -17,7 +17,7 @@
           <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
           <h2 style="padding-top:1em; font-size:4vmin;"><?=$error?><h2>
         </div> 
-        <a class="button" style="padding: 3vmin 8vmin; font-size: 2.2vmin; margin-bottom:20px;" href="<?=$url?>"><i class="bi bi-arrow-left"></i> Return to login page</a>
+        <a class="button" style="padding: 3vmin 8vmin; font-size: 2.2vmin; margin-bottom:20px; border-radius: 5rem;" href="<?=$url?>"><i class="bi bi-arrow-left"></i> Return to login page</a>
       </div>
 
     <?php } else { ?>

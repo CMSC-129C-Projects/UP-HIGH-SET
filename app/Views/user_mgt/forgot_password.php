@@ -32,7 +32,7 @@
             <img src="<?=base_url()?>/public/success.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
         </div>
-        <a class="button" style="padding: 3vmin 8vmin; margin-left: 2vmin; font-size: 2.2vmin;" href="<?=base_url('login')?>"><i class="bi bi-x-left"></i> Cancel Reset Password</a>  
+        <a class="button" style="padding: 3vmin 8vmin; margin-left: 2vmin; font-size: 2.2vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-x-left"></i> Cancel Reset Password</a>  
       </div>
 
     <?php } elseif( $success == null && $validate_error == null && $validation == null) {?> <!-- gone from external sources -->
@@ -41,7 +41,7 @@
             <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;">You are not authorized to access this page.<h2>
         </div>  
-        <a class="button" style="padding: 3vmin 8vmin; margin-left: 2vmin; font-size: 2.2vmin;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Main Page</a>
+        <a class="button" style="padding: 3vmin 8vmin; margin-left: 2vmin; font-size: 2.2vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Main Page</a>
       </div>
           
     <?php } ?>

@@ -11,8 +11,8 @@
             <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;"><?=displaySingleError($validation, 'email_fpass')?><h2>
         </div>  
-        <button class="button2" style="font-size:1.5vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise" style="font-size:1.31vmin"></i> Try Again</button>
-        <button class="button2" style="font-size:1.5vmin;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle" style="font-size:1.31vmin"></i> Cancel </button>
+        <button class="button2" style="" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+        <button class="button2" style="" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 
     <?php } elseif(isset($validate_error)!=null) { ?> <!-- verify email in db -->
@@ -21,8 +21,8 @@
             <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$validate_error?><h2>
         </div>  
-        <button class="button2" style="font-size:1.5vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise" style="font-size:1.31vmin"></i> Try Again</button>
-        <button class="button2" style="font-size:1.5vmin;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle" style="font-size:1.31vmin"></i> Cancel </button>
+        <button class="button2" style="" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+        <button class="button2" style="" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 <!-- New CHanges -->
 
@@ -32,7 +32,7 @@
             <img src="<?=base_url()?>/public/success.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
         </div>
-        <a class="button" style="padding: 2.5vmin 6vmin; margin-left: 2vmin; font-size: 1.5vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-x-left" style="font-size:1.31vmin"></i> Cancel Reset Password</a>  
+        <a class="button" style="padding: 12px 21px; font-size: 1.3em;" href="<?=base_url('login')?>"><i class="bi bi-x-left"></i> Cancel Reset Password</a>  
       </div>
 
     <?php } elseif( $success == null && $validate_error == null && $validation == null) {?> <!-- gone from external sources -->
@@ -41,7 +41,7 @@
             <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;">You are not authorized to access this page.<h2>
         </div>  
-        <a class="button" style="padding: 2.5vmin 6vmin; margin-left: 2vmin; font-size: 1.5vmin; border-radius: 5rem;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left" style="font-size:1.31vmin"></i> Return to Main Page</a>
+        <a class="button" style="padding: 12px 21px; font-size: 1.3em;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Main Page</a>
       </div>
           
     <?php } ?>

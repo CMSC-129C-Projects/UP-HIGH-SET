@@ -11,7 +11,7 @@
             <img src="<?=base_url()?>/public/error.png" style="width:20vmin; height:20vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;"><?=displaySingleError($validation, 'email_fpass')?><h2>
         </div>  
-        <button class="button2" style="width: 21.5vmin !important; font-size:2.2vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+        <button class="button2" style="width: 22.5vmin !important; font-size:2.2vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
         <button class="button2" style="font-size:2.2vmin;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 
@@ -21,7 +21,7 @@
             <img src="<?=base_url()?>/public/error.png" style="width:20vmin; height:20vmin;">
             <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$validate_error?><h2>
         </div>  
-        <button class="button2" style="width: 21.5vmin !important; font-size:2.2vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+        <button class="button2" style="width: 22.5vmin !important; font-size:2.2vmin;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
         <button class="button2" style="font-size:2.2vmin;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
       </div>
 <!-- New CHanges -->

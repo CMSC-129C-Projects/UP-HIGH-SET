@@ -82,7 +82,7 @@ class Dashboard extends BaseController
   {
     // Get Evaluation info (i.e. days left, status, etc.) [start]
     $evaluationModel = new EvaluationModel();
-    
+
     $evaluation_info = $evaluationModel->where('is_deleted', 0)
                                     ->where('status', 'open')->first();
 
@@ -91,7 +91,7 @@ class Dashboard extends BaseController
     if (isset($evaluation_info)) {
       $datetime1 = date_create(date('Y-m-d H:i:s'));
       $datetime2 = date_create($evaluation_info['date_end']);
-    
+
       $interval = date_diff($datetime2, $datetime1);
 
       $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
@@ -146,7 +146,7 @@ class Dashboard extends BaseController
 
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
 
-    $percentage = round((count($this->fetch_evaluated_subjects()) / count($subjects)) * 100, 2); 
+    $percentage = round((count($this->fetch_evaluated_subjects()) / count($subjects)) * 100, 2);
 
     return [$percentage, count($subjects)];
   }
@@ -185,7 +185,8 @@ class Dashboard extends BaseController
         }
       }
        // an associative array for Prof -> percentage of completion (subjects evaluated / total subjects handled)
-      array_push($values, ($count_matched_subjects / count($subject)) * 100);
+      if(count($subject) > 0)
+        array_push($values, ($count_matched_subjects / count($subject)) * 100);
 
       $count_matched_subjects = 0;
     }

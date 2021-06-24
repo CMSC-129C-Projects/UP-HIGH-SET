@@ -103,6 +103,12 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
+          if ($_SESSION['logged_user']['allow_verify']) {
+            $_SESSION['logged_user']['emailVerified'] = true;
+            unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
+            return redirect()->to(base_url('dashboard'));
+          }
+
           if($_SESSION['logged_user']['emailVerified']){
             return redirect()->to(base_url('dashboard'));
           } elseif(!$this->checkPasswordLastUpdate()) {
@@ -349,6 +355,7 @@ class Home extends BaseController
 	{
 		$session_data = [
       'id'            => $user['id'],
+      'allow_verify'  => ($user['allow_verify'] === '1' ? true : false),
 			'first_name'		=> $user['first_name'],
       'last_name'			=> $user['last_name'],
 			'email'			    => $user['email'],

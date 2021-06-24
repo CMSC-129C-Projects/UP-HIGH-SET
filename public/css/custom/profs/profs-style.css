@@ -58,7 +58,7 @@ box-shadow: none !important;
   width: 30rem;
   background: #fff;
   padding: 4rem;
-  margin: 2rem;
+  margin: 2rem 2rem 4rem 2rem;
   text-align: center;
   -webkit-box-shadow: 0 0 2rem #333;
   box-shadow: 0 0 2rem #333;
@@ -127,7 +127,7 @@ width: 100%;
 .card-container  button{
   outline: none;
   border: none;
-  border-radius: 5rem;
+  border-radius: 1rem;
   color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
@@ -160,4 +160,23 @@ button#cancel:hover,
 .card-container  button:hover {
   color: #ffff;
   background: #014421;
+}
+
+
+.dropdown-menu {
+  width: 94.5%;
+  background-color: rgba(123, 17, 19, 0.9);
+}
+
+.dropdown-item {
+  text-align: center;
+  color: #e9dbc1;
+  font-size: 1.5vmin;
+}
+
+.dropdown-item:hover {
+  /* background-color: #014421; */
+  font-size: 2vmin;
+  color: #e9dbc1;
+  transition-duration: 0.5s;
 }

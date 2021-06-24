@@ -25,17 +25,17 @@
     <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
-                <div class="col-sm-10"><h2>ADMIN NAME HERE</h2></div>
+                <div class="col-sm-10"><h2><?=$_SESSION['logged_user']['last_name'];?>, <?=$_SESSION['logged_user']['first_name'];?></h2></div>
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
                     <div class="text-center">
-                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar">
+                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem;" >
                         <button type="changeAvatar" id="myBtn">Change Avatar</button>
                     </div>
                     </hr>
                     <br>
-                </div><!--/col-3-->
+                </div>
                 <div class="col-sm-9">
                     <div class="tab-content">              
                         <hr>
@@ -59,6 +59,7 @@
                            
                             <div class="form-group">
                                 <div class="col-xs-6">
+                                <p style="float:right; position:relative; top:4.8rem; right:1rem;">@up.edu.ph</p>
                                     <label for="email"><h4>Email</h4></label>
                                     <input type="text" class="form-control" name="email" id="email" value="<?=set_value('email', $eml);?>">
                                     <span class="text-danger"><?=displaySingleError($validation, 'email');?></span>

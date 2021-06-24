@@ -84,7 +84,7 @@ class Evaluation extends BaseController
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
 
-    $this->archive_evaluation();
+    // $this->archive_evaluation();
     return view('evaluation/evaluate', $data);
   }
 

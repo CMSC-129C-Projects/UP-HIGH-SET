@@ -113,7 +113,7 @@ margin-bottom: 1rem;
   }
 
   .card-container button:disabled {
-    opacity: 0.5!important;
+    /* opacity: 0.5!important; */
     cursor: default;
   }
 

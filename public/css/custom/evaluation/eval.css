@@ -192,6 +192,8 @@ label[class=statement]{
 
 .inputBox textarea{
   font-size: 16px;
+  padding: 1.5rem 1.5rem ;
+  margin-left: 1.5rem;
 }
 .inputBox h2{
   text-align: left;
@@ -229,9 +231,6 @@ label[class=statement]{
   width: 10rem;
   margin-bottom: 0%;
   margin-right: 10px;
-  
- 
-  
   background: #7b1113;
   color: #fff;
 }
@@ -241,13 +240,17 @@ label[class=statement]{
  
  
  } */
+ .buttons.tab-content button:disabled {
+   opacity: 1;
+   cursor: not-allowed;
+ }
 
 .buttons.tab-content button:hover::before,
 .form-group button:hover::before {
   width: 100%;
 }
 
-.buttons.tab-content button:hover,
+.buttons.tab-content button:hover:enabled,
 button#cancel:hover,
 .form-group button:hover {
   color: #ffff;

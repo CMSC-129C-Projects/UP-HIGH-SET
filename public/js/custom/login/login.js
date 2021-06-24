@@ -30,9 +30,9 @@ $(function() {
             seconds = (seconds < 10) ? ('0' + seconds.toString()) : seconds.toString();
             minutes = (minutes < 10) ? ('0' + minutes.toString()) : minutes.toString();
             hours = (hours < 10) ? ('0' + hours.toString()) : hours.toString();
-    
+
             const newTime = hours + ':' + minutes + ':' + seconds;
-    
+
             $('.time').text(newTime);
         }, 1000);
     }

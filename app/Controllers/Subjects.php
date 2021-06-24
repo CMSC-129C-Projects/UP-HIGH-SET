@@ -8,7 +8,7 @@ use \App\Models\EvalSheetModel;
 
 class Subjects extends BaseController
 {
-    public function _remap($method, $param1 = null)
+    public function _remap($method, $param1 = null, $param2 = null)
     {
         switch($method)
         {
@@ -23,6 +23,12 @@ class Subjects extends BaseController
                 $this->hasSession(0);
                 return $this->$method();
                 break;
+            case 'delete_subject':
+            case 'edit_subject':
+                if ($_SESSION['logged_user']['role'] === '2')
+                    return redirect()->to(base_url('dashboard'));
+                $this->hasSession(0);
+                return $this->$method($param1, $param2);
             case 'get_all_subjects':
                 if ($_SESSION['logged_user']['role'] === '2')
                     return redirect()->to(base_url('dashboard'));
@@ -119,19 +125,73 @@ class Subjects extends BaseController
         return view('subjects/addSubjects', $data);
     }
 
-    public function delete_subject($subject_id = null)
+    /**
+     * Edit Subject
+     */
+    public function edit_subject($subject_id, $faculty_id)
     {
-      if(isset($subject_id))
-      {
         $subjectModel = new SubjectModel();
 
-        $result = $subjectModel->where('id', $subject_id)->delete();
+        $data['validation'] = null;
+        $data['status'] = null;
 
-        if($result)
-          return true;
-      }
+        $rules = [
+            'subjectname' => 'required',
+            'professor'   => 'required',
+            'gLevel'      => 'required'
+        ];
 
-      return false;
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($rules)) {
+                $values = [
+                    'faculty_id' => $this->request->getPost('professor'),
+                    'grade_level' => $this->request->getPost('gLevel'),
+                    'name' => $this->request->getPost('subjectname')
+                ];
+
+                if($subjectModel->update($subject_id, $values)) {
+                    $data['status'] = 'true';
+                } else {
+                    $data['status'] = 'false';
+                }
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+
+        // Initialize CSS
+        $css = ['custom/alert.css', 'custom/addSubject.css'];
+        $js = ['custom/alert.js'];
+
+        $data = [
+            'css'   => addExternal($css, 'css'),
+            'js'   => addExternal($js, 'javascript')
+        ];
+
+        
+        $data['profs'] = $this->fetchProfessors();
+        $data['selected_prof_id'] = $faculty_id;
+        $data['subject_info'] = $subjectModel->find($subject_id);
+
+        return view('subjects/editSubjects', $data);
+    }
+
+    public function delete_subject($subject_id = null, $prof_id = null)
+    {
+        if(isset($subject_id))
+        {
+            $subjectModel = new SubjectModel();
+
+            $value = ['is_deleted' => 1];
+            $result = $subjectModel->update($subject_id, $value);
+
+            if(!$result)
+                return false;
+            else
+                return redirect()->to(base_url('/' . 'view_subjects/' . $prof_id));
+        }
+
+        return false;
     }
 
     public function get_subjects_taken()

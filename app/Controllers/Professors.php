@@ -2,43 +2,49 @@
 namespace App\Controllers;
 
 use \App\Models\FacultyModel;
+use \App\Models\SubjectModel;
 use \App\Entities\Admin;
 
 class Professors extends BaseController
 {
 
-  public function _remap($method, $param1 = null)
-  {
-      switch($method)
-      {
-          case 'index':
-              if ($_SESSION['logged_user']['role'] === '2') {
-                  return redirect()->to(base_url('dashboard'));
-              }
-              $this->hasSession(0);
-              return $this->$method();
-              break;
-          case 'get_all_professors':
-              if ($_SESSION['logged_user']['role'] === '2') {
-                  return redirect()->to(base_url('dashboard'));
-              }
-              $this->hasSession(1);
-              return $this->$method();
-              break;
-          case 'add_professors':
-              if ($_SESSION['logged_user']['role'] === '2') {
-                  return redirect()->to(base_url('dashboard'));
-              }
-              $this->hasSession(1);
-              return $this->$method();
-                  break;
-          case 'profList':
-              $this->hasSession(1);
-              return $this->$method($param1);
-          default:
-              return redirect()->to(base_url('dashboard'));
-      }
-  }
+    public function _remap($method, $param1 = null)
+    {
+        switch($method)
+        {
+            case 'index':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));
+                }
+                $this->hasSession(0);
+                return $this->$method();
+                break;
+            case 'get_all_professors':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));
+                }
+                $this->hasSession(1);
+                return $this->$method();
+                break;
+            case 'add_professors':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));
+                }
+                $this->hasSession(1);
+                return $this->$method();
+                    break;
+            case 'delete_professor':
+                if ($_SESSION['logged_user']['role'] === '2') {
+                    return redirect()->to(base_url('dashboard'));
+                }
+                return $this->$method($param1);
+            case 'profList':
+                $this->hasSession(1);
+                return $this->$method($param1);
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
 
 	public function index()
   {
@@ -116,21 +122,32 @@ class Professors extends BaseController
     return view('professors/add_faculty', $data);
   }
 
-  /*
-  * Delete Faculty
-  */
-  public function delete_professor($faculty_id = null) {
-    if(isset($faculty_id)) {
-      $facultyModel = new FacultyModel();
+    /*
+    * Delete Faculty
+    */
+    public function delete_professor($faculty_id = null)
+    {
+        if(isset($faculty_id)) {
+            $db = \Config\Database::connect();
+            $db->transBegin();
+            
+            $facultyModel = new FacultyModel();
+            $subjectModel = new SubjectModel();
 
-      $result = $facultyModel->where('id', $faculty_id)->delete();
+            $value = ['is_deleted' => 1];
 
-      if($result)
-        return true;
-      else
-        return false;
+            $facultyModel->update($faculty_id, $value);
+            $subjectModel->where('faculty_id', $faculty_id)->set(['is_deleted' => 1])->update();
+
+            if ($db->transStatus() === FALSE) {
+                $db->transRollback();
+                return false;
+            } else {
+                $db->transCommit();
+                return redirect()->to(base_url('professors'));
+            }
+        }
     }
-  }
 
   /**
    * Get all professors

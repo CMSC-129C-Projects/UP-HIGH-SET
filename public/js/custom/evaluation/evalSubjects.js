@@ -12,13 +12,16 @@ function appendSubjectCards() {
         response.forEach((element) => {
             
             const disableEvaluate = (element.status === 'Completed') ? 'disabled' : '';
+            const text = (element.status === 'Completed') ? 'Evaluated' : 'Evaluate';
+
+            console.log(element);
 
             let subject = '<div class="card">' +
                                 '<img src="' + BASE_URI + '/public/images/EvaluationCover.jpg" class="img-fluid" alt="">' + 
                                 '<h1>' + capitalize(element.name) + '</h1>' +
                                 '<p>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</p>' +
                                 '<p>Status: ' + capitalize(element.status) + '</p>' +
-                                '<button type="button" class="redirect" ' + disableEvaluate + ' data-id="' + element.eval_sheet_id + '" style="margin:auto;">Evaluate</button>' +
+                                '<button type="button" class="redirect" ' + disableEvaluate + ' data-id="' + element.eval_sheet_id + '" style="margin:auto;">' + text + '</button>' +
                             '</div>';
 
             $('#subjects').append(subject).on('click', '.redirect', function() {

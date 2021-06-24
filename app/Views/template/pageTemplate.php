@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link href="<?=base_url()?>/public/css/custom/alert.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/emailContent.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
 
@@ -35,7 +36,7 @@
     </div>
     
     <!-- header section starts -->
-    <section id="header">
+    <section id="header" class="no-print">
       <div class="schoolWebsiteName">
           <a href="<?=base_url();?>"><img src="<?=base_url()?>/public/Logo.png"></a>
           <h1> University of the Philippines High School Cebu</h1>
@@ -52,7 +53,7 @@
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
                 <img class="rounded-cricle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
-                <h3><?=$_SESSION['logged_user']['first_name']?></h3>
+                <h3>Hi, <?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
           </div>
@@ -65,7 +66,19 @@
               <?php else:?>
                 <a href="<?=base_url();?>/profile/admin"><i class="bi bi-person-circle"></i>  Profile</a>
               <?php endif;?>
-              <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
+              <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-gear-wide-connected"></i> Settings </a>
+                  <ul class="collapse list-unstyled" id="settings">
+                      <div class="d-flex flex-direction-row">
+                        <p style="font-size: 1.3rem; margin-bottom: 0;">Allow Two-step Verification</p>
+                        <div class="button r" id="button-6">
+                            <input type="checkbox" name="allow_verification" <?=set_checkbox('allow_verification', '', $_SESSION['logged_user']['allow_verify'])?> class="checkbox">
+                            <div class="knobs">
+                              <span class="dot"></span>
+                            </div>
+                            <div class="layer"></div>
+                        </div>
+                      </div>
+                  </ul>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>
           </ul>
@@ -78,9 +91,6 @@
                 </li>
                 <li>
                     <a href="#">View Faculty Summary Report</a>
-                </li>
-                <li>
-                    <a href="#">Print Report</a>
                 </li>
               </ul>
               <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
@@ -116,10 +126,7 @@
                   <a href="<?=base_url()?>/professors">View Professors</a>
                 </li>
                 <li>
-                  <a href="#">Add Subjects</a>
-                </li>
-                <li>
-                  <a href="#">View Subjects</a>
+                  <a href="<?=base_url()?>/subjects/add_subject">Add Subjects</a>
                 </li>
               </ul>
               <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
@@ -144,7 +151,7 @@
           </ul>
         </nav>
         <!-- Page Content Holder -->
-        <div class="navIcon">
+        <div class="navIcon no-print">
           <div class="navbar-header">
             <button type="button" id="sidebarCollapse" class="navbar-btn"89>
               <i class="bi bi-list fa-2x"></i>
@@ -158,7 +165,7 @@
     </div>
     <!-- footer section starts  -->
 
-    <section id="footer" class="container-fluid" style="position: relative; z-index: 1000;">
+    <section id="footer" class="no-print container-fluid" style="position: relative; z-index: 1000;">
       <div class="row-md-4">
         <div class="contactLinks">
           <h3><i class="bi bi-person-circle"></i> Contact Us:</h3>
@@ -186,14 +193,14 @@
     </section>
     <script src="<?=base_url()?>/public/js/jquery/jquery-3.6.0.min.js"></script>
     <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script>
+    <!-- <script src="<?=base_url()?>/public/js/bootstrap-4.6.0/bootstrap.min.js"></script> -->
     <script src="<?=base_url()?>/public/js/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="<?=base_url()?>/public/js/keyframes/jquery.keyframes.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
-    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
         // overried defaults of alertify
         alertify.defaults.theme.ok = "btn btn-primary";
@@ -203,6 +210,9 @@
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
     </script>
+
+    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
+
     <?php if(isset($js)):?>
       <?= echoFiles($js);?>
     <?php endif;?>

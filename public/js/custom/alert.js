@@ -10,8 +10,8 @@ $(function() {
         displayAlertify(CURRENT_URI, 'User has been added. Email sent successfully.');
     }
 
-    if (CURRENT_URI.includes('subjects/add_subject') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
-        displayAlertify(CURRENT_URI, 'Subject added successfully.');
+    if (CURRENT_URI.includes('subjects') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify('/professors', 'Subject added successfully.');
     }
 
     if (CURRENT_URI.includes('send_email') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {

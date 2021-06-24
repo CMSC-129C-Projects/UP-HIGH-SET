@@ -7,7 +7,7 @@
           <div class="row custom-row">
             <div class="d-flex col-md-6 s-col justify-content-center align-middle" style="margin-left: 3%;">
               <div class="r-content">
-                  <?php if (isset($evaluation_info)):?>
+                  <?php if (isset($evaluation_info) && ($daysLeft != '0' && $timeLeft != '00:00:00')):?>
                     <!-- <img class="logo" src="<?=base_url()?>/public/images/CitronellaLogo.png" alt=""> -->
                     <span>The UP Student-Teacher Evaluation will close in</span>
                     <span class="countdown"><?=($daysLeft === '1') ? ($daysLeft . ' DAY') : ($daysLeft . ' DAYS')?> & <span class="time"><?=$timeLeft?></span></span>

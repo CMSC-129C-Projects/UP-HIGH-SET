@@ -163,4 +163,36 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
+
+    /**
+     * Number of students who submitted the evaluation sheet per subject
+     */
+    public function get_subjects_complete_count($subject_id = null)
+    {
+        $db = \Config\Database::connect();
+        $sql = <<<EOT
+SELECT subjects.id, subjects.name, IFNULL(counts.student_count, 0) as complete_count
+FROM subjects
+LEFT JOIN (SELECT eval_sheet.subject_id, COUNT(eval_sheet.subject_id) as student_count
+            FROM eval_sheet
+            LEFT JOIN users
+            ON eval_sheet.student_id = users.id
+            WHERE eval_sheet.status = 'Completed'
+                AND users.is_active = 1
+                AND users.is_deleted = 0
+            GROUP BY eval_sheet.subject_id) as counts
+ON subjects.id = counts.subject_id
+WHERE subjects.is_deleted = 0
+EOT;
+
+        if (isset($subject_id)) {
+            $continuation = <<<EOT
+AND subjects.id = $subject_id
+EOT;
+            $sql .= $continuation;
+        }
+
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
 }

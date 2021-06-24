@@ -125,7 +125,7 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
                 <li>
-                  <a href="#">Transcend Students</a>
+                  <a href="<?=base_url();?>/monitoring/transcend_students">Transcend Students</a>
                 </li>
               </ul>
               <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pie-chart"></i> Database Management</a>

@@ -99,7 +99,7 @@
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
                 <li>
-                  <a href="#">Transcend Students</a>
+                  <a href="<?=base_url();?>/monitoring/transcend_students">Transcend Students</a>
                 </li>
               </ul>
               <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pie-chart"></i> Database Management</a>
@@ -125,9 +125,9 @@
                 <li>
                   <a href="<?=base_url()?>/send_email">Archive Evaluation</a> <!-- Archives the latest/recently closed Evaluation since possible na giclose na daan before i-archive -->
                 </li>
-                <li>
-                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> <!-- Clerk/Admin must indicate which evaluation to unarchive : What Semester and year -->
-                </li>
+                <!-- <li>
+                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> Clerk/Admin must indicate which evaluation to unarchive : What Semester and year
+                </li> -->
               </ul>
 
             </li>

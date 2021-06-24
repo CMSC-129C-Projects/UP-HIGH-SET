@@ -87,7 +87,7 @@
                   <a href="<?=base_url();?>/monitoring/monitor_progress">Monitor Progress</a>
                 </li>
               </ul>
-              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Users</a>
+              <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person"></i> Users</a>
               <ul class="collapse list-unstyled" id="users">
                 <li>
                   <a href="<?=base_url();?>/update/add" name="addUser">Add Users</a>
@@ -102,7 +102,7 @@
                   <a href="#">Transcend Students</a>
                 </li>
               </ul>
-              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person-fill"></i> Database Management</a>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pie-chart"></i> Database Management</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
                 <li>
                   <a href="#">Add Professors</a>
@@ -117,7 +117,7 @@
                   <a href="#">View Subjects</a>
                 </li>
               </ul>
-              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone-fill"></i> Administration </a>
+              <a href="#announcements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-megaphone"></i> Administration </a>
               <ul class="collapse list-unstyled" id="announcements">
                 <li>
                   <a href="<?=base_url()?>/send_email">Send Email Notification</a>

@@ -4,7 +4,7 @@
 <link href="<?=base_url()?>/public/css/custom/evaluation/setstatus.css" rel="stylesheet">
   <section id="setStatus" class="conatiner-fluid">
     <div class="heading text-center">
-      <h1 style="padding: 8rem 0 2rem;">Set Evaluation Status </h1>
+      <h1 style="padding: 8rem 0 6rem;">SET EVALUATION STATUS </h1>
     </div>
 
 
@@ -27,7 +27,7 @@
        
       </div>
     </div>
-    
+
     
     
     <div class="text-center">

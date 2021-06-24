@@ -615,7 +615,7 @@ a.article:hover {
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;
 }
-#sidebar .nav-link input[type="button"] {
+#sidebar .nav-link button[type="button"] {
   outline: none;
   border-color: #ffed8a;
   border-style: groove;
@@ -633,10 +633,10 @@ a.article:hover {
   background: #7b1113;
   color: #ffed8a;
 }
-#sidebar .nav-link input[type="button"]:hover::before {
+#sidebar .nav-link button[type="button"]:hover::before {
   width: 100%;
 }
-#sidebar .nav-link input[type="button"]:hover {
+#sidebar .nav-link button[type="button"]:hover {
   color: #7b1113;
   background: #ffed8a;
 }

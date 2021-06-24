@@ -113,7 +113,7 @@
                   <a href="#">Transcend Students</a>
                 </li>
               </ul>
-              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-person"></i> Database Management</a>
+              <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pie-chart"></i> Database Management</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
                 <li>
                   <a href="#">Add Professors</a>

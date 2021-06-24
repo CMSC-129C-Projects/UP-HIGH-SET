@@ -30,7 +30,7 @@ class Questions extends BaseController
             if (!$this->save_questions()) {
                 $data['status'] = 'false';
             } else {
-                $data['status'] = true;
+                $data['status'] = 'true';
             }
         }
 
@@ -57,23 +57,24 @@ class Questions extends BaseController
         foreach($questionIDs as $id) {
             $values = [
                 'section_id' =>  $this->request->getPost('section_' . $id),
-                'question_text' => $this->request->getPost('question' . $id)
+                'question_text' => $this->request->getPost('question' . $id),
+                'is_deleted' => 0
             ];
 
-            if (!strpos($id, 'new')) {
-                $questionModel->update($id, $values);
-            } else {
+            if (strpos($id, 'new_') === 0) {
                 $questionModel->insert($values);
+            } else {
+                $questionModel->update($id, $values);
+            }
+
+            if ($db->transStatus() === FALSE) {                
+                $db->transRollback();
+                return false;
             }
         }
 
-        if ($db->transStatus() === FALSE) {
-            $db->transRollback();
-            return false;
-        } else {
-            $db->transCommit();
-            return true;
-        }
+        $db->transCommit();
+        return true;
     }
 
     protected function get_ids()

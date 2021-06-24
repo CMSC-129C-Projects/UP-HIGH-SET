@@ -44,7 +44,7 @@
                             <div class="tab-pane fade" id="<?=strtolower(str_replace(' ', '_', $key));?>">
                           <?php endif;?>
 
-                            <button data-section="<?=$key?>" class="btn btn-secondary action-add-question" type="button">Add Question</button>
+                            <button data-section="<?=$key?>" class="button action-add-question" type="button">Add Question</button>
 
                             <div class="wrap question_grp" style="text-align: left;" id="question_grp_<?=$key?>">
                               <?php $index = 1;?>

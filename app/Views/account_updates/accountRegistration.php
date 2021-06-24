@@ -74,6 +74,8 @@
           </div>
         </div>
 
+                          <!-- FOR CLERK -->
+
         <?php if(isset($role) && $role === 'student'):?>
           <div class="tab-pane fade" id="Clerk">
         <?php else:?>
@@ -133,7 +135,7 @@
           </div>
         </div>
 
-
+              <!-- FOR STUDENT -->
         <?php if(isset($role) && $role === 'student'):?>
           <div class="tab-pane fade active show" id="Student">
         <?php else:?>

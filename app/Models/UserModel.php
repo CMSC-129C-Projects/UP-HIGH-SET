@@ -12,6 +12,7 @@ class UserModel extends Model {
     protected $returnType = 'App\Entities\Account';
 
     protected $allowedFields = [
+        'allow_verify',
         'student_num',
         'first_name',
         'last_name',
@@ -60,8 +61,9 @@ EOT;
         $query = $db->query($sql);
         return $query->getResult();
     }
-
-    public function get_all_students_per_subject($id) {
+    
+    public function get_all_students_per_subject($id)
+    {
         $db = \Config\Database::connect();
 
         $sql = <<<EOT

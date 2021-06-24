@@ -44,14 +44,15 @@ class Dashboard extends BaseController
     if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
     } else {
+      $subjectModel = new SubjectModel();
+
       [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
 
       $data['daysLeft'] = $daysLeft;
       $data['subject_stat'] = $subject_stat;
       $data['faculty_stat'] = $faculty_stat;
       $data['student_stat'] = $student_stat;
-
-      // print_r($faculty_stat);
+      $data['faculty_list'] = $subjectModel->get_final_rating();
 
       return view('user_mgt/dashboard', $data);
     }
@@ -261,5 +262,14 @@ class Dashboard extends BaseController
     $times = explode(':', $timeLeft);
 
     return $times[0] . ':' . ((strlen($times[1]) == 1) ? ('0' . $times[1]) : $times[1]) . ':' . ((strlen($times[2]) == 1) ? ('0' . $times[2]) : $times[2]);
+  }
+
+  protected function get_order()
+  {
+    $facultyModel = new FacultyModel();
+    
+    $facultyList = $facultyModel->where('is_deleted', 0)->orderBy('rating', 'asc')->findAll();
+
+    return $facultyList;
   }
 }

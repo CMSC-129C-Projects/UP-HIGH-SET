@@ -12,15 +12,16 @@ function computeOverallRating() {
     let total = 0;
 
     Object.values(finalRatings).forEach((element, index) => {
-        if (index < 3) {
+        if (index < finalRatings.length) {
             let fr = parseFloat($(element).text());
             total += fr;
             $(element).html(fr.toFixed(2) + '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + getRate(fr.toFixed(2)));
         }
     });
 
+    const average = (total.toFixed(2)/finalRatings.length);
     let intrepretation = getRate(total.toFixed(2));
-    $('.overall').html(total.toFixed(2) + '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + intrepretation);
+    $('.overall').html(average + '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + intrepretation);
 }
 
 

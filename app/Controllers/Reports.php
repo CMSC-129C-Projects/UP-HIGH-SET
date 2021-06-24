@@ -206,8 +206,27 @@ class Reports extends BaseController
 
         $ratings = $this->compute_rating($tally, $size);
 
+        $this->store_rating($subject_id, $ratings[1]);
+
         return [$ratings, $tally];
     }
+    
+    /**
+     * Update Subject Rating
+     */
+    protected function store_rating($subject_id, $rating)
+    {
+        $subjectModel = new SubjectModel();
+
+        $final_rating = ['rating' => $rating];
+
+        if (!$subjectModel->update($subject_id, $final_rating)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     /**
      * Get Open Ended Questions

@@ -77,10 +77,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <button id="clicker">Click me</button>
-            </div>
-
             <br><br>
 
             <div class="row">

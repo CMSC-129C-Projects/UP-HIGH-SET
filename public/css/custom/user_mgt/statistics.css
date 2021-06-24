@@ -169,9 +169,9 @@
     border-color: #014421;
 }
 
-.progress.green .progress-left .progress-bar{
+/* .progress.green .progress-left .progress-bar{
     animation: loading-3 1s linear forwards 1.8s;
-}
+} */
 
 .progress.pink .progress-bar{
     border-color: #f83754;
@@ -185,9 +185,9 @@
     border-color: #1abc9c;
 }
 
-.progress.green .progress-left .progress-bar{
+/* .progress.green .progress-left .progress-bar{
     animation: loading-5 1.2s linear forwards 1.8s;
-}
+} */
 
 @keyframes loading-1{
     0%{

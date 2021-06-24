@@ -47,8 +47,8 @@
               </div>
               <br>
               <div style="text-align: center;"> 
-                <button class="button2" type="submit" style="font-size:2.2vmin"><i class="bi bi-check-circle"></i> Save</button>
-                <button class="button2" href="#" style="font-size:2.2vmin"><i class="bi bi-x-circle"></i> Cancel</button>
+                <button class="button2" type="submit" style="font-size:1.5vmin"><i class="bi bi-check-circle" style="font-size: 1.31vmin"></i> Save</button>
+                <button class="button2" href="#" style="font-size:1.5vmin"><i class="bi bi-x-circle" style="font-size: 1.31vmin"></i> Cancel</button>
               </div>
             </form>
           </div>

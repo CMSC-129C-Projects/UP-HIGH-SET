@@ -39,6 +39,19 @@ EOT;
       return $query->getResult();
   }
 
+  public function get_eval_sections_by_type($question_type_id)
+  {
+    $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+SELECT id
+FROM eval_section
+WHERE question_type_id = $question_type_id
+EOT;
+
+    $query = $db->query($sql);
+    return $query->getResult();
+  }
 
   public function get_ids()
   {

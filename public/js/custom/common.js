@@ -82,4 +82,17 @@ $(function () {
             $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle-fill"></i>');
         });
     });
+
+
+    $('.button-sub').click(function(){
+        let id = $('select[name="subjects"]').val();
+
+        window.location.href = BASE_URI + '/reports/report_per_subject/' + id;
+    });
+
+    $('.button-prof').click(function() {
+        let id = $('select[name="professors"]').val();
+
+        window.location.href = BASE_URI + '/reports/report_per_faculty/' + id;
+    });
 });

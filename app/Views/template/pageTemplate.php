@@ -101,7 +101,7 @@
                     <a href="#" data-toggle="modal" data-target="#subjectReport">View Subject Summary Report</a>
                 </li>
                 <li>
-                    <a href="#">View Faculty Summary Report</a>
+                    <a href="#" data-toggle="modal" data-target="#profReport">View Faculty Summary Report</a>
                 </li>
               </ul>
               <a href="#evaluation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-square"></i> Evaluation</a>
@@ -148,9 +148,9 @@
                 <li>
                   <a href="<?=base_url()?>/send_email">Archive Evaluation</a> <!-- Archives the latest/recently closed Evaluation since possible na giclose na daan before i-archive -->
                 </li>
-                <li>
-                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> <!-- Clerk/Admin must indicate which evaluation to unarchive : What Semester and year -->
-                </li>
+                <!-- <li>
+                  <a href="<?=base_url()?>/send_email">Unarchive Evaluation</a> Clerk/Admin must indicate which evaluation to unarchive : What Semester and year
+                </li> -->
               </ul>
 
             </li>
@@ -176,6 +176,7 @@
     </div>
 
     <!-- MODAL FOR SUBJECT SUMMARY REPORT -->
+    <?php $subjects = get_all_subjects();?>
     <div class="subj modal fade" id="subjectReport"  role="dialog" position="default" style="height:420px">
       <div class="modal-dialog">
         <div class="modal-content" style="background: transparent;">
@@ -187,23 +188,46 @@
           </div>
 
           <div class="subj modal-body" style="padding: 20px;">
-            <form method="post" action="<?=base_url()?>/reports_per_subject">
-              <div class="form-group" id="subj-form">
-                <select name="subject" id="subject-dropdown" class="subj-select">
-                  <option selected>Select Faculty</option>
-                  <option value="announcement">Announcement</option>
-                  <option value="registration">Registration</option>
-                  <option value="evaluation">Evaluation</option>
-                  <option value="change_pass">Change Password</option>
-                  <option value="forgot_pass">Forgot Password</option>
-                  <option value="verification">Verification</option>
-                </select>
-                <div class="row modal-button">
-                    <button class="button2" type="submit"><i class="bi bi-check-circle"></i> Confirm</button>
-                    <button class="button2"  data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
-                </div>
+            <div class="form-group" id="subj-form">
+              <select name="subjects" id="subject-dropdown" class="subj-select">
+                <?php foreach($subjects as $sub):?>
+                  <option value="<?=$sub['id']?>"><?=$sub['name']?></option>
+                <?php endforeach;?>
+              </select>
+              <div class="row modal-button">
+                  <button class="button2 button-sub" type="button"><i class="bi bi-check-circle"></i> Confirm</button>
+                  <button class="button2"  data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
               </div>
-            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FOR PROFESSORS SUMMARY REPORT -->
+    <?php $professors = get_all_professors();?>
+    <div class="subj modal fade" id="profReport"  role="dialog" position="default" style="height:420px">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background: transparent;">
+
+          <div class="subj modal-header">
+            <h2 style="color: #e9dbc1">Professor Summary Report</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </div>
+
+          <div class="subj modal-body" style="padding: 20px;">
+            <div class="form-group" id="subj-form">
+              <select name="professors" id="prof-dropdown" class="subj-select">
+                <?php foreach($professors as $prof):?>
+                  <option value="<?=$prof['id']?>"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name']);?></option>
+                <?php endforeach;?>
+              </select>
+              <div class="row modal-button">
+                  <button class="button2 button-prof" type="button"><i class="bi bi-check-circle"></i> Confirm</button>
+                  <button class="button2"  data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

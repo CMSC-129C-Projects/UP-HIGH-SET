@@ -16,6 +16,7 @@ class Profile extends BaseController
         {
             case 'student':
             case 'admin':
+            case 'clerk':    
                 return $this->$method();
                 break;
             default:
@@ -109,6 +110,50 @@ class Profile extends BaseController
         $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);
+    }
+
+    public function clerk()
+    {
+        $role = $_SESSION['logged_user']['role'];
+
+        $sessionAdmin = new Admin();
+
+        $sessionAdmin = $this->userModel->asObject('App\Entities\Admin')->where('is_deleted', 0)->where('role', $role)->where('email', $_SESSION['logged_user']['email'])->first();
+
+        $data = $this->setDefaultData($role, $sessionAdmin->id);
+
+        $css = ['custom/profileUpdate/pUpdate.css', 'custom/alert.css', 'custom/avatar.css'];
+        $js = ['custom/profileUpdate/pUpdate.js', 'custom/alert.js', 'custom/avatar.js'];
+        $data['js'] = addExternal($js, 'javascript');
+        $data['css'] = addExternal($css, 'css');
+
+        $data['validation'] = null;
+        $data['status'] = null;
+        $data['role'] = $role;
+        // $data['id'] = $id;
+
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($this->setRules($role, $sessionAdmin->id))) {
+                $email = $this->request->getPost('email') . '@up.edu.ph';
+                $values = [
+                    'avatar_url'  => $this->request->getPost('avatar'),
+                    'contact_num' => $this->request->getPost('mobile'),
+                    'username'    => $this->request->getPost('username'),
+                    'first_name'  => $this->request->getPost('first_name'),
+                    'last_name'   => $this->request->getPost('last_name'),
+                    'email'       => $email
+                ];
+                $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile/clerk/true'));
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
+        $data['role'] = '1';
+
+        return view("account_updates/clerkProfileUpdate", $data);
     }
 
     /**

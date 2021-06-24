@@ -12,6 +12,7 @@ class UserModel extends Model {
     protected $returnType = 'App\Entities\Account';
 
     protected $allowedFields = [
+        'allow_verify',
         'student_num',
         'first_name',
         'last_name',

@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
+    <link href="<?=base_url()?>/public/css/custom/alert.css" rel="stylesheet">
     <link href="<?=base_url()?>/public/css/custom/styles.css" rel="stylesheet">
 
     <?php if(isset($css)):?>
@@ -50,7 +51,7 @@
             <div class="img bg-wrap text-center py-4" style="background-image: url(<?=base_url()?>public/samplecover.jpg);">
               <div class="user-logo">
                 <img class="rounded-circle" src="<?=base_url() . $_SESSION['logged_user']['avatar_url']?>" style="margin-bottom: 2vh; width: 50%!important; height: auto !important;">
-                <h3><?=$_SESSION['logged_user']['first_name']?></h3>
+                <h3>Hi, <?=$_SESSION['logged_user']['first_name']?></h3>
               </div>
             </div>
           </div>
@@ -63,7 +64,19 @@
               <?php else:?>
                 <a href="<?=base_url();?>/profile/admin"><i class="bi bi-person-circle"></i>  Profile</a>
               <?php endif;?>
-              <a href="#"><i class="bi bi-gear-wide-connected"></i>  Settings</a>
+              <a href="#settings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-gear-wide-connected"></i> Settings </a>
+                  <ul class="collapse list-unstyled" id="settings">
+                      <div class="d-flex flex-direction-row">
+                        <p style="font-size: 1.3rem; margin-bottom: 0;">Allow Two-step Verification</p>
+                        <div class="button r" id="button-6">
+                            <input type="checkbox" name="allow_verification" <?=set_checkbox('allow_verification', '', $_SESSION['logged_user']['allow_verify'])?> class="checkbox">
+                            <div class="knobs">
+                              <span class="dot"></span>
+                            </div>
+                            <div class="layer"></div>
+                        </div>
+                      </div>
+                  </ul>
               <a href="#"><i class="bi bi-zoom-in"></i> About</a>
             </li>
           </ul>
@@ -127,7 +140,6 @@
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
 
-    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
     <script>
         // overried defaults of alertify
         alertify.defaults.theme.ok = "btn btn-primary";
@@ -137,6 +149,9 @@
         var BASE_URI = "<?=base_url();?>";
         var CURRENT_URI = "<?=uri_string();?>";
     </script>
+
+    <script src="<?=base_url()?>/public/js/custom/common.js"></script>
+
     <?php if(isset($js)):?>
       <?= echoFiles($js);?>
     <?php endif;?>

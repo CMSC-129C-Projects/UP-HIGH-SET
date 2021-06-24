@@ -20,7 +20,7 @@ class Update extends BaseController
         } else {
             $this->hasSession(0);
         }
-        if ($_SESSION['logged_user']['role'] === '2') {
+        if ($method !== 'update_2fverification' && $_SESSION['logged_user']['role'] === '2') {
             return redirect()->to(base_url('dashboard'));
         }
 
@@ -29,6 +29,7 @@ class Update extends BaseController
             case 'index':
             case 'add':
             case 'studentList':
+            case 'update_2fverification':
                 return $this->$method($param1);
                 break;
             case 'edit':
@@ -132,6 +133,19 @@ class Update extends BaseController
         $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['adminList']);
+    }
+
+    public function update_2fverification($toggle)
+    {
+        $value = ['allow_verify' => (($toggle === 'true') ? '1' : '0')];
+
+        if (!$this->userModel->update($_SESSION['logged_user']['id'], $value)) {
+            $response = ['message' => 'failed'];
+        } else  {
+            $_SESSION['logged_user']['allow_verify'] = (($toggle === 'true') ? true : false);
+            $response = ['message' => 'success'];
+        }
+        echo json_encode($response);
     }
 
     protected function setDefaultData($role = null, $id = null)

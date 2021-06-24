@@ -47,6 +47,14 @@ function capitalize(str) {
     }
 }
 
+function updateVerification(value) {
+    return $.ajax({
+        url: BASE_URI + '/update/update_2fverification/' + value,
+        type: 'POST',
+        dataType: 'json'
+    });
+}
+
 let header = document.getElementById("header");
 let footer = document.getElementById("footer");
 
@@ -58,5 +66,21 @@ new ResizeSensor(main, function() {
 $(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
+    });
+
+    $('input[name="allow_verification"]').change(function() {
+        let value = $(this).prop('checked');
+        $.when(updateVerification(value)).then(function(response) {
+            if (response.message === 'success') {
+                let message = 'Two-step verification has been turned ' + (value === true ? 'on' : 'off') + ' successfully.'
+                
+                alertify.alert('Notification', message);
+            } else {
+                alertify.alert('Notification', 'An error has occurred. Please try again.');
+            }
+
+            $('.bi-x-circle-fill').remove();
+            $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle-fill"></i>');
+        });
     });
 });

@@ -25,7 +25,7 @@
     <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
-                <div class="col-sm-10"><h2>ADMIN NAME HERE</h2></div>
+                <div class="col-sm-10"><h2><?=$_SESSION['logged_user']['last_name'];?>, <?=$_SESSION['logged_user']['first_name'];?></h2></div>
             </div>
             <div class="row">
                 <div class="col-sm-3"><!--left col-->
@@ -35,7 +35,7 @@
                     </div>
                     </hr>
                     <br>
-                </div><!--/col-3-->
+                </div>
                 <div class="col-sm-9">
                     <div class="tab-content">              
                         <hr>

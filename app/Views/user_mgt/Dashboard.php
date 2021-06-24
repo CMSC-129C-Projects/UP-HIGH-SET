@@ -95,45 +95,21 @@
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Final Rating</th>
-                                        <th scope="col">Completion Rate</th>
+                                        <th scope="col">Interpretation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td scope="row">cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
+                                    <?php $index=1;?>
+                                    <?php foreach($faculty_list as $faculty):?>
+                                        <tr>
+                                            <td scope="row"><?=$index?></td>
+                                            <td><?=$faculty->first_name;?></td>
+                                            <td><?=$faculty->last_name;?></td>
+                                            <td class="rating_<?=$index?>"><?=$faculty->final_rating;?></td>
+                                            <td class="interpretation_<?=$index?>"></td>
+                                        </tr>
+                                        <?php $index++;?>
+                                    <?php endforeach;?>
                                 </tbody>
                             </table>
                     </div>

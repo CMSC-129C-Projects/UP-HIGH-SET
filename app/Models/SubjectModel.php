@@ -13,6 +13,7 @@ class SubjectModel extends Model {
     protected $returnType = 'array';
 
     protected $allowedFields = [
+        'rating',
         'faculty_id',
         'grade_level',
         'name',
@@ -111,10 +112,10 @@ EOT;
 //   return $query->getResult();
 //   }
 
-  public function get_in_progress_subjects_by_student($id)
-  {
-    $db = \Config\Database::connect();
-    $sql = <<<EOT
+    public function get_in_progress_subjects_by_student($id)
+    {
+        $db = \Config\Database::connect();
+        $sql = <<<EOT
 SELECT
     subjects.name as subject_name
 FROM users
@@ -125,13 +126,30 @@ ON eval_sheet.subject_id = subjects.id AND users.id = eval_sheet.student_id
 LEFT JOIN evaluation
 ON eval_sheet.evaluation_id = evaluation.id
 WHERE
-	users.role = 2 AND users.id = $id
+    users.role = 2 AND users.id = $id
     AND eval_sheet.status != "Completed" AND evaluation.status = "open"
     AND users.is_deleted = 0 AND users.is_active = 1
     AND subjects.is_deleted = 0 AND eval_sheet.is_deleted = 0
 EOT;
 
-    $query = $db->query($sql);
-    return $query->getResult();
-  }
+        $query = $db->query($sql);
+        return $query->getResult();
+    }
+
+    public function get_final_rating()
+    {
+        $db = \Config\Database::connect();
+        $sql = <<<EOT
+SELECT faculty.*, AVG(rating) as final_rating
+FROM subjects
+LEFT JOIN faculty
+ON subjects.faculty_id = faculty.id
+WHERE subjects.is_deleted = 0 AND faculty.is_deleted = 0
+GROUP BY faculty_id
+ORDER BY final_rating
+EOT;
+        $query = $db->query($sql);
+        return $query->getResult();
+
+    }
 }

@@ -22,6 +22,10 @@ $(function() {
         displayAlertify(CURRENT_URI, 'Responses are saved to the database.');
     }
 
+    if (CURRENT_URI.includes('questions') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Updated questions are saved to the database.');
+    }
+
     $('.item-table').on('click', '#deleteStudent', function() {
         alertify.confirm('Delete User', 'Are you sure you want to delete this student?', function() {
             window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');

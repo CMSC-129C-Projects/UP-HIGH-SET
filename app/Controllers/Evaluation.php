@@ -48,11 +48,6 @@ class Evaluation extends BaseController
       }
   }
 
-  public function set_status()
-  {
-    return view('evaluation/setStatus');
-  }
-
   public function evaluate($eval_sheet_id = null)
   {
     $data = [];

@@ -12,7 +12,7 @@
   border-image-slice: 1 !important;
   border-radius: 1rem;
   background: white !important;
-  font-size: 13px;
+  font-size: 3.2vmin;
 }
 
 #EmailContent form input {
@@ -26,7 +26,7 @@
   outline: none !important;
   border-radius: 0 !important;
   background-color: white !important;
-  font-size: 13px;
+  font-size: 3.2vmin;
 }
 
 #EmailContent .card {
@@ -51,7 +51,7 @@
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
     no-repeat right 0.75rem center/8px 10px !important;
   color: white;
-  font-size: 12px;
+  font-size: 2.2vmin;
   font-family: Roboto;
   width: 150px;
 }
@@ -80,8 +80,8 @@
   cursor: pointer;
   z-index: 1;
   overflow: hidden;
-  height: 3em;
-  width: 10em;
+  height: 8vmin;
+  width: 20vmin;
   margin-right: 1.75em;
   margin-bottom: 0.5em;
   background: #7b1113;
@@ -99,7 +99,7 @@
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 320px) {
+/* @media (max-width: 320px) {
   #EmailContent .card {
     width: 100%;
     padding: 0px;
@@ -110,4 +110,4 @@
   #EmailContent .custom-select {
     width: 125px;
   }
-}
+} */

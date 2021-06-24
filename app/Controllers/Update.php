@@ -15,7 +15,7 @@ class Update extends BaseController
 
     public function _remap($method, $param1=null, $param2=null)
     {
-        if ($method === 'studentList' || $method === 'adminList') {
+        if ($method === 'studentList' || $method === 'adminList' || $method === 'clerkList') {
             $this->hasSession(1);
         } else {
             $this->hasSession(0);
@@ -37,6 +37,7 @@ class Update extends BaseController
                 return $this->$method($param1, $param2);
                 break;
             case 'adminList':
+            case 'clerkList':
                 return $this->$method();
                 break;
             default:
@@ -55,8 +56,10 @@ class Update extends BaseController
 
         if(isset($role) && $role === 'student') {
             return view('user_list/studentList', $data);
-        } else {
+        } elseif (isset($role) && $role === 'admin') {
             return view('user_list/adminList', $data);
+        } else {
+            return view('user_list/clerkList', $data);
         }
 	}
 
@@ -132,6 +135,13 @@ class Update extends BaseController
         $data['adminList'] = $this->userModel->where('role', 1)->where('is_deleted', 0)->findAll();
 
         echo json_encode($data['adminList']);
+    }
+
+    public function clerkList()
+    {
+        $data['clerkList'] = $this->userModel->where('role', 3)->where('is_deleted', 0)->findAll();
+
+        echo json_encode($data['clerkList']);
     }
 
     public function update_2fverification($toggle)

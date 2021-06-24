@@ -15,7 +15,7 @@ function setFormBasedOnRole($role) {
                     <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin"></a>
                 </li>
                 <li class="nav-item">
-                <a href="#Clerk" class="nav-link" data-toggle="tab" id="btn-clerk"><input type="button" value="Clerk"></a>
+                    <a href="#Clerk" class="nav-link" data-toggle="tab" id="btn-clerk"><input type="button" value="Clerk"></a>
                 </li>
                 <li class="nav-item">
                     <a href="#Student" class="nav-link" data-toggle="tab" id="btn-student"><input type="button" value="Student"></a>
@@ -24,9 +24,9 @@ function setFormBasedOnRole($role) {
         return '<li class="nav-item">
                     <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input class="student focus" type="button" value="Student" style="margin-left: 1px !important;"></a>
                 </li>';
-    }elseif(isset($role) && $role === 'clerk') {
+    } elseif(isset($role) && $role === 'clerk') {
         return '<li class="nav-item">
-                    <a href="#Clerk" class="nav-link" data-toggle="tab" id="btn-clerk"><input class="clerk focus" type="button" value="Clerk" style="margin-left: 1px !important;disabled></a>
+                    <a href="#Clerk" class="nav-link active" data-toggle="tab" id="btn-clerk"><input class="clerk focus" type="button" value="Clerk" style="margin-left: 1px !important;disabled></a>
                 </li>';
     } elseif(isset($role) && $role === 'admin') {
         return '<li class="nav-item">

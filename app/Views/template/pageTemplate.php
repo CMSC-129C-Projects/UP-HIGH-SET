@@ -122,6 +122,9 @@
                   <a href="<?=base_url();?>/update/student">View Students</a>
                 </li>
                 <li>
+                  <a href="<?=base_url();?>/update/clerk">View Clerks</a>
+                </li>
+                <li>
                   <a href="<?=base_url();?>/update/admin">View Admin</a>
                 </li>
                 <li>

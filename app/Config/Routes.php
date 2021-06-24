@@ -48,6 +48,7 @@ $routes->add('verification/(:any)', 'Home::verification/$1');
 $routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');
 $routes->add('update/student', 'Update::index/student');
+$routes->add('update/clerk', 'Update::index/clerk');
 
 // VIEW SUBECTS HANDLED BY A PROFESSOR
 $routes->add('view_subjects/(:any)', 'Subjects::index/$1');

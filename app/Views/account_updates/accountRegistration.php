@@ -15,7 +15,7 @@
             <?=setFormBasedOnRole($role);?>
           </ul>
         </div>
-        <?php if(!isset($roles) || (isset($role) && $role === 'admin')):?>
+        <?php if(!isset($role) || (isset($role) && $role === 'admin')):?>
           <div class="tab-pane fade active show" id="Admin">
         <?php else:?>
           <div class="tab-pane fade" id="Admin">

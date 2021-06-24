@@ -390,12 +390,12 @@ button[type="button"][class="btn btn-lg cancel"] {
   display: none;
 }
 
-@media screen and (max-width: 1260px){
+@media screen and (max-width: 2140px){
 .categories{
-  font-size: 14px;
+  font-size: 18px;
 }
 }
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 2140px) {
   .categories a:not(:first-child) {display: none;}
   .categories a.icon {
     float: right;
@@ -407,7 +407,7 @@ button[type="button"][class="btn btn-lg cancel"] {
   }
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 2140px) {
   .categories.responsive {position: relative;}
   .categories.responsive .icon {
     position: absolute;

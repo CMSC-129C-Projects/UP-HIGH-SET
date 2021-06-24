@@ -8,6 +8,10 @@
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
+@font-face {
+  font-family: 'OPTIMA';
+  src: url('../../fonts/Optima-Font/unicode.optima.ttf');
+}
 
 html {
   font-size: 10px;
@@ -58,6 +62,7 @@ body{
   margin-top: 0px;
   color: #e9dbc1;
   font-size: 18px;
+  font-family: 'OPTIMA';
 }
 
 #header .schoolWebsiteName h2 {
@@ -66,6 +71,7 @@ body{
   font-style: italic;
   color: #e9dbc1;
   font-size: 15px;
+  font-family: 'OPTIMA';
 }
 
 #header .schoolWebsiteName a {
@@ -282,7 +288,7 @@ button[type="submit"]:hover {
 /* FOOTER */
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+ 
   width: 100%;
   bottom: 0;
   left: 0;
@@ -303,14 +309,17 @@ button[type="submit"]:hover {
 }
 
 #footer .contactLinks h3 {
-  font-size: 18px;
+  font-size: 3vmin;
   color: #e9dbc1;
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'OPTIMA';
 }
 
 #footer .contactLinks a {
   color: #e9dbc1;
-  font-size: 14px;
+  font-size: 2vmin;
+  font-family: 'OPTIMA';
 }
 
 /* a#btn-student.active {
@@ -380,6 +389,7 @@ form.edit {
 #footer {
   background: #7b1113;
   width: 100%;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -394,11 +404,11 @@ form.edit {
   -webkit-box-direction: normal;
   -ms-flex-flow: column;
   flex-flow: column;
-  margin: 1rem 0;
+  margin: .5rem 0;
   margin: auto;
 }
 
-#footer .contactLinks h3 {
+/* #footer .contactLinks h3 {
   font-size: 18px;
   color: #e9dbc1;
   margin-top: 1rem;
@@ -407,7 +417,7 @@ form.edit {
 #footer .contactLinks a {
   color: #e9dbc1;
   font-size: 14px;
-}
+} */
 
 /* STYLE SA DASHBOARD */
 /*
@@ -923,3 +933,32 @@ if it's not present, don't show loader */
         margin: auto!important;
     }
     } */
+    #header .schoolWebsiteName.portrait{
+      display: none;
+    }
+
+    @media (max-width: 516px){
+      #header .schoolWebsiteName.landscape{
+        display: none;
+        }
+    
+      #header .schoolWebsiteName.portrait{
+          display: block;
+          }
+          #header .schoolWebsiteName.portrait h1{
+            font-size: 17px;
+            margin-top: -7px !important;
+          }
+          #header .schoolWebsiteName.portrait h2{
+            font-size: 14px;
+          }
+    }
+    @media (max-width: 369px){
+      #header .schoolWebsiteName.portrait h1{
+        font-size: 15px;
+        margin-top: -4.5px !important;
+      }
+      #header .schoolWebsiteName.portrait h2{
+        font-size: 12.5px;
+      }
+    }

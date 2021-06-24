@@ -6,7 +6,7 @@
   <section class="container-fluid" style="padding: 4rem 0 2rem;">
     <div>
       <div class="heading text-center">
-        <h1 style= "padding:3rem;">ADD SUBJECT</h1>
+        <h1 style= "font-size: 5.8vmin; padding-bottom:4vmin;">ADD SUBJECT</h1>
       </div>
       <div id="EmailContent">
       <div id="AddSubject">
@@ -14,7 +14,7 @@
           <div class="card-body">
             <form method="post" action="">
               <div class="form-group">
-                <label for="purpose" style="font-size:15px; margin-bottom: 7px;">Subject Professor:</label>
+                <label for="purpose" style="font-size:1.5em; margin-bottom: 7px;">Subject Professor:</label>
                 <br>
                 <select class="custom-select" name="professor">
                   <?php if(isset($profs) and count($profs) > 0):?>
@@ -26,7 +26,7 @@
                 <span class="text-danger"><?=displaySingleError($validation, 'professor');?></span>
               </div>
               <div class="form-group">
-                <label for="purpose" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Grade Level:</label>
+                <label for="purpose" style="margin-top: 1rem; font-size:1.5em; margin-bottom:7px">Grade Level:</label>
                 <br>
                 <select class="custom-select" name="gLevel">
                   <option value="7">Grade 7</option>
@@ -40,7 +40,7 @@
               </div>
               <br>
               <div class="form-group">
-                <label for="subjectname" style="margin-top: 1rem; font-size:15px; margin-bottom:7px">Subject</label>
+                <label for="subjectname" style="margin-top: 1rem; font-size:1.5em; margin-bottom:7px">Subject</label>
                 <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>" placeholder="Enter Subject here ...">
                 <br>
                 <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>

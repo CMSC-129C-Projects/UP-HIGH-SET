@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
   <section id="special" class="container-fluid" style="padding: 4rem 0 2rem;">
     <div class="heading text-center">
-      <h1 style="padding-bottom: 3rem;">ADD FACULTY</h1>
+      <h1 style="font-size:5.8min; padding-bottom:4vmin;">ADD FACULTY</h1>
     </div>
     <div id="EmailContent">
     <div class="card">

@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
     <div class="container-fluid" style="padding-bottom: 50px; padding-left:30px; padding-right: 30px;">
         <div class="heading text-center">
-            <h1 style="padding-top:-5%; padding-bottom: 6%;"> Monitor Progress </h1>
+            <h1 style="font-size:5.8vmin; padding: 8rem 0 2rem;"> MONITOR PROGRESS </h1>
         </div>
         <div class="row">
             <div id="col-container" class="col-md-4">

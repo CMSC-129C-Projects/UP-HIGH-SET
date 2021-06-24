@@ -44,16 +44,15 @@ class Dashboard extends BaseController
     if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
     } else {
-      // [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
+      [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
 
-      // print_r($daysLeft);
-      // print_r('====');
-      // print_r($subject_stat);
-      // print_r('====');
+      $data['daysLeft'] = $daysLeft;
+      $data['subject_stat'] = $subject_stat;
+      $data['faculty_stat'] = $faculty_stat;
+      $data['student_stat'] = $student_stat;
+
       // print_r($faculty_stat);
-      // print_r('====');
-      // print_r($student_stat);
-      // print_r('====');
+
       return view('user_mgt/dashboard', $data);
     }
   }
@@ -72,7 +71,7 @@ class Dashboard extends BaseController
   {
     $daysLeft = $this->compute_days_left();
     $subject_stat = $this->get_subjects_stat();
-    $faculty_stat = $this->get_faculty_stat();
+    $faculty_stat = $this->get_faculty_stat(1);
     $student_stat = $this->get_student_stat();
 
     return [$daysLeft, $subject_stat, $faculty_stat, $student_stat];

@@ -231,9 +231,6 @@ label[class=statement]{
   width: 10rem;
   margin-bottom: 0%;
   margin-right: 10px;
-  
- 
-  
   background: #7b1113;
   color: #fff;
 }
@@ -243,13 +240,17 @@ label[class=statement]{
  
  
  } */
+ .buttons.tab-content button:disabled {
+   opacity: 1;
+   cursor: not-allowed;
+ }
 
 .buttons.tab-content button:hover::before,
 .form-group button:hover::before {
   width: 100%;
 }
 
-.buttons.tab-content button:hover,
+.buttons.tab-content button:hover:enabled,
 button#cancel:hover,
 .form-group button:hover {
   color: #ffff;

@@ -413,6 +413,8 @@ form.edit {
   flex-flow: column;
   margin: .5rem 0;
   margin: auto;
+  padding: 0%;
+  margin-bottom: 0.5rem;
 }
 
 /* #footer .contactLinks h3 {

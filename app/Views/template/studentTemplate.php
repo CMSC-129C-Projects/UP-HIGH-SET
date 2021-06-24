@@ -115,7 +115,7 @@
     <section id="footer" class="container-fluid" style="position: relative; z-index: 1000;">
       <div class="row-md-4">
         <div class="contactLinks">
-          <h3><i class="bi bi-person-circle"></i> Contact Us:</h3>
+          <h4 style="color:white; margin-top:2rem; font-family:OPTIMA; font-size:1.8rem; margin-bottom:1rem;"><i class="bi bi-person-circle" ></i> Contact Us:</h4>
           <div class="row">
             <div class="col-md-4 ">
               <div class="form-group footerContact ">
@@ -124,7 +124,7 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
+                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope"></i> lrc.upcebu@up.edu.ph</a>
               </div>
             </div>
             <div class="col-md-4 ">

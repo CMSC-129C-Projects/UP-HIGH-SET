@@ -13,6 +13,7 @@ class Test extends BaseController
         //     'css' => addExternal($css, 'css'),
         //     'js'  => addExternal($js, 'javascript')
         // ];
-        return view('Views/reporting/profreport');
+         return view('Views/user_mgt/clerkDashboard');
+        // return view('Views/user_mgt/clerkDashboard');
     }
 }

@@ -1,4 +1,4 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/clerkTemplate');?>
 
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
     <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
-                <div class="col-sm-10"><h2><?=$_SESSION['logged_user']['last_name'];?>, <?=$_SESSION['logged_user']['first_name'];?></h2></div>
+                <div class="col-sm-10"><h2>CLERK NAME HERE</h2></div>
             </div>
             <div class="row">
                 <div class="col-sm-3 custom"><!--left col-->
@@ -39,7 +39,7 @@
                 <div class="col-sm-9 align">
                     <div class="tab-content">              
                         <hr>
-                        <form class="form" action="<?=base_url();?>/profile/admin" method="post" id="registrationForm">
+                        <form class="form" action="<?=base_url();?>/profile/clerk" method="post" id="registrationForm">
                             <input type="hidden" name="avatar" value="<?=set_value('avatar', $avatar_url);?>">
                             <div class="form-group">
                                 <div class="col-xs-6">
@@ -95,8 +95,8 @@
                                 <div class="col-xs-12">
                                     <br>
                                    
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="bi bi-check-circle"></i></i> Save</button>
-                                    <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                    <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                                 </div>
                             </div>
                         </form>

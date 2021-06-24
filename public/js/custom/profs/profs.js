@@ -38,7 +38,7 @@ function appendProfCards(search = undefined) {
                                 '<h1>' + capitalize(element.first_name) + ' ' + capitalize(element.last_name) + '</h1>' +
                                 '<p>' + element.details + '</p>' +
                                 '<div class="dropdown" style="margin:auto;">' +
-                                    '<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>' +
+                                    '<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-eye"></i> Action</button>' +
                                     '<div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">'+
                                         '<a class="dropdown-item" href="' + BASE_URI + '/view_subjects/' + element.id + '">View Subjects</a>' +
                                         '<hr>' +

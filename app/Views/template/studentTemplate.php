@@ -12,7 +12,7 @@
     <link href="<?=base_url()?>/public/css/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/alertify.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>/public/css/alertify/themes/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
+    <link href="<?=base_url()?>/public/css/custom/change_password.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -64,7 +64,7 @@
 
           <ul class="list-unstyled components">
             <li>
-              <a href="<?=base_url('dashboard');?>"><i class="bi bi-house-fill"></i> Dashboard</a>
+              <a href="<?=base_url('dashboard');?>"><i class="bi bi-house"></i> Dashboard</a>
               <?php if ($_SESSION['logged_user']['role'] === '2'):?>
                 <a href="<?=base_url();?>/profile/student"><i class="bi bi-person-circle"></i>  Profile</a>
               <?php else:?>
@@ -88,12 +88,12 @@
           </ul>
           <ul class="list-unstyled CTAs components">
             <div class="evaluate">
-                <a class="nav-link" id="evaluate" href="<?=base_url('subjects/student_subjects')?>"><input type="button" value="EVALUATE" name="evaluate"></a>
+                <a class="nav-link" id="evaluate" href="<?=base_url('subjects/student_subjects')?>"><button type="button"name="evaluate"><i class="bi bi-pencil-square" style="font-size:1.5rem;"></i>EVALUATE </button></a>
             </div>
           </ul>
           <ul class="list-unstyled CTAs">
             <div class="logout">
-              <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><input type="button" value="LOGOUT" name="logOut"></a>
+              <a class="nav-link" id="logout" href="<?=base_url('dashboard/logout')?>"><button type="button"  name="logOut"><i class="bi bi-box-arrow-left"></i> LOG OUT</button></a>
             </div>
           </ul>
         </nav>
@@ -124,7 +124,7 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope-fill"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
+                <a href="mailto:lrc.upcebu@up.edu.ph" target="_blank"><i class="bi bi-envelope"></i> lrc.upcebu@up.edu.ph</a> <!-- Dili pani sure if unsajud ang contact email nga i butang -->
               </div>
             </div>
             <div class="col-md-4 ">

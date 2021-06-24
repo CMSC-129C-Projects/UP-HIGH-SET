@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
   <section id="setStatus" class="conatiner-fluid">
     <div class="heading text-center">
-      <h1 style="padding: 8rem 0 2rem;">Set Evaluation Status </h1>
+      <h1 style="padding: 8rem 0 6rem;">SET EVALUATION STATUS </h1>
     </div>
 
   <form action="" method="post">

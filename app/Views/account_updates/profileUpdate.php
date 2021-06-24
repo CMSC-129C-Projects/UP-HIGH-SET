@@ -106,7 +106,7 @@
                                 <div class="col-xs-12">
                                     <br>
                                    
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="bi bi-check-circle"></i> Save</button>
+                                    <button class="btn btn-lg btn-success" type="submit" style="margin-left: 0rem;"><i class="bi bi-check-circle"></i> Save</button>
                                     <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                                 </div>
                             </div>

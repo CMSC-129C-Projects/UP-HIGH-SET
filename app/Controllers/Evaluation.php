@@ -50,7 +50,14 @@ class Evaluation extends BaseController
 
   public function set_status()
   {
-    return view('evaluation/setStatus');
+    $css = ['custom/evaluation/setstatus.css'];
+    $js = ['custom/evaluation/setStatus.js'];
+    $data = [
+        'css' => addExternal($css, 'css'),
+        'js'  => addExternal($js, 'javascript')
+    ];
+
+    return view('evaluation/setStatus', $data);
   }
 
   public function evaluate($eval_sheet_id = null)

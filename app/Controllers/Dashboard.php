@@ -45,7 +45,6 @@ class Dashboard extends BaseController
       return view('user_mgt/studentDashboard');
     } else {
       [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
-      // [$daysLeft, $subject_stat, $student_stat] = $this->get_information();
 
       $data['daysLeft'] = $daysLeft;
       $data['subject_stat'] = $subject_stat;
@@ -75,8 +74,7 @@ class Dashboard extends BaseController
     $faculty_stat = $this->get_faculty_stat(1);
     $student_stat = $this->get_student_stat();
 
-    // return [$daysLeft, $subject_stat, $faculty_stat, $student_stat];
-    return [$daysLeft, $subject_stat, $student_stat];
+    return [$daysLeft, $subject_stat, $faculty_stat, $student_stat];
   }
 
   protected function compute_days_left()
@@ -186,7 +184,8 @@ class Dashboard extends BaseController
         }
       }
        // an associative array for Prof -> percentage of completion (subjects evaluated / total subjects handled)
-      array_push($values, ($count_matched_subjects / count($subject)) * 100);
+      if(count($subject) > 0)
+        array_push($values, ($count_matched_subjects / count($subject)) * 100);
 
       $count_matched_subjects = 0;
     }

@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\SubjectModel;
 use App\Models\EvalSheetModel;
+use App\Models\EvaluationModel;
 use App\Models\UserModel;
 use App\Models\FacultyModel;
 
@@ -27,6 +28,13 @@ class Dashboard extends BaseController
 
   public function index()
   {
+    $css = ['custom/user_mgt/statistics.css'];
+    $js = ['custom/statistics/statistics.js'];
+    $data = [
+        'js'    => addExternal($js, 'javascript'),
+        'css'   => addExternal($css, 'css')
+    ];
+
     if (!$this->session->has('logged_user')) {
       return redirect()->to(base_url('login'));
     } elseif (!$_SESSION['logged_user']['emailVerified']) {
@@ -36,7 +44,17 @@ class Dashboard extends BaseController
     if ($_SESSION['logged_user']['role'] === '2') {
       return view('user_mgt/studentDashboard');
     } else {
-      return view('user_mgt/dashboard');
+      // [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
+
+      // print_r($daysLeft);
+      // print_r('====');
+      // print_r($subject_stat);
+      // print_r('====');
+      // print_r($faculty_stat);
+      // print_r('====');
+      // print_r($student_stat);
+      // print_r('====');
+      return view('user_mgt/dashboard', $data);
     }
   }
 
@@ -45,6 +63,45 @@ class Dashboard extends BaseController
     $this->session->remove('logged_user');
     $this->session->destroy();
     return redirect()->to(base_url('login'));
+  }
+
+  /**
+   * Get all information needed to display in frontend
+   */
+  protected function get_information()
+  {
+    $daysLeft = $this->compute_days_left();
+    $subject_stat = $this->get_subjects_stat();
+    $faculty_stat = $this->get_faculty_stat();
+    $student_stat = $this->get_student_stat();
+
+    return [$daysLeft, $subject_stat, $faculty_stat, $student_stat];
+  }
+
+  protected function compute_days_left()
+  {
+    // Get Evaluation info (i.e. days left, status, etc.) [start]
+    $evaluationModel = new EvaluationModel();
+    
+    $evaluation_info = $evaluationModel->where('is_deleted', 0)
+                                    ->where('status', 'open')->first();
+
+    $data['evaluation_info'] = $evaluation_info;
+
+    if (isset($evaluation_info)) {
+      $datetime1 = date_create(date('Y-m-d H:i:s'));
+      $datetime2 = date_create($evaluation_info['date_end']);
+    
+      $interval = date_diff($datetime2, $datetime1);
+
+      $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
+
+      // Convert to days difference
+      $daysLeft = $interval->format('%a');
+
+      return $daysLeft;
+    }
+    // Get Evaluation info (i.e. days left, status, etc.) [end]
   }
 
   /*
@@ -66,7 +123,11 @@ class Dashboard extends BaseController
       if($student_count !== 0) {
         $students_who_evaluated = $evalSheetModel->get_all_students_who_evaluated($subject['id']);
 
-        $percentage = ($students_who_evaluated / $student_count) * 100;
+        if ($student_count != 0) {
+          $percentage = ($students_who_evaluated / $student_count) * 100;
+        } else {
+          $percentage = 0;
+        }
 
         if( $percentage === 100)
           array_push($subjects_evaluated, $subject['id']);
@@ -85,7 +146,9 @@ class Dashboard extends BaseController
 
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
 
-    return round(count($this->fetch_evaluated_subjects()) / count($subjects) * 100, 2);
+    $percentage = round((count($this->fetch_evaluated_subjects()) / count($subjects)) * 100, 2); 
+
+    return [$percentage, count($subjects)];
   }
 
   /*
@@ -168,7 +231,7 @@ class Dashboard extends BaseController
     }
 
     if($choice === 1)
-      return round((count($student_done_evaluating) / count($students)) * 100, 2);
+      return [round((count($student_done_evaluating) / count($students)) * 100, 2),  count($students)];
     elseif($choice === 2)
       return $student_done_evaluating;
     else
@@ -191,5 +254,12 @@ class Dashboard extends BaseController
     }
 
     return $student_subjects_inprog = array_combine($keys, $values);
+  }
+
+  protected function add_leading_zeros($timeLeft)
+  {
+    $times = explode(':', $timeLeft);
+
+    return $times[0] . ':' . ((strlen($times[1]) == 1) ? ('0' . $times[1]) : $times[1]) . ':' . ((strlen($times[2]) == 1) ? ('0' . $times[2]) : $times[2]);
   }
 }

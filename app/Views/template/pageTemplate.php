@@ -198,6 +198,7 @@
     <script src="<?=base_url()?>/public/js/alertify/alertify.min.js"></script>
     <script src="<?=base_url()?>/public/js/image-picker/image-picker.min.js"></script>
     <script src="<?=base_url()?>/public/js/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="<?=base_url()?>/public/js/keyframes/jquery.keyframes.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
 
     <script>

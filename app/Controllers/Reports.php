@@ -160,7 +160,7 @@ class Reports extends BaseController
 
             $subject_info = $subjectModel->find($subject->id);
             
-            $total_students = $subjectModel->get_subjects_complete_count($subject->id);
+            $total_students = ($subjectModel->get_subjects_complete_count($subject->id))[0]->complete_count;
 
             $all_info[$subject->id] = [
                 'subject_info' => $subject_info,
@@ -184,7 +184,7 @@ class Reports extends BaseController
         $evalSheetModel = new EvalSheetModel();
         $subjectModel = new SubjectModel();
 
-        $size = $subjectModel->get_subjects_complete_count($subject_id);
+        $size = ($subjectModel->get_subjects_complete_count($subject_id))[0]->complete_count;
         $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);
 
         // Section ID serves as the key
@@ -299,7 +299,11 @@ class Reports extends BaseController
 
         foreach($tally as $section => $values) {
             $ar = ($values['e'] * 1) + ($values['vg'] * 2) + ($values['g'] * 3) + ($values['f'] * 4) + ($values['p'] * 5);
-            $ar = round($ar/($size*10), 4);
+            if ($size == 0) {
+                $ar = 0;
+            } else {
+                $ar = round($ar/($size*10), 4);
+            }
             $wr = round($ar * $sectionWeights[$section-1], 4);
 
             $fr += $wr;

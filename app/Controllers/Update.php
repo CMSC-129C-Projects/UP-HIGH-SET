@@ -230,7 +230,7 @@ class Update extends BaseController
                     ]
                 ];
             }
-        } else {
+        } elseif ($role === 'admin') {
             $rules = [
                 'adminFirstName' => 'required',
                 'adminLastName' => 'required'
@@ -261,6 +261,44 @@ class Update extends BaseController
                     ]
                 ];
                 $rules['adminEmail'] = [
+                    'rules'     => 'required|isUniqueEmail',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
+                    ]
+                ];
+            }
+        } else {
+            $rules = [
+                'clerkFirstName' => 'required',
+                'clerkLastName' => 'required'
+            ];
+            if(isset($id)) {
+                $rules['clerkContactNum'] = [
+                    'rules'     => 'required|min_length[11]|is_natural|valid_number|owned_contact['.$id.']',
+                    'errors'    => [
+                        'uniqueContact' => 'Contact number already exists',
+                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                        'valid_number' => 'This is not a valid number'
+                    ]
+                ];
+                $rules['clerkEmail'] = [
+                    'rules'     => 'required|owned_email['.$id.']',
+                    'errors'    => [
+                        'is_UP_mail'    => 'The email you entered is not a valid UP mail',
+                        'isUniqueEmail' => 'Email is already taken'
+                    ]
+                ];
+            } else {
+                $rules['clerkContactNum'] = [
+                    'rules'     => 'required|uniqueContact|min_length[11]|is_natural|valid_number',
+                    'errors'    => [
+                        'uniqueContact' => 'Contact number already exists',
+                        'is_natural'   => 'Contact number format: 09xxxxxxxxx',
+                        'valid_number' => 'This is not a valid number'
+                    ]
+                ];
+                $rules['clerkEmail'] = [
                     'rules'     => 'required|isUniqueEmail',
                     'errors'    => [
                         'is_UP_mail'    => 'The email you entered is not a valid UP mail',

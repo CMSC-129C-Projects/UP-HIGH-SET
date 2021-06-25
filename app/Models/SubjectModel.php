@@ -189,7 +189,7 @@ EOT;
             $continuation = <<<EOT
 AND subjects.id = $subject_id
 EOT;
-            $sql .= $continuation;
+            $sql = $sql . ' ' . $continuation;
         }
 
         $query = $db->query($sql);

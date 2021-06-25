@@ -1,4 +1,4 @@
-<?= $this->extend('template/pageTemplate');?>
+<?= $this->extend('template/default');?>
 
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

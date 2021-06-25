@@ -26,6 +26,7 @@ function displaySubjects(facultyID) {
                     // Result is percent of students not done. Subtract to 100 to get number of
                     // students done
                     progress = progress.toFixed(0) + '%';
+
                     pBar = pBar.replaceAll('percentage', progress);
                     element = '<strong style="font-size:1.3em; margin-bottom: 5%;">' + subject.name + '</strong>' + '<br><strong style="font-size:1em; color: #7b1113;">OVERALL PROGRESS :</strong>' + pBar;
                 } else {

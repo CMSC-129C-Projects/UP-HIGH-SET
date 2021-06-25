@@ -1,5 +1,5 @@
 <?php if ($role === '1'):?>
-    <?= $this->extend('template/pageTemplate');?>
+    <?= $this->extend('template/default');?>
 <?php else:?>
     <?= $this->extend('template/studentTemplate');?>
 <?php endif;?>

@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
 <section class="reportTable">
     <div class="heading text-center">
-          <h1 style="padding: 8rem 0 2rem;" class="no-print"> Professor's Summary Report </h1>
+          <h1 style="padding: 8rem 0 2rem;" class="no-print"> PROFESSOR'S SUMMARY REPORT </h1>
         </div>
         <div class="reportHeader">
           <p><b>University of the Philippines Cebu<br>College of Social<br>

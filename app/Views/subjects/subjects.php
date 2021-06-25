@@ -21,7 +21,7 @@
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="<?=base_url();?>/reports/report_per_subject/<?=$subject->id;?>">View Progress</a>
                                 <hr>
-                                <a class="dropdown-item" href="#">Edit Subject</a>
+                                <a class="dropdown-item" href="<?=base_url()?>/subjects/edit_subject/<?=$subject->id;?>/<?=$prof['id']?>">Edit Subject</a>
                                 <hr>
                                 <a class="dropdown-item" href="<?=base_url()?>/subjects/delete_subject/<?=$subject->id;?>/<?=$prof['id']?>">Delete Subject</a>
                             </div>

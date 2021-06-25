@@ -57,7 +57,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="card effect6">
                         <span style="display: none;" data-faculstat="<?=$faculty_stat[0]?>" id="faculstat"></span>
-                        <b>Faculty Progress</b><br>
+                        <b>Faculty Progress</b>
                         <i>Faculty that are evaluated over the total number of faculty</i>
                         <hr>
                         <div class="progress maroon">

@@ -13,7 +13,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="card effect6">
                         <span style="display: none;" data-studentstat="<?=$student_stat[0]?>" id="studentstat"></span>
-                        <b>Student Progress</b>
+                        <b>Student Progress</b><br>
                         <i>Students that finished evaluation over the total students</i>
                         <hr>
                         <div class="progress maroon">
@@ -35,7 +35,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="card effect6">
                         <span style="display: none;" data-subjectstat="<?=$subject_stat[0]?>" id="subjectstat"></span>
-                        <b>Subject Progress</b>
+                        <b>Subject Progress</b><br>
                         <i>Subjects completed over total number of subjects</i>
                         <hr>
                         <div class="progress green">
@@ -57,7 +57,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="card effect6">
                         <span style="display: none;" data-faculstat="<?=$faculty_stat[0]?>" id="faculstat"></span>
-                        <b>Faculty Progress</b>
+                        <b>Faculty Progress</b><br>
                         <i>Faculty that are evaluated over the total number of faculty</i>
                         <hr>
                         <div class="progress maroon">

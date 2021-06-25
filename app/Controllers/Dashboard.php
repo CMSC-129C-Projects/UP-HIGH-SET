@@ -75,7 +75,13 @@ class Dashboard extends BaseController
         $completed_count++;
       }
     }
-    return [round(($completed_count/ count($faculty_stat)) * 100, 2), count($faculty_stat)];
+
+    if (count($faculty_stat) === 0) {
+      $percentage = 0;
+    } else {
+      $percentage = round(($completed_count/ count($faculty_stat)) * 100, 2);
+    }
+    return [$percentage, count($faculty_stat)];
   }
 
   /**
@@ -159,7 +165,11 @@ class Dashboard extends BaseController
 
     $subjects = $subjectModel->where('is_deleted', 0)->findAll();
 
-    $percentage = round((count($this->fetch_evaluated_subjects()) / count($subjects)) * 100, 2);
+    if (count($subjects) === 0) {
+      $percentage = 0;
+    } else {
+      $percentage = round((count($this->fetch_evaluated_subjects()) / count($subjects)) * 100, 2);
+    }
 
     return [$percentage, count($subjects)];
   }
@@ -244,9 +254,14 @@ class Dashboard extends BaseController
         array_push($students_in_progress, $student);
     }
 
-    if($choice === 1)
-      return [round((count($student_done_evaluating) / count($students)) * 100, 2),  count($students)];
-    elseif($choice === 2)
+    if($choice === 1) {
+      if (count($students) === 0) {
+        $percentage = 0;
+      } else {
+        $percentage = round((count($student_done_evaluating) / count($students)) * 100, 2);
+      }
+      return [$percentage, count($students)];
+    } elseif($choice === 2)
       return $student_done_evaluating;
     else
       return $students_in_progress;

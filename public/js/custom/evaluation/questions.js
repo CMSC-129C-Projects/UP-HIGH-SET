@@ -109,7 +109,7 @@ $(function() {
                     
             }).set('labels', {ok:'<i class="bi bi-check-circle-fill"></i> Confirm', cancel:'<i class="bi bi-x-circle-fill"></i> Cancel'});
         }
-    })
+    });
     
     
     $('.action-add-question').click(function() {

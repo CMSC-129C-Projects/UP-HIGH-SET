@@ -20,16 +20,16 @@
         <div class="row justify-content-center">
             <ul class="nav nav-tabs">
                 <?php if($role == 'admin'):?>
-                    <li class="nav-item" style=" margin-left:0.9rem;">
-                        <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin" style="background: #fff; color: #7b1113; text-transform: uppercase;"></a>
+                    <li class="nav-item" >
+                        <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin" style="margin-left: 1rem !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
                 <?php elseif($role == 'student'):?>
-                    <li class="nav-item style=" margin-left:0.9rem;"">
-                        <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input type="button" value="Student" style="margin-left: 1px !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
+                    <li class="nav-item style=" >
+                        <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input type="button" value="Student" style="margin-left: 1rem !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
                 <?php elseif($role == 'clerk'):?>
-                <li class="nav-item style=" margin-left:0.9rem;"">
-                    <a href="#Clerk" class="nav-link active" data-toggle="tab" id="btn-clerk"><input type="button" value="Clerk" style="margin-left: 1px !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
+                <li class="nav-item style=">
+                    <a href="#Clerk" class="nav-link active" data-toggle="tab" id="btn-clerk"><input type="button" value="Clerk" style="margin-left: 1rem !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                 </li>
                 <?php endif;?>
             </ul>

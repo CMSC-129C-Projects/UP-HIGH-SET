@@ -4,7 +4,7 @@
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
-      <h1 style="padding 8rem 0 2rem; margin-bottom: 6.25rem; 5.8vmin;"> VIEW CLERKS </h1>
+      <h1 style="padding: 8rem 0 2rem;"> VIEW CLERKS </h1>
     </div>
 
     <div class="main">

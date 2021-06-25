@@ -78,8 +78,8 @@ $(function () {
                 alertify.alert('Notification', 'An error has occurred. Please try again.');
             }
 
-            $('.bi-x-circle-fill').remove();
-            $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle-fill"></i>');
+            $('.bi-x-circle').remove();
+            $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle"></i>');
         });
     });
 

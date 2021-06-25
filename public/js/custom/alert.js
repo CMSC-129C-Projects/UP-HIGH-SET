@@ -34,8 +34,8 @@ $(function() {
             alertify.error('Delete Cancelled.')
         });
 
-        $('.alertify .btn-primary').prepend('<i class="bi bi-check-circle-fill"></i> ');
-        $('.alertify .btn-danger').prepend('<i class="bi bi-x-circle-fill"></i> ');
+        $('.alertify .btn-primary').prepend('<i class="bi bi-check-circle"></i>');
+        $('.alertify .btn-danger').prepend('<i class="bi bi-x-circle"></i>');
         // if($(this).attr('id') === 'deleteStudent') {
         //     $bgModal.fadeTo(500,1);
         //     $modalContent.fadeTo(500,1);
@@ -80,5 +80,5 @@ function displayAlertify(url, successMessage) {
             window.location.href = BASE_URI + url;
         });
     }
-    $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle-fill"></i> ');
+    $('.alertify .btn-primary').prepend('<i class="bi bi-x-circle"></i>');
 }

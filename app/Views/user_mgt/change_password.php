@@ -26,7 +26,7 @@
 
     <?php } else { ?>
       <div class="heading text-center">
-        <h1  style="padding: 8rem 0 2rem;">Change Password</h1>
+        <h1  style="padding: 4rem 0 2rem;">Change Password</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">

@@ -81,39 +81,41 @@
             <br><br>
 
             <div class="row">
-                <?php if ($_SESSION['logged_user']['role'] === '1'):?>
-                    <div class="col-md-9">
-                        <div class="card effect6">
-                            <b>Faculty Performance Overview</b>
-                            <i>Professors list are ordered by their evaluation rating</i>
-                            <hr>
-                            <table class="table table-bordered table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Top</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
+                <div class="col-md-9">
+                    <div class="card effect6">
+                        <b>Faculty Performance Overview</b>
+                        <i>Professors list are ordered by their evaluation rating</i>
+                        <hr>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Top</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <?php if ($_SESSION['logged_user']['role'] === '1'):?>
                                         <th scope="col">Final Rating</th>
                                         <th scope="col">Interpretation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $index=1;?>
-                                    <?php foreach($faculty_list as $faculty):?>
-                                        <tr>
-                                            <td scope="row"><?=$index?></td>
-                                            <td><?=$faculty->first_name;?></td>
-                                            <td><?=$faculty->last_name;?></td>
+                                    <?php endif;?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $index=1;?>
+                                <?php foreach($faculty_list as $faculty):?>
+                                    <tr>
+                                        <td scope="row"><?=$index?></td>
+                                        <td><?=$faculty->first_name;?></td>
+                                        <td><?=$faculty->last_name;?></td>
+                                        <?php if ($_SESSION['logged_user']['role'] === '1'):?>
                                             <td class="rating_<?=$index?>"><?=number_format($faculty->final_rating, 2);?></td>
                                             <td class="interpretation_<?=$index?>"></td>
-                                        </tr>
-                                        <?php $index++;?>
-                                    <?php endforeach;?>
-                                </tbody>
-                            </table>
-                        </div>
+                                        <?php endif;?>
+                                    </tr>
+                                    <?php $index++;?>
+                                <?php endforeach;?>                                
+                            </tbody>
+                        </table>
                     </div>
-                <?php endif;?>
+                </div>
 
                 <div class="col-md-3">
                     <div class="card effect6">

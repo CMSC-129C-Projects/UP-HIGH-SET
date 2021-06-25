@@ -163,10 +163,8 @@ class Subjects extends BaseController
         $css = ['custom/alert.css', 'custom/addSubject.css'];
         $js = ['custom/alert.js'];
 
-        $data = [
-            'css'   => addExternal($css, 'css'),
-            'js'   => addExternal($js, 'javascript')
-        ];
+        $data['css'] = addExternal($css, 'css');
+        $data['js'] = addExternal($js, 'javascript');
 
         
         $data['profs'] = $this->fetchProfessors();

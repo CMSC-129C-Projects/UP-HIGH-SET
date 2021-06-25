@@ -34,6 +34,7 @@ class Professors extends BaseController
                 return $this->$method();
                     break;
             case 'delete_professor':
+            case 'edit_professor':
                 if ($_SESSION['logged_user']['role'] === '2') {
                     return redirect()->to(base_url('dashboard'));
                 }
@@ -75,52 +76,104 @@ class Professors extends BaseController
       echo json_encode($data['profList']);
   }
 
-  /*
-  * Add Professors / Faculty
-  */
-  public function add_professors()
-  {
-
-    $data['validation'] = null;
-    $css = ['custom/login/login.css']; // change with the correct css please
-		$data['css'] = addExternal($css, 'css');
-
-    if($this->request->getMethod() == 'post')
+    /*
+    * Add Professors / Faculty
+    */
+    public function add_professors()
     {
-      $rules = [ // the fields listed in here should be the name and class of the frontend when integrated
-        'first_name' => 'required|alpha_space',
-        'last_name' => 'required|alpha',
-        'details' => 'required|alpha_numeric_punct|max_length[300]'  // faculty or professor details that should only be at most 300 words
-      ];
+        $data['validation'] = null;
+        $css = ['custom/login/login.css']; // change with the correct css please
+        $data['css'] = addExternal($css, 'css');
 
-      $errors = [
-          'details' => [
-            'alpha_numeric_punct' => "Faculty details should only contain alpha numeric characters with limited punctuations",
-            'max_length[300]' => "Details exceeded the maximum character count of 300"
-          ],
-          'first_name' => [
-            'alpha_space' => "First name should only be consist of alphabetical characters and a space"
-          ],
-      ];
+        if($this->request->getMethod() == 'post')
+        {
+            $rules = [ // the fields listed in here should be the name and class of the frontend when integrated
+                'first_name' => 'required|alpha_space',
+                'last_name' => 'required|alpha',
+                'details' => 'required|alpha_numeric_punct|max_length[300]'  // faculty or professor details that should only be at most 300 words
+            ];
 
-      if($this->validate($rules, $errors))
-      {
-        $facultyModel = new FacultyModel();
+            $errors = [
+                'details' => [
+                    'alpha_numeric_punct' => "Faculty details should only contain alpha numeric characters with limited punctuations",
+                    'max_length[300]' => "Details exceeded the maximum character count of 300"
+                ],
+                'first_name' => [
+                    'alpha_space' => "First name should only be consist of alphabetical characters and a space"
+                ],
+            ];
 
-        // $result = $facultyModel->add_faculty($data_entry);
-        $facultyModel->insert([
-          'first_name' => $this->request->getVar('first_name'),
-          'last_name' => $this->request->getVar('last_name'),
-          'details' => $this->request->getVar('details')
-        ]);
-      } else {
+            if($this->validate($rules, $errors))
+            {
+                $facultyModel = new FacultyModel();
 
-        $data['validation'] = $this->validator;
+                // $result = $facultyModel->add_faculty($data_entry);
+                $facultyModel->insert([
+                    'first_name' => $this->request->getVar('first_name'),
+                    'last_name' => $this->request->getVar('last_name'),
+                    'details' => $this->request->getVar('details')
+                ]);
+            } else {
+                $data['validation'] = $this->validator;
+                return view('professors/add_faculty', $data);
+            }
+        }
         return view('professors/add_faculty', $data);
-      }
     }
-    return view('professors/add_faculty', $data);
-  }
+
+    /**
+     * Edit professors
+     */
+    public function edit_professor($faculty_id)
+    {
+        $faculModel = new FacultyModel();
+
+        $data['validation'] = null;
+        $data['status'] = null;
+        $css = ['custom/login/login.css']; // change with the correct css please
+        $data['css'] = addExternal($css, 'css');
+
+        if($this->request->getMethod() == 'post')
+        {
+            $rules = [ // the fields listed in here should be the name and class of the frontend when integrated
+                'first_name' => 'required|alpha_space',
+                'last_name' => 'required|alpha',
+                'details' => 'required|alpha_numeric_punct|max_length[300]'  // faculty or professor details that should only be at most 300 words
+            ];
+
+            $errors = [
+                'details' => [
+                    'alpha_numeric_punct' => "Faculty details should only contain alpha numeric characters with limited punctuations",
+                    'max_length[300]' => "Details exceeded the maximum character count of 300"
+                ],
+                'first_name' => [
+                    'alpha_space' => "First name should only be consist of alphabetical characters and a space"
+                ],
+            ];
+
+            if($this->validate($rules, $errors))
+            {
+                $facultyModel = new FacultyModel();
+
+                // $result = $facultyModel->add_faculty($data_entry);
+                if (!$facultyModel->update($faculty_id, [
+                    'first_name' => $this->request->getVar('first_name'),
+                    'last_name' => $this->request->getVar('last_name'),
+                    'details' => $this->request->getVar('details')
+                ])) {
+                    $data['status'] = 'false';
+                } else {
+                    return redirect()->to(base_url('professors'));
+                }
+            } else {
+                $data['validation'] = $this->validator;
+                return view('professors/add_faculty', $data);
+            }
+        } else {
+            $data['professor'] = $faculModel->where('is_deleted', 0)->find($faculty_id);
+            return view('professors/edit_faculty', $data);
+        }
+    }
 
     /*
     * Delete Faculty

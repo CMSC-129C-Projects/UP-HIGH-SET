@@ -49,7 +49,7 @@
               <br>
               <div style="text-align: center;"> 
                 <button class="button2" type="submit" style=""><i class="bi bi-check-circle"></i> Save</button>
-                <button class="button2" href="#" style=""><i class="bi bi-x-circle"></i> Cancel</button>
+                <button class="button2" type="button" onclick="window.location='<?=base_url('professors')?>'" style=""><i class="bi bi-x-circle"></i> Cancel</button>
               </div>
             </form>
           </div>

@@ -15,18 +15,22 @@
     <?php endif;?>
     <section id="register" class="container-fluid">
         <div class="heading text-center">
-            <h1>Registration Form</h1>
+            <h1 style="padding: 8rem 0 2rem;">REGISTRATION FORM</h1>
         <div>
         <div class="row justify-content-center">
             <ul class="nav nav-tabs">
                 <?php if($role == 'admin'):?>
-                    <li class="nav-item">
+                    <li class="nav-item" style=" margin-left:0.9rem;">
                         <a href="#Admin" class="nav-link active" data-toggle="tab" id="btn-admin"><input type="button" value="Admin" style="background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
                 <?php elseif($role == 'student'):?>
-                    <li class="nav-item">
+                    <li class="nav-item style=" margin-left:0.9rem;"">
                         <a href="#Student" class="nav-link active" data-toggle="tab" id="btn-student"><input type="button" value="Student" style="margin-left: 1px !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
                     </li>
+                <?php elseif($role == 'clerk'):?>
+                <li class="nav-item style=" margin-left:0.9rem;"">
+                    <a href="#Clerk" class="nav-link active" data-toggle="tab" id="btn-clerk"><input type="button" value="Clerk" style="margin-left: 1px !important; background: #fff; color: #7b1113; text-transform: uppercase;"></a>
+                </li>
                 <?php endif;?>
             </ul>
         </div>
@@ -65,6 +69,7 @@
                                           <br>
                                           <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                                           <h3>Email</h3>
+                                          <h4> @up.edu.ph </h4>
                                       </div>
                                     </div>
                                 </div>
@@ -89,11 +94,110 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <input type="submit" value="update">
-                            <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel">Cancel</button>
+                            <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+              <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                         </form>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------  FOR CLERK -------------------------------------->
+
+
+
+
+                <?php elseif($role == 'clerk'):?>
+                <div class="tab-pane fade show active" id="clerk">
+                    <div class="row justify-content-center">
+                        <form action="<?=base_url()?>/update/edit/clerk/<?=$id;?>" method="post" class="edit">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="inputBox">
+                                            <input type="text" name="clerkFirstName" value="<?=set_value('clerkFirstName', $fN);?>" required>
+                                            <br>
+                                            <span class="text-danger"><?=displaySingleError($validation, 'clerkFirstName');?></span>
+                                            <h3>First Name</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="inputBox">
+                                            <input type="text" name="clerkLastName" value="<?=set_value('clerkLastName', $lN);?>" required>
+                                            <br>
+                                            <span class="text-danger"><?=displaySingleError($validation, 'clerkLastName');?></span>
+                                            <h3>Last Name</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="inputBox">
+                                          <input type="email" name="clerkEmail" value="<?=set_value('clerkEmail', $eml);?>" required>
+                                          <br>
+                                          <span class="text-danger"><?=displaySingleError($validation, 'clerkEmail');?></span>
+                                          <h3>Email</h3>
+                                          <h4> @up.edu.ph </h4>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="inputBox">
+                                            <input type="text" name="clerkContactNumber" value="<?=set_value('clerkContactNumber', $cN);?>" required>
+                                            <br>
+                                            <span class="text-danger"><?=displaySingleError($validation, 'clerkContactNumber');?></span>
+                                            <h3>Contact Number</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row-md-4">
+                                <div class="mailBox">
+                                    <div class="inputBox">
+                                        <input type="email" name="adminEmail" value="<?=set_value('clerkEmail', $eml);?>" required>
+                                        <br>
+                                        <span class="text-danger"><?=displaySingleError($validation, 'clerkEmail');?></span>
+                                        <h3>Email</h3>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+              <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+                
+        
+       
+
+
+
+
+<!------------------------------------- FOR STUDENT --------------------------------------->
+
+
+
+
             <?php elseif($role == 'student'):?>
                 <div class="tab-pane fade show active" id="Student">
                     <div class="row justify-content-center">
@@ -167,11 +271,12 @@
                                         <br>
                                         <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                                         <h3>Email</h3>
+                                        <h4> @up.edu.ph </h4>
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="update">
-                            <button onclick="window.location.href='<?=base_url();?>/update/student';" id="cancel" type="button" name="cancel">Cancel</button>
+                            <button type="submit"><i class="bi bi-check-circle"></i> Submit</button>
+                            <button onclick="window.location.href='<?=base_url();?>/update/admin';" id="cancel" type="button" name="cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                         </form>
                     </div>
                 </div>

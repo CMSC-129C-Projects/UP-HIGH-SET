@@ -65,7 +65,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                       <div class="inputBox">
-                                          <input type="email" name="adminEmail" value="<?=set_value('adminEmail', $eml);?>" required>
+                                          <input type="email" name="adminEmail" value="<?=set_value('adminEmail', explode('@', $eml)[0]);?>" required>
                                           <br>
                                           <span class="text-danger"><?=displaySingleError($validation, 'adminEmail');?></span>
                                           <h3>Email</h3>
@@ -146,7 +146,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                       <div class="inputBox">
-                                          <input type="email" name="clerkEmail" value="<?=set_value('clerkEmail', $eml);?>" required>
+                                          <input type="email" name="clerkEmail" value="<?=set_value('clerkEmail', explode('@', $eml)[0]);?>" required>
                                           <br>
                                           <span class="text-danger"><?=displaySingleError($validation, 'clerkEmail');?></span>
                                           <h3>Email</h3>
@@ -267,7 +267,7 @@
                             <div class="row-md-4">
                                 <div class="mailBox">
                                     <div class="inputBox">
-                                        <input type="email" name="studEmail" value="<?=set_value('studEmail',$email);?>" required>
+                                        <input type="email" name="studEmail" value="<?=set_value('studEmail', explode('@', $email)[0]);?>" required>
                                         <br>
                                         <span class="text-danger"><?=displaySingleError($validation, 'studEmail');?></span>
                                         <h3>Email</h3>

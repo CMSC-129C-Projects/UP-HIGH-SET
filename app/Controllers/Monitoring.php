@@ -320,6 +320,7 @@ class Monitoring extends BaseController
         if (isset($studentsNotDone)) {
             $accordion = '<button class="accordion">Incomplete Evaluations</button><div class="panel">';
             foreach($studentsNotDone as $student) {
+                // print_r($student['progress'] . '::: PROGRESS' . ' === ');
                 $accordion .=   '<div>' .
                                     '<h3 style="font-size:1.3em; color:#7b1113; margin: 1em 0 0.3em 0;">' . $student['student_name'] . '</h3>' .
                                     '<div class="progress">' .
@@ -352,6 +353,7 @@ class Monitoring extends BaseController
 
         foreach($sheets as $sheet) {
             $studentAnswers = $evalAnswersModel->getNotNull($sheet->id);
+
             $progress[] = [
                 'student_name' => $sheet->full_name,
                 'progress' => sprintf('%.0f', $this->computeProgress($studentAnswers[0]->answersTotal, $size))

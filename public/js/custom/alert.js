@@ -27,26 +27,13 @@ $(function() {
     }
 
     $('.item-table').on('click', '#deleteStudent', function() {
+        let id = $(this).attr('data-id');
         alertify.confirm('Delete User', 'Are you sure you want to delete this student?', function() {
             window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');
         },
         function() {
             alertify.error('Delete Cancelled.')
-        });
-
-        $('.alertify .btn-primary').prepend('<i class="bi bi-check-circle"></i>');
-        $('.alertify .btn-danger').prepend('<i class="bi bi-x-circle"></i>');
-        // if($(this).attr('id') === 'deleteStudent') {
-        //     $bgModal.fadeTo(500,1);
-        //     $modalContent.fadeTo(500,1);
-        //     id = $(this).attr('data-id');
-        //     role = $(this).attr('data-role');
-        // } else if($(this).attr('id') === 'dontDelete') {
-        //     $bgModal.fadeOut(500);
-        //     $modalContent.fadeOut(500);
-        // } else {
-            
-        // }
+        }).set('labels', {ok:'<i class="bi bi-check-circle"></i> Confirm', cancel:'<i class="bi bi-x-circle"></i> Cancel'});
     });
 
 

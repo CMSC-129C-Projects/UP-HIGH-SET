@@ -108,7 +108,7 @@ class Home extends BaseController
 					$this->setSession($user, $userToken);
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
-          if ($_SESSION['logged_user']['allow_verify']) {
+          if ($_SESSION['logged_user']['allow_verify'] === '0') {
             $_SESSION['logged_user']['emailVerified'] = true;
             unset($_SESSION['logged_user']['userToken'], $_SESSION['logged_user']['loginDate']);
             return redirect()->to(base_url('dashboard'));
@@ -116,12 +116,12 @@ class Home extends BaseController
 
           if($_SESSION['logged_user']['emailVerified']){
             return redirect()->to(base_url('dashboard'));
+
           } elseif(!$this->checkPasswordLastUpdate()) {
 					  $this->sendVerification();
 
             // To be changed for a page that notifies the email verification was sent
 					  return redirect()->to(base_url('verifyAccount'));
-            // return redirect()->to(base_url('dashboard'));
 
           } else {
             $_SESSION['logged_user']['emailVerified'] = true;
@@ -402,7 +402,7 @@ class Home extends BaseController
     $subject = $emailContent['title'];
 
     $message = file_get_contents('app/Views/verification.html');
-		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['first_name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

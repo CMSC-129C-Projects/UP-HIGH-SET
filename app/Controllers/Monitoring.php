@@ -93,23 +93,39 @@ class Monitoring extends BaseController
     public function update_set_status()
     {
         $data['validation'] = null;
+        $data['status'] = null;
 
-        if($this->request->getMethod() == 'post') {
-            if($this->validate($this->get_rules())) {
-                $this->open_SET();
-            } else {
-                $data['validation'] = $this->validator;
+        if (!$this->hasEnrolledStudents()) {
+            $data['status'] = 'false';
+        } else {
+            if($this->request->getMethod() == 'post') {
+                if($this->validate($this->get_rules())) {
+                    $this->open_SET();
+                } else {
+                    $data['validation'] = $this->validator;
+                }
             }
+            $data['status'] = 'true';
         }
 
-        $css = ['custom/evaluation/setstatus.css'];
-        $js = ['custom/evaluation/setStatus.js'];
-        $data = [
-            'css' => addExternal($css, 'css'),
-            'js'  => addExternal($js, 'javascript')
-        ];
+        $css = ['custom/evaluation/setstatus.css', 'custom/alert.css'];
+        $js = ['custom/evaluation/setStatus.js', 'custom/alert.js'];
+        $data['css'] = addExternal($css, 'css');
+        $data['js']  = addExternal($js, 'javascript');
 
         return view('evaluation/setStatus', $data);
+    }
+
+    protected function hasEnrolledStudents()
+    {
+        $userModel = new UserModel();
+
+        $students = $userModel->where('is_deleted', 0)
+                              ->where('is_active', 1)
+                              ->where('role', 2)
+                              ->findAll();
+        
+        return count($students) !== 0;
     }
 
     protected function get_rules()

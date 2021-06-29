@@ -369,7 +369,7 @@ class Home extends BaseController
       'avatar_url'    => $user['avatar_url'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      'emailVerified' => true,
+      'emailVerified' => false,
       // 'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')

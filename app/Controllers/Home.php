@@ -369,7 +369,7 @@ class Home extends BaseController
       'avatar_url'    => $user['avatar_url'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      'emailVerified' => false,
+      'emailVerified' => true,
       // 'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
@@ -402,7 +402,7 @@ class Home extends BaseController
     $subject = $emailContent['title'];
 
     $message = file_get_contents('app/Views/verification.html');
-		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['first_name'], base_url().'/verification'.'/'.$_SESSION['logged_user']['userToken']];
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

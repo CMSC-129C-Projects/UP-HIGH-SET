@@ -4,7 +4,7 @@
     <section id="special" class="container-fluid">
 
         <div class="heading text-center">
-            <h1 style="padding: 8rem 0 2rem;">Professor <?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
+            <h1 style="padding: 8rem 0 2rem;"><?=ucwords($prof['first_name']) . ' ' . ucwords($prof['last_name'])?></h1>
             <h3 style="margin-bottom:3rem;"><?=$prof['details']?></h3>
         </div>
 
@@ -19,8 +19,9 @@
                         <div class="dropdown" style="margin:auto;">
                             <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="<?=base_url();?>/reports/report_per_subject/<?=$subject->id;?>">View Progress</a>
-                                <hr>
+                              <!-- Removed because redundant -->
+                                <!-- <a class="dropdown-item" href="<?=base_url();?>/reports/report_per_subject/<?=$subject->id;?>">View Progress</a>
+                                <hr> -->
                                 <a class="dropdown-item" href="<?=base_url()?>/subjects/edit_subject/<?=$subject->id;?>/<?=$prof['id']?>">Edit Subject</a>
                                 <hr>
                                 <a class="dropdown-item" href="<?=base_url()?>/subjects/delete_subject/<?=$subject->id;?>/<?=$prof['id']?>">Delete Subject</a>

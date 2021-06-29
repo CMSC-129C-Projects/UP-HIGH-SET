@@ -203,7 +203,7 @@ class Update extends BaseController
             ];
             if(isset($id)) {
                 $rules['studNum'] = [
-                    'rules'     => 'required|min_length[9]|owned_student_number['. $id .']',
+                    'rules'     => 'required|min_length[8]|owned_student_number['. $id .']',
                     'errors'    => [
                         'is_existing_data'  => 'Student number already exist'
                     ]
@@ -217,7 +217,7 @@ class Update extends BaseController
                 ];
             } else {
                 $rules['studNum'] = [
-                    'rules'     => 'required|min_length[9]|is_existing_data',
+                    'rules'     => 'required|min_length[8]|is_existing_data',
                     'errors'    => [
                         'is_existing_data'  => 'Student number already exist'
                     ]

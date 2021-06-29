@@ -26,8 +26,16 @@ $(function() {
         displayAlertify(CURRENT_URI, 'Updated questions are saved to the database.');
     }
 
+    if (CURRENT_URI.includes('update_set_status') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        alertify.alert('Notification', 'No students are enrolled yet. Please add students before opening the evaluation period.', function() {
+            window.location.href = BASE_URI + '/dashboard';
+        });
+    }
+
     $('.item-table').on('click', '#deleteStudent', function() {
         let id = $(this).attr('data-id');
+        let role = $(this).attr('data-role');
+        console.log(id);
         alertify.confirm('Delete User', 'Are you sure you want to delete this student?', function() {
             window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');
         },
@@ -35,26 +43,6 @@ $(function() {
             alertify.error('Delete Cancelled.')
         }).set('labels', {ok:'<i class="bi bi-check-circle"></i> Confirm', cancel:'<i class="bi bi-x-circle"></i> Cancel'});
     });
-
-
-
-    // var $bgModal = $('#bg-modal');
-    // var $modalContent = $('#content-modal');
-    // var id = '';
-    // var role = '';
-    // $(document).on('click', '#deleteStudent, #yesDelete, #dontDelete', function() {
-    //     if($(this).attr('id') === 'deleteStudent') {
-    //         $bgModal.fadeTo(500,1);
-    //         $modalContent.fadeTo(500,1);
-    //         id = $(this).attr('data-id');
-    //         role = $(this).attr('data-role');
-    //     } else if($(this).attr('id') === 'dontDelete') {
-    //         $bgModal.fadeOut(500);
-    //         $modalContent.fadeOut(500);
-    //     } else {
-    //         window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');
-    //     }
-    // });
 });
 
 function displayAlertify(url, successMessage) {

@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
   <section id="special" class="container-fluid">
     <div class="heading text-center">
-      <h1 style="padding: 8rem 0 2rem;">Professors</h1>
+      <h1 style="padding: 8rem 0 2rem;">PROFESSORS</h1>
     </div>
     <div class="row">
       <div class="col-md-12">

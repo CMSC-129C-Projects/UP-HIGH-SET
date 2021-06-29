@@ -15,22 +15,22 @@
               <?php } ?>
 
                 <div class="form-group">
-                    <label for="first_name" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">First Name</label>
+                    <label for="first_name" style="margin-top: 1rem; font-size:2.7vmin; margin-bottom:7px">First Name</label>
                     <input type="text" id="first_name" class="form-control" name="first_name" value="<?=set_value('first_name')?>">
                     <br>
                     <span><?=displaySingleError($validation, 'first_name');?></span>
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="last_name" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Last Name</label>
+                    <label for="last_name" style="margin-top: 1rem; font-size:2.7vmin; margin-bottom:7px">Last Name</label>
                     <input type="text" id="last_name" class="form-control" name="last_name" value="<?=set_value('last_name')?>">
                     <br>
                     <span><?=displaySingleError($validation, 'last_name');?></span>
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="details" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px"> Details</label>
-                    <textarea  id="details" class="form-control" name="details" rows="7" placeholder="Faculty Details "></textarea>
+                    <label for="details" style="margin-top: 1rem; font-size:2.7vmin; margin-bottom:7px"> Details</label>
+                    <textarea  id="details" class="form-control" name="details" rows="7" placeholder="Faculty Details... "></textarea>
                     <br>
                     <span><?=displaySingleError($validation, 'details');?></span>
                 </div>

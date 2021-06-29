@@ -54,7 +54,7 @@
               <br>  
               <div style="text-align:center;">
                 <button class="button2" type="submit" name="update" style=""><i class="bi bi-check-circle"></i> Update</button>
-                <button href="<?=base_url('dashboard')?>" class="button2" style=""><i class="bi bi-x-circle"></i> Cancel</button>
+                <button type="button" onclick="window.location.href='<?=base_url('dashboard')?>';" class="button2" style=""><i class="bi bi-x-circle"></i> Cancel</button>
               </div>
               </form>
             <?php } ?>

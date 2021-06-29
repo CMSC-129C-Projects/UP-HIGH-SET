@@ -99,7 +99,15 @@ class Profile extends BaseController
                     'last_name'   => $this->request->getPost('last_name'),
                     'email'       => $email
                 ];
-                $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
+                if ($this->userModel->update($sessionAdmin->id, $values)) {
+                    $data['status'] = true;
+                    $_SESSION['logged_user']['first_name'] = $values['first_name'];
+                    $_SESSION['logged_user']['last_name'] = $values['last_name'];
+                    $_SESSION['logged_user']['avatar_url'] = $values['avatar_url'];
+                    $_SESSION['logged_user']['email'] = $values['email'];
+                } else {
+                    $data['status'] = false;
+                }
                 return redirect()->to(base_url('profile/admin/true'));
             } else {
                 $data['validation'] = $this->validator;
@@ -143,6 +151,11 @@ class Profile extends BaseController
                     'last_name'   => $this->request->getPost('last_name'),
                     'email'       => $email
                 ];
+                $_SESSION['logged_user']['first_name'] = $values['first_name'];
+                $_SESSION['logged_user']['last_name'] = $values['last_name'];
+                $_SESSION['logged_user']['avatar_url'] = $values['avatar_url'];
+                $_SESSION['logged_user']['email'] = $values['email'];
+                
                 $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
                 return redirect()->to(base_url('profile/clerk/true'));
             } else {

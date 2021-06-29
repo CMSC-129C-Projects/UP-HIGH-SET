@@ -14,7 +14,7 @@
           <div class="card-body">
             <form method="post" action="">
               <div class="form-group">
-                <label for="purpose" style="font-size:3.2vmin; margin-bottom: 7px;">Subject Professor:</label>
+                <label for="purpose" style="font-size:2.7vmin; margin-bottom: 7px;">Subject Professor:</label>
                 <br>
                 <select class="custom-select" name="professor">
                   <?php if(isset($profs) and count($profs) > 0):?>
@@ -27,7 +27,7 @@
                 <br><br><br>
               </div>
               <div class="form-group">
-                <label for="purpose" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Grade Level:</label>
+                <label for="purpose" style="margin-top: 1rem; font-size:2.7vmin; margin-bottom:7px">Grade Level:</label>
                 <br>
                 <select class="custom-select" name="gLevel">
                   <option value="7">Grade 7</option>
@@ -41,7 +41,7 @@
               </div>
               <br><br>
               <div class="form-group">
-                <label for="subjectname" style="margin-top: 1rem; font-size:3.2vmin; margin-bottom:7px">Subject</label>
+                <label for="subjectname" style="margin-top: 1rem; font-size:2.7vmin; margin-bottom:7px">Subject</label>
                 <input type="text" class="form-control" name = 'subjectname' id="subject" value="<?=set_value('subject')?>">
                 <br>
                 <span class="text-danger"><?=displaySingleError($validation, 'subjectname');?></span>

@@ -22,7 +22,7 @@
 
     <?php } else { ?>
       <div class="heading text-center">
-        <h1 style="font-size: 5.2vmin; padding-bottom:4.7rem;">CHANGE PASSWORD</h1>
+        <h1 style="font-size: 5.2vmin; padding-bottom:4vmin;">CHANGE PASSWORD</h1>
       </div>
       <div id="ChangePassword">
         <div class="card">

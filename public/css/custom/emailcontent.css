@@ -96,10 +96,11 @@
   color: #ffff;
   background: #014421;
 }
+
 /* ---------------------------------------------------
-    MEDIAQUERIES
+  MEDIAQUERIES
 ----------------------------------------------------- */
-/* @media (max-width: 320px) {
+@media (max-width: 320px) {
   #EmailContent .card {
     width: 100%;
     padding: 0px;
@@ -110,4 +111,4 @@
   #EmailContent .custom-select {
     width: 125px;
   }
-} */
+}

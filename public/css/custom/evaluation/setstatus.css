@@ -16,12 +16,16 @@
     
 }
 
+.calIcon {
+  margin-top: 2rem;
+}
+
 #setStatus .box-container .box{
 
 justify-content: center;
 text-align: center;
 margin-bottom: 2rem;
-height: 28rem;
+padding-bottom: 3vh;
 width: 30rem;
 background-color: rgba(229, 229, 229, 1);
 margin-right: 11%;

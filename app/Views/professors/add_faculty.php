@@ -1,6 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+  <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+
   <section id="special" class="container-fluid" style="padding: 4rem 0 2rem;">
     <div class="heading text-center">
       <h1 style="font-size:5.8vmin; padding-bottom:4vmin;">ADD FACULTY</h1>

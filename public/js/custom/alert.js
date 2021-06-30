@@ -11,7 +11,20 @@ $(function() {
     }
 
     if (CURRENT_URI.includes('subjects') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
-        displayAlertify('/professors', 'Subject added successfully.');
+        if (CURRENT_URI.includes('add_subject')) {
+            displayAlertify('/professors', 'Subject added successfully.');
+        } else {
+            displayAlertify('/professors', 'Subject updated successfully.');
+        }
+        
+    }
+
+    if (CURRENT_URI.includes('professors') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        if (CURRENT_URI.includes('add_professor')) {
+            displayAlertify('/professors', 'Professor added successfully.');
+        } else {
+            displayAlertify('/professors', 'Professor updated successfully.');
+        }
     }
 
     if (CURRENT_URI.includes('send_email') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {

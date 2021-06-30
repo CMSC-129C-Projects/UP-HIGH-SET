@@ -18,28 +18,9 @@
             <input type="text" name="dateStart" id="datepickerStart" autocomplete="off">
             
           </div>
-          <div class ="setEvalDropDown">
-          <select name="dropdown1" id="drpdwn1" class="custom-select" style="width:100px">
-            <option value="7" selected="selected">Chuchu</option>
-            <option value="8">Chacha</option>
-            <option value="9">Cheche</option>
-            <option value="10">Chichi</option>
-            <option value="11">chocho</option>
-            <option value="12">chuchu</option>    
-        </select>
-        <select name="dropdown2" id="drpdwn2" class="custom-select" style="width:100px">
-        <option value="7" selected="selected">Chuchu</option>
-            <option value="8">Chacha</option>
-            <option value="9">Cheche</option>
-            <option value="10">Chichi</option>
-            <option value="11">chocho</option>
-            <option value="12">chuchu</option> 
-        </select>
+          <div class="calIcon">
+            <i class="fa fa-calendar" id="startDate"></i>
           </div>
-          <div class="calIcon" style="margin-top:5rem;">
-        <i class="fa fa-calendar" id="startDate"></i>
-        </div>
-        
         </div>
 
         <div class="box effect6">
@@ -48,30 +29,26 @@
             <input type="text" name="dateEnd" id="datepickerEnd" autocomplete="off">
             
           </div>
-          <div class ="setEvalDropDown">
-          <select name="dropdown1" id="drpdwn1" class="custom-select" style="width:100px">
-            <option value="7" selected="selected">Chuchu</option>
-            <option value="8">Chacha</option>
-            <option value="9">Cheche</option>
-            <option value="10">Chichi</option>
-            <option value="11">chocho</option>
-            <option value="12">chuchu</option>    
-        </select>
-        <select name="dropdown2" id="drpdwn2" class="custom-select" style="width:100px">
-        <option value="7" selected="selected">Chuchu</option>
-            <option value="8">Chacha</option>
-            <option value="9">Cheche</option>
-            <option value="10">Chichi</option>
-            <option value="11">chocho</option>
-            <option value="12">chuchu</option> 
-        </select>
+          <div class="calIcon">
+            <i class="fa fa-calendar" id="endDate"></i>
           </div>
-        <div class="calIcon" style="margin-top:5rem;">
-        <i class="fa fa-calendar" id="endDate"></i>
-        </div>
         
         </div>
       </div>
+
+      <div class ="setEvalDropDown d-flex justify-content-center">
+          <select name="dropdown1" id="drpdwn1" class="custom-select" style="width:10%">
+              <option value="semester" selected="selected">Semester</option>
+              <option value="grading">Grading</option>
+          </select>
+          <select name="dropdown2" id="drpdwn2" class="custom-select" style="width:10%">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              
+          </select>
+        </div>
     
     <div class="text-center">
       <button type="submit" ><i class="bi bi-check-circle"></i> Confirm</button>

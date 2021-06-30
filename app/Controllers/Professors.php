@@ -82,8 +82,13 @@ class Professors extends BaseController
     public function add_professors()
     {
         $data['validation'] = null;
-        $css = ['custom/login/login.css']; // change with the correct css please
+        $css = ['custom/alert.css'];
+        $js = ['custom/alert.js'];
+
+        $data['js'] = addExternal($js, 'javascript');
         $data['css'] = addExternal($css, 'css');
+        
+        $data['status'] = null;
 
         if($this->request->getMethod() == 'post')
         {
@@ -107,15 +112,20 @@ class Professors extends BaseController
             {
                 $facultyModel = new FacultyModel();
 
-                // $result = $facultyModel->add_faculty($data_entry);
-                $facultyModel->insert([
+                $values = [
                     'first_name' => $this->request->getVar('first_name'),
                     'last_name' => $this->request->getVar('last_name'),
                     'details' => $this->request->getVar('details')
-                ]);
+                ];
+
+                if (!$facultyModel->insert($values)) {
+                    $data['status'] = 'false';
+                } else {
+                    $data['status'] = 'true';
+                }
+
             } else {
                 $data['validation'] = $this->validator;
-                return view('professors/add_faculty', $data);
             }
         }
         return view('professors/add_faculty', $data);
@@ -155,24 +165,24 @@ class Professors extends BaseController
             {
                 $facultyModel = new FacultyModel();
 
-                // $result = $facultyModel->add_faculty($data_entry);
-                if (!$facultyModel->update($faculty_id, [
+                $values = [
                     'first_name' => $this->request->getVar('first_name'),
                     'last_name' => $this->request->getVar('last_name'),
                     'details' => $this->request->getVar('details')
-                ])) {
+                ];
+
+                if (!$facultyModel->update($faculty_id, $values)) {
                     $data['status'] = 'false';
                 } else {
-                    return redirect()->to(base_url('professors'));
+                    $data['status'] = 'true';                    
                 }
             } else {
                 $data['validation'] = $this->validator;
-                return view('professors/add_faculty', $data);
             }
-        } else {
-            $data['professor'] = $faculModel->where('is_deleted', 0)->find($faculty_id);
-            return view('professors/edit_faculty', $data);
         }
+        
+        $data['professor'] = $faculModel->where('is_deleted', 0)->find($faculty_id);
+        return view('professors/edit_faculty', $data);
     }
 
     /*

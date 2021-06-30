@@ -105,7 +105,6 @@ class Monitoring extends BaseController
                     $data['validation'] = $this->validator;
                 }
             }
-            $data['status'] = 'true';
         }
 
         $css = ['custom/evaluation/setstatus.css', 'custom/alert.css'];
@@ -124,7 +123,7 @@ class Monitoring extends BaseController
                               ->where('is_active', 1)
                               ->where('role', 2)
                               ->findAll();
-        
+
         return count($students) !== 0;
     }
 
@@ -180,7 +179,7 @@ class Monitoring extends BaseController
 
         $date_start = explode('-', $this->request->getPost('dateStart'));
         $date_end = explode('-', $this->request->getPost('dateEnd'));
-        
+
         $values = [
             'status' => 'open',
             'date_start' => $this->request->getPost('dateStart'),

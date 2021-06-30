@@ -41,11 +41,11 @@
       </div>
 
       <div class ="setEvalDropDown d-flex justify-content-center">
-          <select name="type" id="drpdwn1" class="custom-select" style="width:10%">
+          <select name="type" id="drpdwn1" class="custom-select">
               <option value="semester" selected="selected">Semester</option>
               <option value="grading">Grading</option>
           </select>
-          <select name="nth-type" id="drpdwn2" class="custom-select" style="width:10%">
+          <select name="nth-type" id="drpdwn2" class="custom-select">
               <option value="1" selected>1</option>
               <option value="2">2</option>
           </select>

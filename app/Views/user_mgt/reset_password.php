@@ -13,7 +13,7 @@
           </div>
     
         <?php } else { ?>
-          <div id="ChangePassword">
+          <div id="ChangePassword" style="padding-top: 5rem;">
             <div class="card">
               <div class="card-body" style="padding: 40px; margin: 10px">
                 <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 3.6vmin;">Please reset your password to continue: </h3>

@@ -1,8 +1,14 @@
-<?= $this->extend('template/pageTemplate');?>
+<?php
+  if ($_SESSION['logged_user']['role'] === '1') {
+    $this->extend('template/pageTemplate');
+  } elseif ($_SESSION['logged_user']['role'] === '3') {
+    $this->extend('template/clerkTemplate');
+  }
+?>
 
 <?= $this->section('content');?>
     <span style="display: none;" id="status" data-status="<?=$status?>"></span>
-    
+
     <section id="special" class="container-fluid">
 
         <div class="heading text-center">

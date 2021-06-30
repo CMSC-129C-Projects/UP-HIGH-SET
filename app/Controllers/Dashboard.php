@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use App\Models\SectionModel;
 use App\Models\SubjectModel;
 use App\Models\EvalSheetModel;
 use App\Models\EvaluationModel;
@@ -53,6 +54,10 @@ class Dashboard extends BaseController
 
       [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
 
+      if (!$this->is_open_eval()) {
+        $student_stat[0] = 0;
+      }
+
       $data['daysLeft'] = $daysLeft;
       $data['subject_stat'] = $subject_stat;
       $data['faculty_stat'] = $this->get_faculty_percentage($faculty_stat);
@@ -61,6 +66,15 @@ class Dashboard extends BaseController
 
       return view('user_mgt/dashboard', $data);
     }
+  }
+
+  protected function is_open_eval()
+  {
+    $evaluationModel = new EvaluationModel();
+
+    $eval_info = $evaluationModel->where('is_deleted', 0)->where('status', 'open')->first();
+
+    return isset($eval_info) && count($eval_info) !== 0;
   }
 
   public function logout()
@@ -93,6 +107,7 @@ class Dashboard extends BaseController
    */
   protected function get_information()
   {
+    $this->compute_ratings();
     $daysLeft = $this->compute_days_left();
     $subject_stat = $this->get_subjects_stat();
     $faculty_stat = $this->get_faculty_stat(1);
@@ -252,6 +267,7 @@ class Dashboard extends BaseController
     foreach ($students as $student) {
       $data = $subjectModel->get_in_progress_subjects_by_student($student->id);
 
+      // echo json_encode($data);
       if(count($data) === 0)
         array_push($student_done_evaluating, $student);
       else
@@ -303,5 +319,150 @@ class Dashboard extends BaseController
     $facultyList = $facultyModel->where('is_deleted', 0)->orderBy('rating', 'asc')->findAll();
 
     return $facultyList;
+  }
+
+  protected function compute_ratings()
+  {
+    $subjectModel = new SubjectModel();
+
+    $subjects = $subjectModel->where('is_deleted', 0)->findAll();
+
+    if (isset($subjects)) {
+      foreach($subjects as $subject) {
+        $this->compute_progress_per_subject($subject['id']);
+      }
+    }
+  }
+
+  /**
+   * Get ratings of each subject
+   * handled by the professor
+   */
+  protected function compute_progress_per_subject($subject_id)
+  {
+      $sectionModel = new SectionModel();
+      $sections = $sectionModel->get_eval_sections_by_type(1);
+      
+      $evalSheetModel = new EvalSheetModel();
+      $subjectModel = new SubjectModel();
+
+      $size = ($subjectModel->get_subjects_complete_count($subject_id))[0]->complete_count;
+      $evalSheets = $evalSheetModel->collect_eval_sheets($subject_id);
+
+      // Section ID serves as the key
+      foreach($sections as $section) {
+          $tally[$section->id] = [
+              'e'  => 0,
+              'vg' => 0,
+              'g'  => 0,
+              'f'  => 0,
+              'p'  => 0
+          ];
+      }
+
+      foreach($evalSheets as $evalSheet) {
+          $answers = $this->get_answers_per_sheet($evalSheet->id, $evalSheet->user_id);
+
+          $tally = $this->tally_answers($answers, $tally);
+      }
+
+      $ratings = $this->compute_rating($tally, $size);
+
+      $this->store_rating($subject_id, $ratings[1]);
+
+      return [$ratings, $tally];
+  }
+  
+  /**
+   * Update Subject Rating
+   */
+  protected function store_rating($subject_id, $rating)
+  {
+      $subjectModel = new SubjectModel();
+
+      $final_rating = ['rating' => $rating];
+
+      if (!$subjectModel->update($subject_id, $final_rating)) {
+          return false;
+      } else {
+          return true;
+      }
+  }
+  
+  /**
+   * Get Answers Per Sheet
+   */
+  protected function get_answers_per_sheet($evalsheetID, $user_id)
+  {
+      $evalAnswersModel = new EvalAnswersModel();
+
+      return $evalAnswersModel->get_answers_per_sheet($evalsheetID, $user_id);
+  }
+
+  /**
+   * Segregate answers bsdrf on section id..
+   * All answers will belong to the key which is the section id
+   */
+  protected function tally_answers($answers, $tally)
+  {
+      foreach($answers as $answer) {
+          // General evaluation will not
+          // be recorded because of using
+          // switch statement
+          switch($answer->qChoice_id) {
+              case 1:
+                  $tally[$answer->section_id]['e'] += 1;
+                  break;
+              case 2:
+                  $tally[$answer->section_id]['vg'] += 1;
+                  break;
+              case 3:
+                  $tally[$answer->section_id]['g'] += 1;
+                  break;
+              case 4:
+                  $tally[$answer->section_id]['f'] += 1;
+                  break;
+              case 5:
+                  $tally[$answer->section_id]['p'] += 1;
+                  break;
+              default:
+          }
+      }
+      return $tally;
+  }
+
+  /** 
+   * AR: Average Rating
+   * WR: Weighted Rating
+   * FR: Final Rating
+   * 
+   * Compute Rating
+   * Returns AR and WR, including FR
+  */
+  protected function compute_rating($tally, $size)
+  {
+      $sectionWeights = [0.7, 0.2, 0.05, 0.05];
+      // Formula
+      $ar = 0;
+      $results = [];
+      $fr = 0;
+
+      foreach($tally as $section => $values) {
+          $ar = ($values['e'] * 1) + ($values['vg'] * 2) + ($values['g'] * 3) + ($values['f'] * 4) + ($values['p'] * 5);
+          if ($size == 0) {
+              $ar = 0;
+          } else {
+              $ar = round($ar/($size*10), 4);
+          }
+          $wr = round($ar * $sectionWeights[$section-1], 4);
+
+          $fr += $wr;
+
+          $results[$section] = [
+              'AR' => number_format($ar, 4),
+              'WR' => number_format($wr, 4)
+          ];
+      }
+      return [$results, number_format($fr, 4)];
   }
 }

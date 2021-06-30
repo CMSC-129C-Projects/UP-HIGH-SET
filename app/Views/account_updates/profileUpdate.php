@@ -1,4 +1,4 @@
-<?php if ($role === '1'):?>
+<?php if ($role === '1' || $role === '3'):?>
     <?= $this->extend('template/default');?>
 <?php else:?>
     <?= $this->extend('template/studentTemplate');?>

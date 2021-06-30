@@ -2,8 +2,10 @@
   if($is_changed) {
     if ($_SESSION['logged_user']['role'] === '2') {
       $this->extend('template/studentTemplate');
-    } else {
+    } elseif ($_SESSION['logged_user']['role'] === '1') {
       $this->extend('template/pageTemplate');
+    } elseif ($_SESSION['logged_user']['role'] === '3') {
+      $this->extend('template/clerkTemplate');
     }
     $url = base_url('dashboard');
   } else {

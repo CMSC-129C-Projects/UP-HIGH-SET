@@ -37,7 +37,7 @@ $(function() {
     }
 
     if (CURRENT_URI.includes('send_email') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
-        displayAlertify(CURRENT_URI, 'Email content updated succesfully.');
+        displayAlertify(CURRENT_URI, 'Email sent to all students succesfully.');
     }
 
     if (CURRENT_URI.includes('evaluation/evaluate') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {

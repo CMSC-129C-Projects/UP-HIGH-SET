@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\EmailModel;
+use App\Models\UserModel;
 
 class Send_email extends BaseController {
 
@@ -24,8 +25,7 @@ class Send_email extends BaseController {
     $data = [];
     $rules = [
       'email_subject' => 'required',
-      'email_content' => 'required',
-      'purpose' => 'required'
+      'email_content' => 'required'
     ];
 
     $data['validation'] = null;

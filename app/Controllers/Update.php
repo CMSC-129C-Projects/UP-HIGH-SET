@@ -308,26 +308,4 @@ class Update extends BaseController
 
         return $rules;
     }
-
-    protected function hasSession($type)
-    {
-        if ($type === 0) {
-            // redirect to login if no session found
-            // redirect to verifyAccount page if session not yet verified
-            if (!$this->session->has('logged_user')) {
-                return redirect()->to(base_url('login'));
-            } elseif (!$_SESSION['logged_user']['emailVerified']) {
-                return redirect()->to(base_url('verifyAccount'));
-            }
-        } else {
-            // redirect to login if no session found
-            if (!$this->session->has('logged_user')) {
-                return redirect()->to(base_url());
-            } elseif ($_SESSION['logged_user']['role'] != '1') {
-                return redirect()->to(base_url());
-            } elseif (!$_SESSION['logged_user']['emailVerified']) {
-                return redirect()->to(base_url('verifyAccount'));
-            }
-        }
-    }
 }

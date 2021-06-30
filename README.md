@@ -4,14 +4,15 @@ This project's goal is to develop a software solution for UP High School Cebu in
 
 ## Users
 
-Students and School Admin/s
+Students and School Clerk/s, PAPC, and Admin/s
 
 ## General Features
 
 - User Management
+- Database Management
 - Administrative Tasks and Workflows
 - Report Generation
-- SET Monitoring
+- UP-SET Monitoring
 
 ## TechStack
 

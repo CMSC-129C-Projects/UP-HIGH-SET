@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4 progress-circle">
                     <div class="card effect6">
                         <span style="display: none;" data-studentstat="<?=$student_stat[0]?>" id="studentstat"></span>
                         <b>Student Progress</b><br>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4 progress-circle">
                     <div class="card effect6">
                         <span style="display: none;" data-subjectstat="<?=$subject_stat[0]?>" id="subjectstat"></span>
                         <b>Subject Progress</b><br>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4 progress-circle">
                     <div class="card effect6">
                         <span style="display: none;" data-faculstat="<?=$faculty_stat[0]?>" id="faculstat"></span>
                         <b>Faculty Progress</b><br>
@@ -81,7 +81,7 @@
             <br><br>
 
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-9 item-table">
                     <div class="card effect6">
                         <b>Faculty Performance Overview</b>
                         <i>Professors list are ordered by their evaluation rating</i>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 dayscount">
                     <div class="card effect6">
                         <h1><b><?=$daysLeft?> DAYS</b></h1>
                         <hr>

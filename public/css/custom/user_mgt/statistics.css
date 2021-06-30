@@ -2,6 +2,20 @@
     padding: 10vh;
 }
 
+.container {
+    border: solid #7b1113;
+    overflow-x: auto;
+    padding: 3% 5%;
+}
+
+.item-table .card {
+    min-width: 500px;
+}
+
+.dayscount .card {
+    min-width: 250px;
+}
+
 .card {
     padding: 5vh;
     background-color: #fff;
@@ -18,6 +32,10 @@
 .card hr {
     border-top: solid 2px #7b1113;
     background-color: #7b1113;
+}
+
+.progress-circle .card {
+    min-width: 250px;
 }
 
 .effect6
@@ -244,6 +262,96 @@
     }
 }
 
-@media only screen and (max-width: 990px){
+/* @media only screen and (min-width: 768px) and (max-width: 992px) {
     .progress{ margin-bottom: 20px; }
+
+    .progress-circle {
+        margin: 0 2%;
+    }
+
+    .progress-circle .card {
+        margin-bottom: 3vh;
+    }
+} */
+
+@media only screen and (max-width: 992px) {
+    .progress{ margin-bottom: 20px; }    
+
+    .progress-circle {
+        margin-right: 5%;
+    }
+
+    .row {
+        flex-wrap: nowrap;
+    }
+}
+
+@media only screen and (max-width: 868px) {
+    .progress-circle {
+        margin-right: 8%;
+    }
+
+    .item-table {
+        margin-right: 8%;
+    }
+}
+
+@media only screen and (max-width: 808px) {
+    .progress-circle {
+        margin-right: 12%;
+    }
+
+    .item-table {
+        margin-right: 12%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .progress-circle {
+        margin-right: 20%;
+    }
+
+    .item-table {
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 656px) {
+    .progress-circle {
+        margin-right: 23%;
+    }
+
+    .item-table {
+        margin-right: 12%;
+    }
+}
+
+@media only screen and (max-width: 638px) {
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .progress-circle .card {
+        min-width: 386px;
+    }
+
+    .item-table .card {
+        min-width: 386px;
+    }
+    
+    .dayscount .card {
+        width: 386px;
+        min-width: 386px;
+    }
+
+    .card {
+        margin-left: 0;
+        margin-right: 0;
+
+        margin-bottom: 3%;
+    }
+
+    .row {
+        margin-left: 0;
+    }
 }

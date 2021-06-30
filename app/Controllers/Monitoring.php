@@ -180,11 +180,7 @@ class Monitoring extends BaseController
 
         $date_start = explode('-', $this->request->getPost('dateStart'));
         $date_end = explode('-', $this->request->getPost('dateEnd'));
-
-        // print_r($this->request->getPost('dateStart'));
-        // print_r($this->request->getPost('dateEnd'));
-        // print_r(data());
-
+        
         $values = [
             'status' => 'open',
             'date_start' => $this->request->getPost('dateStart'),

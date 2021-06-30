@@ -16,11 +16,20 @@ $(function() {
         } else {
             displayAlertify('/professors', 'Subject updated successfully.');
         }
-        
+    }
+
+    if (CURRENT_URI.includes('view_subjects') &&  $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {        
+        alertify.alert('Notification', 'No subjects handled by the professor.', function() {
+            window.location.href = BASE_URI + '/dashboard';
+        });
     }
 
     if (CURRENT_URI.includes('professors') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
-        if (CURRENT_URI.includes('add_professor')) {
+        if (CURRENT_URI === '/professors') {
+            alertify.alert('Notification', 'No professors recorded in the database.', function() {
+                window.location.href = BASE_URI + '/dashboard';
+            });
+        } else if (CURRENT_URI.includes('add_professor')) {
             displayAlertify('/professors', 'Professor added successfully.');
         } else {
             displayAlertify('/professors', 'Professor updated successfully.');
@@ -52,7 +61,7 @@ $(function() {
     $('.item-table').on('click', '#deleteStudent', function() {
         let id = $(this).attr('data-id');
         let role = $(this).attr('data-role');
-        console.log(id);
+        
         alertify.confirm('Delete User', 'Are you sure you want to delete this student?', function() {
             window.location.href = BASE_URI + '/update/delete/' + id + '/' + (role == '2' ? 'student' : 'admin');
         },

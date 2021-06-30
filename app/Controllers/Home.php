@@ -47,7 +47,17 @@ class Home extends BaseController
 			return redirect()->to(base_url('dashboard'));
 		}
 
+    // True means open, false means closed
+    $evaluation_status = true;
+
     $data = [];
+
+		$data['validation'] = null;
+    $data['error'] = null;
+		$css = ['custom/login/login.css'];
+    $js = ['custom/login/login.js'];
+		$data['css'] = addExternal($css, 'css');
+    $data['js'] = addExternal($js, 'javascript');
 
     // Get Evaluation info (i.e. days left, status, etc.) [start]
     $evaluationModel = new EvaluationModel();
@@ -57,15 +67,18 @@ class Home extends BaseController
 
     $data['evaluation_info'] = $evaluation_info;
 
-    if (isset($evaluation_info)) {
-      $datetime1 = date_create(date('Y-m-d H:i:s'));
-      $datetime2 = date_create($evaluation_info['date_end']);
+    if (isset($evaluation_info)) {      
+      $today = date_create(date('Y-m-d H:i:s'));
+      $end_date = date_create($evaluation_info['date_end']);
+      $start_date = date_create($evaluation_info['date_start']);
 
-      if ($datetime2 < $datetime1) {
+      if ($today < $start_date || $end_date < $today) {
         $data['daysLeft'] = '0';
         $data['timeLeft'] = '00:00:00';
+
+        $evaluation_status = false;
       } else {
-        $interval = date_diff($datetime2, $datetime1);
+        $interval = date_diff($end_date, $today);
 
         $timeLeft = $this->add_leading_zeros($interval->format('%H:%i:%s'));
 
@@ -74,15 +87,10 @@ class Home extends BaseController
 
         $data['timeLeft'] = $timeLeft;
       }
+    } else {
+      $evaluation_status = false;
     }
     // Get Evaluation info (i.e. days left, status, etc.) [end]
-
-		$data['validation'] = null;
-    $data['error'] = null;
-		$css = ['custom/login/login.css'];
-    $js = ['custom/login/login.js'];
-		$data['css'] = addExternal($css, 'css');
-    $data['js'] = addExternal($js, 'javascript');
 
 		if($this->request->getMethod() == 'post')
 		{
@@ -109,6 +117,11 @@ class Home extends BaseController
 				} else {
 					$userToken = $this->updateUserlog($user['id']);
 					$this->setSession($user, $userToken);
+
+          // SET is closed and a student is trying to login
+          if ($_SESSION['logged_user']['role'] === '2' && !$evaluation_status) {
+            return redirect()->to(base_url('dashboard/logout'));
+          }
 
 					// To turn this off, fetch the data from database that represents the toggle for two step verification. Simply put an if statement and when 2f verification is turned off, make sure to set $_SESSION['logged_user']['emailVerified'] to true automatically. Also unset $_SESSION loginDate and $_SESSION userToken
           if ($_SESSION['logged_user']['allow_verify'] === '0') {

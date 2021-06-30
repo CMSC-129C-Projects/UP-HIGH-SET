@@ -83,7 +83,18 @@ class Send_email extends BaseController {
   		$replace = [$data['message'], $_SESSION['logged_user']['first_name'], base_url()]; //redirect to login page
 
   		$message = str_replace($search, $replace, $message);
-  		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
+
+      $userModel = new UserModel();
+      $users = $userModel->where('is_deleted', 0)->where('role', 2)->where('is_active', 1)->findAll();
+
+      foreach($users as $user) {
+        $status = send_acc_notice($user->email, $subject, $message);
+        if ($status == false) {
+          return $status;
+        }
+      }
+      
+  		return $status;
 
       return $status;
     }

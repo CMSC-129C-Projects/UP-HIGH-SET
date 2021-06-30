@@ -41,18 +41,23 @@ class Subjects extends BaseController
 
 	public function index($faculty_id)
     {
-        $css = ['custom/profs/viewsubjects-style.css'];
-        // $js = ['custom/evaluation/evalSubjects.js'];
+        $css = ['custom/profs/viewsubjects-style.css', 'custom/alert.css'];
+        $js = ['custom/alert.js'];
         $data = [
-            // 'js'  => addExternal($js, 'javascript'),
+            'js'  => addExternal($js, 'javascript'),
             'css' => addExternal($css, 'css')
         ];
+        $data['status'] = null;
 
         $subjectModel = new SubjectModel();
         $faculModel = new FacultyModel();
 
         $prof = $faculModel->where('is_deleted', 0)->find($faculty_id);
         $subjectsHandled = $subjectModel->get_subjects_by_faculty($faculty_id);
+
+        if (count($subjectsHandled) === 0) {
+            $data['status'] = 'true';
+        }
 
         $data['subjects'] = $subjectsHandled;
         $data['prof'] = $prof;

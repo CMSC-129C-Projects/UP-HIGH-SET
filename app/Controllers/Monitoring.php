@@ -8,9 +8,9 @@ use App\Models\SectionModel;
 use App\Models\EvalAnswersModel;
 use App\Models\QuestionchoiceModel;
 use App\Models\EvalSheetModel;
+use App\Models\EvaluationModel;
 use App\Models\EvalquestionModel;
 use App\Models\UserModel;
-use App\Models\EvaluationModel;
 use App\Models\SubjectModel;
 use App\Models\FacultyModel;
 
@@ -18,6 +18,10 @@ class Monitoring extends BaseController
 {
     public function _remap($method, $param1 = null)
     {
+        if ($method === 'check_time') {
+            return $this->$method();
+        }
+
         $this->hasSession();
         $this->role_checking(['2']);
 
@@ -59,7 +63,7 @@ class Monitoring extends BaseController
         $userModel->update_grade_level(8, 9);
         $userModel->update_grade_level(7, 8);
 
-        return redirect()->to(base_url('dashboard'));
+        return redirect()->to(base_url('dashboard/index/transcend'));
     }
 
     /**
@@ -112,6 +116,56 @@ class Monitoring extends BaseController
         $data['js']  = addExternal($js, 'javascript');
 
         return view('evaluation/setStatus', $data);
+    }
+
+    public function check_time()
+    {
+        $response = [];
+        $evaluationModel = new EvaluationModel();
+
+        $evaluation_info = $evaluationModel->where('is_deleted', 0)->where('status', 'open')->first();
+
+        if ($_SESSION['logged_user']['role'] !== '2') {
+            $response = [
+                'is_close' => 0,
+                'almost_close' => 0
+            ];
+        } elseif (!isset($evaluation_info) || count($evaluation_info) === 0) {
+            $response = [
+                'is_close' => 1,
+                'message' => 'The evaluation period is still closed.'
+            ];
+        } else {
+            $datetime1 = date_create(date('Y-m-d H:i:s'));
+            $datetime2 = date_create($evaluation_info['date_end']);
+            $start_date = date_create($evaluation_info['date_start']);
+
+            if ($datetime1 < $start_date) {
+                $response = [
+                    'is_close' => 0,
+                    'almost_close' => 0
+                ];
+            } elseif ($datetime2 < $datetime1) {
+                $response = [
+                    'is_close' => 1,
+                    'message' => 'The evaluation period is still closed.'
+                ];
+            } else {
+                $interval = date_diff($datetime2, $datetime1);
+
+                // Convert to days difference
+                $daysLeft = $interval->format('%a');
+                
+                if ($daysLeft < 1) {
+                    $response = [
+                        'is_close' => 0,
+                        'almost_close' => 1,
+                    ];
+                }
+            }
+        }
+
+        echo json_encode($response);
     }
 
     protected function hasEnrolledStudents()

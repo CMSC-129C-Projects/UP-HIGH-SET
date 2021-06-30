@@ -1,6 +1,7 @@
 <?= $this->extend('template/clerkTemplate');?>
 
 <?= $this->section('content');?>
+    <span style="display: none;" id="notif" data-notif="<?=$notif?>"></span>
     <section class="Dashboard" style="margin: auto;">
         <!-- INSERT CONTENT HERE -->
         <section id="Contents">

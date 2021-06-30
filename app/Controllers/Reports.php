@@ -89,8 +89,6 @@ class Reports extends BaseController
         // to check ratings of that subject in "all_ratings" variable
         $all_info = $this->get_all_info($subjects_handled);
 
-        // print_r($all_info);
-
         $css = ['custom/reporting/profreport.css'];
         $js = ['custom/reporting/print.min.js'];
         $data = [

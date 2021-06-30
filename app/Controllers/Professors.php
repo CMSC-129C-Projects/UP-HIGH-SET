@@ -33,12 +33,21 @@ class Professors extends BaseController
 
 	public function index()
     {
-        $css = ['custom/profs/profs-style.css'];
-        $js = ['custom/profs/profs.js'];
+        $css = ['custom/profs/profs-style.css', 'custom/alert.css'];
+        $js = ['custom/profs/profs.js', 'custom/alert.js'];
         $data = [
             'js'    => addExternal($js, 'javascript'),
             'css'   => addExternal($css, 'css')
         ];
+
+
+        $data['status'] = null;
+
+        $faculModel = new FacultyModel();
+        $profs = $faculModel->where('is_deleted', 0)->findAll();
+        if (count($profs) === 0) {
+            $data['status'] = 'true';
+        }
 
         return view('professors/professors', $data);
     }

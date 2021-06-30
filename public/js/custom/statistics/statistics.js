@@ -122,4 +122,19 @@ $(function() {
     animateProgressBars('student-progress', studfinalstats[0], studfinalstats[1], 'subject-progress', subfinalstats[0], subfinalstats[1], 'faculty-progress', faculfinalstats[0], faculfinalstats[1]);
 
     interpret();
+
+    let notif = $('#notif').attr('data-notif');
+
+    console.log(notif);
+    if (notif.length !== 0) {
+        if (notif.includes('transcend')) {
+            alertify.alert('Notification', 'Transcend students successful.', function() {
+                window.location.href = BASE_URI + '/dashboard';
+            });
+        } else if (notif.includes('archive')) {
+            alertify.alert('Notification', 'Archive successful.', function() {
+                window.location.href = BASE_URI + '/dashboard';
+            });
+        }
+    }
 });

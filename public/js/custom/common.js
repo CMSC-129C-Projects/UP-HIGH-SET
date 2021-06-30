@@ -1,36 +1,3 @@
-// let windowSize;
-// let header = document.getElementById("header");
-// let footer = document.getElementById("footer");
-
-// $(window).resize(function() {
-//     windowSize = getSize();
-//     headerHeight = header.clientHeight;
-//     footerHeight = footer.clientHeight;
-//     $('#sidebar').css("height", (windowSize - headerHeight - footerHeight) + "px");
-//     $('#main').css("height", (windowSize - headerHeight - footerHeight) + "px");
-// });
-
-// function resize() {
-//     // windowSize = getSize();
-//     headerHeight = header.clientHeight;
-//     // footerHeight = footer.clientHeight;
-//     if (main.clientHeight < defaultHeight) {
-//         $('#sidebar').css("height", (defaultHeight) + "px");    
-//         $('#main').css("height", (defaultHeight) + "px");
-//     } else {
-//         $('#sidebar').css("height", (main.clientHeight) + "px");
-//     }    
-//     // $('#main').css("height", (windowSize - headerHeight) + "px");
-// }
-
-// $(function() {
-//     $('#sidebarCollapse').on('click', function () {
-//         $('#sidebar').toggleClass('active');
-//     });
-//     // resize();
-// });
-//paste this code under the head tag or in a separate js file.
-// Wait for window load
 $(window).on('load', function(){
 	// Animate loader off screen
 	$(".bg-loader").fadeOut("slow");
@@ -54,6 +21,29 @@ function updateVerification(value) {
     });
 }
 
+function getTime() {
+    return $.ajax({
+        url: BASE_URI + '/monitoring/check_time/',
+        type: 'POST',
+        dataType: 'json'
+    });
+}
+
+function runTimeChecker() {
+    $.when(getTime()).then(function(response) {
+        if (!response.is_close && response.almost_close) {
+            setInterval(function() {
+                console.log('here');
+                $.when(getTime()).then(function(response) {
+                    if (response.is_close) {
+                        window.location.href = BASE_URI + '/dashboard/logout';
+                    }
+                });
+            }, 300000);
+        }
+    });
+}
+
 let header = document.getElementById("header");
 let footer = document.getElementById("footer");
 
@@ -63,6 +53,8 @@ new ResizeSensor(main, function() {
 });
 
 $(function () {
+    runTimeChecker();
+
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });

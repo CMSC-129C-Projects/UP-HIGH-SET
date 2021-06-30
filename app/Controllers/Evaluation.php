@@ -68,7 +68,6 @@ class Evaluation extends BaseController
       return redirect()->to(base_url('dashboard'));
     }
 
-    // $this->archive_evaluation();
     return view('evaluation/evaluate', $data);
   }
 
@@ -115,10 +114,14 @@ class Evaluation extends BaseController
 
     $data = $evaluationModel->get_latest_evaluation();
 
+    $evaluationModel->archive_eval_answers();
+
     if (count($data) !== 0) {
       $evaluationModel->archive_eval_sheet($data[0]->id);
       $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
     }
+
+    return redirect()->to(base_url('dashboard/index/archive'));
   }
 
   protected function countAnswers($prevAnswers)

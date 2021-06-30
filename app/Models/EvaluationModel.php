@@ -65,4 +65,22 @@ EOT;
     $query = $db->query($sql);
     return $query;
   }
+
+
+  /*
+  * Archive Evaluation Sheet
+  */
+  public function archive_eval_answers() {
+    $db = \Config\Database::connect();
+
+    $sql = <<<EOT
+UPDATE eval_answers
+SET is_deleted = 1
+WHERE
+	is_deleted = 0
+EOT;
+
+    $query = $db->query($sql);
+    return $query;
+  }
 }

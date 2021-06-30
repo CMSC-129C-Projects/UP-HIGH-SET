@@ -13,13 +13,15 @@ use App\Models\FacultyModel;
 
 class Dashboard extends BaseController
 {
-  public function _remap($method)
+  public function _remap($method, $param1 = null)
   {
     $this->hasSession(0);
 
     switch($method)
     {
       case 'index':
+        return $this->$method($param1);
+        break;
       case 'logout':
         return $this->$method();
         break;
@@ -28,13 +30,14 @@ class Dashboard extends BaseController
     }
   }
 
-  public function index()
+  public function index($notif = null)
   {
-    $css = ['custom/user_mgt/statistics.css'];
+    $css = ['custom/user_mgt/statistics.css', 'custom/alert.css'];
     $js = ['custom/statistics/statistics.js'];
     $data = [
         'js'    => addExternal($js, 'javascript'),
-        'css'   => addExternal($css, 'css')
+        'css'   => addExternal($css, 'css'),
+        'notif' => $notif
     ];
 
     if (!$this->session->has('logged_user')) {
@@ -66,7 +69,6 @@ class Dashboard extends BaseController
     $this->session->destroy();
     return redirect()->to(base_url('login'));
   }
-
 
   protected function get_faculty_percentage($faculty_stat)
   {

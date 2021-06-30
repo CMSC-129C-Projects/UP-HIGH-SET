@@ -1,6 +1,7 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+    <span style="display: none;" id="notif" data-notif="<?=$notif?>"></span>
     <section class="admindashboard" style="margin: auto;">
         <div class="container">
             <div class="row">

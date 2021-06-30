@@ -1,6 +1,8 @@
 <?= $this->extend('template/pageTemplate');?>
 
 <?= $this->section('content');?>
+    <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+    
     <section id="special" class="container-fluid">
 
         <div class="heading text-center">

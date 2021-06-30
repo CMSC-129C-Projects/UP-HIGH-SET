@@ -93,14 +93,19 @@ class Monitoring extends BaseController
     public function update_set_status()
     {
         $data['validation'] = null;
+        $data['db_content'] = null;
         $data['status'] = null;
 
         if (!$this->hasEnrolledStudents()) {
-            $data['status'] = 'false';
+            $data['db_content'] = 'false';
         } else {
             if($this->request->getMethod() == 'post') {
                 if($this->validate($this->get_rules())) {
-                    $this->open_SET();
+                    if (!$this->open_SET()) {
+                        $data['status'] = 'false';
+                    } else {
+                        $data['status'] = 'true';
+                    }
                 } else {
                     $data['validation'] = $this->validator;
                 }
@@ -130,6 +135,8 @@ class Monitoring extends BaseController
     protected function get_rules()
     {
         $rules = [
+            'type' => 'required',
+            'nth-type' => 'required',
             'dateStart' => [
                 'rules'  => 'required|correctDateFormat',
                 'errors' => [
@@ -141,9 +148,8 @@ class Monitoring extends BaseController
                 'errors' => [
                     'correctDateFormat' => 'Date format should by Y-m-d'
                 ]
-            ]
+            ],
         ];
-
         return $rules;
     }
 
@@ -178,15 +184,22 @@ class Monitoring extends BaseController
         $evaluationModel = new EvaluationModel();
 
         $date_start = explode('-', $this->request->getPost('dateStart'));
-        $date_end = explode('-', $this->request->getPost('dateEnd'));
 
         $values = [
             'status' => 'open',
             'date_start' => $this->request->getPost('dateStart'),
             'date_end' => $this->request->getPost('dateEnd'),
             'year_start' => $date_start[0],
-            'year_end' => $date_end[0],
+            'year_end' => $date_start[0] + 1
         ];
+
+        $type = $this->request->getPost('type');
+
+        if ($type === 'semester') {
+            $values['semester'] = $this->request->getPost('nth-type');
+        } elseif ($type === 'grading') {
+            $values['grading'] = $this->request->getPost('nth-type');
+        }
 
         $evaluationIDs = $evaluationModel->select('id')->findAll();
 
@@ -199,8 +212,10 @@ class Monitoring extends BaseController
 
         if ($db->transStatus() === FALSE) {
             $db->transRollback();
+            return false;
         } else {
             $db->transCommit();
+            return true;
         }
     }
 

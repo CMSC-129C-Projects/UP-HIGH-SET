@@ -40,6 +40,10 @@ $(function() {
     }
 
     if (CURRENT_URI.includes('update_set_status') && $('#status').length != 0 && $('#status').attr('data-status').length !== 0) {
+        displayAlertify(CURRENT_URI, 'Evaluation period is opened.');
+    }
+
+    if (CURRENT_URI.includes('update_set_status') && $('#db_content').length != 0 && $('#status').attr('data-dbcontent').length !== 0) {
         alertify.alert('Notification', 'No students are enrolled yet. Please add students before opening the evaluation period.', function() {
             window.location.href = BASE_URI + '/dashboard';
         });

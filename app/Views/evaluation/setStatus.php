@@ -2,6 +2,7 @@
 
 <?= $this->section('content');?>
   <span style="display: none;" id="status" data-status="<?=$status?>"></span>
+  <span style="display: none;" id="db_content" data-dbcontent="<?=$db_content?>"></span>
   
   <section id="setStatus" class="conatiner-fluid">
     <div class="heading text-center">
@@ -16,8 +17,9 @@
 
           <div class="inputBox">
             <input type="text" name="dateStart" id="datepickerStart" autocomplete="off">
-            
           </div>
+          <span class="text-danger"><?=displaySingleError($validation, 'dateStart');?></span>
+
           <div class="calIcon">
             <i class="fa fa-calendar" id="startDate"></i>
           </div>
@@ -29,6 +31,8 @@
             <input type="text" name="dateEnd" id="datepickerEnd" autocomplete="off">
             
           </div>
+          <span class="text-danger"><?=displaySingleError($validation, 'dateEnd');?></span>
+          
           <div class="calIcon">
             <i class="fa fa-calendar" id="endDate"></i>
           </div>
@@ -37,18 +41,16 @@
       </div>
 
       <div class ="setEvalDropDown d-flex justify-content-center">
-          <select name="dropdown1" id="drpdwn1" class="custom-select" style="width:10%">
+          <select name="type" id="drpdwn1" class="custom-select" style="width:10%">
               <option value="semester" selected="selected">Semester</option>
               <option value="grading">Grading</option>
           </select>
-          <select name="dropdown2" id="drpdwn2" class="custom-select" style="width:10%">
+          <select name="nth-type" id="drpdwn2" class="custom-select" style="width:10%">
               <option value="1" selected>1</option>
               <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              
           </select>
-        </div>
+      </div>
+      <span class="text-danger"><?=displaySingleError($validation, 'type');?></span>
     
     <div class="text-center">
       <button type="submit" ><i class="bi bi-check-circle"></i> Confirm</button>

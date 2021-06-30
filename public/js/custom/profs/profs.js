@@ -42,9 +42,9 @@ function appendProfCards(search = undefined) {
                                     '<div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">'+
                                         '<a class="dropdown-item" href="' + BASE_URI + '/view_subjects/' + element.id + '">View Subjects</a>' +
                                         '<hr>' +
-                                        '<a class="dropdown-item" href="' + BASE_URI + '/professors/edit_professor/' + element.id + '">Edit Subject</a>' +
+                                        '<a class="dropdown-item" href="' + BASE_URI + '/professors/edit_professor/' + element.id + '">Edit Faculty</a>' +
                                         '<hr>' +
-                                        '<a class="dropdown-item" href="' + BASE_URI + '/professors/delete_professor/' + element.id + '">Delete Subject</a>' +
+                                        '<a class="dropdown-item" href="' + BASE_URI + '/professors/delete_professor/' + element.id + '">Delete Faculty</a>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>';

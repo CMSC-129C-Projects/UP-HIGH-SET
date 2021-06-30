@@ -21,7 +21,7 @@
 justify-content: center;
 text-align: center;
 margin-bottom: 2rem;
-height: 16rem;
+height: 28rem;
 width: 30rem;
 background-color: rgba(229, 229, 229, 1);
 margin-right: 11%;
@@ -113,6 +113,26 @@ margin-left: 11%;
   margin-top: 3rem;
   padding: 0 8%;
 }
+
+#setStatus .setEvalDropDown .custom-select{
+    background: #7b1113
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+    no-repeat right 0.75rem center/8px 10px !important;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+    font-family: "Roboto";
+    margin-top: 0.5rem;
+}
+
+
+
+
+
+
+
+
 .effect1{
     -webkit-box-shadow: 0 10px 6px -6px #777;
        -moz-box-shadow: 0 10px 6px -6px #777;

@@ -15,8 +15,11 @@ class Profile extends BaseController
         switch($method)
         {
             case 'student':
+                $this->role_checking(['1','3']);
             case 'admin':
-            case 'clerk':    
+                $this->role_checking(['2','3']);
+            case 'clerk':
+                $this->role_checking(['1','2']);
                 return $this->$method();
                 break;
             default:
@@ -241,15 +244,5 @@ class Profile extends BaseController
         }
 
         return $rules;
-    }
-
-    protected function hasSession() {
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
     }
 }

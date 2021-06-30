@@ -14,10 +14,21 @@ use App\Models\EvalquestionModel;
 
 class Questions extends BaseController
 {
-    // public function _remap()
-    // {
+    public function _remap($method, $param1 = null)
+    {
+        $this->hasSession();
+        $this->role_checking(['2']);
 
-    // }
+        switch($method)
+        {
+            case 'index':
+                return $this->$method;
+                break;
+            case 'delete_question':
+                return $this->$method($param1);
+                break;
+        }
+    }
 
     public function index()
     {

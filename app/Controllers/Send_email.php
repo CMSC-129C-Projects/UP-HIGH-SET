@@ -7,16 +7,8 @@ class Send_email extends BaseController {
 
   public function _remap($method)
   {
-    // redirect to login if no session found
-    // redirect to verifyAccount page if session not yet verified
-    if (!$this->session->has('logged_user')) {
-      return redirect()->to(base_url('login'));
-    } elseif (!$_SESSION['logged_user']['emailVerified']) {
-      return redirect()->to(base_url('verifyAccount'));
-    }
-    if ($_SESSION['logged_user']['role'] === '2') {
-      return redirect()->to(base_url('dashboard'));
-    }
+    $this->hasSession();
+    $this->role_checking(['2']);
 
     switch($method)
     {

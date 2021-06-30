@@ -52,4 +52,30 @@ class BaseController extends Controller
 		// E.g.: $this->session = \Config\Services::session();
 		$this->session = session();
 	}
+
+	/**
+     * Check current session
+     */
+    protected function hasSession()
+    {
+		// redirect to login if no session found
+		// redirect to verifyAccount page if session not yet verified
+		if (!$this->session->has('logged_user')) {
+			return redirect()->to(base_url('login'));
+		} elseif (!$_SESSION['logged_user']['emailVerified']) {
+			return redirect()->to(base_url('verifyAccount'));
+		}
+    }
+
+	/**
+	 * Check Role and redirect somewhere if wrong role
+	 */
+	protected function role_checking($prohibited_roles = ['1', '2', '3'])
+	{
+		$role = $_SESSION['logged_user']['role'];
+
+		if (!in_array($role, $prohibited_roles)) {
+			return redirect()->to(base_url('dashboard'));
+		}
+	}
 }

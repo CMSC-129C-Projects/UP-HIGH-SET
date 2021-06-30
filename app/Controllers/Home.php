@@ -21,8 +21,11 @@ class Home extends BaseController
         case 'index':
         case 'login':
         case 'forgot_password':
-        case 'change_password':
         case 'verifyAccount':
+          return $this->$method();
+          break;
+        case 'change_password':
+          $this->hasSession();
           return $this->$method();
           break;
         case 'reset_password':

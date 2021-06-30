@@ -16,36 +16,21 @@ class Evaluation extends BaseController
 {
   public function _remap($method, $param1=null)
   {
-    if (!$this->session->has('logged_user')) {
-      return redirect()->to(base_url('login'));
-    } elseif (!$_SESSION['logged_user']['emailVerified']) {
-      return redirect()->to(base_url('verifyAccount'));
-    }
+    $this->hasSession();
+
     switch ($method)
     {
-      case 'set_status':
-        if ($_SESSION['logged_user']['role'] === '2')
-          return redirect()->to(base_url('dashboard'));
-        else
-          return $this->$method();
-      case 'getUnfinished':
-        if ($_SESSION['logged_user']['role'] === '2')
-          return redirect()->to(base_url('dashboard'));
-        else
-          return $this->$method($param1);
+      case 'archive_evaluation':
+        $this->role_checking(['2']);
+        return $this->$method();
         break;
       case 'submit':
-        if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3') // admin or clerk
-          return redirect()->to(base_url('dashboard'));
-        else
-          return $this->$method($param1);
+        $this->role_checking(['1','3']);
+        return $this->$method($param1);
       case 'evaluate':
-      case 'index':
-        if ($_SESSION['logged_user']['role'] === '1')
-          return redirect()->to(base_url('dashboard'));
-        else
-          return $this->evaluate($param1);
-      }
+        $this->role_checking(['1']);
+        return $this->evaluate($param1);
+    }
   }
   
   public function evaluate($eval_sheet_id = null)
@@ -78,6 +63,10 @@ class Evaluation extends BaseController
     $data['progress'] = $this->computeProgress($numbers[0], $numbers[1]);
     $data['questions'] = $items[0];
     $data['choices'] = $items[1];
+
+    if ($data['progress'] === '100') {
+      return redirect()->to(base_url('dashboard'));
+    }
 
     // $this->archive_evaluation();
     return view('evaluation/evaluate', $data);
@@ -115,6 +104,21 @@ class Evaluation extends BaseController
     $data['choices'] = $items[1];
 
     return view('evaluation/evaluate', $data);
+  }
+
+  /*
+  * Archive current evaluation: is_deleted = 0, thus when the evaluation is done and archived, evaluation papers will not be retrieved by the clerk
+  */
+  public function archive_evaluation()
+  {
+    $evaluationModel = new EvaluationModel();
+
+    $data = $evaluationModel->get_latest_evaluation();
+
+    if (count($data) !== 0) {
+      $evaluationModel->archive_eval_sheet($data[0]->id);
+      $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
+    }
   }
 
   protected function countAnswers($prevAnswers)
@@ -320,28 +324,5 @@ class Evaluation extends BaseController
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);
-  }
-
-  public function submit_evaluation()
-  {
-    $evalModel = new EvaluationModel();
-
-    $datum = ['status' => 'closed'];
-    $evalModel->where('status', 'open')->set($datum)->update();
-  }
-
-  /*
-  * Archive current evaluation: is_deleted = 0, thus when the evaluation is done and archived, evaluation papers will not be retrieved by the clerk
-  */
-  public function archive_evaluation()
-  {
-    $evaluationModel = new EvaluationModel();
-
-    $data = $evaluationModel->get_latest_evaluation();
-
-    if (count($data) !== 0) {
-      $evaluationModel->archive_eval_sheet($data[0]->id);
-      $evaluationModel->where('id', $data[0]->id)->where('is_deleted', 0)->set('is_deleted', 1)->update();
-    }
   }
 }

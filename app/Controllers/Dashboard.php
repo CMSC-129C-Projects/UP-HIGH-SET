@@ -15,6 +15,8 @@ class Dashboard extends BaseController
 {
   public function _remap($method)
   {
+    $this->hasSession(0);
+
     switch($method)
     {
       case 'index':
@@ -126,7 +128,7 @@ class Dashboard extends BaseController
   /*
   * Fetch all the subjects that have been evaluated successfully
   */
-  public function fetch_evaluated_subjects()
+  protected function fetch_evaluated_subjects()
   {
     $subjects_evaluated = [];
 
@@ -159,7 +161,7 @@ class Dashboard extends BaseController
   /*
   * Calculate percentage of subjects completed / total subjects
   */
-  public function get_subjects_stat()
+  protected function get_subjects_stat()
   {
     $subjectModel = new SubjectModel();
 
@@ -179,7 +181,7 @@ class Dashboard extends BaseController
   */
   // default choice is 1: get associative array (Prof: percentage of completion based on subjects evaluated),
   // 2: return number of professors that have been completely evaluated (all subjects handled have been evaluated)
-  public function get_faculty_stat($choice = 1)
+  protected function get_faculty_stat($choice = 1)
   {
     $facultyModel = new FacultyModel();
 
@@ -236,7 +238,7 @@ class Dashboard extends BaseController
   // choice 1: percentage (student done evaluating / total students) [DEFAULT]
   // choice 2: array of students done evaluating (student object from database)
   // choice 3: array of students still evaluating  or will have to evaluate with  their details (first name, last name and id)
-  public function get_student_stat($choice = 1) {
+  protected function get_student_stat($choice = 1) {
     $subjectModel = new SubjectModel();
     $userModel = new UserModel();
 
@@ -270,7 +272,7 @@ class Dashboard extends BaseController
   /*
   * Returns an associative array: Student Name => array of subjects in progress
   */
-  public function get_subject_in_progress_by_student() {
+  protected function get_subject_in_progress_by_student() {
     $subjectModel = new SubjectModel();
     $keys = [];
     $values = [];

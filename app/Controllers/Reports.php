@@ -14,20 +14,24 @@ class Reports extends BaseController
 {
     protected $sections;
 
-
-    function __construct()
+    public function _remap($method, $param1 = null)
     {
-        $this->sections = [7 => 'Bartlett', 8 => 'Villamor', 9 => 'Benton', 10 => 'Palma', 11 => 'Bocobo', 12 => 'Sison'];
+        $this->hasSession();
+        $this->role_checking(['2', '3']);
+
+        switch($method)
+        {
+            case 'report_per_subject':
+                return $this->$method($param1);
+                break;
+            case 'report_per_faculty':
+                return $this->$method($param1);
+                break;
+        }
     }
 
-    public function index() {
-        $css = ['custom/monitor/monitor.css'];
-        $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
-        $data = [
-            'css' => addExternal($css, 'css'),
-            'js'  => addExternal($js, 'javascript')
-        ];
-        return view('monitor/monitor', $data);
+    function __construct() {
+        $this->sections = [7 => 'Bartlett', 8 => 'Villamor', 9 => 'Benton', 10 => 'Palma', 11 => 'Bocobo', 12 => 'Sison'];
     }
 
     /**

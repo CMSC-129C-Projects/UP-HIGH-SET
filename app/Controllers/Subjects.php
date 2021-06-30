@@ -10,35 +10,29 @@ class Subjects extends BaseController
 {
     public function _remap($method, $param1 = null, $param2 = null)
     {
+        $this->hasSession();
+
         switch($method)
         {
-            case 'add_subject':
             case 'get_subjects_taken':
-                $this->hasSession(0);
+                $this->role_checking(['1','3']);
                 return $this->$method();
                 break;
             case 'student_subjects':
-                if ($_SESSION['logged_user']['role'] === '1' || $_SESSION['logged_user']['role'] === '3')
-                    return redirect()->to(base_url('dashboard'));
-                $this->hasSession(0);
+                $this->role_checking(['1','3']);
                 return $this->$method();
                 break;
             case 'delete_subject':
             case 'edit_subject':
-                if ($_SESSION['logged_user']['role'] === '2')
-                    return redirect()->to(base_url('dashboard'));
-                $this->hasSession(0);
+                $this->role_checking(['2']);
                 return $this->$method($param1, $param2);
+            case 'add_subject':
             case 'get_all_subjects':
-                if ($_SESSION['logged_user']['role'] === '2')
-                    return redirect()->to(base_url('dashboard'));
-                $this->hasSession(0);
+                $this->role_checking(['2']);
                 return $this->$method();
                 break;
             case 'index':
-                if ($_SESSION['logged_user']['role'] === '2')
-                    return redirect()->to(base_url('dashboard'));
-                $this->hasSession(0);
+                $this->role_checking(['2']);
                 return $this->$method($param1);
             default:
                 return redirect()->to(base_url('dashboard'));
@@ -232,26 +226,5 @@ class Subjects extends BaseController
         $faculModel = new FacultyModel();
 
         return ($profs = $faculModel->where('is_deleted', '0')->findAll()) ? $profs : null;
-    }
-
-    protected function hasSession($type) {
-        if ($type === 0) {
-            // redirect to login if no session found
-            // redirect to verifyAccount page if session not yet verified
-            if (!$this->session->has('logged_user')) {
-                return redirect()->to(base_url('login'));
-            } elseif (!$_SESSION['logged_user']['emailVerified']) {
-                return redirect()->to(base_url('verifyAccount'));
-            }
-        } else {
-            // redirect to login if no session found
-            if (!$this->session->has('logged_user')) {
-                return redirect()->to(base_url());
-            } elseif ($_SESSION['logged_user']['role'] != '1') {
-                return redirect()->to(base_url());
-            } elseif (!$_SESSION['logged_user']['emailVerified']) {
-                return redirect()->to(base_url('verifyAccount'));
-            }
-        }
     }
 }

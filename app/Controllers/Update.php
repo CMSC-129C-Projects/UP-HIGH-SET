@@ -15,29 +15,27 @@ class Update extends BaseController
 
     public function _remap($method, $param1=null, $param2=null)
     {
-        if ($method === 'studentList' || $method === 'adminList' || $method === 'clerkList') {
-            $this->hasSession(1);
-        } else {
-            $this->hasSession(0);
-        }
-        if ($method !== 'update_2fverification' && $_SESSION['logged_user']['role'] === '2') {
-            return redirect()->to(base_url('dashboard'));
-        }
+        $this->hasSession();
 
         switch($method)
         {
             case 'index':
             case 'add':
             case 'studentList':
+                $this->role_checking(['2']);
+                return $this->$method($param1);
+                break;
             case 'update_2fverification':
                 return $this->$method($param1);
                 break;
             case 'edit':
             case 'delete':
+                $this->role_checking(['2']);
                 return $this->$method($param1, $param2);
                 break;
             case 'adminList':
             case 'clerkList':
+                $this->role_checking(['2']);
                 return $this->$method();
                 break;
             default:

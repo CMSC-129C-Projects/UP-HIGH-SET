@@ -37,11 +37,11 @@
       </div>
 
       <div class ="setEvalDropDown d-flex justify-content-center">
-          <select name="dropdown1" id="drpdwn1" class="custom-select" style="width:10%">
+          <select name="dropdown1" id="drpdwn1" class="custom-select">
               <option value="semester" selected="selected">Semester</option>
               <option value="grading">Grading</option>
           </select>
-          <select name="dropdown2" id="drpdwn2" class="custom-select" style="width:10%">
+          <select name="dropdown2" id="drpdwn2" class="custom-select">
               <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>

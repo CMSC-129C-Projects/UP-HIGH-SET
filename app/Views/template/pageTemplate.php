@@ -319,6 +319,30 @@
       background: #7b1113;
       color: #fff;
     }
+    .modal-button .button2:disabled {
+    /* opacity: 0.5!important; */
+    cursor: default;
+  }
+
+  
+  .modal-button .button2:hover::before,
+  .modal-button .button2:hover::before {
+    width: 100%;
+  }
+  
+
+  .modal-button .button2:hover {
+    color: #ffff;
+    background: #014421;
+  }
+
+
+
+
+
+
+
+
   </style>
 
     <!-- footer section starts  -->

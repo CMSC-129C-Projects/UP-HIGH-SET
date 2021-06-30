@@ -9,6 +9,24 @@ class Profile extends BaseController
 {
     protected $userModel;
 
+    public function _remap($method, $param = null)
+    {
+        $this->hasSession();
+        switch($method)
+        {
+            case 'student':
+                $this->role_checking(['1','3']);
+            case 'admin':
+                $this->role_checking(['2','3']);
+            case 'clerk':
+                $this->role_checking(['1','2']);
+                return $this->$method();
+                break;
+            default:
+                return redirect()->to(base_url('dashboard'));
+        }
+    }
+
     function __construct()
     {
         $this->userModel = new UserModel();
@@ -46,6 +64,9 @@ class Profile extends BaseController
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
+        $data['role'] = '2';
 
         return view("account_updates/profileUpdate", $data);
     }
@@ -81,13 +102,74 @@ class Profile extends BaseController
                     'last_name'   => $this->request->getPost('last_name'),
                     'email'       => $email
                 ];
-                $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
+                if ($this->userModel->update($sessionAdmin->id, $values)) {
+                    $data['status'] = true;
+                    $_SESSION['logged_user']['first_name'] = $values['first_name'];
+                    $_SESSION['logged_user']['last_name'] = $values['last_name'];
+                    $_SESSION['logged_user']['avatar_url'] = $values['avatar_url'];
+                    $_SESSION['logged_user']['email'] = $values['email'];
+                } else {
+                    $data['status'] = false;
+                }
+                return redirect()->to(base_url('profile/admin/true'));
             } else {
                 $data['validation'] = $this->validator;
             }
         }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
+        $data['role'] = '1';
 
         return view("account_updates/adminProfileUpdate", $data);
+    }
+
+    public function clerk()
+    {
+        $role = $_SESSION['logged_user']['role'];
+
+        $sessionAdmin = new Admin();
+
+        $sessionAdmin = $this->userModel->asObject('App\Entities\Admin')->where('is_deleted', 0)->where('role', $role)->where('email', $_SESSION['logged_user']['email'])->first();
+
+        $data = $this->setDefaultData($role, $sessionAdmin->id);
+
+        $css = ['custom/profileUpdate/pUpdate.css', 'custom/alert.css', 'custom/avatar.css'];
+        $js = ['custom/profileUpdate/pUpdate.js', 'custom/alert.js', 'custom/avatar.js'];
+        $data['js'] = addExternal($js, 'javascript');
+        $data['css'] = addExternal($css, 'css');
+
+        $data['validation'] = null;
+        $data['status'] = null;
+        $data['role'] = $role;
+        // $data['id'] = $id;
+
+        if($this->request->getMethod() == 'post') {
+            if($this->validate($this->setRules($role, $sessionAdmin->id))) {
+                $email = $this->request->getPost('email') . '@up.edu.ph';
+                $values = [
+                    'avatar_url'  => $this->request->getPost('avatar'),
+                    'contact_num' => $this->request->getPost('mobile'),
+                    'username'    => $this->request->getPost('username'),
+                    'first_name'  => $this->request->getPost('first_name'),
+                    'last_name'   => $this->request->getPost('last_name'),
+                    'email'       => $email
+                ];
+                $_SESSION['logged_user']['first_name'] = $values['first_name'];
+                $_SESSION['logged_user']['last_name'] = $values['last_name'];
+                $_SESSION['logged_user']['avatar_url'] = $values['avatar_url'];
+                $_SESSION['logged_user']['email'] = $values['email'];
+                
+                $data['status'] = ($this->userModel->update($sessionAdmin->id, $values)) ? true : false;
+                return redirect()->to(base_url('profile/clerk/true'));
+            } else {
+                $data['validation'] = $this->validator;
+            }
+        }
+        $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+        
+        $data['role'] = '1';
+
+        return view("account_updates/clerkProfileUpdate", $data);
     }
 
     /**
@@ -108,7 +190,7 @@ class Profile extends BaseController
             $data['cn'] = $student->contact_num;
             $data['glevel'] = $student->grade_level;
             $data['avatar_url'] = $student->avatar_url;
-            $data['email'] = $student->email;
+            $data['email'] = str_replace('@up.edu.ph', '', $student->email);
         } else {
             $adminUpdate = new Admin();
             if(isset($id)) {
@@ -119,7 +201,7 @@ class Profile extends BaseController
             $data['lN'] = $adminUpdate->last_name;
             $data['uN'] = $adminUpdate->username;
             $data['cN'] = $adminUpdate->contact_num;
-            $data['eml'] = $adminUpdate->email;
+            $data['eml'] = str_replace('@up.edu.ph', '', $adminUpdate->email);
             $data['avatar_url'] = $adminUpdate->avatar_url;
         }
 
@@ -162,15 +244,5 @@ class Profile extends BaseController
         }
 
         return $rules;
-    }
-
-    protected function hasSession() {
-        // redirect to login if no session found
-        // redirect to verifyAccount page if session not yet verified
-        if (!$this->session->has('logged_user')) {
-            return redirect()->to(base_url('login'));
-        } elseif (!$_SESSION['logged_user']['emailVerified']) {
-            return redirect()->to(base_url('verifyAccount'));
-        }
     }
 }

@@ -5,15 +5,22 @@ use App\Models\EmailModel;
 
 class Send_email extends BaseController {
 
-  public function index() {
-    // redirect to login if no session found
-    // redirect to verifyAccount page if session not yet verified
-    if (!$this->session->has('logged_user')) {
-      return redirect()->to(base_url('login'));
-    } elseif (!$_SESSION['logged_user']['emailVerified']) {
-      return redirect()->to(base_url('verifyAccount'));
-    }
+  public function _remap($method)
+  {
+    $this->hasSession();
+    $this->role_checking(['2']);
 
+    switch($method)
+    {
+        case 'index':
+          return $this->$method();
+          break;
+        default:
+          return redirect()->to(base_url('dashboard'));
+    }
+  }
+
+  public function index() {
     $data = [];
     $rules = [
       'email_subject' => 'required',
@@ -37,7 +44,6 @@ class Send_email extends BaseController {
     {
       if($this->validate($rules))
       {
-        $data['status'] = 'success';
         $emailModel = new EmailModel();
 
         $q_data = [
@@ -46,15 +52,51 @@ class Send_email extends BaseController {
           'purpose' => $email_purpose
         ];
 
-        $emailModel->insert($q_data);
+        // $data['status'] = $emailModel->insert($q_data) ? true: false;
+        $data['status'] = $this->send_notification($q_data);
+
       } else {
         $data = [
           'css'   => addExternal($css, 'css'),
-          'validation' => $this->validator
+          'validation' => $this->validator,
+          'status' => null
         ];
       }
     }
 
+    $data['status'] = $data['status'] ? 'true' : (isset($data['status']) ? 'false' : null);
+
     return view('email/send_email', $data);
+  }
+
+  protected function send_notification($data = null)
+  {
+    if(isset($data))
+    {
+      $emailModel = new EmailModel();
+
+      //alert user that his/her account's password changed if you did not do it
+      $search = ['-content-', '-student-', '-website_link-'];
+      $subject = $data['title'];
+
+      $message = file_get_contents('app/Views/verification.html');
+  		$replace = [$data['message'], $_SESSION['logged_user']['first_name'], base_url()]; //redirect to login page
+
+  		$message = str_replace($search, $replace, $message);
+
+      $userModel = new UserModel();
+      $users = $userModel->where('is_deleted', 0)->where('role', 2)->where('is_active', 1)->findAll();
+
+      foreach($users as $user) {
+        $status = send_acc_notice($user->email, $subject, $message);
+        if ($status == false) {
+          return $status;
+        }
+      }
+      
+  		return $status;
+
+      return $status;
+    }
   }
 }

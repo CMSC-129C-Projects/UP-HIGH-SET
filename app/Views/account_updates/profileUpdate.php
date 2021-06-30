@@ -1,53 +1,46 @@
-<?= $this->extend('template/pageTemplate');?>
+<?php if ($role === '1'):?>
+    <?= $this->extend('template/default');?>
+<?php else:?>
+    <?= $this->extend('template/studentTemplate');?>
+<?php endif;?>
 
 <?= $this->section('content');?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <?php if(isset($status) && $status):?>
-        <div id="bg-modal" class="black-modal-email">
-            <div id="content-modal" class="customModal-email horizontalCenter verticalCenter">
-                <div class="mdl-content">
-                    <p>User updated successfully!</p>
-                    <div class="btn-delete">
-                        <button id="dontDelete">Dismiss</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif;?>
+    <span style="display: none;" id="status" data-status="<?=$status?>"></span>
     
     <div id="myModal" class="custom-modal">
         <!-- Modal content -->
         <div class="m-content">
             <span class="close">&times;</span>
-            <select class="image-picker show-html" id="avatars">
-                <option data-img-src="<?=base_url();?>/public/images/avatars/hacker.png" value="1">Hacker</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/woman.png" value="2">Woman</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/ninja.png" value="3">Ninja</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/businesswoman.png" value="4">Business Woman</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/burglar.png" value="5">Burglar</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/soldier.png" value="6">Soldier</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/rasta.png" value="7">Rasta</option>
-                <option data-img-src="<?=base_url();?>/public/images/avatars/rapper.png" value="8">Rapper</option>
+            <select class="image-picker show-html" id="avatars" name="image_list">
+                <option data-img-src="<?=base_url();?>/public/images/avatars/hacker.png" value="/public/images/avatars/hacker.png">Hacker</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/woman.png" value="/public/images/avatars/woman.png">Woman</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/ninja.png" value="/public/images/avatars/ninja.png">Ninja</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/businesswoman.png" value="/public/images/avatars/businesswoman.png">Business Woman</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/burglar.png" value="/public/images/avatars/burglar.png">Burglar</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/soldier.png" value="/public/images/avatars/soldier.png">Soldier</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/rasta.png" value="/public/images/avatars/rasta.png">Rasta</option>
+                <option data-img-src="<?=base_url();?>/public/images/avatars/rapper.png" value="/public/images/avatars/rapper.png">Rapper</option>
             </select>
         </div>
     </div>
 
-    <section class="profileupdate" style="margin: auto; margin-top:50px; martin-bottom:50px;">
+    <section class="profileupdate" style="margin: auto; padding-bottom: 10vh;">
         <div class="container" >
             <div class="row">
                 <div class="col-sm-10"><h2><?=$lName;?>, <?=$fName;?></h2></div>
             </div>
             <div class="row">
-                <div class="col-sm-3"><!--left col-->
-                    <div class="text-center">
-                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar">
-                        <button type="changeAvatar" id="myBtn">Change Avatar</button>
+                <div class="col-sm-3 custom"><!--left col-->
+                    <div class="text-center" style="align-items:center;">
+                        <img src='<?=base_url() . $avatar_url;?>' id="selected_avatar" style="margin-top:2rem;" class="text-center">
+                        <button type="changeAvatar" id="myBtn" class="text-center">Change Avatar</button>
                     </div>
                     </hr>
                     <br>
                 </div><!--/col-3-->
-                <div class="col-sm-9">
+                <div class="col-sm-9 align">
                     <div class="tab-content">              
                         <hr>
                         <form class="form" action="<?=base_url();?>/profile/student" method="post" id="registrationForm">
@@ -79,6 +72,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
+                                    <p style="float:right; position:relative; top:4.9rem; right:1rem; color:black; font-size:2.1vmin; ">@up.edu.ph</p>
                                     <input type="email" class="form-control" name="email" id="email" value="<?=set_value('email', $email);?>" disabled>
                                 </div>
                             </div>
@@ -100,7 +94,7 @@
                                 <div class="col-xs-6">
                                    
                                    
-                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;">Change Password</button>
+                                    <button type="button" id="changePass" style="width: 15rem; margin-top: 42px;"><i class="bi bi-lock"></i> Change Password</button>
                                 </div>
                             </div>
                             <!-- <div class="form-group">
@@ -112,8 +106,8 @@
                                 <div class="col-xs-12">
                                     <br>
                                    
-                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    <button type="button" class="btn btn-lg cancel"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                                    <button class="btn btn-lg btn-success" type="submit" style="margin-left: 0rem;"><i class="bi bi-check-circle"></i> Save</button>
+                                    <button type="button" class="btn btn-lg cancel"><i class="bi bi-x-circle"></i> Cancel</button>
                                 </div>
                             </div>
                         </form>

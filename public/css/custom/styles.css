@@ -8,6 +8,10 @@
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
+@font-face {
+  font-family: 'OPTIMA';
+  src: url('../../fonts/Optima-Font/unicode.optima.ttf');
+}
 
 html {
   font-size: 10px;
@@ -17,9 +21,24 @@ html {
 body {
   overflow-x: hidden;
   color: black;
-  background-color: black;
+  background-color: #e9dbc1 !important;
   padding: 0;
   margin: 0;
+}
+
+body { min-height: 100vh !important; margin: 0 !important; }
+
+#header { min-height:50px !important; }
+#footer { min-height:50px !important; }
+
+/* Trick */
+body{ 
+  display:flex !important; 
+  flex-direction:column !important;
+}
+
+#footer {
+  margin-top:auto !important;
 }
 
 #header {
@@ -28,7 +47,7 @@ body {
   left: 0;
   padding: 2rem 4rem;
   z-index: 1000;
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background:#7b1113;
   position: sticky;
 }
 
@@ -43,6 +62,7 @@ body {
   margin-top: 0px;
   color: #e9dbc1;
   font-size: 18px;
+  font-family: 'OPTIMA';
 }
 
 #header .schoolWebsiteName h2 {
@@ -50,7 +70,8 @@ body {
   margin-top: 5px;
   font-style: italic;
   color: #e9dbc1;
-  font-size: 15px;
+  font-size: 17px;
+  font-family: 'OPTIMA';
 }
 
 #header .schoolWebsiteName a {
@@ -66,7 +87,8 @@ body {
 
 #register .nav {
   margin: auto;
-  width: 700px;
+  /* width: 700px; */
+  width: 61.4%; 
 }
 
 #register .nav h2 {
@@ -80,7 +102,7 @@ body {
 #register .nav input[type="button"] {
   outline: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.7vmin;
   font-weight: bold;
   text-transform: capitalize;
   letter-spacing: 0.2rem;
@@ -89,8 +111,8 @@ body {
   z-index: 1;
   overflow: hidden;
   background: #7b1113;
-  height: 3rem;
-  width: 8rem;
+  height: 4vmin;
+  width: 12vmin;
   color: #fff;
   padding: 0.75rem !important;
   text-align: center !important;
@@ -107,6 +129,9 @@ body {
 #btn-student {
   margin-left: -2px;
 }
+#btn-clerk {
+  margin-left: -2px;
+}
 
 #register .nav input[type="button"]:hover::before {
   width: 100%;
@@ -119,7 +144,7 @@ body {
 
 #register .heading h1,
 .heading h1 {
-  font-size: 4rem;
+  font-size: 5.8vmin;
   color: #7b1113;
   padding-top: 5rem;
   margin-bottom: 2rem;
@@ -127,7 +152,8 @@ body {
 
 #register form {
   background: #fff;
-  width: 700px;
+  /* width: 700px; */
+  width: 60%;
   margin-top: -0.25rem;
   border-radius: 0 0 1.5rem 1.5rem;
   -webkit-box-shadow: 0 0 2rem #333;
@@ -174,6 +200,27 @@ body {
   outline: none !important;
   border-radius: 0 !important;
 }
+.form-group .form-select {
+  border: 0.15rem solid #333;
+  font-family: "Roboto";
+  /* border-radius: 1.3rem; */
+  margin: 1.65rem 0;
+  padding: 0 1rem;
+  background: none;
+  height: 3.8rem;
+  width: 85%;
+  font-size: 1.5rem;
+
+  border-image-source: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: groove !important;
+  outline: none !important;
+  border-radius: 0 !important;
+}
 
 #register form .inputBox input:focus ~ h3,
 #register form .inputBox input:valid ~ h3,
@@ -186,18 +233,27 @@ body {
 }
 
 #register form .inputBox h3 {
-  font-size: 1.4rem;
+  font-size: 2vmin;
   position: absolute;
   top: 3rem;
   left: 10%;
 }
+#register form .inputBox h4 {
+  font-size: 2vmin;
+  /* position: absolute; */
+  text-align: right;
+  float: right;
+  margin-right: 10%;
+  position: relative;
+  margin-top: -40px;
+}
 
-#register form input[type="submit"],
+#register form button[type="submit"],
 button#cancel,
-input[type="submit"] {
+button[type="submit"] {
   outline: none;
   border: none;
-  border-radius: 5rem;
+  border-radius: 2rem;
   color: #7b1113;
   font-size: 1.2rem;
   font-weight: bold;
@@ -214,15 +270,15 @@ input[type="submit"] {
   color: #fff;
 }
 
-#register form input[type="submit"]:hover::before,
+#register form button[type="submit"]:hover::before,
 button#cancel:hover::before,
-input[type="submit"]:hover::before {
+button[type="submit"]:hover::before {
   width: 100%;
 }
 
-#register form input[type="submit"]:hover,
+#register form button[type="submit"]:hover,
 button#cancel:hover,
-input[type="submit"]:hover {
+button[type="submit"]:hover {
   color: #ffff;
   background: #014421;
 }
@@ -232,8 +288,10 @@ input[type="submit"]:hover {
   margin: auto;
 }
 
+/* FOOTER */
+
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+ 
   width: 100%;
   bottom: 0;
   left: 0;
@@ -254,14 +312,17 @@ input[type="submit"]:hover {
 }
 
 #footer .contactLinks h3 {
-  font-size: 18px;
+  font-size: 3vmin;
   color: #e9dbc1;
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'OPTIMA';
 }
 
 #footer .contactLinks a {
   color: #e9dbc1;
-  font-size: 14px;
+  font-size: 2vmin;
+  font-family: 'OPTIMA';
 }
 
 /* a#btn-student.active {
@@ -278,13 +339,16 @@ a#btn-admin.active {
 
 /* Additional css for layout */
 .nav-tabs .nav-link.active#btn-admin,
-.nav-tabs .nav-link.active#btn-student {
+.nav-tabs .nav-link.active#btn-student,
+.nav-tabs .nav-link.active#btn-clerk {
   background-color: transparent !important;
   border-color: transparent !important;
 }
 
 .nav-tabs .nav-link#btn-admin,
-.nav-tabs .nav-link#btn-student {
+.nav-tabs .nav-link#btn-student,
+.nav-tabs .nav-link#btn-clerk,
+.nav-tabs .nav-link.active#btn-student {
   /* margin-right: -10px; */
   margin-right: 0;
   margin-bottom: 0 !important;
@@ -294,15 +358,6 @@ a#btn-admin.active {
   padding: 0;
 }
 
-#register .nav input[type="button"]:focus,
-.student.focus,
-.admin.focus {
-  background-color: #fff !important;
-  color: #7b1113 !important;
-  text-transform: uppercase !important;
-  font-size: 1.2rem !important;
-}
-
 /* .student.focus {
     margin-left: 2px !important;
   } */
@@ -310,7 +365,8 @@ a#btn-admin.active {
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link#btn-admin:hover,
 .nav-tabs .nav-link:focus,
-.nav-tabs .nav-link#btn-student:hover {
+.nav-tabs .nav-link#btn-student:hover,
+.nav-tabs .nav-link#btn-clerk:hover {
   border-color: transparent;
 }
 
@@ -322,8 +378,7 @@ form.add {
   padding: 2.75rem 1.5rem !important;
 }
 form.edit {
-    padding: 2.75rem 1.50rem !important;
-
+  padding: 2.75rem 1.5rem !important;
 }
 
 .row-md-4.email {
@@ -339,8 +394,9 @@ form.edit {
 }
 
 #footer {
-  background: linear-gradient(to top right, #800000 0%, #228b22 100%);
+  background: #7b1113;
   width: 100%;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -355,11 +411,13 @@ form.edit {
   -webkit-box-direction: normal;
   -ms-flex-flow: column;
   flex-flow: column;
-  margin: 1rem 0;
+  margin: .5rem 0;
   margin: auto;
+  padding: 0%;
+  margin-bottom: 0.5rem;
 }
 
-#footer .contactLinks h3 {
+/* #footer .contactLinks h3 {
   font-size: 18px;
   color: #e9dbc1;
   margin-top: 1rem;
@@ -368,7 +426,7 @@ form.edit {
 #footer .contactLinks a {
   color: #e9dbc1;
   font-size: 14px;
-}
+} */
 
 /* STYLE SA DASHBOARD */
 /*
@@ -382,7 +440,7 @@ body {
 }
 
 p {
-  font-family: "Poppins", sans-serif;
+  /* font-family: arial; */
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
@@ -424,7 +482,7 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
@@ -443,7 +501,6 @@ a:focus {
   transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
   transform-origin: bottom left;
 }
-
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #sidebar::-webkit-scrollbar {
@@ -482,6 +539,12 @@ a:focus {
   color: #7b1113;
   background-color: #ffed8a;
 }
+#sidebar ul.components ul.CTAs a:hover {
+  background-color: none;
+}
+#sidebar .list-unstyled.CTAs.components .evaluate a:hover{
+  background-color: transparent !important;
+}
 
 #sidebar ul p {
   color: #e9dbc1;
@@ -508,7 +571,6 @@ a:focus {
 #sidebar ul li a:active {
   text-decoration: none;
 }
-
 
 a[data-toggle="collapse"] {
   position: relative;
@@ -548,12 +610,14 @@ a.article:hover {
 
 .navIcon .navbar-header i {
   color: #7b1113;
-  font-size: 30px;
+  font-size: 6.5vmin;
+  margin-left: 1rem !important;
+  background-color: transparent !important;
 }
 .navIcon .navbar-header #sidebarCollapse {
   background-color: #e9dbc1;
 }
-#sidebar .nav-link input[type="button"] {
+#sidebar .nav-link button[type="button"] {
   outline: none;
   border-color: #ffed8a;
   border-style: groove;
@@ -571,15 +635,17 @@ a.article:hover {
   background: #7b1113;
   color: #ffed8a;
 }
-#sidebar .nav-link input[type="button"]:hover::before {
+#sidebar .nav-link button[type="button"]:hover::before {
   width: 100%;
 }
-#sidebar .nav-link input[type="button"]:hover {
+#sidebar .nav-link button[type="button"]:hover {
   color: #7b1113;
   background: #ffed8a;
 }
-
-#sidebar .logout .nav-link input[type="button"] {
+#sidebar .logout .nav-link button[type="button"] i{
+  font-size: 1.3rem;;
+}
+#sidebar .logout .nav-link button[type="button"] {
   margin-top: 20px;
   outline: none;
   border-color: #ffed8a;
@@ -598,12 +664,12 @@ a.article:hover {
   background: #ffed8a;
   color: #7b1113;
 }
-#sidebar .logout .nav-link input[type="button"]:hover::before {
+#sidebar .logout .nav-link button[type="button"]:hover::before {
   width: 100%;
 }
-#sidebar .logout .nav-link input[type="button"]:hover {
+#sidebar .logout .nav-link button[type="button"]:hover {
   color: #ffff;
-  background: #7b1114;
+  background: #7b1113;
 }
 
 /* ---------------------------------------------------
@@ -664,6 +730,18 @@ a.article:hover {
   margin-top: 6rem;
   width: 100%;
 }
+#Contents .welcomeMsg img.img-fluid.image2{
+display: none;
+}
+@media (max-width: 500px){
+  #Contents .welcomeMsg img.img-fluid.image1{
+    display: none;
+    }
+
+    #Contents .welcomeMsg img.img-fluid.image2{
+      display: block;
+      }
+}
 
 .adminDashboardButtons {
   position: relative;
@@ -707,6 +785,221 @@ a.article:hover {
   background: #014421;
 }
 
+#register .nav .active input[type="button"] {
+  background-color: #fff !important;
+  color: #7b1113 !important;
+  text-transform: uppercase !important;
+  font-size: 2vmin !important;
+}
+
+/* LOADER */
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+/* .se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../assets/Preloader_11.gif) center no-repeat #fff;
+} */
+
+.bg-loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background-color: #e9dbc1;
+}
+
+.se-pre-con,
+.se-pre-con:before,
+.se-pre-con:after {
+  background: #000000;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.se-pre-con {
+	position: fixed;
+	transform: translateX(-50%);
+	top: 50%;
+	left: 50%;
+	/* transform: translate(-50%, -50%); */
+	z-index: 9999;
+	color: #000000;
+	/* text-indent: -9999em;
+	margin: 88px auto;
+	position: relative; */
+	/* font-size: 11px; */
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+.se-pre-con:before,
+.se-pre-con:after {
+	position: absolute;
+	top: 0;
+	content: '';
+}
+.se-pre-con:before {
+	left: -1.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+.se-pre-con:after {
+  	left: 1.5em;
+}
+
+.knobs, .layer
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button-2f
+{
+    position: relative;
+    /* top: 50%; */
+    /* left: 60%; */
+    top: 1.5vh;
+    width: 50px;
+    height: 20px;
+    /* margin: -20px auto 0 auto; */
+    /* overflow: hidden; */
+}
+
+.button-2f.r, .button-2f.r .layer
+{
+    border-radius: 100px;
+}
+
+.button-2f.b2
+{
+    border-radius: 2px;
+}
+
+.checkbox
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs
+{
+    z-index: 2;
+}
+
+.layer
+{
+    width: 100%;
+    background-color: #e9dbc1;
+    /* border: solid #7b1113; */
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+/* Button 6 */
+#button-6
+{
+    overflow: visible;
+}
+
+#button-6 .dot {
+  height: 15px;
+  width: 15px;
+  background-color: #7b1113;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  top: 9%;
+  left: 8%;
+}
+/* #button-6 .knobs:before
+{
+    content: 'YES';
+    position: relative;
+    top: 10px;
+    left: 4px;
+    width: 20px;
+    height: 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    background-color: #03A9F4;
+    border-radius: 50%;
+} */
+
+#button-6 .layer, #button-6 .knobs, #button-6 .knobs:before
+{
+    transform: rotateZ(0);
+    transition: 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-6 .checkbox:checked + .knobs
+{
+    transform: rotateZ(-180deg);
+}
+
+#button-6 .checkbox:checked + .dot:before
+{
+    /* content: 'NO'; */
+    background-color: #e9dbc1;
+    transform: rotateZ(180deg);
+}
+
+#button-6 .checkbox:checked ~ .layer
+{
+    background-color: #e9dbc1;
+    transform: rotateZ(180deg);
+}
+
+@-webkit-keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+@keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -720,3 +1013,88 @@ a.article:hover {
     transform: none;
   }
 }
+.tabs .mobiletab{
+  float: left;
+}
+
+@media (max-width: 1199px){
+.profileupdate .container .col-sm-3.custom {
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    float: left !important;
+    width:100%;
+    position: relative!important;
+    min-height: 1px!important;
+    padding-right: 15px!important;
+    padding-left: 15px!important;
+}
+}
+@media (max-width: 1199px){
+  .profileupdate .container .col-sm-9.align {
+      -ms-flex: 0 0 100% !important;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      float: left !important;
+      width:100%!important;
+      position: relative!important;
+      min-height: 1px!important;
+      padding-right: 15px!important;
+      padding-left: 15px!important;
+      align-items: center!important;
+      margin: auto!important;
+  }
+  }
+  /* @media (max-width: 351px){
+    .profileupdate .container .col-sm-9.align {
+        -ms-flex: none !important;
+        flex: none !important;
+        max-width: 75% !important;
+        float: left !important;
+        width:100%!important;
+        position: relative!important;
+        min-height: 1px!important;
+        padding-right: 15px!important;
+        padding-left: 15px!important;
+        align-items: center!important;
+        margin: auto!important;
+    }
+    } */
+    #header .schoolWebsiteName.portrait{
+      display: none;
+    }
+
+    @media (max-width: 516px){
+      #header .schoolWebsiteName.landscape{
+        display: none;
+        }
+    
+      #header .schoolWebsiteName.portrait{
+          display: block;
+          }
+          #header .schoolWebsiteName.portrait h1{
+            font-size: 17px;
+            margin-top: -7px !important;
+          }
+          #header .schoolWebsiteName.portrait h2{
+            font-size: 14px;
+          }
+    }
+    @media (max-width: 369px){
+      #header .schoolWebsiteName.portrait h1{
+        font-size: 15px;
+        margin-top: -4.5px !important;
+      }
+      #header .schoolWebsiteName.portrait h2{
+        font-size: 12.5px;
+      }
+    }
+    @media (max-width: 332px){
+      #header .schoolWebsiteName.portrait h1{
+        font-size: 14px;
+        margin-top: -3.5px !important;
+      }
+      #header .schoolWebsiteName.portrait h2{
+        font-size: 12.5px;
+      }
+    }

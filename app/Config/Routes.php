@@ -36,14 +36,24 @@ $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Dashboard::index');
 // $routes->get('profile', 'Profile::index');
 $routes->match(['get', 'post'], 'login', 'Home::login', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], 'add_faculty', 'Professors::add_faculty');
+$routes->match(['get', 'post'], 'evaluation/set_status', 'Evaluation::set_status');
+$routes->match(['get', 'post'], 'category', 'Evaluation::set_category');
 $routes->match(['get', 'post'], 'forgot_password', 'Home::forgot_password');
 $routes->match(['get', 'post'], 'change_password', 'Home::change_password');
 $routes->match(['get', 'post'], 'reset_password/(:any)', 'Home::reset_password/$1');
+
 $routes->add('reset_password', 'Home::reset_password');
 $routes->add('verification/(:any)', 'Home::verification/$1');
 $routes->add('verifyAccount', 'Home::verifyAccount');
 $routes->add('update/admin', 'Update::index/admin');
 $routes->add('update/student', 'Update::index/student');
+$routes->add('update/clerk', 'Update::index/clerk');
+
+// VIEW SUBECTS HANDLED BY A PROFESSOR
+$routes->add('view_subjects/(:any)', 'Subjects::index/$1');
+// ADD SUBJECT HANDLED
+$routes->add('subjects/add_subject', 'Subjects::add_subject');
 
 /*
  * --------------------------------------------------------------------

@@ -85,6 +85,10 @@ class CustomRules {
         return (count($admins) === 0);
     }
 
+    public function correctGradeLevel(string $str): bool {
+        return $str !== '0';
+    }
+
     public function isUniqueEmail(string $str): bool {
         $userModel = new \App\Models\UserModel();
         $str .= '@up.edu.ph';
@@ -119,6 +123,14 @@ class CustomRules {
             // that duplicate username is the user's current username, then return true also
             // (This means the user entered the same username, but still pressed submit)
         if(count($user) === 0 || (count($user) === 1 && $user[0]['username'] === $student['username'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function correctDateFormat(string $str): bool {
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $str)) {
             return true;
         } else {
             return false;

@@ -1,0 +1,357 @@
+.admindashboard {
+    padding: 10vh;
+}
+
+.container {
+    border: solid #7b1113;
+    overflow-x: auto;
+    padding: 3% 5%;
+}
+
+.item-table .card {
+    min-width: 500px;
+}
+
+.dayscount .card {
+    min-width: 250px;
+}
+
+.card {
+    padding: 5vh;
+    background-color: #fff;
+}
+
+.card b {
+    font-size: 3vmin;
+}
+
+.card i {
+    font-size: 2vmin;
+}
+
+.card hr {
+    border-top: solid 2px #7b1113;
+    background-color: #7b1113;
+}
+
+.progress-circle .card {
+    min-width: 250px;
+}
+
+.effect6
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect6:before, .effect6:after
+{
+  content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect6:after
+{
+  right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+
+.table {
+    width: 100%;
+    border: solid 2px #7b1113;
+    margin-top: 2vh;
+}
+
+.table thead,
+.table tbody,
+.table tr,
+.table th,
+.table td {
+    border: solid 1px #7b1113 !important;
+}
+
+/* CARD DESIGNS */
+
+.progress{
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background: none;
+    margin: 0 auto;
+    box-shadow: none;
+    position: relative;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.progress:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #f2f5f5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress > span{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.progress .progress-left{
+    left: 0;
+}
+
+.progress .progress-bar{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 5px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+}
+
+.progress .progress-left .progress-bar{
+    left: 100%;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+
+.progress .progress-right{
+    right: 0;
+}
+
+/* RIGHT loading */
+.progress .progress-right .progress-bar {
+    left: -100%;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+    /* animation: loading-1 1.8s linear forwards; */
+}
+
+.progress .progress-value{
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    /* color: rgb(250, 245, 245); */
+    text-align: center;
+    position: absolute;
+}
+
+.progress .progress-value-maroon {
+    color: #7b1113;
+}
+
+.progress .progress-value-green {
+    color: #014421;
+}
+
+.progress.maroon .progress-bar{
+    border-color: #7b1113;
+}
+
+/* LEFT loading */
+/* .progress.maroon .progress-left .progress-bar{
+    animation: loading-4 1.5s linear forwards 1.8s;
+} */
+
+.progress.green .progress-bar{
+    border-color: #014421;
+}
+
+/* .progress.green .progress-left .progress-bar{
+    animation: loading-3 1s linear forwards 1.8s;
+} */
+
+.progress.pink .progress-bar{
+    border-color: #f83754;
+}
+
+.progress.pink .progress-left .progress-bar{
+    animation: loading-4 0.4s linear forwards 1.8s;
+}
+
+.progress.green .progress-bar{
+    border-color: #1abc9c;
+}
+
+/* .progress.green .progress-left .progress-bar{
+    animation: loading-5 1.2s linear forwards 1.8s;
+} */
+
+@keyframes loading-1{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes loading-2{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(144deg);
+        transform: rotate(144deg);
+    }
+}
+
+@keyframes loading-3{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes loading-4{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(36deg);
+        transform: rotate(36deg);
+    }
+}
+
+@keyframes loading-5{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(126deg);
+        transform: rotate(126deg);
+    }
+}
+
+/* @media only screen and (min-width: 768px) and (max-width: 992px) {
+    .progress{ margin-bottom: 20px; }
+
+    .progress-circle {
+        margin: 0 2%;
+    }
+
+    .progress-circle .card {
+        margin-bottom: 3vh;
+    }
+} */
+
+@media only screen and (max-width: 992px) {
+    .progress{ margin-bottom: 20px; }    
+
+    .progress-circle {
+        margin-right: 5%;
+    }
+
+    .row {
+        flex-wrap: nowrap;
+    }
+}
+
+@media only screen and (max-width: 868px) {
+    .progress-circle {
+        margin-right: 8%;
+    }
+
+    .item-table {
+        margin-right: 8%;
+    }
+}
+
+@media only screen and (max-width: 808px) {
+    .progress-circle {
+        margin-right: 12%;
+    }
+
+    .item-table {
+        margin-right: 12%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .progress-circle {
+        margin-right: 20%;
+    }
+
+    .item-table {
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 656px) {
+    .progress-circle {
+        margin-right: 23%;
+    }
+
+    .item-table {
+        margin-right: 12%;
+    }
+}
+
+@media only screen and (max-width: 638px) {
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .progress-circle .card {
+        min-width: 386px;
+    }
+
+    .item-table .card {
+        min-width: 386px;
+    }
+    
+    .dayscount .card {
+        width: 386px;
+        min-width: 386px;
+    }
+
+    .card {
+        margin-left: 0;
+        margin-right: 0;
+
+        margin-bottom: 3%;
+    }
+
+    .row {
+        margin-left: 0;
+    }
+}

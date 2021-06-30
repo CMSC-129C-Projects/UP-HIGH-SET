@@ -49,7 +49,7 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
 
-            $status = send_acc_notice($this->newStudent->email, $subject, $message);
+            // $status = send_acc_notice($this->newStudent->email, $subject, $message);
             // Send account notice to student
 
             try {
@@ -58,7 +58,7 @@ class Admin extends Account {
                 $status = false;
             }
 
-        } else {
+        } elseif ($role === 'admin' || $role == '1') {
             $newAdmin = new self();
 
             $newAdmin->first_name = $request->getPost('adminFirstName');
@@ -81,7 +81,38 @@ class Admin extends Account {
 
             $message = str_replace($search, $replace, $message);
 
-            $status = send_acc_notice($newAdmin->email, $subject, $message);
+            // $status = send_acc_notice($newAdmin->email, $subject, $message);
+            // Send account notice to admin
+
+            try {
+                $this->userModel->insert($newAdmin);
+            } catch (\Exception $e) {
+                $status = false;
+            }
+        } else {
+            $newAdmin = new self();
+
+            $newAdmin->first_name = $request->getPost('clerkFirstName');
+            $newAdmin->last_name = $request->getPost('clerkLastName');
+            $newAdmin->role = 3;
+            $newAdmin->contact_num = $request->getPost('clerkContactNum');
+            // $newAdmin->username = $request->getPost('adminUserName');
+            $newAdmin->email = $request->getPost('clerkEmail');
+            $newAdmin->email .= '@up.edu.ph';
+            $newAdmin->avatar_url = '/public/images/avatars/hacker.png';
+
+            $password = randomize_password($newAdmin->contact_num);
+            $newAdmin->password = password_hash($password, PASSWORD_BCRYPT);
+
+            $newAdmin->is_active = 1;
+            $newAdmin->is_deleted = 0;
+
+            // Send account notice to admin
+            $replace = [$emailContent['message'], $newAdmin->first_name, $newAdmin->email, $password, base_url()];
+
+            $message = str_replace($search, $replace, $message);
+
+            // $status = send_acc_notice($newAdmin->email, $subject, $message);
             // Send account notice to admin
 
             try {
@@ -113,7 +144,7 @@ class Admin extends Account {
             } catch (\Exception $e) {
                 $status = false;
             }
-        } else {
+        } elseif ($role === 'admin' || $role == '1') {
             $newAdmin = new self();
             // $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
             $newAdmin = $this->userModel->find($id);
@@ -123,6 +154,23 @@ class Admin extends Account {
             $newAdmin->contact_num = $request->getPost('adminContactNum');
             $newAdmin->username = $request->getPost('adminUserName');
             $newAdmin->email = $request->getPost('adminEmail');
+            $newAdmin->email .= '@up.edu.ph';
+
+            try{
+                $this->userModel->update($id, $newAdmin);
+            } catch (\Exception $e) {
+                $status = false;
+            }
+        } else {
+            $newAdmin = new self();
+            // $newAdmin = $this->userModel->asObject('App\Entities\Admin')->find($id);
+            $newAdmin = $this->userModel->find($id);
+
+            $newAdmin->first_name = $request->getPost('clerkFirstName');
+            $newAdmin->last_name = $request->getPost('clerkLastName');
+            $newAdmin->contact_num = $request->getPost('clerkContactNum');
+            $newAdmin->username = $request->getPost('clerkUserName');
+            $newAdmin->email = $request->getPost('clerkEmail');
             $newAdmin->email .= '@up.edu.ph';
 
             try{

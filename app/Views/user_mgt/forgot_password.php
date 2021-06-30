@@ -2,48 +2,59 @@
 
 <?php $this->section('content'); ?>
 
-  <div class="container-fluid" style="height: 420px;">
-  <div id="ChangePassword" style="margin-top: 4.7rem;">
-    <div class="card" style="width: 70%; margin: auto">
-      <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
-      <div class="card-body" style="padding: 40px; margin: 10px">
-        <?php if (isset($validation) != null) { ?>
-
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
-          </div>
-          <br><br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
-
-        <?php } elseif(isset($validate_error)!=null) { ?>
-
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class= "alert alert-danger" style="padding: 20px;">
-            <h4 style="color: #7b1113; margin: auto !important;"><?=$validate_error?></h4>
-          </div>
-          <br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="#" data-toggle="modal" data-target="#forgotPassword">Retry</a>
-
-        <?php } elseif(isset($success) != null) { ?>
-          <div class="alert-success" style="padding: 20px;">
-            <h4> A password reset link was sent to your email, you have 15 minutes to change your password.</h4>
-          </div>
-        <?php } elseif( $success == null && $validate_error == null && $validation == null) {?>
-          <h3 class="card-title" style="color: #7b1113; margin-bottom: 20px; font-size: 20px;">An error occurred.</h3>
-          <div class="alert-danger" style="padding: 20px;">
-            <h4> You are not authorized to access this page. </h4>
-          </div>
-          <br><br>
-          <a class="button" style="border-radius: 2rem !important; padding: 12px 21px; font-size: 13px;" href="<?=base_url('login')?>">Back</a>
-        <?php } ?>
+  
+<div class="container-fluid" style="min-height: 100vh; padding: 3rem 0 2rem;"> 
+  <div id="ChangePassword">
+    <?php if (isset($validation) != null) { ?>
+      <div class="heading text-center" style="padding: 20px;">
+        <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
+            <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
+            <h2 style="padding-top:1em; font-size:3.2vmin;"><?=displaySingleError($validation, 'email_fpass')?><h2>
+        </div>  
       </div>
-    </div>
+      <div style="text-align:center;">  
+          <button class="button2" style="margin-left:3.5rem;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+          <button class="button2" style="margin-left:3.5rem;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
+      </div>
+
+    <?php } elseif(isset($validate_error)!=null) { ?> <!-- verify email in db -->
+      <div class="heading text-center" style="padding: 20px;">
+        <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
+            <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
+            <h2 style="padding-top:1em; font-size:3.2vmin;"><?=$validate_error?><h2>
+        </div>  
+      </div>
+      <div style="text-align:center;">  
+          <button class="button2" style="margin-left:3.5rem;" href="#" data-toggle="modal" data-target="#forgotPassword"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+          <button class="button2" style="margin-left:3.5rem;" onclick="window.location='<?=base_url('dashboard/logout')?>'"><i class="bi bi-x-circle"></i> Cancel </button>
+      </div>
+<!-- New CHanges -->
+
+    <?php } elseif(isset($success) != null) { ?> <!-- email has been set for change -->
+      <div class="heading text-center" style="padding: 20px;">
+        <div class="alert alert-success" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
+            <img src="<?=base_url()?>/public/success.png" style="width:15vmin; height:15vmin;">
+            <h2 style="padding-top:1em; font-size:3.2vmin;">A password reset link was sent to your email, you have 15 minutes to change your password.<h2>
+        </div>
+        <a class="button" style="padding: 12px 21px; font-size: 1.3em;" href="<?=base_url('login')?>"><i class="bi bi-x-left"></i> Cancel Reset Password</a>  
+      </div>
+
+    <?php } elseif( $success == null && $validate_error == null && $validation == null) {?> <!-- gone from external sources -->
+      <div class="heading text-center" style="padding: 20px;">
+        <div class="alert alert-danger" style="margin-top: 10rem !important; width: 80%; padding:30px; border-color:#7b1113; border-width: 2px; border-radius: 0.5rem; margin-bottom:30px; margin-left: 10%; margin-right:10%;">
+            <img src="<?=base_url()?>/public/error.png" style="width:15vmin; height:15vmin;">
+            <h2 style="padding-top:1em; font-size:3.2vmin;">You are not authorized to access this page.<h2>
+        </div>  
+        <a class="button" style="padding: 12px 21px; font-size: 1.3em;" href="<?=base_url('login')?>"><i class="bi bi-arrow-left"></i> Return to Main Page</a>
+      </div>
+          
+    <?php } ?>
+  </div>
   </div>
   </div>
 
-  <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height: 429px">
-    <div class="modal-dialog">
+    <div class="modal fade" id="forgotPassword"  role="dialog" position="default" style="height:444px">
+      <div class="modal-dialog">
       <div class="modal-content" style="background: transparent;">
 
         <div class="modal-header">
@@ -56,13 +67,16 @@
           <form method="post" action="<?=base_url()?>/forgot_password">
             <div class="form-group">
               <label for="e_mail" style="margin-top: 1rem; font-size: 15px;"> Please provide your email: </label>
-              <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" placeholder="Email" required>
-              <input type="submit" value="Confirm">
-              <input type="button" class="button2" data-dismiss="modal" value="Close">
+              <input type="text" class="form-control" style="background:white" name = 'email_fpass' id="e_mail" value="<?=set_value('email_fpass')?>" placeholder="Email" required>
+              <span><?=displaySingleError($validation, 'email_fpass');?></span>
+              <div class="row">
+                  <button class="button2" style="border-radius: 2rem !important; margin-top: 20px; margin-left: 12px;" type="submit"><i class="bi bi-check-circle"></i> Confirm</button>
+                  <button class="button2"  style="border-radius: 2rem !important; margin-top: 20px; margin-left: 10px;" data-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
+              </div>
             </div>
           </form>
         </div>
       </div>
+      </div>
     </div>
-  </div>
 <?php $this->endSection(); ?>

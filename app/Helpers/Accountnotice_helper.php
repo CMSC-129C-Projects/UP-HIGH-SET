@@ -36,7 +36,6 @@ function send_acc_notice($to_email = null, $subject = null, $message = null, $at
     return true;
   } else {
     $data = $email->printDebugger(['headers']);
-    print_r($data);
     return false;
   }
 }

@@ -7,6 +7,13 @@ use \App\Entities\Admin;
 class Test extends BaseController
 {
     public function index() {
-        return view('UpdateProfile.php');
+        // $css = ['custom/monitor/monitor.css'];
+        // $js = ['custom/monitor/piechart.js', 'custom/monitor/monitor.js'];
+        // $data = [
+        //     'css' => addExternal($css, 'css'),
+        //     'js'  => addExternal($js, 'javascript')
+        // ];
+         return view('Views/user_mgt/clerkDashboard');
+        // return view('Views/user_mgt/clerkDashboard');
     }
 }

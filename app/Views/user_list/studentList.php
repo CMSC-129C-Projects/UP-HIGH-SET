@@ -1,7 +1,7 @@
 <?=$this->extend('template/pageTemplate');?>
 
 <?=$this->section('content');?>
-    <div id="bg-modal" class="black-modal">
+    <!-- <div id="bg-modal" class="black-modal">
         <div id="content-modal" class="customModal horizontalCenter verticalCenter">
             <div class="mdl-content">
                 <p>Are you sure you want to delete this student?</p>
@@ -11,15 +11,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <section id="studentTable" class="container-fluid">
 
     <div class="heading text-center">
-      <h1 style="padding:4.7rem;"> View Students </h1>
+      <h1 style="padding: 8rem 0 2rem"> VIEW STUDENTS </h1>
     </div>
 
     <div class="main">
-        <select name="glevel" id="gl" class="custom-select" style="width:150px">
+        <select name="glevel" id="gl" class="custom-select" style="width:100px">
             <option value="7" selected="selected">Grade 7</option>
             <option value="8">Grade 8</option>
             <option value="9">Grade 9</option>
@@ -28,9 +28,10 @@
             <option value="12">Grade 12</option>    
         </select>
 
-        <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button">Add Student</button></a>
-        <div class="table-responsive">
-        <table class="table-bordered table-striped table-hover" id="student">
+        <a style="float: right;" href="<?=base_url();?>/update/add/student"><button class="button" style="width: 13em;"><i class="bi bi-plus-square"></i> Add Student</button></a>
+        <br><br>
+        <div style="table-responsive">
+        <table class="table-bordered table-striped table-hover item-table" id="student">
             <thead>
                 <tr>
                     <th>First Name</th>

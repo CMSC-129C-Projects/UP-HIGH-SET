@@ -1,0 +1,263 @@
+.reportTable {
+  padding: 0 5%; 
+}
+
+.reportTable .table{
+  margin: auto, !important;
+  font-family: arial;
+  font-size: 2vmin;
+  text-align: center;
+}
+
+.reportTable .reportHeader p{
+    text-align: center;
+    margin: auto;
+    font-size: 2vmin;
+    margin-bottom:2rem;
+    color: black !important;
+    font-family: arial !important;
+    font-weight: bold;
+}
+
+.reportTable .profName h2{
+    position: relative;
+    color: #7b1113;
+    left:2.9%;
+    font-size: 3vmin;
+}
+.reportTable .printBtn button{
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    color: #7b1113;
+    font-size: 1.8vmin;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 5vmin;
+    width: 15vmin;
+    margin-right: 10px;
+    background: #7b1113;
+    color: #fff;
+    margin-bottom: 2vh;
+    margin-top: 3rem;
+    /* left: 3%; */
+
+  }
+  
+  .reportTable button:hover::before {
+    width: 100%;
+  }
+ 
+.reportTable .button:hover {
+  color: #ffff;
+  background: #014421;
+}
+
+.reportTable .inputBox{
+align-items: center;
+margin: auto;
+text-align: center;
+margin-bottom: 3rem;
+}
+.reportTable .inputBox textarea{
+  align-items: center;
+  margin: auto;
+  text-align: center;
+ 
+  border-radius: 0.5rem;
+  border-color: linear-gradient(to top right, #7b1113 0%, #014421 100%);
+  background-color:#e9dbc1;
+  border:solid 2px;  
+  } 
+.reportTable .inputBox p{
+  font-size: 2vmin;
+  font-family: arial;
+  color: black;
+  font-weight: bold;
+  margin-top: 2rem;
+
+}
+
+.reportTable .inputBox .comments{
+  border:solid;
+  /* border-color: linear-gradient(to top right, #7b1113 0%, #014421 100%); */
+  width: 100%;
+  padding-bottom: 3.5vh;
+  margin:auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 50rem;
+  border-image-source: linear-gradient(to top right, #7b1113 0%, #014421 100%);
+  border-width: 0.3rem !important;
+  border-image-slice: 1 !important;
+  border-radius: 1rem;
+  font-size: 13px;
+}
+.reportTable .inputBox .comments .commentBox{
+ 
+ /* background-color: rgba(65, 25, 0, .4); */
+   background-color: rgba(229, 229, 229, 1);
+  
+ /* background: linear-gradient(to bottom, #e9dbc1 0%, # 100%); */
+ border-radius: 10px;
+  width: 90%;
+  margin:auto;
+  min-height: 5rem;
+
+  
+}
+.reportTable .inputBox .comments .commentBox .pcomments{
+  font-weight: normal !important;
+  text-align: left;
+  margin-top: 20px !important;
+  margin-left: 10px;
+  color: 	#2e242c;
+  word-wrap: break-word;
+  padding: 2%;  
+}
+
+.item-table-prof::-webkit-scrollbar,
+.item-table::-webkit-scrollbar,
+.comments::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+/* Track */
+.item-table-prof::-webkit-scrollbar-track,
+.item-table::-webkit-scrollbar-track,
+.comments::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+/* .item-table::-webkit-scrollbar-track, */
+.comments::-webkit-scrollbar-thumb {
+  background:#7b1113; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.item-table-prof::-webkit-scrollbar-thumb:hover,
+.item-table::-webkit-scrollbar-thumb:hover,
+.comments::-webkit-scrollbar-thumb:hover {
+  background: #014421; 
+  
+}
+
+.effect1{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+}
+
+.item-table-prof, 
+.item-table {
+  margin: 2vh 0 1vh 0;
+}
+
+.item-table-prof td,
+.item-table-prof th,
+.item-table .table td,
+.item-table .table th {
+  border: solid 2px #7b1113 !important;
+}
+
+.item-table-prof .table .empty,
+.item-table .table .empty {
+  background-color: #7b1113 !important;
+}
+
+.item-table-prof .table td,
+.item-table-prof .table th {
+  font-size: 1.5vmin !important;
+}
+
+.item-table-prof .table tfoot td {
+  border: none !important;
+}
+
+.item-table {
+  border: solid .3rem #7b1113
+}
+
+.item-table-prof thead,
+.item-table-prof tbody {
+  border: solid .3rem #7b1113;
+}
+
+.underline {
+  border: solid black .1rem;
+  background-color: black;
+  margin: 1vh 0;
+}
+
+.legend,
+.legend div {
+  width: 100%;
+}
+
+.legend-cntr {
+  padding-right: 3%;
+}
+
+.info h4 {
+  font-size: 2vmin;
+}
+
+.info h5 {
+  font-size: 1.5vmin;
+}
+
+.signature {
+  margin-bottom: 8vh;
+  width: 75%;
+  float: right;
+}
+
+.overall {
+  font-size: 1.8vmin;
+}
+
+.note {
+  margin-bottom: 6vh;
+}
+
+
+@media print {    
+  .no-print, .no-print * {
+      display: none !important;
+  }
+
+  .reportHeader {
+    margin-top: 3vh;
+  }
+
+  .signature {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .signature {
+    width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .signature {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .info {
+    flex-wrap: nowrap!important;
+  }
+}

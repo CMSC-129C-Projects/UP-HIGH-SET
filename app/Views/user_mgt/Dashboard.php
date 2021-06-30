@@ -106,19 +106,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $index=1;?>
-                                <?php foreach($faculty_list as $faculty):?>
+                                <?php if (isset($faculty_list) && count($faculty_list) !== 0):?>
+                                    <?php $index=1;?>
+                                    <?php foreach($faculty_list as $faculty):?>
+                                        <tr>
+                                            <td scope="row"><?=$index?></td>
+                                            <td><?=$faculty->first_name;?></td>
+                                            <td><?=$faculty->last_name;?></td>
+                                            <?php if ($_SESSION['logged_user']['role'] === '1'):?>
+                                                <td class="rating_<?=$index?>"><?=number_format($faculty->final_rating, 2);?></td>
+                                                <td class="interpretation_<?=$index?>"></td>
+                                            <?php endif;?>
+                                        </tr>
+                                        <?php $index++;?>
+                                    <?php endforeach;?>
+                                <?php else: ?>
                                     <tr>
-                                        <td scope="row"><?=$index?></td>
-                                        <td><?=$faculty->first_name;?></td>
-                                        <td><?=$faculty->last_name;?></td>
                                         <?php if ($_SESSION['logged_user']['role'] === '1'):?>
-                                            <td class="rating_<?=$index?>"><?=number_format($faculty->final_rating, 2);?></td>
-                                            <td class="interpretation_<?=$index?>"></td>
+                                            <td colspan="5">No results gathered</td>
+                                        <?php else: ?>
+                                            <td colspan="3">No results gathered</td>
                                         <?php endif;?>
                                     </tr>
-                                    <?php $index++;?>
-                                <?php endforeach;?>                                
+                                <?php endif;?>
                             </tbody>
                         </table>
                     </div>

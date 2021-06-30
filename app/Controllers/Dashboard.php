@@ -53,6 +53,10 @@ class Dashboard extends BaseController
 
       [$daysLeft, $subject_stat, $faculty_stat, $student_stat] = $this->get_information();
 
+      if (!$this->is_open_eval()) {
+        $student_stat[0] = 0;
+      }
+
       $data['daysLeft'] = $daysLeft;
       $data['subject_stat'] = $subject_stat;
       $data['faculty_stat'] = $this->get_faculty_percentage($faculty_stat);
@@ -61,6 +65,15 @@ class Dashboard extends BaseController
 
       return view('user_mgt/dashboard', $data);
     }
+  }
+
+  protected function is_open_eval()
+  {
+    $evaluationModel = new EvaluationModel();
+
+    $eval_info = $evaluationModel->where('is_deleted', 0)->where('status', 'open')->first();
+
+    return isset($eval_info) && count($eval_info) !== 0;
   }
 
   public function logout()
@@ -252,6 +265,7 @@ class Dashboard extends BaseController
     foreach ($students as $student) {
       $data = $subjectModel->get_in_progress_subjects_by_student($student->id);
 
+      // echo json_encode($data);
       if(count($data) === 0)
         array_push($student_done_evaluating, $student);
       else

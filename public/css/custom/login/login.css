@@ -59,8 +59,8 @@
     z-index: 1 !important;
     border: solid #e9dbc1 2px !important;
     overflow: hidden !important;
-    height: 30px !important;
-    width: 30% !important;
+    /* height: 30px !important; */
+    /* width: 30% !important; */
     margin-bottom: 0% !important;
     margin-right: 10px !important;   
     background: #e9dbc1 !important;

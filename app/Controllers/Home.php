@@ -120,7 +120,6 @@ class Home extends BaseController
           } elseif(!$this->checkPasswordLastUpdate()) {
 					  $this->sendVerification();
 
-            // To be changed for a page that notifies the email verification was sent
 					  return redirect()->to(base_url('verifyAccount'));
 
           } else {
@@ -150,8 +149,13 @@ class Home extends BaseController
     $model = new UserModel();
 
     $student = $model->where('email', $_SESSION['logged_user']['email'])->first();
-    // Check if last password update was less than or equal to 30 minutes
-    return ((strtotime(date('Y-m-d H:i:s')) - strtotime($student->updated_on)) <= 1800);
+
+    if ($student->password_updated === '') {
+      return false;
+    } else {
+      // Check if last password update was less than or equal to 30 minutes
+      return ((strtotime(date('Y-m-d H:i:s')) - strtotime($student->password_updated)) <= 1800);
+    }
   }
 
   public function forgot_password()
@@ -303,7 +307,7 @@ class Home extends BaseController
           if($this->validate($rules, $errors)) {
 
             $password = password_hash($this->request->getVar('new_pass', FILTER_SANITIZE_EMAIL), PASSWORD_BCRYPT);
-            $datum = ['password' => $password];
+            $datum = ['password' => $password, 'password_updated' => date('Y-m-d H:i:s')];
 
             $model = new UserModel();
             $model->asArray()->where('email', $_SESSION['logged_user']['email'])->set($datum)->update();
@@ -369,8 +373,8 @@ class Home extends BaseController
       'avatar_url'    => $user['avatar_url'],
       'isLoggedIn' 	  => true,
       'passwordReset' => false,
-      'emailVerified' => false,
-      // 'emailVerified' => true,
+      // 'emailVerified' => false,
+      'emailVerified' => true,
 			'userToken'		=> $userToken,
 			'loginDate'		=> date('Y-m-d H:i:s')
 		];
@@ -436,7 +440,7 @@ class Home extends BaseController
     $subject = $emailContent['title'];
 
     $message = file_get_contents('app/Views/verification.html');
-		$replace = [$emailContent['message'], $_SESSION['logged_user']['name'], base_url()]; //redirect to login page
+		$replace = [$emailContent['message'], $_SESSION['logged_user']['first_name'], base_url()]; //redirect to login page
 
 		$message = str_replace($search, $replace, $message);
 		$status = send_acc_notice($_SESSION['logged_user']['email'], $subject, $message);

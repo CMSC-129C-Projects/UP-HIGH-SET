@@ -22,6 +22,7 @@ class UserModel extends Model {
         'username',
         'email',
         'password',
+        'password_updated',
         'avatar_url',
         'is_active',
         'is_deleted'

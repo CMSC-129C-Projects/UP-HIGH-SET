@@ -34,8 +34,10 @@
 }
 
 .cntr-custom {
-    position: relative;
-    top: 6vmin;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .form-control {

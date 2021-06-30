@@ -70,6 +70,7 @@
 
   #special .card-container .card h1 {
     margin-top: 15%;
+    margin-bottom: 10%;
 
   }
 #special .card-container .card img{
@@ -142,4 +143,8 @@ margin-bottom: 1rem;
     font-size: 2vmin;
     color: #e9dbc1;
     transition-duration: 0.5s;
+}
+p{
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }

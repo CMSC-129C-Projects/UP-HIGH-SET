@@ -26,7 +26,8 @@
             <span class="text-danger"><?=displaySingleError($validation, 'email_content');?></span>
           </div>
           <br>
-          <div class="form-group">
+          <!-- Removed because the purpose will already be announcement everytime -->
+          <!-- <div class="form-group">
             <label for="purpose" style="font-size:2.7vmin;">Email Purpose :</label>
             <select class="custom-select" >
               <option selected>Select...</option>
@@ -36,9 +37,9 @@
               <option value="change_pass">Change Password</option>
               <option value="forgot_pass">Forgot Password</option>
               <option value="verification">Verification</option>
-            </select> 
-            </div>
-            <br><br><br>
+            </select>
+          </div> -->
+            <br>
             <div style="text-align:center">
               <button class="button2" type="submit" style=""><i class="bi bi-check-circle"></i> Update</button>
               <!-- Please add jquery for this button -->

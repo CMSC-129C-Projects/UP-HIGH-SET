@@ -1,8 +1,10 @@
 .admindashboard {
-    padding: 10vh;
+    padding: 4.5vh;
 }
 
-.container {
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
     border: solid #7b1113;
     overflow-x: auto;
     padding: 3% 5%;

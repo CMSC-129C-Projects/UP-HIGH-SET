@@ -9,7 +9,7 @@
 <?= $this->section('content');?>
     <span style="display: none;" id="notif" data-notif="<?=$notif?>"></span>
     <section class="admindashboard" style="margin: auto;">
-        <div class="container">
+        <div class="container-fluid" style="overflow-x: auto">
             <div class="row">
                 <div class="col-md-12" style="margin-bottom: 4vh;">
                     <h1>Welcome, <?=ucwords($_SESSION['logged_user']['first_name']) . ' ' . ucwords($_SESSION['logged_user']['last_name'])?>!</h1>

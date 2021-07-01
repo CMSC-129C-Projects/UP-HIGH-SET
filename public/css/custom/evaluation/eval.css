@@ -240,6 +240,15 @@ margin-right: 10px;
 background: #7b1113;
 color: #fff;
 }
+
+.question_grp .form-group .row .col-md-11 input{
+  margin-left: 10%;
+  border: transparent;
+  border-bottom: solid #7b1113;
+  background-color: transparent;
+  width: 90%;
+  font-size: 2.5vmin;
+}
 /* .btn-review{
 position: relative;
 left: 63%  ;

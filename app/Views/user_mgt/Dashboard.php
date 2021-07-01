@@ -123,9 +123,9 @@
                                 <?php else: ?>
                                     <tr>
                                         <?php if ($_SESSION['logged_user']['role'] === '1'):?>
-                                            <td colspan="5">No results gathered</td>
+                                            <td colspan="5" class="text-center">No results gathered</td>
                                         <?php else: ?>
-                                            <td colspan="3">No results gathered</td>
+                                            <td colspan="3" class="text-center">No results gathered</td>
                                         <?php endif;?>
                                     </tr>
                                 <?php endif;?>

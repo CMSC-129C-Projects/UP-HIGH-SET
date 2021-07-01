@@ -31,11 +31,11 @@ class Monitoring extends BaseController
                 return $this->$method();
                 break;
             case 'get_subjects':
-                $this->$method($param1);
+                return $this->$method($param1);
                 break;
             case 'transcend_students':
             case 'count_sheet_per_status_per_subject':
-                $this->$method();
+                return $this->$method();
                 break;
             default:
                 return redirect()->to(base_url('dashboard'));

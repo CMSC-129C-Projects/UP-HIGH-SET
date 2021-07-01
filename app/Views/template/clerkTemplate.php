@@ -105,6 +105,9 @@
               <a href="#facultyMembers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pie-chart"></i> Database Management</a>
               <ul class="collapse list-unstyled" id="facultyMembers">
                 <li>
+                  <a href="<?=base_url();?>">Update Questions</a>
+                </li>
+                <li>
                   <a href="#">Add Professors</a>
                 </li>
                 <li>

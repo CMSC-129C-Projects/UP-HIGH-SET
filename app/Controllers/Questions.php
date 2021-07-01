@@ -22,7 +22,7 @@ class Questions extends BaseController
         switch($method)
         {
             case 'index':
-                return $this->$method;
+                return $this->index();
                 break;
             case 'delete_question':
                 return $this->$method($param1);
@@ -45,8 +45,8 @@ class Questions extends BaseController
             }
         }
 
-        // $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css', 'custom/evaluation/submitModal.css'];
-        $css = ['custom/alert.css', 'custom/evaluation/eval.css'];
+        $css = ['custom/modalAddition.css', 'custom/alert.css', 'custom/evaluation/eval.css', 'custom/evaluation/submitModal.css'];
+        // $css = ['custom/alert.css', 'custom/evaluation/eval.css'];
         $js = ['custom/alert.js', 'custom/evaluation/questions.js'];
 
         $data['css'] = addExternal($css, 'css');

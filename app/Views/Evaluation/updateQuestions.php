@@ -50,8 +50,6 @@
                             <div class="tab-pane fade" id="<?=strtolower(str_replace(' ', '_', $key));?>">
                           <?php endif;?>
 
-                            <button data-section="<?=$key?>" class="button action-add-question" type="button">Add Question</button>
-
                             <div class="wrap question_grp" style="text-align: left;" id="question_grp_<?=$key?>">
                               <?php $index = 1;?>
                               <?php foreach($value as $q):?>
@@ -74,6 +72,7 @@
                               <?php endforeach;?>
                               <span data-count=<?=$index-1;?> style="display: none;" id="counter_<?=$key?>"></span>
                             </div>
+                            <button data-section="<?=$key?>" class="button action-add-question" type="button"><i class="bi bi-plus-circle"></i> Add Question</button>
                         </div>
                       <?php endforeach;?>
                   </div>
